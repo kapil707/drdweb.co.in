@@ -1,10 +1,7 @@
 .well-known/
 application/logs/
-temp_new_account/
 upload_drd_master/
-uploads/
 uploads_sales/
-user_newsession/
 user_profile/
 corporate_report/
 email_files/
