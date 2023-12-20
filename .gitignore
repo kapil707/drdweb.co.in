@@ -1,8 +1,5 @@
 .well-known/
 application/logs/
-chemist/
-json_api/
-json_order_download/
 medicine_images/
 medicine_json/
 newcss/
