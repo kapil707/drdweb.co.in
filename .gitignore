@@ -1,12 +1,6 @@
 .well-known/
 application/logs/
-assets_old/
 chemist/
-images/
-img_v31/
-img_v36/
-img_v41/
-img_v50/
 json_api/
 json_order_download/
 medicine_images/
