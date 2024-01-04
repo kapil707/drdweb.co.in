@@ -99,7 +99,7 @@
 				</ul>
 			</li>
 			<?php } 
-			$menu = $this->db->query("select DISTINCT tbl_permission_settings.page_type,sorting_order from tbl_permission_settings,tbl_permission_page where tbl_permission_settings.page_type=tbl_permission_page.page_type and user_type='$user_type' and (tbl_permission_settings.page_type='manage_chemist' or tbl_permission_settings.page_type='manage_corporate' or tbl_permission_settings.page_type='manage_master' or tbl_permission_settings.page_type='manage_salesman' or tbl_permission_settings.page_type='manage_chemist_request') GROUP BY tbl_permission_settings.page_type,sorting_order order by sorting_order asc")->result();
+			$menu = $this->db->query("select DISTINCT tbl_permission_settings.page_type,sorting_order from tbl_permission_settings,tbl_permission_page where tbl_permission_settings.page_type=tbl_permission_page.page_type and user_type='$user_type' and (tbl_permission_settings.page_type='manage_chemist' or tbl_permission_settings.page_type='manage_corporate' or tbl_permission_settings.page_type='manage_salesman' or tbl_permission_settings.page_type='manage_chemist_request') GROUP BY tbl_permission_settings.page_type,sorting_order order by sorting_order asc")->result();
 			if(!empty($menu)){
 			?>
 			<li <?php foreach($menu as $mymenu){ if($Page_menu==$mymenu->page_type) { ?> class="active" <?php } }?>>
@@ -120,7 +120,7 @@
 				</ul>
 			</li>
 			<?php } 
-			$menu = $this->db->query("select DISTINCT tbl_permission_settings.page_type,sorting_order from tbl_permission_settings,tbl_permission_page where tbl_permission_settings.page_type=tbl_permission_page.page_type and user_type='$user_type' and (tbl_permission_settings.page_type='manage_home' or tbl_permission_settings.page_type='manage_medicine' or tbl_permission_settings.page_type='manage_medicine_menu' or tbl_permission_settings.page_type='manage_company_discount' or tbl_permission_settings.page_type='manage_medicine_image' or tbl_permission_settings.page_type='manage_medicine_info2' or tbl_permission_settings.page_type='manage_top_search' or tbl_permission_settings.page_type='manage_top_search_by_chemist' or tbl_permission_settings.page_type='manage_item_wise' or tbl_permission_settings.page_type='manage_item_category' or tbl_permission_settings.page_type='manage_division_wise' or tbl_permission_settings.page_type='manage_division_category' or tbl_permission_settings.page_type='manage_medicine_use') GROUP BY tbl_permission_settings.page_type,sorting_order order by sorting_order asc")->result();
+			$menu = $this->db->query("select DISTINCT tbl_permission_settings.page_type,sorting_order from tbl_permission_settings,tbl_permission_page where tbl_permission_settings.page_type=tbl_permission_page.page_type and user_type='$user_type' and (tbl_permission_settings.page_type='manage_medicine' or tbl_permission_settings.page_type='manage_company_discount' or tbl_permission_settings.page_type='manage_medicine_image' or tbl_permission_settings.page_type='manage_medicine_info2' or tbl_permission_settings.page_type='manage_top_search' or tbl_permission_settings.page_type='manage_top_search_by_chemist' or tbl_permission_settings.page_type='manage_medicine_use') GROUP BY tbl_permission_settings.page_type,sorting_order order by sorting_order asc")->result();
 			if(!empty($menu)){
 			?>
 			<li <?php foreach($menu as $mymenu){ if($Page_menu==$mymenu->page_type) { ?> class="active" <?php } }?>>
@@ -136,6 +136,28 @@
 					$row = $this->db->query("select page_title from  tbl_permission_page where page_type='$mymenu->page_type'")->row();
 					?>
 					<li><a href="<?= base_url()?>admin/<?php echo $mymenu->page_type ?>/view" <?php if($Page_menu==$mymenu->page_type) { ?> class="active" <?php }  ?>><?php echo $row->page_title;?></a>
+					</li> 
+				<?php } ?>
+				</ul>
+			</li>
+			<?php }
+			$menu = $this->db->query("select DISTINCT tbl_permission_settings.page_type,sorting_order from tbl_permission_settings,tbl_permission_page where tbl_permission_settings.page_type=tbl_permission_page.page_type and user_type='$user_type' and (tbl_permission_settings.page_type='manage_master') GROUP BY tbl_permission_settings.page_type,sorting_order order by sorting_order asc")->result();
+			if(!empty($menu)){
+			?>
+			<li <?php foreach($menu as $mymenu){ 
+			if($Page_menu==$mymenu->page_type) { ?> class="active" <?php } }?>>
+				<a href="#">
+					<span class="nav-label">
+						<i class="fa fa-th-large"></i>
+						Manage Master App
+					</span><span class="fa arrow"></span>
+				</a>
+				<ul class="nav nav-second-level collapse">
+				<?php 
+				foreach($menu as $mymenu){
+					$row = $this->db->query("select page_title from  tbl_permission_page where page_type='$mymenu->page_type'")->row();
+					?>
+					<li><a href="<?= base_url()?>admin/<?php echo $mymenu->page_type ?>/view" <?php if($Page_menu==$mymenu->page_type) { ?> class="active" <?php } ?>><?php echo $row->page_title;?></a>
 					</li> 
 				<?php } ?>
 				</ul>
@@ -156,16 +178,38 @@
 				foreach($menu as $mymenu){
 					$row = $this->db->query("select page_title from  tbl_permission_page where page_type='$mymenu->page_type'")->row();
 					?>
-					<li><a href="<?= base_url()?>admin/<?php echo $mymenu->page_type ?>/view" <?php if($Page_menu==$mymenu->page_type) { ?> class="active" <?php }  ?>><?php echo $row->page_title;?></a>
+					<li><a href="<?= base_url()?>admin/<?php echo $mymenu->page_type ?>/view" <?php if($Page_menu==$mymenu->page_type) { ?> class="active" <?php } ?>><?php echo $row->page_title;?></a>
 					</li> 
 				<?php } ?>
 				</ul>
 			</li>
-			<?php } 
-			$menu = $this->db->query("select DISTINCT tbl_permission_settings.page_type,sorting_order from tbl_permission_settings,tbl_permission_page where tbl_permission_settings.page_type=tbl_permission_page.page_type and user_type='$user_type' and (tbl_permission_settings.page_type='manage_website' or tbl_permission_settings.page_type='manage_email' or tbl_permission_settings.page_type='manage_slider' or tbl_permission_settings.page_type='manage_slider2') GROUP BY tbl_permission_settings.page_type,sorting_order order by sorting_order asc")->result();
+			<?php }
+			$menu = $this->db->query("select DISTINCT tbl_permission_settings.page_type,sorting_order from tbl_permission_settings,tbl_permission_page where tbl_permission_settings.page_type=tbl_permission_page.page_type and user_type='$user_type' and (tbl_permission_settings.page_type='manage_home' or  tbl_permission_settings.page_type='manage_medicine_menu' or tbl_permission_settings.page_type='manage_slider' or tbl_permission_settings.page_type='manage_item' or tbl_permission_settings.page_type='manage_item_category' or tbl_permission_settings.page_type='Manage_division' or tbl_permission_settings.page_type='manage_division_category') GROUP BY tbl_permission_settings.page_type,sorting_order order by sorting_order asc")->result();
+			if(!empty($menu)){?>
+				<li <?php if($Page_menu=="manage_home" || $Page_menu=="manage_medicine_menu" || $Page_menu=="manage_slider" || $Page_menu=="manage_item_wise" || $Page_menu=="manage_item_category" || $Page_menu=="Manage_division_wise" || $Page_menu=="manage_division_category") { ?> class="active" <?php } ?>>
+				<a href="#">
+					<span class="nav-label">
+						<i class="fa fa-th-large"></i>
+							Manage Home
+						</span>
+					<span class="fa arrow"></span>
+				</a>
+				<ul class="nav nav-second-level collapse">
+					<?php
+					foreach($menu as $mymenu){
+						$row = $this->db->query("select page_title from  tbl_permission_page where page_type='$mymenu->page_type'")->row();
+						?>
+						<li>
+							<a href="<?= base_url()?>admin/<?php echo $mymenu->page_type ?>/view" <?php if($Page_menu==$mymenu->page_type) { ?> class="active" <?php }  ?>><?php echo $row->page_title;?></a>
+						</li>
+					<?php } ?>
+				</ul>
+			</li>
+			<?php }
+			$menu = $this->db->query("select DISTINCT tbl_permission_settings.page_type,sorting_order from tbl_permission_settings,tbl_permission_page where tbl_permission_settings.page_type=tbl_permission_page.page_type and user_type='$user_type' and (tbl_permission_settings.page_type='manage_website' or tbl_permission_settings.page_type='manage_email') GROUP BY tbl_permission_settings.page_type,sorting_order order by sorting_order asc")->result();
 			if(!empty($menu)){
 			?>
-			<li <?php if($Page_menu=="manage_website" || $Page_menu=="manage_email" || $Page_menu=="manage_slider" || $Page_menu=="manage_slider2") { ?> class="active" <?php } ?>>
+			<li <?php if($Page_menu=="manage_website" || $Page_menu=="manage_email") { ?> class="active" <?php } ?>>
 				<a href="#">
 					<span class="nav-label">
 						<i class="fa fa-th-large"></i>
@@ -219,14 +263,6 @@
 					<li><a href="<?= base_url()?>admin/manage_website/add/place_order_message">Place Order Message</a>
 					</li>
 					<?php }
-					if($mymenu->page_type=="manage_slider") { ?>
-					<li><a href="<?= base_url()?>admin/manage_slider/view">Slider</a>
-					</li>
-					<?php }
-					if($mymenu->page_type=="manage_slider2") { ?>
-					<li><a href="<?= base_url()?>admin/manage_slider2/view">Slider2</a>
-					</li>
-					<?php }
 					if($mymenu->page_type=="manage_email") { ?>
 					<li><a href="<?= base_url()?>admin/manage_email/view">Email Setting</a>
 					</li>
@@ -262,10 +298,10 @@
 				</ul>
 			</li>
 			<?php } 
-			$menu = $this->db->query("select DISTINCT tbl_permission_settings.page_type,sorting_order from tbl_permission_settings,tbl_permission_page where tbl_permission_settings.page_type=tbl_permission_page.page_type and user_type='$user_type' and (tbl_permission_settings.page_type='manage_website_seo') GROUP BY tbl_permission_settings.page_type,sorting_order order by sorting_order asc")->result();
+			$menu = $this->db->query("select DISTINCT tbl_permission_settings.page_type,sorting_order from tbl_permission_settings,tbl_permission_page where tbl_permission_settings.page_type=tbl_permission_page.page_type and user_type='$user_type' and (tbl_permission_settings.page_type='manage_website_seo' or tbl_permission_settings.page_type='manage_seo') GROUP BY tbl_permission_settings.page_type,sorting_order order by sorting_order asc")->result();
 			if(!empty($menu)){
 			?>
-			<li <?php if($Page_menu=="manage_website_seo") { ?> class="active" <?php } ?>>
+			<li <?php if($Page_menu=="manage_website_seo" || $Page_menu=="manage_seo") { ?> class="active" <?php } ?>>
 				<a href="#">
 					<span class="nav-label">
 						<i class="fa fa-th-large"></i>
@@ -285,6 +321,10 @@
 					<li><a href="<?= base_url()?>admin/manage_website_seo/add/seo_google">Google Tag</a>
 					</li>
 					<?php } ?>
+					<?php if($mymenu->page_type=="manage_seo") { ?>
+					<li><a href="<?= base_url()?>admin/manage_seo">Seo Pages</a>
+					<?php } ?>
+					</li>
 				<?php } ?>
 				</ul>
 			</li>

@@ -24,6 +24,7 @@ class Exe02 extends CI_Controller
 	
 	public function insert_message_on_server()
 	{
+		error_reporting(0);
 		/********************** */
 		$isdone = "";
 		$data = json_decode(file_get_contents('php://input'), true);
@@ -82,6 +83,7 @@ class Exe02 extends CI_Controller
 
 	public function download_order_again()
 	{
+		error_reporting(0);
 		$data = json_decode(file_get_contents('php://input'), true);
 		$items = $data["items"];
 		foreach ($items as $row) {
@@ -260,6 +262,7 @@ class Exe02 extends CI_Controller
 	
 	public function order_error_download()
 	{
+		error_reporting(0);
 		$items = "";
 		$time = time();
 		$day1 = date("Y-m-d", strtotime("-1 days", $time));
@@ -278,6 +281,7 @@ class Exe02 extends CI_Controller
 	
 	public function upload_order_to_gstvno()
 	{
+		error_reporting(0);
 		$isdone="";
 		$data  = json_decode(file_get_contents('php://input'), true);
 		$items = $data["items"];
@@ -295,6 +299,7 @@ class Exe02 extends CI_Controller
 	
 	public function upload_medicine()
 	{
+		error_reporting(0);
 		header("Content-type: application/json; charset=utf-8");
 		$isdone="";
 		$data = json_decode(file_get_contents('php://input'), true);
@@ -420,6 +425,7 @@ class Exe02 extends CI_Controller
 	
 	public function upload_chemist()
 	{
+		error_reporting(0);
 		header("Content-type: application/json; charset=utf-8");
 		$isdone="";
 		$data = json_decode(file_get_contents('php://input'), true);
@@ -462,6 +468,7 @@ class Exe02 extends CI_Controller
 	}
 	
 	public function tttt(){
+		error_reporting(0);
 		$time = date("H:i",strtotime('-1 Min'));
 		$date = date("Y-m-d");
 		echo "select temp_rec from tbl_order where download_status='0' and time<'$time' order by id asc limit 1";
@@ -469,6 +476,7 @@ class Exe02 extends CI_Controller
 
 	public function download_order_in_sever()
 	{
+		error_reporting(0);
 		$items = $items_lines = "";
 		$total_line = 0;
 		$date = date("Y-m-d");
@@ -522,6 +530,7 @@ class Exe02 extends CI_Controller
 	
 	public function download_order_in_sever_test($order_id)
 	{
+		error_reporting(0);
 		$items = $items_lines = "";
 		$total_line = 0;
 		$q = $this->db->query("select temp_rec from tbl_order where order_id='$order_id' order by id asc limit 1")->row();
@@ -568,6 +577,7 @@ class Exe02 extends CI_Controller
 
 	public function download_order_status_update()
 	{
+		error_reporting(0);
 		$isdone="";
 		$data  = json_decode(file_get_contents('php://input'), true);
 		$items = $data["items"];
@@ -582,6 +592,7 @@ class Exe02 extends CI_Controller
 	/************************invoice upload********************************/
 	public function upload_invoice_on_server()
 	{
+		error_reporting(0);
 		$isdone = "";
 		$db3 = $this->load->database('default3', TRUE);
 		
@@ -619,6 +630,7 @@ class Exe02 extends CI_Controller
 
 	public function upload_delivery()
 	{
+		error_reporting(0);
 		//error_reporting(0);
 		$data = json_decode(file_get_contents('php://input'),true);
 		$items = $data["items"];
@@ -643,6 +655,7 @@ class Exe02 extends CI_Controller
 	// upload new delivery 2023-12-09
 	public function upload_delivery_on_server()
 	{
+		error_reporting(0);
 		$isdone = "";
 		$db_master = $this->load->database('db_master', TRUE);
 		

@@ -7,19 +7,18 @@ class Dashboard extends CI_Controller {
 	var $Page_menu  = "dashboard";
 	var $Page_tbl   = "";
 	var $page_controllers = "dashboard";
-	function __construct()
+	public function __construct()
     {
         // Call the Model constructor
         parent::__construct();
 
 		$this->load->model("Admin_new_Model");
-
     }
 	public function index()
 	{
-		error_reporting(0);
 		/******************session***********************/
 		$user_id = $this->session->userdata("user_id");
+		$user_type = $this->session->userdata("user_type");
 		/******************session***********************/	
 
 		$Page_title = $this->Page_title;
@@ -39,7 +38,6 @@ class Dashboard extends CI_Controller {
 
 		$tbl = $Page_tbl;
 
-		$user_type = $this->session->userdata("user_type");
 		if($user_type=="")
 		{
 			$this->session->set_flashdata("message","<p class='font-bold  alert alert-warning m-b-sm'>Your Account Not Approved</p>");	
@@ -100,7 +98,7 @@ class Dashboard extends CI_Controller {
 			$top_10_medicine = substr($top_10_medicine, 0, -1);
 		}*/
 		
-		$today_orders1 = $today_orders2 = $today_orders3 = $today_website_orders_items = $today_android_orders_items = $today_excel_orders_items = 0;
+		$today_orders1 = $today_orders2 = $today_orders3 = $today_website_orders_items = $today_android_orders_items = $today_excel_orders_items = $today_invoice = 0;
 		$date = date("Y-m-d");
 		$result = $this->db->query("select DISTINCT order_id from tbl_order where date='$date'")->result();
 		foreach($result as $row)
@@ -164,7 +162,6 @@ class Dashboard extends CI_Controller {
 		$data["top_10_medicine"] 	= $top_10_medicine;
 		$data["today_orders"]		= $today_orders1."/".$today_orders2;
 		$data["today_orders3"]		= $today_orders3;
-		$data["today_pending_invoice_email"]	= $today_pending_invoice_email;
 		$data["today_invoice"]		= $today_invoice;
 		
 		$data["today_orders_price"]	= utf8_encode(money_format('%!.0n',$today_orders_price));

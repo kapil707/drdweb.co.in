@@ -1,4 +1,4 @@
-<div class="row">
+<style>.funtype_all{	display:none;}</style><div class="row">
 	<div class="col-xs-12">
 		<button type="button" class="btn btn-w-m btn-info" onclick="goBack();"><< Back</button>
 	</div>
@@ -9,7 +9,7 @@
         foreach ($result as $row)
         { ?>
             <input type="hidden" name="old_image" value="<?= $row->image; ?>" />
-			
+						<div class="form-group">					<div class="col-sm-6">                    <div class="col-sm-4 text-right">                        <label class="control-label" for="form-field-1">                            Slider Type                        </label>                    </div>                    <div class="col-sm-8">                        <select name="slider_type" id="slider_type" class="form-control">							<option value="1" <?php if($row->slider_type==1) { ?> selected <?php } ?>>								Slider 1							</option>							<option value="2" <?php if($row->slider_type==2) { ?> selected <?php } ?>>								Slider 2							</option>						</select>                    </div>                    <div class="help-inline col-sm-12 has-error">                        <span class="help-block reset middle">                              <?= form_error('slider_type'); ?>                        </span>                    </div>                </div>								<div class="col-sm-6">                    <div class="col-sm-4 text-right">                        <label class="control-label" for="form-field-1">							Short Order                        </label>                    </div>                    <div class="col-sm-8">						<input type="number" class="form-control" id="short_order" name="short_order" placeholder="Short Order" value="<?= $row->short_order;?>" />                    </div>                    <div class="help-inline col-sm-12 has-error">                        <span class="help-block reset middle">                            <?= form_error('short_order'); ?>                        </span>                    </div>                </div>			</div>
 			<div class="form-group">	
 				<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
@@ -18,15 +18,15 @@
                         </label>
                     </div>
                     <div class="col-sm-8">
-                        <select name="funtype" id="funtype" class="form-control">
-							<option value="0">
-								Not Need
+                        <select name="funtype" id="funtype" class="form-control" onchange="change_funtype()">
+							<option value="0" <?php if($row->funtype=="0"){ ?> selected <?php } ?>>
+								Select function type
 							</option>
 							<option value="1" <?php if($row->funtype=="1"){ ?> selected <?php } ?>>
-								Select Item
+								Item
 							</option>							
 							<option value="2" <?php if($row->funtype=="2"){ ?> selected <?php } ?>>
-								Select Company
+								Company
 							</option>
 						</select>
                     </div>
@@ -36,7 +36,7 @@
                         </span>
                     </div>
                 </div>
-				<div class="col-sm-6">
+				<div class="col-sm-6 funtype_all funtype_1" <?php if($row->funtype==1) { ?>style="display:block;" <?php } ?>>
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
                             Select Item
@@ -58,7 +58,7 @@
                 </div>
 			</div>
 			
-			<div class="form-group">
+			<div class="form-group funtype_all funtype_2" <?php if($row->funtype==2) { ?> style="display:block;" <?php } ?>>
 				<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
@@ -132,10 +132,7 @@
                             <?= form_error('Image'); ?>
                         </span>
                     </div>
-                </div>				
-			</div>
-			
-			<div class="form-group">
+                </div>
 				<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
@@ -158,21 +155,7 @@
                         </span>
                     </div>
                 </div>
-				<div class="col-sm-6">
-                    <div class="col-sm-4 text-right">
-                        <label class="control-label" for="form-field-1">
-							Short Order
-                        </label>
-                    </div>
-                    <div class="col-sm-8">
-						<input type="number" class="form-control" id="short_order" name="short_order" placeholder="Short Order" value="<?= $row->short_order;?>" />
-                    </div>
-                    <div class="help-inline col-sm-12 has-error">
-                        <span class="help-block reset middle">
-                            <?= form_error('short_order'); ?>
-                        </span>
-                    </div>
-                </div>
+				
 			</div>
             
             <div class="space-4"></div>
@@ -196,7 +179,7 @@
         <!-- PAGE CONTENT ENDS -->
     </div><!-- /.col -->
 </div><!-- /.row -->
-<script>
+<script>function change_funtype(){	$(".funtype_all").hide();	funtype = $("#funtype").val();	if(funtype=="1"){		$(".funtype_1").show();	}	if(funtype=="2"){		$(".funtype_2").show();		}}
 function call_search_item()
 {	
 	item_name = $("#item_name").val();

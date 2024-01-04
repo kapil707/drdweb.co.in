@@ -77,7 +77,7 @@ class Image_Model extends CI_Model
         $str = str_replace(' ','_',$str);
         $str = str_replace('.JPG','.jpg',$str);
         $str = str_replace('.PNG','.png',$str);
-        $str = str_replace('.GIF','.gif',$str);
+        $str = str_replace('.GIF','.gif',$str);		$str = str_replace('.JPEG','.jpeg',$str);		
         //$str = ereg_replace("[^A-Za-z0-9_\-\.]", "",$str);
 		$str = str_replace("[^A-Za-z0-9_\-\.]", "",$str);
         return $str;
@@ -100,7 +100,7 @@ class Image_Model extends CI_Model
         if($ar['size']==0) { $this->doDie($this->errors['upl-no-size']); exit; } 
 
         // create variables
-        $img_name         = $ar['name'];
+        $img_name         = time().$ar['name'];
         $img_type         = $ar['type'];
         $img_tmp_name     = $ar['tmp_name'];
         $img_error        = $ar['error'];

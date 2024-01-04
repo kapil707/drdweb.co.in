@@ -21,7 +21,7 @@ class Admin_Model extends CI_Model
 					}
 					$login_time = time();
 					$this->db->query("update tbl_user set last_login_time='$last_login_time',login_time='$login_time' where id='$id'");
-					$user_type = $row->user_type;
+					$user_type = $row->user_type;										$this->load->library('session');
 					$session_arr = array('user_id'=>$row->id,'name'=>$row->name,'user_email'=>$row->email,'username'=>$row->username,'user_type'=>$user_type,'user_password'=>$user_password,'last_login_time'=>$last_login_time,'image'=>$row->image);
 					$this->session->set_userdata($session_arr);
 					if($session_arr)
@@ -44,26 +44,13 @@ class Admin_Model extends CI_Model
 			$return = "Wrong UserName And Password";
 		}
 		return $return;
-	}
+	}		function check_login()	{		$user_id = $this->session->userdata('user_id');		if(empty($user_id) && $user_id =='')		{			redirect(base_url().'admin');		}		if(!empty($user_id) && $user_id !='')		{			redirect(base_url().'admin/dashboard');		}	}
 	function check_login1()
 	{
 		$user_id = $this->session->userdata('user_id');
 		if(empty($user_id) && $user_id =='')
 		{
-			redirect(constant('img_url_site').'admin');
-		}
-	}
-	function check_login()
-	{
-		$user_id = $this->session->userdata('user_id');
-		if(empty($user_id) && $user_id =='')
-		{
-			redirect(constant('img_url_site').'admin');
-		}
-		$user_id = $this->session->userdata('user_id');
-		if(!empty($user_id) && $user_id !='')
-		{
-			redirect(constant('img_url_site').'admin/dashboard');
+			//redirect(base_url().'admin');
 		}
 	}
 	function permissions_check_or_set($page_title,$page_type,$user_type)

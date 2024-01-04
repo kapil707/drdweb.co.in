@@ -15,6 +15,9 @@
                         	Sno.
                         </th>
 						<th>
+							Slider Type
+						</th>
+						<th>
 							Function Type
 						</th>
 						<th>
@@ -22,10 +25,13 @@
 						</th>
 						<th>
 							Image
-						</th>
+						</th>					
                         <th>
-                        	Action
+                        	Update
                         </th>
+						<th>
+							Action
+						</th>
                     </tr>
                 </thead>
 
@@ -40,9 +46,12 @@
                         	<?= $row->short_order ?>
                         </td>
 						<td>
+							Slider <?php echo $row->slider_type ?>
+						</td>
+						<td>
                         	<?if($row->funtype=="0"){ ?>Not Need<?php } ?>
-							<?if($row->funtype=="1"){ ?>Item <?= $row->itemid; ?><?php } ?>
-							<?if($row->funtype=="2"){ ?>Company <?= $row->compid; ?><?php } ?>
+							<?if($row->funtype=="1"){ ?>Item (<?= $row->itemid; ?>)<?php } ?>
+							<?if($row->funtype=="2"){ ?>Company (<?= $row->compid; ?>)<?php } ?>
                         </td>
 						<td>
 							<?if($row->funtype=="1"){ ?>
@@ -60,6 +69,16 @@
                         </td>
 						<td>
 						    <img src="<?= $url_path ?><?= $row->image; ?>" width="100px" />
+						</td>
+						<td>
+							<?php
+							$date = ($row->update_time);
+							echo date('d M,Y', $date);								?> 
+							at 
+							<?php 
+							$time = ($row->update_time);
+							echo date('H:i', $time);
+							?>
 						</td>
                         <td>
                         	<div class="btn-group">

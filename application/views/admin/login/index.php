@@ -18,17 +18,19 @@
     <div class="middle-box text-center loginscreen animated fadeInDown">
         <div>
             <div>
-				<img alt="image" class="img-circle" src="<?= base_url()?>/uploads/manage_website/photo/main/<?= $this->Scheme_Model->get_website_data("logo") ;?>" width="300" />
-                <h4 class="logo-name1">LOGIN PANEL</h4>
+				<img alt="image" class="" src="<?= base_url()?>uploads/manage_website/photo/<?= $this->Scheme_Model->get_website_data("logo") ;?>" width="120" />
+                <h4 class="logo-name1">VP-Admin Panel</h4>
             </div>
             <p>Website administration area public are prohibited!.
                 <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
             </p>
             <form class="m-t" role="form" method="post">
-                <div class="form-group">
+                <div class="form-group text-left">
+					<label>UserName</label>
                     <input type="email" class="form-control" placeholder="Username" required name="username" value="<?= set_value('username'); ?>">
                 </div>
-                <div class="form-group">
+                <div class="form-group text-left">
+					<label>Password</label>
                     <input type="password" class="form-control" placeholder="Password" required name="password">
                 </div>
                 <div class="form-group">
@@ -44,7 +46,7 @@
     </div>
     <div class="row" style="background: none repeat scroll 0 0 white;border-top: 1px solid #e7eaec;bottom: 0;left: 0;padding: 10px 20px;position: fixed;right: 0;">
         <div class="pull-right">
-            Powered by test&nbsp; &nbsp; &nbsp; &nbsp; 
+            Powered by Vp-Panel&nbsp; &nbsp; &nbsp; &nbsp; 
         </div>
         <div>
             All rights are reserved  &copy; <?php echo date("Y") ?>

@@ -103,7 +103,7 @@ class Manage_slider extends CI_Controller {
 			'funtype'=>$funtype,
 			'itemid'=>$itemid,
 			'compid'=>$compid,
-			'division'=>$division,
+			'division'=>$division,			'slider_type'=>$slider_type,
 			);
 			$result = $this->Scheme_Model->insert_fun($tbl,$dt);
 			$name = base64_decode($name);
@@ -270,7 +270,7 @@ class Manage_slider extends CI_Controller {
 			'funtype'=>$funtype,
 			'itemid'=>$itemid,
 			'compid'=>$compid,
-			'division'=>$division,
+			'division'=>$division,						'slider_type'=>$slider_type,
 			);
 			$result = $this->Scheme_Model->edit_fun($tbl,$dt,$where);
 			$change_text = $title." - ($change_text)";	

@@ -1,8 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Admin extends CI_Controller {
+class Admin extends CI_Controller {		
 	public function index()
-	{		
+	{		//$this->load->library('session');		/* echo CI_VERSION; */
 		//$this->session->sess_destroy();	
 		$data['message_alert'] = "";
 		extract($_POST);
