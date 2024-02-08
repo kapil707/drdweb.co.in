@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Chemist_json extends CI_Controller {		
 	public function theme_set()
 	{
+		
 		$items = "";
 		$theme_set_css 	= $_POST["theme_set_css"];
 		$theme_type 	= $theme_set_css;
