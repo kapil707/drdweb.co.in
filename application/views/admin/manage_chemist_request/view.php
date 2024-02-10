@@ -12,6 +12,9 @@
                 <thead>
                     <tr>
 						<th>
+							id
+						</th>
+						<th>
 							Code
 						</th>
 						<th>
@@ -43,6 +46,7 @@
 					{
 						?>
 						<tr id="row_<?= $row->id; ?>">
+							<td><?= $i++; ?></td>
 							<td><?= $row->altercode; ?></td>
 							<td><?= $row->name; ?></td>
 							<td><?= $row->email; ?><br><?= $row->mobile; ?><br><?= $row->address; ?></td>
