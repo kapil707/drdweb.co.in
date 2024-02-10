@@ -26,12 +26,6 @@
                         	Address
                         </th>
 						<th>
-                        	Login Expired
-                        </th>
-						<th>
-                        	Status
-                        </th>
-						<th>
                         	Delete
                         </th>
                         <th>
@@ -50,8 +44,6 @@
 							<td><?= $row->altercode; ?></td>
 							<td><?= $row->name; ?></td>
 							<td><?= $row->email; ?><br><?= $row->mobile; ?><br><?= $row->address; ?></td>
-							<td><?= $row->exp_date; ?></td>
-							<td><?= $row->status; ?></td>
 							<td class="text-right">
 								<form method="post">
 									<input type="hidden" name="code" value="<?= $row->altercode; ?>">
