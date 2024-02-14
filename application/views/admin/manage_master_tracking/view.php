@@ -23,8 +23,9 @@ function initMap() {
 	locations.push(['DRD Office', 28.5183163, 77.279475,1]);
   <?php
 	$i = 1;
-	foreach ($result as $row)
+	foreach ($result as $newrow)
 	{
+    $row = $db_master->query("select * from tbl_tracking where date='$mydate' and latitude!='0.0' and user_altercode='$newrow' limit 1")->row();
 		?>
 		locations.push(['<?php echo $row->user_altercode; ?> - <?php echo $row->getdate; ?> - <?php echo $row->gettime; ?>',<?php echo $row->latitude; ?>,<?php echo $row->longitude; ?>,<?php echo $i++; ?>]);
 		<?php
