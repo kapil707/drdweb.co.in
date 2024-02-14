@@ -57,13 +57,10 @@ class Manage_master_tracking extends CI_Controller {
 		$result = $db_master->query("select DISTINCT user_altercode from tbl_tracking where date='$mydate' and latitude!='0.0'")->result();
 		$jsonArray = array();
 		foreach($result as $row){
-			$dt = array(
-				'user_altercode' => $row->user_altercode,
-			);
-			$jsonArray[] = $dt;
+			$jsonArray[] = $row->user_altercode;
 		}
 		print_r($jsonArray);
-		$jsonlist = implode(',', $jsonArray[0]); 
+		$jsonlist = implode(',', $jsonArray); 
 		echo "select * from tbl_tracking where date='$mydate' and latitude!='0.0' and user_altercode in ($jsonlist)";die;
 		$result = $db_master->query("select * from tbl_tracking where date='$mydate' and latitude!='0.0' and user_altercode in ($jsonlist)")->result();
 		
