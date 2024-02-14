@@ -55,7 +55,7 @@ function initMap() {
       if(i==0)
       {
         const icon2 = {
-              url: "https://drdweb.co.in/img_v31/marker_a.png", // url
+              url: "https://drdistributor.com/img_v51/marker_a.png", // url
               scaledSize: new google.maps.Size(30, 30), // scaled size
               origin: new google.maps.Point(0,0), // origin
               anchor: new google.maps.Point(0, 0) // anchor
