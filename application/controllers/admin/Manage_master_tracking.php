@@ -60,7 +60,7 @@ class Manage_master_tracking extends CI_Controller {
 			$jsonArray[] = $row->user_altercode;
 		}
 		foreach($jsonArray as $newrow){
-			$result = $db_master->query("select * from tbl_tracking where date='$mydate' and latitude!='0.0' and user_altercode=($newrow)")->result();
+			$result = $db_master->query("select * from tbl_tracking where date='$mydate' and latitude!='0.0' and user_altercode='$newrow'")->result();
 			$data["result"][$newrow] = $result;
 		}
 		print_r($data);die;
