@@ -19,14 +19,14 @@ setTimeout(function(){
 function initMap() {
 	// The location of Uluru
 	var locations = []
-  <?php
+  <?php/*
 	$i = 1;
 	foreach ($result as $row)
 	{
 		?>
 		locations.push(['<?php echo $row->user_altercode; ?> - <?php echo $row->getdate; ?> - <?php echo $row->gettime; ?>',<?php echo $row->latitude; ?>,<?php echo $row->longitude; ?>,<?php echo $i; ?>]);
 		<?php
-	} ?>
+	} */?>
 	locations.push(['DRD Office', 28.5183163, 77.279475, <?php echo $i; ?>]);
 
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -41,7 +41,7 @@ function initMap() {
       if(i!=0)
       {  
         const icon = {
-                url: "https://drdweb.co.in/img_v31/marker_b.png", // url
+                url: "https://drdistributor.com/img_v51/marker_b.png", // url
                 scaledSize: new google.maps.Size(30, 30), // scaled size
                 origin: new google.maps.Point(0,0), // origin
                 anchor: new google.maps.Point(0, 0) // anchor
