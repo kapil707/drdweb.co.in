@@ -67,7 +67,7 @@ class Manage_master_delivery_done extends CI_Controller {
 	}
 	public function edit($id)
 	{
-		error_reporting(0);
+		//error_reporting(0);
 		/******************session***********************/
 		$user_id = $this->session->userdata("user_id");
 		$user_type = $this->session->userdata("user_type");
@@ -237,7 +237,7 @@ class Manage_master_delivery_done extends CI_Controller {
 	}
 
 	public function password_create1() {
-		error_reporting(0);
+		//error_reporting(0);
 		$id = $_POST["id"];
 		$password = strtolower($_POST["password"]);	
 
@@ -250,7 +250,7 @@ class Manage_master_delivery_done extends CI_Controller {
 	}
 
 	public function password_create2() {
-		error_reporting(0);
+		//error_reporting(0);
 		$id = $_POST["id"];
 		$password = strtolower($this->randomPassword());	
 
