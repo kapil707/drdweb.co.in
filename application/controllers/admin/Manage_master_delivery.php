@@ -52,10 +52,10 @@ class Manage_master_delivery extends CI_Controller {
 		$db_master = $this->load->database('db_master', TRUE);
 		
 		$mydate = date("Y-m-d");
-		if(isset($_GET["date"])){
-			$mydate = $_GET["date"];
+		if(isset($_GET["mydate"])){
+			$mydate = $_GET["mydate"];
 		}
-		$data["mydate"] = $mydate = "2024-01-12";
+		$data["mydate"] = $mydate;
 		
 		$query = $db_master->query("select * from $tbl where vdt='$mydate'");
 		$data["result"] = $query->result();

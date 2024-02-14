@@ -11,7 +11,7 @@
 			<div class="form-group nk-datapk-ctm form-elet-mg" id="data_1">
 				<div class="input-group date nk-int-st">
 					<label>Select Date</label>
-					<input type="date" class="form-control" value="<?= $vdt1; ?>" name="vdt">
+					<input type="date" class="form-control" value="<?= $mydate; ?>" name="mydate">
 				</div>
 			</div>
 		</div>
