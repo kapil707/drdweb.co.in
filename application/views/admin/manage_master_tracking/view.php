@@ -19,7 +19,7 @@ setTimeout(function(){
 function initMap() {
 	// The location of Uluru
 	var locations = []
-  <?php/*
+  <?php /*
 	$i = 1;
 	foreach ($result as $row)
 	{
