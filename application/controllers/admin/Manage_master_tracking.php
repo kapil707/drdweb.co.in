@@ -54,7 +54,7 @@ class Manage_master_tracking extends CI_Controller {
 		}
 		$data["mydate"] = $mydate;
 		
-		$query = $db_master->query("select * from $tbl where date='$mydate'");
+		$query = $db_master->query("select * from $tbl where date='$mydate' and latitude!='0.0'");
 		$data["result"] = $query->result();
 
 		$this->load->view("admin/header_footer/header",$data);
