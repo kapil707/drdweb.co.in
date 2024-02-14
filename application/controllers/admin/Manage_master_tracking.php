@@ -59,10 +59,11 @@ class Manage_master_tracking extends CI_Controller {
 		foreach($result as $row){
 			$jsonArray[] = $row->user_altercode;
 		}
-		$jsonlist = implode(',', $jsonArray); 
-		echo "select * from tbl_tracking where date='$mydate' and latitude!='0.0' and user_altercode in ($jsonlist)";
-		$result = $db_master->query("select * from tbl_tracking where date='$mydate' and latitude!='0.0' and user_altercode in ($jsonlist)")->result();
-		$data["result"] = $result;
+		foreach($jsonArray as $newrow){
+			$result = $db_master->query("select * from tbl_tracking where date='$mydate' and latitude!='0.0' and user_altercode=($newrow)")->result();
+			$data["result"][$newrow] = $result;
+		}
+		print_r($data);die;
 
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/view",$data);
