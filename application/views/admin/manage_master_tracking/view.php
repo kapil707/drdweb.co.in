@@ -19,16 +19,16 @@ setTimeout(function(){
 function initMap() {
 	// The location of Uluru
 	var locations = []
+
+	locations.push(['DRD Office', 28.5183163, 77.279475,1]);
   <?php
 	$i = 1;
-   /*
 	foreach ($result as $row)
 	{
 		?>
-		locations.push(['<?php echo $row->user_altercode; ?> - <?php echo $row->getdate; ?> - <?php echo $row->gettime; ?>',<?php echo $row->latitude; ?>,<?php echo $row->longitude; ?>,<?php echo $i; ?>]);
+		locations.push(['<?php echo $row->user_altercode; ?> - <?php echo $row->getdate; ?> - <?php echo $row->gettime; ?>',<?php echo $row->latitude; ?>,<?php echo $row->longitude; ?>,<?php echo $i++; ?>]);
 		<?php
-	} */ ?>
-	locations.push(['DRD Office', 28.5183163, 77.279475, <?php echo $i; ?>]);
+	} ?>
 
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 12,
