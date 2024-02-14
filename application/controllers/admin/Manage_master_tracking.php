@@ -62,6 +62,7 @@ class Manage_master_tracking extends CI_Controller {
 			);
 			$jsonArray[] = $dt;
 		}
+		print_r($jsonArray);
 		$jsonlist = implode(',', $jsonArray); 
 		echo "select * from tbl_tracking where date='$mydate' and latitude!='0.0' and user_altercode in ($jsonlist)";die;
 		$result = $db_master->query("select * from tbl_tracking where date='$mydate' and latitude!='0.0' and user_altercode in ($jsonlist)")->result();
