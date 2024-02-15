@@ -87,7 +87,7 @@ setTimeout(function(){
 * The callback parameter executes the initMap() function
 -->
 <script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBk6NFMae16LWi-fas3PwpwI0F9S21ZSyI&callback=initMap">
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHDSrVBSnNmTVBCYSPYqdz8qSKmG47Yxk&callback=initMap">
 </script>
 <style>
     /* Set the size of the div element that contains the map */
