@@ -7,17 +7,8 @@
         </a> */ ?>
    	</div>
 	<div class="col-xs-12">
-
-    </div>
-</div>
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>How to Draw Route Map on Google Maps Using Javascript</title>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHDSrVBSnNmTVBCYSPYqdz8qSKmG47Yxk" async></script>
-    </head>
-    <body>
-        <div id="map-canvas"></div>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHDSrVBSnNmTVBCYSPYqdz8qSKmG47Yxk" async></script>
+  <div id="map-canvas"></div>
         <script type="text/javascript">
             var directionsService = new google.maps.DirectionsService();
             var map;
@@ -94,6 +85,7 @@
               });
             }
             initialize();
-        </script>
-    </body>
-</html>
+        </script>    
+
+</div>
+</div>
