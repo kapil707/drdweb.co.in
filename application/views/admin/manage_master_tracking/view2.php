@@ -40,7 +40,7 @@ body {
     <div>
         
     <?php
-    $countryResult = $this->db->query("select * from tbl_country")->result();
+    $countryResult = $this->db->query("select * from tbl_country")->result_array();
     foreach ($countryResult as $row) {
       $resultset[] = $row;
     }
