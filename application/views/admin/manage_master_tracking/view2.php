@@ -6,7 +6,7 @@
             </button>
         </a> */ ?>
    	</div>
-	<div class="col-xs-12">
+	<div class="col-xs-12">asdfsafsafdsf
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHDSrVBSnNmTVBCYSPYqdz8qSKmG47Yxk" async></script>
   <div id="map-canvas"></div>
         <script type="text/javascript">
