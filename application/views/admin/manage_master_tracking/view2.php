@@ -41,8 +41,11 @@ body {
         
     <?php
     $countryResult = $this->db->query("select * from tbl_country")->result();
-    print_r($countryResult);
-    foreach ($countryResult as $k => $v) {
+    foreach ($countryResult as $row) {
+      $resultset[] = $row;
+    }
+    print_r($resultset);
+    foreach ($resultset as $k => $v) {
     ?>
       <div class="way-points-option"><input type="checkbox" name="way_points[]" class="way_points" value="<?php echo $countryResult[$k]["country"]; ?>"> <?php echo $countryResult[$k]["country"]; ?></div>
     <?php
