@@ -1,3 +1,16 @@
+<div class="row">
+    <div class="col-xs-12" style="margin-bottom:5px;">
+    	<?php /*<a href="add">
+            <button type="submit" class="btn btn-info">
+                Add
+            </button>
+        </a> */ ?>
+   	</div>
+	<div class="col-xs-12">
+  <div id="map-canvas"></div>
+    </div>
+</div>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,6 +71,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 </head>
 <body>
-<div id="map-canvas"></div>
+
 </body>
 </html>
