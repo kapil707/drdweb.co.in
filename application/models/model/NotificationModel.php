@@ -10,7 +10,7 @@ class NotificationModel extends CI_Model
 		$time = time();
 		$date = date("Y-m-d",$time);
 		$image= $company_full_name = "";
-		$where = array('firebase_status'=>'0','device_id'=>'default','date'=>$date);
+		$where = array('firebase_status'=>'0','device_id'=>'default');
 		$this->db->where($where);
 		$this->db->order_by('id','desc');
 		$query = $this->db->get("tbl_android_notification")->result();
