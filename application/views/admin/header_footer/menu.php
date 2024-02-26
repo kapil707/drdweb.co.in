@@ -285,6 +285,10 @@
 					</li>
 					<li><a href="<?= base_url()?>admin/manage_website/add/place_order_message">Place Order Message</a>
 					</li>
+					<li><a href="<?= base_url()?>admin/manage_website/add/terms_of_services">Terms of services</a>
+					</li>
+					<li><a href="<?= base_url()?>admin/manage_website/add/privacy_policy">Privacy policy</a>
+					</li>
 					<?php }
 					if($mymenu->page_type=="manage_email") { ?>
 					<li><a href="<?= base_url()?>admin/manage_email/view">Email Setting</a>
