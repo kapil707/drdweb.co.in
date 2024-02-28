@@ -23,6 +23,7 @@ class NotificationModel extends CI_Model
 			$message    = ($row->message);
 			//$message    = htmlentities(str_replace("\n","<br>",$message));
 			$funtype 	= $row->funtype;
+			$item_id 	= $row->id;
 			$itemid 	= $row->itemid;
 			$division 	= $row->division;
 			$image1		= $row->image;
@@ -79,6 +80,7 @@ class NotificationModel extends CI_Model
 					'title'=>$title,
 					'message'=>$message,
 					'funtype'=>$funtype,
+					'item_id'=>$item_id,
 					'itemid'=>$itemid,
 					'division'=>$division,
 					'company_full_name'=>$company_full_name,
