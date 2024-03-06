@@ -24,8 +24,8 @@
         const directionsRenderer = new google.maps.DirectionsRenderer({ map: map });
 
         const request = {
-            origin: "San Francisco, CA",
-            destination: "Los Angeles, CA",
+            origin: "hanumangarh",
+            destination: "jaipur",
             travelMode: google.maps.TravelMode.DRIVING,
         };
 
