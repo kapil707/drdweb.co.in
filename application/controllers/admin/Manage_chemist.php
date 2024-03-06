@@ -99,6 +99,7 @@ class Manage_chemist extends CI_Controller {
 				$user_profile 	= "user_profile/$img_name";			
 				move_uploaded_file($image_path,$user_profile);
 				$image 			= $img_name;
+				
 			}
 			else
 			{
