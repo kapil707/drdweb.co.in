@@ -10,7 +10,9 @@
        <div id="map"></div>
     </div>
 </div>
-
+<script
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHDSrVBSnNmTVBCYSPYqdz8qSKmG47Yxk&callback=initMap"  async defer>
+</script>
 <script>
 setTimeout(function(){
   initMap();
@@ -86,9 +88,6 @@ setTimeout(function(){
 * The key parameter will contain your own API key (which is not needed for this tutorial)
 * The callback parameter executes the initMap() function
 -->
-<script
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHDSrVBSnNmTVBCYSPYqdz8qSKmG47Yxk&callback=initMap"  async defer>
-</script>
 <style>
     /* Set the size of the div element that contains the map */
   #map {
