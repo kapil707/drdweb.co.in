@@ -9,7 +9,7 @@
 	<div class="col-xs-12">
     
   <script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHDSrVBSnNmTVBCYSPYqdz8qSKmG47Yxk&loading=async&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBk6NFMae16LWi-fas3PwpwI0F9S21ZSyI&loading=async&callback=initMap">
 </script>
 
   <div id="map" style="height: 400px;"></div>afdasfd
