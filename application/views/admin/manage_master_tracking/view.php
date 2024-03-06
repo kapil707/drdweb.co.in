@@ -10,8 +10,8 @@
        <div id="map"></div>
     </div>
 </div>
-<script
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHDSrVBSnNmTVBCYSPYqdz8qSKmG47Yxk&callback=initMap"  async defer>
+<script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHDSrVBSnNmTVBCYSPYqdz8qSKmG47Yxk&loading=async&callback=initMap">
 </script>
 <script>
 setTimeout(function(){

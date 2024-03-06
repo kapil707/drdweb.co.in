@@ -8,7 +8,9 @@
    	</div>
 	<div class="col-xs-12">
     
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHDSrVBSnNmTVBCYSPYqdz8qSKmG47Yxk&callback=initMap" async defer></script>
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHDSrVBSnNmTVBCYSPYqdz8qSKmG47Yxk&loading=async&callback=initMap">
+</script>
 
   <div id="map" style="height: 400px;"></div>afdasfd
   <script>
