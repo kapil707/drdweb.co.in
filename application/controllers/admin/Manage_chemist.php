@@ -129,6 +129,8 @@ class Manage_chemist extends CI_Controller {
 					'android_limit'=>$android_limit,
 					'password'=>$password,
 					'download_status'=>0,
+					'delete_request'=>0,
+					'delete_request_date'=>'',
 				);
 			}
 			$where = array('code'=>$code);
