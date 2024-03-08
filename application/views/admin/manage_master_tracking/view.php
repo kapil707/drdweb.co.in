@@ -1,3 +1,4 @@
+<?php $mapapikey = $this->Scheme_Model->get_website_data("mapapikey") ;?>
 <div class="row">
     <div class="col-xs-12" style="margin-bottom:5px;">
     	<?php /*<a href="add">
@@ -11,7 +12,7 @@
     </div>
 </div>
 <script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwWdTXBpSwvYukpONcxTAaS13KyzODlJY&loading=async&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=<?php echo $mapapikey ?>&loading=async&callback=initMap">
 </script>
 <script>
 setTimeout(function(){
