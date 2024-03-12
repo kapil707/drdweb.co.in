@@ -15,7 +15,6 @@
 
   <div id="map" style="height: 400px;"></div>afdasfd
   <script>
-    var waypoints = [];
     function initMap() {
         const map = new google.maps.Map(document.getElementById("map"), {
             zoom: 7,
@@ -28,9 +27,11 @@
         var origin = {lat: <?php echo $f_lat ?>, lng: <?php echo $f_lng ?>};  // Origin coordinates
         var destination = {lat: <?php echo $l_lat ?>, lng: <?php echo $l_lng ?>};  // Destination coordinates
 
-        <?php foreach($result as $row) { ?>
-        waypoints.push([{location: {lat: <?php echo $row->latitude ?>, lng: <?php echo $row->longitude ?>}, stopover: true}]);
-        <?php } ?>
+        var waypoints = [
+            <?php foreach($result as $row) { ?>
+            {location: {lat: <?php echo $row->latitude ?>, lng: <?php echo $row->longitude ?>}, stopover: true},  // Waypoint 1
+            <?php } ?>
+        ];
 
         const request = {
             origin: origin,
