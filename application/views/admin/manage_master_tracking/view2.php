@@ -24,11 +24,20 @@
         const directionsService = new google.maps.DirectionsService();
         const directionsRenderer = new google.maps.DirectionsRenderer({ map: map });
 
+        var origin = {lat: 41.85, lng: -87.65};  // Origin coordinates
+        var destination = {lat: 42.36, lng: -71.06};  // Destination coordinates
+
         const request = {
-            origin: "hanumangarh",
-            destination: "jaipur",
+            origin: origin,
+            destination: destination,
             travelMode: google.maps.TravelMode.DRIVING,
         };
+
+        // const request = {
+        //     origin: "hanumangarh",
+        //     destination: "jaipur",
+        //     travelMode: google.maps.TravelMode.DRIVING,
+        // };
 
         directionsService.route(request, function (result, status) {
             if (status == google.maps.DirectionsStatus.OK) {
