@@ -33,8 +33,6 @@
         ];
 
         const request = {
-            origin: origin,
-            destination: destination,
             waypoints: waypoints,
             optimizeWaypoints: true,
             travelMode: 'DRIVING'
