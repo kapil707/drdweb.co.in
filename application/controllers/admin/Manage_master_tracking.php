@@ -65,6 +65,7 @@ class Manage_master_tracking extends CI_Controller {
 
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/view",$data);
+		$this->load->view("admin/header_footer/footer",$data);
 	}
 
 	public function view2()
@@ -115,5 +116,6 @@ class Manage_master_tracking extends CI_Controller {
 
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/view2",$data);
+		$this->load->view("admin/header_footer/footer",$data);
 	}
 }
