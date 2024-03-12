@@ -26,10 +26,16 @@
 
         var origin = {lat: <?php echo $f_lat ?>, lng: <?php echo $f_lng ?>};  // Origin coordinates
         var destination = {lat: <?php echo $l_lat ?>, lng: <?php echo $l_lng ?>};  // Destination coordinates
+        var waypoints = [];
+
+        <?php foreach($result as $row) { ?>
+        waypoints.push([{location: {lat: <?php echo $row->latitude ?>, lng: <?php echo $row->longitude ?>}, stopover: true}]);
+        <?php } ?>
 
         const request = {
             origin: origin,
             destination: destination,
+            waypoints: waypoints,
             optimizeWaypoints: true,
             travelMode: 'DRIVING'
         };

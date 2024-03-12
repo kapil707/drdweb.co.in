@@ -125,7 +125,7 @@ class Manage_master_tracking extends CI_Controller {
 		// foreach($result as $row){
 		// 	$jsonArray[] = $row->user_altercode;
 		// }
-		//$data["result"] = $jsonArray;
+		$data["result"] = $result;
 		$data["db_master"] = $db_master;
 		//print_r($data);die;
 
