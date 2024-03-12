@@ -13,7 +13,7 @@
     src="https://maps.googleapis.com/maps/api/js?key=<?php echo $mapapikey ?>&loading=async&callback=initMap">
 </script>
 
-  <div id="map" style="height: 400px;"></div>afdasfd
+  <div id="map" style="height: 600px;"></div>
   <script>
     function initMap() {
         const map = new google.maps.Map(document.getElementById("map"), {
