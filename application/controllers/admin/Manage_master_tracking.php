@@ -107,7 +107,7 @@ class Manage_master_tracking extends CI_Controller {
 		
 		$f_lat = $f_lng = "0.0";
 		$query = $db_master->query("select * from tbl_tracking where date='$mydate' and user_altercode='$user_altercode'");
-		$row = $query->result();
+		$row = $query->row();
 		if(!empty($row)){
 			$f_lat = $row->latitude;
 			$f_lng = $row->longitude;
