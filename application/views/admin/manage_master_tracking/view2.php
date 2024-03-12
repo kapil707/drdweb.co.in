@@ -24,19 +24,31 @@
         const directionsService = new google.maps.DirectionsService();
         const directionsRenderer = new google.maps.DirectionsRenderer({ map: map });
 
-        var origin = {lat: 41.85, lng: -87.65};  // Origin coordinates
-        var destination = {lat: 42.36, lng: -71.06};  // Destination coordinates
-        var waypoints = [
-            {location: {lat: 41.85, lng: -87.65}, stopover: true},  // Waypoint 1
-            {location: {lat: 41.90, lng: -87.70}, stopover: true},  // Waypoint 2
-            {location: {lat: 42.10, lng: -87.95}, stopover: true}   // Waypoint 3
-        ];
+        var origin = {lat: <?php echo $f_lat ?>, lng: <?php echo $f_lng ?>};  // Origin coordinates
+        var destination = {lat: <?php echo $l_lat ?>, lng: <?php echo $l_lng ?>};  // Destination coordinates
 
         const request = {
-            waypoints: waypoints,
+            origin: origin,
+            destination: destination,
             optimizeWaypoints: true,
             travelMode: 'DRIVING'
         };
+
+        // var origin = {lat: 41.85, lng: -87.65};  // Origin coordinates
+        // var destination = {lat: 42.36, lng: -71.06};  // Destination coordinates
+        // var waypoints = [
+        //     {location: {lat: 41.85, lng: -87.65}, stopover: true},  // Waypoint 1
+        //     {location: {lat: 41.90, lng: -87.70}, stopover: true},  // Waypoint 2
+        //     {location: {lat: 42.10, lng: -87.95}, stopover: true}   // Waypoint 3
+        // ];
+
+        // const request = {
+        //     origin: origin,
+        //     destination: destination,
+        //     waypoints: waypoints,
+        //     optimizeWaypoints: true,
+        //     travelMode: 'DRIVING'
+        // };
 
         // const request = {
         //     origin: "hanumangarh",

@@ -68,7 +68,7 @@ class Manage_master_tracking extends CI_Controller {
 		$this->load->view("admin/header_footer/footer",$data);
 	}
 
-	public function view2()
+	public function view2($user_altercode)
 	{
 		/******************session***********************/
 		$user_id = $this->session->userdata("user_id");
@@ -105,11 +105,26 @@ class Manage_master_tracking extends CI_Controller {
 		}
 		$data["mydate"] = $mydate;
 		
-		$result = $db_master->query("select DISTINCT user_altercode from tbl_tracking where date='$mydate' and latitude!='0.0'")->result();
-		$jsonArray = array();
-		foreach($result as $row){
-			$jsonArray[] = $row->user_altercode;
+		$f_lat = $f_lng = "0.0";
+		$query = $db_master->query("select * from tbl_tracking where date='$mydate' and user_altercode='$user_altercode'");
+		$row = $query->result();
+		if(!empty($row)){
+			$f_lat = $row->latitude;
+			$f_lng = $row->longitude;
 		}
+		$result = $query->result();
+		foreach($result as $row){
+			$l_lat = $row->latitude;
+			$l_lng = $row->longitude;
+		}
+		$data["f_lat"] = $f_lat;
+		$data["f_lng"] = $f_lng;
+		$data["l_lat"] = $l_lat;
+		$data["l_lng"] = $l_lng;
+		// $jsonArray = array();
+		// foreach($result as $row){
+		// 	$jsonArray[] = $row->user_altercode;
+		// }
 		$data["result"] = $jsonArray;
 		$data["db_master"] = $db_master;
 		//print_r($data);die;
