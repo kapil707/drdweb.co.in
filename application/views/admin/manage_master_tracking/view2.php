@@ -26,11 +26,18 @@
 
         var origin = {lat: 41.85, lng: -87.65};  // Origin coordinates
         var destination = {lat: 42.36, lng: -71.06};  // Destination coordinates
+        var waypoints = [
+            {location: {lat: 41.85, lng: -87.65}, stopover: true},  // Waypoint 1
+            {location: {lat: 41.90, lng: -87.70}, stopover: true},  // Waypoint 2
+            {location: {lat: 42.10, lng: -87.95}, stopover: true}   // Waypoint 3
+        ];
 
         const request = {
             origin: origin,
             destination: destination,
-            travelMode: google.maps.TravelMode.DRIVING,
+            waypoints: waypoints,
+            optimizeWaypoints: true,
+            travelMode: 'DRIVING'
         };
 
         // const request = {
