@@ -90,7 +90,9 @@ class ExeDownloadOrder extends CI_Controller
 	//download_order_in_sever
 	public function download_order()
 	{
-		$items = $items_lines = "";
+		$jsonArray_lines = array();
+		$jsonArray = array();
+
 		$total_line = 0;
 		$date = date("Y-m-d");
 		$q = $this->db->query("select temp_rec,date from tbl_order where download_status='0' and date<'$date' order by id asc limit 1")->row(); 
@@ -108,7 +110,16 @@ class ExeDownloadOrder extends CI_Controller
 			foreach ($result as $row) {
 
 				$total_line++;
-				$items_lines .= '{"online_id":"'.$row->id.'","i_code":"'.$row->i_code.'","item_code":"'.$row->item_code.'","quantity":"'.$row->quantity.'","sale_rate":"'.$row->sale_rate.'"},';
+				
+				$dt = array(
+					'total_line' => $total_line,
+					'online_id' => $row->id,
+					'i_code' => $row->i_code,
+					'item_code' => $row->item_code,
+					'quantity' => $row->quantity,
+					'sale_rate' => $row->sale_rate,
+				);
+				$jsonArray_lines[] = $dt;
 				
 				$order_id 		= $row->order_id;
 				$user_type 		= $row->user_type;
@@ -126,17 +137,37 @@ class ExeDownloadOrder extends CI_Controller
 			}
 
 			$new_temp_rec = time();
-			$remarks = $this->new_clean(htmlentities($remarks));
 			
-			$items = '{"order_id":"'.$order_id.'","chemist_id":"'.$chemist_id.'","salesman_id":"'.$salesman_id.'","user_type":"'.$user_type.'","acno":"'.$acno.'","slcd":"'.$slcd.'","remarks":"'.$remarks.'","date":"'.$date.'","time":"'.$time.'","total_line":"'.$total_line.'","temp_rec":"'.$temp_rec.'","new_temp_rec":"'.$new_temp_rec.'","order_status":"0"}';
-			
-			if (!empty($items_lines)) {
-				if ($items_lines != '') {
-					$items_lines = substr($items_lines, 0, -1);
-				}
-				echo $parmiter = '{"items": [' . $items . '],"items_lines": [' . $items_lines . ']}';
-				/*file_put_contents("json_order_download/" . $temp_rec . ".json", $parmiter);*/
-			}
+			$dt = array(
+				'order_id' => $order_id,
+				'chemist_id' => $chemist_id,
+				'salesman_id' => $salesman_id,
+				'user_type' => $user_type,
+				'acno' => $acno,
+				'slcd' => $slcd,
+				'remarks' => $remarks,
+				'date' => $date,
+				'time' => $time,
+				'total_line' => $total_line,
+				'temp_rec' => $temp_rec,
+				'new_temp_rec' => $new_temp_rec,
+				'order_status' => "0",
+			);
+			$jsonArray[] = $dt;
+
+			$items = $jsonArray;
+			$items_other = $jsonArray_lines;
+
+			$response = array(
+				'success' => "1",
+				'message' => 'Data load successfully',
+				'items' => $items,
+				'items_other' => $items_other,
+			);
+	
+			// Send JSON response
+			header('Content-Type: application/json');
+			echo json_encode($response);
 		}
 	}
 	
