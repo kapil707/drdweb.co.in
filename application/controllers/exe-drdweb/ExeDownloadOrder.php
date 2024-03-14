@@ -86,6 +86,7 @@ class ExeDownloadOrder extends CI_Controller
 				$response = array(
 					'success' => "0",
 					'message' => 'Data error successfully',
+					'error' => "total line is $total_line and deff with $mytotal",
 					'items' => "",
 					'items_other' => "",
 				);
