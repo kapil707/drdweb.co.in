@@ -21,7 +21,7 @@ class ExeDownloadOrder extends CI_Controller
 		if (!empty($q->temp_rec)) {
 			$temp_rec = $q->temp_rec;
 
-			$result = $this->db->query("select id,order_id,i_code,item_code,quantity,user_type,chemist_id,selesman_id,temp_rec,sale_rate,remarks,date,time from tbl_order where temp_rec='" . $temp_rec . "'")->result();
+			$result = $this->db->query("select count(id) as mytotal,id,order_id,i_code,item_code,quantity,user_type,chemist_id,selesman_id,temp_rec,sale_rate,remarks,date,time from tbl_order where temp_rec='" . $temp_rec . "'")->result();
 			foreach ($result as $row) {
 
 				$total_line++;
@@ -42,6 +42,7 @@ class ExeDownloadOrder extends CI_Controller
 				$remarks 		= $row->remarks;
 				$date 			= $row->date;
 				$time 			= $row->time;
+				$mytotal		= $row->mytotal;
 			}
 
 			$row1 = $this->db->query("SELECT code,slcd FROM `tbl_acm` WHERE `altercode`='" . $chemist_id . "'")->row();
@@ -73,12 +74,22 @@ class ExeDownloadOrder extends CI_Controller
 			$items = $jsonArray;
 			$items_other = $jsonArray_lines;
 
-			$response = array(
-				'success' => "1",
-				'message' => 'Data load successfully',
-				'items' => $items,
-				'items_other' => $items_other,
-			);
+			if($mytotal==$total_line){
+				$response = array(
+					'success' => "1",
+					'message' => 'Data load successfully',
+					'items' => $items,
+					'items_other' => $items_other,
+				);
+			}
+			else{
+				$response = array(
+					'success' => "0",
+					'message' => 'Data error successfully',
+					'items' => "",
+					'items_other' => "",
+				);
+			}
 	
 			// Send JSON response
 			header('Content-Type: application/json');
