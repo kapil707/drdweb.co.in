@@ -27,6 +27,7 @@ class ExeDownloadOrder extends CI_Controller
 				$total_line++;
 
 				$dt = array(
+					'total_line' => $total_line,
 					'online_id' => $row->id,
 					'i_code' => $row->i_code,
 					'item_code' => $row->item_code,
