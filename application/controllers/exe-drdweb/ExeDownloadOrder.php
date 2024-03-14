@@ -55,6 +55,7 @@ class ExeDownloadOrder extends CI_Controller
 		}
 	}
 	
+	
 	public function status_update()
 	{
 		$isdone="";
