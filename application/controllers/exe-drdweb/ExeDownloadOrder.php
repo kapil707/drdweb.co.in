@@ -110,7 +110,7 @@ class ExeDownloadOrder extends CI_Controller
 			foreach ($result as $row) {
 
 				$total_line++;
-				
+
 				$dt = array(
 					'total_line' => $total_line,
 					'online_id' => $row->id,
@@ -137,7 +137,8 @@ class ExeDownloadOrder extends CI_Controller
 			}
 
 			$new_temp_rec = time();
-			
+			//$remarks = $this->new_clean(htmlentities($remarks));
+
 			$dt = array(
 				'order_id' => $order_id,
 				'chemist_id' => $chemist_id,
