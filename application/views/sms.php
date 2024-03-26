@@ -57,7 +57,7 @@ $(document).ready(function(){
 		}
 	});
 
-	var table = $('#dataTables-example').DataTable({
+	/*var table = $('#dataTables-example').DataTable({
         ajax: {
 		url: 'https://www.drdweb.co.in/upload_sms/api01/get_upload_sms',
 			type: 'POST',
@@ -96,7 +96,7 @@ $(document).ready(function(){
 				}
 			}
 		]
-	});
+	});*/
 
 	$('#date-range').on('apply.daterangepicker', function(ev, picker) {
         table.draw();
