@@ -3,13 +3,16 @@
 <div class="container pt-5">
 	<div class="row">
         <div class="col-md-3">
+			<label for="start-date">Start Date:</label>
             <input type="date" id="start-date" class="form-control" placeholder="Start Date:">
         </div>
         <div class="col-md-3">
+			<label for="start-date">Start Date:</label>
             <input type="date" id="end-date" class="form-control"  placeholder="End Date:">
         </div>
         <div class="col-md-2">
-            <button id="filter-btn" class="btn btn-primary btn-block">Filter</button>
+			<label for="start-date">Submit:</label>
+            <button id="filter-btn" class="btn btn-primary btn-block">Submit</button>
         </div>
     </div>
 	<div class="row">
