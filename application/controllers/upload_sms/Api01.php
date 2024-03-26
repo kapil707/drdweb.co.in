@@ -33,7 +33,7 @@ class Api01 extends CI_Controller {
 
 	public function get_upload_sms() {
 		
-		if(!empty($_REQUEST)){
+		if(!empty($_GET)){
 			$from_date 	= $_GET["from_date"];
 			$to_date	= $_GET['to_date'];
 
