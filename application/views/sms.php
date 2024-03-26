@@ -58,7 +58,7 @@ $(document).ready(function(){
 	});
 
 	function load_datetable(from_date,to_date){
-		$('#dataTables-example').DataTable({
+		$('#example-table').DataTable({
 			ajax: {
 			url: 'https://www.drdweb.co.in/upload_sms/api01/get_upload_sms',
 				type: 'POST',
