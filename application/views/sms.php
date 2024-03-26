@@ -99,8 +99,12 @@ $(document).ready(function(){
 	});*/
 
 	$('#date-range').on('apply.daterangepicker', function(ev, picker) {
-        //table.draw();
-		console.log("asdfasf");
+        var selectedDates = $('#date-range').val().split(' to ');
+		if (selectedDates.length === 2) {
+			from_date = selectedDates[0].trim();
+			to_date = selectedDates[1].trim();
+		}
+		console.log(from_date)
     });
 })
 </script>
