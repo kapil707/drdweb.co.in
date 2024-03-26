@@ -10,7 +10,7 @@
     </div>
 	<div class="row">
 		<div class="col-sm-12  pt-1 pb-5">
-			<table class="table table-striped table-bordered table-hover dataTables-example" id="example">
+			<table class="table table-striped table-bordered table-hover dataTables-example" id="example-table">
 				<thead>
 					<tr>
 						<th>
@@ -56,15 +56,17 @@ $(document).ready(function(){
 		}
 	});
 
-	var table = $('#example').DataTable({
+	var table = $('#dataTables-example').DataTable({
         ajax: {
 		url: 'https://www.drdweb.co.in/upload_sms/api01/get_upload_sms',
 			type: 'POST',
 			data: function(d) {
-                return $.extend({}, d, {
-                    from_date: from_date,
-                    to_date: to_date
-                });
+                var selectedDates = $('#date-range').val().split(' to ');
+                if (selectedDates.length === 2) {
+                    d.from_date = selectedDates[0].trim();
+                    d.to_date = selectedDates[1].trim();
+                }
+                return d;
             },
 			dataSrc: 'items'
 		},
@@ -96,13 +98,7 @@ $(document).ready(function(){
 	});
 
 	$('#date-range').on('apply.daterangepicker', function(ev, picker) {
-		var selectedDates = $('#date-range').val().split(' to ');
-		if (selectedDates.length === 2) {
-			from_date = selectedDates[0].trim();
-			to_date = selectedDates[1].trim();
-		}
-        console.log(to_date);
-		table.draw();
+        table.draw();
     });
 })
 </script>
