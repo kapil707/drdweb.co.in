@@ -48,46 +48,44 @@
 <script>
 $(document).ready(function(){
 
-	function load_datetable(from_date,to_date){
-		$('#example-table').DataTable({
-			ajax: {
-			url: 'https://www.drdweb.co.in/upload_sms/api01/get_upload_sms',
-				type: 'POST',
-				data: function(d) {
-					return $.extend({}, d, {
-						from_date: from_date,
-						to_date: to_date
-					});
-				},
-				dataSrc: 'items'
+	var table = $('#example-table').DataTable({
+		ajax: {
+		url: 'https://www.drdweb.co.in/upload_sms/api01/get_upload_sms',
+			type: 'POST',
+			data: function(d) {
+				return $.extend({}, d, {
+					from_date: from_date,
+					to_date: to_date
+				});
 			},
-			columns: [
-				{ data: 'id', title: 'ID' },
-				{ data: 'sender', title: 'Sender' },
-				{ data: 'message_body', title: 'Message Body' },
-				{ data: 'date', title: 'Date' },
-				{ data: 'time', title: 'Time' }
-			],
-			pageLength: 25,
-			responsive: true,
-			dom: '<"html5buttons"B>lTfgitp',
-			buttons: [
-				{extend: 'copy'},
-				{extend: 'csv'},
-				{extend: 'excel', title: 'ExampleFile'},
-				{extend: 'pdf', title: 'ExampleFile'},
-				{extend: 'print',
-					customize: function (win){
-						$(win.document.body).addClass('white-bg');
-						$(win.document.body).css('font-size', '10px');
-						$(win.document.body).find('table')
-								.addClass('compact')
-								.css('font-size', 'inherit');
-					}
+			dataSrc: 'items'
+		},
+		columns: [
+			{ data: 'id', title: 'ID' },
+			{ data: 'sender', title: 'Sender' },
+			{ data: 'message_body', title: 'Message Body' },
+			{ data: 'date', title: 'Date' },
+			{ data: 'time', title: 'Time' }
+		],
+		pageLength: 25,
+		responsive: true,
+		dom: '<"html5buttons"B>lTfgitp',
+		buttons: [
+			{extend: 'copy'},
+			{extend: 'csv'},
+			{extend: 'excel', title: 'ExampleFile'},
+			{extend: 'pdf', title: 'ExampleFile'},
+			{extend: 'print',
+				customize: function (win){
+					$(win.document.body).addClass('white-bg');
+					$(win.document.body).css('font-size', '10px');
+					$(win.document.body).find('table')
+							.addClass('compact')
+							.css('font-size', 'inherit');
 				}
-			]
-		});
-	}
+			}
+		]
+	});
 
 	$('#date-range').daterangepicker({
 		opens: 'left', // Date picker position
@@ -102,6 +100,7 @@ $(document).ready(function(){
 	});
 
 	$('#date-range').on('apply.daterangepicker', function(ev, picker) {
+		table.draw();
         var selectedDates = $('#date-range').val().split(' to ');
 		if (selectedDates.length === 2) {
 			from_date = selectedDates[0].trim();
