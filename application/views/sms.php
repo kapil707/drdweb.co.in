@@ -1,18 +1,11 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<link href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.6/css/jquery.dataTables.min.css">
 <div class="container pt-5">
 	<div class="row">
         <div class="col-md-3">
-			<label for="start-date">Start Date:</label>
-            <input type="date" id="start-date" class="form-control" placeholder="Start Date:">
-        </div>
-        <div class="col-md-3">
-			<label for="start-date">Start Date:</label>
-            <input type="date" id="end-date" class="form-control"  placeholder="End Date:">
-        </div>
-        <div class="col-md-2">
-			<label for="">&nbsp;</label><br>
-            <button id="filter-btn" class="btn btn-primary btn-block">Submit</button>
+			<label for="date-range">Select Date Range:</label>
+    		<input type="text" id="date-range" class="form-control">
         </div>
     </div>
 	<div class="row">
@@ -44,55 +37,66 @@
 		</div>
 	</div>
 </div>
-<script src="<?= base_url()?>/assets/js/jquery-3.1.1.min.js"></script>
-<script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment"></script>
+<script src="https://cdn.jsdelivr.net/npm/daterangepicker"></script>
+<script src="https://cdn.datatables.net/1.11.6/js/jquery.dataTables.min.js"></script>
 <!-- Page-Level Scripts -->
 <script>
 $(document).ready(function(){
-	$('#filter-btn').on('click', function() {
-        var startDate = $('#start-date').val();
-        var endDate = $('#end-date').val();
-		load_datatable(startDate,endDate)
+	$('#date-range').on('apply.daterangepicker', function(ev, picker) {
+        table.draw();
     });
-	function load_datatable(from_date,to_date){
-		$('#example-table').DataTable({
-			ajax: {
-				url: 'https://www.drdweb.co.in/upload_sms/api01/get_upload_sms',
-				type: 'POST',
-				data: function(d) {
-					return $.extend({}, d, {
-						from_date: from_date,
-						to_date: to_date
-					});
-				},
-				dataSrc: 'items'
-			},
-			columns: [
-				{ data: 'id', title: 'ID' },
-				{ data: 'sender', title: 'Sender' },
-				{ data: 'message_body', title: 'Message Body' },
-				{ data: 'date', title: 'Date' },
-				{ data: 'time', title: 'Time' }
-			],
-			pageLength: 25,
-			responsive: true,
-			dom: '<"html5buttons"B>lTfgitp',
-			buttons: [
-				{extend: 'copy'},
-				{extend: 'csv'},
-				{extend: 'excel', title: 'ExampleFile'},
-				{extend: 'pdf', title: 'ExampleFile'},
-				{extend: 'print',
-					customize: function (win){
-						$(win.document.body).addClass('white-bg');
-						$(win.document.body).css('font-size', '10px');
-						$(win.document.body).find('table')
-								.addClass('compact')
-								.css('font-size', 'inherit');
+	$('#date-range').daterangepicker({
+		opens: 'left', // Date picker position
+		locale: {
+			format: 'DD-MM-YYYY', // Date format
+			separator: ' to ',
+			applyLabel: 'Apply',
+			cancelLabel: 'Cancel',
+			daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr','Sa'],
+			monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+		}
+	});
+	var table = $('#example').DataTable({
+        ajax: {
+		url: 'https://www.drdweb.co.in/upload_sms/api01/get_upload_sms',
+			type: 'POST',
+			data: function(d) {
+                var selectedDates = $('#date-range').val().split(' to ');
+                if (selectedDates.length === 2) {
+                    d.startDate = selectedDates[0].trim();
+                    d.endDate = selectedDates[1].trim();
+                }
+                return d;
+            },
+			dataSrc: 'items'
+		},
+		columns: [
+			{ data: 'id', title: 'ID' },
+			{ data: 'sender', title: 'Sender' },
+			{ data: 'message_body', title: 'Message Body' },
+			{ data: 'date', title: 'Date' },
+			{ data: 'time', title: 'Time' }
+		],
+		pageLength: 25,
+		responsive: true,
+		dom: '<"html5buttons"B>lTfgitp',
+		buttons: [
+			{extend: 'copy'},
+			{extend: 'csv'},
+			{extend: 'excel', title: 'ExampleFile'},
+			{extend: 'pdf', title: 'ExampleFile'},
+			{extend: 'print',
+				customize: function (win){
+					$(win.document.body).addClass('white-bg');
+					$(win.document.body).css('font-size', '10px');
+					$(win.document.body).find('table')
+							.addClass('compact')
+							.css('font-size', 'inherit');
 				}
-				}
-			]
-		});
-	}
+			}
+		]
+	});
 })
 </script>
