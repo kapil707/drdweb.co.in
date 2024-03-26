@@ -52,12 +52,20 @@ $(document).ready(function(){
 		ajax: {
 		url: 'https://www.drdweb.co.in/upload_sms/api01/get_upload_sms',
 			type: 'POST',
-			data: function(d) {
+			/*data: function(d) {
 				return $.extend({}, d, {
 					from_date: from_date,
 					to_date: to_date
 				});
-			},
+			},*/
+			data: function(d) {
+                var selectedDates = $('#date-range').val().split(' to ');
+                if (selectedDates.length === 2) {
+                    d.from_date = data_formet_change(selectedDates[0].trim());
+                    d.to_date = data_formet_change(selectedDates[1].trim());
+                }
+                return d;
+            },
 			dataSrc: 'items'
 		},
 		columns: [
@@ -101,7 +109,7 @@ $(document).ready(function(){
 
 	$('#date-range').on('apply.daterangepicker', function(ev, picker) {
 		table.draw();
-        var selectedDates = $('#date-range').val().split(' to ');
+        /*var selectedDates = $('#date-range').val().split(' to ');
 		if (selectedDates.length === 2) {
 			from_date = selectedDates[0].trim();
 			to_date = selectedDates[1].trim();
@@ -110,7 +118,7 @@ $(document).ready(function(){
 			to_date 	= data_formet_change(to_date);
 			console.log(to_date);
 			load_datetable(from_date,to_date);
-		}
+		}*/
     });
 
 	function data_formet_change(dateValue){
