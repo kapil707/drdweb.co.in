@@ -117,17 +117,16 @@ $(document).ready(function(){
 	});
 
 	$('#date-range').on('apply.daterangepicker', function(ev, picker) {
-		table.draw();
-        /*var selectedDates = $('#date-range').val().split(' to ');
+		
+        var selectedDates = $('#date-range').val().split(' to ');
 		if (selectedDates.length === 2) {
 			from_date = selectedDates[0].trim();
 			to_date = selectedDates[1].trim();
 
 			from_date 	= data_formet_change(from_date);
 			to_date 	= data_formet_change(to_date);
-			console.log(to_date);
-			load_datetable(from_date,to_date);
-		}*/
+		}
+		table.draw();
     });
 
 	function get_from_date(){
