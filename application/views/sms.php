@@ -16,7 +16,7 @@
 				<thead>
 					<tr>
 						<th>
-							Sno.
+							Sno. 
 						</th>
 						<th>
 							Sender
