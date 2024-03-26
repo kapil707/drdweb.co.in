@@ -2,6 +2,13 @@
 <link href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.css" rel="stylesheet">
 <div class="container-xl">
 	<div class="row">
+		<div class="col-sm-12">
+			<label for="start-date">Start Date:</label>
+			<input type="date" id="start-date">
+			<label for="end-date">End Date:</label>
+			<input type="date" id="end-date">
+			<button id="filter-btn">Filter</button>
+		</div>
 		<div class="col-sm-12  p-5">
 			<table class="table table-striped table-bordered table-hover dataTables-example" id="example-table">
 				<thead>
