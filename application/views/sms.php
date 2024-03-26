@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/1.11.6/css/jquery.dataTables.min.css">
+<link href="<?= base_url()?>/assets/css/plugins/dataTables/datatables.min.css" rel="stylesheet">
 <div class="container-fluid p-5">
 	<div class="row">
         <div class="col-md-3">
@@ -36,10 +36,8 @@
 		</div>
 	</div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/jquery"></script>
-<script src="https://cdn.jsdelivr.net/npm/moment"></script>
-<script src="https://cdn.jsdelivr.net/npm/daterangepicker"></script>
-<script src="https://cdn.datatables.net/1.11.6/js/jquery.dataTables.min.js"></script>
+<script src="<?= base_url()?>/assets/js/jquery-3.1.1.min.js"></script>
+<script src="<?= base_url()?>/assets/js/plugins/dataTables/datatables.min.js"></script>
 
 <script>
 $(document).ready(function(){
