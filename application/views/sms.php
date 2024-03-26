@@ -2,7 +2,7 @@
 <link href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.css" rel="stylesheet">
 <div class="container-xl">
 	<div class="row">
-		<div class="col-sm-12  pt-5">
+		<div class="col-sm-12  p-5">
 			<table class="table table-striped table-bordered table-hover dataTables-example" id="example-table">
 				<thead>
 					<tr>
