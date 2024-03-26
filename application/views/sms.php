@@ -29,8 +29,8 @@
 <script>
 $(document).ready(function(){
 
-	$from_date = "2024-03-22";
-	$from_date = "2024-03-24";
+	from_date = "2024-03-22";
+	to_date   = "2024-03-24";
 
 	let mydata = [];
 	$.ajax({
