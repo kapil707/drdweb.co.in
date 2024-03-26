@@ -57,6 +57,8 @@ $(document).ready(function(){
 		}
 	});
 
+	load_datetable("2024-03-01","2024-03-31");
+
 	function load_datetable(from_date,to_date){
 		$('#example-table').DataTable({
 			ajax: {
