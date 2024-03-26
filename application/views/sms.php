@@ -98,7 +98,7 @@ $(document).ready(function(){
 		}
 	});
 
-	$('#date-range').on('apply.daterangepicker', function(ev, picker) {
+	/*$('#date-range').on('apply.daterangepicker', function(ev, picker) {
         var selectedDates = $('#date-range').val().split(' to ');
 		if (selectedDates.length === 2) {
 			from_date = selectedDates[0].trim();
@@ -106,7 +106,7 @@ $(document).ready(function(){
 
 			load_datetable(from_date,to_date);
 		}
-    });
+    });*/
 })
 </script>
 <script src="https://cdn.datatables.net/scroller/2.2.0/js/dataTables.scroller.min.js"></script>
