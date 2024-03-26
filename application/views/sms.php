@@ -1,8 +1,7 @@
 <link href="<?= base_url()?>/assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?= base_url()?>/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css">
-<link href="<?= base_url()?>/assets/css/plugins/dataTables/datatables.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.css" rel="stylesheet">
 <div class="container-fluid p-5">
 	<div class="row">
         <div class="col-md-3">
