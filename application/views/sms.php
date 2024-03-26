@@ -34,9 +34,8 @@ $(document).ready(function(){
             dataSrc: ''
         },
         columns: [
-            { data: 'name', title: 'Name' },
-            { data: 'age', title: 'Age' },
-            { data: 'city', title: 'City' }
+            { data: 'id', title: 'id' },
+            { data: 'sender', title: 'sender' }
         ]
     });
 })
