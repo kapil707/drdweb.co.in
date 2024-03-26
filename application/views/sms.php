@@ -1,6 +1,6 @@
 <link href="<?= base_url()?>/assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?= base_url()?>/assets/css/plugins/dataTables/datatables.min.css" rel="stylesheet">
-<div class="container-lg">
+<div class="container pt-10">
 	<div class="row">
 		<div class="col-sm-12">
 			<table class="table table-striped table-bordered table-hover dataTables-example" id="example-table">
