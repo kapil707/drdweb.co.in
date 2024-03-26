@@ -1,3 +1,4 @@
+<link href="<?= base_url()?>/assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?= base_url()?>/assets/css/plugins/dataTables/datatables.min.css" rel="stylesheet">
 <table class="table table-striped table-bordered table-hover dataTables-example" id="example-table">
 	<thead>
