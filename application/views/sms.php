@@ -57,54 +57,55 @@ $(document).ready(function(){
 		}
 	});
 
-	/*var table = $('#dataTables-example').DataTable({
-        ajax: {
-		url: 'https://www.drdweb.co.in/upload_sms/api01/get_upload_sms',
-			type: 'POST',
-			data: function(d) {
-                var selectedDates = $('#date-range').val().split(' to ');
-                if (selectedDates.length === 2) {
-                    d.from_date = selectedDates[0].trim();
-                    d.to_date = selectedDates[1].trim();
-                }
-                return d;
-            },
-			dataSrc: 'items'
-		},
-		columns: [
-			{ data: 'id', title: 'ID' },
-			{ data: 'sender', title: 'Sender' },
-			{ data: 'message_body', title: 'Message Body' },
-			{ data: 'date', title: 'Date' },
-			{ data: 'time', title: 'Time' }
-		],
-		pageLength: 25,
-		responsive: true,
-		dom: '<"html5buttons"B>lTfgitp',
-		buttons: [
-			{extend: 'copy'},
-			{extend: 'csv'},
-			{extend: 'excel', title: 'ExampleFile'},
-			{extend: 'pdf', title: 'ExampleFile'},
-			{extend: 'print',
-				customize: function (win){
-					$(win.document.body).addClass('white-bg');
-					$(win.document.body).css('font-size', '10px');
-					$(win.document.body).find('table')
-							.addClass('compact')
-							.css('font-size', 'inherit');
+	function load_datetable(from_date,to_date){
+		$('#dataTables-example').DataTable({
+			ajax: {
+			url: 'https://www.drdweb.co.in/upload_sms/api01/get_upload_sms',
+				type: 'POST',
+				data: function(d) {
+					return $.extend({}, d, {
+						from_date: from_date,
+						key2: to_date
+					});
+				},
+				dataSrc: 'items'
+			},
+			columns: [
+				{ data: 'id', title: 'ID' },
+				{ data: 'sender', title: 'Sender' },
+				{ data: 'message_body', title: 'Message Body' },
+				{ data: 'date', title: 'Date' },
+				{ data: 'time', title: 'Time' }
+			],
+			pageLength: 25,
+			responsive: true,
+			dom: '<"html5buttons"B>lTfgitp',
+			buttons: [
+				{extend: 'copy'},
+				{extend: 'csv'},
+				{extend: 'excel', title: 'ExampleFile'},
+				{extend: 'pdf', title: 'ExampleFile'},
+				{extend: 'print',
+					customize: function (win){
+						$(win.document.body).addClass('white-bg');
+						$(win.document.body).css('font-size', '10px');
+						$(win.document.body).find('table')
+								.addClass('compact')
+								.css('font-size', 'inherit');
+					}
 				}
-			}
-		]
-	});*/
+			]
+		});
+	}
 
 	$('#date-range').on('apply.daterangepicker', function(ev, picker) {
         var selectedDates = $('#date-range').val().split(' to ');
 		if (selectedDates.length === 2) {
 			from_date = selectedDates[0].trim();
 			to_date = selectedDates[1].trim();
+
+			load_datetable(from_date,to_date);
 		}
-		console.log(from_date)
     });
 })
 </script>
