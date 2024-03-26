@@ -129,33 +129,6 @@ $(document).ready(function(){
 		table.draw();
     });
 
-	function get_from_date(){
-		var selectedDates = $('#date-range').val().split(' to ');
-		if (selectedDates.length === 2) {
-			from_date = selectedDates[0].trim();
-			to_date = selectedDates[1].trim();
-
-			from_date 	= data_formet_change(from_date);
-			to_date 	= data_formet_change(to_date);
-			
-			console.log(from_date);
-			return from_date;
-		}
-	}
-
-	function get_to_date(){
-		var selectedDates = $('#date-range').val().split(' to ');
-		if (selectedDates.length === 2) {
-			from_date = selectedDates[0].trim();
-			to_date = selectedDates[1].trim();
-
-			from_date 	= data_formet_change(from_date);
-			to_date 	= data_formet_change(to_date);
-			
-			return to_date;
-		}
-	}
-
 	function data_formet_change(dateValue){
 		var dateParts = dateValue.split('-');
 		if (dateParts.length === 3) {
