@@ -28,9 +28,17 @@
 <!-- Page-Level Scripts -->
 <script>
 $(document).ready(function(){
-	new DataTable('#example-table', {
-    ajax: 'https://www.drdweb.co.in/upload_sms/api01/get_upload_sms?from_date=2024-03-22&to_date=2024-03-24'
-});	
+	$('#example-table').DataTable({
+        ajax: {
+            url: 'https://api.example.com/data',
+            dataSrc: ''
+        },
+        columns: [
+            { data: 'name', title: 'Name' },
+            { data: 'age', title: 'Age' },
+            { data: 'city', title: 'City' }
+        ]
+    });
 })
 </script>
 <script src="https://cdn.datatables.net/scroller/2.2.0/js/dataTables.scroller.min.js"></script>
