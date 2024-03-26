@@ -34,7 +34,7 @@ $(document).ready(function(){
 
 	let mydata = [];
 	$.ajax({
-		type       : "POST",
+		type       : "GET",
 		data       : {from_date:from_date,to_date:to_date} ,
 		url        : "<?php echo base_url(); ?>upload_sms/api01/get_upload_sms",
 		cache	   : false,
