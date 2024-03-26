@@ -44,9 +44,6 @@
 <!-- Page-Level Scripts -->
 <script>
 $(document).ready(function(){
-	$('#date-range').on('apply.daterangepicker', function(ev, picker) {
-        table.draw();
-    });
 	$('#date-range').daterangepicker({
 		opens: 'left', // Date picker position
 		locale: {
@@ -58,6 +55,7 @@ $(document).ready(function(){
 			monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 		}
 	});
+
 	var table = $('#example').DataTable({
         ajax: {
 		url: 'https://www.drdweb.co.in/upload_sms/api01/get_upload_sms',
@@ -65,8 +63,8 @@ $(document).ready(function(){
 			data: function(d) {
                 var selectedDates = $('#date-range').val().split(' to ');
                 if (selectedDates.length === 2) {
-                    d.startDate = selectedDates[0].trim();
-                    d.endDate = selectedDates[1].trim();
+                    d.from_date = selectedDates[0].trim();
+                    d.to_date = selectedDates[1].trim();
                 }
                 return d;
             },
@@ -98,5 +96,9 @@ $(document).ready(function(){
 			}
 		]
 	});
+
+	$('#date-range').on('apply.daterangepicker', function(ev, picker) {
+        table.draw();
+    });
 })
 </script>
