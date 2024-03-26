@@ -122,6 +122,7 @@ $(document).ready(function(){
 			from_date 	= data_formet_change(from_date);
 			to_date 	= data_formet_change(to_date);
 			
+			console.log(from_date);
 			return from_date;
 		}
 	}
