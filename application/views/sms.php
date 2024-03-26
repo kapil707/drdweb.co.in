@@ -10,7 +10,7 @@
     </div>
 	<div class="row">
 		<div class="col-sm-12  pt-1 pb-5">
-			<table class="table table-striped table-bordered table-hover dataTables-example" id="example-table">
+			<table class="table table-striped table-bordered table-hover dataTables-example" id="example">
 				<thead>
 					<tr>
 						<th>
