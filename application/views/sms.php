@@ -65,7 +65,7 @@ $(document).ready(function(){
 				data: function(d) {
 					return $.extend({}, d, {
 						from_date: from_date,
-						key2: to_date
+						to_date: to_date
 					});
 				},
 				dataSrc: 'items'
