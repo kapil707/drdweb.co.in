@@ -30,8 +30,14 @@
 $(document).ready(function(){
 	$('#example-table').DataTable({
         ajax: {
-            url: 'https://www.drdweb.co.in/upload_sms/api01/get_upload_sms?from_date=2024-03-22&to_date=2024-03-24',
-            type: 'GET',
+            url: 'https://www.drdweb.co.in/upload_sms/api01/get_upload_sms',
+            type: 'POST',
+            data: function(d) {
+                return $.extend({}, d, {
+                    from_date: '2024-03-22',
+                    to_date: '2024-03-24'
+                });
+            },
             dataSrc: 'items'
         },
         columns: [
