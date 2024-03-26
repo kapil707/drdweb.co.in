@@ -33,9 +33,9 @@ class Api01 extends CI_Controller {
 
 	public function get_upload_sms() {
 		
-		if(!empty($_GET)){
-			echo $from_date 	= $_GET["from_date"];
-			$to_date	= $_GET['to_date'];
+		if(!empty($_REQUEST)){
+			$from_date 	= $_REQUEST["from_date"];
+			$to_date	= $_REQUEST['to_date'];
 
 			$jsonArray = array();
 
