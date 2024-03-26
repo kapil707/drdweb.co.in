@@ -37,11 +37,11 @@
 		</div>
 	</div>
 </div>
+<script src="<?= base_url()?>/assets/js/jquery-3.1.1.min.js"></script>
+<script src="<?= base_url()?>/assets/js/plugins/dataTables/datatables.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
 <script src="https://cdn.jsdelivr.net/npm/moment"></script>
 <script src="https://cdn.jsdelivr.net/npm/daterangepicker"></script>
-<script src="<?= base_url()?>/assets/js/jquery-3.1.1.min.js"></script>
-<script src="<?= base_url()?>/assets/js/plugins/dataTables/datatables.min.js"></script>
 <!-- Page-Level Scripts -->
 <script>
 $(document).ready(function(){
