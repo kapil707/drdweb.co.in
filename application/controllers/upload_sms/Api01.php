@@ -33,15 +33,15 @@ class Api01 extends CI_Controller {
 
 	public function get_upload_sms() {
 		
-		$to_date	= $_POST['to_date'];
 		$from_date 	= $_POST["from_date"];
+		$to_date	= $_POST['to_date'];
 
 		$jsonArray = array();
 
 		$items = "";
-		if(!empty($to_date) && !empty($from_date)){
+		if(!empty($from_date) && !empty($to_date)){
 
-			$result = $this->db->query("select * from tbl_upload_sms")->result();
+			$result = $this->db->query("select * from tbl_upload_sms where date BETWEEN '$from_date' AND '$to_date'")->result();
 
 			foreach($result as $row){
 
