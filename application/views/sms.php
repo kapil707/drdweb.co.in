@@ -107,10 +107,20 @@ $(document).ready(function(){
 			from_date = selectedDates[0].trim();
 			to_date = selectedDates[1].trim();
 
+			from_date 	= data_formet_change(from_date);
+			to_date 	= data_formet_change(to_date);
 			console.log(to_date);
 			load_datetable(from_date,to_date);
 		}
     });
+
+	function data_formet_change(dateValue){
+		var dateParts = dateValue.split('-');
+		if (dateParts.length === 3) {
+			var formattedDate = dateParts[2] + '-' + dateParts[1] + '-' + dateParts[0];
+			return formattedDate;
+		}
+	}
 })
 </script>
 <script src="https://cdn.datatables.net/scroller/2.2.0/js/dataTables.scroller.min.js"></script>
