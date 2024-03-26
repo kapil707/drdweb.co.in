@@ -86,7 +86,7 @@ $(document).ready(function(){
 		]
 	});
 
-	$('#date-range').daterangepicker({
+	/*$('#date-range').daterangepicker({
 		opens: 'left', // Date picker position
 		locale: {
 			format: 'DD-MM-YYYY', // Date format
@@ -106,7 +106,7 @@ $(document).ready(function(){
 
 			load_datetable(from_date,to_date);
 		}
-    });
+    });*/
 })
 </script>
 <script src="https://cdn.datatables.net/scroller/2.2.0/js/dataTables.scroller.min.js"></script>
