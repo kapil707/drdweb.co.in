@@ -11,7 +11,7 @@
             <input type="date" id="end-date" class="form-control"  placeholder="End Date:">
         </div>
         <div class="col-md-2">
-			<label for="start-date">Submit:</label>
+			<label for="">Submit:</label>
             <button id="filter-btn" class="btn btn-primary btn-block">Submit</button>
         </div>
     </div>
