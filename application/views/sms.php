@@ -126,7 +126,7 @@ $(document).ready(function(){
 			from_date 	= data_formet_change(from_date);
 			to_date 	= data_formet_change(to_date);
 		}
-		table.draw();
+		table.ajax.reload();
     });
 
 	function data_formet_change(dateValue){
