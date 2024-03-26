@@ -1,29 +1,35 @@
 <link href="<?= base_url()?>/assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?= base_url()?>/assets/css/plugins/dataTables/datatables.min.css" rel="stylesheet">
-<table class="table table-striped table-bordered table-hover dataTables-example" id="example-table">
-	<thead>
-		<tr>
-			<th>
-				Sno.
-			</th>
-			<th>
-				Sender
-			</th>
-			<th>
-				Message
-			</th>
-			<th>
-				Date
-			</th>
-			<th>
-				Time
-			</th>
-		</tr>
-	</thead>
-	<tbody>
-	
-	</tbody>
-</table>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<table class="table table-striped table-bordered table-hover dataTables-example" id="example-table">
+				<thead>
+					<tr>
+						<th>
+							Sno.
+						</th>
+						<th>
+							Sender
+						</th>
+						<th>
+							Message
+						</th>
+						<th>
+							Date
+						</th>
+						<th>
+							Time
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+				
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
 <script src="<?= base_url()?>/assets/js/jquery-3.1.1.min.js"></script>
 <script src="<?= base_url()?>/assets/js/plugins/dataTables/datatables.min.js"></script>
 <!-- Page-Level Scripts -->
