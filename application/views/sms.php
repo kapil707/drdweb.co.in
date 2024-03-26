@@ -46,17 +46,6 @@
 <!-- Page-Level Scripts -->
 <script>
 $(document).ready(function(){
-	$('#date-range').daterangepicker({
-		opens: 'left', // Date picker position
-		locale: {
-			format: 'DD-MM-YYYY', // Date format
-			separator: ' to ',
-			applyLabel: 'Apply',
-			cancelLabel: 'Cancel',
-			daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr','Sa'],
-			monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-		}
-	});
 
 	load_datetable("2024-03-01","2024-03-31");
 
@@ -101,6 +90,19 @@ $(document).ready(function(){
 		});
 	}
 
+
+	$('#date-range').daterangepicker({
+		opens: 'left', // Date picker position
+		locale: {
+			format: 'DD-MM-YYYY', // Date format
+			separator: ' to ',
+			applyLabel: 'Apply',
+			cancelLabel: 'Cancel',
+			daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr','Sa'],
+			monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+		}
+	});
+	
 	$('#date-range').on('apply.daterangepicker', function(ev, picker) {
         var selectedDates = $('#date-range').val().split(' to ');
 		if (selectedDates.length === 2) {
