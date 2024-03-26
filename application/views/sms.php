@@ -99,7 +99,7 @@ $(document).ready(function(){
 	});*/
 
 	$('#date-range').on('apply.daterangepicker', function(ev, picker) {
-        table.draw();
+        //table.draw();
 		console.log("asdfasf");
     });
 })
