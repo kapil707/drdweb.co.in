@@ -37,9 +37,9 @@
 		</div>
 	</div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/jquery"></script>
-<script src="https://cdn.jsdelivr.net/npm/moment"></script>
-<script src="https://cdn.jsdelivr.net/npm/daterangepicker"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
 
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
@@ -90,7 +90,6 @@ $(document).ready(function(){
 		});
 	}
 
-
 	$('#date-range').daterangepicker({
 		opens: 'left', // Date picker position
 		locale: {
@@ -102,7 +101,7 @@ $(document).ready(function(){
 			monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 		}
 	});
-	
+
 	$('#date-range').on('apply.daterangepicker', function(ev, picker) {
         var selectedDates = $('#date-range').val().split(' to ');
 		if (selectedDates.length === 2) {
