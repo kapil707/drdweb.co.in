@@ -48,14 +48,31 @@
 <script>
 $(document).ready(function(){
 
+	var today = new Date();
+    var day = today.getDate();
+    var month = today.getMonth() + 1; // January is 0!
+    var year = today.getFullYear();
+
+    if (day < 10) {
+        day = '0' + day;
+    }
+
+    if (month < 10) {
+        month = '0' + month;
+    }
+
+    var formattedDate = year + '-' + month + '-' + day;
+
+	from_date = to_date = formattedDate;
+
 	var table = $('#example-table').DataTable({
 		ajax: {
 		url: 'https://www.drdweb.co.in/upload_sms/api01/get_upload_sms',
 			type: 'POST',
 			data: function(d) {
 				return $.extend({}, d, {
-					from_date: get_from_date(),
-					to_date: get_to_date()
+					from_date: from_date,
+					to_date: to_date
 				});
 			},
 			dataSrc: 'items'
