@@ -52,20 +52,12 @@ $(document).ready(function(){
 		ajax: {
 		url: 'https://www.drdweb.co.in/upload_sms/api01/get_upload_sms',
 			type: 'POST',
-			/*data: function(d) {
-				return $.extend({}, d, {
-					from_date: from_date,
-					to_date: to_date
-				});
-			},*/
 			data: function(d) {
-                var selectedDates = $('#date-range').val().split(' to ');
-                if (selectedDates.length === 2) {
-                    d.from_date = data_formet_change(selectedDates[0].trim());
-                    d.to_date = data_formet_change(selectedDates[1].trim());
-                }
-                return d;
-            },
+				return $.extend({}, d, {
+					from_date: get_from_date(),
+					to_date: get_to_date()
+				});
+			},
 			dataSrc: 'items'
 		},
 		columns: [
@@ -120,6 +112,32 @@ $(document).ready(function(){
 			load_datetable(from_date,to_date);
 		}*/
     });
+
+	function get_from_date(){
+		var selectedDates = $('#date-range').val().split(' to ');
+		if (selectedDates.length === 2) {
+			from_date = selectedDates[0].trim();
+			to_date = selectedDates[1].trim();
+
+			from_date 	= data_formet_change(from_date);
+			to_date 	= data_formet_change(to_date);
+			
+			return from_date;
+		}
+	}
+
+	function get_to_date(){
+		var selectedDates = $('#date-range').val().split(' to ');
+		if (selectedDates.length === 2) {
+			from_date = selectedDates[0].trim();
+			to_date = selectedDates[1].trim();
+
+			from_date 	= data_formet_change(from_date);
+			to_date 	= data_formet_change(to_date);
+			
+			return to_date;
+		}
+	}
 
 	function data_formet_change(dateValue){
 		var dateParts = dateValue.split('-');
