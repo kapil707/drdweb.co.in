@@ -111,3 +111,4 @@ $(document).ready(function(){
     });
 })
 </script>
+<script src="https://cdn.datatables.net/scroller/2.2.0/js/dataTables.scroller.min.js"></script>
