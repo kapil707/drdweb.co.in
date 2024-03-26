@@ -37,11 +37,12 @@
 		</div>
 	</div>
 </div>
-<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-<script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
 <script src="https://cdn.jsdelivr.net/npm/moment"></script>
 <script src="https://cdn.jsdelivr.net/npm/daterangepicker"></script>
+
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
 <!-- Page-Level Scripts -->
 <script>
 $(document).ready(function(){
@@ -111,4 +112,3 @@ $(document).ready(function(){
     });
 })
 </script>
-<script src="https://cdn.datatables.net/scroller/2.2.0/js/dataTables.scroller.min.js"></script>
