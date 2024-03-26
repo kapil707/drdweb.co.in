@@ -2,8 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Api01 extends CI_Controller {	
 
-	public function upload_sms()
-	{
+	public function upload_sms() {
 
 		$sender			= $_POST['sender'];
 		$message_body 	= $_POST["message_body"];
@@ -25,6 +24,51 @@ class Api01 extends CI_Controller {
             'success' => "1",
             'message' => 'Data add successfully',
 			'sender' => $sender,
+        );
+
+        // Send JSON response
+        header('Content-Type: application/json');
+        echo json_encode($response);
+	}
+
+	public function get_upload_sms() {
+		
+		$to_date	= $_POST['to_date'];
+		$from_date 	= $_POST["from_date"];
+
+		$jsonArray = array();
+
+		$items = "";
+		if(!empty($to_date) && !empty($from_date)){
+
+			$result = $this->db->query("select * from tbl_upload_sms")->result();
+
+			foreach($result as $row){
+
+				$id = $row->id;
+				$sender = $row->sender;
+				$message_body = $row->message_body;
+				$date = $row->date;
+				$time = $row->time;
+				$datetime = $row->datetime;
+
+				$dt = array(
+					'id' => $id,
+					'sender' => $sender,
+					'message_body'=>$message_body,
+					'date'=>$date,
+					'time'=>$time,
+					'datetime'=>$datetime,
+				);
+				$jsonArray[] = $dt;
+			}
+		}
+
+		$items = $jsonArray;
+		$response = array(
+            'success' => "1",
+            'message' => 'Data load successfully',
+			'items' => $items,
         );
 
         // Send JSON response
