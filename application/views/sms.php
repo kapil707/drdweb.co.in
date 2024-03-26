@@ -42,43 +42,50 @@
 <!-- Page-Level Scripts -->
 <script>
 $(document).ready(function(){
-	$('#example-table').DataTable({
-        ajax: {
-            url: 'https://www.drdweb.co.in/upload_sms/api01/get_upload_sms',
-            type: 'POST',
-            data: function(d) {
-                return $.extend({}, d, {
-                    from_date: '2024-03-22',
-                    to_date: '2024-03-24'
-                });
-            },
-            dataSrc: 'items'
-        },
-        columns: [
-            { data: 'id', title: 'ID' },
-            { data: 'sender', title: 'Sender' },
-            { data: 'message_body', title: 'Message Body' },
-            { data: 'date', title: 'Date' },
-            { data: 'time', title: 'Time' }
-        ],
-		pageLength: 25,
-		responsive: true,
-		dom: '<"html5buttons"B>lTfgitp',
-		buttons: [
-			{extend: 'copy'},
-			{extend: 'csv'},
-			{extend: 'excel', title: 'ExampleFile'},
-			{extend: 'pdf', title: 'ExampleFile'},
-			{extend: 'print',
-				customize: function (win){
-					$(win.document.body).addClass('white-bg');
-					$(win.document.body).css('font-size', '10px');
-					$(win.document.body).find('table')
-							.addClass('compact')
-							.css('font-size', 'inherit');
-			}
-			}
-		]
+	$('#filter-btn').on('click', function() {
+        var startDate = $('#start-date').val();
+        var endDate = $('#end-date').val();
+		load_datatable(startDate,endDate)
     });
+	function load_datatable(from_date,to_date){
+		$('#example-table').DataTable({
+			ajax: {
+				url: 'https://www.drdweb.co.in/upload_sms/api01/get_upload_sms',
+				type: 'POST',
+				data: function(d) {
+					return $.extend({}, d, {
+						from_date: from_date,
+						to_date: to_date
+					});
+				},
+				dataSrc: 'items'
+			},
+			columns: [
+				{ data: 'id', title: 'ID' },
+				{ data: 'sender', title: 'Sender' },
+				{ data: 'message_body', title: 'Message Body' },
+				{ data: 'date', title: 'Date' },
+				{ data: 'time', title: 'Time' }
+			],
+			pageLength: 25,
+			responsive: true,
+			dom: '<"html5buttons"B>lTfgitp',
+			buttons: [
+				{extend: 'copy'},
+				{extend: 'csv'},
+				{extend: 'excel', title: 'ExampleFile'},
+				{extend: 'pdf', title: 'ExampleFile'},
+				{extend: 'print',
+					customize: function (win){
+						$(win.document.body).addClass('white-bg');
+						$(win.document.body).css('font-size', '10px');
+						$(win.document.body).find('table')
+								.addClass('compact')
+								.css('font-size', 'inherit');
+				}
+				}
+			]
+		});
+	}
 })
 </script>
