@@ -50,16 +50,24 @@ $(document).ready(function(){
 
 	from_date = to_date = "2024-03-26";
 
-	$('#example-table').DataTable({
+	var table = $('#example-table').DataTable({
 		ajax: {
 		url: 'https://www.drdweb.co.in/upload_sms/api01/get_upload_sms',
 			type: 'POST',
-			data: function(d) {
+			/*data: function(d) {
 				return $.extend({}, d, {
 					from_date: from_date,
 					to_date: to_date
 				});
-			},
+			},*/
+			data: function(d) {
+                var selectedDates = $('#date-range').val().split(' to ');
+                if (selectedDates.length === 2) {
+                    from_date = selectedDates[0].trim();
+                    to_date = selectedDates[1].trim();
+                }
+                return d;
+            },
 			dataSrc: 'items'
 		},
 		columns: [
@@ -101,15 +109,9 @@ $(document).ready(function(){
 		}
 	});
 
-	/*$('#date-range').on('apply.daterangepicker', function(ev, picker) {
-        var selectedDates = $('#date-range').val().split(' to ');
-		if (selectedDates.length === 2) {
-			from_date = selectedDates[0].trim();
-			to_date = selectedDates[1].trim();
-
-			load_datetable(from_date,to_date);
-		}
-    });*/
+	$('#date-range').on('apply.daterangepicker', function(ev, picker) {
+        table.draw();
+    });
 })
 </script>
 <script src="https://cdn.datatables.net/scroller/2.2.0/js/dataTables.scroller.min.js"></script>
