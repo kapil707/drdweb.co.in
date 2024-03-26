@@ -1,32 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>JSON to DataTable</title>
-<link rel="stylesheet" href="https://cdn.datatables.net/1.11.6/css/jquery.dataTables.min.css">
-</head>
-<body>
-<table id="example" class="display" style="width:100%">
+<link href="<?= base_url()?>/assets/css/plugins/dataTables/datatables.min.css" rel="stylesheet">
+<table class="table table-striped table-bordered table-hover dataTables-example" id="example-table">
+	<thead>
+		<tr>
+			<th>
+				Sno.
+			</th>
+			<th>
+				Sender
+			</th>
+			<th>
+				Message
+			</th>
+			<th>
+				Date
+			</th>
+			<th>
+				Time
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+	
+	</tbody>
 </table>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.datatables.net/1.11.6/js/jquery.dataTables.min.js"></script>
+<script src="<?= base_url()?>/assets/js/jquery-3.1.1.min.js"></script>
+<script src="<?= base_url()?>/assets/js/plugins/dataTables/datatables.min.js"></script>
+<!-- Page-Level Scripts -->
 <script>
-$(document).ready(function() {
-    var jsonData = [
-        {"name": "John Doe", "age": 30, "city": "New York"},
-        {"name": "Jane Smith", "age": 25, "city": "San Francisco"},
-        {"name": "Bob Johnson", "age": 35, "city": "Chicago"}
-    ];
-
-    $('#example').DataTable({
-        data: jsonData,
-        columns: [
-            { data: 'name', title: 'Name' },
-            { data: 'age', title: 'Age' },
-            { data: 'city', title: 'City' }
-        ]
-    });
-});
+$(document).ready(function(){
+	new DataTable('#example-table', {
+    ajax: 'https://www.drdweb.co.in/upload_sms/api01/get_upload_sms?from_date=2024-03-22&to_date=2024-03-24'
+});	
+})
 </script>
-</body>
-</html>
+<script src="https://cdn.datatables.net/scroller/2.2.0/js/dataTables.scroller.min.js"></script>
