@@ -107,6 +107,7 @@ $(document).ready(function(){
 			from_date = selectedDates[0].trim();
 			to_date = selectedDates[1].trim();
 
+			console.log(to_date);
 			load_datetable(from_date,to_date);
 		}
     });
