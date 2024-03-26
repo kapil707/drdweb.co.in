@@ -61,12 +61,10 @@ $(document).ready(function(){
 		url: 'https://www.drdweb.co.in/upload_sms/api01/get_upload_sms',
 			type: 'POST',
 			data: function(d) {
-                var selectedDates = $('#date-range').val().split(' to ');
-                if (selectedDates.length === 2) {
-                    d.from_date = selectedDates[0].trim();
-                    d.to_date = selectedDates[1].trim();
-                }
-                return d;
+                return $.extend({}, d, {
+                    from_date: from_date,
+                    to_date: to_date
+                });
             },
 			dataSrc: 'items'
 		},
@@ -98,7 +96,13 @@ $(document).ready(function(){
 	});
 
 	$('#date-range').on('apply.daterangepicker', function(ev, picker) {
-        table.draw();
+		var selectedDates = $('#date-range').val().split(' to ');
+		if (selectedDates.length === 2) {
+			from_date = selectedDates[0].trim();
+			to_date = selectedDates[1].trim();
+		}
+        console.log(to_date);
+		table.draw();
     });
 })
 </script>
