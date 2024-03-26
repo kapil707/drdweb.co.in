@@ -56,12 +56,12 @@ $(document).ready(function(){
 						mydata.push(id,sender,message_body,date,time);
 					}
 				});
-				load_datatable()
+				load_datatable(mydata)
 			}
 		}
 	});
 	
-	function load_datatable(){
+	function load_datatable(mydata){
 		$('#example-table').DataTable({
 			data: mydata,
 			pageLength: 25,
