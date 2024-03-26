@@ -3,7 +3,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css">
 <link href="<?= base_url()?>/assets/css/plugins/dataTables/datatables.min.css" rel="stylesheet">
-<div class="container-fluid p-5">
+<div class="container p-5">
 	<div class="row">
         <div class="col-md-3">
 			<label for="date-range">Select Date Range:</label>
