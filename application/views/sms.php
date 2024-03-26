@@ -29,8 +29,8 @@
 <script>
 $(document).ready(function(){
 
-	from_date = "2024-03-22";
-	to_date   = "2024-03-24";
+	from_date = "2024-03-23";
+	to_date   = "2024-03-26";
 
 	let mydata = [];
 	$.ajax({
@@ -41,6 +41,7 @@ $(document).ready(function(){
 		error: function(){
 		},
 		success    : function(data){
+			console.log(data);
 			if(data.items=="")
 			{
 				$.each(data.items, function(i,item){
