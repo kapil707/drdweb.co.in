@@ -1,7 +1,8 @@
 <link href="<?= base_url()?>/assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?= base_url()?>/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
 
-<link href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css">
+<link href="<?= base_url()?>/assets/css/plugins/dataTables/datatables.min.css" rel="stylesheet">
 <div class="container-fluid p-5">
 	<div class="row">
         <div class="col-md-3">
@@ -38,13 +39,13 @@
 		</div>
 	</div>
 </div>
-<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-<script src="https://cdn.datatables.net/2.0.3/js/dataTables.js"></script>
+<script src="<?= base_url()?>/assets/js/jquery-3.1.1.min.js"></script>
+<script src="<?= base_url()?>/assets/js/plugins/dataTables/datatables.min.js"></script>
 
 <script>
 $(document).ready(function(){
 
-	from_date = to_date = "2023-03-26";
+	from_date = to_date = "2024-03-26";
 
 	$('#example-table').DataTable({
 		ajax: {
@@ -85,7 +86,7 @@ $(document).ready(function(){
 		]
 	});
 
-	/*$('#date-range').daterangepicker({
+	$('#date-range').daterangepicker({
 		opens: 'left', // Date picker position
 		locale: {
 			format: 'DD-MM-YYYY', // Date format
@@ -105,7 +106,7 @@ $(document).ready(function(){
 
 			load_datetable(from_date,to_date);
 		}
-    });*/
+    });
 })
 </script>
 <script src="https://cdn.datatables.net/scroller/2.2.0/js/dataTables.scroller.min.js"></script>
