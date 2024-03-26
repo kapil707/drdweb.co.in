@@ -31,11 +31,15 @@ $(document).ready(function(){
 	$('#example-table').DataTable({
         ajax: {
             url: 'https://www.drdweb.co.in/upload_sms/api01/get_upload_sms?from_date=2024-03-22&to_date=2024-03-24',
-            dataSrc: ''
+            type: 'GET',
+            dataSrc: 'items'
         },
         columns: [
-            { data: 'id', title: 'id' },
-            { data: 'sender', title: 'sender' }
+            { data: 'id', title: 'ID' },
+            { data: 'sender', title: 'Sender' },
+            { data: 'message_body', title: 'Message Body' },
+            { data: 'date', title: 'Date' },
+            { data: 'time', title: 'Time' }
         ]
     });
 })
