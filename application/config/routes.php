@@ -86,6 +86,8 @@ $route['adminlte/(:any)'] = 'admin/adminlte/$1';
 $route['myinv/(:any)/(:any)/(:any)'] = 'api3/myinv/$1/$2/$3';
 
 
+$route['check_sms'] = 'sms/index';
+
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
