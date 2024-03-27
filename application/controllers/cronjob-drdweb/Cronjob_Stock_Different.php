@@ -19,6 +19,7 @@ class Cronjob_Stock_Different extends CI_Controller
 	{
 		$this->StockDifferentModel->check_different_qty();
 		$this->StockDifferentModel->check_different_mrp();
+		$this->StockDifferentModel->check_different_scheme();
 		$this->send_report_on_whatsapp();
 		echo "Check Different Records Working";
 	}

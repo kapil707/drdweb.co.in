@@ -69,7 +69,7 @@ class StockDifferentModel extends CI_Model
 		
 		$date = date("Y-m-d");
 		$type = "scheme";
-		$result = $db_medicine->query("SELECT tbl_medicine_compare.i_code, tbl_medicine_compare.mrp AS deff1, tbl_medicine.mrp AS deff2 FROM tbl_medicine_compare JOIN tbl_medicine ON tbl_medicine_compare.id = tbl_medicine.id WHERE (tbl_medicine_compare.salescm1 < tbl_medicine.salescm1)")->result();
+		$result = $db_medicine->query("SELECT tbl_medicine_compare.i_code, tbl_medicine_compare.salescm1 AS deff1, tbl_medicine.salescm1 AS deff2 FROM tbl_medicine_compare JOIN tbl_medicine ON tbl_medicine_compare.id = tbl_medicine.id WHERE (tbl_medicine_compare.salescm1!=tbl_medicine.salescm1) or (tbl_medicine_compare.salescm2!=tbl_medicine.salescm2)")->result();
 		foreach($result as $row){
 			
 			$i_code = $row->i_code;
