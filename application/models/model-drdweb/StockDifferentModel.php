@@ -16,7 +16,7 @@ class StockDifferentModel extends CI_Model
 		
 		$db_medicine->query("TRUNCATE TABLE tbl_medicine_compare");
 
-		$db_medicine->query("INSERT tbl_medicine_compare (i_code,item_code,item_name,batchqty,mrp) SELECT i_code,item_code,item_name,batchqty,mrp FROM tbl_medicine");
+		$db_medicine->query("INSERT tbl_medicine_compare (i_code,item_code,item_name,batchqty,mrp,salescm1,salescm2) SELECT i_code,item_code,item_name,batchqty,mrp,salescm1,salescm2 FROM tbl_medicine");
 		
 		$date = date("Y-m-d");
 		$db_medicine->query("update tbl_medicine_compare set date='$date'");
@@ -50,6 +50,26 @@ class StockDifferentModel extends CI_Model
 		$date = date("Y-m-d");
 		$type = "mrp";
 		$result = $db_medicine->query("SELECT tbl_medicine_compare.i_code, tbl_medicine_compare.mrp AS deff1, tbl_medicine.mrp AS deff2 FROM tbl_medicine_compare JOIN tbl_medicine ON tbl_medicine_compare.id = tbl_medicine.id WHERE (tbl_medicine_compare.mrp > tbl_medicine.mrp);")->result();
+		foreach($result as $row){
+			
+			$i_code = $row->i_code;
+			$deff1  = $row->deff1;
+			$deff2  = $row->deff2;
+			$row1 = $db_medicine->query("select id from tbl_medicine_compare_final where i_code='$i_code' and deff1='$deff1' and deff2='$deff2'")->row();
+			if(empty($row1->id))
+			{
+				$db_medicine->query("INSERT tbl_medicine_compare_final (i_code,date,type,deff1,deff2) values ('$i_code','$date','$type','$deff1','$deff2')");
+			}
+		}
+	}
+
+	function check_different_scheme()
+	{
+		$db_medicine = $this->db_medicine;
+		
+		$date = date("Y-m-d");
+		$type = "scheme";
+		$result = $db_medicine->query("SELECT tbl_medicine_compare.i_code, tbl_medicine_compare.mrp AS deff1, tbl_medicine.mrp AS deff2 FROM tbl_medicine_compare JOIN tbl_medicine ON tbl_medicine_compare.id = tbl_medicine.id WHERE (tbl_medicine_compare.salescm1 < tbl_medicine.salescm1)")->result();
 		foreach($result as $row){
 			
 			$i_code = $row->i_code;
