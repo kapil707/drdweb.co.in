@@ -38,6 +38,15 @@ class Sms extends CI_Controller {
 				echo "UPI reference number not found";
 			}
 			echo "<br>";
+
+			$pattern = '/OrderId\. (\w+)/';
+			if (preg_match($pattern, $message_body, $matches)) {
+				$orderid = $matches[1];
+				echo "--". $orderid;
+			} else {
+				echo "orderid not found";
+			}
+			echo "<br>";
 		}
 	}
 }
