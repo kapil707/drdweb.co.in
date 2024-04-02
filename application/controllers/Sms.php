@@ -13,7 +13,7 @@ class Sms extends CI_Controller {
 		$result = $this->db->query("select * from tbl_upload_sms where date BETWEEN '$from_date' AND '$to_date' limit 100")->result();
 		foreach($result as $row){
 			echo $row->message_body;
-			die();
+			echo "<br>";
 		}
 	}
 }
