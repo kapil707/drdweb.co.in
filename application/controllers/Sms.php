@@ -64,7 +64,7 @@ class Sms extends CI_Controller {
 
 	public function split_function2(){
 
-		$result = $this->db->query("select * from tbl_upload_sms where status='1' and id='20' limit 100")->result();
+		$result = $this->db->query("select * from tbl_upload_sms where status='1' limit 100")->result();
 
 		$chemist = "D";
 		$itemname = "E";
@@ -93,11 +93,19 @@ class Sms extends CI_Controller {
 							$chemist_id = $worksheet->getCell($chemist.$row)->getValue();
 						}
 					}
-					echo $chemist_id;
+
+					$status = 2;
+
+					$id = $row1->id;
+					$where = array('id'=>$id);
+					$dt = array(
+						'status'=>$status,
+						'chemist_id'=>$chemist_id,
+					);
+					$this->Scheme_Model->edit_fun("tbl_upload_sms",$dt,$where);
 				}
 			}
-		}
-		
+		}		
 	}
 
 	public function split_function3(){
