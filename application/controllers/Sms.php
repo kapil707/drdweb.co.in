@@ -12,8 +12,15 @@ class Sms extends CI_Controller {
 
 		$result = $this->db->query("select * from tbl_upload_sms where date BETWEEN '$from_date' AND '$to_date' limit 100")->result();
 		foreach($result as $row){
-			echo $row->message_body;
-			echo "<br>";
+			$message_body = $row->message_body;
+			
+			$pattern = '/INR (\d+\.\d+)/';
+			if (preg_match($pattern, $message_body, $matches)) {
+				$amount = $matches[1];
+				echo $amount;
+			} else {
+				echo "Amount not found";
+			}
 		}
 	}
 }
