@@ -92,6 +92,7 @@ class Sms extends CI_Controller {
 							} else {
 								echo "Record not found";
 							}
+							echo "<br>";
 						}
 					}
 				}
