@@ -80,7 +80,7 @@ class Sms extends CI_Controller {
 				foreach($result as $row1){
 					$received_from = strtolower($row1->received_from);
 
-					$chemist_id = "Record not found";
+					$chemist_id = "--";
 					$highestRow = $worksheet->getHighestRow();
 					for ($row=2; $row<=$highestRow; $row++)
 					{
