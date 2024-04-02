@@ -30,6 +30,9 @@
 						<th>
 							Time
 						</th>
+						<th>
+							ChemistID
+						</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -82,7 +85,8 @@ $(document).ready(function(){
 			{ data: 'sender', title: 'Sender' },
 			{ data: 'message_body', title: 'Message Body' },
 			{ data: 'date', title: 'Date' },
-			{ data: 'time', title: 'Time' }
+			{ data: 'time', title: 'Time' },
+			{ data: 'chemist_id', title: 'ChemistID' }
 		],
 		pageLength: 25,
 		responsive: true,
