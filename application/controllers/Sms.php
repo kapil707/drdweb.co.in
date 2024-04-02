@@ -82,7 +82,7 @@ class Sms extends CI_Controller {
 					$string = $worksheet->getCell($itemname.$row)->getValue();
 					
 					foreach($result as $row1){
-						$received_from = $row->received_from;
+						$received_from = $row1->received_from;
 						if($received_from){
 
 							$pattern = '/\b' . preg_quote($received_from, '/') . '\b/';
