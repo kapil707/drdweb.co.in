@@ -22,10 +22,18 @@ class Sms extends CI_Controller {
 				echo "Amount not found";
 			}
 
+			$pattern = '/(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})/';
+			if (preg_match($pattern, $message_body, $matches)) {
+				$date = $matches[1];
+				echo "--".$date;
+			} else {
+				echo "Date not found";
+			}
+
 			$pattern = '/UPI Ref No\. (\w+)/';
 			if (preg_match($pattern, $message_body, $matches)) {
 				$upi_no = $matches[1];
-				echo $upi_no;
+				echo "--". $upi_no;
 			} else {
 				echo "UPI reference number not found";
 			}
