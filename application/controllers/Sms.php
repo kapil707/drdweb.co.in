@@ -28,8 +28,10 @@ class Sms extends CI_Controller {
 			$pattern = '/received from (\S+)/';
 			if (preg_match($pattern, $message_body, $matches)) {
 				$received_from = $matches[1];
+				$status = 1;
 			} else {
 				$received_from = "Received from information not found";
+				$status = 2;
 			}
 
 			$pattern = '/UPI Ref No\. (\w+)/';
@@ -49,7 +51,7 @@ class Sms extends CI_Controller {
 			$id = $row->id;
 			$where = array('id'=>$id);
 			$dt = array(
-				'status'=>'1',
+				'status'=>$status,
 				'amount'=>$amount,
 				'getdate'=>$getdate,
 				'received_from'=>$received_from,
