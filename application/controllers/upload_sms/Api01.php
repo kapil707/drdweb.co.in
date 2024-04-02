@@ -52,6 +52,7 @@ class Api01 extends CI_Controller {
 					$date = $row->date;
 					$time = $row->time;
 					$datetime = $row->datetime;
+					$chemist_id = $row->chemist_id;
 
 					$dt = array(
 						'id' => $id,
@@ -60,6 +61,7 @@ class Api01 extends CI_Controller {
 						'date'=>$date,
 						'time'=>$time,
 						'datetime'=>$datetime,
+						'chemist_id'=>$chemist_id,
 					);
 					$jsonArray[] = $dt;
 				}
