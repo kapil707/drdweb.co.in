@@ -77,7 +77,7 @@ class Sms extends CI_Controller {
 			foreach ($objPHPExcel->getWorksheetIterator() as $worksheet)
 			{
 				foreach($result as $row1){
-					$received_from = $row1->received_from;
+					echo $received_from = $row1->received_from;
 
 					$highestRow = $worksheet->getHighestRow();
 					for ($row=2; $row<=$highestRow; $row++)
@@ -87,9 +87,9 @@ class Sms extends CI_Controller {
 						$pattern = '/\b' . preg_quote($received_from, '/') . '\b/';
 
 						if (preg_match($pattern, $string)) {
-							echo "-Found record".$received_from;
+							//echo "-Found record";
 						} else {
-							echo "-Record not found".$received_from;
+							//echo "-Record not found";
 						}
 						echo "<br>";
 					}
