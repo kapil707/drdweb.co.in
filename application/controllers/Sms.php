@@ -42,7 +42,7 @@ class Sms extends CI_Controller {
 			$id = $row->id;
 			$where = array('id'=>$id);
 			$dt = array(
-				'status'=>$1,
+				'status'=>'1',
 				'amount'=>$amount,
 				'getdate'=>$getdate,
 				'upi_no'=>$upi_no,
