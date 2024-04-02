@@ -51,4 +51,32 @@ class Sms extends CI_Controller {
 			$this->Scheme_Model->edit_fun("tbl_upload_sms",$dt,$where);
 		}
 	}
+
+	public function split_function2(){
+
+		$itemname = "E";
+		$filename = "kapilji.xlsx";
+		$upload_path = "./uploads/";
+		$excelFile = $upload_path.$filename;
+		if(file_exists($excelFile))
+		{
+			$this->load->library('excel');
+			$objPHPExcel = PHPExcel_IOFactory::load($excelFile);
+			foreach ($objPHPExcel->getWorksheetIterator() as $worksheet)
+			{
+				$highestRow = $worksheet->getHighestRow();
+				for ($row=2; $row<=$highestRow; $row++)
+				{
+					echo $item_name 	= $worksheet->getCell($itemname.$row)->getValue();
+					echo "<br>";
+				}
+			}
+		}
+
+		$result = $this->db->query("select * from tbl_upload_sms where status='1' limit 100")->result();
+		foreach($result as $row){
+			$message_body = $row->message_body;
+		
+		}
+	}
 }
