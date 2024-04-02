@@ -64,8 +64,8 @@ class Sms extends CI_Controller {
 
 	public function split_function2(){
 
-		$string = "LOKESH KUMAR MOBILE NO. 9311361333";
-		$mobile_number = "9311361333";
+		$string = "NARENDRA - 9015894366@PAYTM";
+		$mobile_number = "9015894366@PAYTM";
 
 		$pattern = '/\b' . preg_quote($mobile_number, '/') . '\b/';
 
@@ -112,8 +112,6 @@ class Sms extends CI_Controller {
 				}
 			}
 		}
-
-		$result = $this->db->query("select * from tbl_upload_sms where status='1' limit 100")->result();
 		
 	}
 
