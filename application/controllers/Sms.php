@@ -65,16 +65,16 @@ class Sms extends CI_Controller {
 	public function split_function2(){
 
 		$string = "LOKESH KUMAR MOBILE NO. 9311361333";
-$mobile_number = "9311361333";
+		$mobile_number = "9311361333";
 
-$pattern = '/\b' . preg_quote($mobile_number, '/') . '\b/';
+		$pattern = '/\b' . preg_quote($mobile_number, '/') . '\b/';
 
-if (preg_match($pattern, $string)) {
-    echo "Found record";
-} else {
-    echo "Record not found";
-}
-die();
+		if (preg_match($pattern, $string)) {
+			echo "Found record";
+		} else {
+			echo "Record not found";
+		}
+		die();
 
 		$result = $this->db->query("select * from tbl_upload_sms where status='1' limit 100")->result();
 
@@ -115,5 +115,28 @@ die();
 
 		$result = $this->db->query("select * from tbl_upload_sms where status='1' limit 100")->result();
 		
+	}
+
+	public function split_function3(){
+
+		$itemname = "E";
+		$filename = "kapilji.xlsx";
+		$upload_path = "./uploads/";
+		$excelFile = $upload_path.$filename;
+		if(file_exists($excelFile))
+		{
+			$this->load->library('excel');
+			$objPHPExcel = PHPExcel_IOFactory::load($excelFile);
+			foreach ($objPHPExcel->getWorksheetIterator() as $worksheet)
+			{
+
+				$highestRow = $worksheet->getHighestRow();
+				for ($row=2; $row<=$highestRow; $row++)
+				{
+					echo $string = $worksheet->getCell($itemname.$row)->getValue();
+					echo "<br>";
+				}
+			}
+		}		
 	}
 }
