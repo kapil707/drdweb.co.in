@@ -89,6 +89,7 @@ class Sms extends CI_Controller {
 
 						if (preg_match($pattern, $string)) {
 							echo "-Found record";
+							break;
 						} else {
 							echo "-Record not found";
 						}
