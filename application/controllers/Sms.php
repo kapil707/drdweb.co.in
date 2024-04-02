@@ -11,7 +11,7 @@ class Sms extends CI_Controller {
 		foreach($result as $row){
 			$message_body = $row->message_body;
 			
-			$pattern = '/INR (\d+\.\d+)/';
+			$pattern = '/INR (\w+)/';
 			if (preg_match($pattern, $message_body, $matches)) {
 				$amount = $matches[1];
 			} else {
