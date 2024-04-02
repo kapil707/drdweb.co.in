@@ -82,20 +82,16 @@ class Sms extends CI_Controller {
 					$highestRow = $worksheet->getHighestRow();
 					for ($row=2; $row<=$highestRow; $row++)
 					{
-						$string = $worksheet->getCell($itemname.$row)->getValue();
-					
-					
-						if($received_from){
+						echo $string = $worksheet->getCell($itemname.$row)->getValue();
+						
+						$pattern = '/\b' . preg_quote($received_from, '/') . '\b/';
 
-							$pattern = '/\b' . preg_quote($received_from, '/') . '\b/';
-
-							if (preg_match($pattern, $string)) {
-								echo "Found record".$received_from;
-							} else {
-								echo "Record not found".$received_from;
-							}
-							echo "<br>";
+						if (preg_match($pattern, $string)) {
+							echo "-Found record".$received_from;
+						} else {
+							echo "-Record not found".$received_from;
 						}
+						echo "<br>";
 					}
 				}
 			}
