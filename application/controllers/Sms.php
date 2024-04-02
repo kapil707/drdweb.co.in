@@ -25,6 +25,13 @@ class Sms extends CI_Controller {
 				$getdate = "Date not found";
 			}
 
+			$pattern = '/received from (\S+)/';
+			if (preg_match($pattern, $message_body, $matches)) {
+				$received_from = $matches[1];
+			} else {
+				$received_from = "Received from information not found";
+			}
+
 			$pattern = '/UPI Ref No\. (\w+)/';
 			if (preg_match($pattern, $message_body, $matches)) {
 				$upi_no = $matches[1];
@@ -45,6 +52,7 @@ class Sms extends CI_Controller {
 				'status'=>'1',
 				'amount'=>$amount,
 				'getdate'=>$getdate,
+				'received_from'=>$received_from,
 				'upi_no'=>$upi_no,
 				'orderid'=>$orderid,
 			);
