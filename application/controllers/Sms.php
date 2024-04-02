@@ -21,6 +21,7 @@ class Sms extends CI_Controller {
 			} else {
 				echo "Amount not found";
 			}
+			echo "<br>";
 		}
 	}
 }
