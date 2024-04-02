@@ -66,6 +66,7 @@ class Sms extends CI_Controller {
 
 		$result = $this->db->query("select * from tbl_upload_sms where status='1' and id='20' limit 100")->result();
 
+		$chemist = "D";
 		$itemname = "E";
 		$filename = "kapilji.xlsx";
 		$upload_path = "./uploads/";
@@ -79,6 +80,7 @@ class Sms extends CI_Controller {
 				foreach($result as $row1){
 					$received_from = strtolower($row1->received_from);
 
+					$chemist_id = "Record not found";
 					$highestRow = $worksheet->getHighestRow();
 					for ($row=2; $row<=$highestRow; $row++)
 					{
@@ -88,13 +90,10 @@ class Sms extends CI_Controller {
 						$pattern = '/\b' . preg_quote($received_from, '/') . '\b/';
 
 						if (preg_match($pattern, $string)) {
-							echo "-Found record";
-							break;
-						} else {
-							echo "-Record not found";
+							$chemist_id = $worksheet->getCell($chemist.$row)->getValue();
 						}
-						echo "<br>";
 					}
+					echo $chemist_id;
 				}
 			}
 		}
