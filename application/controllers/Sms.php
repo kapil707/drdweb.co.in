@@ -64,6 +64,8 @@ class Sms extends CI_Controller {
 
 	public function split_function2(){
 
+		$result = $this->db->query("select * from tbl_upload_sms where status='1' limit 100")->result();
+
 		$itemname = "E";
 		$filename = "kapilji.xlsx";
 		$upload_path = "./uploads/";
@@ -77,16 +79,26 @@ class Sms extends CI_Controller {
 				$highestRow = $worksheet->getHighestRow();
 				for ($row=2; $row<=$highestRow; $row++)
 				{
-					echo $item_name 	= $worksheet->getCell($itemname.$row)->getValue();
-					echo "<br>";
+					$string = $worksheet->getCell($itemname.$row)->getValue();
+					
+					foreach($result as $row1){
+						$received_from = $row->received_from;
+						if($received_from){
+
+							$pattern = '/\b' . preg_quote($received_from, '/') . '\b/';
+
+							if (preg_match($pattern, $string)) {
+								echo "Found record";
+							} else {
+								echo "Record not found";
+							}
+						}
+					}
 				}
 			}
 		}
 
 		$result = $this->db->query("select * from tbl_upload_sms where status='1' limit 100")->result();
-		foreach($result as $row){
-			$message_body = $row->message_body;
 		
-		}
 	}
 }
