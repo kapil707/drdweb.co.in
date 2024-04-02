@@ -21,6 +21,14 @@ class Sms extends CI_Controller {
 			} else {
 				echo "Amount not found";
 			}
+
+			$pattern = '/UPI Ref No\. (\w+)/';
+			if (preg_match($pattern, $message_body, $matches)) {
+				$upi_no = $matches[1];
+				echo $upi_no;
+			} else {
+				echo "UPI reference number not found";
+			}
 			echo "<br>";
 		}
 	}
