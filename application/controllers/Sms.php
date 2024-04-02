@@ -39,7 +39,7 @@ class Sms extends CI_Controller {
 			}
 			echo "<br>";
 
-			$pattern = '/OrderId\. (\w+)/';
+			$pattern = '/OrderId (\w+)/';
 			if (preg_match($pattern, $message_body, $matches)) {
 				$orderid = $matches[1];
 				echo "--". $orderid;
