@@ -76,21 +76,23 @@ class Sms extends CI_Controller {
 			$objPHPExcel = PHPExcel_IOFactory::load($excelFile);
 			foreach ($objPHPExcel->getWorksheetIterator() as $worksheet)
 			{
-				$highestRow = $worksheet->getHighestRow();
-				for ($row=2; $row<=$highestRow; $row++)
-				{
-					$string = $worksheet->getCell($itemname.$row)->getValue();
+				foreach($result as $row1){
+					$received_from = $row1->received_from;
+
+					$highestRow = $worksheet->getHighestRow();
+					for ($row=2; $row<=$highestRow; $row++)
+					{
+						$string = $worksheet->getCell($itemname.$row)->getValue();
 					
-					foreach($result as $row1){
-						$received_from = $row1->received_from;
+					
 						if($received_from){
 
 							$pattern = '/\b' . preg_quote($received_from, '/') . '\b/';
 
 							if (preg_match($pattern, $string)) {
-								echo "Found record";
+								echo "Found record".$received_from;
 							} else {
-								echo "Record not found";
+								echo "Record not found".$received_from;
 							}
 							echo "<br>";
 						}
