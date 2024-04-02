@@ -6,46 +6,49 @@ class Sms extends CI_Controller {
 	}
 
 	public function split_function(){
-		
-		$from_date = '2024-04-02';
-		$to_date = '2024-04-02';
 
-		$result = $this->db->query("select * from tbl_upload_sms where date BETWEEN '$from_date' AND '$to_date' limit 100")->result();
+		$result = $this->db->query("select * from tbl_upload_sms where status='0' limit 100")->result();
 		foreach($result as $row){
 			$message_body = $row->message_body;
 			
 			$pattern = '/INR (\d+\.\d+)/';
 			if (preg_match($pattern, $message_body, $matches)) {
 				$amount = $matches[1];
-				echo $amount;
 			} else {
-				echo "Amount not found";
+				$amount = "Amount not found";
 			}
 
 			$pattern = '/(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})/';
 			if (preg_match($pattern, $message_body, $matches)) {
-				$date = $matches[1];
-				echo "--".$date;
+				$getdate = $matches[1];
 			} else {
-				echo "Date not found";
+				$getdate = "Date not found";
 			}
 
 			$pattern = '/UPI Ref No\. (\w+)/';
 			if (preg_match($pattern, $message_body, $matches)) {
 				$upi_no = $matches[1];
-				echo "--". $upi_no;
 			} else {
-				echo "UPI reference number not found";
+				$upi_no = "UPI reference number not found";
 			}
 
 			$pattern = '/OrderId (\w+)/';
 			if (preg_match($pattern, $message_body, $matches)) {
 				$orderid = $matches[1];
-				echo "--". $orderid;
 			} else {
-				echo "orderid not found";
+				$orderid = "orderid not found";
 			}
-			echo "<br>";
+			
+			$id = $row->id;
+			$where = array('id'=>$id);
+			$dt = array(
+				'status'=>$1,
+				'amount'=>$amount,
+				'getdate'=>$getdate,
+				'upi_no'=>$upi_no,
+				'orderid'=>$orderid,
+			);
+			$this->Scheme_Model->edit_fun("tbl_upload_sms",$dt,$where);
 		}
 	}
 }
