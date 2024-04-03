@@ -164,7 +164,7 @@ if ($items != '') {
 
 			$return_logout = "0";
 			$return_id = 1;
-			if($versionname=="6.0"){
+			if($versionname=="7.0"){
 				$return_title = "";
 				$return_message = "";
 				$return_url = "";
@@ -622,7 +622,9 @@ if ($items != '') {
 	}
 
 	public function get_delivery_order_photo_api(){
-		$items = $items_others = "";
+		$jsonArray = array();
+		$jsonArray1 = array();
+		
 		if(!empty($_POST)){
 			$api_key 		= $_POST["api_key"];
 
@@ -705,9 +707,23 @@ if ($items != '') {
 				}
 			}
 
-$items.= <<<EOD
-{"id":"{$id}","image1":"{$image1}","image2":"{$image2}","image3":"{$image3}","image4":"{$image4}","message":"{$message}","payment_type":"{$payment_type}","payment_message":"{$payment_message}","date":"{$date}","time":"{$time}","status":"{$status}","is_edit":"{$is_edit}","at_a":"{$at_a}","nrx":"{$nrx}"},
-EOD;
+			$dt = array(
+				'id' => $id,
+				'image1' => $image1,
+				'image2' => $image2,
+				'image3' => $image3,
+				'image4' => $image4,
+				'message' => $message,
+				'payment_type' => $payment_type,
+				'payment_message' => $payment_message,
+				'date' => $date,
+				'time' => $time,
+				'status' => $status,
+				'is_edit' => $is_edit,
+				'at_a' => $at_a,
+				'nrx' => $nrx,
+			);
+			$jsonArray[] = $dt;
 
 			$where = array(
 				'user_code'=>$user_code,
@@ -722,22 +738,29 @@ EOD;
 				$image 	= 	"https://drdweb.co.in/upload_drd_master/chemist_photo/".$row->date."/".$row->image;
 				$date   = 	$row->date;
 				$time   = 	$row->time;
-
-$items_others.= <<<EOD
-{"id":"{$id}","image":"{$image}","date":"{$date}","time":"{$time}"},
-EOD;
+			
+				$dt = array(
+					'id' => $id,
+					'image' => $image,
+					'date' => $date,
+					'time' => $time,
+				);
+				$jsonArray1[] = $dt;
 			}
-
-if ($items != '') {
-	$items = substr($items, 0, -1);
-}
-if ($items_others != '') {
-	$items_others = substr($items_others, 0, -1);
-}
-?>
-[{"items":[<?= $items;?>],"items_others":[<?= $items_others;?>]}]
-<?php
 		}
+
+		$items = $jsonArray;
+		$items_others = $jsonArray1;
+		$response = array(
+			'success' => "1",
+			'message' => 'Data load successfully',
+			'items' => $items,
+			'items_others' => $items_others,
+		);
+
+		// Send JSON response
+		header('Content-Type: application/json');
+		echo "[".json_encode($response)."]";
 	}
 	
 	public function wakeup_phone(){
