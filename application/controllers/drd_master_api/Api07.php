@@ -110,7 +110,7 @@ if ($items != '') {
 		$response = array(
 			'success' => "1",
 			'message' => 'Data load successfully',
-			'items' => $top_flash,
+			'items' => $items,
 		);
 
 		// Send JSON response
