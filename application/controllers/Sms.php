@@ -78,8 +78,8 @@ class Sms extends CI_Controller {
 			foreach ($objPHPExcel->getWorksheetIterator() as $worksheet)
 			{
 				foreach($result as $row1){
-					$received_from = strtolower($row1->received_from);
-
+					echo $received_from = strtolower($row1->received_from);
+					echo " ***** ";
 					$chemist_id = "--";
 					$highestRow = $worksheet->getHighestRow();
 					for ($row=2; $row<=$highestRow; $row++)
