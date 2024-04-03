@@ -91,6 +91,7 @@ class Sms extends CI_Controller {
 
 						if (preg_match($pattern, $string)) {
 							$chemist_id = $worksheet->getCell($chemist.$row)->getValue();
+							break;
 						}
 						echo "----$chemist_id<br>";
 					}
