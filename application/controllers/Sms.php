@@ -66,8 +66,8 @@ class Sms extends CI_Controller {
 
 		$result = $this->db->query("select * from tbl_upload_sms where status='1' limit 100")->result();
 
-		$chemist = "D";
-		$itemname = "E";
+		$chemist = "B";
+		$itemname = "C";
 		$filename = "kapilji.xlsx";
 		$upload_path = "./uploads/";
 		$excelFile = $upload_path.$filename;
