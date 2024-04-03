@@ -313,7 +313,9 @@ if ($items != '') {
 	}
 	
 	public function get_delivery_order_list_api(){
-		$items = "";
+
+		$jsonArray = array();
+		
 		if(!empty($_POST)){
 			$api_key 		= $_POST["api_key"];
 			$user_code		= $_POST['user_code'];
@@ -332,17 +334,25 @@ if ($items != '') {
 				
 				$time		=	$row1->mtime;
 
-$items .= <<<EOD
-{"tagno":"{$tagno}","date":"{$date}","time":"{$time}"},
-EOD;
+				$dt = array(
+					'tagno' => $tagno,
+					'date' => $date,
+					'time' => $time,
+				);
+				$jsonArray[] = $dt;
 			}
 		}
-if ($items != '') {
-	$items = substr($items, 0, -1);
-}
-?>
-[<?= $items;?>]
-<?php
+
+		$items = $jsonArray;
+		$response = array(
+			'success' => "1",
+			'message' => 'Data load successfully',
+			'items' => $items,
+		);
+
+		// Send JSON response
+		header('Content-Type: application/json');
+		echo "[".json_encode($response)."]";
 	}
 
 	public function get_delivery_order_list_tag_api(){
