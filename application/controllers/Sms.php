@@ -85,7 +85,7 @@ class Sms extends CI_Controller {
 					for ($row=2; $row<=$highestRow; $row++)
 					{
 						$string = $worksheet->getCell($itemname.$row)->getValue();
-						$string = strtolower($string);
+						echo $string = strtolower($string);
 						
 						$pattern = '/\b' . preg_quote($received_from, '/') . '\b/';
 
@@ -94,7 +94,7 @@ class Sms extends CI_Controller {
 						}
 					}
 
-					$status = 2;
+					/*$status = 2;
 
 					$id = $row1->id;
 					$where = array('id'=>$id);
@@ -102,7 +102,7 @@ class Sms extends CI_Controller {
 						'status'=>$status,
 						'chemist_id'=>$chemist_id,
 					);
-					$this->Scheme_Model->edit_fun("tbl_upload_sms",$dt,$where);
+					$this->Scheme_Model->edit_fun("tbl_upload_sms",$dt,$where);*/
 				}
 			}
 		}		
