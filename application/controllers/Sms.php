@@ -78,14 +78,14 @@ class Sms extends CI_Controller {
 			foreach ($objPHPExcel->getWorksheetIterator() as $worksheet)
 			{
 				foreach($result as $row1){
-					echo $received_from = strtolower($row1->received_from);
-					echo " ***** ";
+					$received_from = strtolower($row1->received_from);
+					
 					$chemist_id = "--";
 					$highestRow = $worksheet->getHighestRow();
 					for ($row=2; $row<=$highestRow; $row++)
 					{
 						$string = $worksheet->getCell($itemname.$row)->getValue();
-						echo $string = strtolower($string);
+						$string = strtolower($string);
 						
 						$pattern = '/\b' . preg_quote($received_from, '/') . '\b/';
 
