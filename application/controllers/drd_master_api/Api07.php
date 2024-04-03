@@ -315,7 +315,7 @@ if ($items != '') {
 	public function get_delivery_order_list_api(){
 
 		$jsonArray = array();
-		
+
 		if(!empty($_POST)){
 			$api_key 		= $_POST["api_key"];
 			$user_code		= $_POST['user_code'];
@@ -356,7 +356,9 @@ if ($items != '') {
 	}
 
 	public function get_delivery_order_list_tag_api(){
-		$items = "";
+
+		$jsonArray = array();
+
 		$medicine_items = "";
 		if(!empty($_POST)){
 			$api_key 		= $_POST["api_key"];
@@ -397,17 +399,28 @@ if ($items != '') {
 				$chemist_name 	= 	$row->chemist_name;
 				$amount 		=   $row->amount; 
 
-$items .= <<<EOD
-{"gstvno":"{$gstvno}","mydate":"{$mydate}","chemist_code":"{$chemist_code}","chemist_name":"{$chemist_name}","amount":"{$amount}","medicine_items":"{$medicine_items}"},
-EOD;
+				$dt = array(
+					'gstvno' => $gstvno,
+					'mydate' => $mydate,
+					'chemist_code' => $chemist_code,
+					'chemist_name' => $chemist_name,
+					'amount' => $amount,
+					'medicine_items' => $medicine_items,
+				);
+				$jsonArray[] = $dt;
 			}
 		}
-if ($items != '') {
-	$items = substr($items, 0, -1);
-}
-?>
-[<?= $items;?>]
-<?php
+
+		$items = $jsonArray;
+		$response = array(
+			'success' => "1",
+			'message' => 'Data load successfully',
+			'items' => $items,
+		);
+
+		// Send JSON response
+		header('Content-Type: application/json');
+		echo "[".json_encode($response)."]";
 	}
 
 	public function get_medicine_details($item_c){
