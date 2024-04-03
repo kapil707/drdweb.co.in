@@ -95,7 +95,7 @@ class Sms extends CI_Controller {
 						echo "----$chemist_id<br>";
 					}
 
-					/*$status = 2;
+					$status = 2;
 
 					$id = $row1->id;
 					$where = array('id'=>$id);
@@ -103,7 +103,7 @@ class Sms extends CI_Controller {
 						'status'=>$status,
 						'chemist_id'=>$chemist_id,
 					);
-					$this->Scheme_Model->edit_fun("tbl_upload_sms",$dt,$where);*/
+					$this->Scheme_Model->edit_fun("tbl_upload_sms",$dt,$where);
 				}
 			}
 		}		
