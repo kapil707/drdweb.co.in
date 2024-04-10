@@ -2,6 +2,22 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class ExeMasterManage extends CI_Controller
 {
+	public function insert_all_time_of_the_day(){
+		$db_master = $this->load->database('db_master', TRUE);
+
+		$date = date("Y-m-d");
+		for($i=0;$i<=23;$i++){
+			for($j=0;$j<=59;$j++){
+				$time = "$i:$j";
+
+				$dt = array(
+					'date' => $date,
+					'time' => $time,
+				);
+				$db_master->query("insert into tbl_cronjob_time_for_exe (date,time) values ('$date','$time')");
+			}
+		}
+	}
 	public function upload_delivery_order()
 	{
 		$isdone = "";
