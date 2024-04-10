@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Cronjob_admin_report extends CI_Controller 
+class Cronjob_master extends CI_Controller 
 {
 	public function __construct(){
 
