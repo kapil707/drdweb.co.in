@@ -8,8 +8,14 @@ class ExeMasterManage extends CI_Controller
 		$date = date("Y-m-d");
 		for($i=0;$i<=23;$i++){
 			for($j=0;$j<=59;$j++){
+				if($i<10){
+					$i = "0$i";
+				}
+				if($j<10){
+					$j = "0$j";
+				}
 				$time = "$i:$j";
-				
+
 				$db_master->query("insert into tbl_cronjob_time_for_exe (date,time) values ('$date','$time')");
 			}
 		}
