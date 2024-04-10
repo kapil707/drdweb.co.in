@@ -15,7 +15,7 @@ class Cronjob_master extends CI_Controller
 		$time = date("h:i a");
 		$current_time = date("H:i:s");
 		$time = date("H:i", strtotime($current_time . ' - 1 minute'));
-		$result = $db_master->query("select * from tbl_cronjob_time_for_exe where time<='$time' limit 100")->result();
+		$result = $db_master->query("select * from tbl_cronjob_time_for_exe where time<='$time' and status=0 limit 100")->result();
 		foreach($result as $row){
 			echo $row->time;
 			echo "<br>";
