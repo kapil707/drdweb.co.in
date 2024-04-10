@@ -26,7 +26,7 @@ class Cronjob_master extends CI_Controller
 			curl_setopt_array(
 				$curl,
 				array(
-					CURLOPT_URL =>"http://122.160.139.36:7272/drd_local_server/cronjob-local/Cronjob_master/insert_delivery_order/"+$time,
+					CURLOPT_URL =>"http://122.160.139.36:7272/drd_local_server/cronjob-local/Cronjob_master/insert_delivery_order/".$time,
 					CURLOPT_RETURNTRANSFER => true,
 					CURLOPT_ENCODING => '',
 					CURLOPT_MAXREDIRS => 0,
