@@ -19,6 +19,9 @@ class Cronjob_master extends CI_Controller
 		foreach($result as $row){
 			echo $row->time;
 			echo "<br>";
+
+			$id = $row->id;
+			$db_master->query("update tbl_cronjob_time_for_exe set status=1 where id='$id'");
 		}
 	}
 }
