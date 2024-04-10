@@ -7,10 +7,10 @@ class ExeMasterManage extends CI_Controller
 
 		$date = date("Y-m-d");
 		for($i=0;$i<=23;$i++){
+			if($i<10){
+				$i = "0$i";
+			}
 			for($j=0;$j<=59;$j++){
-				if($i<10){
-					$i = "0$i";
-				}
 				if($j<10){
 					$j = "0$j";
 				}
