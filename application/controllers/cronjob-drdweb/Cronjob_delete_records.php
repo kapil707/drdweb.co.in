@@ -19,6 +19,7 @@ class Cronjob_delete_records extends CI_Controller
 		
 		$db_master = $this->load->database('db_master', TRUE);
 		$db_master->query("DELETE FROM `drd_master_tbl_delivery` WHERE vdt<='$day7'");	
+		$db_master->query("update tbl_cronjob_time_for_exe set status=0");
 		
 		$this->db->query("DELETE FROM `tbl_top_search` WHERE date<='$day30'");
 		
