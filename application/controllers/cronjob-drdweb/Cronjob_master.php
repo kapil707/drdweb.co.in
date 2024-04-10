@@ -17,8 +17,33 @@ class Cronjob_master extends CI_Controller
 		$time = date("H:i", strtotime($current_time . ' - 1 minute'));
 		$result = $db_master->query("select * from tbl_cronjob_time_for_exe where time<='$time' and status=0 limit 100")->result();
 		foreach($result as $row){
-			echo $row->time;
-			echo "<br>";
+			$time = $row->time;
+
+			$parmiter = '';
+
+			$curl = curl_init();
+
+			curl_setopt_array(
+				$curl,
+				array(
+					CURLOPT_URL =>"http://122.160.139.36:7272/drd_local_server/cronjob-local/Cronjob_master/insert_delivery_order/"+$time,
+					CURLOPT_RETURNTRANSFER => true,
+					CURLOPT_ENCODING => '',
+					CURLOPT_MAXREDIRS => 0,
+					CURLOPT_TIMEOUT => 300,
+					CURLOPT_FOLLOWLOCATION => true,
+					CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+					CURLOPT_CUSTOMREQUEST => 'POST',
+					CURLOPT_POSTFIELDS => $parmiter,
+					CURLOPT_HTTPHEADER => array(
+						'Content-Type: application/json',
+					),
+				)
+			);
+
+			$response = curl_exec($curl);
+			print_r($response);
+			curl_close($curl);
 
 			$id = $row->id;
 			$db_master->query("update tbl_cronjob_time_for_exe set status=1 where id='$id'");
