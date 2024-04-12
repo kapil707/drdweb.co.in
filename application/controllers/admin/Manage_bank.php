@@ -81,7 +81,7 @@ class Manage_bank extends CI_Controller {
 					//$this->load->view('upload_success', $data);
 				}
 			}
-
+die();
 			$result = "";
 			$dt = array(
 				'status' => $status,
