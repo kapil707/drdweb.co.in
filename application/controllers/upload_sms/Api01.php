@@ -2,6 +2,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Api01 extends CI_Controller {	
 
+	public function __construct(){
+
+		parent::__construct();
+
+		$this->load->model("model-drdweb/BankModel");
+	}
+
 	public function upload_sms() {
 
 		$sender			= $_POST['sender'];
@@ -19,6 +26,7 @@ class Api01 extends CI_Controller {
 			'datetime'=>$datetime,
 		);
 		$this->Scheme_Model->insert_fun("tbl_upload_sms",$dt);
+		$this->BankModel->insert_fun("tbl_sms", $dt);
 
 		$response = array(
             'success' => "1",
@@ -42,7 +50,7 @@ class Api01 extends CI_Controller {
 			$items = "";
 			if(!empty($from_date) && !empty($to_date)){
 
-				$result = $this->db->query("select * from tbl_upload_sms where date BETWEEN '$from_date' AND '$to_date'")->result();
+				$result = $this->db->query("select * from tbl_sms where date BETWEEN '$from_date' AND '$to_date'")->result();
 
 				foreach($result as $row){
 
