@@ -1,15 +1,16 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Cronjob_get_whatsapp_message extends CI_Controller 
+class Cronjob_bank extends CI_Controller 
 {
 	public function __construct(){
 
 		parent::__construct();
+
+		$this->load->model("model-drdweb/BankModel");
 	}
 	
 	public function get_whatsapp_message()
 	{
-	
 		$parmiter = '';
 		$curl = curl_init();
 		
@@ -40,11 +41,29 @@ class Cronjob_get_whatsapp_message extends CI_Controller
 		if (isset($data['messages'])) {
 			foreach ($data['messages'] as $message) {
 				$body = isset($message['body']) ? $message['body'] : "Body not found";
+
 				$date = isset($message['date']) ? $message['date'] : "Date not found";
-		
-				echo "Body: " . $body . "\n";
-				echo "Date: " . $date . "\n";
-				echo "\n";
+
+				$extracted_text = isset($message['extracted_text']) ? $message['extracted_text'] : "extracted_text not found";
+
+				$from_number = isset($message['from_number']) ? $message['from_number'] : "Date not found";
+				
+				$id = isset($message['id']) ? $message['from_number'] : "id not found";
+
+				$screenshot_image = isset($message['screenshot_image']) ? $message['screenshot_image'] : "screenshot_image not found";
+
+				$timestamp = isset($message['timestamp']) ? $message['timestamp'] : "timestamp not found";
+
+				$dt = array(
+					'body' => $body,
+					'date' => $date,
+					'extracted_text' => $extracted_text,
+					'from_number' => $from_number,
+					'message_id' => $id,
+					'screenshot_image' => $screenshot_image,
+					'timestamp' => $timestamp,
+				);
+				$this->BankModel->insert_fun("tbl_whatsapp_message", $dt);
 			}
 		} else {
 			echo "No messages found.\n";

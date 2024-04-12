@@ -159,6 +159,28 @@ $db['db_master'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+
+$db['bank_db'] = array(
+	'dsn'	=> '',
+	'hostname' => 'localhost',
+	'username' => 'drdistributor_bank_user',
+	'password' => 'T7}{aGz.[t1t',
+	'database' => 'drdistributor_bank_db',
+	'dbdriver' => 'mysqli',
+	'dbprefix' => '',
+	'pconnect' => FALSE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
+);
 /*
 $db['default'] = array(
 	'dsn'	=> '',
