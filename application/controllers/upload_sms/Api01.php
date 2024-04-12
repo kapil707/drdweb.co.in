@@ -40,7 +40,7 @@ class Api01 extends CI_Controller {
 	}
 
 	public function get_upload_sms() {
-		
+		echo "asdfasf";
 		if(!empty($_REQUEST)){
 			$from_date 	= $_REQUEST["from_date"];
 			$to_date	= $_REQUEST['to_date'];
