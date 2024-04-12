@@ -9,11 +9,11 @@
            		<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
-                            Name
+                            File
                         </label>
                     </div>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="form-field-1" placeholder="Name" name="name" value="<?= set_value('name'); ?>" required="required" />
+                        <input type="file" class="form-control" id="form-field-1" placeholder="Name" name="" value="<?= set_value('name'); ?>" required="required" />
                     </div>
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">  
