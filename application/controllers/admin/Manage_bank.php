@@ -53,10 +53,7 @@ class Manage_bank extends CI_Controller {
 			$message_db = "";
 			$time = time();
 			$date = date("Y-m-d", $time);
-			
-			$where = array('code' => $id);
 
-			$myfile = "";
 			if (!empty($_FILES["myfile"]["name"])) {
 				$url_path = "uploads/$page_controllers/myfile/";
 
@@ -69,18 +66,18 @@ class Manage_bank extends CI_Controller {
 				$config['allowed_types'] = '*';  // You may want to restrict allowed file types.
 				$config['max_size'] = 0;  // Set to 0 to allow any size.
 
-				$new_name = time().$_FILES["image"]['name'];
+				$new_name = time().$_FILES["myfile"]['name'];
 				$config['file_name'] = $new_name;
 		
 				$this->load->library('upload', $config);
 		
-				if (!$this->upload->do_upload('image')) {
+				if (!$this->upload->do_upload('myfile')) {
 					$error = array('error' => $this->upload->display_errors());
 					//$this->load->view('upload_form', $error);
 					print_r($error);
 				} else {
 					$data = $this->upload->data();
-					$image = ($data['file_name']);
+					echo $image = ($data['file_name']);
 					//$this->load->view('upload_success', $data);
 				}
 			}
