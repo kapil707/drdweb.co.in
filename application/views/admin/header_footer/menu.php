@@ -99,6 +99,27 @@
 				</ul>
 			</li>
 			<?php } 
+			$menu = $this->db->query("select DISTINCT tbl_permission_settings.page_type,sorting_order from tbl_permission_settings,tbl_permission_page where tbl_permission_settings.page_type=tbl_permission_page.page_type and user_type='$user_type' and (tbl_permission_settings.page_type='manage_bank') GROUP BY tbl_permission_settings.page_type,sorting_order order by sorting_order asc")->result();
+			if(!empty($menu)){
+			?>
+			<li <?php foreach($menu as $mymenu){ if($Page_menu==$mymenu->page_type) { ?> class="active" <?php } }?>>
+				<a href="#">
+					<span class="nav-label">
+						<i class="fa fa-th-large"></i>
+						Manage Bank
+					</span><span class="fa arrow"></span>
+				</a>
+				<ul class="nav nav-second-level collapse">
+				<?php 
+				foreach($menu as $mymenu){
+					$row = $this->db->query("select page_title from  tbl_permission_page where page_type='$mymenu->page_type'")->row();
+					?>
+					<li><a href="<?= base_url()?>admin/<?php echo $mymenu->page_type ?>/view" <?php if($Page_menu==$mymenu->page_type) { ?> class="active" <?php }  ?>><?php echo $row->page_title;?></a>
+					</li> 
+				<?php } ?>
+				</ul>
+			</li>
+			<?php } 
 			$menu = $this->db->query("select DISTINCT tbl_permission_settings.page_type,sorting_order from tbl_permission_settings,tbl_permission_page where tbl_permission_settings.page_type=tbl_permission_page.page_type and user_type='$user_type' and (tbl_permission_settings.page_type='manage_chemist' or tbl_permission_settings.page_type='manage_corporate' or tbl_permission_settings.page_type='manage_salesman' or tbl_permission_settings.page_type='manage_chemist_request') GROUP BY tbl_permission_settings.page_type,sorting_order order by sorting_order asc")->result();
 			if(!empty($menu)){
 			?>
