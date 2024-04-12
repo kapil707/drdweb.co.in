@@ -23,7 +23,7 @@ class Cronjob_get_whatsapp_message extends CI_Controller
 				CURLOPT_TIMEOUT => 300,
 				CURLOPT_FOLLOWLOCATION => true,
 				CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-				CURLOPT_CUSTOMREQUEST => 'POST',
+				CURLOPT_CUSTOMREQUEST => 'GET',
 				CURLOPT_POSTFIELDS => $parmiter,
 				CURLOPT_HTTPHEADER => array(
 					'Content-Type: application/json',
