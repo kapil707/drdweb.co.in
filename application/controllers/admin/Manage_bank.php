@@ -87,6 +87,7 @@ class Manage_bank extends CI_Controller {
 				'status' => $status,
 			);
 			$result = $this->BankModel->insert_fun("tbl_bank_file", $dt);
+			$change_text = "hello";
 			if ($result) {
 				$message_db = "$change_text - Edit Successfully.";
 				$message = "Edit Successfully.";
