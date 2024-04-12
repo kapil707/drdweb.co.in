@@ -113,7 +113,7 @@ class Manage_bank extends CI_Controller {
 		}
 
 		$this->load->view("admin/header_footer/header",$data);
-		$this->load->view("admin/$Page_view/edit",$data);
+		$this->load->view("admin/$Page_view/add",$data);
 		$this->load->view("admin/header_footer/footer",$data);
 	}
 	public function view()
