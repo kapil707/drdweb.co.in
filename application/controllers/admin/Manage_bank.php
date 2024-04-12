@@ -96,7 +96,7 @@ class Manage_bank extends CI_Controller {
 			$start_row = "12";
 
 			$filename = $new_name;
-			$upload_path = "uploads/$page_controllers/myfile/";
+			$upload_path = "./uploads/$page_controllers/myfile/";
 			echo "<br>";
 			echo $excelFile = $upload_path.$filename;
 			if(file_exists($excelFile))
