@@ -1,10 +1,10 @@
 <div class="row">
     <div class="col-xs-12" style="margin-bottom:5px;">
-    	<?php /*<a href="add">
+    	<a href="add">
             <button type="submit" class="btn btn-info">
                 Add
             </button>
-        </a> */ ?>
+        </a>
    	</div>
 	<div class="col-xs-12">
         <div class="table-responsive">

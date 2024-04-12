@@ -10,16 +10,114 @@ class Manage_bank extends CI_Controller {
 	public function __construct()
     {
         parent::__construct();
-		$this->load->model('Query_Model');
+		$this->load->model("model-drdweb/BankModel");
     }
 	public function index()
 	{
 		$page_controllers = $this->page_controllers;
 		redirect("admin/$page_controllers/view");
 	}
+	public function add()
+	{
+		/******************session***********************/
+		$user_id = $this->session->userdata("user_id");
+		$user_type = $this->session->userdata("user_type");
+		/******************session***********************/		
+
+		$Page_title = $this->Page_title;
+		$Page_name 	= $this->Page_name;
+		$Page_view 	= $this->Page_view;
+		$Page_menu 	= $this->Page_menu;
+		$Page_tbl 	= $this->Page_tbl;
+		$page_controllers 	= $this->page_controllers;		
+
+		$this->Admin_Model->permissions_check_or_set($Page_title,$Page_name,$user_type);		
+
+		$data['title1'] = $Page_title." || Edit";
+		$data['title2'] = "Edit";
+		$data['Page_name'] = $Page_name;
+		$data['Page_menu'] = $Page_menu;
+		$this->breadcrumbs->push("Edit","admin/");
+		$this->breadcrumbs->push("$Page_title","admin/$page_controllers/");
+		$this->breadcrumbs->push("Edit","admin/$page_controllers/edit");		
+
+		$tbl = $Page_tbl;	
+
+		$data['url_path'] = base_url()."uploads/$page_controllers/photo/";
+		$upload_path = "./uploads/$page_controllers/photo/";
+		$upload_thumbs_path = "./uploads/$page_controllers/photo/thumbs/";		
+		$system_ip = $this->input->ip_address();
+
+		extract($_POST);
+		if (isset($Submit)) {
+			$message_db = "";
+			$time = time();
+			$date = date("Y-m-d", $time);
+			
+			$where = array('code' => $id);
+
+			$myfile = "";
+			if (!empty($_FILES["myfile"]["name"])) {
+				$url_path = "uploads/$page_controllers/myfile/";
+
+				ini_set('upload_max_filesize', '10M');
+				ini_set('post_max_size', '10M');
+				ini_set('max_input_time', 300);
+				ini_set('max_execution_time', 300);
+		
+				$config['upload_path'] = $upload_image;  // Define the directory where you want to store the uploaded files.
+				$config['allowed_types'] = '*';  // You may want to restrict allowed file types.
+				$config['max_size'] = 0;  // Set to 0 to allow any size.
+
+				$new_name = time().$_FILES["image"]['name'];
+				$config['file_name'] = $new_name;
+		
+				$this->load->library('upload', $config);
+		
+				if (!$this->upload->do_upload('image')) {
+					$error = array('error' => $this->upload->display_errors());
+					//$this->load->view('upload_form', $error);
+					print_r($error);
+				} else {
+					$data = $this->upload->data();
+					$image = ($data['file_name']);
+					//$this->load->view('upload_success', $data);
+				}
+			}
+
+			$result = "";
+			$dt = array(
+				'status' => $status,
+			);
+			$result = $this->BankModel->insert_fun("tbl_bank_file", $dt);
+			if ($result) {
+				$message_db = "$change_text - Edit Successfully.";
+				$message = "Edit Successfully.";
+				$this->session->set_flashdata("message_type", "success");
+			} else {
+				$message_db = "$change_text - Not Add.";
+				$message = "Not Add.";
+				$this->session->set_flashdata("message_type", "error");
+			}
+			if ($message_db != "") {
+				$message = $Page_title . " - " . $message;
+				$message_db = $Page_title . " - " . $message_db;
+				$this->session->set_flashdata("message_footer", "yes");
+				$this->session->set_flashdata("full_message", $message);
+				$this->Admin_Model->Add_Activity_log($message_db);
+				if ($result) {
+					//redirect(current_url());
+					redirect(base_url()."admin/$page_controllers/view");
+				}
+			}
+		}
+
+		$this->load->view("admin/header_footer/header",$data);
+		$this->load->view("admin/$Page_view/edit",$data);
+		$this->load->view("admin/header_footer/footer",$data);
+	}
 	public function view()
 	{
-		error_reporting(0);
 		/******************session***********************/
 		$user_id = $this->session->userdata("user_id");
 		$user_type = $this->session->userdata("user_type");
@@ -193,76 +291,5 @@ class Manage_bank extends CI_Controller {
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/edit",$data);
 		$this->load->view("admin/header_footer/footer",$data);
-	}
-	
-
-	public function send_email_for_password_create($code,$password)
-	{
-		$q = $this->db->query("select code,altercode,email,mobile,name from tbl_master where code='$code' ")->row();
-		if($q->code!="")
-		{
-			$name		= $q->name;
-			$email_id 	= $q->email;
-			$altercode 	= $q->altercode;
-			$number 	= $q->mobile;
-			if($q->mobile!="")
-			{
-				/*$msg = "Hello $q->name Your New Login Details is $q->altercode Password is $randompassword";
-				$q->mobile = "9530005050";
-				//$q->mobile = "7303229909";
-				$this->auth_model->send_sms_fun($q->mobile,$msg);*/
-			}
-			else
-			{
-				$err = "$name this user can not have any mobile number";
-				$this->Email_Model->tbl_whatsapp_email_fail($number,$err,$altercode);
-			}
-			if($q->email!="")
-			{
-				$this->Email_Model->send_email_for_password_create($name,$email_id,$altercode,$password);
-			}
-			else
-			{
-				$err = "$name this user can not have any email address";
-				$this->Email_Model->tbl_whatsapp_email_fail($email_id,$err,$altercode);
-			}			
-		}
-	}
-
-	public function password_create1() {
-		error_reporting(0);
-		$id = $_POST["id"];
-		$password = strtolower($_POST["password"]);	
-
-		$row = $this->db->query("select tbl_master.code from tbl_master,tbl_master_other where tbl_master.code=tbl_master_other.code and tbl_master.id='$id' order by tbl_master.id desc")->row();
-		$code = $row->code;
-		$this->send_email_for_password_create($code,$password);
-		$password = md5($password);
-		$this->db->query("update tbl_master_other set password='$password' where code='$code'");
-		echo "ok";
-	}
-
-	public function password_create2() {
-		error_reporting(0);
-		$id = $_POST["id"];
-		$password = strtolower($this->randomPassword());	
-
-		$row = $this->db->query("select tbl_master.code from tbl_master,tbl_master_other where tbl_master.code=tbl_master_other.code and tbl_master.id='$id' order by tbl_master.id desc")->row();
-		$code = $row->code;
-		$this->send_email_for_password_create($code,$password);
-		$password = md5($password);
-		$this->db->query("update tbl_master_other set password='$password' where code='$code'");
-		echo "ok";
-	}
-
-	public function randomPassword() {
-		$alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-		$pass = array(); //remember to declare $pass as an array
-		$alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
-		for ($i = 0; $i < 8; $i++) {
-			$n = rand(0, $alphaLength);
-			$pass[] = $alphabet[$n];
-		}
-		return implode($pass); //turn the array into a string
 	}
 }
