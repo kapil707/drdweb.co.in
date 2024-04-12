@@ -81,7 +81,39 @@ class Manage_bank extends CI_Controller {
 					//$this->load->view('upload_success', $data);
 				}
 			}
-die();
+
+			$account_no 			= "A";
+			$branch_no 				= "B";
+			$statment_date 			= "C";
+			$amount 				= "F";
+			$enter_date 			= "G";
+			$value_date 			= "H";
+			$bank_reference 		= "I";
+			$customer_reference 	= "J";
+			$narrative 				= "K";
+			$transaction_description= "L";
+
+			$start_row = "12";
+
+			$filename = $new_name;
+			$upload_path = $upload_image;
+			$excelFile = $upload_path.$filename;
+			if(file_exists($excelFile))
+			{
+				$this->load->library('excel');
+				$objPHPExcel = PHPExcel_IOFactory::load($excelFile);
+				foreach ($objPHPExcel->getWorksheetIterator() as $worksheet)
+				{
+					$highestRow = $worksheet->getHighestRow();
+					for ($row=$start_row; $row<=$highestRow; $row++)
+					{
+						echo $string = $worksheet->getCell($account_no.$row)->getValue();
+						echo "<br>";
+					}
+				}
+			}
+			die();
+
 			$result = "";
 			$dt = array(
 				'status' => $status,
