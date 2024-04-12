@@ -2,6 +2,12 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class BankModel extends CI_Model  
 {
+	function select_query($query)
+	{
+		$db_bank = $this->load->database('bank_db', TRUE);
+		return $db_bank->query($query);	
+	}
+
 	function select_fun($tbl,$where)
 	{
 		$db_bank = $this->load->database('bank_db', TRUE);

@@ -50,7 +50,8 @@ class Api01 extends CI_Controller {
 			$items = "";
 			if(!empty($from_date) && !empty($to_date)){
 
-				$result = $this->db->query("select * from tbl_sms where date BETWEEN '$from_date' AND '$to_date'")->result();
+				$result = $this->BankModel->select_query("select * from tbl_sms where date BETWEEN '$from_date' AND '$to_date'");
+				$result = $result->result();
 
 				foreach($result as $row){
 
