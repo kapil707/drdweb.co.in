@@ -55,7 +55,7 @@ class Manage_bank extends CI_Controller {
 			$date = date("Y-m-d", $time);
 
 			if (!empty($_FILES["myfile"]["name"])) {
-				$url_path = "manage_bank/$page_controllers/myfile/";
+				$upload_image = "manage_bank/$page_controllers/myfile/";
 
 				ini_set('upload_max_filesize', '10M');
 				ini_set('post_max_size', '10M');
