@@ -13,7 +13,7 @@
                         </label>
                     </div>
                     <div class="col-sm-8">
-                        <input type="file" class="form-control" id="form-field-1" placeholder="Name" name="" value="<?= set_value('name'); ?>" required="required" />
+                        <input type="file" class="form-control" id="form-field-1" placeholder="Name" name="myfile" value="<?= set_value('myfile'); ?>" required="required" />
                     </div>
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">  
