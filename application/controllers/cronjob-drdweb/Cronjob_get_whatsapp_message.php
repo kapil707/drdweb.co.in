@@ -32,7 +32,24 @@ class Cronjob_get_whatsapp_message extends CI_Controller
 		);
 
 		$response = curl_exec($curl);
-		print_r($response);
+		//print_r($response);
 		curl_close($curl);
+
+		$data = json_decode($response, true); // Convert JSON string to associative array
+
+		if (isset($data['messages'][0]['body'])) {
+			$body = $data['messages'][0]['body'];
+		} else {
+			$body = "Body not found";
+		}
+
+		if (isset($data['messages'][0]['date'])) {
+			$date = $data['messages'][0]['date'];
+		} else {
+			$date = "Date not found";
+		}
+
+		echo "Body: " . $body . "\n";
+		echo "Date: " . $date . "\n";
 	}
 }
