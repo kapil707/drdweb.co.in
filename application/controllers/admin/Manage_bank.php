@@ -97,7 +97,8 @@ class Manage_bank extends CI_Controller {
 
 			$filename = $new_name;
 			$upload_path = "uploads/$page_controllers/myfile/";
-			$excelFile = $upload_path.$filename;
+			echo "<br>";
+			echo $excelFile = $upload_path.$filename;
 			if(file_exists($excelFile))
 			{
 				$this->load->library('excel');
