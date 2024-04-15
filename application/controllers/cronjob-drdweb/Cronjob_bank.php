@@ -54,7 +54,7 @@ class Cronjob_bank extends CI_Controller
 
 				$timestamp = isset($message['timestamp']) ? $message['timestamp'] : "timestamp not found";
 
-				$date = utf8_encode($date);
+				$body = utf8_encode($body);
 
 				$dt = array(
 					'body' => $body,
