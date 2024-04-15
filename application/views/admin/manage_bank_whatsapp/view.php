@@ -6,7 +6,9 @@
             </button>
         </a> -->
    	</div>
-	<?php $curl = curl_init();
+	<?php 
+	$parmiter = '';
+	$curl = curl_init();
 		
 		curl_setopt_array(
 			$curl,
