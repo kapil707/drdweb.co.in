@@ -1,10 +1,10 @@
 <div class="row">
     <div class="col-xs-12" style="margin-bottom:5px;">
-    	<a href="add">
+    	<!-- <a href="add">
             <button type="submit" class="btn btn-info">
                 Add
             </button>
-        </a>
+        </a> -->
    	</div>
 	<div class="col-xs-12">
         <div class="table-responsive">
@@ -12,28 +12,25 @@
                 <thead>
                     <tr>
 						<th>
-							Code
+							body
 						</th>
 						<th>
-							Altercode
+							date
 						</th>
 						<th>
-                        	Name
+							extracted_text
                         </th>
 						<th>
-                        	Email 
+							from_number 
 						</th>
 						<th> 
-                        	Mobile
+							message_id
                         </th>
 						<th>
-                        	Status
+							screenshot_image
                         </th>
 						<th>
-                        	Password Status
-                        </th>
-						<th>
-                        	Image
+							timestamp
                         </th>
 						<th>
                         	Edit
