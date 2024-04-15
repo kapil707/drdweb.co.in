@@ -83,8 +83,8 @@
 					}
 					 */?>
 					 <?php
-					if (isset($data['messages'])) {
-						foreach ($data['messages'] as $message) {
+					if (isset($data1['messages'])) {
+						foreach ($data1['messages'] as $message) {
 							$body = isset($message['body']) ? $message['body'] : "Body not found";
 
 							$date = isset($message['date']) ? $message['date'] : "Date not found";
