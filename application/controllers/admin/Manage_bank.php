@@ -31,7 +31,7 @@ class Manage_bank extends CI_Controller {
 		$Page_menu 	= $this->Page_menu;
 		$Page_tbl 	= $this->Page_tbl;
 		$page_controllers 	= $this->page_controllers;	
-		$data['page_controllers'] =	$page_controllers;
+		
 
 		$this->Admin_Model->permissions_check_or_set($Page_title,$Page_name,$user_type);		
 
@@ -46,7 +46,7 @@ class Manage_bank extends CI_Controller {
 		$tbl = $Page_tbl;	
 
 		$data['url_path'] = base_url()."uploads/$page_controllers/photo/";
-		$upload_path = "./uploads/$page_controllers/photo/";
+		$data['upload_path'] = "./uploads/$page_controllers/myfile/";
 		$upload_thumbs_path = "./uploads/$page_controllers/photo/thumbs/";		
 		$system_ip = $this->input->ip_address();
 

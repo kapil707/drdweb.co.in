@@ -77,8 +77,7 @@
 
 		$start_row = "12";
 
-		$upload_path = "./uploads/$page_controllers/myfile/";
-		echo "<br>";
+		//$upload_path = "./uploads/$page_controllers/myfile/";
 		echo $excelFile = $upload_path.$filename;
 		if(file_exists($excelFile))
 		{
