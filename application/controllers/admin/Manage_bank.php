@@ -79,8 +79,8 @@ class Manage_bank extends CI_Controller {
 					//$this->load->view('upload_form', $error);
 					print_r($error);
 				} else {
-					$data = $this->upload->data();
-					$image = ($data['file_name']);
+					$data1 = $this->upload->data();
+					$image = ($data1['file_name']);
 					//$this->load->view('upload_success', $data);
 				}
 			}
