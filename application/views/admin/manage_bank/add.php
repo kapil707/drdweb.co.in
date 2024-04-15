@@ -89,7 +89,7 @@
 				$highestRow = $worksheet->getHighestRow();
 				for ($row=$start_row; $row<=$highestRow; $row++)
 				{
-					echo $string = $worksheet->getCell($account_no.$row)->getValue();
+					echo $string = $worksheet->getCell($amount.$row)->getValue();
 					echo "<br>";
 				}
 			}
