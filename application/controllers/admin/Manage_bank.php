@@ -11,6 +11,7 @@ class Manage_bank extends CI_Controller {
     {
         parent::__construct();
 		$this->load->model("model-drdweb/BankModel");
+		$this->load->model("model-drdweb/InvoiceModel");
     }
 	public function index()
 	{
