@@ -104,7 +104,7 @@
 								<td><?php echo $date; ?></td>
 								<td><?php echo $extracted_text; ?></td>
 								<td><?php echo $from_number; ?></td>
-								<td><?php echo $message_id; ?></td>
+								<td><?php echo $id; ?></td>
 								<td><?php echo $screenshot_image; ?></td>
 								<td><?php echo $timestamp; ?></td>
 								<td><?php echo $timestamp; ?></td>
