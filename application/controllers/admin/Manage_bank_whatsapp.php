@@ -55,6 +55,6 @@ class Manage_bank_whatsapp extends CI_Controller {
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/view",$data);
 		$this->load->view("admin/header_footer/footer",$data);
-		$this->load->view("admin/$Page_view/footer2",$data);
+		//$this->load->view("admin/$Page_view/footer2",$data);
 	}
 }

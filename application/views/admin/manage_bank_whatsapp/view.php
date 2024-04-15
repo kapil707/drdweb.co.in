@@ -38,7 +38,15 @@
                     </tr>
                 </thead>
 				<tbody>
-					
+					<?php
+					foreach($result as $row){
+						?>
+						<tr>
+							<td><?php echo $row->body; ?></td>
+						</tr>
+						<?php
+					}
+					?>
 				</tbody>
 			</table>
 		</div>
