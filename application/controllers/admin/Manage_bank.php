@@ -104,7 +104,7 @@ class Manage_bank extends CI_Controller {
 			if(file_exists($excelFile))
 			{
 				echo "working";
-				//$this->load->library('excel');
+				$this->load->library('excel');
 				$objPHPExcel = PHPExcel_IOFactory::load($excelFile);
 				foreach ($objPHPExcel->getWorksheetIterator() as $worksheet)
 				{
