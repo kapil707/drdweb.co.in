@@ -82,6 +82,8 @@ class Manage_bank extends CI_Controller {
 				}
 			}
 
+			sleep(1);
+
 			$account_no 			= "A";
 			$branch_no 				= "B";
 			$statment_date 			= "C";
