@@ -19,6 +19,7 @@ class Manage_bank extends CI_Controller {
 	}
 	public function add()
 	{
+		error_reporting(0);
 		/******************session***********************/
 		$user_id = $this->session->userdata("user_id");
 		$user_type = $this->session->userdata("user_type");
