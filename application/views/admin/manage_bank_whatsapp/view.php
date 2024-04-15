@@ -105,7 +105,7 @@
 								<td><?php echo $extracted_text; ?></td>
 								<td><?php echo $from_number; ?></td>
 								<td><?php echo $id; ?></td>
-								<td><?php echo $screenshot_image; ?></td>
+								<td><img src="https://api.wassi.chat/<?php echo $screenshot_image; ?>?token=531fe5caf0e132bdb6000bf01ed66d8cfb75b53606cc8f6eed32509d99d74752f47f288db155557e" width="100px"></td>
 								<td><?php echo $timestamp; ?></td>
 								<td><?php echo $timestamp; ?></td>
 							</tr>
