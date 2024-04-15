@@ -90,7 +90,17 @@
 				for ($row=$start_row; $row<=$highestRow; $row++)
 				{
 					echo $string = $worksheet->getCell($amount.$row)->getValue();
+
 					$vdt = "2024-04-02";
+					$where = array('amt'=>$string,'vdt'=>$vdt);
+					$rr = $this->InvoiceModel->select_fun("tbl_invoice_new",$where);
+					$rr = $rr->result();
+					foreach($rr as $tt){
+						echo $tt->chemist_id;
+						echo ",";
+					}
+
+					$vdt = "2024-04-03";
 					$where = array('amt'=>$string,'vdt'=>$vdt);
 					$rr = $this->InvoiceModel->select_fun("tbl_invoice_new",$where);
 					$rr = $rr->result();
