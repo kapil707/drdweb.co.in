@@ -29,7 +29,8 @@ class Manage_bank extends CI_Controller {
 		$Page_view 	= $this->Page_view;
 		$Page_menu 	= $this->Page_menu;
 		$Page_tbl 	= $this->Page_tbl;
-		$page_controllers 	= $this->page_controllers;		
+		$page_controllers 	= $this->page_controllers;	
+		$data['page_controllers'] =	$page_controllers;
 
 		$this->Admin_Model->permissions_check_or_set($Page_title,$Page_name,$user_type);		
 
@@ -85,7 +86,7 @@ class Manage_bank extends CI_Controller {
 			$data["filename"] = $image;
 			
 
-			$result = "";
+			/*$result = "";
 			$dt = array(
 				'status' => $status,
 			);
@@ -110,7 +111,7 @@ class Manage_bank extends CI_Controller {
 					//redirect(current_url());
 					//redirect(base_url()."admin/$page_controllers/view");
 				}
-			}
+			}*/
 		}
 
 		$this->load->view("admin/header_footer/header",$data);
