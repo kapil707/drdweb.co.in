@@ -43,6 +43,13 @@
 						?>
 						<tr>
 							<td><?php echo $row->body; ?></td>
+							<td><?php echo $row->date; ?></td>
+							<td><?php echo $row->extracted_text; ?></td>
+							<td><?php echo $row->from_number; ?></td>
+							<td><?php echo $row->message_id; ?></td>
+							<td><?php echo $row->screenshot_image; ?></td>
+							<td><?php echo $row->timestamp; ?></td>
+							<td><?php echo $row->timestamp; ?></td>
 						</tr>
 						<?php
 					}
