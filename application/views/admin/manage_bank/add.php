@@ -93,7 +93,7 @@
 					$where = array('amt'=>$string);
 					$rr = $this->InvoiceModel->select_fun("tbl_invoice_new",$where);
 					foreach($rr as $tt){
-						echo $rr->chemist_id;
+						echo $tt->chemist_id;
 						echo ",";
 					}
 					echo "<br>";
