@@ -48,6 +48,7 @@ class Manage_bank extends CI_Controller {
 		$upload_thumbs_path = "./uploads/$page_controllers/photo/thumbs/";		
 		$system_ip = $this->input->ip_address();
 
+		$data["filename"] = "";
 		extract($_POST);
 		if (isset($Submit)) {
 			$message_db = "";
@@ -77,46 +78,12 @@ class Manage_bank extends CI_Controller {
 					print_r($error);
 				} else {
 					$data = $this->upload->data();
-					echo $image = ($data['file_name']);
+					$image = ($data['file_name']);
 					//$this->load->view('upload_success', $data);
 				}
 			}
-
-			sleep(1);
-
-			$account_no 			= "A";
-			$branch_no 				= "B";
-			$statment_date 			= "C";
-			$amount 				= "F";
-			$enter_date 			= "G";
-			$value_date 			= "H";
-			$bank_reference 		= "I";
-			$customer_reference 	= "J";
-			$narrative 				= "K";
-			$transaction_description= "L";
-
-			$start_row = "12";
-
-			$filename = $image;
-			$upload_path = "./uploads/$page_controllers/myfile/";
-			echo "<br>";
-			echo $excelFile = $upload_path.$filename;
-			if(file_exists($excelFile))
-			{
-				echo "working";
-				$this->load->library('excel');
-				$objPHPExcel = PHPExcel_IOFactory::load($excelFile);
-				foreach ($objPHPExcel->getWorksheetIterator() as $worksheet)
-				{
-					$highestRow = $worksheet->getHighestRow();
-					for ($row=$start_row; $row<=$highestRow; $row++)
-					{
-						echo $string = $worksheet->getCell($account_no.$row)->getValue();
-						echo "<br>";
-					}
-				}
-			}
-			die();
+			$data["filename"] = $image;
+			
 
 			$result = "";
 			$dt = array(
@@ -141,7 +108,7 @@ class Manage_bank extends CI_Controller {
 				$this->Admin_Model->Add_Activity_log($message_db);
 				if ($result) {
 					//redirect(current_url());
-					redirect(base_url()."admin/$page_controllers/view");
+					//redirect(base_url()."admin/$page_controllers/view");
 				}
 			}
 		}

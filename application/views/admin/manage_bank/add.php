@@ -63,6 +63,39 @@
             </div>
         </form>
         <!-- PAGE CONTENT ENDS -->
+		<?php
+		$account_no 			= "A";
+		$branch_no 				= "B";
+		$statment_date 			= "C";
+		$amount 				= "F";
+		$enter_date 			= "G";
+		$value_date 			= "H";
+		$bank_reference 		= "I";
+		$customer_reference 	= "J";
+		$narrative 				= "K";
+		$transaction_description= "L";
+
+		$start_row = "12";
+
+		$upload_path = "./uploads/$page_controllers/myfile/";
+		echo "<br>";
+		echo $excelFile = $upload_path.$filename;
+		if(file_exists($excelFile))
+		{
+			echo "working";
+			$this->load->library('excel');
+			$objPHPExcel = PHPExcel_IOFactory::load($excelFile);
+			foreach ($objPHPExcel->getWorksheetIterator() as $worksheet)
+			{
+				$highestRow = $worksheet->getHighestRow();
+				for ($row=$start_row; $row<=$highestRow; $row++)
+				{
+					echo $string = $worksheet->getCell($account_no.$row)->getValue();
+					echo "<br>";
+				}
+			}
+		}
+		?>
     </div><!-- /.col -->
 </div><!-- /.row -->
 <script>
