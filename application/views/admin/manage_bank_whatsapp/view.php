@@ -41,8 +41,8 @@
 					<?php
 					foreach($result as $row){
 						?>
-						<tr>
-							<td><?php echo $row->body; ?></td>
+						<tr><?php $body = utf8_decode($row->body); ?>
+							<td><?php echo $body; ?></td>
 							<td><?php echo $row->date; ?></td>
 							<td><?php echo $row->extracted_text; ?></td>
 							<td><?php echo $row->from_number; ?></td>
