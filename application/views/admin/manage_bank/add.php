@@ -92,6 +92,7 @@
 					echo $string = $worksheet->getCell($amount.$row)->getValue();
 					$where = array('amt'=>$string);
 					$rr = $this->InvoiceModel->select_fun("tbl_invoice_new",$where);
+					$rr = $rr->result();
 					foreach($rr as $tt){
 						echo $tt->chemist_id;
 						echo ",";
