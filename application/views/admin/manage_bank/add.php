@@ -90,17 +90,19 @@
 				for ($row=$start_row; $row<=$highestRow; $row++)
 				{
 					$amount1 = $worksheet->getCell($amount.$row)->getValue();
-					echo $statment_date1 = $worksheet->getCell($statment_date.$row)->getValue();
-					echo "----";
-					echo $mydate = date('Y-m-d', strtotime($statment_date1));
+					$statment_date1 = $worksheet->getCell($statment_date.$row)->getValue();
 					
-					/*$where = array('amt'=>$string,'vdt'=>$vdt);
-					$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where amt='$amount1' and (vdt)");
+					$mydate = date('Y-m-d', strtotime($statment_date1));
+					$start_date = date('Y-m-d', strtotime($mydate . ' -2 day'));
+					$end_date = date('Y-m-d', strtotime($mydate . ' -1 day'));
+					
+					
+					$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where amt='$amount1' and (vdt BETWEEN $start_date and $end_date)");
 					$rr = $rr->result();
 					foreach($rr as $tt){
 						echo $tt->chemist_id;
 						echo ",";
-					}*/
+					}
 					echo "<br>";
 				}
 			}
