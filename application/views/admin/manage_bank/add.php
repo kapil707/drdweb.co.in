@@ -65,12 +65,14 @@
         <!-- PAGE CONTENT ENDS -->
 		<?php
 
-$text = "UPI CREDIT REFERENCE 446604081862 FROM 97926121865@PAYTM SAMEER S O KALLU NA";
+$string = "SAMEER SO KALLU-9792612183@PAYTM-BARB0DIGHXX";
+$mobileNumber = "9792612183";
 
-// Use regular expression to extract text after "FROM"
-if (preg_match('/FROM\s+([^@]+)/', $text, $matches)) {
-    $from_text = trim($matches[1]);
-    echo $from_text; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+// Check if the string contains the mobile number in the given format
+if (strpos($string, $mobileNumber) !== false) {
+    echo "Record found";
+} else {
+    echo "Record not found";
 }
 
 
@@ -184,10 +186,18 @@ if (preg_match('/FROM\s+([^@]+)/', $text, $matches)) {
 					echo "<br><br>";
 
 					/*************************** */
-
 					$searchValue = strtolower($received_from);
 					foreach($rows as $key => $value){
 						$value = strtolower($value);
+					
+						if (strpos($value, $searchValue) !== false) {
+							echo "Record found";
+						} else {
+							echo "Record not found";
+						}
+
+					
+					
 						if (strpos($value, $searchValue) !== false) {
 							echo "<b>$searchValue found in value with key $key </b><br>";
 						}
