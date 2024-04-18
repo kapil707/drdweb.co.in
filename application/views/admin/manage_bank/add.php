@@ -91,6 +91,8 @@
 				{
 					$amount1 = $worksheet->getCell($amount.$row)->getValue();
 					$statment_date1 = $worksheet->getCell($statment_date.$row)->getValue();
+					echo $narrative1 = $worksheet->getCell($narrative.$row)->getValue();
+					$transaction_description1 = $worksheet->getCell($transaction_description.$row)->getValue();
 					
 					//$mydate = date('Y-m-d', strtotime($statment_date1));
 					$start_date = date('Y-m-d', strtotime($statment_date1 . ' -2 day'));
