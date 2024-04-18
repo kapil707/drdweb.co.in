@@ -143,9 +143,6 @@
 				}
 			}
 		}
-		$this->checkagain();
-
-		function checkagain(){
 			$chemist = "B";
 			$itemname = "C";
 			$filename = "kapilji.xlsx";
@@ -168,7 +165,6 @@
 				}
 			}
 			print_r($rows);
-		}
 		?>
     </div><!-- /.col -->
 </div><!-- /.row -->
