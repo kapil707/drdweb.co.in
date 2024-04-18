@@ -182,7 +182,7 @@
 					}
 
 					if(!empty($received_from)){
-						$rr = $this->InvoiceModel->select_query("SELECT * FROM `tbl_chemist` WHERE `string_value` LIKE '%$received_from%'");
+						$rr = $this->BankModel->select_query("SELECT * FROM `tbl_chemist` WHERE `string_value` LIKE '%$received_from%'");
 						$rr = $rr->result();
 						foreach($rr as $tt){
 							echo "---chemist tbl---".$tt->chemist_id;
