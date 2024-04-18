@@ -90,8 +90,8 @@
 				for ($row=$start_row; $row<=$highestRow; $row++)
 				{
 					$amount1 = $worksheet->getCell($amount.$row)->getValue();
-					$statment_date1 = $worksheet->getCell($statment_date.$row)->getValue();
-
+					echo $statment_date1 = $worksheet->getCell($statment_date.$row)->getValue();
+					echo "----";
 					echo $mydate = date('Y-m-d', strtotime($statment_date1));
 					
 					/*$where = array('amt'=>$string,'vdt'=>$vdt);
