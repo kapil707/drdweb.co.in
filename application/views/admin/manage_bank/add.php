@@ -171,7 +171,7 @@
 						$from_text = $matches[1];
 						echo "type01: ".$from_text; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
 					}
-					echo "<br>";
+					echo "<br><br>";
 
 					/*************************** */
 
