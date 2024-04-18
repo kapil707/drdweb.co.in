@@ -118,9 +118,8 @@
 
 					if (preg_match('/FROM\s+(.*)$/', $narrative1, $matches)) {
 						$from_text = $matches[1];
-						echo $from_text."(find it)"; 
+						echo $from_text; 
 					}
-					//checkagain($received_from);
 					echo "<br><br>";
 				}
 			}
