@@ -177,7 +177,7 @@
 					/*************************** */
 					$searchValue = strtolower($received_from);
 					foreach($rows as $key => $value){
-						$value = strtolower($value);
+						echo $value = strtolower($value);
 					
 						if (preg_match('/\b'.$searchValue.'\b/', $value)) {
 							echo "<b>$searchValue found in value with key $key </b><br>";
