@@ -122,8 +122,8 @@
 						echo "--type0:".$from_text; // Output: 9792612185@ PAYTM SAMEER S O KALLU NA
 					}
 
-					if (preg_match('/FROM\s+([\w\d\s@]+)\s+UPI$/', $text, $matches)) {
-						$from_text = $matches[1];
+					if (preg_match('/FROM\s+([\d-]+@\s*)([\w\s]+)\s+PAYMENT/', $text, $matches)) {
+						$from_text = $matches[2];
 						echo "--type1:".$from_text; // Output: SUNILKJAIN2 7@OKAXIS NAMAN MEDICAL STORE
 					}
 
