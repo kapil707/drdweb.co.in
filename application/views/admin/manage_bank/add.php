@@ -170,7 +170,7 @@
 						if (preg_match($pattern, $value)) {
 							echo "Key: $key, Value: $value";
 							echo "<br>";
-							break();
+							break;
 						}
 					}
 				}
