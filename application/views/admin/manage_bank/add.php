@@ -162,14 +162,10 @@
 
 					/*************************** */
 
+					$searchValue = $from_at_text;
 					foreach($rows as $key => $value){
-						$value = strtolower($value);
-							
-						$pattern = '/\b' . preg_quote($from_at_text, '/') . '\b/';
-
-						if (preg_match($pattern, $value)) {
-							echo "Key: $key, Value: $value";
-							echo "<br>";
+						if (strpos($value, $searchValue) !== false) {
+							echo "$searchValue found in value with key $key <br>";
 						}
 					}
 				}
