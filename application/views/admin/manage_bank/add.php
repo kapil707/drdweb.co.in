@@ -117,7 +117,7 @@
 						echo ",";
 					}*/
 
-					if (preg_match('/FROM\s+([\w\d\s@]+)$/', $text, $matches)) {
+					if (preg_match('/FROM\s+(\d+@\s*)([\w\s]+)\s+/', $text, $matches)) {
 						$from_text = $matches[1];
 						echo "--type0:".$from_text; // Output: 9792612185@ PAYTM SAMEER S O KALLU NA
 					}
