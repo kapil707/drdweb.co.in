@@ -65,7 +65,7 @@
         <!-- PAGE CONTENT ENDS -->
 		<?php
 
-		$chemist = "B";
+		/*$chemist = "B";
 		$itemname = "C";
 		$filename1 = "kapilji.xlsx";
 		$upload_path = "./uploads/";
@@ -92,7 +92,7 @@
 					$this->BankModel->insert_fun("tbl_chemist", $dt);
 				}
 			}
-		}
+		}*/
 		//print_r($rows);
 
 		/*foreach($rows as $mydt){
@@ -174,22 +174,24 @@
 					echo "--type11:".$from_at_text; // Output: SUNILKJAIN2 7
 					echo "<br><br>";*/
 
+					$received_from = "";
 					// Use regular expression to extract text after "FROM"
 					if (preg_match('/FROM\s+([^@]+)/', $text, $matches)) {
 						$received_from = trim($matches[1]);
 						echo "find: ".$received_from; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
 					}
+
+					if(!empty($received_from)){
+						$rr = $this->InvoiceModel->select_query("SELECT * FROM `tbl_chemist` WHERE `string_value` LIKE '%$received_from%'");
+						$rr = $rr->result();
+						foreach($rr as $tt){
+							echo "---chemist tbl---".$tt->chemist_id;
+							echo ",";
+						}
+					}
 					echo "<br><br>";
 
-					/*************************** */
-					$searchValue = strtolower($received_from);
-					foreach($rows as $key => $value){
-						echo $value = strtolower($value);
-						echo "<br>";
-						if (preg_match('/\b'.$searchValue.'\b/', $value)) {
-							echo "<b>$searchValue found in value with key $key </b><br>";
-						} 
-					}
+					/*************************** */					
 				}
 			}
 		}
