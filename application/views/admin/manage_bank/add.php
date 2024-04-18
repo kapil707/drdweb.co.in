@@ -180,6 +180,7 @@
 						$received_from = trim($matches[1]).trim($matches[2]);
 						$received_from = str_replace("'", "", $received_from);
 						$received_from = str_replace(" ", "", $received_from);
+						$received_from = str_replace("\n", "", $received_from);
 						echo "find: ".$received_from; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
 					}
 
