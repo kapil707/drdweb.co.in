@@ -67,9 +67,9 @@
 
 		$chemist = "B";
 		$itemname = "C";
-		$filename = "kapilji.xlsx";
+		$filename1 = "kapilji.xlsx";
 		$upload_path = "./uploads/";
-		$excelFile = $upload_path.$filename;
+		$excelFile = $upload_path.$filename1;
 		$rows = array();
 		if(file_exists($excelFile))
 		{
