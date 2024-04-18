@@ -138,8 +138,8 @@ if (preg_match('/FROM\s+([^@]+)/', $text, $matches)) {
 					
 
 					$text = str_replace("@ ", "@", $text);
-					$text = preg_replace('/@\s/', "@", $text, 1);
-					echo $text = strtolower($text);
+					echo $text = preg_replace('/@\s/', "@", $text, 1);
+					//echo $text = strtolower($text);
 
 					//echo "select * from tbl_invoice_new where amt='$amount1' and (vdt BETWEEN $start_date and $end_date)";
 
