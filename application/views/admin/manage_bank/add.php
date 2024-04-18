@@ -143,13 +143,15 @@
 				}
 			}
 		}
+		checkagain();
 
-		function checkagain($val){
+		function checkagain(){
 			$chemist = "B";
 			$itemname = "C";
 			$filename = "kapilji.xlsx";
 			$upload_path = "./uploads/";
 			$excelFile = $upload_path.$filename;
+			$rows = array();
 			if(file_exists($excelFile))
 			{
 				$this->load->library('excel');
@@ -159,12 +161,13 @@
 					$highestRow = $worksheet->getHighestRow();
 					for ($row=2; $row<=$highestRow; $row++)
 					{
-						$string = $worksheet->getCell($itemname.$row)->getValue();
-						echo $string;
-						echo "<br>";
+						$itemname1 = $worksheet->getCell($itemname.$row)->getValue();
+						$chemist1 = $worksheet->getCell($chemist.$row)->getValue();
+						$rows[$chemist1] = $itemname1;
 					}
 				}
 			}
+			print_r($rows);
 		}
 		?>
     </div><!-- /.col -->
