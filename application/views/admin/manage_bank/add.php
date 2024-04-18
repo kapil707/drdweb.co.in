@@ -104,7 +104,7 @@
 		$narrative 				= "K";
 		$transaction_description= "L";
 
-		$start_row = "12";
+		$start_row = "13";
 
 		//$upload_path = "./uploads/$page_controllers/myfile/";
 		echo $excelFile = $upload_path.$filename;
