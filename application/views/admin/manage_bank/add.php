@@ -184,13 +184,13 @@
 						echo "find: ".$received_from; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
 					}
 
-					/*if(!empty($received_from)){
+					if(!empty($received_from)){
 						$rr = $this->BankModel->select_query("SELECT * FROM `tbl_chemist` WHERE `string_value` LIKE '%$received_from%'");
 						$rr = $rr->result();
 						foreach($rr as $tt){
 							echo "<b>---chemist tbl---".$tt->chemist_id."</b>";
 						}
-					}*/
+					}
 					echo "<br><br>";
 
 					/*************************** */					
