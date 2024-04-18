@@ -69,7 +69,7 @@
 		7@OKAXIS NAMAN MEDICAL STORE UPI";
 
 		// Use regular expression to extract text after "FROM"
-		if (preg_match('/FROM\s+(.*)$/', $text, $matches)) {
+		if (preg_match('/FROM/', $text, $matches)) {
 			$from_text = $matches[1];
 			echo $from_text; // Output: 9792612185@ PAYTM SAMEER S O KALLU NA
 		}
