@@ -65,7 +65,8 @@
         <!-- PAGE CONTENT ENDS -->
 		<?php
 
-		$text = "UPI CREDIT REFERENCE 446604081862 FROM 9792612185@ PAYTM SAMEER S O KALLU NA";
+		$text = "UPI CREDIT REFERENCE 410044367453 FROM 7011437913@ 
+		YBL PRIYANKA YADAV PAYMENT FROM PHONEPE";
 
 		// Use regular expression to extract text after "FROM"
 		if (preg_match('/FROM\s+(.*)$/', $text, $matches)) {
