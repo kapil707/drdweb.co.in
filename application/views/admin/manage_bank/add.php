@@ -151,6 +151,7 @@
 						echo "--type2:".$from_text; // Output: RAJENDER.SI NSINWAR@YBL SWAMIJI MEDICOS
 					}*/
 					// Find the position of "FROM" and "@"
+					$text = str_replace("@ ", "@", $text);
 					$from_pos = strpos($text, "FROM");
 					$at_pos = strpos($text, "@");
 
