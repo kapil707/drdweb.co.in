@@ -65,13 +65,32 @@
         <!-- PAGE CONTENT ENDS -->
 		<?php
 
-		$text = "UPI CREDIT REFERENCE 410005883071 FROM RAJENDER.SI 
-		NSINWAR@YBL SWAMIJI MEDICOS PAYMENT FROM PHONEPE";
+		$chemist = "B";
+		$itemname = "C";
+		$filename = "kapilji.xlsx";
+		$upload_path = "./uploads/";
+		$excelFile = $upload_path.$filename;
+		$rows = array();
+		if(file_exists($excelFile))
+		{
+			$this->load->library('excel');
+			$objPHPExcel = PHPExcel_IOFactory::load($excelFile);
+			foreach ($objPHPExcel->getWorksheetIterator() as $worksheet)
+			{
+				$highestRow = $worksheet->getHighestRow();
+				for ($row=2; $row<=$highestRow; $row++)
+				{
+					$itemname1 = $worksheet->getCell($itemname.$row)->getValue();
+					$chemist1 = $worksheet->getCell($chemist.$row)->getValue();
+					$rows[$chemist1] = $itemname1;
+				}
+			}
+		}
+		//print_r($rows);
 
-		// Use regular expression to extract text after "FROM"
-		if (preg_match('/FROM\s+([\w\d\s@]+)\s+FROM$/', $text, $matches)) {
-			$from_text = $matches[1];
-			echo $from_text; // Output: SUNILKJAIN2 7@OKAXIS NAMAN MEDICAL STORE
+		foreach($rows as $mydt){
+			echo $mydt;
+			echo "<br>";
 		}
 
 		$account_no 			= "A";
@@ -143,28 +162,6 @@
 				}
 			}
 		}
-			$chemist = "B";
-			$itemname = "C";
-			$filename = "kapilji.xlsx";
-			$upload_path = "./uploads/";
-			$excelFile = $upload_path.$filename;
-			$rows = array();
-			if(file_exists($excelFile))
-			{
-				$this->load->library('excel');
-				$objPHPExcel = PHPExcel_IOFactory::load($excelFile);
-				foreach ($objPHPExcel->getWorksheetIterator() as $worksheet)
-				{
-					$highestRow = $worksheet->getHighestRow();
-					for ($row=2; $row<=$highestRow; $row++)
-					{
-						$itemname1 = $worksheet->getCell($itemname.$row)->getValue();
-						$chemist1 = $worksheet->getCell($chemist.$row)->getValue();
-						$rows[$chemist1] = $itemname1;
-					}
-				}
-			}
-			print_r($rows);
 		?>
     </div><!-- /.col -->
 </div><!-- /.row -->
