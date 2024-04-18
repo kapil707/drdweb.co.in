@@ -166,7 +166,7 @@
 					foreach($rows as $key => $value){
 						$value = strtolower($value);
 						if (strpos($value, $searchValue) !== false) {
-							echo "$searchValue found in value with key $key <br>";
+							echo "<b>$searchValue found in value with key $key </b><br>";
 						}
 					}
 				}
