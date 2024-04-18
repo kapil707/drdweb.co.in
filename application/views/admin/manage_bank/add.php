@@ -65,11 +65,11 @@
         <!-- PAGE CONTENT ENDS -->
 		<?php
 
-		$text = "UPI CREDIT REFERENCE 446666298372 FROM SUNILKJAIN2 
-		7@OKAXIS NAMAN MEDICAL STORE UPI";
+		$text = "UPI CREDIT REFERENCE 410005883071 FROM RAJENDER.SI 
+		NSINWAR@YBL SWAMIJI MEDICOS PAYMENT FROM PHONEPE";
 
 		// Use regular expression to extract text after "FROM"
-		if (preg_match('/FROM\s+([\w\d\s@]+)\s+UPI$/', $text, $matches)) {
+		if (preg_match('/FROM\s+([\w\d\s@]+)\s+FROM$/', $text, $matches)) {
 			$from_text = $matches[1];
 			echo $from_text; // Output: SUNILKJAIN2 7@OKAXIS NAMAN MEDICAL STORE
 		}
