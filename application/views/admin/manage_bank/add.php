@@ -92,11 +92,12 @@
 					$amount1 = $worksheet->getCell($amount.$row)->getValue();
 					$statment_date1 = $worksheet->getCell($statment_date.$row)->getValue();
 					
-					$mydate = date('Y-m-d', strtotime($statment_date1));
-					$start_date = date('Y-m-d', strtotime($mydate . ' -2 day'));
-					$end_date = date('Y-m-d', strtotime($mydate . ' -1 day'));
+					//$mydate = date('Y-m-d', strtotime($statment_date1));
+					$start_date = date('Y-m-d', strtotime($statment_date1 . ' -2 day'));
+					$end_date = date('Y-m-d', strtotime($statment_date1 . ' -1 day'));
 					
-					
+					echo "select * from tbl_invoice_new where amt='$amount1' and (vdt BETWEEN $start_date and $end_date)";
+
 					$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where amt='$amount1' and (vdt BETWEEN $start_date and $end_date)");
 					$rr = $rr->result();
 					foreach($rr as $tt){
