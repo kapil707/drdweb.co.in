@@ -67,11 +67,15 @@
 
 		$text = "UPI CREDIT REFERENCE 446604081862 FROM 97926121865@PAYTM SAMEER S O KALLU NA";
 
-		// Use regular expression to extract text after "FROM"
-		if (preg_match('/FROM\s+([^\.]+)\s+\./', $text, $matches)) {
-			$from_text = trim($matches[1]);
-			echo $from_text; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+		$pattern = '/FROM (\S+)/';
+		if (preg_match($pattern, $text, $matches)) {
+			$received_from = $matches[1];
+			$status = 1;
+		} else {
+			$received_from = "Received from information not found";
+			$status = 2;
 		}
+		echo $received_from;
 
 		$chemist = "B";
 		$itemname = "C";
