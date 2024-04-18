@@ -127,6 +127,10 @@
 					$start_date = date('Y-m-d', strtotime($statment_date1 . ' -2 day'));
 					$end_date = date('Y-m-d', strtotime($statment_date1 . ' -1 day'));
 					
+
+					$text = str_replace("@ ", "@", $text);
+					echo $text = preg_replace('/@\s/', "@", $text, 1);
+
 					//echo "select * from tbl_invoice_new where amt='$amount1' and (vdt BETWEEN $start_date and $end_date)";
 
 					/*$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where amt='$amount1' and (vdt BETWEEN '$start_date' and '$end_date')");
@@ -136,7 +140,8 @@
 						echo ",";
 					}*/
 
-					/*if (preg_match('/FROM\s+(\d+@\s*)([\w\s]+)\s+/', $text, $matches)) {
+					/*
+					if (preg_match('/FROM\s+(\d+@\s*)([\w\s]+)\s+/', $text, $matches)) {
 						$from_text = $matches[1];
 						echo "--type0:".$from_text; // Output: 9792612185@ PAYTM SAMEER S O KALLU NA
 					}
@@ -151,20 +156,25 @@
 						echo "--type2:".$from_text; // Output: RAJENDER.SI NSINWAR@YBL SWAMIJI MEDICOS
 					}*/
 					// Find the position of "FROM" and "@"
-					$text = str_replace("@ ", "@", $text);
-					echo $text = preg_replace('/@\s/', "@", $text, 1);
-					$from_pos = strpos($text, "FROM");
+
+					/*$from_pos = strpos($text, "FROM");
 					$at_pos = strpos($text, "@");
 
 					// Extract the text between "FROM" and "@"
 					$from_at_text = substr($text, $from_pos + strlen("FROM"), $at_pos - $from_pos - strlen("FROM"));
 
 					echo "--type11:".$from_at_text; // Output: SUNILKJAIN2 7
-					echo "<br><br>";
+					echo "<br><br>";*/
+
+					// Use regular expression to extract text after "FROM"
+					if (preg_match('/FROM\s+(.*)$/', $text, $matches)) {
+						$from_text = $matches[1];
+						echo "type01:".$from_text; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+					}
 
 					/*************************** */
 
-					$searchValue = strtolower($from_at_text);
+					$searchValue = strtolower($from_text);
 					foreach($rows as $key => $value){
 						$value = strtolower($value);
 						if (strpos($value, $searchValue) !== false) {
