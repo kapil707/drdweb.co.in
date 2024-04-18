@@ -167,7 +167,8 @@
 					echo "<br><br>";*/
 
 					// Use regular expression to extract text after "FROM"
-					if (preg_match('/FROM\s+(.*)$/', $text, $matches)) {
+					$text = strtolower($text);
+					if (preg_match('/from\s+(.*)$/', $text, $matches)) {
 						$from_text = $matches[1];
 						echo "type01: ".$from_text; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
 					}
