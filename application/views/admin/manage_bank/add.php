@@ -65,18 +65,6 @@
         <!-- PAGE CONTENT ENDS -->
 		<?php
 
-		$text = "UPI CREDIT REFERENCE 446604081862 FROM 97926121865@PAYTM SAMEER S O KALLU NA";
-
-		$pattern = '/FROM (\S+)/';
-		if (preg_match($pattern, $text, $matches)) {
-			$received_from = $matches[1];
-			$status = 1;
-		} else {
-			$received_from = "Received from information not found";
-			$status = 2;
-		}
-		echo $received_from;
-
 		$chemist = "B";
 		$itemname = "C";
 		$filename1 = "kapilji.xlsx";
@@ -179,15 +167,18 @@
 					echo "<br><br>";*/
 
 					// Use regular expression to extract text after "FROM"
-					if (preg_match('/FROM\s+([^\.]+)\s+\./', $text, $matches)) {
-						$from_text = trim($matches[1]);
-						echo "type01: ".$from_text; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+					$pattern = '/FROM (\S+)/';
+					if (preg_match($pattern, $text, $matches)) {
+						$received_from = $matches[1];
+					} else {
+						$received_from = "";
 					}
+					echo $received_from;
 					echo "<br><br>";
 
 					/*************************** */
 
-					$searchValue = strtolower($from_text);
+					$searchValue = strtolower($received_from);
 					foreach($rows as $key => $value){
 						$value = strtolower($value);
 						if (strpos($value, $searchValue) !== false) {
