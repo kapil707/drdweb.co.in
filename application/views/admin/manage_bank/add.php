@@ -170,7 +170,7 @@
 					// Use regular expression to extract text after "FROM"
 					if (preg_match('/FROM\s+([^@]+)/', $text, $matches)) {
 						$received_from = trim($matches[1]);
-						echo $received_from; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+						echo "find: ".$received_from; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
 					}
 					echo "<br><br>";
 
@@ -180,7 +180,7 @@
 						$value = strtolower($value);
 					
 						if (preg_match('/\b'.$searchValue.'\b/', $value)) {
-							"<b>$searchValue found in value with key $key </b><br>";
+							echo "<b>$searchValue found in value with key $key </b><br>";
 						} 
 					}
 				}
