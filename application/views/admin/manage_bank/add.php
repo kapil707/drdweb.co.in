@@ -91,7 +91,7 @@
 				{
 					$amount1 = $worksheet->getCell($amount.$row)->getValue();
 					$statment_date1 = $worksheet->getCell($statment_date.$row)->getValue();
-					$narrative1 = $worksheet->getCell($narrative.$row)->getValue();
+					echo $narrative1 = $worksheet->getCell($narrative.$row)->getValue();
 					$transaction_description1 = $worksheet->getCell($transaction_description.$row)->getValue();
 					
 					//$mydate = date('Y-m-d', strtotime($statment_date1));
@@ -103,10 +103,10 @@
 					$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where amt='$amount1' and (vdt BETWEEN '$start_date' and '$end_date')");
 					$rr = $rr->result();
 					foreach($rr as $tt){
-						echo $narrative1."---".$tt->chemist_id;
+						echo "---".$tt->chemist_id;
 						echo ",";
 					}
-					echo "<br>";
+					echo "<br><br>";
 				}
 			}
 		}
