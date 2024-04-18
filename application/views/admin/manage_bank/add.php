@@ -103,31 +103,42 @@
 					$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where amt='$amount1' and (vdt BETWEEN '$start_date' and '$end_date')");
 					$rr = $rr->result();
 					foreach($rr as $tt){
-						echo "---".$tt->chemist_id;
+						echo "---with invoice---".$tt->chemist_id;
 						echo ",";
 					}
+
+					$pattern = '/From (\S+)/';
+					if (preg_match($pattern, $narrative1, $matches)) {
+						$received_from = $matches[1];
+					} else {
+						$received_from = "Received from information not found";
+					}
+					echo $received_from;
+					//checkagain($received_from);
 					echo "<br><br>";
 				}
 			}
 		}
 
-		$chemist = "B";
-		$itemname = "C";
-		$filename = "kapilji.xlsx";
-		$upload_path = "./uploads/";
-		$excelFile = $upload_path.$filename;
-		if(file_exists($excelFile))
-		{
-			$this->load->library('excel');
-			$objPHPExcel = PHPExcel_IOFactory::load($excelFile);
-			foreach ($objPHPExcel->getWorksheetIterator() as $worksheet)
+		function checkagain($val){
+			$chemist = "B";
+			$itemname = "C";
+			$filename = "kapilji.xlsx";
+			$upload_path = "./uploads/";
+			$excelFile = $upload_path.$filename;
+			if(file_exists($excelFile))
 			{
-				$highestRow = $worksheet->getHighestRow();
-				for ($row=2; $row<=$highestRow; $row++)
+				$this->load->library('excel');
+				$objPHPExcel = PHPExcel_IOFactory::load($excelFile);
+				foreach ($objPHPExcel->getWorksheetIterator() as $worksheet)
 				{
-					$string = $worksheet->getCell($itemname.$row)->getValue();
-					echo $string;
-					echo "<br>";
+					$highestRow = $worksheet->getHighestRow();
+					for ($row=2; $row<=$highestRow; $row++)
+					{
+						$string = $worksheet->getCell($itemname.$row)->getValue();
+						echo $string;
+						echo "<br>";
+					}
 				}
 			}
 		}
