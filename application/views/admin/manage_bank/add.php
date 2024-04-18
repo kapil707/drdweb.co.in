@@ -88,10 +88,10 @@
 		}
 		//print_r($rows);
 
-		foreach($rows as $mydt){
+		/*foreach($rows as $mydt){
 			echo $mydt;
 			echo "<br>";
-		}
+		}*/
 
 		$account_no 			= "A";
 		$branch_no 				= "B";
@@ -159,6 +159,18 @@
 
 					echo "--type11:".$from_at_text; // Output: SUNILKJAIN2 7
 					echo "<br><br>";
+
+					/*************************** */
+
+					foreach($rows as $key => $value){
+						$value = strtolower($value);
+							
+						$pattern = '/\b' . preg_quote($from_at_text, '/') . '\b/';
+
+						if (preg_match($pattern, $value)) {
+							echo "Key: $key, Value: $value";
+						}
+					}
 				}
 			}
 		}
