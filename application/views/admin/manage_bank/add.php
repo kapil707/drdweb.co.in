@@ -107,13 +107,10 @@
 						echo ",";
 					}
 
-					$pattern = '/From (\S+)/';
-					if (preg_match($pattern, $narrative1, $matches)) {
-						$received_from = $matches[1];
-					} else {
-						$received_from = "Received from information not found";
+					if (preg_match('/FROM\s+(.*)$/', $narrative1, $matches)) {
+						$from_text = $matches[1];
+						echo $from_text; // Output: 9792612185@ PAYTM SAMEER S O KALLU NA
 					}
-					echo "---".$received_from;
 					//checkagain($received_from);
 					echo "<br><br>";
 				}
