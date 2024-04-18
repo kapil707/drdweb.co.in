@@ -108,6 +108,27 @@
 				}
 			}
 		}
+
+		$chemist = "B";
+		$itemname = "C";
+		$filename = "kapilji.xlsx";
+		$upload_path = "./uploads/";
+		$excelFile = $upload_path.$filename;
+		if(file_exists($excelFile))
+		{
+			$this->load->library('excel');
+			$objPHPExcel = PHPExcel_IOFactory::load($excelFile);
+			foreach ($objPHPExcel->getWorksheetIterator() as $worksheet)
+			{
+				$highestRow = $worksheet->getHighestRow();
+				for ($row=2; $row<=$highestRow; $row++)
+				{
+					$string = $worksheet->getCell($itemname.$row)->getValue();
+					echo $string;
+					echo "<br>";
+				}
+			}
+		}
 		?>
     </div><!-- /.col -->
 </div><!-- /.row -->
