@@ -115,9 +115,9 @@
 
 		$upload_path = "uploads/manage_bank/myfile/";
 		$excelFile = $upload_path.$filename;
+		$i=1;
 		if(file_exists($excelFile))
 		{
-			echo "working";
 			$this->load->library('excel');
 			$objPHPExcel = PHPExcel_IOFactory::load($excelFile);
 			foreach ($objPHPExcel->getWorksheetIterator() as $worksheet)
@@ -135,6 +135,8 @@
 					$end_date = date('Y-m-d', strtotime($statment_date1 . ' -1 day'));
 					
 
+					echo $i.". ";
+					$i++;
 					$text = str_replace("@ ", "@", $text);
 					echo $text = preg_replace('/@\s/', "@", $text, 1);
 					//echo $text = strtolower($text);
