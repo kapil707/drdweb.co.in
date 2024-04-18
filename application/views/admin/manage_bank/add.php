@@ -101,7 +101,7 @@
 				{
 					$amount1 = $worksheet->getCell($amount.$row)->getValue();
 					$statment_date1 = $worksheet->getCell($statment_date.$row)->getValue();
-					echo $text = $worksheet->getCell($narrative.$row)->getValue();
+					$text = $worksheet->getCell($narrative.$row)->getValue();
 					$transaction_description1 = $worksheet->getCell($transaction_description.$row)->getValue();
 					
 					//$mydate = date('Y-m-d', strtotime($statment_date1));
@@ -116,6 +116,11 @@
 						echo "---with invoice---".$tt->chemist_id;
 						echo ",";
 					}*/
+
+					if (preg_match('/FROM\s+([\w\d\s@]+)$/', $text, $matches)) {
+						$from_text = $matches[1];
+						echo "type0:".$from_text; // Output: 9792612185@ PAYTM SAMEER S O KALLU NA
+					}
 
 					if (preg_match('/FROM\s+([\w\d\s@]+)\s+UPI$/', $text, $matches)) {
 						$from_text = $matches[1];
