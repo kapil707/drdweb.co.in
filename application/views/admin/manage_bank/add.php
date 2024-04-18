@@ -89,25 +89,18 @@
 				$highestRow = $worksheet->getHighestRow();
 				for ($row=$start_row; $row<=$highestRow; $row++)
 				{
-					echo $string = $worksheet->getCell($amount.$row)->getValue();
+					$amount1 = $worksheet->getCell($amount.$row)->getValue();
+					$statment_date1 = $worksheet->getCell($statment_date.$row)->getValue();
 
-					$vdt = "2024-04-02";
-					$where = array('amt'=>$string,'vdt'=>$vdt);
-					$rr = $this->InvoiceModel->select_fun("tbl_invoice_new",$where);
+					echo $mydate = date('Y-m-d', strtotime($statment_date1));
+					
+					/*$where = array('amt'=>$string,'vdt'=>$vdt);
+					$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where amt='$amount1' and (vdt)");
 					$rr = $rr->result();
 					foreach($rr as $tt){
 						echo $tt->chemist_id;
 						echo ",";
-					}
-
-					$vdt = "2024-04-03";
-					$where = array('amt'=>$string,'vdt'=>$vdt);
-					$rr = $this->InvoiceModel->select_fun("tbl_invoice_new",$where);
-					$rr = $rr->result();
-					foreach($rr as $tt){
-						echo $tt->chemist_id;
-						echo ",";
-					}
+					}*/
 					echo "<br>";
 				}
 			}

@@ -2,6 +2,11 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class InvoiceModel extends CI_Model  
 {
+	function select_query($query)
+	{
+		$db_bank = $this->load->database('default3', TRUE);
+		return $db_bank->query($query);	
+	}
 	function select_fun($tbl,$where)
 	{
 		$db_invoice = $this->load->database('default3', TRUE);
