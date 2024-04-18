@@ -162,7 +162,7 @@
 
 					/*************************** */
 
-					foreach($rows as $key => $value){
+					/*foreach($rows as $key => $value){
 						$value = strtolower($value);
 							
 						$pattern = '/\b' . preg_quote($from_at_text, '/') . '\b/';
@@ -172,7 +172,7 @@
 							echo "<br>";
 							break;
 						}
-					}
+					}*/
 				}
 			}
 		}
