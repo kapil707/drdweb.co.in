@@ -109,7 +109,7 @@
 
 					if (preg_match('/FROM\s+(.*)$/', $narrative1, $matches)) {
 						$from_text = $matches[1];
-						echo $from_text; // Output: 9792612185@ PAYTM SAMEER S O KALLU NA
+						echo $from_text."(find it)"; 
 					}
 					//checkagain($received_from);
 					echo "<br><br>";
