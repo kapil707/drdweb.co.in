@@ -82,7 +82,14 @@
 				{
 					$itemname1 = $worksheet->getCell($itemname.$row)->getValue();
 					$chemist1 = $worksheet->getCell($chemist.$row)->getValue();
-					$rows[$chemist1] = $itemname1;
+					//$rows[$chemist1] = $itemname1;
+
+					$dt = array(
+						'string_value'=>$itemname1,
+						'chemist_id'=>$chemist1,
+					);
+					//$this->Scheme_Model->insert_fun("tbl_upload_sms",$dt);
+					$this->BankModel->insert_fun("tbl_chemist", $dt);
 				}
 			}
 		}
