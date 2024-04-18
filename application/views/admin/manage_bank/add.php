@@ -65,16 +65,6 @@
         <!-- PAGE CONTENT ENDS -->
 		<?php
 
-$string = "SAMEER SO KALLU-9792612183@PAYTM-BARB0DIGHXX";
-$mobileNumber = "9792612183";
-
-if (preg_match('/\b'.$mobileNumber.'\b/', $string)) {
-    echo "Record found";
-} else {
-    echo "Record not found";
-}
-
-
 		$chemist = "B";
 		$itemname = "C";
 		$filename1 = "kapilji.xlsx";
@@ -189,17 +179,9 @@ if (preg_match('/\b'.$mobileNumber.'\b/', $string)) {
 					foreach($rows as $key => $value){
 						$value = strtolower($value);
 					
-						if (strpos($value, $searchValue) !== false) {
-							echo "Record found";
-						} else {
-							echo "Record not found";
-						}
-
-					
-					
-						if (strpos($value, $searchValue) !== false) {
-							echo "<b>$searchValue found in value with key $key </b><br>";
-						}
+						if (preg_match('/\b'.$searchValue.'\b/', $value)) {
+							"<b>$searchValue found in value with key $key </b><br>";
+						} 
 					}
 				}
 			}
