@@ -68,8 +68,7 @@
 $string = "SAMEER SO KALLU-9792612183@PAYTM-BARB0DIGHXX";
 $mobileNumber = "9792612183";
 
-// Check if the string contains the mobile number in the given format
-if (strpos($string, $mobileNumber) !== false) {
+if (preg_match('/\b'.$mobileNumber.'\b/', $string)) {
     echo "Record found";
 } else {
     echo "Record not found";
