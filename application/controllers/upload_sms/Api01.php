@@ -9,6 +9,36 @@ class Api01 extends CI_Controller {
 		$this->load->model("model-drdweb/BankModel");
 	}
 
+	public function upload_sms_test() {
+
+		$sender			= $_POST['sender'];
+		$message_body 	= $_POST["message_body"];
+
+		$date = date('Y-m-d');
+		$time = date("H:i",time());
+		$datetime = time();
+
+		$dt = array(
+			'sender'=>$sender,
+			'message_body'=>$message_body,
+			'date'=>$date,
+			'time'=>$time,
+			'datetime'=>$datetime,
+		);
+		//$this->Scheme_Model->insert_fun("tbl_upload_sms",$dt);
+		$this->BankModel->insert_fun("tbl_sms_test", $dt);
+
+		$response = array(
+            'success' => "1",
+            'message' => 'Data add successfully',
+			'sender' => $sender,
+        );
+
+        // Send JSON response
+        header('Content-Type: application/json');
+        echo json_encode($response);
+	}
+
 	public function upload_sms() {
 
 		$sender			= $_POST['sender'];
