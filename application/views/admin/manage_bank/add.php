@@ -123,7 +123,7 @@
 					}
 
 					if (preg_match('/FROM\s+([\d-]+@\s*)([\w\s]+)\s+PAYMENT/', $text, $matches)) {
-						$from_text = $matches[2];
+						$from_text = $matches[1];
 						echo "--type1:".$from_text; // Output: SUNILKJAIN2 7@OKAXIS NAMAN MEDICAL STORE
 					}
 
