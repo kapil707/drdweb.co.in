@@ -107,7 +107,7 @@
 		$start_row = "13";
 
 		$upload_path = "uploads/manage_bank/myfile/";
-		echo $excelFile = $upload_path.$filename;
+		$excelFile = $upload_path.$filename;
 		if(file_exists($excelFile))
 		{
 			echo "working";
@@ -120,7 +120,7 @@
 				{
 					$amount1 = $worksheet->getCell($amount.$row)->getValue();
 					$statment_date1 = $worksheet->getCell($statment_date.$row)->getValue();
-					echo $text = $worksheet->getCell($narrative.$row)->getValue();
+					$text = $worksheet->getCell($narrative.$row)->getValue();
 					$transaction_description1 = $worksheet->getCell($transaction_description.$row)->getValue();
 					
 					//$mydate = date('Y-m-d', strtotime($statment_date1));
@@ -162,7 +162,7 @@
 
 					/*************************** */
 
-					/*foreach($rows as $key => $value){
+					foreach($rows as $key => $value){
 						$value = strtolower($value);
 							
 						$pattern = '/\b' . preg_quote($from_at_text, '/') . '\b/';
@@ -172,7 +172,7 @@
 							echo "<br>";
 							break;
 						}
-					}*/
+					}
 				}
 			}
 		}
