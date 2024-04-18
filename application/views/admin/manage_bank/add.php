@@ -65,6 +65,14 @@
         <!-- PAGE CONTENT ENDS -->
 		<?php
 
+		$text = "UPI CREDIT REFERENCE 446604081862 FROM 97926121865@PAYTM SAMEER S O KALLU NA";
+
+		// Use regular expression to extract text after "FROM"
+		if (preg_match('/FROM\s+([^\.]+)\s+\./', $text, $matches)) {
+			$from_text = trim($matches[1]);
+			echo $from_text; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+		}
+
 		$chemist = "B";
 		$itemname = "C";
 		$filename1 = "kapilji.xlsx";
