@@ -69,9 +69,9 @@
 		7@OKAXIS NAMAN MEDICAL STORE UPI";
 
 		// Use regular expression to extract text after "FROM"
-		if (preg_match('/FROM/', $text, $matches)) {
+		if (preg_match('/FROM\s+([\w\d\s@]+)\s+UPI$/', $text, $matches)) {
 			$from_text = $matches[1];
-			echo $from_text; // Output: 9792612185@ PAYTM SAMEER S O KALLU NA
+			echo $from_text; // Output: SUNILKJAIN2 7@OKAXIS NAMAN MEDICAL STORE
 		}
 
 		$account_no 			= "A";
