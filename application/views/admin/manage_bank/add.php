@@ -168,13 +168,10 @@
 					echo "<br><br>";*/
 
 					// Use regular expression to extract text after "FROM"
-					$pattern = '/FROM (\S+)/';
-					if (preg_match($pattern, $text, $matches)) {
-						$received_from = $matches[1];
-					} else {
-						$received_from = "";
+					if (preg_match('/FROM\s+([^@]+)/', $text, $matches)) {
+						$from_text = trim($matches[1]);
+						echo $from_text; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
 					}
-					echo $received_from;
 					echo "<br><br>";
 
 					/*************************** */
