@@ -143,7 +143,7 @@
 				}
 			}
 		}
-		checkagain();
+		$this->checkagain();
 
 		function checkagain(){
 			$chemist = "B";
