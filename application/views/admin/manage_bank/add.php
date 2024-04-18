@@ -117,7 +117,7 @@
 						echo ",";
 					}*/
 
-					if (preg_match('/FROM\s+(\d+@\s*)([\w\s]+)\s+/', $text, $matches)) {
+					/*if (preg_match('/FROM\s+(\d+@\s*)([\w\s]+)\s+/', $text, $matches)) {
 						$from_text = $matches[1];
 						echo "--type0:".$from_text; // Output: 9792612185@ PAYTM SAMEER S O KALLU NA
 					}
@@ -130,7 +130,15 @@
 					if (preg_match('/FROM\s+([\w\d\s.@]+)\s+PAYMENT FROM PHONEPE$/', $text, $matches)) {
 						$from_text = $matches[1];
 						echo "--type2:".$from_text; // Output: RAJENDER.SI NSINWAR@YBL SWAMIJI MEDICOS
-					}
+					}*/
+					// Find the position of "FROM" and "@"
+					$from_pos = strpos($text, "FROM");
+					$at_pos = strpos($text, "@");
+
+					// Extract the text between "FROM" and "@"
+					$from_at_text = substr($text, $from_pos + strlen("FROM"), $at_pos - $from_pos - strlen("FROM"));
+
+					echo "--type11:".$from_at_text; // Output: SUNILKJAIN2 7
 					echo "<br><br>";
 				}
 			}
