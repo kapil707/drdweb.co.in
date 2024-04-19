@@ -29,21 +29,9 @@
 	$date_parts = explode(" to ", $date_range);
 
 	// Start date aur end date ko extract karen
-	$start_date_str = $date_parts[0];
-	$end_date_str = $date_parts[1];
+	echo $start_date_str = $date_parts[0];
+	echo $end_date_str = $date_parts[1];
 
-	// DateTime object banaen
-	$start_date = DateTime::createFromFormat('d-m-Y', $start_date_str);
-	$end_date = DateTime::createFromFormat('d-m-Y', $end_date_str);
-
-	// Yadi koi error aata hai to usko handle karein
-	if (!$start_date || !$end_date) {
-		echo "Invalid date format!";
-	} else {
-	// Dates ko print karen
-		echo "Start Date: " . $start_date->format('Y-m-d') . "\n";
-		echo "End Date: " . $end_date->format('Y-m-d') . "\n";
-	}
 	$parmiter = '';
 	$curl = curl_init();
 		
