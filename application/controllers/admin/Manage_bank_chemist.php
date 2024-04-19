@@ -49,7 +49,7 @@ class Manage_bank_chemist extends CI_Controller {
 		$data['url_path'] = base_url()."uploads/$page_controllers/photo/";
 		$upload_path = "./uploads/$page_controllers/photo/";
 		
-		$result = $this->BankModel->select_query("select * from tbl_whatsapp_message");
+		$result = $this->BankModel->select_query("select * from $tbl");
 		$data["result"] = $result->result();
 
 		$this->load->view("admin/header_footer/header",$data);
