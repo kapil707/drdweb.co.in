@@ -6,12 +6,18 @@
             </button>
         </a> -->
     </div>
+	<?php
+	$date_range = "";
+	if(isset($_GET["date-range"])){
+		$date_range = $_GET["date-range"];
+	}
+	?>
 	<form method="get" class="mb-5" style="margin-bottom:10px;">
 		<div class="col-md-3">
 			<label for="date-range">Select Date Range:</label>
 		</div>
 		<div class="col-md-3">
-			<input type="text" id="date-range" class="form-control" name="date-range" value="<?php echo $_GET["date-range"] ?>">
+			<input type="text" id="date-range" class="form-control" name="date-range" value="<?php echo $date_range ?>">
 		</div>
 		<div class="col-md-3">
 			<button type="submit" class="btn btn-info submit_button" name="Submit">
