@@ -11,7 +11,7 @@
 			<label for="date-range">Select Date Range:</label>
 		</div>
 		<div class="col-md-3">
-			<input type="text" id="date-range" class="form-control" name="date-range">
+			<input type="text" id="date-range" class="form-control" name="date-range" value="<?php echo $_GET["date-range"] ?>">
 		</div>
 		<div class="col-md-3">
 			<button type="submit" class="btn btn-info submit_button" name="Submit">
