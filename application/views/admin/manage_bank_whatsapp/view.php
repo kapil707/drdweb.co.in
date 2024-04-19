@@ -32,6 +32,8 @@
 	echo $start_date = $date_parts[0];
 	echo $end_date = $date_parts[1];
 
+	//Created a GET API
+	//http://97.74.82.55:5000/messages?from=07/04/2024&to=07/04/2024
 	$parmiter = '';
 	$curl = curl_init();
 		
