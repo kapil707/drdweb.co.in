@@ -29,8 +29,8 @@
 	$date_parts = explode(" to ", $date_range);
 
 	// Start date aur end date ko extract karen
-	echo $start_date_str = $date_parts[0];
-	echo $end_date_str = $date_parts[1];
+	echo $start_date = $date_parts[0];
+	echo $end_date = $date_parts[1];
 
 	$parmiter = '';
 	$curl = curl_init();
@@ -38,7 +38,7 @@
 		curl_setopt_array(
 			$curl,
 			array(
-				CURLOPT_URL =>"http://97.74.82.55:5000/messages?from=07/04/2024&to=07/04/2024",
+				CURLOPT_URL =>"http://97.74.82.55:5000/messages?from=$start_date&to=$end_date",
 				CURLOPT_RETURNTRANSFER => true,
 				CURLOPT_ENCODING => '',
 				CURLOPT_MAXREDIRS => 0,
