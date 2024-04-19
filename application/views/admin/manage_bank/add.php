@@ -150,7 +150,17 @@
 						echo "find: ".$received_from; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
 					}
 
-					if(empty($received_from)){
+					$chmist_id = "";
+					if(!empty($received_from)){
+						$rr = $this->BankModel->select_query("SELECT * FROM `tbl_chemist` WHERE `string_value` LIKE '%$received_from%'");
+						$rr = $rr->result();
+						foreach($rr as $tt){
+							$chmist_id = $tt->chemist_id;
+							echo "<b>---chemist tbl---".$tt->chemist_id."</b>";
+						}
+					}
+
+					if(empty($chmist_id)){
 						$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where amt='$amount1' and (vdt BETWEEN '$start_date' and '$end_date')");
 						$rr = $rr->result();
 						foreach($rr as $tt){
@@ -159,13 +169,6 @@
 						}
 					}
 
-					if(!empty($received_from)){
-						$rr = $this->BankModel->select_query("SELECT * FROM `tbl_chemist` WHERE `string_value` LIKE '%$received_from%'");
-						$rr = $rr->result();
-						foreach($rr as $tt){
-							echo "<b>---chemist tbl---".$tt->chemist_id."</b>";
-						}
-					}
 					echo "<br><br>";
 
 					/*************************** */					
