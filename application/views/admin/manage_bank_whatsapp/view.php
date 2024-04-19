@@ -5,6 +5,9 @@
                 Add
             </button>
         </a> -->
+		<label for="date-range">Select Date Range:</label>
+		<input type="text" id="date-range" class="form-control">
+    </div>
    	</div>
 	<?php 
 	$parmiter = '';
