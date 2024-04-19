@@ -6,7 +6,7 @@ $(document).ready(function(){
 	foreach ($result as $row)
 	{	
 		?>
-		data.push(['<?= ($row->string_value); ?>', '<?= ($row->chemist_id); ?>','<a href="<?= base_url(); ?>admin/<?php echo $Page_name ?>/edit/<?= ($row->code); ?>">Edit</a>']);
+		data.push(['<?= ($row->string_value); ?>', '<?= ($row->chemist_id); ?>','<a href="<?= base_url(); ?>admin/<?php echo $Page_name ?>/id/<?= ($row->id); ?>">Edit</a>']);
 		<?php
 	}
 	?>
