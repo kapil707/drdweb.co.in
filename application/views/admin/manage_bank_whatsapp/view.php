@@ -7,8 +7,14 @@
         </a> -->
     </div>
 	<div class="col-md-3">
-		<label for="date-range">Select Date Range:</label>
-		<input type="text" id="date-range" class="form-control">
+		<form>
+			<label for="date-range">Select Date Range:</label>
+			<input type="text" id="date-range" class="form-control">
+			<button type="submit" class="btn btn-info submit_button" name="Submit">
+				<i class="ace-icon fa fa-check bigger-110"></i>
+				Submit
+			</button>
+		</form>
 	</div>
 	<div class="col-md-9"></div>
 	<?php 
