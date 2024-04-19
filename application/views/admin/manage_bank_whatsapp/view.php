@@ -5,9 +5,12 @@
                 Add
             </button>
         </a> -->
+    </div>
+	<div class="col-md-3">
 		<label for="date-range">Select Date Range:</label>
 		<input type="text" id="date-range" class="form-control">
-    </div>
+	</div>
+	<div class="col-md-9"></div>
 	<?php 
 	$parmiter = '';
 	$curl = curl_init();
