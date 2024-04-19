@@ -23,7 +23,7 @@
 	</form>
 	<?php 
 
-	$date_range = $_GET["date_range"];
+	$date_range = $_GET["date-range"];
 
 	// `to` ke aas paas se string ko tukdon mein vibhajit karen
 	$date_parts = explode(" to ", $date_range);
