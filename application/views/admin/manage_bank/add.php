@@ -139,42 +139,6 @@
 					$i++;
 					$text = str_replace("@ ", "@", $text);
 					echo $text = preg_replace('/@\s/', "@", $text, 1);
-					//echo $text = strtolower($text);
-
-					//echo "select * from tbl_invoice_new where amt='$amount1' and (vdt BETWEEN $start_date and $end_date)";
-
-					/*$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where amt='$amount1' and (vdt BETWEEN '$start_date' and '$end_date')");
-					$rr = $rr->result();
-					foreach($rr as $tt){
-						echo "---with invoice---".$tt->chemist_id;
-						echo ",";
-					}*/
-
-					/*
-					if (preg_match('/FROM\s+(\d+@\s*)([\w\s]+)\s+/', $text, $matches)) {
-						$from_text = $matches[1];
-						echo "--type0:".$from_text; // Output: 9792612185@ PAYTM SAMEER S O KALLU NA
-					}
-
-					if (preg_match('/FROM\s+([\d-]+@\s*)([\w\s]+)\s+PAYMENT/', $text, $matches)) {
-						$from_text = $matches[1];
-						echo "--type1:".$from_text; // Output: SUNILKJAIN2 7@OKAXIS NAMAN MEDICAL STORE
-					}
-
-					if (preg_match('/FROM\s+([\w\d\s.@]+)\s+PAYMENT FROM PHONEPE$/', $text, $matches)) {
-						$from_text = $matches[1];
-						echo "--type2:".$from_text; // Output: RAJENDER.SI NSINWAR@YBL SWAMIJI MEDICOS
-					}*/
-					// Find the position of "FROM" and "@"
-
-					/*$from_pos = strpos($text, "FROM");
-					$at_pos = strpos($text, "@");
-
-					// Extract the text between "FROM" and "@"
-					$from_at_text = substr($text, $from_pos + strlen("FROM"), $at_pos - $from_pos - strlen("FROM"));
-
-					echo "--type11:".$from_at_text; // Output: SUNILKJAIN2 7
-					echo "<br><br>";*/
 
 					$received_from = "";
 					// Use regular expression to extract text after "FROM"
@@ -184,6 +148,15 @@
 						$received_from = str_replace(" ", "", $received_from);
 						$received_from = str_replace("\n", "", $received_from);
 						echo "find: ".$received_from; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+					}
+
+					if(empty($received_from)){
+						$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where amt='$amount1' and (vdt BETWEEN '$start_date' and '$end_date')");
+						$rr = $rr->result();
+						foreach($rr as $tt){
+							echo "---with invoice---".$tt->chemist_id;
+							echo ",";
+						}
 					}
 
 					if(!empty($received_from)){
