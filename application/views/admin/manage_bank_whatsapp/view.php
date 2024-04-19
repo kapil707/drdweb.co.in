@@ -6,9 +6,11 @@
             </button>
         </a> -->
     </div>
-	<form method="get" class="mb-5">
+	<form method="get" class="mb-5" style="margin-bottom:5px;">
 		<div class="col-md-3">
 			<label for="date-range">Select Date Range:</label>
+		</div>
+		<div class="col-md-3">
 			<input type="text" id="date-range" class="form-control">
 		</div>
 		<div class="col-md-3">
@@ -17,8 +19,8 @@
 				Submit
 			</button>
 		</div>
+		<div class="col-md-3"></div>
 	</form>
-	<div class="col-md-6"></div>
 	<?php 
 	$parmiter = '';
 	$curl = curl_init();
