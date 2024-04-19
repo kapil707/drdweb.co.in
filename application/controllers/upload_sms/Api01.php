@@ -13,6 +13,7 @@ class Api01 extends CI_Controller {
 
 		$sender			= $_POST['sender'];
 		$message_body 	= $_POST["message_body"];
+		$message_type   = $_POST["message_type"];
 
 		$date = date('Y-m-d');
 		$time = date("H:i",time());
@@ -21,6 +22,7 @@ class Api01 extends CI_Controller {
 		$dt = array(
 			'sender'=>$sender,
 			'message_body'=>$message_body,
+			'message_type'=>$message_type,
 			'date'=>$date,
 			'time'=>$time,
 			'datetime'=>$datetime,
