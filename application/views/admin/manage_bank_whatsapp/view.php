@@ -29,8 +29,14 @@
 	$date_parts = explode(" to ", $date_range);
 
 	// Start date aur end date ko extract karen
-	echo $start_date = $date_parts[0];
-	echo $end_date = $date_parts[1];
+	$start_date = $date_parts[0];
+	$end_date 	= $date_parts[1];
+
+	$start_date = DateTime::createFromFormat('d-m-Y', $start_date);
+	$end_date 	= DateTime::createFromFormat('d-m-Y', $end_date);
+
+	$start_date = $start_date->format('d/m/Y');
+	$end_date 	= $end_date->format('d/m/Y');
 
 	//Created a GET API
 	//http://97.74.82.55:5000/messages?from=07/04/2024&to=07/04/2024
