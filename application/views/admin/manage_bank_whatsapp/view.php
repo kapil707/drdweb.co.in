@@ -7,7 +7,7 @@
         </a> -->
     </div>
 	<div class="col-md-3">
-		<form>
+		<form method="get">
 			<label for="date-range">Select Date Range:</label>
 			<input type="text" id="date-range" class="form-control">
 			<button type="submit" class="btn btn-info submit_button" name="Submit">
