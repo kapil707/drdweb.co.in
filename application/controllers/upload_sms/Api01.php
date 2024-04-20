@@ -51,8 +51,9 @@ class Api01 extends CI_Controller {
 
 	public function get_firebase() {
 
-		$token	= $_POST['token'];
-		$phonenumber	= $_POST['phonenumber'];
+		$token			= $_POST['token'];
+		$phonenumber 	= $_POST['phonenumber'];
+		$device_id 		= $_POST['device_id'];
 
 		$date = date('Y-m-d');
 		$time = date("H:i",time());
@@ -61,6 +62,7 @@ class Api01 extends CI_Controller {
 		$dt = array(
 			'token'=>$token,
 			'phonenumber'=>$phonenumber,
+			'device_id'=>$device_id,
 			'date'=>$date,
 			'time'=>$time,
 			'datetime'=>$datetime,
