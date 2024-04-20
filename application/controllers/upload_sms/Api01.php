@@ -9,6 +9,34 @@ class Api01 extends CI_Controller {
 		$this->load->model("model-drdweb/BankModel");
 	}
 
+	public function get_firebase() {
+
+		$firebase	= $_POST['firebase'];
+
+		$date = date('Y-m-d');
+		$time = date("H:i",time());
+		$datetime = time();
+
+		$dt = array(
+			'firebase'=>$firebase,
+			'date'=>$date,
+			'time'=>$time,
+			'datetime'=>$datetime,
+		);
+		//$this->Scheme_Model->insert_fun("tbl_upload_sms",$dt);
+		$this->BankModel->insert_fun("tbl_firebase", $dt);
+
+		$response = array(
+            'success' => "1",
+            'message' => 'Data add successfully',
+			'sender' => $sender,
+        );
+
+        // Send JSON response
+        header('Content-Type: application/json');
+        echo json_encode($response);
+	}
+
 	public function upload_sms_test() {
 
 		$sender			= $_POST['sender'];
