@@ -9,6 +9,46 @@ class Api01 extends CI_Controller {
 		$this->load->model("model-drdweb/BankModel");
 	}
 
+	public function send_notification(){
+		$serverKey = 'AAAAelgOeX0:APA91bHIZAiLQ1POU1ZXElsgZQKIJ4i7ouFgWCYj6zBOU-5tAC0QBPkqsdrhTh63bQY-EBP-4Dbzcg7dlvFj3PNexDwntPmXzNfmmDsGQRFxZtKiJsbuugEUmxDMoubzlChT-0DaqwME';
+		$fcmToken = 'fLNWXi_fS6SdDQ0Xg6jSMl:APA91bFQMm3M3zy4VJiwWYb_BJyhMTSUF8aBTc5nzyfHESLe6advHPoq5zljmq_5sDhznlSvDWgdJupG3_DO_CzfPMvpQu_W7TS3J_34MdHJuhfjGxP3uYv8bbS2S0pIYk6TzOYzvfcO';
+
+		$notification = [
+			'title' => 'Notification Title',
+			'body' => 'Notification Body',
+		];
+
+		$data = [
+			'to' => $fcmToken,
+			'notification' => $notification,
+		];
+
+		$url = 'https://fcm.googleapis.com/fcm/send';
+
+		$headers = [
+			'Authorization: key=' . $serverKey,
+			'Content-Type: application/json',
+		];
+
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_POST, true);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+
+		$response = curl_exec($ch);
+		if ($response === false) {
+			die('Error sending notification: ' . curl_error($ch));
+		}
+
+		curl_close($ch);
+
+		echo 'Notification sent successfully';
+	}
+
 	public function get_firebase() {
 
 		$firebase	= $_POST['firebase'];
