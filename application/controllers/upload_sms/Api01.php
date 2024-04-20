@@ -60,7 +60,7 @@ class Api01 extends CI_Controller {
 
 		$dt = array(
 			'token'=>$token,
-			'firebase'=>$firebase,
+			'phonenumber'=>$phonenumber,
 			'date'=>$date,
 			'time'=>$time,
 			'datetime'=>$datetime,
