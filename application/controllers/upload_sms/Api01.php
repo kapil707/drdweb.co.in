@@ -133,7 +133,7 @@ class Api01 extends CI_Controller {
 			'time'=>$time,
 			'datetime'=>$datetime,
 		);
-		$this->Scheme_Model->insert_fun("tbl_upload_sms",$dt);
+		//$this->Scheme_Model->insert_fun("tbl_upload_sms",$dt);
 		$this->BankModel->insert_fun("tbl_sms", $dt);
 
 		$response = array(
