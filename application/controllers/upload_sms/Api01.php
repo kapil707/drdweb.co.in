@@ -81,48 +81,29 @@ class Api01 extends CI_Controller {
         header('Content-Type: application/json');
         echo json_encode($response);
 	}
-
-	public function upload_sms_test() {
-
-		$sender			= $_POST['sender'];
-		$message_body 	= $_POST["message_body"];
-		$message_type   = $_POST["message_type"];
-
-		$date = date('Y-m-d');
-		$time = date("H:i",time());
-		$datetime = time();
-
-		$dt = array(
-			'sender'=>$sender,
-			'message_body'=>$message_body,
-			'message_type'=>$message_type,
-			'date'=>$date,
-			'time'=>$time,
-			'datetime'=>$datetime,
-		);
-		//$this->Scheme_Model->insert_fun("tbl_upload_sms",$dt);
-		$this->BankModel->insert_fun("tbl_sms_test", $dt);
-
-		$response = array(
-            'success' => "1",
-            'message' => 'Data add successfully',
-			'sender' => $sender,
-        );
-
-        // Send JSON response
-        header('Content-Type: application/json');
-        echo json_encode($response);
-	}
-
+	
 	public function upload_sms() {
 
 		$sender			= $_POST['sender'];
 		$message_body 	= $_POST["message_body"];
 		$message_type   = $_POST["message_type"];
 
+		$message_date 	= $_POST['message_date'];
+		$message_time 	= $_POST['message_time'];
+
+
 		$date = date('Y-m-d');
 		$time = date("H:i",time());
 		$datetime = time();
+
+		if(!empty($message_date)){
+			$date = $message_date;
+		}
+		if(!empty($message_time)){
+			$time = $message_time;
+		}
+
+		$this->BankModel->select_query("delete from tbl_sms where sender='$sender' and message_body='$message_body' and message_type='$message_type' and date='$date' and time='$time'");
 
 		$dt = array(
 			'sender'=>$sender,
