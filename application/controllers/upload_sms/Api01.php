@@ -13,7 +13,7 @@ class Api01 extends CI_Controller {
 		$serverKey = 'AAAAelgOeX0:APA91bHIZAiLQ1POU1ZXElsgZQKIJ4i7ouFgWCYj6zBOU-5tAC0QBPkqsdrhTh63bQY-EBP-4Dbzcg7dlvFj3PNexDwntPmXzNfmmDsGQRFxZtKiJsbuugEUmxDMoubzlChT-0DaqwME';
 		//$fcmToken = 'fLNWXi_fS6SdDQ0Xg6jSMl:APA91bFQMm3M3zy4VJiwWYb_BJyhMTSUF8aBTc5nzyfHESLe6advHPoq5zljmq_5sDhznlSvDWgdJupG3_DO_CzfPMvpQu_W7TS3J_34MdHJuhfjGxP3uYv8bbS2S0pIYk6TzOYzvfcO';
 
-		$fcmToken = 'c8nlDObWSsO2dIIPoTkjPw:APA91bGHaagQGWUHyhqL2R1uc0Y8Sa_xzhCHt-zaehwpgNcOhsGGXx5QroUJezioyXUewRA3RiG6hgBNZz_Q5mmurxwiLC_8mOxdoFNDPL_KJtO8CIQzKQMu0bCgFf0qTeWpvlspeb-r';
+		$fcmToken = 'cQ7o7jrCSDiWofJ_7IVCt0:APA91bGn0gLlYo0aXLtQaMaACG2LDBFaAdJiTULD3eQd-kJYRtnqBT5oAsbLUAocPECJ0dwD_1XVnTvk0bcZePFr5rUK0SifMFhkugpo2-zWuYA95Feb_eG6bOwDprysT9c7HKNDYqN1';
 
 		$notification = [
 			'title' => 'Notification Title',
