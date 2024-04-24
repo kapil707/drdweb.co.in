@@ -48,7 +48,7 @@ class Api01 extends CI_Controller {
 
 		curl_close($ch);
 
-		echo $response.'--Notification sent successfully--vipul ji phone';
+		echo $response.'--Notification sent successfully--raman ji phone';
 	}
 
 	public function get_firebase() {
