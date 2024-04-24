@@ -75,7 +75,6 @@ class Api01 extends CI_Controller {
 		$response = array(
             'success' => "1",
             'message' => 'Data add successfully',
-			'sender' => $sender,
         );
 
         // Send JSON response
