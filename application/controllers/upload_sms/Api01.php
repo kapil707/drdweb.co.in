@@ -84,6 +84,7 @@ class Api01 extends CI_Controller {
 	
 	public function upload_sms() {
 
+		$_id   			= $_POST["_id"];
 		$sender			= $_POST['sender'];
 		$message_body 	= $_POST["message_body"];
 		$message_type   = $_POST["message_type"];
@@ -103,9 +104,10 @@ class Api01 extends CI_Controller {
 			$time = $message_time;
 		}
 
-		$this->BankModel->select_query("delete from tbl_sms where sender='$sender' and message_body='$message_body' and message_type='$message_type' and date='$date' and time='$time'");
+		$this->BankModel->select_query("delete from tbl_sms where _id='$_id'");
 
 		$dt = array(
+			'_id'=>$_id,
 			'sender'=>$sender,
 			'message_body'=>$message_body,
 			'message_type'=>$message_type,
@@ -113,7 +115,6 @@ class Api01 extends CI_Controller {
 			'time'=>$time,
 			'datetime'=>$datetime,
 		);
-		//$this->Scheme_Model->insert_fun("tbl_upload_sms",$dt);
 		$this->BankModel->insert_fun("tbl_sms", $dt);
 
 		$response = array(
