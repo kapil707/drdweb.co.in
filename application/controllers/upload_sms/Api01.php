@@ -72,9 +72,17 @@ class Api01 extends CI_Controller {
 		//$this->Scheme_Model->insert_fun("tbl_upload_sms",$dt);
 		$this->BankModel->insert_fun("tbl_firebase", $dt);
 
+		$my_id = 0;
+		$row = $this->BankModel->select_query("SELECT max(_id) as myid FROM `tbl_sms`");
+		$row = $row->row();
+		if(!empty($row)){
+			$my_id = $row->myid;
+		}
+
 		$response = array(
             'success' => "1",
             'message' => 'Data add successfully',
+			'my_id' => $my_id,
         );
 
         // Send JSON response
