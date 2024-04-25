@@ -78,6 +78,9 @@ class Api01 extends CI_Controller {
 		if(!empty($row)){
 			$my_id = $row->myid;
 		}
+		if(empty($my_id)){
+			$my_id = 0;
+		}
 
 		$response = array(
             'success' => "1",
