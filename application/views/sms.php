@@ -142,7 +142,7 @@ $(document).ready(function(){
 			return formattedDate;
 		}
 	}
-	reload_page();
+	//reload_page();
 })
 function reload_page(){
 
