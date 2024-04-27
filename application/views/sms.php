@@ -80,7 +80,7 @@ $(document).ready(function(){
 			},
 			dataSrc: 'items'
 		},
-		order: [[4, 'desc']]
+		order: [[4, 'desc']],
 		columns: [
 			{ data: 'id', title: 'ID' },
 			{ data: 'sender', title: 'Sender' },
