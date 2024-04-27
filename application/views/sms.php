@@ -70,7 +70,6 @@ $(document).ready(function(){
 	from_date = to_date = formattedDate;
 
 	table = $('#example-table').DataTable({
-      	"serverSide": true,	
 		ajax: {
 		url: 'https://www.drdweb.co.in/upload_sms/api01/get_upload_sms',
 			type: 'POST',
