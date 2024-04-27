@@ -151,7 +151,7 @@ function reload_page(){
 	table.ajax.reload();
 	setInterval(function () {
 		reload_page();
-	}, 1000);
+	}, 120000);
 }
 </script>
 <script src="https://cdn.datatables.net/scroller/2.2.0/js/dataTables.scroller.min.js"></script>
