@@ -49,6 +49,7 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 <script>
+
 $(document).ready(function(){
 
 	var today = new Date();
@@ -141,6 +142,14 @@ $(document).ready(function(){
 			return formattedDate;
 		}
 	}
+	reload_page();
 })
+function reload_page(){
+
+	table.ajax.reload();
+	setInterval(function () {
+		reload_page();
+	}, 1000);
+}
 </script>
 <script src="https://cdn.datatables.net/scroller/2.2.0/js/dataTables.scroller.min.js"></script>
