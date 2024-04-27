@@ -49,7 +49,7 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 <script>
-
+var table;
 $(document).ready(function(){
 
 	var today = new Date();
@@ -69,7 +69,7 @@ $(document).ready(function(){
 
 	from_date = to_date = formattedDate;
 
-	var table = $('#example-table').DataTable({
+	table = $('#example-table').DataTable({
 		ajax: {
 		url: 'https://www.drdweb.co.in/upload_sms/api01/get_upload_sms',
 			type: 'POST',
