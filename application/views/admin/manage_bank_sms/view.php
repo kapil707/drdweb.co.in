@@ -78,54 +78,29 @@
         <div class="table-responsive">
 			<table class="table table-striped table-bordered table-hover" id="example-table">
                 <thead>
-                    <tr>
+					<tr>
 						<th>
-							body
+							Sno.
 						</th>
 						<th>
-							date
+							Sender
 						</th>
 						<th>
-							extracted_text
-                        </th>
-						<th>
-							from_number 
+							Message
 						</th>
-						<th> 
-							message_id
-                        </th>
 						<th>
-							screenshot_image
-                        </th>
+							Date
+						</th>
 						<th>
-							Price
-                        </th>
+							Time
+						</th>
 						<th>
-							timestamp
-                        </th>
-						<th>
-                        	Edit
-                        </th>
+							ChemistID
+						</th>
                     </tr>
                 </thead>
 				<tbody>
-					<?php /*
-					foreach($result as $row){
-						?>
-						<tr><?php $body = utf8_decode($row->body); ?>
-							<td><?php echo $body; ?></td>
-							<td><?php echo $row->date; ?></td>
-							<td><?php echo $row->extracted_text; ?></td>
-							<td><?php echo $row->from_number; ?></td>
-							<td><?php echo $row->message_id; ?></td>
-							<td><?php echo $row->screenshot_image; ?></td>
-							<td><?php echo $row->timestamp; ?></td>
-							<td><?php echo $row->timestamp; ?></td>
-						</tr>
-						<?php
-					}
-					 */?>
-					 <?php
+					<?php
 					if (isset($data1['messages'])) {
 						foreach ($data1['messages'] as $message) {
 							$body = isset($message['body']) ? $message['body'] : "Body not found";
