@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Manage_bank_whatsapp extends CI_Controller {
-	var $Page_title = "Manage Bank WhatsApp";
-	var $Page_name  = "manage_bank_whatsapp";
-	var $Page_view  = "manage_bank_whatsapp";
-	var $Page_menu  = "manage_bank_whatsapp";
-	var $page_controllers = "manage_bank_whatsapp";
+class Manage_bank_sms extends CI_Controller {
+	var $Page_title = "Manage Bank Sms";
+	var $Page_name  = "manage_bank_sms";
+	var $Page_view  = "manage_bank_sms";
+	var $Page_menu  = "manage_bank_sms";
+	var $page_controllers = "manage_bank_sms";
 	var $Page_tbl   = "";
 	public function __construct()
     {
