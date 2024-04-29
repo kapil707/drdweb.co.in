@@ -173,7 +173,7 @@
 								<td>
 									<?php
 									// Path to the image file
-									$imagePath = "https://api.wassi.chat". $screenshot_image."token=531fe5caf0e132bdb6000bf01ed66d8cfb75b53606cc8f6eed32509d99d74752f47f288db155557e";
+									$imagePath = "https://api.wassi.chat". $screenshot_image."?token=531fe5caf0e132bdb6000bf01ed66d8cfb75b53606cc8f6eed32509d99d74752f47f288db155557e";
 
 									// Load the image
 									$image = imagecreatefromjpeg($imagePath);
