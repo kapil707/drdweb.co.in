@@ -104,6 +104,9 @@
 							Price
                         </th>
 						<th>
+							new
+                        </th>
+						<th>
 							timestamp
                         </th>
 						<th>
@@ -165,6 +168,19 @@
 									$price1 = $matches1[0][0] ?? '';
 
 									echo "Price 1: $price1";
+									?>
+								</td>
+								<td>
+									<?php
+									// Path to the image file
+									$imagePath = "https://api.wassi.chat". $screenshot_image."token=531fe5caf0e132bdb6000bf01ed66d8cfb75b53606cc8f6eed32509d99d74752f47f288db155557e";
+
+									// Use tesseract-ocr library to extract text from image
+									$text = shell_exec("tesseract $imagePath stdout");
+
+									// Output the extracted text
+									echo "Extracted Text: \n";
+									echo $text;
 									?>
 								</td>
 								<td><?php echo $timestamp; ?></td>
