@@ -49,13 +49,14 @@
 
 	//Created a GET API
 	//http://97.74.82.55:5000/messages?from=07/04/2024&to=07/04/2024
+	//http://172.105.50.148:5000/messages?from=07/04/2024&to=07/04/2024
 	$parmiter = '';
 	$curl = curl_init();
 		
 		curl_setopt_array(
 			$curl,
 			array(
-				CURLOPT_URL =>"http://97.74.82.55:5000/messages?from=$start_date&to=$end_date",
+				CURLOPT_URL =>"http://172.105.50.148:5000/messages?from=$start_date&to=$end_date",
 				CURLOPT_RETURNTRANSFER => true,
 				CURLOPT_ENCODING => '',
 				CURLOPT_MAXREDIRS => 0,
