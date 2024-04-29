@@ -101,6 +101,9 @@
 							screenshot_image
                         </th>
 						<th>
+							Price
+                        </th>
+						<th>
 							timestamp
                         </th>
 						<th>
@@ -152,6 +155,17 @@
 									<a href="https://api.wassi.chat<?php echo $screenshot_image; ?>?token=531fe5caf0e132bdb6000bf01ed66d8cfb75b53606cc8f6eed32509d99d74752f47f288db155557e" target="_blank">	
 										<img src="https://api.wassi.chat<?php echo $screenshot_image; ?>?token=531fe5caf0e132bdb6000bf01ed66d8cfb75b53606cc8f6eed32509d99d74752f47f288db155557e" width="100px">
 									</a>
+								</td>
+								<td>
+									<?php
+									$pattern = '/\d{1,3}(?:,\d{3})*(?:\.\d+)?/'; // Regex pattern to match the price format
+
+									preg_match_all($pattern, $extracted_text, $matches1);
+
+									$price1 = $matches1[0][0] ?? '';
+
+									echo "Price 1: $price1";
+									?>
 								</td>
 								<td><?php echo $timestamp; ?></td>
 								<td><?php echo $timestamp; ?></td>
