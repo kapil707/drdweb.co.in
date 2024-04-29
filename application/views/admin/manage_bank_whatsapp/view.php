@@ -175,23 +175,8 @@
 									// Path to the image file
 									$imagePath = "https://api.wassi.chat". $screenshot_image."?token=531fe5caf0e132bdb6000bf01ed66d8cfb75b53606cc8f6eed32509d99d74752f47f288db155557e";
 
-									// Load the image
-									$image = imagecreatefromjpeg($imagePath);
-
-									// Get image dimensions
-									$width = imagesx($image);
-									$height = imagesy($image);
-
-									// Extract text from image
-									$text = '';
-									for ($y = 0; $y < $height; $y++) {
-										for ($x = 0; $x < $width; $x++) {
-											$rgb = imagecolorat($image, $x, $y);
-											$colors = imagecolorsforindex($image, $rgb);
-											$text .= $colors['red'] > 128 ? '1' : '0';
-										}
-										$text .= PHP_EOL; // Newline after each row
-									}
+									// Use tesseract-ocr library to extract text from image
+									$text = shell_exec("tesseract $imagePath stdout");
 
 									// Output the extracted text
 									echo "Extracted Text: \n";
