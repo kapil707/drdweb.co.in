@@ -10,6 +10,7 @@ class Manage_bank_processing extends CI_Controller {
 	public function __construct()
     {
         parent::__construct();
+		$this->load->model("model-drdweb/BankModel");
     }
 	public function index()
 	{
@@ -150,7 +151,7 @@ class Manage_bank_processing extends CI_Controller {
 		$data['url_path'] = base_url()."uploads/$page_controllers/photo/";
 		$upload_path = "./uploads/$page_controllers/photo/";
 		
-		$query = $this->db->query("SELECT * FROM `tbl_bank_processing`");
+		$query = $this->BankModel->select_query("SELECT * FROM `tbl_bank_processing`");
 		$data["result"] = $query->result();
 
 		$this->load->view("admin/header_footer/header",$data);
