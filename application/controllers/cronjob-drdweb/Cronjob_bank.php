@@ -73,7 +73,7 @@ class Cronjob_bank extends CI_Controller
 		}
 	}
 
-	public function split_function(){
+	public function bank_sms_processing(){
 
 		$result = $this->BankModel->select_query("select * from tbl_sms where status='0' and date='2024-04-29' limit 100");
 		$result = $result->result();
@@ -126,7 +126,7 @@ class Cronjob_bank extends CI_Controller
 			$dt = array(
 				'status'=>$status,
 				'amount'=>$amount,
-				'getdate'=>$getdate,
+				'date'=>$getdate,
 				'received_from'=>$received_from,
 				'upi_no'=>$upi_no,
 				'orderid'=>$orderid,
