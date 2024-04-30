@@ -87,9 +87,6 @@ class Cronjob_bank extends CI_Controller
 				$amount = "Amount not found";
 			}
 
-			echo $amount;
-			echo "<br>";
-
 			$pattern = '/(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})/';
 			if (preg_match($pattern, $message_body, $matches)) {
 				$getdate = $matches[1];
