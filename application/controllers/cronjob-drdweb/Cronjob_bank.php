@@ -142,7 +142,10 @@ class Cronjob_bank extends CI_Controller
 			echo $row->message_body;
 			$received_from 	= $row->received_from;
 			$amount 		= $row->amount;
-			$start_date 	= $row->received_from;
+			$date 			= $row->date;
+
+			$start_date = date('Y-m-d', strtotime($date . ' -2 day'));
+			$end_date = date('Y-m-d', strtotime($date . ' -1 day'));
 
 			$chemist_id = "";
 			if(!empty($received_from)){
