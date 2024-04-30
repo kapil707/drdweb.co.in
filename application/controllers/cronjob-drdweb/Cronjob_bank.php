@@ -149,9 +149,10 @@ class Cronjob_bank extends CI_Controller
 				foreach($rr as $tt){
 					$chmist_id = $tt->chemist_id;
 					echo "<b>---chemist tbl---".$chmist_id."</b>";
-					echo "<br>";
 				}
 			}
+
+			echo "<br>";
 		}
 	}
 }
