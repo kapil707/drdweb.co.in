@@ -47,6 +47,8 @@
 	$start_date = $start_date->format('d/m/Y');
 	$end_date 	= $end_date->format('d/m/Y');
 
+	$sender_name_place = "Online Details";
+
 	//Created a GET API
 	//http://97.74.82.55:5000/messages?from=07/04/2024&to=07/04/2024
 	//http://172.105.50.148:5000/messages?from=07/04/2024&to=07/04/2024
@@ -56,7 +58,7 @@
 		curl_setopt_array(
 			$curl,
 			array(
-				CURLOPT_URL =>"http://172.105.50.148:5000/messages?from=$start_date&to=$end_date",
+				CURLOPT_URL =>"http://172.105.50.148:5000/messages?from=$start_date&to=$end_date&sender_name_place=$sender_name_place",
 				CURLOPT_RETURNTRANSFER => true,
 				CURLOPT_ENCODING => '',
 				CURLOPT_MAXREDIRS => 0,
