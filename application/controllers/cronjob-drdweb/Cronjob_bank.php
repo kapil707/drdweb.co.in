@@ -148,7 +148,6 @@ class Cronjob_bank extends CI_Controller
 		$result = $result->result();
 		foreach($result as $row){
 
-			echo $row->message_body;
 			$received_from 	= $row->received_from;
 			$amount 		= $row->amount;
 			$date 			= $row->date;
