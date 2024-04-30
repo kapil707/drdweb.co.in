@@ -181,11 +181,12 @@ class Cronjob_bank extends CI_Controller
 				}
 			}
 			print_r($jsonArray);
-			echo "<br>";
+			
 			if(empty($chemist_id)){
-				$chemist_id = implode(', ', $jsonArray);
+				$chemist_id = implode(',', $jsonArray);
 			}
-
+			echo $chemist_id;
+			echo "<br>";
 			/************************************************* */
 			$id = $row->id;
 			$where = array('id'=>$id);
