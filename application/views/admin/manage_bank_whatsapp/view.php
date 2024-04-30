@@ -47,7 +47,7 @@
 	$start_date = $start_date->format('d/m/Y');
 	$end_date 	= $end_date->format('d/m/Y');
 
-	$sender_name_place = "Online Details";
+	$sender_name_place = "Online%20Details";
 
 	//Created a GET API
 	//http://97.74.82.55:5000/messages?from=07/04/2024&to=07/04/2024
