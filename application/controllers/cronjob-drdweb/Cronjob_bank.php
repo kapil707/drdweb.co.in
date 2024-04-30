@@ -131,6 +131,14 @@ class Cronjob_bank extends CI_Controller
 				'_id'=>$_id,
 			);
 			$this->BankModel->insert_fun("tbl_bank_processing", $dt);
+
+			/****************************************************** */
+			$id = $row->id;
+			$where = array('id'=>$id);
+			$dt = array(
+				'status'=>'1',
+			);
+			$this->BankModel->edit_fun("tbl_sms", $dt,$where);
 		}
 	}
 
