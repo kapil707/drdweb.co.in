@@ -10,8 +10,6 @@ class Manage_bank_processing extends CI_Controller {
 	public function __construct()
     {
         parent::__construct();
-		$this->load->model("model-drdweb/BankModel");
-		$this->load->model("model-drdweb/InvoiceModel");
     }
 	public function index()
 	{
@@ -152,7 +150,7 @@ class Manage_bank_processing extends CI_Controller {
 		$data['url_path'] = base_url()."uploads/$page_controllers/photo/";
 		$upload_path = "./uploads/$page_controllers/photo/";
 		
-		$query = $this->db->query("select tm.id,tm.code,tm.altercode,tm.name,tm.email,tm.mobile,tm.altercode,tmo.status,tmo.exp_date,tmo.password,tmo.password from tbl_master as tm left JOIN tbl_master_other as tmo on tmo.code=tm.code where tm.altercode!='' and tm.slcd='SM' order by tm.id desc");
+		$query = $this->db->query("SELECT * FROM `tbl_bank_processing`");
 		$data["result"] = $query->result();
 
 		$this->load->view("admin/header_footer/header",$data);
