@@ -5,16 +5,8 @@ $(document).ready(function(){
 	$i = 1;
 	foreach ($result as $row)
 	{
-		$status = "Inactive";
-		if($row->status==1){
-			$status = "Active";
-		}
-		$passwordstatus = "Inactive";
-		if($row->password!=''){
-			$passwordstatus = "Active";
-		}
 		?>
-		data.push(['<?= ($row->code); ?>', '<?= ($row->altercode); ?>','<?= ($row->name); ?>','<?= ($row->email); ?>','<?= ($row->mobile); ?>','<?= ($status); ?>','<?= ($passwordstatus); ?>','<img src="https://drdweb.co.in/upload_drd_master/chemist_photo/<?= ($row->image); ?>" width=100>','<a href="<?= base_url(); ?>admin/<?php echo $Page_name ?>/edit/<?= ($row->code); ?>">Edit</a>']);
+		data.push(['<?= ($row->status); ?>', '<?= ($row->amount); ?>','<?= ($row->date); ?>','<?= ($row->received_from); ?>','<?= ($row->upi_no); ?>','<?= ($row->orderid); ?>','<?= ($row->type); ?>','<?= ($row->_id); ?>','<a href="<?= base_url(); ?>admin/<?php echo $Page_name ?>/edit/<?= ($row->id); ?>">Edit</a>']);
 		<?php
 	}
 	?>
