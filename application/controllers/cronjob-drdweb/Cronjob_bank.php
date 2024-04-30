@@ -140,15 +140,26 @@ class Cronjob_bank extends CI_Controller
 		foreach($result as $row){
 
 			echo $row->message_body;
-			$received_from = $row->received_from;
+			$received_from 	= $row->received_from;
+			$amount 		= $row->amount;
+			$start_date 	= $row->received_from;
 
-			$chmist_id = "";
+			$chemist_id = "";
 			if(!empty($received_from)){
 				$rr = $this->BankModel->select_query("SELECT * FROM `tbl_bank_chemist` WHERE `string_value` LIKE '%$received_from%'");
 				$rr = $rr->result();
 				foreach($rr as $tt){
-					$chmist_id = $tt->chemist_id;
-					echo "<b>---chemist tbl---".$chmist_id."</b>";
+					$chemist_id = $tt->chemist_id;
+					echo "<b>---chemist tbl---".$chemist_id."</b>";
+				}
+			}
+
+			if(empty($chemist_id)){
+				$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where amt='$amount' and (vdt BETWEEN '$start_date' and '$end_date')");
+				$rr = $rr->result();
+				foreach($rr as $tt){
+					echo "---with invoice---".$tt->chemist_id;
+					echo ",";
 				}
 			}
 
