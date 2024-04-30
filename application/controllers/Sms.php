@@ -58,17 +58,17 @@ class Sms extends CI_Controller {
 				$orderid = "orderid not found";
 			}
 			
-			// $id = $row->id;
-			// $where = array('id'=>$id);
-			// $dt = array(
-			// 	'status'=>$status,
-			// 	'amount'=>$amount,
-			// 	'getdate'=>$getdate,
-			// 	'received_from'=>$received_from,
-			// 	'upi_no'=>$upi_no,
-			// 	'orderid'=>$orderid,
-			// );
-			// $this->BankModel->edit_fun("tbl_sms",$dt,$where);
+			$id = $row->id;
+			$where = array('id'=>$id);
+			$dt = array(
+				'status'=>$status,
+				'amount'=>$amount,
+				'getdate'=>$getdate,
+				'received_from'=>$received_from,
+				'upi_no'=>$upi_no,
+				'orderid'=>$orderid,
+			);
+			$this->BankModel->edit_fun("tbl_sms",$dt,$where);
 		}
 	}
 
