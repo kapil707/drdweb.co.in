@@ -39,6 +39,9 @@
                         	Find By
                         </th>
 						<th>
+                        	
+                        </th>
+						<th>
                         	Edit
                         </th>
                     </tr>
