@@ -24,6 +24,9 @@ class Sms extends CI_Controller {
 				$amount = "Amount not found";
 			}
 
+			echo $amount;
+			echo "<br>";
+
 			$pattern = '/(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})/';
 			if (preg_match($pattern, $message_body, $matches)) {
 				$getdate = $matches[1];
@@ -54,17 +57,17 @@ class Sms extends CI_Controller {
 				$orderid = "orderid not found";
 			}
 			
-			$id = $row->id;
-			$where = array('id'=>$id);
-			$dt = array(
-				'status'=>$status,
-				'amount'=>$amount,
-				'getdate'=>$getdate,
-				'received_from'=>$received_from,
-				'upi_no'=>$upi_no,
-				'orderid'=>$orderid,
-			);
-			$this->BankModel->edit_fun("tbl_sms",$dt,$where);
+			// $id = $row->id;
+			// $where = array('id'=>$id);
+			// $dt = array(
+			// 	'status'=>$status,
+			// 	'amount'=>$amount,
+			// 	'getdate'=>$getdate,
+			// 	'received_from'=>$received_from,
+			// 	'upi_no'=>$upi_no,
+			// 	'orderid'=>$orderid,
+			// );
+			// $this->BankModel->edit_fun("tbl_sms",$dt,$where);
 		}
 	}
 
