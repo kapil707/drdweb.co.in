@@ -7,10 +7,13 @@ $(document).ready(function(){
 	{
 		$fafa = "";
 		if($row->find_by=="Chemist Table"){
-			$fafa = '<i class="fa fa-check" aria-hidden="true"></i>';
+			$fafa = '<i class="fa fa-check-circle" aria-hidden="true"></i>';
+		}
+		if($row->find_by=="Invoice Table"){
+			$fafa = '<i class="fa fa-question-circle" aria-hidden="true"></i>';
 		}
 		?>
-		data.push(['<?= ($row->status); ?>', '<?= ($row->amount); ?>','<?= ($row->date); ?>','<?= ($row->received_from); ?>','<?= ($row->upi_no); ?>','<?= ($row->orderid); ?>','<?= ($row->type); ?>','<?= ($row->_id); ?>','<?= ($row->find_by); ?>','<?= ($fafa); ?>','<a href="<?= base_url(); ?>admin/<?php echo $Page_name ?>/edit/<?= ($row->id); ?>">Edit</a>']);
+		data.push(['<?= ($row->status); ?>', '<?= ($row->amount); ?>','<?= ($row->date); ?>','<?= ($row->received_from); ?>','<?= ($row->upi_no); ?>','<?= ($row->orderid); ?>','<?= ($row->type); ?>','<?= ($row->_id); ?>','<?= ($row->find_by); ?>','<?= ($fafa); ?>','<?= ($row->chemist_id); ?>','<a href="<?= base_url(); ?>admin/<?php echo $Page_name ?>/edit/<?= ($row->id); ?>">Edit</a>']);
 		<?php
 	}
 	?>

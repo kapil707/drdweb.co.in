@@ -42,6 +42,9 @@
                         	
                         </th>
 						<th>
+                        	
+                        </th>
+						<th>
                         	Edit
                         </th>
                     </tr>
