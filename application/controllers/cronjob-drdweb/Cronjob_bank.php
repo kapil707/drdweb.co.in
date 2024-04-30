@@ -163,18 +163,24 @@ class Cronjob_bank extends CI_Controller
 				foreach($rr as $tt){
 					$chemist_id = $tt->chemist_id;
 					$find_by = "Chemist Table";
-					echo "<b>---chemist tbl---".$chemist_id."</b>";
 				}
 			}
 
+			$jsonArray = array();
 			if(empty($chemist_id)){
 				$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where amt='$amount' and (vdt BETWEEN '$start_date' and '$end_date')");
 				$rr = $rr->result();
 				foreach($rr as $tt){
 					$find_by = "Invoice Table";
-					echo "---with invoice---".$tt->chemist_id;
-					echo ",";
+
+					$dt = array(
+						'chemist_id' => $chemist_id,
+					);
+					$jsonArray[] = $dt;
 				}
+			}
+			if(empty($chemist_id)){
+				$chemist_id = $jsonArray;
 			}
 
 			/************************************************* */
@@ -182,6 +188,7 @@ class Cronjob_bank extends CI_Controller
 			$where = array('id'=>$id);
 			$dt = array(
 				'find_by'=>$find_by,
+				'chemist_id'=>$chemist_id,
 				'status'=>2,
 			);
 			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
