@@ -4,7 +4,7 @@ class Manage_bank_chemist extends CI_Controller {
 	var $Page_title = "Manage Bank Chemist";
 	var $Page_name  = "manage_bank_chemist";
 	var $Page_view  = "manage_bank_chemist";
-	var $Page_menu  = "manage_bank_chemist";
+	var $Page_menu  = "manage_bank";
 	var $page_controllers = "manage_bank_chemist";
 	var $Page_tbl   = "tbl_bank_chemist";
 	public function __construct()
