@@ -4,7 +4,7 @@ class Manage_bank_processing extends CI_Controller {
 	var $Page_title = "Manage Bank Processing";
 	var $Page_name  = "manage_bank_processing";
 	var $Page_view  = "manage_bank_processing";
-	var $Page_menu  = "manage_bank";
+	var $Page_menu  = "manage_bank_processing";
 	var $page_controllers = "manage_bank_processing";
 	var $Page_tbl   = "tbl_bank_processing";
 	public function __construct()

@@ -4,7 +4,7 @@ class Manage_bank_whatsapp extends CI_Controller {
 	var $Page_title = "Manage Bank WhatsApp";
 	var $Page_name  = "manage_bank_whatsapp";
 	var $Page_view  = "manage_bank_whatsapp";
-	var $Page_menu  = "manage_bank";
+	var $Page_menu  = "manage_bank_whatsapp";
 	var $page_controllers = "manage_bank_whatsapp";
 	var $Page_tbl   = "";
 	public function __construct()

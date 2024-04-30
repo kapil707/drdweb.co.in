@@ -4,7 +4,7 @@ class Manage_bank_sms extends CI_Controller {
 	var $Page_title = "Manage Bank Sms";
 	var $Page_name  = "manage_bank_sms";
 	var $Page_view  = "manage_bank_sms";
-	var $Page_menu  = "manage_bank";
+	var $Page_menu  = "manage_bank_sms";
 	var $page_controllers = "manage_bank_sms";
 	var $Page_tbl   = "";
 	public function __construct()
