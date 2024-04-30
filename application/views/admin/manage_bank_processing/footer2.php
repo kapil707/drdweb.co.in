@@ -7,7 +7,7 @@ $(document).ready(function(){
 	{
 		$fafa = "";
 		if($row->find_by=="Chemist Table"){
-			$fafa = "<i class='fa fa-check' aria-hidden='true'></i>";
+			$fafa = '<i class="fa fa-check" aria-hidden="true"></i>';
 		}
 
 		?>
