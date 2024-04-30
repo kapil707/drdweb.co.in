@@ -180,7 +180,7 @@ class Cronjob_bank extends CI_Controller
 			if(!empty($jsonArray)){
 				$chemist_id = implode(',', $jsonArray);
 			}
-			echo $chemist_id;
+			echo "find_by".$find_by."--".$chemist_id;
 			echo "<br>";
 			/************************************************* */
 			$id = $row->id;
