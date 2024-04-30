@@ -142,9 +142,9 @@ class Cronjob_bank extends CI_Controller
 		}
 	}
 
-	public function split_function2(){
+	public function bank_processing(){
 	
-		$result = $this->BankModel->select_query("select * from tbl_sms where status='1' limit 100");
+		$result = $this->BankModel->select_query("select * from tbl_bank_processing where status='1' limit 100");
 		$result = $result->result();
 		foreach($result as $row){
 
@@ -156,12 +156,14 @@ class Cronjob_bank extends CI_Controller
 			$start_date = date('Y-m-d', strtotime($date . ' -2 day'));
 			$end_date = date('Y-m-d', strtotime($date . ' -1 day'));
 
+			$find_by = "";
 			$chemist_id = "";
 			if(!empty($received_from)){
 				$rr = $this->BankModel->select_query("SELECT * FROM `tbl_bank_chemist` WHERE `string_value` LIKE '%$received_from%'");
 				$rr = $rr->result();
 				foreach($rr as $tt){
 					$chemist_id = $tt->chemist_id;
+					$find_by = "Chemist Table";
 					echo "<b>---chemist tbl---".$chemist_id."</b>";
 				}
 			}
@@ -170,12 +172,20 @@ class Cronjob_bank extends CI_Controller
 				$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where amt='$amount' and (vdt BETWEEN '$start_date' and '$end_date')");
 				$rr = $rr->result();
 				foreach($rr as $tt){
+					$find_by = "Invoice Table";
 					echo "---with invoice---".$tt->chemist_id;
 					echo ",";
 				}
 			}
 
-			echo "<br>";
+			/************************************************* */
+			$id = $row->id;
+			$where = array('id'=>$id);
+			$dt = array(
+				'find_by'=>$find_by,
+				'status'=>2,
+			);
+			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 		}
 	}
 }

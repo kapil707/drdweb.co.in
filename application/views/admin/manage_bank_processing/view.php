@@ -36,6 +36,9 @@
                         	_id
                         </th>
 						<th>
+                        	Find By
+                        </th>
+						<th>
                         	Edit
                         </th>
                     </tr>

@@ -6,7 +6,7 @@ $(document).ready(function(){
 	foreach ($result as $row)
 	{
 		?>
-		data.push(['<?= ($row->status); ?>', '<?= ($row->amount); ?>','<?= ($row->date); ?>','<?= ($row->received_from); ?>','<?= ($row->upi_no); ?>','<?= ($row->orderid); ?>','<?= ($row->type); ?>','<?= ($row->_id); ?>','<a href="<?= base_url(); ?>admin/<?php echo $Page_name ?>/edit/<?= ($row->id); ?>">Edit</a>']);
+		data.push(['<?= ($row->status); ?>', '<?= ($row->amount); ?>','<?= ($row->date); ?>','<?= ($row->received_from); ?>','<?= ($row->upi_no); ?>','<?= ($row->orderid); ?>','<?= ($row->type); ?>','<?= ($row->_id); ?>','<?= ($row->find_by); ?>','<a href="<?= base_url(); ?>admin/<?php echo $Page_name ?>/edit/<?= ($row->id); ?>">Edit</a>']);
 		<?php
 	}
 	?>
