@@ -172,11 +172,12 @@ class Cronjob_bank extends CI_Controller
 				$rr = $rr->result();
 				foreach($rr as $tt){
 					$find_by = "Invoice Table";
-
+					
+					$chemist_id = $tt->chemist_id;
 					$dt = array(
 						'chemist_id' => $chemist_id,
 					);
-					$jsonArray[] = $dt;
+					$jsonArray[] = $chemist_id;
 				}
 			}
 			if(empty($chemist_id)){
