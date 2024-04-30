@@ -180,7 +180,7 @@ class Cronjob_bank extends CI_Controller
 				}
 			}
 			if(empty($chemist_id)){
-				$chemist_id = $jsonArray;
+				$chemist_id = implode(', ', $jsonArray);
 			}
 
 			/************************************************* */
