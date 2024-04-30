@@ -1,13 +1,19 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Sms extends CI_Controller {		
+class Sms extends CI_Controller {
+	public function __construct(){
+
+		parent::__construct();
+
+		$this->load->model("model-drdweb/BankModel");
+	}	
 	public function index()	{	
 		$this->load->view('sms');
 	}
 
 	public function split_function(){
 
-		$result = $this->db->query("select * from tbl_upload_sms where status='0' limit 100")->result();
+		$result = $this->db->query("select * from tbl_upload_sms where status='0' and date='2024-04-29' limit 100")->result();
 		foreach($result as $row){
 			$message_body = $row->message_body;
 			
@@ -58,7 +64,7 @@ class Sms extends CI_Controller {
 				'upi_no'=>$upi_no,
 				'orderid'=>$orderid,
 			);
-			$this->Scheme_Model->edit_fun("tbl_upload_sms",$dt,$where);
+			$this->BankModel->edit_fun("tbl_sms",$dt,$where);
 		}
 	}
 
