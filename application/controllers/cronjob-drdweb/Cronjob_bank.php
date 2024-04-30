@@ -182,7 +182,7 @@ class Cronjob_bank extends CI_Controller
 			}
 			print_r($jsonArray);
 			$commaSeparatedString = "";
-			if(empty($chemist_id)){
+			if(!empty($jsonArray)){
 				$commaSeparatedString = implode(',', $jsonArray);
 			}
 			echo ($commaSeparatedString);
