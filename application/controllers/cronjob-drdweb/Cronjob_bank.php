@@ -120,8 +120,9 @@ class Cronjob_bank extends CI_Controller
 				$orderid = "orderid not found";
 			}
 			
-			$id = $row->id;
-			$where = array('id'=>$id);
+			$_id = $row->id;
+			
+			$type = "SMS";
 			$dt = array(
 				'status'=>$status,
 				'amount'=>$amount,
@@ -129,8 +130,10 @@ class Cronjob_bank extends CI_Controller
 				'received_from'=>$received_from,
 				'upi_no'=>$upi_no,
 				'orderid'=>$orderid,
+				'type'=>$type,
+				'_id'=>$_id,
 			);
-			$this->BankModel->edit_fun("tbl_sms",$dt,$where);
+			$this->BankModel->insert_fun("tbl_bank_processing", $dt);
 		}
 	}
 

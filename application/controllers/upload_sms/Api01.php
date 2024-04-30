@@ -91,7 +91,6 @@ class Api01 extends CI_Controller {
         header('Content-Type: application/json');
         echo "[".json_encode($response)."]";
 	}
-	
 	public function upload_sms() {
 
 		$_id   			= $_POST["_id"];
@@ -101,7 +100,6 @@ class Api01 extends CI_Controller {
 
 		$message_date 	= $_POST['message_date'];
 		$message_time 	= $_POST['message_time'];
-
 
 		$date = date('Y-m-d');
 		$time = date("H:i",time());
