@@ -185,9 +185,9 @@ class Cronjob_bank extends CI_Controller
 			if(empty($chemist_id)){
 				$commaSeparatedString = implode(',', $jsonArray);
 			}
-			print_r($commaSeparatedString);
+			echo ($commaSeparatedString);
 			echo "<br>";
-			/************************************************* */
+			/************************************************* *
 			$id = $row->id;
 			$where = array('id'=>$id);
 			$dt = array(
@@ -196,6 +196,7 @@ class Cronjob_bank extends CI_Controller
 				'status'=>2,
 			);
 			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
+			/************************************************* */
 		}
 	}
 }
