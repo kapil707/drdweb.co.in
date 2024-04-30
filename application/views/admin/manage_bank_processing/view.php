@@ -12,28 +12,28 @@
                 <thead>
                     <tr>
 						<th>
-							Code
+							Status
 						</th>
 						<th>
-							Altercode
+							Amount
 						</th>
 						<th>
-                        	Name
+							Date
                         </th>
 						<th>
-                        	Email 
+							From 
 						</th>
 						<th> 
-                        	Mobile
+							Upi No
                         </th>
 						<th>
-                        	Status
+							Orderid
                         </th>
 						<th>
-                        	Password Status
+                        	Type
                         </th>
 						<th>
-                        	Image
+                        	_id
                         </th>
 						<th>
                         	Edit
