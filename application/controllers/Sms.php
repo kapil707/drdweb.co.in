@@ -13,7 +13,8 @@ class Sms extends CI_Controller {
 
 	public function split_function(){
 
-		$result = $this->db->query("select * from tbl_upload_sms where status='0' and date='2024-04-29' limit 100")->result();
+		$result = $this->BankModel->select_query("select * from tbl_sms where status='0' and date='2024-04-29' limit 100");
+		$result = $result->result();
 		foreach($result as $row){
 			$message_body = $row->message_body;
 			
