@@ -25,7 +25,49 @@
 				Submit
 			</button>
 		</div>
-		<div class="col-md-3"></div>
+		<div class="col-md-3">
+		<?php
+		$parmiter = '';
+		$curl = curl_init();
+			
+			curl_setopt_array(
+				$curl,
+				array(
+					CURLOPT_URL =>"http://172.105.50.148:5000/groups",
+					CURLOPT_RETURNTRANSFER => true,
+					CURLOPT_ENCODING => '',
+					CURLOPT_MAXREDIRS => 0,
+					CURLOPT_TIMEOUT => 300,
+					CURLOPT_FOLLOWLOCATION => true,
+					CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+					CURLOPT_CUSTOMREQUEST => 'GET',
+					CURLOPT_POSTFIELDS => $parmiter,
+					CURLOPT_HTTPHEADER => array(
+						'Content-Type: application/json',
+					),
+				)
+			);
+
+			$response = curl_exec($curl);
+			//print_r($response);
+			curl_close($curl);
+
+			$data0 = json_decode($response, true); // Convert JSON string to associative array
+			?>
+			<select>
+				<?php 
+				if (isset($data0['groups'])) {
+					foreach ($data0['groups'] as $groups) {
+						?>
+						<option>
+							<?php echo $groups ?>
+						</option>
+						<?php
+					}
+				}
+				?>
+			</select>
+		</div>
 	</form>
 	<?php 
 
