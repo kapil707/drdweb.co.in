@@ -129,6 +129,7 @@
 					$statment_date1 = $worksheet->getCell($statment_date.$row)->getValue();
 					$text = $worksheet->getCell($narrative.$row)->getValue();
 					$text = str_replace("'", "", $text);
+					$text = "+91-9899067942 411801191476 FROM GUPTAMEDICALSTORE 9300966180 CITI0000 9026 NA UBIN0579203";
 
 					$transaction_description1 = $worksheet->getCell($transaction_description.$row)->getValue();
 					
