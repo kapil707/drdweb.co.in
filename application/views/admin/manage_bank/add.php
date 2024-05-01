@@ -201,7 +201,7 @@
 						$received_from = str_replace("\n", "", $received_from);
 						echo "<b>find6:  ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
 					} else{
-						echo "not find 6";
+						echo "<b>not find 6</b>";
 					}
 
 					$chmist_id = "";
