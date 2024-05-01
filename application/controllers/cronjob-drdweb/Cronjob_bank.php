@@ -166,6 +166,16 @@ class Cronjob_bank extends CI_Controller
 				}
 			}
 
+			if(!empty($received_from)){
+				$received_from1 = str_replace(' ', '', $received_from);
+				$rr = $this->BankModel->select_query("SELECT * FROM `tbl_bank_chemist` WHERE `string_value` LIKE '%$received_from1%'");
+				$rr = $rr->result();
+				foreach($rr as $tt){
+					$chemist_id = $tt->chemist_id;
+					$find_by = "Chemist Table2";
+				}
+			}
+
 			$jsonArray = array();
 			if(empty($chemist_id)){
 				$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where amt='$amount' and (vdt BETWEEN '$start_date' and '$end_date')");
