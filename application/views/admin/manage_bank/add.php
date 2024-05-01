@@ -128,6 +128,8 @@
 					$amount1 = $worksheet->getCell($amount.$row)->getValue();
 					$statment_date1 = $worksheet->getCell($statment_date.$row)->getValue();
 					$text = $worksheet->getCell($narrative.$row)->getValue();
+					$text = str_replace("'", "", $text);
+
 					$transaction_description1 = $worksheet->getCell($transaction_description.$row)->getValue();
 					
 					//$mydate = date('Y-m-d', strtotime($statment_date1));
