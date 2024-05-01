@@ -147,60 +147,64 @@
 
 					$received_from = "";
 					// Use regular expression to extract text after "FROM"
+
+					$from_value = "";
 					preg_match("/FROM\s+(\d+)@\s+(\w+)/", $text, $matches);
-					if (!empty($matches)){
+					if (!empty($matches) && empty($from_value)){
 						$received_from = trim($matches[1])."@".trim($matches[2]);
 						$received_from = str_replace("'", "", $received_from);
 						$received_from = str_replace(" ", "", $received_from);
 						$received_from = str_replace("\n", "", $received_from);
-						echo "<b>find: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+						$from_value = "<b>find: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
 					}
 
 					
 					preg_match("/FROM\s+(\d+)\s+@\s*(\w+)/", $text, $matches);
-					if (!empty($matches)){
+					if (!empty($matches) && empty($from_value)){
 						$received_from = trim($matches[1])."@".trim($matches[2]);
 						$received_from = str_replace("'", "", $received_from);
 						$received_from = str_replace(" ", "", $received_from);
 						$received_from = str_replace("\n", "", $received_from);
-						echo "<b>find2: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+						$from_value = "<b>find2: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
 					}
 
 					preg_match("/FROM\s+(\w+)\d+@\s*(\w+)/", $text, $matches);
-					if (!empty($matches)){
+					if (!empty($matches) && empty($from_value)){
 						$received_from = trim($matches[1])."@".trim($matches[2]);
 						$received_from = str_replace("'", "", $received_from);
 						$received_from = str_replace(" ", "", $received_from);
 						$received_from = str_replace("\n", "", $received_from);
-						echo "<b>find3: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+						$from_value = "<b>find3: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
 					}
 
 					preg_match("/FROM\s+([^\s@]+)\s+@\s*(\w+)/", $text, $matches);
-					if (!empty($matches)){
+					if (!empty($matches) && empty($from_value)){
 						$received_from = trim($matches[1])."@".trim($matches[2]);
 						$received_from = str_replace("'", "", $received_from);
 						$received_from = str_replace(" ", "", $received_from);
 						$received_from = str_replace("\n", "", $received_from);
-						echo "<b>find4: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+						$from_value = "<b>find4: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
 					}
 
 					preg_match("/FROM\s+([^\@]+)@\s*(\w+)/", $text, $matches);
-					if (!empty($matches)){
+					if (!empty($matches) && empty($from_value)){
 						$received_from = trim($matches[1])."@".trim($matches[2]);
 						$received_from = str_replace("'", "", $received_from);
 						$received_from = str_replace(" ", "", $received_from);
 						$received_from = str_replace("\n", "", $received_from);
-						echo "<b>find5: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+						$from_value = "<b>find5: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
 					}
 
 					preg_match("/FROM\s+(.*)/", $text, $matches);
-					if (!empty($matches)){
+					if (!empty($matches) && empty($from_value)){
 						$received_from = trim($matches[1]);
 						//$received_from = str_replace("'", "", $received_from);
 						//$received_from = str_replace(" ", "", $received_from);
 						//$received_from = str_replace("\n", "", $received_from);
-						echo "<b>find6: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+						$from_value = "<b>find6: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
 					}
+
+					echo $from_value;
 
 					$chmist_id = "";
 					// if(!empty($received_from)){
