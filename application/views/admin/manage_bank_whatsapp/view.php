@@ -48,7 +48,7 @@
 
 			$data0 = json_decode($response, true); // Convert JSON string to associative array
 			?>
-			<select class="form-control">
+			<select class="form-control" name="select_group">
 				<?php 
 				if (isset($data0['groups'])) {
 					foreach ($data0['groups'] as $groups) {
