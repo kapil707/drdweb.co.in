@@ -193,21 +193,14 @@
 						echo "<b>find5: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
 					}*/
 
-					$string = $text;
-					if (strpos($string, '@') !== false) {
-						// Case for strings with '@'
-						preg_match("/FROM\s+([^\@]+)@/", $string, $matches);
-						echo "Extracted Text: x0'" . trim($matches[1]) . "'<br>";
-					} elseif (strpos($string, 'CITI0000') !== false) {
-						// Case for strings with 'CITI0000'
-						preg_match("/FROM\s+(.*?)\s*CITI0000/", $string, $matches);
-						echo "Extracted Text: x1'" . trim($matches[0]) . "'<br>";
-					} else {
-						// General case, might need specific handling
-						preg_match("/FROM\s+(.*)/", $string, $matches);
-						echo "Extracted Text: x2'" . trim($matches[1]) . "'<br>";
+					preg_match("/FROM\s+(.*)/", $text, $matches);
+					if (!empty($matches)){
+						$received_from = trim($matches[1])."@".trim($matches[2]);
+						$received_from = str_replace("'", "", $received_from);
+						$received_from = str_replace(" ", "", $received_from);
+						$received_from = str_replace("\n", "", $received_from);
+						echo "<b>find5: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
 					}
-
 
 					$chmist_id = "";
 					// if(!empty($received_from)){
