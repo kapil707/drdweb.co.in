@@ -214,20 +214,21 @@
 					
 					$_id = 1;
 					$received_from = $from_value;
-					$status = 1;
-					$type = "Statment";
-					$dt = array(
-						'status'=>$status,
-						'amount'=>$amount1,
-						'date'=>$statment_date1,
-						'received_from'=>$received_from,
-						'upi_no'=>$upi_no,
-						'orderid'=>$orderid,
-						'type'=>$type,
-						'_id'=>$_id,
-					);
-					$this->BankModel->insert_fun("tbl_bank_processing", $dt);
-
+					if(!empty($received_from)){
+						$status = 1;
+						$type = "Statment";
+						$dt = array(
+							'status'=>$status,
+							'amount'=>$amount1,
+							'date'=>$statment_date1,
+							'received_from'=>$received_from,
+							'upi_no'=>$upi_no,
+							'orderid'=>$orderid,
+							'type'=>$type,
+							'_id'=>$_id,
+						);
+						$this->BankModel->insert_fun("tbl_bank_processing", $dt);
+					}
 					/*************************** */					
 				}
 			}
