@@ -199,7 +199,7 @@
 						$received_from = str_replace("'", "", $received_from);
 						$received_from = str_replace(" ", "", $received_from);
 						$received_from = str_replace("\n", "", $received_from);
-						echo "<b>find5: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+						echo "<b>find6: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
 					}
 
 					$chmist_id = "";
