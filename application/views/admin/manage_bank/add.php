@@ -155,7 +155,8 @@
 						$received_from = str_replace("'", "", $received_from);
 						$received_from = str_replace(" ", "", $received_from);
 						$received_from = str_replace("\n", "", $received_from);
-						$from_value = "<b>find: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+						//$from_value = "<b>find: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+						$from_value = $received_from;
 					}
 
 					
@@ -165,7 +166,8 @@
 						$received_from = str_replace("'", "", $received_from);
 						$received_from = str_replace(" ", "", $received_from);
 						$received_from = str_replace("\n", "", $received_from);
-						$from_value = "<b>find2: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+						//$from_value = "<b>find2: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+						$from_value = $received_from;
 					}
 
 					preg_match("/FROM\s+(\w+)\d+@\s*(\w+)/", $text, $matches);
@@ -174,7 +176,8 @@
 						$received_from = str_replace("'", "", $received_from);
 						$received_from = str_replace(" ", "", $received_from);
 						$received_from = str_replace("\n", "", $received_from);
-						$from_value = "<b>find3: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+						//$from_value = "<b>find3: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+						$from_value = $received_from;
 					}
 
 					preg_match("/FROM\s+([^\s@]+)\s+@\s*(\w+)/", $text, $matches);
@@ -183,7 +186,8 @@
 						$received_from = str_replace("'", "", $received_from);
 						$received_from = str_replace(" ", "", $received_from);
 						$received_from = str_replace("\n", "", $received_from);
-						$from_value = "<b>find4: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+						//$from_value = "<b>find4: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+						$from_value = $received_from;
 					}
 
 					preg_match("/FROM\s+([^\@]+)@\s*(\w+)/", $text, $matches);
@@ -192,7 +196,8 @@
 						$received_from = str_replace("'", "", $received_from);
 						$received_from = str_replace(" ", "", $received_from);
 						$received_from = str_replace("\n", "", $received_from);
-						$from_value = "<b>find5: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+						//$from_value = "<b>find5: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+						$from_value = $received_from;
 					}
 
 					preg_match("/FROM\s+(.*)/", $text, $matches);
@@ -201,31 +206,27 @@
 						//$received_from = str_replace("'", "", $received_from);
 						//$received_from = str_replace(" ", "", $received_from);
 						//$received_from = str_replace("\n", "", $received_from);
-						$from_value = "<b>find6: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+						//$from_value = "<b>find6: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+						$from_value = $received_from;
 					}
 
-					echo $from_value;
-
-					$chmist_id = "";
-					// if(!empty($received_from)){
-					// 	$rr = $this->BankModel->select_query("SELECT * FROM `tbl_bank_chemist` WHERE `string_value` LIKE '%$received_from%'");
-					// 	$rr = $rr->result();
-					// 	foreach($rr as $tt){
-					// 		$chmist_id = $tt->chemist_id;
-					// 		echo "<b>---chemist tbl---".$tt->chemist_id."</b>";
-					// 	}
-					// }
-
-					// if(empty($chmist_id)){
-					// 	$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where amt='$amount1' and (vdt BETWEEN '$start_date' and '$end_date')");
-					// 	$rr = $rr->result();
-					// 	foreach($rr as $tt){
-					// 		echo "---with invoice---".$tt->chemist_id;
-					// 		echo ",";
-					// 	}
-					// }
-
-					echo "<br><br>";
+					$upi_no = $orderid = $worksheet->getCell($customer_reference.$row)->getValue();
+					
+					$_id = 1;
+					$received_from = $from_value;
+					$status = 1;
+					$type = "Statment";
+					$dt = array(
+						'status'=>$status,
+						'amount'=>$amount1,
+						'date'=>$statment_date1,
+						'received_from'=>$received_from,
+						'upi_no'=>$upi_no,
+						'orderid'=>$orderid,
+						'type'=>$type,
+						'_id'=>$_id,
+					);
+					$this->BankModel->insert_fun("tbl_bank_processing", $dt);
 
 					/*************************** */					
 				}
