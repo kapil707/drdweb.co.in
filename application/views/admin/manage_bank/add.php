@@ -195,7 +195,7 @@
 
 					preg_match("/FROM\s+(.*)CITI0000/", $text, $matches);
 					if (!empty($matches)){
-						$received_from = trim($matches[1])."@".trim($matches[2]);
+						$received_from = trim($matches[1]);
 						$received_from = str_replace("'", "", $received_from);
 						$received_from = str_replace(" ", "", $received_from);
 						$received_from = str_replace("\n", "", $received_from);
