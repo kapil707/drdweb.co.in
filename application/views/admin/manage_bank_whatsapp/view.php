@@ -54,7 +54,7 @@
 					foreach ($data0['groups'] as $groups) {
 						if(!empty($groups)){
 							?>
-							<option>
+							<option value="xxxx">
 								<?php echo $groups ?>
 							</option>
 							<?php
