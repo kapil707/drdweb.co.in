@@ -152,6 +152,16 @@
 						echo "<b>find: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
 					}
 
+					
+					preg_match("/FROM\s+(\d+)\s+@\s+(\w+)/", $string, $matches);
+					if (!empty($matches)){
+						$received_from = trim($matches[1])."@".trim($matches[2]);
+						$received_from = str_replace("'", "", $received_from);
+						$received_from = str_replace(" ", "", $received_from);
+						$received_from = str_replace("\n", "", $received_from);
+						echo "<b>find2: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+					}
+
 					$chmist_id = "";
 					// if(!empty($received_from)){
 					// 	$rr = $this->BankModel->select_query("SELECT * FROM `tbl_bank_chemist` WHERE `string_value` LIKE '%$received_from%'");
