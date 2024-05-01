@@ -193,7 +193,7 @@
 						echo "<b>find5: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
 					}*/
 
-					$text = $string;
+					$string = $text;
 					if (strpos($string, '@') !== false) {
 						// Case for strings with '@'
 						preg_match("/FROM\s+([^\@]+)@/", $string, $matches);
