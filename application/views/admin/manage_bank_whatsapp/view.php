@@ -20,12 +20,6 @@
 			<input type="text" id="date-range" class="form-control" name="date-range" value="<?php echo $date_range ?>">
 		</div>
 		<div class="col-md-3">
-			<button type="submit" class="btn btn-info submit_button" name="Submit">
-				<i class="ace-icon fa fa-check bigger-110"></i>
-				Submit
-			</button>
-		</div>
-		<div class="col-md-3">
 		<?php
 		$parmiter = '';
 		$curl = curl_init();
@@ -54,19 +48,27 @@
 
 			$data0 = json_decode($response, true); // Convert JSON string to associative array
 			?>
-			<select>
+			<select class="form-control">
 				<?php 
 				if (isset($data0['groups'])) {
 					foreach ($data0['groups'] as $groups) {
-						?>
-						<option>
-							<?php echo $groups ?>
-						</option>
-						<?php
+						if(!empty($groups)){
+							?>
+							<option>
+								<?php echo $groups ?>
+							</option>
+							<?php
+						}
 					}
 				}
 				?>
 			</select>
+		</div>
+		<div class="col-md-3">
+			<button type="submit" class="btn btn-info submit_button" name="Submit">
+				<i class="ace-icon fa fa-check bigger-110"></i>
+				Submit
+			</button>
 		</div>
 	</form>
 	<?php 
