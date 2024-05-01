@@ -128,8 +128,8 @@
 					$amount1 = $worksheet->getCell($amount.$row)->getValue();
 					$statment_date1 = $worksheet->getCell($statment_date.$row)->getValue();
 					$text = $worksheet->getCell($narrative.$row)->getValue();
-					$text = trim($text);
-					$text = str_replace("'", "", $text);
+					//$text = trim($text);
+					//$text = str_replace("'", "", $text);
 					//$text = "+91-9899067942 411801191476 FROM GUPTAMEDICALSTORE 9300966180 CITI0000 9026 NA UBIN0579203";
 
 					$transaction_description1 = $worksheet->getCell($transaction_description.$row)->getValue();
@@ -208,17 +208,6 @@
 						echo "Extracted Text: '" . trim($matches[1]) . "'<br>";
 					}
 
-					preg_match("/FROM(.*?)CITI0000/", $text, $matches);
-					print_r($matches);
-					if (!empty($matches)){
-						$received_from = trim($matches[1]);
-						$received_from = str_replace("'", "", $received_from);
-						$received_from = str_replace(" ", "", $received_from);
-						$received_from = str_replace("\n", "", $received_from);
-						echo "<b>find6:  ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
-					} else{
-						echo "<b>not find 6</b>";
-					}
 
 					$chmist_id = "";
 					// if(!empty($received_from)){
