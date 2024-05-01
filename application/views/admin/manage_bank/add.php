@@ -137,12 +137,13 @@
 
 					echo $i.". ";
 					$i++;
-					$text = str_replace("@ ", "@", $text);
-					echo $text = preg_replace('/@\s/', "@", $text, 1);
+					echo $text;
+					//$text = str_replace("@ ", "@", $text);
+					//echo $text = preg_replace('/@\s/', "@", $text, 1);
 
 					$received_from = "";
 					// Use regular expression to extract text after "FROM"
-					preg_match("/FROM\s+(\d+)@\s+(\w+)/", $string, $matches);
+					preg_match("/FROM\s+(\d+)@\s+(\w+)/", $text, $matches);
 					if (!empty($matches)){
 						$received_from = trim($matches[1]).trim($matches[2]);
 						$received_from = str_replace("'", "", $received_from);
