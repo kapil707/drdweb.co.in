@@ -135,8 +135,7 @@
 					$transaction_description1 = $worksheet->getCell($transaction_description.$row)->getValue();
 					
 					//$mydate = date('Y-m-d', strtotime($statment_date1));
-					$start_date = date('Y-m-d', strtotime($statment_date1 . ' -2 day'));
-					$end_date = date('Y-m-d', strtotime($statment_date1 . ' -1 day'));
+					$statment_date1 = date('Y-m-d', strtotime($statment_date1));
 					
 
 					echo $i.". ";
