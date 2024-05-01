@@ -147,7 +147,7 @@
 
 					$received_from = "";
 					// Use regular expression to extract text after "FROM"
-					preg_match("/FROM\s+(\d+)@\s+(\w+)/", $text, $matches);
+					/*preg_match("/FROM\s+(\d+)@\s+(\w+)/", $text, $matches);
 					if (!empty($matches)){
 						$received_from = trim($matches[1])."@".trim($matches[2]);
 						$received_from = str_replace("'", "", $received_from);
@@ -191,7 +191,7 @@
 						$received_from = str_replace(" ", "", $received_from);
 						$received_from = str_replace("\n", "", $received_from);
 						echo "<b>find5: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
-					}
+					}*/
 
 					preg_match("/FROM\s+(.*?)\s+CITI0000/", $text, $matches);
 					if (!empty($matches)){
