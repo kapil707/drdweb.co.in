@@ -193,7 +193,7 @@
 						echo "<b>find5: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
 					}*/
 
-					preg_match("/FROM\s+(.*?)\s*CITI0000/", $text, $matches);
+					preg_match("/FROM(.*?)CITI0000/", $text, $matches);
 					print_r($matches);
 					if (!empty($matches)){
 						$received_from = trim($matches[1]);
