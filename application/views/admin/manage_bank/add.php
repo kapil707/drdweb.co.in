@@ -151,23 +151,23 @@
 					}
 
 					$chmist_id = "";
-					if(!empty($received_from)){
-						$rr = $this->BankModel->select_query("SELECT * FROM `tbl_bank_chemist` WHERE `string_value` LIKE '%$received_from%'");
-						$rr = $rr->result();
-						foreach($rr as $tt){
-							$chmist_id = $tt->chemist_id;
-							echo "<b>---chemist tbl---".$tt->chemist_id."</b>";
-						}
-					}
+					// if(!empty($received_from)){
+					// 	$rr = $this->BankModel->select_query("SELECT * FROM `tbl_bank_chemist` WHERE `string_value` LIKE '%$received_from%'");
+					// 	$rr = $rr->result();
+					// 	foreach($rr as $tt){
+					// 		$chmist_id = $tt->chemist_id;
+					// 		echo "<b>---chemist tbl---".$tt->chemist_id."</b>";
+					// 	}
+					// }
 
-					if(empty($chmist_id)){
-						$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where amt='$amount1' and (vdt BETWEEN '$start_date' and '$end_date')");
-						$rr = $rr->result();
-						foreach($rr as $tt){
-							echo "---with invoice---".$tt->chemist_id;
-							echo ",";
-						}
-					}
+					// if(empty($chmist_id)){
+					// 	$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where amt='$amount1' and (vdt BETWEEN '$start_date' and '$end_date')");
+					// 	$rr = $rr->result();
+					// 	foreach($rr as $tt){
+					// 		echo "---with invoice---".$tt->chemist_id;
+					// 		echo ",";
+					// 	}
+					// }
 
 					echo "<br><br>";
 
