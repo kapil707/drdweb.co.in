@@ -142,8 +142,9 @@
 
 					$received_from = "";
 					// Use regular expression to extract text after "FROM"
-					if (preg_match('/FROM\s+([^@]+)/', $text, $matches)) {
-						$received_from = trim($matches[1]);
+					preg_match("/FROM\s+(\d+)@\s+(\w+)/", $string, $matches);
+					if (!empty($matches)){
+						$received_from = trim($matches[1]).trim($matches[2]);
 						$received_from = str_replace("'", "", $received_from);
 						$received_from = str_replace(" ", "", $received_from);
 						$received_from = str_replace("\n", "", $received_from);
