@@ -135,12 +135,12 @@
 					$transaction_description1 = $worksheet->getCell($transaction_description.$row)->getValue();
 					
 					//$mydate = date('Y-m-d', strtotime($statment_date1));
-					$statment_date1 = date('Y-m-d', strtotime($statment_date1));
-					
+					echo $statment_date1 = date('Y-m-d', strtotime($statment_date1));
+					echo "<br>";
 
-					echo $i.". ";
-					$i++;
-					echo $text;
+					// echo $i.". ";
+					// $i++;
+					// echo $text;
 					//$text = str_replace("@ ", "@", $text);
 					//echo $text = preg_replace('/@\s/', "@", $text, 1);
 
