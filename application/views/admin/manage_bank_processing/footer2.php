@@ -13,7 +13,7 @@ $(document).ready(function(){
 			$fafa = '<i class="fa fa-question-circle" aria-hidden="true" style="color: orange;font-size: 20px;"></i>';
 		}
 		?>
-		data.push(['<?= ($row->status); ?>', '<?= ($row->amount); ?>','<?= ($row->date); ?>','<?= ($row->received_from); ?>','<?= ($row->upi_no); ?>','<?= ($row->orderid); ?>','<?= ($row->type); ?>','<?= ($row->_id); ?>','<?= ($row->find_by); ?>','<?= ($fafa); ?>','<?= ($row->chemist_id); ?>','<a href="<?= base_url(); ?>admin/<?php echo $Page_name ?>/edit/<?= ($row->id); ?>">Edit</a>']);
+		data.push(['<?= ($row->status); ?>', '<?= ($row->date); ?>','<?= ($row->upi_no); ?>','<?= ($row->orderid); ?>','<?= ($row->amount); ?>','<?= ($row->received_from); ?>','<?= ($row->type); ?>','<?= ($row->_id); ?>','<?= ($row->find_by); ?>','<?= ($fafa); ?>','<?= ($row->chemist_id); ?>','<a href="<?= base_url(); ?>admin/<?php echo $Page_name ?>/edit/<?= ($row->id); ?>">Edit</a>']);
 		<?php
 	}
 	?>

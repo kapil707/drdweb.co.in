@@ -15,20 +15,20 @@
 							Status
 						</th>
 						<th>
-							Amount
-						</th>
-						<th>
 							Date
                         </th>
-						<th>
-							From 
-						</th>
 						<th> 
 							Upi No
                         </th>
 						<th>
 							Orderid
                         </th>
+						<th>
+							Amount
+						</th>
+						<th>
+							From 
+						</th>
 						<th>
                         	Type
                         </th>
