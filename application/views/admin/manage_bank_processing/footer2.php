@@ -6,10 +6,10 @@ $(document).ready(function(){
 	foreach ($result as $row)
 	{
 		$fafa = "";
-		if($row->find_by=="Chemist Table"){
+		if($row->process_status=="1"){
 			$fafa = '<i class="fa fa-check-circle" aria-hidden="true" style="color: green;font-size: 20px;"></i>';
 		}
-		if($row->find_by=="Invoice Table"){
+		if($row->process_status=="0"){
 			$fafa = '<i class="fa fa-question-circle" aria-hidden="true" style="color: orange;font-size: 20px;"></i>';
 		}
 		?>
