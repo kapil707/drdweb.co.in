@@ -204,7 +204,14 @@ class Cronjob_bank extends CI_Controller
 				$process_status = $result["process_status"];
 				$find_by = "Chemist Table4";
 			}
-			
+
+			if(empty($chemist_id)){
+				$result = $this->find_by_invoice($amount,$start_date,$end_date);
+				$chemist_id = $result["chemist_id"];
+				$process_status = $result["process_status"];
+				$find_by = "invoice";
+			}
+
 			/************************************************* */
 			$id = $row->id;
 			$where = array('id'=>$id);
@@ -277,7 +284,7 @@ class Cronjob_bank extends CI_Controller
 		return $return;
 	}
 
-	function find_by_invoice($received_from){
+	function find_by_invoice($amount,$start_date,$end_date){
 
 		$jsonArray = array();
 
