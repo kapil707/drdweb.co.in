@@ -168,7 +168,7 @@ class Cronjob_bank extends CI_Controller
 
 			if(empty($chemist_id)){
 				$received_from1 = str_replace(' ', '%', $received_from);
-				echo "SELECT * FROM `tbl_bank_chemist` WHERE `string_value` LIKE '%$received_from1%'";
+				//echo "SELECT * FROM `tbl_bank_chemist` WHERE `string_value` LIKE '%$received_from1%'";
 				$rr = $this->BankModel->select_query("SELECT * FROM `tbl_bank_chemist` WHERE `string_value` LIKE '%$received_from1%'");
 				$rr = $rr->result();
 				foreach($rr as $tt){
@@ -179,6 +179,7 @@ class Cronjob_bank extends CI_Controller
 
 			if(empty($chemist_id)){
 				$received_from1 = str_replace(' ', '', $received_from);
+				echo "SELECT * FROM `tbl_bank_chemist` WHERE `title` LIKE '%$received_from1%'";
 				$rr = $this->BankModel->select_query("SELECT * FROM `tbl_bank_chemist` WHERE `title` LIKE '%$received_from1%'");
 				$rr = $rr->result();
 				foreach($rr as $tt){
