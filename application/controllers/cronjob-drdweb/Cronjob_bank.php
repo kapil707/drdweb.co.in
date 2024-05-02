@@ -179,15 +179,13 @@ class Cronjob_bank extends CI_Controller
 
 			if(empty($chemist_id)){
 				$newString = substr($received_from, 0, -1);
-				$return = $this->find_by_title($newString);
-				$chemist_id = $return["chemist_id"];
+				$chemist_id = $this->find_by_title($newString);
 				$find_by = "Chemist Table2";
 			}
 
 			if(empty($chemist_id)){
 				$newString = substr($received_from, 0, -2);
-				$return = $this->find_by_title($newString);
-				$chemist_id = $return["chemist_id"];
+				$chemist_id = $this->find_by_title($newString);
 				$find_by = "Chemist Table3";
 			}
 
@@ -222,21 +220,24 @@ class Cronjob_bank extends CI_Controller
 
 	function find_by_title($received_from){
 
-		$return["chemist_id"] = "";
-		$return["find_by"] = "";
+		$jsonArray = array();
+
+		$chemist_id = "";
 
 		$received_from1 = str_replace(' ', '', $received_from);
 		echo "SELECT * FROM `tbl_bank_chemist` WHERE `title` LIKE '%$received_from1%'";
 		$rr = $this->BankModel->select_query("SELECT * FROM `tbl_bank_chemist` WHERE `title` LIKE '%$received_from1%'");
 		$rr = $rr->result();
 		foreach($rr as $tt){
-			$chemist_id = $tt->chemist_id;
-			$find_by = "Chemist Table2";
+			$jsonArray[] = $tt->chemist_id;
 
-			$return["chemist_id"] = $chemist_id;
-			$return["find_by"] = $find_by;
+			//$chemist_id = $tt->chemist_id;
 		}
 
-		return $return;
+		if(!empty($jsonArray)){
+			$chemist_id = implode(',', $jsonArray);
+		}
+
+		return $chemist_id;
 	}
 }
