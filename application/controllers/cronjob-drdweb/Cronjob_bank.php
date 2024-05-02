@@ -230,10 +230,8 @@ class Cronjob_bank extends CI_Controller
 
 		$jsonArray = array();
 
-		$return["chemist_id"] = "";
-		$return["process_status"] = 0;
-
 		$chemist_id = "";
+		$process_status = 0;
 
 		echo "SELECT * FROM `tbl_bank_chemist` WHERE `string_value` LIKE '%$received_from%'";
 		$rr = $this->BankModel->select_query("SELECT * FROM `tbl_bank_chemist` WHERE `string_value` LIKE '%$received_from%'");
@@ -258,10 +256,8 @@ class Cronjob_bank extends CI_Controller
 
 		$jsonArray = array();
 
-		$return["chemist_id"] = "";
-		$return["process_status"] = 0;
-
 		$chemist_id = "";
+		$process_status = 0;
 
 		$received_from = str_replace(' ', '', $received_from);
 		echo "SELECT * FROM `tbl_bank_chemist` WHERE `title` LIKE '%$received_from%'";
@@ -288,10 +284,8 @@ class Cronjob_bank extends CI_Controller
 
 		$jsonArray = array();
 
-		$return["chemist_id"] = "";
-		$return["process_status"] = 0;
-
 		$chemist_id = "";
+		$process_status = 0;
 		
 		$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where amt='$amount' and (vdt BETWEEN '$start_date' and '$end_date')");
 		$rr = $rr->result();
