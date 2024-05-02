@@ -189,6 +189,12 @@ class Cronjob_bank extends CI_Controller
 				$find_by = "Chemist Table3";
 			}
 
+			if(empty($chemist_id)){
+				$newString = substr($received_from, 0, -3);
+				$chemist_id = $this->find_by_title($newString);
+				$find_by = "Chemist Table4";
+			}
+
 			$jsonArray = array();
 			if(empty($chemist_id)){
 				$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where amt='$amount' and (vdt BETWEEN '$start_date' and '$end_date')");
