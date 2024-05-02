@@ -173,24 +173,30 @@ class Cronjob_bank extends CI_Controller
 				$rr = $rr->result();
 				foreach($rr as $tt){
 					$chemist_id = $tt->chemist_id;
-					$find_by = "Chemist Table1";
+					$find_by = "Chemist Table0";
 				}
 			}
 
 			if(empty($chemist_id)){
 				$newString = substr($received_from, 0, -1);
 				$chemist_id = $this->find_by_title($newString);
-				$find_by = "Chemist Table2";
+				$find_by = "Chemist Table1";
 			}
 
 			if(empty($chemist_id)){
 				$newString = substr($received_from, 0, -2);
 				$chemist_id = $this->find_by_title($newString);
-				$find_by = "Chemist Table3";
+				$find_by = "Chemist Table2";
 			}
 
 			if(empty($chemist_id)){
 				$newString = substr($received_from, 0, -3);
+				$chemist_id = $this->find_by_title($newString);
+				$find_by = "Chemist Table3";
+			}
+
+			if(empty($chemist_id)){
+				$newString = substr($received_from, 0, -4);
 				$chemist_id = $this->find_by_title($newString);
 				$find_by = "Chemist Table4";
 			}
