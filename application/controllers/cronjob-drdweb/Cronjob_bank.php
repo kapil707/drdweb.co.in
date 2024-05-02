@@ -204,15 +204,7 @@ class Cronjob_bank extends CI_Controller
 				$process_status = $result["process_status"];
 				$find_by = "Chemist Table4";
 			}
-
-			$jsonArray = array();
-			if(empty($chemist_id)){
-				
-			}
-			print_r($jsonArray);
 			
-			echo "find_by".$find_by."--".$chemist_id;
-			echo "<br>";
 			/************************************************* */
 			$id = $row->id;
 			$where = array('id'=>$id);
