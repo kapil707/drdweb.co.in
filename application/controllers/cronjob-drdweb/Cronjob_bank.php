@@ -174,6 +174,16 @@ class Cronjob_bank extends CI_Controller
 			}
 
 			if(empty($chemist_id)){
+				$string = "84471745500@PAYTM";
+				$splitValues = explode('@', $received_from);
+				$before_at = $splitValues[0];
+				$result = $this->find_by_name($before_at);
+				$chemist_id = $result["chemist_id"];
+				$process_status = $result["process_status"];
+				$find_by = "Chemist remove @";
+			}
+
+			if(empty($chemist_id)){
 				$newString = substr($received_from, 0, -1);
 				$result = $this->find_by_title($newString);
 				$chemist_id = $result["chemist_id"];
