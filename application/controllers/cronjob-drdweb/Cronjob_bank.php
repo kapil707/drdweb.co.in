@@ -157,55 +157,60 @@ class Cronjob_bank extends CI_Controller
 
 			$find_by = "";
 			$chemist_id = "";
+			$process_status = 0;
 			if(!empty($received_from)){
-				$chemist_id = $this->find_by_name($received_from);
+				$result = $this->find_by_name($received_from);
+				$chemist_id = $result["chemist_id"];
+				$process_status = 1;
 				$find_by = "Chemist name";
 			}
 
 			if(empty($chemist_id)){
 				$newString = str_replace(' ', '%', $received_from);
-				$chemist_id = $this->find_by_name($newString);
+				$result = $this->find_by_name($newString);
+				$chemist_id = $result["chemist_id"];
+				$process_status = $result["process_status"];
 				$find_by = "Chemist name1";
 			}
 
 			if(empty($chemist_id)){
 				$newString = substr($received_from, 0, -1);
-				$chemist_id = $this->find_by_title($newString);
+				$result = $this->find_by_title($newString);
+				$chemist_id = $result["chemist_id"];
+				$process_status = $result["process_status"];
 				$find_by = "Chemist Table1";
 			}
 
 			if(empty($chemist_id)){
 				$newString = substr($received_from, 0, -2);
-				$chemist_id = $this->find_by_title($newString);
+				$result = $this->find_by_title($newString);
+				$chemist_id = $result["chemist_id"];
+				$process_status = $result["process_status"];
 				$find_by = "Chemist Table2";
 			}
 
 			if(empty($chemist_id)){
 				$newString = substr($received_from, 0, -3);
-				$chemist_id = $this->find_by_title($newString);
+				$result = $this->find_by_title($newString);
+				$chemist_id = $result["chemist_id"];
+				$process_status = $result["process_status"];
 				$find_by = "Chemist Table3";
 			}
 
 			if(empty($chemist_id)){
 				$newString = substr($received_from, 0, -4);
-				$chemist_id = $this->find_by_title($newString);
+				$result = $this->find_by_title($newString);
+				$chemist_id = $result["chemist_id"];
+				$process_status = $result["process_status"];
 				$find_by = "Chemist Table4";
 			}
 
 			$jsonArray = array();
 			if(empty($chemist_id)){
-				$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where amt='$amount' and (vdt BETWEEN '$start_date' and '$end_date')");
-				$rr = $rr->result();
-				foreach($rr as $tt){
-					$find_by = "Invoice Table";
-					
-					$jsonArray[] = $tt->chemist_id;
-				}
+				
 			}
 			print_r($jsonArray);
-			if(!empty($jsonArray)){
-				$chemist_id = implode(',', $jsonArray);
-			}
+			
 			echo "find_by".$find_by."--".$chemist_id;
 			echo "<br>";
 			/************************************************* */
@@ -215,6 +220,7 @@ class Cronjob_bank extends CI_Controller
 				'find_by'=>$find_by,
 				'chemist_id'=>$chemist_id,
 				'status'=>2,
+				'process_status'=>$process_status,
 			);
 			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 			/************************************************* */
@@ -225,6 +231,9 @@ class Cronjob_bank extends CI_Controller
 
 		$jsonArray = array();
 
+		$return["chemist_id"] = "";
+		$return["process_status"] = 0;
+
 		$chemist_id = "";
 
 		echo "SELECT * FROM `tbl_bank_chemist` WHERE `string_value` LIKE '%$received_from%'";
@@ -233,19 +242,25 @@ class Cronjob_bank extends CI_Controller
 		foreach($rr as $tt){
 			$jsonArray[] = $tt->chemist_id;
 
-			//$chemist_id = $tt->chemist_id;
+			$process_status = 0;
 		}
 
 		if(!empty($jsonArray)){
 			$chemist_id = implode(',', $jsonArray);
 		}
 
-		return $chemist_id;
+		$return["chemist_id"] = $chemist_id;
+		$return["process_status"] = $process_status;
+
+		return $return;
 	}
 
 	function find_by_title($received_from){
 
 		$jsonArray = array();
+
+		$return["chemist_id"] = "";
+		$return["process_status"] = 0;
 
 		$chemist_id = "";
 
@@ -256,6 +271,7 @@ class Cronjob_bank extends CI_Controller
 		foreach($rr as $tt){
 			$jsonArray[] = $tt->chemist_id;
 
+			$process_status = 0;
 			//$chemist_id = $tt->chemist_id;
 		}
 
@@ -263,6 +279,37 @@ class Cronjob_bank extends CI_Controller
 			$chemist_id = implode(',', $jsonArray);
 		}
 
-		return $chemist_id;
+		$return["chemist_id"] = $chemist_id;
+		$return["process_status"] = $process_status;
+
+		return $return;
+	}
+
+	function find_by_invoice($received_from){
+
+		$jsonArray = array();
+
+		$return["chemist_id"] = "";
+		$return["process_status"] = 0;
+
+		$chemist_id = "";
+		
+		$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where amt='$amount' and (vdt BETWEEN '$start_date' and '$end_date')");
+		$rr = $rr->result();
+		foreach($rr as $tt){
+			$find_by = "Invoice Table";
+			
+			$jsonArray[] = $tt->chemist_id;
+			$process_status = 0;
+		}
+
+		if(!empty($jsonArray)){
+			$chemist_id = implode(',', $jsonArray);
+		}
+
+		$return["chemist_id"] = $chemist_id;
+		$return["process_status"] = $process_status;
+
+		return $return;
 	}
 }
