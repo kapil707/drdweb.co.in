@@ -244,7 +244,7 @@ class Cronjob_bank extends CI_Controller
 			}
 
 			/************************************************* */
-			$result = $this->find_by_invoice($amount,$start_date,$end_date);
+			$result = $this->find_by_invoice($amount,$start_date,$end_date,$chemist_id);
 			$process_invoice = $result["invoice"];
 
 			/************************************************* */
