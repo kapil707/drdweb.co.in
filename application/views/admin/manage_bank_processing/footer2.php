@@ -35,7 +35,7 @@ $(document).ready(function(){
 		if(empty($process_invoice) && empty($row->chemist_id)){
 			$find = "N/A";
 		}
-		$chemist_dt = ($row->chemist_id)." ".($chemist_fafa); 
+		$chemist_dt = $row->chemist_id." ".$chemist_fafa; 
 		if(!empty($invoice_chemist)){
 			$chemist_dt.="<br>".$invoice_chemist;
 		}
