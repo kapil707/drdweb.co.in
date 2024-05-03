@@ -362,6 +362,10 @@ class Cronjob_bank extends CI_Controller
 
 		$where = "";
 		if(!empty($chemist_id)){
+			$fruits_array = explode(",", $chemist_id);
+			foreach($fruits_array as $rows){
+				$chemist_id = "'$rows',";
+			}
 			$where = " and chemist_id in ($chemist_id)";
 		}
 
