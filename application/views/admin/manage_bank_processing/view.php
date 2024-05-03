@@ -36,7 +36,7 @@
 						<th>
                         	Chemist
                         </th>
-						<th>
+						<th width="150px">
                         	Invoice
                         </th>
 						<th>
