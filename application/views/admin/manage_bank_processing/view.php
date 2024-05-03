@@ -12,7 +12,7 @@
                 <thead>
                     <tr>
 						<th width="50">
-							Status
+							Status / Type
 						</th>
 						<th>
 							Date
@@ -28,9 +28,6 @@
 							From 
 						</th>
 						<th>
-                        	Type
-                        </th>
-						<th>
                         	_id
                         </th>
 						<th>
@@ -40,7 +37,7 @@
                         	
                         </th>
 						<th>
-                        	
+                        	Chemist
                         </th>
 						<th>
                         	Invoice
