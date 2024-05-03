@@ -22,7 +22,7 @@ $(document).ready(function(){
 		foreach($fruits_array as $rows){
 			$process_invoice.= $rows."<br>";
 		}
-		$find = "find by";
+		$find = "find by ";
 		if(!empty($process_invoice)){
 			$find.= "invoice,";
 		}
