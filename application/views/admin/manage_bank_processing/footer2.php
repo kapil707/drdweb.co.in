@@ -23,7 +23,7 @@ $(document).ready(function(){
 			$process_invoice.= $rows."<br>";
 		}
 		$find = "find by ";
-		if(!empty($$row->process_invoice)){
+		if(!empty($row->process_invoice)){
 			$find.= "invoice,";
 		}
 		if(!empty($row->chemist_id)){
