@@ -230,6 +230,17 @@ class Cronjob_bank extends CI_Controller
 				$process_name = $result["process_name"];
 			}
 
+			if(empty($chemist_id)){
+				$pattern = '/(\d{10})/';
+				preg_match($pattern, $received_from, $matches);
+				$result = $this->find_by_title($matches[1]);
+				$chemist_id = $result["chemist_id"];
+				$process_status = $result["process_status"];
+				$find_by = "Chemist mobile";
+				$process_value = $result["process_value"];
+				$process_name = $result["process_name"];
+			}
+
 			$process_invoice = "";
 			if(empty($chemist_id)){
 				$result = $this->find_by_invoice($amount,$start_date,$end_date);
