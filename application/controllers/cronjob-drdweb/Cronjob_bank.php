@@ -245,7 +245,7 @@ class Cronjob_bank extends CI_Controller
 
 			/************************************************* */
 			$result = $this->find_by_invoice($amount,$start_date,$end_date);
-			$process_invoice = $result["chemist_id"];
+			$process_invoice = $result["invoice"];
 
 			/************************************************* */
 			$id = $row->id;
@@ -356,23 +356,22 @@ class Cronjob_bank extends CI_Controller
 		return $return;
 	}
 
-	function find_by_invoice($amount,$start_date,$end_date){
+	function find_by_invoice($amount,$start_date,$end_date,$chemist_id){
 
 		$jsonArray = array();
 
-		$chemist_id = "";
-		
-		$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where amt='$amount' and (vdt BETWEEN '$start_date' and '$end_date')");
+		$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where amt='$amount' and (vdt BETWEEN '$start_date' and '$end_date') and chemist_id in ($chemist_id)");
 		$rr = $rr->result();
 		foreach($rr as $tt){			
 			$jsonArray[] = $tt->chemist_id.":-".$tt->gstvno;
 		}
 
+		$chemist_id = "";
 		if(!empty($jsonArray)){
 			$chemist_id = implode(',', $jsonArray);
 		}
 
-		$return["chemist_id"] = $chemist_id;
+		$return["invoice"] = $chemist_id;
 
 		return $return;
 	}
