@@ -17,10 +17,13 @@ $(document).ready(function(){
 		$search_escaped = preg_quote($search, '/');
 		$highlighted_text = preg_replace('/(' . $search_escaped . ')/i', '<span style="background-color: yellow;">$1</span>', $row->process_value);
 
+		$invoice_chemist = "";
 		$process_invoice = "";
 		$fruits_array = explode(",", $row->process_invoice);
 		foreach($fruits_array as $rows){
 			$process_invoice.= $rows."<br>";
+
+			$invoice_chemist = explode(":-", $rows);
 		}
 		$find = "find by ";
 		if(!empty($row->process_invoice)){
@@ -32,8 +35,12 @@ $(document).ready(function(){
 		if(empty($process_invoice) && empty($row->chemist_id)){
 			$find = "N/A";
 		}
+		$chemist_dt = ($row->chemist_id)." ".($chemist_fafa); 
+		if(!empty($invoice_chemist)){
+			$chemist_dt.="<br>".$invoice_chemist;
+		}
 		?>
-		data.push(['<?= ($row->status); ?> / <?= ($row->type); ?>', '<?= ($row->date); ?>','<?= ($row->upi_no); ?><br><?= ($row->orderid); ?>','<?= ($row->amount); ?>','<?= ($row->received_from); ?><br><?= ($highlighted_text); ?>','<?= ($row->_id); ?>','<?= ($row->find_by); ?>','<?= ($row->chemist_id); ?> <?= ($chemist_fafa); ?>','<?= ($process_invoice); ?>','<?= ($find); ?>','<a href="<?= base_url(); ?>admin/<?php echo $Page_name ?>/edit/<?= ($row->id); ?>">Edit</a>']);
+		data.push(['<?= ($row->status); ?> / <?= ($row->type); ?>', '<?= ($row->date); ?>','<?= ($row->upi_no); ?><br><?= ($row->orderid); ?>','<?= ($row->amount); ?>','<?= ($row->received_from); ?><br><?= ($highlighted_text); ?>','<?= ($row->_id); ?>','<?= ($row->find_by); ?>','<?= ($chemist_dt); ?>','<?= ($process_invoice); ?>','<?= ($find); ?>','<a href="<?= base_url(); ?>admin/<?php echo $Page_name ?>/edit/<?= ($row->id); ?>">Edit</a>']);
 		<?php
 	}
 	?>
