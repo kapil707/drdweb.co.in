@@ -34,9 +34,6 @@
                         	Find By
                         </th>
 						<th>
-                        	
-                        </th>
-						<th>
                         	Chemist
                         </th>
 						<th>
