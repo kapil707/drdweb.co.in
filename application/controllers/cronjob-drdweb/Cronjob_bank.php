@@ -195,7 +195,7 @@ class Cronjob_bank extends CI_Controller
 				$splitValues = explode('@', $received_from);
 				$before_at = $splitValues[0];
 				$newString = substr($before_at, 0, -1);
-				$result = $this->find_by_name($before_at);
+				$result = $this->find_by_name($newString);
 				$chemist_id = $result["chemist_id"];
 				$process_status = $result["process_status"];
 				$find_by = "Chemist remove @ 1";
@@ -207,7 +207,7 @@ class Cronjob_bank extends CI_Controller
 				$splitValues = explode('@', $received_from);
 				$before_at = $splitValues[0];
 				$newString = substr($before_at, 0, -2);
-				$result = $this->find_by_name($before_at);
+				$result = $this->find_by_name($newString);
 				$chemist_id = $result["chemist_id"];
 				$process_status = $result["process_status"];
 				$find_by = "Chemist remove @ 2";
@@ -219,7 +219,7 @@ class Cronjob_bank extends CI_Controller
 				$splitValues = explode('@', $received_from);
 				$before_at = $splitValues[0];
 				$newString = substr($before_at, 0, -3);
-				$result = $this->find_by_name($before_at);
+				$result = $this->find_by_name($newString);
 				$chemist_id = $result["chemist_id"];
 				$process_status = $result["process_status"];
 				$find_by = "Chemist remove @ 3";
