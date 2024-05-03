@@ -210,7 +210,7 @@ class Cronjob_bank extends CI_Controller
 				$result = $this->find_by_name($before_at);
 				$chemist_id = $result["chemist_id"];
 				$process_status = $result["process_status"];
-				$find_by = "Chemist remove @ 1";
+				$find_by = "Chemist remove @ 2";
 				$process_value = $result["process_value"];
 				$process_name = $result["process_name"];
 			}
@@ -222,7 +222,7 @@ class Cronjob_bank extends CI_Controller
 				$result = $this->find_by_name($before_at);
 				$chemist_id = $result["chemist_id"];
 				$process_status = $result["process_status"];
-				$find_by = "Chemist remove @ 1";
+				$find_by = "Chemist remove @ 3";
 				$process_value = $result["process_value"];
 				$process_name = $result["process_name"];
 			}
@@ -234,7 +234,7 @@ class Cronjob_bank extends CI_Controller
 				$result = $this->find_by_name($before_at);
 				$chemist_id = $result["chemist_id"];
 				$process_status = $result["process_status"];
-				$find_by = "Chemist remove @ 1";
+				$find_by = "Chemist remove @ 4";
 				$process_value = $result["process_value"];
 				$process_name = $result["process_name"];
 			}
