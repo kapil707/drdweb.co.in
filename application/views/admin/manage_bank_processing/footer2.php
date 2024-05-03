@@ -17,7 +17,7 @@ $(document).ready(function(){
 		$search_escaped = preg_quote($search, '/');
 		$highlighted_text = preg_replace('/(' . $search_escaped . ')/i', '<span style="background-color: yellow;">$1</span>', $row->process_value);
 		?>
-		data.push(['<?= ($row->status); ?>', '<?= ($row->date); ?>','<?= ($row->upi_no); ?><br><?= ($row->orderid); ?>','<?= ($row->amount); ?>','<?= ($row->received_from); ?><br><?= ($highlighted_text); ?>','<?= ($row->type); ?>','<?= ($row->_id); ?>','<?= ($row->find_by); ?>','<?= ($fafa); ?>','<?= ($row->chemist_id); ?>','<a href="<?= base_url(); ?>admin/<?php echo $Page_name ?>/edit/<?= ($row->id); ?>">Edit</a>']);
+		data.push(['<?= ($row->status); ?>', '<?= ($row->date); ?>','<?= ($row->upi_no); ?><br><?= ($row->orderid); ?>','<?= ($row->amount); ?>','<?= ($row->received_from); ?><br><?= ($highlighted_text); ?>','<?= ($row->type); ?>','<?= ($row->_id); ?>','<?= ($row->find_by); ?>','<?= ($fafa); ?>','<?= ($row->chemist_id); ?>','<?= ($row->process_invoice); ?>','<a href="<?= base_url(); ?>admin/<?php echo $Page_name ?>/edit/<?= ($row->id); ?>">Edit</a>']);
 		<?php
 	}
 	?>

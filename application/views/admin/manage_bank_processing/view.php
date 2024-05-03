@@ -43,6 +43,9 @@
                         	
                         </th>
 						<th>
+                        	Invoice
+                        </th>
+						<th>
                         	Edit
                         </th>
                     </tr>
