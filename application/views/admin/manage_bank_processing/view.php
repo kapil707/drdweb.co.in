@@ -40,6 +40,9 @@
                         	Invoice
                         </th>
 						<th>
+                        	Find
+                        </th>
+						<th>
                         	Edit
                         </th>
                     </tr>
