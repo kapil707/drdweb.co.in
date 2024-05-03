@@ -277,6 +277,7 @@ class Cronjob_bank extends CI_Controller
 		$jsonArray = array();
 
 		$chemist_id = "";
+		$process_value = "";
 		$process_status = 0;
 
 		echo "SELECT * FROM `tbl_bank_chemist` WHERE `string_value` LIKE '%$received_from%'";
@@ -284,8 +285,8 @@ class Cronjob_bank extends CI_Controller
 		$rr = $rr->result();
 		foreach($rr as $tt){
 			$jsonArray[] = $tt->chemist_id;
-
 			$process_status = 0;
+			$process_value = $tt->string_value;
 		}
 
 		if(!empty($jsonArray)){
@@ -293,6 +294,7 @@ class Cronjob_bank extends CI_Controller
 		}
 
 		$return["chemist_id"] = $chemist_id;
+		$return["process_value"] = $process_value;
 		$return["process_status"] = $process_status;
 
 		return $return;
