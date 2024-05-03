@@ -157,6 +157,8 @@ class Cronjob_bank extends CI_Controller
 
 			$find_by = "";
 			$chemist_id = "";
+			$process_value = "";
+			$process_name = "";
 			$process_status = 0;
 			if(!empty($received_from)){
 				$result = $this->find_by_full_name($received_from);
@@ -164,6 +166,7 @@ class Cronjob_bank extends CI_Controller
 				$process_status = 1;
 				$find_by = "Chemist name";
 				$process_value = $result["process_value"];
+				$process_name = $result["process_name"];
 			}
 
 			if(empty($chemist_id)){
@@ -173,6 +176,7 @@ class Cronjob_bank extends CI_Controller
 				$process_status = $result["process_status"];
 				$find_by = "Chemist name1";
 				$process_value = $result["process_value"];
+				$process_name = $result["process_name"];
 			}
 
 			if(empty($chemist_id)){
@@ -183,6 +187,7 @@ class Cronjob_bank extends CI_Controller
 				$process_status = $result["process_status"];
 				$find_by = "Chemist remove @";
 				$process_value = $result["process_value"];
+				$process_name = $result["process_name"];
 			}
 
 			if(empty($chemist_id)){
@@ -191,7 +196,8 @@ class Cronjob_bank extends CI_Controller
 				$chemist_id = $result["chemist_id"];
 				$process_status = $result["process_status"];
 				$find_by = "Chemist Table1";
-				$process_value = "";
+				$process_value = $result["process_value"];
+				$process_name = $result["process_name"];
 			}
 
 			if(empty($chemist_id)){
@@ -200,7 +206,8 @@ class Cronjob_bank extends CI_Controller
 				$chemist_id = $result["chemist_id"];
 				$process_status = $result["process_status"];
 				$find_by = "Chemist Table2";
-				$process_value = "";
+				$process_value = $result["process_value"];
+				$process_name = $result["process_name"];
 			}
 
 			if(empty($chemist_id)){
@@ -209,7 +216,8 @@ class Cronjob_bank extends CI_Controller
 				$chemist_id = $result["chemist_id"];
 				$process_status = $result["process_status"];
 				$find_by = "Chemist Table3";
-				$process_value = "";
+				$process_value = $result["process_value"];
+				$process_name = $result["process_name"];
 			}
 
 			if(empty($chemist_id)){
@@ -218,7 +226,8 @@ class Cronjob_bank extends CI_Controller
 				$chemist_id = $result["chemist_id"];
 				$process_status = $result["process_status"];
 				$find_by = "Chemist Table4";
-				$process_value = "";
+				$process_value = $result["process_value"];
+				$process_name = $result["process_name"];
 			}
 
 			if(empty($chemist_id)){
@@ -227,6 +236,7 @@ class Cronjob_bank extends CI_Controller
 				$process_status = $result["process_status"];
 				$find_by = "invoice";
 				$process_value = "";
+				$process_name = "";
 			}
 
 			/************************************************* */
@@ -237,6 +247,7 @@ class Cronjob_bank extends CI_Controller
 				'chemist_id'=>$chemist_id,
 				'status'=>2,
 				'process_status'=>$process_status,
+				'process_name'=>$process_name,
 				'process_value'=>$process_value,
 			);
 			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
@@ -249,6 +260,7 @@ class Cronjob_bank extends CI_Controller
 		$jsonArray = array();
 
 		$chemist_id = "";
+		$process_name = $received_from;
 		$process_value = "";
 		$process_status = 0;
 
@@ -266,6 +278,7 @@ class Cronjob_bank extends CI_Controller
 		}
 
 		$return["chemist_id"] = $chemist_id;
+		$return["process_name"] = $process_name;
 		$return["process_value"] = $process_value;
 		$return["process_status"] = $process_status;
 
@@ -277,6 +290,7 @@ class Cronjob_bank extends CI_Controller
 		$jsonArray = array();
 
 		$chemist_id = "";
+		$process_name = $received_from;
 		$process_value = "";
 		$process_status = 0;
 
@@ -294,6 +308,7 @@ class Cronjob_bank extends CI_Controller
 		}
 
 		$return["chemist_id"] = $chemist_id;
+		$return["process_name"] = $process_name;
 		$return["process_value"] = $process_value;
 		$return["process_status"] = $process_status;
 
@@ -305,6 +320,8 @@ class Cronjob_bank extends CI_Controller
 		$jsonArray = array();
 
 		$chemist_id = "";
+		$process_name = $received_from;
+		$process_value = "";
 		$process_status = 0;
 
 		$received_from = str_replace(' ', '', $received_from);
@@ -313,8 +330,8 @@ class Cronjob_bank extends CI_Controller
 		$rr = $rr->result();
 		foreach($rr as $tt){
 			$jsonArray[] = $tt->chemist_id;
-
 			$process_status = 0;
+			$process_value = $tt->string_value;
 			//$chemist_id = $tt->chemist_id;
 		}
 
@@ -323,6 +340,8 @@ class Cronjob_bank extends CI_Controller
 		}
 
 		$return["chemist_id"] = $chemist_id;
+		$return["process_name"] = $process_name;
+		$return["process_value"] = $process_value;
 		$return["process_status"] = $process_status;
 
 		return $return;
