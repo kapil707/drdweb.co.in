@@ -163,7 +163,7 @@ class Cronjob_bank extends CI_Controller
 				$chemist_id = $result["chemist_id"];
 				$process_status = 1;
 				$find_by = "Chemist name";
-				$process_value = "";
+				$process_value = $result["process_value"];
 			}
 
 			if(empty($chemist_id)){
@@ -172,7 +172,7 @@ class Cronjob_bank extends CI_Controller
 				$chemist_id = $result["chemist_id"];
 				$process_status = $result["process_status"];
 				$find_by = "Chemist name1";
-				$process_value = "";
+				$process_value = $result["process_value"];
 			}
 
 			if(empty($chemist_id)){
@@ -182,7 +182,7 @@ class Cronjob_bank extends CI_Controller
 				$chemist_id = $result["chemist_id"];
 				$process_status = $result["process_status"];
 				$find_by = "Chemist remove @";
-				$process_value = "";
+				$process_value = $result["process_value"];
 			}
 
 			if(empty($chemist_id)){
