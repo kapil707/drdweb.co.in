@@ -161,7 +161,7 @@ class Cronjob_bank extends CI_Controller
 			$process_name = "";
 			$process_status = 0;
 			if(!empty($received_from)){
-				$result = $this->find_by_full_name($received_from);
+				$result = $this->find_by_name($received_from);
 				$chemist_id = $result["chemist_id"];
 				$process_status = 1;
 				$find_by = "Chemist name";
