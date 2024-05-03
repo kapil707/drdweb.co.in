@@ -16,8 +16,14 @@ $(document).ready(function(){
 		
 		$search_escaped = preg_quote($search, '/');
 		$highlighted_text = preg_replace('/(' . $search_escaped . ')/i', '<span style="background-color: yellow;">$1</span>', $row->process_value);
+
+		$process_invoice = "";
+		$fruits_array = explode(",", $process_invoice);
+		foreach($fruits_array as $rows){
+			$process_invoice.= $rows."<br>";
+		}
 		?>
-		data.push(['<?= ($row->status); ?> / <?= ($row->type); ?>', '<?= ($row->date); ?>','<?= ($row->upi_no); ?><br><?= ($row->orderid); ?>','<?= ($row->amount); ?>','<?= ($row->received_from); ?><br><?= ($highlighted_text); ?>','<?= ($row->_id); ?>','<?= ($row->find_by); ?>','<?= ($row->chemist_id); ?> <?= ($chemist_fafa); ?>','<?= ($row->process_invoice); ?>','<a href="<?= base_url(); ?>admin/<?php echo $Page_name ?>/edit/<?= ($row->id); ?>">Edit</a>']);
+		data.push(['<?= ($row->status); ?> / <?= ($row->type); ?>', '<?= ($row->date); ?>','<?= ($row->upi_no); ?><br><?= ($row->orderid); ?>','<?= ($row->amount); ?>','<?= ($row->received_from); ?><br><?= ($highlighted_text); ?>','<?= ($row->_id); ?>','<?= ($row->find_by); ?>','<?= ($row->chemist_id); ?> <?= ($chemist_fafa); ?>','<?= ($process_invoice); ?>','<a href="<?= base_url(); ?>admin/<?php echo $Page_name ?>/edit/<?= ($row->id); ?>">Edit</a>']);
 		<?php
 	}
 	?>
