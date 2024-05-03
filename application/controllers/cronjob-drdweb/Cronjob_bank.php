@@ -366,6 +366,7 @@ class Cronjob_bank extends CI_Controller
 			foreach($fruits_array as $rows){
 				$chemist_id = "'$rows',";
 			}
+			$chemist_id = substr($chemist_id, 0, -1);
 			$where = " and chemist_id in ($chemist_id)";
 		}
 
