@@ -24,6 +24,7 @@ $(document).ready(function(){
 			$process_invoice.= $rows."<br>";
 
 			$invoice_chemist = explode(":-", $rows);
+			$invoice_chemist = $invoice_chemist[1];
 		}
 		$find = "find by ";
 		if(!empty($row->process_invoice)){
