@@ -18,7 +18,7 @@ $(document).ready(function(){
 		$highlighted_text = preg_replace('/(' . $search_escaped . ')/i', '<span style="background-color: yellow;">$1</span>', $row->process_value);
 
 		$process_invoice = "";
-		$fruits_array = explode(",", $process_invoice);
+		$fruits_array = explode(",", $row->process_invoice);
 		foreach($fruits_array as $rows){
 			$process_invoice.= $rows."<br>";
 		}
