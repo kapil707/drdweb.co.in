@@ -230,13 +230,10 @@ class Cronjob_bank extends CI_Controller
 				$process_name = $result["process_name"];
 			}
 
+			$process_invoice = "";
 			if(empty($chemist_id)){
 				$result = $this->find_by_invoice($amount,$start_date,$end_date);
-				$chemist_id = $result["chemist_id"];
-				$process_status = $result["process_status"];
-				$find_by = "invoice";
-				$process_value = "";
-				$process_name = "";
+				$process_invoice = $result["chemist_id"];
 			}
 
 			/************************************************* */
@@ -249,6 +246,7 @@ class Cronjob_bank extends CI_Controller
 				'process_status'=>$process_status,
 				'process_name'=>$process_name,
 				'process_value'=>$process_value,
+				'process_invoice'=>$process_invoice,
 			);
 			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 			/************************************************* */
@@ -352,15 +350,11 @@ class Cronjob_bank extends CI_Controller
 		$jsonArray = array();
 
 		$chemist_id = "";
-		$process_status = 0;
 		
 		$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where amt='$amount' and (vdt BETWEEN '$start_date' and '$end_date')");
 		$rr = $rr->result();
-		foreach($rr as $tt){
-			$find_by = "Invoice Table";
-			
-			$jsonArray[] = $tt->chemist_id;
-			$process_status = 0;
+		foreach($rr as $tt){			
+			$jsonArray[] = $tt->chemist_id.":-".$tt->gstvno;
 		}
 
 		if(!empty($jsonArray)){
@@ -368,7 +362,6 @@ class Cronjob_bank extends CI_Controller
 		}
 
 		$return["chemist_id"] = $chemist_id;
-		$return["process_status"] = $process_status;
 
 		return $return;
 	}
