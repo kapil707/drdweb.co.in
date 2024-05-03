@@ -23,8 +23,8 @@ $(document).ready(function(){
 		foreach($fruits_array as $rows){
 			$process_invoice.= $rows."<br>";
 
-			$invoice_chemist = explode(":-", $rows);
-			$invoice_chemist = $invoice_chemist[1];
+			$arr = explode(":-", $rows);
+			$invoice_chemist = $arr[1];
 		}
 		$find = "find by ";
 		if(!empty($row->process_invoice)){
