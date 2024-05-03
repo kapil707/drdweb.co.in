@@ -243,11 +243,9 @@ class Cronjob_bank extends CI_Controller
 				}
 			}
 
-			$process_invoice = "";
-			if(empty($chemist_id)){
-				$result = $this->find_by_invoice($amount,$start_date,$end_date);
-				$process_invoice = $result["chemist_id"];
-			}
+			/************************************************* */
+			$result = $this->find_by_invoice($amount,$start_date,$end_date);
+			$process_invoice = $result["chemist_id"];
 
 			/************************************************* */
 			$id = $row->id;
