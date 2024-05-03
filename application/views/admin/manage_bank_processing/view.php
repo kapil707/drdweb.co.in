@@ -11,16 +11,14 @@
 			<table class="table table-striped table-bordered table-hover" id="example-table">
                 <thead>
                     <tr>
-						<th>
+						<th width="50">
 							Status
 						</th>
 						<th>
 							Date
                         </th>
 						<th> 
-							Upi No
-                        </th>
-						<th>
+							Upi No /
 							Orderid
                         </th>
 						<th>

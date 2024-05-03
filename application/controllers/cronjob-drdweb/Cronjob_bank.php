@@ -159,10 +159,11 @@ class Cronjob_bank extends CI_Controller
 			$chemist_id = "";
 			$process_status = 0;
 			if(!empty($received_from)){
-				$result = $this->find_by_name($received_from);
+				$result = $this->find_by_full_name($received_from);
 				$chemist_id = $result["chemist_id"];
 				$process_status = 1;
 				$find_by = "Chemist name";
+				$process_value = "";
 			}
 
 			if(empty($chemist_id)){
@@ -171,6 +172,7 @@ class Cronjob_bank extends CI_Controller
 				$chemist_id = $result["chemist_id"];
 				$process_status = $result["process_status"];
 				$find_by = "Chemist name1";
+				$process_value = "";
 			}
 
 			if(empty($chemist_id)){
@@ -180,6 +182,7 @@ class Cronjob_bank extends CI_Controller
 				$chemist_id = $result["chemist_id"];
 				$process_status = $result["process_status"];
 				$find_by = "Chemist remove @";
+				$process_value = "";
 			}
 
 			if(empty($chemist_id)){
@@ -188,6 +191,7 @@ class Cronjob_bank extends CI_Controller
 				$chemist_id = $result["chemist_id"];
 				$process_status = $result["process_status"];
 				$find_by = "Chemist Table1";
+				$process_value = "";
 			}
 
 			if(empty($chemist_id)){
@@ -196,6 +200,7 @@ class Cronjob_bank extends CI_Controller
 				$chemist_id = $result["chemist_id"];
 				$process_status = $result["process_status"];
 				$find_by = "Chemist Table2";
+				$process_value = "";
 			}
 
 			if(empty($chemist_id)){
@@ -204,6 +209,7 @@ class Cronjob_bank extends CI_Controller
 				$chemist_id = $result["chemist_id"];
 				$process_status = $result["process_status"];
 				$find_by = "Chemist Table3";
+				$process_value = "";
 			}
 
 			if(empty($chemist_id)){
@@ -212,6 +218,7 @@ class Cronjob_bank extends CI_Controller
 				$chemist_id = $result["chemist_id"];
 				$process_status = $result["process_status"];
 				$find_by = "Chemist Table4";
+				$process_value = "";
 			}
 
 			if(empty($chemist_id)){
@@ -219,6 +226,7 @@ class Cronjob_bank extends CI_Controller
 				$chemist_id = $result["chemist_id"];
 				$process_status = $result["process_status"];
 				$find_by = "invoice";
+				$process_value = "";
 			}
 
 			/************************************************* */
@@ -229,10 +237,39 @@ class Cronjob_bank extends CI_Controller
 				'chemist_id'=>$chemist_id,
 				'status'=>2,
 				'process_status'=>$process_status,
+				'process_value'=>$process_value,
 			);
 			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 			/************************************************* */
 		}
+	}
+
+	function find_by_full_name($received_from){
+
+		$jsonArray = array();
+
+		$chemist_id = "";
+		$process_value = "";
+		$process_status = 0;
+
+		echo "SELECT * FROM `tbl_bank_chemist` WHERE `string_value` LIKE '%$received_from%'";
+		$rr = $this->BankModel->select_query("SELECT * FROM `tbl_bank_chemist` WHERE `string_value` = '$received_from'");
+		$rr = $rr->result();
+		foreach($rr as $tt){
+			$jsonArray[] = $tt->chemist_id;
+			$process_status = 0;
+			$process_value = $tt->string_value;
+		}
+
+		if(!empty($jsonArray)){
+			$chemist_id = implode(',', $jsonArray);
+		}
+
+		$return["chemist_id"] = $chemist_id;
+		$return["process_value"] = $process_value;
+		$return["process_status"] = $process_status;
+
+		return $return;
 	}
 
 	function find_by_name($received_from){
