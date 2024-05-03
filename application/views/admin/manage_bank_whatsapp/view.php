@@ -38,6 +38,7 @@
 					CURLOPT_POSTFIELDS => $parmiter,
 					CURLOPT_HTTPHEADER => array(
 						'Content-Type: application/json',
+						'Authorization: Bearer THIRTEENWOLVESWENTHUNTINGBUT10CAMEBACK'
 					),
 				)
 			);
@@ -113,6 +114,7 @@
 				CURLOPT_POSTFIELDS => $parmiter,
 				CURLOPT_HTTPHEADER => array(
 					'Content-Type: application/json',
+					'Authorization: Bearer THIRTEENWOLVESWENTHUNTINGBUT10CAMEBACK'
 				),
 			)
 		);
