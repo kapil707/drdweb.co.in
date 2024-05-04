@@ -33,7 +33,7 @@
 						<th>
                         	Find By
                         </th>
-						<th>
+						<th width="250px">
                         	Chemist
                         </th>
 						<th width="150px">
