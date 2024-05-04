@@ -113,7 +113,7 @@
 
 		$start_row = "13";
 
-		$upload_path = "uploads/manage_bank/myfile/";
+		$upload_path = "uploads/manage_bank_processing/myfile/";
 		$excelFile = $upload_path.$filename;
 		$i=1;
 		if(file_exists($excelFile))
@@ -128,49 +128,106 @@
 					$amount1 = $worksheet->getCell($amount.$row)->getValue();
 					$statment_date1 = $worksheet->getCell($statment_date.$row)->getValue();
 					$text = $worksheet->getCell($narrative.$row)->getValue();
+					//$text = trim($text);
+					//$text = str_replace("'", "", $text);
+					//$text = "+91-9899067942 411801191476 FROM GUPTAMEDICALSTORE 9300966180 CITI0000 9026 NA UBIN0579203";
+
 					$transaction_description1 = $worksheet->getCell($transaction_description.$row)->getValue();
 					
 					//$mydate = date('Y-m-d', strtotime($statment_date1));
-					$start_date = date('Y-m-d', strtotime($statment_date1 . ' -2 day'));
-					$end_date = date('Y-m-d', strtotime($statment_date1 . ' -1 day'));
-					
+					echo $statment_date1 = date('Y-m-d', strtotime($statment_date1));
+					echo "<br>";
 
-					echo $i.". ";
-					$i++;
-					$text = str_replace("@ ", "@", $text);
-					echo $text = preg_replace('/@\s/', "@", $text, 1);
+					// echo $i.". ";
+					// $i++;
+					// echo $text;
+					//$text = str_replace("@ ", "@", $text);
+					//echo $text = preg_replace('/@\s/', "@", $text, 1);
 
 					$received_from = "";
 					// Use regular expression to extract text after "FROM"
-					if (preg_match('/FROM\s+([^@]+)/', $text, $matches)) {
-						$received_from = trim($matches[1]);
+
+					$from_value = "";
+					preg_match("/FROM\s+(\d+)@\s+(\w+)/", $text, $matches);
+					if (!empty($matches) && empty($from_value)){
+						$received_from = trim($matches[1])."@".trim($matches[2]);
 						$received_from = str_replace("'", "", $received_from);
 						$received_from = str_replace(" ", "", $received_from);
 						$received_from = str_replace("\n", "", $received_from);
-						echo "find: ".$received_from; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+						//$from_value = "<b>find: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+						$from_value = $received_from;
 					}
 
-					$chmist_id = "";
+					
+					preg_match("/FROM\s+(\d+)\s+@\s*(\w+)/", $text, $matches);
+					if (!empty($matches) && empty($from_value)){
+						$received_from = trim($matches[1])."@".trim($matches[2]);
+						$received_from = str_replace("'", "", $received_from);
+						$received_from = str_replace(" ", "", $received_from);
+						$received_from = str_replace("\n", "", $received_from);
+						//$from_value = "<b>find2: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+						$from_value = $received_from;
+					}
+
+					preg_match("/FROM\s+(\w+)\d+@\s*(\w+)/", $text, $matches);
+					if (!empty($matches) && empty($from_value)){
+						$received_from = trim($matches[1])."@".trim($matches[2]);
+						$received_from = str_replace("'", "", $received_from);
+						$received_from = str_replace(" ", "", $received_from);
+						$received_from = str_replace("\n", "", $received_from);
+						//$from_value = "<b>find3: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+						$from_value = $received_from;
+					}
+
+					preg_match("/FROM\s+([^\s@]+)\s+@\s*(\w+)/", $text, $matches);
+					if (!empty($matches) && empty($from_value)){
+						$received_from = trim($matches[1])."@".trim($matches[2]);
+						$received_from = str_replace("'", "", $received_from);
+						$received_from = str_replace(" ", "", $received_from);
+						$received_from = str_replace("\n", "", $received_from);
+						//$from_value = "<b>find4: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+						$from_value = $received_from;
+					}
+
+					preg_match("/FROM\s+([^\@]+)@\s*(\w+)/", $text, $matches);
+					if (!empty($matches) && empty($from_value)){
+						$received_from = trim($matches[1])."@".trim($matches[2]);
+						$received_from = str_replace("'", "", $received_from);
+						$received_from = str_replace(" ", "", $received_from);
+						$received_from = str_replace("\n", "", $received_from);
+						//$from_value = "<b>find5: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+						$from_value = $received_from;
+					}
+
+					preg_match("/FROM\s+(.*)/", $text, $matches);
+					if (!empty($matches) && empty($from_value)){
+						$received_from = trim($matches[1]);
+						//$received_from = str_replace("'", "", $received_from);
+						//$received_from = str_replace(" ", "", $received_from);
+						//$received_from = str_replace("\n", "", $received_from);
+						//$from_value = "<b>find6: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+						$from_value = $received_from;
+					}
+
+					$upi_no = $orderid = $worksheet->getCell($customer_reference.$row)->getValue();
+					
+					$_id = 1;
+					$received_from = $from_value;
 					if(!empty($received_from)){
-						$rr = $this->BankModel->select_query("SELECT * FROM `tbl_bank_chemist` WHERE `string_value` LIKE '%$received_from%'");
-						$rr = $rr->result();
-						foreach($rr as $tt){
-							$chmist_id = $tt->chemist_id;
-							echo "<b>---chemist tbl---".$tt->chemist_id."</b>";
-						}
+						$status = 1;
+						$type = "Statment";
+						$dt = array(
+							'status'=>$status,
+							'amount'=>$amount1,
+							'date'=>$statment_date1,
+							'received_from'=>$received_from,
+							'upi_no'=>$upi_no,
+							'orderid'=>$orderid,
+							'type'=>$type,
+							'_id'=>$_id,
+						);
+						$this->BankModel->insert_fun("tbl_bank_processing", $dt);
 					}
-
-					if(empty($chmist_id)){
-						$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where amt='$amount1' and (vdt BETWEEN '$start_date' and '$end_date')");
-						$rr = $rr->result();
-						foreach($rr as $tt){
-							echo "---with invoice---".$tt->chemist_id;
-							echo ",";
-						}
-					}
-
-					echo "<br><br>";
-
 					/*************************** */					
 				}
 			}
