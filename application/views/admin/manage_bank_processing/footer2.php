@@ -41,7 +41,7 @@ $(document).ready(function(){
 		// 	$chemist_dt.="<br>".$invoice_chemist;
 		// }
 		$find_all = "";
-		if($row->chemist_id==$invoice_chemist){
+		if(($row->chemist_id==$invoice_chemist) && (!empty($invoice_chemist) && !empty($row->chemist_id))){
 			$find_all = "done";
 		}
 		?>
