@@ -10,9 +10,7 @@ class Top_sales_medicines extends CI_Controller {
 	
 	public function index()	{
 		$vdt = date("Y-m-d");
-		$result = $this->db->query("SELECT t1.item_name, t1.item_code, COUNT(t1.id) as ct, t2.id as kp FROM drdistributor_invoice_db.tbl_invoice_item as t1
-		INNER JOIN drdistributor_medicine_db.tbl_medicine as t2 ON t1.item_code = t2.item_code WHERE t1.vdt='$vdt' GROUP BY t1.item_name, t1.item_code, kp
-		HAVING COUNT(t1.id) > 1 ORDER BY ct DESC LIMIT 10");
+		$result = $this->db->select_query("select DISTINCT item_name,item_code, COUNT(*) as ct FROM tbl_invoice_item where vdt='$vdt' GROUP BY item_name,item_code HAVING COUNT(*) > 1 order by ct desc limit 100");
 		$data["result"] = $result->result();
 		$this->load->view('top_sales_medicines',$data);
 	}
