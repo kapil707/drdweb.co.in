@@ -87,6 +87,7 @@ $route['myinv/(:any)/(:any)/(:any)'] = 'api3/myinv/$1/$2/$3';
 
 
 $route['check_sms'] = 'sms/index';
+$route['top_sales_medicines'] = 'top_sales_medicines/index';
 
 
 $route['404_override'] = '';
