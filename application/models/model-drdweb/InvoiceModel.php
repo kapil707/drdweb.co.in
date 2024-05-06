@@ -74,7 +74,6 @@ class InvoiceModel extends CI_Model
 	/********************************************************/
 	public function invoice_send_email_whatsapp(){
 		
-		die();
 		$this->load->model("model/WhatsAppModel");
 		$this->load->model("model/EmailModel");
 		
