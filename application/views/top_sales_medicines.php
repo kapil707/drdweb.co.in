@@ -23,17 +23,19 @@
 				</thead>
 				<tbody>
 					<?php 
+						$i = 0;
 						foreach($result as $row) {
+							$i++;
 							?>
 							<tr>
 								<td>
-									Sno.
+									<?php echo $i; ?>
 								</td>
 								<td>
-									Medicine Name
+									<?php echo $row->item_name; ?>
 								</td>
 								<td>
-									Medicine Sales
+									<?php echo $row->item_code; ?>
 								</td>
 								<td>
 									Medicine Image
