@@ -19,9 +19,6 @@
 						<th>
 							Medicine Sales
 						</th>
-						<th>
-							Medicine Image
-						</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -42,12 +39,6 @@
 								</td>
 								<td>
 									<?php echo $row->ct; ?>
-								</td>
-								<td>
-									<?php
-									$row1 = $this->db->query("select image1 from tbl_medicine where item_code='$row->item_code'")->row();
-									echo $row1->image1;
-									?>
 								</td>
 							</tr>
 							<?php
