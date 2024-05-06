@@ -22,7 +22,26 @@
 					</tr>
 				</thead>
 				<tbody>
-				
+					<?php 
+						foreach($result as $row) {
+							?>
+							<tr>
+								<td>
+									Sno.
+								</td>
+								<td>
+									Medicine Name
+								</td>
+								<td>
+									Medicine Sales
+								</td>
+								<td>
+									Medicine Image
+								</td>
+							</tr>
+							<?php
+						}
+					?>
 				</tbody>
 			</table>
 		</div>

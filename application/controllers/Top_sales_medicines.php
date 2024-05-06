@@ -8,7 +8,10 @@ class Top_sales_medicines extends CI_Controller {
 		$this->load->model("model-drdweb/InvoiceModel");
 	}
 	
-	public function index()	{	
-		$this->load->view('top_sales_medicines');
+	public function index()	{
+		$vdt = date("Y-m-d");
+		$result = $this->InvoiceModel->select_query("select DISTINCT item_name, COUNT(*) as ct FROM tbl_invoice_item where vdt='$vdt' GROUP BY item_name HAVING COUNT(*) > 1 order by ct desc limit 10");
+		$data["result"] = $result->result();
+		$this->load->view('top_sales_medicines',$data);
 	}
 }
