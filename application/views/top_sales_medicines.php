@@ -14,6 +14,9 @@
 							Medicine Name
 						</th>
 						<th>
+							Medicine Code
+						</th>
+						<th>
 							Medicine Sales
 						</th>
 						<th>
@@ -36,6 +39,9 @@
 								</td>
 								<td>
 									<?php echo $row->item_code; ?>
+								</td>
+								<td>
+									<?php echo $row->ct; ?>
 								</td>
 								<td>
 									Medicine Image
