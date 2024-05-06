@@ -128,6 +128,7 @@ class ExeInvoiceManage extends CI_Controller
 				$escode= $row["escode"];
 				$vtype= $row["vtype"];
 				$company_full_name= $row["company_full_name"];
+				$image1= $row["image1"];
 				$update_at= $row["update_at"];
 
 				$dt = array(
@@ -165,6 +166,7 @@ class ExeInvoiceManage extends CI_Controller
 					'escode' => $escode,
 					'vtype' => $vtype,
 					'company_full_name' => $company_full_name,
+					'image1' => $image1,
 					'update_at' => $update_at,);
 					
 				$this->InvoiceModel->insert_fun("tbl_invoice_item", $dt);
