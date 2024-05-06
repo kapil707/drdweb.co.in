@@ -1,13 +1,7 @@
 <link href="<?= base_url()?>/assets/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?= base_url()?>/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
 
-<div class="container-fluid p-5">
-	<div class="row">
-        <div class="col-md-3">
-			<label for="date-range">Select Date Range:</label>
-    		<input type="text" id="date-range" class="form-control">
-        </div>
-    </div>
+<div class="container-fluid mt-5 p-5">
 	<div class="row">
 		<div class="col-sm-12  pt-1 pb-5">
 			<table class="table table-striped table-bordered table-hover dataTables-example" id="example-table">
