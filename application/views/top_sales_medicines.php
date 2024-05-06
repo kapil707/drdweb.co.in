@@ -44,7 +44,10 @@
 									<?php echo $row->ct; ?>
 								</td>
 								<td>
-									Medicine Image
+									<?php
+									$row1 = $this->db->query("select image1 from tbl_medicine where item_code='$row->item_code'")->row();
+									echo $row1->image1;
+									?>
 								</td>
 							</tr>
 							<?php
