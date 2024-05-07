@@ -90,7 +90,8 @@ function model_data_add(id){
 	var process_invoice_array = process_invoice.split(",");
 	var process_invoice_val = "";
 	for (i=0;i<process_invoice_array.length;i++){
-		process_invoice_val+="<li>"+process_invoice_array[i]+"</li>";
+		inv = process_invoice_array[i].split(":-");
+		process_invoice_val+="<li onclick='add_chemist_id(\""+inv[0]+"\")'>"+process_invoice_array[i]+"</li>";
 	}
 
 	$(".main_modal_title").html(find)
@@ -98,7 +99,8 @@ function model_data_add(id){
 }
 function add_chemist_id(id) {
     // Use the 'id' parameter here
-    console.log("chemist_id: " + id);
+    //console.log("chemist_id: " + id);
+	$(".add_new_chemist").val(id);
 }
 function onchange_add_new_chemist(){
 	add_new_chemist = $(".add_new_chemist").val();
