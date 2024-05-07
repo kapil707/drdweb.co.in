@@ -305,6 +305,19 @@ class Cronjob_bank extends CI_Controller
 				}
 			}
 
+			if(empty($chemist_id)){
+				$pattern = '/(\d{10})/';
+				preg_match($pattern, $received_from, $matches);
+				if (isset($matches[1])) {
+					$result = $this->find_by_acm_tbl($matches[1]);
+					$chemist_id = $result["chemist_id"];
+					$process_status = $result["process_status"];
+					$find_by = "Acm mobile";
+					$process_value = $result["process_value"];
+					$process_name = $result["process_name"];
+				}
+			}
+
 			/************************************************* */
 			$result = $this->find_by_invoice($amount,$start_date,$end_date,$chemist_id);
 			$process_invoice = $result["invoice"];
@@ -402,6 +415,36 @@ class Cronjob_bank extends CI_Controller
 			$jsonArray[] = $tt->chemist_id;
 			$process_status = 0;
 			$process_value = $tt->string_value;
+			//$chemist_id = $tt->chemist_id;
+		}
+
+		if(!empty($jsonArray)){
+			$chemist_id = implode(',', $jsonArray);
+		}
+
+		$return["chemist_id"] = $chemist_id;
+		$return["process_name"] = $process_name;
+		$return["process_value"] = $process_value;
+		$return["process_status"] = $process_status;
+
+		return $return;
+	}
+
+	function find_by_acm_tbl($received_from){
+
+		$jsonArray = array();
+
+		$chemist_id = "";
+		$process_name = $received_from;
+		$process_value = "";
+		$process_status = 0;
+
+		$rr = $this->db->select_query("SELECT * FROM `tbl_acm` WHERE `mobile` = '$received_from'");
+		$rr = $rr->result();
+		foreach($rr as $tt){
+			$jsonArray[] = $tt->altercode;
+			$process_status = 0;
+			$process_value = $tt->mobile;
 			//$chemist_id = $tt->chemist_id;
 		}
 
