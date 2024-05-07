@@ -76,12 +76,14 @@ $(document).ready(function(){
 });
 
 function model_data_add(id){
+	id = $(".myhiden_data_for_modal_id"+id).attr("id")
 	received_from = $(".myhiden_data_for_modal_id"+id).attr("received_from")
 	chemist_id = $(".myhiden_data_for_modal_id"+id).attr("chemist_id")
 	process_invoice = $(".myhiden_data_for_modal_id"+id).attr("process_invoice")
 	find_by = $(".myhiden_data_for_modal_id"+id).attr("find_by")
 	find = $(".myhiden_data_for_modal_id"+id).attr("find")
 
+	$(".hidden_id").val(id);
 	$(".hidden_received_from").val(received_from);
 
 	var chemist_id_array = chemist_id.split(",");
@@ -112,11 +114,11 @@ function onchange_add_new_chemist(){
 function add_chemist_id_by_link_name(){
 	id = $(".hidden_id").val();
 	chemist_id = $(".add_new_chemist").val();
-	string_value = $(".hidden_string_value").val();
+	string_value = $(".hidden_received_from").val();
 
 	$.ajax({
 		type : "POST",
-		data : {id:id,chemist_id:chemist_id,string_value:string_value,} ,
+		data : {id:id,chemist_id:chemist_id,string_value:string_value,},
 		url  : "<?= base_url()?>admin/<?= $Page_name?>/add_chemist_id_by_link_name",
 		cache: true,
 		error: function(){
