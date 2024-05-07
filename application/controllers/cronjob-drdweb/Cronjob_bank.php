@@ -439,7 +439,7 @@ class Cronjob_bank extends CI_Controller
 		$process_value = "";
 		$process_status = 0;
 
-		$rr = $this->db->select_query("SELECT * FROM `tbl_acm` WHERE `mobile` = '$received_from'");
+		$rr = $this->db->query("SELECT * FROM `tbl_acm` WHERE `mobile` = '$received_from'");
 		$rr = $rr->result();
 		foreach($rr as $tt){
 			$jsonArray[] = $tt->altercode;
