@@ -84,7 +84,7 @@ function model_data_add(id){
 	var chemist_id_array = chemist_id.split(",");
 	var chemist_id_val = "";
 	for (i=0;i<chemist_id_array.length;i++){
-		chemist_id_val+="<li onclick='add_chemist_id("+chemist_id_array[i]+")'>"+chemist_id_array[i]+"</li>";
+		chemist_id_val+="<li onclick='add_chemist_id(\""+chemist_id_array[i]+"\")'>"+chemist_id_array[i]+"</li>";
 	}
 
 	var process_invoice_array = process_invoice.split(",");
