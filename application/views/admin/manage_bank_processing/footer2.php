@@ -84,7 +84,7 @@ function model_data_add(id){
 	var chemist_id_array = chemist_id.split(",");
 	var chemist_id_val = "";
 	for (i=0;i<chemist_id_array.length;i++){
-		chemist_id_val+="<li>"+chemist_id_array[i]+"</li>";
+		chemist_id_val+="<li onclick='add_chemist_id("+chemist_id_array[i]+")'>"+chemist_id_array[i]+"</li>";
 	}
 
 	var process_invoice_array = process_invoice.split(",");
@@ -95,6 +95,10 @@ function model_data_add(id){
 
 	$(".main_modal_title").html(find)
 	$(".main_modal_p").html("<div class='row'><div class='col-sm-6'>Chemist find by Server : <ul>"+chemist_id_val+"</ul></div><div class='col-sm-6'>Invoice find by Server : <ul>"+process_invoice_val+"</ul></div></div>")
+}
+function add_chemist_id(id) {
+    // Use the 'id' parameter here
+    console.log("chemist_id: " + id);
 }
 function onchange_add_new_chemist(){
 	add_new_chemist = $(".add_new_chemist").val();
