@@ -46,7 +46,7 @@ $(document).ready(function(){
 			$find_all = "done";
 		}
 		?>
-		data.push(['<?= ($row->status); ?> / <?= ($row->type); ?>', '<?= ($row->date); ?>','<?= ($row->upi_no); ?><br><?= ($row->orderid); ?>','<?= ($row->amount); ?>','<?= ($row->received_from); ?><br><?= ($highlighted_text); ?>','<?= ($row->find_by); ?>','<?= ($chemist_dt); ?>','<?= ($process_invoice); ?>','<?= ($find); ?>','<?= ($find_all); ?>','<a href="<?= base_url(); ?>admin/<?php echo $Page_name ?>/edit/<?= ($row->id); ?>">Edit</a>']);
+		data.push(['<?= ($row->status); ?> / <?= ($row->type); ?>', '<?= ($row->date); ?>','<?= ($row->upi_no); ?><br><?= ($row->orderid); ?>','<?= ($row->amount); ?>','<?= ($row->received_from); ?><br><?= ($highlighted_text); ?>','<?= ($row->find_by); ?>','<?= ($chemist_dt); ?>','<?= ($process_invoice); ?>','<?= ($find); ?>','<?= ($find_all); ?>','<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>']);
 		<?php
 	}
 	?>
