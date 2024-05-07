@@ -82,7 +82,7 @@ function model_data_add(id){
 	find = $(".myhiden_data_for_modal_id"+id).attr("find_by")
 
 	$(".main_modal_title").html(find)
-	$(".main_modal_p").html("chemist_id:"+chemist_id+"invoice:"+invoice_chemist)
+	$(".main_modal_p").html("chemist_id:"+chemist_id+" invoice:"+invoice_chemist)
 }
 </script>
 <script src="https://cdn.datatables.net/scroller/2.2.0/js/dataTables.scroller.min.js"></script>
