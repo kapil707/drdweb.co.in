@@ -54,7 +54,7 @@
 		</div>
     </div>
 </div>
-
+<div class="myhiden_data_for_modal"></div>
 
 
 <!-- Modal -->

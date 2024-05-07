@@ -46,6 +46,8 @@ $(document).ready(function(){
 			$find_all = "done";
 		}
 		?>
+		$(".myhiden_data_for_modal").append("<p class='myhiden_data_for_modal_id<?= ($row->id); ?>' upi_no='<?= ($row->upi_no); ?>'></p>")
+
 		data.push(['<?= ($row->status); ?> / <?= ($row->type); ?>', '<?= ($row->date); ?>','<?= ($row->upi_no); ?><br><?= ($row->orderid); ?>','<?= ($row->amount); ?>','<?= ($row->received_from); ?><br><?= ($highlighted_text); ?>','<?= ($row->find_by); ?>','<?= ($chemist_dt); ?>','<?= ($process_invoice); ?>','<?= ($find); ?>','<?= ($find_all); ?>','<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" onClick="model_data_add(<?= ($row->id); ?>)">Open Modal</button>']);
 		<?php
 	}
@@ -75,6 +77,8 @@ $(document).ready(function(){
 
 function model_data_add(id){
 	console.log(id);
+	upi_no = $(".myhiden_data_for_modal_id"+id).attr("upi_no")
+	console.log(upi_no);
 }
 </script>
 <script src="https://cdn.datatables.net/scroller/2.2.0/js/dataTables.scroller.min.js"></script>
