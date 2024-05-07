@@ -24,15 +24,15 @@ $(document).ready(function(){
 			$process_invoice.= $rows."<br>";
 
 			$arr = explode(":-",$rows);
-			$invoice_chemist = $arr[0];
+			$invoice_chemist = "<b>".$arr[0]."</b>";
 		}
 		
 		$find = "find by ";
 		if(!empty($row->process_invoice)){
-			$find.= "invoice,";
+			$find.= "<b>invoice</b>,";
 		}
 		if(!empty($row->chemist_id)){
-			$find.= "chemist";
+			$find.= "<b>chemist</b>";
 		}
 		if(empty($process_invoice) && empty($row->chemist_id)){
 			$find = "N/A";
