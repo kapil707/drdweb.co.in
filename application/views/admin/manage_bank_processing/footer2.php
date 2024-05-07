@@ -110,13 +110,14 @@ function onchange_add_new_chemist(){
 	console.log(add_new_chemist)
 }
 function add_chemist_id_by_link_name(){
+	id = $(".hidden_id").val();
 	chemist_id = $(".add_new_chemist").val();
 	string_value = $(".hidden_string_value").val();
 
 	$.ajax({
 		type : "POST",
-		data : { chemist_id : chemist_id,string_value:string_value,} ,
-		url  : "<?= base_url()?>admin/<?= $Page_name?>/change_url",
+		data : {id:id,chemist_id:chemist_id,string_value:string_value,} ,
+		url  : "<?= base_url()?>admin/<?= $Page_name?>/add_chemist_id_by_link_name",
 		cache: true,
 		error: function(){
 			swal("error add to cart")
