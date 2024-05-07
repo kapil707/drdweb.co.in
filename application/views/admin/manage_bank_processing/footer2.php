@@ -81,6 +81,12 @@ function model_data_add(id){
 	find_by = $(".myhiden_data_for_modal_id"+id).attr("find_by")
 	find = $(".myhiden_data_for_modal_id"+id).attr("find")
 
+	var chemist_id_array = chemist_id.split(",");
+	var chemist_id_val = "";
+	for (i=0;i<chemist_id_array.length;i++){
+		chemist_id_val+="<li>"+chemist_id_array[i]+"</li>";
+	}
+
 	var process_invoice_array = process_invoice.split(",");
 	var process_invoice_val = "";
 	for (i=0;i<process_invoice_array.length;i++){
@@ -88,7 +94,7 @@ function model_data_add(id){
 	}
 
 	$(".main_modal_title").html(find)
-	$(".main_modal_p").html("<div class='row'><div class='col-sm-6'>Chemist find by Server : "+chemist_id+"</div><div class='col-sm-6'>Invoice find by Server : <ul>"+process_invoice_val+"</ul></div></div>")
+	$(".main_modal_p").html("<div class='row'><div class='col-sm-6'>Chemist find by Server : <ul>"+chemist_id_val+"</ul></div><div class='col-sm-6'>Invoice find by Server : <ul>"+process_invoice_val+"</ul></div></div>")
 }
 function onchange_add_new_chemist(){
 	add_new_chemist = $(".add_new_chemist").val();
