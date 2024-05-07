@@ -82,7 +82,7 @@ function model_data_add(id){
 	find = $(".myhiden_data_for_modal_id"+id).attr("find")
 
 	$(".main_modal_title").html(find)
-	$(".main_modal_p").html("Chemist find by Server : "+chemist_id+"<br>Invoice find by Server : "+process_invoice)
+	$(".main_modal_p").html("<div class='row'><div class='col-sm-6'>Chemist find by Server : "+chemist_id+"</div><div class='col-sm-6'>Invoice find by Server : "+process_invoice+"</div></div>")
 }
 function onchange_add_new_chemist(){
 	add_new_chemist = $(".add_new_chemist").val();
