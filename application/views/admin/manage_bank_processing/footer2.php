@@ -30,7 +30,6 @@ $(document).ready(function(){
 		$find = "find by ";
 		if(!empty($row->process_invoice)){
 			$find.= "invoice,";
-			$done_ok++;
 		}
 		if(!empty($row->chemist_id)){
 			$find.= "chemist";
