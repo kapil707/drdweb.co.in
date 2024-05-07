@@ -75,7 +75,9 @@ class Cronjob_bank extends CI_Controller
 
 	public function bank_sms_processing(){
 
-		$result = $this->BankModel->select_query("select * from tbl_sms where status='0' and date='2024-05-01' limit 100");
+		$date = date('Y-m-d');
+
+		$result = $this->BankModel->select_query("select * from tbl_sms where status='0' and date='$date' limit 100");
 		$result = $result->result();
 		foreach($result as $row){
 			$message_body = $row->message_body;
