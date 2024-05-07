@@ -90,7 +90,7 @@ class InvoiceModel extends CI_Model
 		$date = date("Y-m-d");
 
 		$order_by = array('id','asc');
-		$get_limit = array('100','0');
+		$get_limit = array('25','0');
 		$where = array('vdt'=>$date,'deliverby!='=>'','status'=>0);
 		$query = $this->select_fun_limit("tbl_invoice_new",$where,$get_limit,$order_by);
 		$result = $query->result();
