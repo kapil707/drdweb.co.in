@@ -69,7 +69,9 @@
       </div>
       <div class="modal-body">
         <div class="main_modal_p"></div>
+		<input type="text" class="hidden_received_from">
 		<input type="text" class="add_new_chemist" onchange="onchange_add_new_chemist()">
+		<button type="button" class="btn btn-default" onclick="add_chemist_id_by_link_name()">save</button>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
