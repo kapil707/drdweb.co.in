@@ -26,7 +26,7 @@ $(document).ready(function(){
 			$arr = explode(":-",$rows);
 			$invoice_chemist = $arr[0];
 		}
-
+		
 		$find = "find by ";
 		if(!empty($row->process_invoice)){
 			$find.= "invoice,";
@@ -43,7 +43,7 @@ $(document).ready(function(){
 		// }
 		$find_all = "";
 		if(($row->chemist_id==$invoice_chemist) && (!empty($invoice_chemist) && !empty($row->chemist_id))){
-			$find_all = "<p style='color:green'>done</p>";
+			$find_all = "done";
 		}
 		?>
 		data.push(['<?= ($row->status); ?> / <?= ($row->type); ?>', '<?= ($row->date); ?>','<?= ($row->upi_no); ?><br><?= ($row->orderid); ?>','<?= ($row->amount); ?>','<?= ($row->received_from); ?><br><?= ($highlighted_text); ?>','<?= ($row->find_by); ?>','<?= ($chemist_dt); ?>','<?= ($process_invoice); ?>','<?= ($find); ?>','<?= ($find_all); ?>','<a href="<?= base_url(); ?>admin/<?php echo $Page_name ?>/edit/<?= ($row->id); ?>">Edit</a>']);
