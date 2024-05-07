@@ -28,9 +28,6 @@
 							From 
 						</th>
 						<th>
-                        	_id
-                        </th>
-						<th>
                         	Find By
                         </th>
 						<th width="250px">
