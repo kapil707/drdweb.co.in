@@ -46,7 +46,7 @@ $(document).ready(function(){
 			$find_all = "done";
 		}
 		?>
-		$(".myhiden_data_for_modal").append("<p class='myhiden_data_for_modal_id<?= ($row->id); ?>' chemist_id='<?= ($row->chemist_id); ?>' invoice_chemist='<?= ($invoice_chemist); ?>' find_by='<?= ($row->find_by); ?>'></p>")
+		$(".myhiden_data_for_modal").append("<p class='myhiden_data_for_modal_id<?= ($row->id); ?>' chemist_id='<?= ($row->chemist_id); ?>' invoice_chemist='<?= ($invoice_chemist); ?>' find_by='<?= ($row->find_by); ?>' find='<?= ($find); ?>'></p>")
 
 		data.push(['<?= ($row->status); ?> / <?= ($row->type); ?>', '<?= ($row->date); ?>','<?= ($row->upi_no); ?><br><?= ($row->orderid); ?>','<?= ($row->amount); ?>','<?= ($row->received_from); ?><br><?= ($highlighted_text); ?>','<?= ($row->find_by); ?>','<?= ($chemist_dt); ?>','<?= ($process_invoice); ?>','<?= ($find); ?>','<?= ($find_all); ?>','<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" onClick="model_data_add(<?= ($row->id); ?>)">Open Modal</button>']);
 		<?php
@@ -79,9 +79,10 @@ function model_data_add(id){
 	chemist_id = $(".myhiden_data_for_modal_id"+id).attr("chemist_id")
 	invoice_chemist = $(".myhiden_data_for_modal_id"+id).attr("invoice_chemist")
 	find_by = $(".myhiden_data_for_modal_id"+id).attr("find_by")
+	find = $(".myhiden_data_for_modal_id"+id).attr("find_by")
 
-	$(".main_modal_title").html(find_by)
-	$(".main_modal_p").html("chemist_id:"+chemist_id)
+	$(".main_modal_title").html(find)
+	$(".main_modal_p").html("chemist_id:"+chemist_id+"invoice:"+invoice_chemist)
 }
 </script>
 <script src="https://cdn.datatables.net/scroller/2.2.0/js/dataTables.scroller.min.js"></script>
