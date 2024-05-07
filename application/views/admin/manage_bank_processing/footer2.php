@@ -84,5 +84,9 @@ function model_data_add(id){
 	$(".main_modal_title").html(find)
 	$(".main_modal_p").html("Chemist find by Server : "+chemist_id+"<br>Invoice find by Server : "+process_invoice)
 }
+function onchange_add_new_chemist(){
+	add_new_chemist = $(".add_new_chemist").val();
+	console.log(add_new_chemist)
+}
 </script>
 <script src="https://cdn.datatables.net/scroller/2.2.0/js/dataTables.scroller.min.js"></script>

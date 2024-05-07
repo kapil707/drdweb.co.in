@@ -67,8 +67,9 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title main_modal_title">Modal Header</h4>
       </div>
-      <div class="modal-body main_modal_p">
-        
+      <div class="modal-body">
+        <div class="main_modal_p"></div>
+		<input type="text" class="add_new_chemist" onchange="onchange_add_new_chemist()">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
