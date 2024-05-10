@@ -114,7 +114,12 @@
 						<td><?= ($find_all); ?></td>
 						<td>
 							<input type="text" value="<?php echo $done_chemist ?>" class="final_chemist_text_<?php echo $row->id; ?>">
-							<i class="fa fa-check" aria-hidden="true" onclick="add_final_chemist('<?php echo $row->id; ?>')"></i>
+							
+							<i class="fa fa-check add_final_chemist_btn_<?php echo $row->id; ?>" aria-hidden="true" onclick="add_final_chemist('<?php echo $row->id; ?>')"></i>
+
+							<span class="final_chemist_done_<?php echo $row->id; ?>"></span>
+
+							<i class="fa fa-pencil edit_final_chemist_btn_<?php echo $row->id; ?>" aria-hidden="true" onclick="edit_final_chemist('<?php echo $row->id; ?>')"></i>
 						</td>
 					</tr>
 					<?php } ?>
@@ -127,6 +132,11 @@
 function add_final_chemist(id){
 	var final_chemist = $(".final_chemist_text_"+id).val();
 	$(".final_chemist_text_"+id).hide();
+	$(".add_final_chemist_btn_"+id).hide();
+
+	$(".final_chemist_done_"+id).html(final_chemist);
+	$(".final_chemist_done_"+id).show();
+	$(".edit_final_chemist_btn_"+id).show();
 	$.ajax({
 		type : "POST",
 		data : {id:id,final_chemist:final_chemist,},
