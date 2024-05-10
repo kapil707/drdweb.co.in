@@ -38,14 +38,17 @@ $(document).ready(function(){
 		if(empty($process_invoice) && empty($row->chemist_id)){
 			$find = "N/A";
 		}
+		
+		$final_chemist = "";
 		$chemist_id_array = explode(",", $row->chemist_id);
 		$chemist_id_array = array_unique($chemist_id_array);
 		foreach($chemist_id_array as $rows){
 			$chemist_dt.= $rows."<br>"; 
+			$final_chemist = $rows;
 		}
 		
 		$find_all = "";
-		if(($row->chemist_id==$invoice_chemist) && (!empty($invoice_chemist) && !empty($row->chemist_id))){
+		if((strtolower($final_chemist)==strtolower($invoice_chemist)) && (!empty($invoice_chemist) && !empty($final_chemist))){
 			$find_all = "done";
 		}
 		?>
