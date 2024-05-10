@@ -99,7 +99,11 @@
 						$find_all = "done";
 						$done_chemist = $final_chemist; 
 						$tr_style = "background-color: #e8ffe2;";
-					}?>
+					}
+					if($row->status==5){
+						$tr_style = "background-color: #f8ac59;";
+					}
+					?>
 
 					<tr style="<?php echo $tr_style ?>">
 						<td><?= ($row->status); ?> / <?= ($row->type); ?></td>
