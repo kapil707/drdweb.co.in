@@ -106,7 +106,17 @@
 						<td><?= ($row->date); ?></td>
 						<td><?= ($row->upi_no); ?><br><?= ($row->orderid); ?></td>
 						<td><?= ($row->amount); ?></td>
-						<td><?= ($row->received_from); ?> <i class="fa fa-pencil"></i></td>
+						<td>
+							<input type="text" value="<?php echo $received_from ?>" class="received_from_text_<?php echo $row->id; ?>">
+
+							<i class="fa fa-check add_received_from_btn_<?php echo $row->id; ?>" aria-hidden="true" onclick="add_received_from('<?php echo $row->id; ?>')"></i>
+
+							<span class="received_from_<?php echo $row->id; ?>">
+								<?= ($row->received_from); ?> 
+							</span>
+
+							<i class="fa fa-pencil edit_received_from_btn_<?php echo $row->id; ?>" aria-hidden="true" onclick="edit_received_from('<?php echo $row->id; ?>')" style=""></i>						
+						</td>
 						<td><?= ($highlighted_text); ?></td>
 						<td><?= ($chemist_dt); ?></td>
 						<td><?= ($process_invoice); ?></td>
@@ -154,5 +164,13 @@ function edit_final_chemist(id){
 
 	$(".final_chemist_done_"+id).hide();
 	$(".edit_final_chemist_btn_"+id).hide();
+}
+
+function edit_received_from(id){
+	$(".received_from_text_"+id).show();
+	$(".add_received_from_btn_"+id).show();
+
+	$(".received_from_"+id).hide();
+	$(".edit_received_from_btn_"+id).hide();
 }
 </script>
