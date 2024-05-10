@@ -55,7 +55,7 @@ $(document).ready(function(){
 			$find_all = "done";
 			$done_chemist = $final_chemist;
 			?> 
-			row_done_color.push(<?php echo $j; ?>,);
+			row_done_color.push(<?php echo $j; ?>);
 			<?php
 		}
 		?>
