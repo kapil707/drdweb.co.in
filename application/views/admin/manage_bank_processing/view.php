@@ -106,7 +106,7 @@
 						<td><?= ($row->date); ?></td>
 						<td><?= ($row->upi_no); ?><br><?= ($row->orderid); ?></td>
 						<td><?= ($row->amount); ?></td>
-						<td><?= ($row->received_from); ?></td>
+						<td><?= ($row->received_from); ?><i class="fas fa-edit"></i></td>
 						<td><?= ($highlighted_text); ?></td>
 						<td><?= ($chemist_dt); ?></td>
 						<td><?= ($process_invoice); ?></td>
