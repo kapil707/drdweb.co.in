@@ -3,7 +3,7 @@ $(document).ready(function(){
 	let data = [];
 	let row_done_color = [];
 	<?php
-	$j = 0;
+	$j = -1;
 	$i = 1;
 	foreach ($result as $row)
 	{
@@ -53,11 +53,9 @@ $(document).ready(function(){
 		$find_all = "";
 		if((strtolower($final_chemist)==strtolower($invoice_chemist)) && (!empty($invoice_chemist) && !empty($final_chemist))){
 			$find_all = "done";
-			$done_chemist = $final_chemist;
-			if($find_all=="done") { ?> 
+			$done_chemist = $final_chemist; ?> 
 			row_done_color.push(<?php echo $j; ?>);
 			<?php
-			}
 		}
 		?>
 		$(".myhiden_data_for_modal").append("<p class='myhiden_data_for_modal_id<?= ($row->id); ?>' received_from='<?= ($row->received_from); ?>' chemist_id='<?= ($row->chemist_id); ?>' process_invoice='<?= ($row->process_invoice); ?>' find_by='<?= ($row->find_by); ?>' find='<?= ($find); ?>'></p>")
