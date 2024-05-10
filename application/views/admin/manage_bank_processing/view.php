@@ -107,9 +107,9 @@
 						<td><?= ($row->upi_no); ?><br><?= ($row->orderid); ?></td>
 						<td><?= ($row->amount); ?></td>
 						<td>
-							<input type="text" value="<?php echo $row->received_from ?>" class="received_from_text_<?php echo $row->id; ?>">
+							<input type="text" value="<?php echo $row->received_from ?>" class="received_from_text_<?php echo $row->id; ?>" style="display:none">
 
-							<i class="fa fa-check add_received_from_btn_<?php echo $row->id; ?>" aria-hidden="true" onclick="add_received_from('<?php echo $row->id; ?>')"></i>
+							<i class="fa fa-check add_received_from_btn_<?php echo $row->id; ?>" aria-hidden="true" onclick="add_received_from('<?php echo $row->id; ?>')" style="display:none"></i>
 
 							<span class="received_from_<?php echo $row->id; ?>">
 								<?= ($row->received_from); ?> 
