@@ -98,9 +98,9 @@
 					if((strtolower($final_chemist)==strtolower($invoice_chemist)) && (!empty($invoice_chemist) && !empty($final_chemist))){
 						$find_all = "done";
 						$done_chemist = $final_chemist; 
-						$tr_style = "background-color: #c3f5b6;";
+						$tr_style = "background-color: #e8ffe2;";
 					}?>
-					
+
 					<tr style="<?php echo $tr_style ?>">
 						<td><?= ($row->status); ?> / <?= ($row->type); ?></td>
 						<td><?= ($row->date); ?></td>
