@@ -86,7 +86,7 @@ $(document).ready(function(){
 		"rowCallback": function( row, data, index ) {
 			for (var i = 0; i < row_change_color.length; i++) {
 				if (index == row_change_color[i] ) {
-					$(row).css("background-color", "green");
+					$(row).css("background-color", "rgb(183 215 183);");
 				}
 			}
         }
