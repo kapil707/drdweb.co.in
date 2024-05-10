@@ -148,4 +148,11 @@ function add_final_chemist(id){
 		}
 	});
 }
+function edit_final_chemist(id){
+	$(".final_chemist_text_"+id).show();
+	$(".add_final_chemist_btn_"+id).show();
+
+	$(".final_chemist_done_"+id).hide();
+	$(".edit_final_chemist_btn_"+id).hide();
+}
 </script>
