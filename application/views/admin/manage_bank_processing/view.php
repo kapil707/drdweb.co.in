@@ -125,9 +125,9 @@
 						<td>
 							<input type="text" value="<?php echo $done_chemist ?>" class="final_chemist_text_<?php echo $row->id; ?>" <?php if($row->status==5) { ?>style="display:none" <?php } ?>>
 							
-							<i class="fa fa-check add_final_chemist_btn_<?php echo $row->id; ?>" aria-hidden="true" onclick="add_final_chemist('<?php echo $row->id; ?>')" <?php if($row->status==5) { ?>style="display:none" <?php } ?>><?php echo $final_chemist ?></i>
+							<i class="fa fa-check add_final_chemist_btn_<?php echo $row->id; ?>" aria-hidden="true" onclick="add_final_chemist('<?php echo $row->id; ?>')" <?php if($row->status==5) { ?>style="display:none" <?php } ?>></i>
 
-							<span class="final_chemist_done_<?php echo $row->id; ?>" <?php if($row->status!=5) { ?>style="display:none" <?php } ?>></span>
+							<span class="final_chemist_done_<?php echo $row->id; ?>" <?php if($row->status!=5) { ?>style="display:none" <?php } ?>><?php echo $final_chemist ?></span>
 
 							<i class="fa fa-pencil edit_final_chemist_btn_<?php echo $row->id; ?>" aria-hidden="true" onclick="edit_final_chemist('<?php echo $row->id; ?>')" <?php if($row->status!=5) { ?>style="display:none" <?php } ?>></i>
 						</td>
