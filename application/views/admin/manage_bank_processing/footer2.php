@@ -3,7 +3,7 @@ $(document).ready(function(){
 	let data = [];
 	let row_done_color = [];
 	<?php
-	$j = -1;
+	$j = 0;
 	$i = 1;
 	foreach ($result as $row)
 	{
@@ -53,15 +53,18 @@ $(document).ready(function(){
 		$find_all = "";
 		if((strtolower($final_chemist)==strtolower($invoice_chemist)) && (!empty($invoice_chemist) && !empty($final_chemist))){
 			$find_all = "done";
-			$done_chemist = $final_chemist; ?> 
-			row_done_color.push(<?php echo $j; ?>);
-			<?php
+			$done_chemist = $final_chemist; 
 		}
 		?>
 		$(".myhiden_data_for_modal").append("<p class='myhiden_data_for_modal_id<?= ($row->id); ?>' received_from='<?= ($row->received_from); ?>' chemist_id='<?= ($row->chemist_id); ?>' process_invoice='<?= ($row->process_invoice); ?>' find_by='<?= ($row->find_by); ?>' find='<?= ($find); ?>'></p>")
 
 		data.push(['<?= ($row->status); ?> / <?= ($row->type); ?>', '<?= ($row->date); ?>','<?= ($row->upi_no); ?><br><?= ($row->orderid); ?>','<?= ($row->amount); ?>','<?= ($row->received_from); ?>','<?= ($highlighted_text); ?>','<?= ($chemist_dt); ?>','<?= ($process_invoice); ?>','<?= ($row->find_by); ?><br><?= ($find); ?>','<?= ($find_all); ?>','<input type="text" value="<?php echo $done_chemist ?>">']);
 		<?php
+		if($find_all=="done"){
+			?>
+			row_done_color.push(<?php echo $j; ?>);
+			<?php
+		}
 		$j++;
 	}
 	?>
