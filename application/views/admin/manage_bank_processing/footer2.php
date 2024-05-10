@@ -1,3 +1,4 @@
+<?php /*
 <script>
 $(document).ready(function(){
 	let data = [];
@@ -151,4 +152,4 @@ function add_chemist_id_by_link_name(){
 	});
 }
 </script>
-<script src="https://cdn.datatables.net/scroller/2.2.0/js/dataTables.scroller.min.js"></script>
+<script src="https://cdn.datatables.net/scroller/2.2.0/js/dataTables.scroller.min.js"></script> */ ?>

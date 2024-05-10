@@ -48,7 +48,69 @@
                     </tr>
                 </thead>
 				<tbody>
+				<?php
+				foreach ($result as $row) {
+					$chemist_dt = "";
+					$chemist_fafa = "";
+					if($row->process_status=="1"){
+						$chemist_fafa = '<i class="fa fa-check-circle" aria-hidden="true" style="color: green;font-size: 20px;"></i>';
+					}
+					if($row->process_status=="0"){
+						$chemist_fafa = '<i class="fa fa-question-circle" aria-hidden="true" style="color: orange;font-size: 20px;"></i>';
+					}
+					$search = $row->process_name;
 					
+					$search_escaped = preg_quote($search, '/');
+					$highlighted_text = preg_replace('/(' . $search_escaped . ')/i', '<span style="background-color: yellow;">$1</span>', $row->process_value);
+
+					$invoice_chemist = "";
+					$process_invoice = "";
+					$fruits_array = explode(",", $row->process_invoice);
+					foreach($fruits_array as $rows){
+						$process_invoice.= $rows."<br>";
+
+						$arr = explode(":-",$rows);
+						$invoice_chemist = $arr[0];
+					}
+					
+					$find = "find by ";
+					if(!empty($row->process_invoice)){
+						$find.= "<b>invoice</b>,";
+					}
+					if(!empty($row->chemist_id)){
+						$find.= "<b>chemist</b>";
+					}
+					if(empty($process_invoice) && empty($row->chemist_id)){
+						$find = "N/A";
+					}
+					
+					$final_chemist = "";
+					$chemist_id_array = explode(",", $row->chemist_id);
+					$chemist_id_array = array_unique($chemist_id_array);
+					foreach($chemist_id_array as $rows){
+						$chemist_dt.= $rows."<br>"; 
+						$final_chemist = $rows;
+					}
+					
+					$done_chemist = "";
+					$find_all = "";
+					if((strtolower($final_chemist)==strtolower($invoice_chemist)) && (!empty($invoice_chemist) && !empty($final_chemist))){
+						$find_all = "done";
+						$done_chemist = $final_chemist; 
+					}					
+				} ?>
+				<tr>
+					<td><?= ($row->status); ?> / <?= ($row->type); ?></td>
+					<td><?= ($row->date); ?></td>
+					<td><?= ($row->upi_no); ?><br><?= ($row->orderid); ?></td>
+					<td><?= ($row->amount); ?></td>
+					<td><?= ($row->received_from); ?></td>
+					<td><?= ($highlighted_text); ?></td>
+					<td><?= ($chemist_dt); ?></td>
+					<td><?= ($process_invoice); ?></td>
+					<td><?= ($row->find_by); ?><br><?= ($find); ?></td>
+					<td><?= ($find_all); ?></td>
+					<td><input type="text" value="<?php echo $done_chemist ?>"></td>
 				</tbody>
 			</table>
 		</div>
