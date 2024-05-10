@@ -39,6 +39,7 @@ $(document).ready(function(){
 			$find = "N/A";
 		}
 		$chemist_id_array = explode(",", $row->chemist_id);
+		$chemist_id_array = array_unique($chemist_id_array);
 		foreach($chemist_id_array as $rows){
 			$chemist_dt.= $rows."<br>"; 
 		}
