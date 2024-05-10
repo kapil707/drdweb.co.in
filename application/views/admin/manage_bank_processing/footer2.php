@@ -82,7 +82,7 @@ $(document).ready(function(){
 		],
 		"rowCallback": function( row, data, index ) {
             if ( index % 2 == 0 ) {
-                $(row).css("background-color", "blue");
+                //$(row).css("background-color", "blue");
             }
         }
 	});
