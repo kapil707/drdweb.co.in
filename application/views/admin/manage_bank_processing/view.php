@@ -114,7 +114,7 @@
 						<td><?= ($find_all); ?></td>
 						<td>
 							<input type="text" value="<?php echo $done_chemist ?>" class="final_chemist_text_<?php $row->id; ?>">
-							<i class="fa fa-check" aria-hidden="true" onchange="add_final_chemist('<?php $row->id; ?>')"></i>
+							<i class="fa fa-check" aria-hidden="true" onclick="add_final_chemist('<?php $row->id; ?>')"></i>
 						</td>
 					</tr>
 					<?php } ?>
