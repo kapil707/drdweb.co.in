@@ -50,6 +50,7 @@
 				<tbody>
 				<?php
 				foreach ($result as $row) {
+					$tr_style = "";
 					$chemist_dt = "";
 					$chemist_fafa = "";
 					if($row->process_status=="1"){
@@ -97,8 +98,10 @@
 					if((strtolower($final_chemist)==strtolower($invoice_chemist)) && (!empty($invoice_chemist) && !empty($final_chemist))){
 						$find_all = "done";
 						$done_chemist = $final_chemist; 
+						$tr_style = "background-color: #c3f5b6;";
 					}?>
-					<tr>
+					
+					<tr style="<?php echo $tr_style ?>">
 						<td><?= ($row->status); ?> / <?= ($row->type); ?></td>
 						<td><?= ($row->date); ?></td>
 						<td><?= ($row->upi_no); ?><br><?= ($row->orderid); ?></td>
@@ -116,31 +119,4 @@
 			</table>
 		</div>
     </div>
-</div>
-<div class="myhiden_data_for_modal"></div>
-
-
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title main_modal_title">Modal Header</h4>
-      </div>
-      <div class="modal-body">
-        <div class="main_modal_p"></div>
-		<input type="hidden" class="hidden_id">
-		<input type="text" class="hidden_received_from">
-		<input type="text" class="add_new_chemist" onchange="onchange_add_new_chemist()">
-		<button type="button" class="btn btn-default" onclick="add_chemist_id_by_link_name()">save</button>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
 </div>
