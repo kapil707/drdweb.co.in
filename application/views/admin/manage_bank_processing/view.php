@@ -14,10 +14,10 @@
 						<th width="50">
 							Status / Type
 						</th>
-						<th>
+						<th width="50">
 							Date
                         </th>
-						<th> 
+						<th width="150"> 
 							Upi No /
 							Orderid
                         </th>
