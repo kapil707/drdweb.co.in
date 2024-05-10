@@ -106,13 +106,16 @@
 						<td><?= ($row->date); ?></td>
 						<td><?= ($row->upi_no); ?><br><?= ($row->orderid); ?></td>
 						<td><?= ($row->amount); ?></td>
-						<td><?= ($row->received_from); ?><i class="fa fa-edit"></i></td>
+						<td><?= ($row->received_from); ?> <i class="fa fa-pencil"></i></td>
 						<td><?= ($highlighted_text); ?></td>
 						<td><?= ($chemist_dt); ?></td>
 						<td><?= ($process_invoice); ?></td>
 						<td><?= ($row->find_by); ?><br><?= ($find); ?></td>
 						<td><?= ($find_all); ?></td>
-						<td><input type="text" value="<?php echo $done_chemist ?>"></td>
+						<td>
+							<input type="text" value="<?php echo $done_chemist ?>">
+							<i class="fa fa-check" aria-hidden="true"></i>
+						</td>
 					</tr>
 					<?php } ?>
 				</tbody>
