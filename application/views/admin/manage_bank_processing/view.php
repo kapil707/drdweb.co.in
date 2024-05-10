@@ -113,8 +113,8 @@
 						<td><?= ($row->find_by); ?><br><?= ($find); ?></td>
 						<td><?= ($find_all); ?></td>
 						<td>
-							<input type="text" value="<?php echo $done_chemist ?>">
-							<i class="fa fa-check" aria-hidden="true"></i>
+							<input type="text" value="<?php echo $done_chemist ?>" class="final_chemist_text_<?php $row->id; ?>">
+							<i class="fa fa-check" aria-hidden="true" onchange="add_final_chemist('<?php $row->id; ?>')"></i>
 						</td>
 					</tr>
 					<?php } ?>
@@ -123,3 +123,19 @@
 		</div>
     </div>
 </div>
+<script>
+function add_final_chemist(id){
+	var final_chemist = $(".final_chemist_text_"+id).val();
+	$(".final_chemist_text_"+id).hide();
+	$.ajax({
+		type : "POST",
+		data : {id:id,final_chemist:final_chemist,},
+		url  : "<?= base_url()?>admin/<?= $Page_name?>/add_final_chemist",
+		cache: true,
+		error: function(){
+		},
+		success    : function(data){
+		}
+	});
+}
+</script>

@@ -319,4 +319,22 @@ class Manage_bank_processing extends CI_Controller {
 			$this->BankModel->insert_fun("tbl_bank_chemist", $dt);
 		}
 	}
+
+
+	public function add_final_chemist()
+	{
+		$id 			= $_POST["id"];
+		$final_chemist 	= $_POST["final_chemist"];
+		if(!empty($id) && !empty($final_chemist)){
+
+			$where = array(
+				'id' => $id,
+			);
+			$dt = array(
+				'final_chemist'=>$final_chemist,
+				'status' => '5',
+			);
+			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
+		}
+	}
 }
