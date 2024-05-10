@@ -99,10 +99,10 @@ class Cronjob_bank extends CI_Controller
 			$pattern = '/received from (\S+)/';
 			if (preg_match($pattern, $message_body, $matches)) {
 				$received_from = $matches[1];
-				$status = 1;
+				$status = 0;
 			} else {
 				$received_from = "Received from information not found";
-				$status = 2;
+				$status = 1;
 			}
 
 			$pattern = '/UPI Ref No\. (\w+)/';
@@ -147,7 +147,7 @@ class Cronjob_bank extends CI_Controller
 
 		$this->bank_sms_processing();
 	
-		$result = $this->BankModel->select_query("select * from tbl_bank_processing where status='1' limit 100");
+		$result = $this->BankModel->select_query("select * from tbl_bank_processing where status='0' limit 100");
 		$result = $result->result();
 		foreach($result as $row){
 
@@ -330,7 +330,7 @@ class Cronjob_bank extends CI_Controller
 			$dt = array(
 				'find_by'=>$find_by,
 				'chemist_id'=>$chemist_id,
-				'status'=>2,
+				'status'=>1,
 				'process_status'=>$process_status,
 				'process_name'=>$process_name,
 				'process_value'=>$process_value,

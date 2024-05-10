@@ -293,34 +293,6 @@ class Manage_bank_processing extends CI_Controller {
 		$this->load->view("admin/header_footer/footer",$data);
 	}
 
-	public function add_chemist_id_by_link_name()
-	{
-		$id 			= $_POST["id"];
-		$chemist_id 	= $_POST["chemist_id"];
-		$string_value 	= $_POST["string_value"];
-		if(!empty($id) && !empty($chemist_id) && !empty($string_value)){
-
-			$where = array(
-				'id' => $id,
-			);
-			$dt = array(
-				'status' => '1',
-			);
-			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
-			
-			/************************************************* */
-			$dt = array(
-				'chemist_id' => $chemist_id,
-				'string_value' => $string_value,
-				'date'=>date('Y-m-d'),
-				'time'=>time(),
-				'user_id'=>$this->session->userdata("user_id")
-			);
-			$this->BankModel->insert_fun("tbl_bank_chemist", $dt);
-		}
-	}
-
-
 	public function add_final_chemist()
 	{
 		$id 			= $_POST["id"];
@@ -335,6 +307,33 @@ class Manage_bank_processing extends CI_Controller {
 				'status' => '5',
 			);
 			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
+		}
+	}
+
+	public function add_received_from()
+	{
+		$id 			= $_POST["id"];
+		$chemist_id 	= $_POST["chemist_id"];
+		$string_value 	= $_POST["string_value"];
+		if(!empty($id) && !empty($chemist_id) && !empty($string_value)){
+
+			$where = array(
+				'id' => $id,
+			);
+			$dt = array(
+				'status' => '0',
+			);
+			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
+			
+			/************************************************* */
+			$dt = array(
+				'chemist_id' => $chemist_id,
+				'string_value' => $string_value,
+				'date'=>date('Y-m-d'),
+				'time'=>time(),
+				'user_id'=>$this->session->userdata("user_id")
+			);
+			$this->BankModel->insert_fun("tbl_bank_chemist", $dt);
 		}
 	}
 }

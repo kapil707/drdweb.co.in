@@ -123,13 +123,13 @@
 						<td><?= ($row->find_by); ?><br><?= ($find); ?></td>
 						<td><?= ($find_all); ?></td>
 						<td>
-							<input type="text" value="<?php echo $done_chemist ?>" class="final_chemist_text_<?php echo $row->id; ?>">
+							<input type="text" value="<?php echo $done_chemist ?>" class="final_chemist_text_<?php echo $row->id; ?>" <?php if($row->status==5) { ?>style="display:none" <?php } ?>>
 							
-							<i class="fa fa-check add_final_chemist_btn_<?php echo $row->id; ?>" aria-hidden="true" onclick="add_final_chemist('<?php echo $row->id; ?>')"></i>
+							<i class="fa fa-check add_final_chemist_btn_<?php echo $row->id; ?>" aria-hidden="true" onclick="add_final_chemist('<?php echo $row->id; ?>')" <?php if($row->status==5) { ?>style="display:none" <?php } ?>></i>
 
-							<span class="final_chemist_done_<?php echo $row->id; ?>"></span>
+							<span class="final_chemist_done_<?php echo $row->id; ?>" <?php if($row->status!=5) { ?>style="display:none" <?php } ?>></span>
 
-							<i class="fa fa-pencil edit_final_chemist_btn_<?php echo $row->id; ?>" aria-hidden="true" onclick="edit_final_chemist('<?php echo $row->id; ?>')" style="display:none"></i>
+							<i class="fa fa-pencil edit_final_chemist_btn_<?php echo $row->id; ?>" aria-hidden="true" onclick="edit_final_chemist('<?php echo $row->id; ?>')" <?php if($row->status!=5) { ?>style="display:none" <?php } ?>></i>
 						</td>
 					</tr>
 					<?php } ?>
@@ -165,7 +165,25 @@ function edit_final_chemist(id){
 	$(".final_chemist_done_"+id).hide();
 	$(".edit_final_chemist_btn_"+id).hide();
 }
+function add_received_from(id){
+	var received_from = $(".received_from_text_"+id).val();
+	$(".received_from_text_"+id).hide();
+	$(".add_received_from_btn_"+id).hide();
 
+	$(".received_from_"+id).html(received_from);
+	$(".received_from_"+id).show();
+	$(".edit_received_from_btn_"+id).show();
+	$.ajax({
+		type : "POST",
+		data : {id:id,received_from:received_from,},
+		url  : "<?= base_url()?>admin/<?= $Page_name?>/add_received_from",
+		cache: true,
+		error: function(){
+		},
+		success    : function(data){
+		}
+	});
+}
 function edit_received_from(id){
 	$(".received_from_text_"+id).show();
 	$(".add_received_from_btn_"+id).show();

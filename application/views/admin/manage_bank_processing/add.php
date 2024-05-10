@@ -214,7 +214,7 @@
 					$_id = 1;
 					$received_from = $from_value;
 					if(!empty($received_from)){
-						$status = 1;
+						$status = 0;
 						$type = "Statment";
 						$dt = array(
 							'status'=>$status,
