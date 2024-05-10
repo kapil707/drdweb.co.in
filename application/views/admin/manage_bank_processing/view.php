@@ -14,7 +14,7 @@
 						<th width="50">
 							Status / Type
 						</th>
-						<th width="50">
+						<th width="80">
 							Date
                         </th>
 						<th width="150"> 
