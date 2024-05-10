@@ -50,7 +50,7 @@ $(document).ready(function(){
 		?>
 		$(".myhiden_data_for_modal").append("<p class='myhiden_data_for_modal_id<?= ($row->id); ?>' received_from='<?= ($row->received_from); ?>' chemist_id='<?= ($row->chemist_id); ?>' process_invoice='<?= ($row->process_invoice); ?>' find_by='<?= ($row->find_by); ?>' find='<?= ($find); ?>'></p>")
 
-		data.push(['<?= ($row->status); ?> / <?= ($row->type); ?>', '<?= ($row->date); ?>','<?= ($row->upi_no); ?><br><?= ($row->orderid); ?>','<?= ($row->amount); ?>','<?= ($row->received_from); ?>','<?= ($highlighted_text); ?>','<?= ($chemist_dt); ?>','<?= ($process_invoice); ?>','<?= ($row->find_by); ?><br><?= ($find); ?>','<?= ($find_all); ?>']);
+		data.push(['<?= ($row->status); ?> / <?= ($row->type); ?>', '<?= ($row->date); ?>','<?= ($row->upi_no); ?><br><?= ($row->orderid); ?>','<?= ($row->amount); ?>','<?= ($row->received_from); ?>','<?= ($highlighted_text); ?>','<?= ($chemist_dt); ?>','<?= ($process_invoice); ?>','<?= ($row->find_by); ?><br><?= ($find); ?>','<?= ($find_all); ?>','<input type="text">']);
 		<?php
 	}
 	?>
