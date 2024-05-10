@@ -3,7 +3,7 @@ $(document).ready(function(){
 	let data = [];
 	let row_done_color = [];
 	<?php
-	$j = 1;
+	$j = -1;
 	$i = 1;
 	foreach ($result as $row)
 	{
