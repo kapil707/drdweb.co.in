@@ -119,7 +119,7 @@
 
 							<span class="final_chemist_done_<?php echo $row->id; ?>"></span>
 
-							<i class="fa fa-pencil edit_final_chemist_btn_<?php echo $row->id; ?>" aria-hidden="true" onclick="edit_final_chemist('<?php echo $row->id; ?>')"></i>
+							<i class="fa fa-pencil edit_final_chemist_btn_<?php echo $row->id; ?>" aria-hidden="true" onclick="edit_final_chemist('<?php echo $row->id; ?>')" style="display:none"></i>
 						</td>
 					</tr>
 					<?php } ?>
