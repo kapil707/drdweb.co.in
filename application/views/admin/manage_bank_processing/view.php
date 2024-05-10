@@ -42,9 +42,6 @@
 						<th>
                         	Find
                         </th>
-						<th>
-                        	Edit
-                        </th>
                     </tr>
                 </thead>
 				<tbody>
