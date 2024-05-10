@@ -5,6 +5,7 @@ $(document).ready(function(){
 	$i = 1;
 	foreach ($result as $row)
 	{
+		$chemist_dt = "";
 		$chemist_fafa = "";
 		if($row->process_status=="1"){
 			$chemist_fafa = '<i class="fa fa-check-circle" aria-hidden="true" style="color: green;font-size: 20px;"></i>';
@@ -37,10 +38,11 @@ $(document).ready(function(){
 		if(empty($process_invoice) && empty($row->chemist_id)){
 			$find = "N/A";
 		}
-		$chemist_dt = $row->chemist_id." ".$chemist_fafa; 
-		// if(!empty($invoice_chemist) &&  !empty($row->chemist_id)){
-		// 	$chemist_dt.="<br>".$invoice_chemist;
-		// }
+		$chemist_id_array = explode(",", $row->chemist_id);
+		foreach($chemist_id_array as $rows){
+			$chemist_dt.= $rows."<br>"; 
+		}
+		
 		$find_all = "";
 		if(($row->chemist_id==$invoice_chemist) && (!empty($invoice_chemist) && !empty($row->chemist_id))){
 			$find_all = "done";
