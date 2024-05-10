@@ -79,7 +79,12 @@ $(document).ready(function(){
 							.css('font-size', 'inherit');
 			}
 			}
-		]
+		],
+		"rowCallback": function( row, data, index ) {
+            if ( index % 2 == 0 ) {
+                $(row).css("background-color", "blue");
+            }
+        }
 	});
 });
 
