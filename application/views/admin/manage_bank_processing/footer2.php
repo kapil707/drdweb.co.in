@@ -84,11 +84,11 @@ $(document).ready(function(){
 			}
 		],
 		"rowCallback": function( row, data, index ) {
-			for (var i = 0; i < row_change_color.length; i++) {}
-				if ( index == 2) {
+			for (var i = 0; i < row_change_color.length; i++) {
+				if (index == row_change_color[i] ) {
 					$(row).css("background-color", "blue");
 				}
-			
+			}
         }
 	});
 });
