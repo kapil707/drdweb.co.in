@@ -98,10 +98,10 @@
 					if((strtolower($final_chemist)==strtolower($invoice_chemist)) && (!empty($invoice_chemist) && !empty($final_chemist))){
 						$find_all = "done";
 						$done_chemist = $final_chemist; 
-						$tr_style = "background-color: #e8ffe2;";
+						$tr_style = "background-color: #ffe1c0;";
 					}
 					if($row->status==5){
-						$tr_style = "background-color: #f8ac59;";
+						$tr_style = "background-color: #e8ffe2;";
 					}
 					?>
 
