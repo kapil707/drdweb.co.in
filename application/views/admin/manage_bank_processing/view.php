@@ -105,13 +105,15 @@
 						$done_chemist_id = $find_chemist_id2;
 					}
 
-					foreach($find_invoice_chemist_id_array as $rows){
-						foreach($find_chemist_id_array as $rows1){
-							$arr = explode(":-",$rows);
-							if($arr[0]==$rows1){
-								$find_all = "new-done";
-								$done_chemist_id = $find_chemist_id2;
-								$tr_style = "background-color: #D9C0FF;";
+					if(empty($find_all)){
+						foreach($find_invoice_chemist_id_array as $rows){
+							foreach($find_chemist_id_array as $rows1){
+								$arr = explode(":-",$rows);
+								if($arr[0]==$rows1){
+									$find_all = "new-done";
+									$done_chemist_id = $find_chemist_id2;
+									$tr_style = "background-color: #D9C0FF;";
+								}
 							}
 						}
 					}
