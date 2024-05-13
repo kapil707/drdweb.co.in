@@ -127,7 +127,7 @@
 						<td><?= ($row->status); ?> / <?= ($row->type); ?></td>
 						<td><?= ($row->date); ?></td>
 						<td>
-							<div style="word-wrap:break-word;width:150px;">
+							<div style="word-wrap:break-word;width:95px;">
 								<?= ($row->upi_no); ?>
 								<br>
 								<?= ($row->orderid); ?>
