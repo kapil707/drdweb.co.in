@@ -323,7 +323,6 @@ class Manage_bank_processing extends CI_Controller {
 				'status' => '0',
 			);
 			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
-
 			
 			/********************************************* */
 			$where = array(

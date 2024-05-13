@@ -52,13 +52,13 @@
 				foreach ($result as $row) {
 					$tr_style = "";
 					$chemist_dt = "";
-					$chemist_fafa = "";
-					if($row->process_status=="1"){
-						$chemist_fafa = '<i class="fa fa-check-circle" aria-hidden="true" style="color: green;font-size: 20px;"></i>';
-					}
-					if($row->process_status=="0"){
-						$chemist_fafa = '<i class="fa fa-question-circle" aria-hidden="true" style="color: orange;font-size: 20px;"></i>';
-					}
+					// $chemist_fafa = "";
+					// if($row->process_status=="1"){
+					// 	$chemist_fafa = '<i class="fa fa-check-circle" aria-hidden="true" style="color: green;font-size: 20px;"></i>';
+					// }
+					// if($row->process_status=="0"){
+					// 	$chemist_fafa = '<i class="fa fa-question-circle" aria-hidden="true" style="color: orange;font-size: 20px;"></i>';
+					// }
 					$search = $row->process_name;
 					
 					$search_escaped = preg_quote($search, '/');
