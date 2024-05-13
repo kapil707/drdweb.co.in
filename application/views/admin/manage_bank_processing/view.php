@@ -101,7 +101,7 @@
 						$done_chemist_id = $find_chemist_id2;
 					}
 
-					if(empty($find_all)){
+					if(empty($find_all) && !empty($find_invoice_chemist_id_array) &&  !empty($find_chemist_id_array)){
 						foreach($find_invoice_chemist_id_array as $rows){
 							foreach($find_chemist_id_array as $rows1){
 								$arr = explode(":-",$rows);
