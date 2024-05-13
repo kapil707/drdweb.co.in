@@ -564,10 +564,10 @@ class Cronjob_bank extends CI_Controller
 		return $return;
 	}
 
-	public function test(){
+	public function test($chemist_id,$amount){
 
 		$resultArray = [];
-		$rr = $this->InvoiceModel->select_query("SELECT * FROM `tbl_invoice_new` WHERE (vdt BETWEEN '2024-04-25' and '2024-04-27') and `chemist_id`='A446'");
+		$rr = $this->InvoiceModel->select_query("SELECT * FROM `tbl_invoice_new` WHERE (vdt BETWEEN '2024-04-01' and '2024-04-30') and `chemist_id`='$chemist_id'");
 		$rr = $rr->result();
 		foreach($rr as $tt){
 			$resultArray[] = [
@@ -577,7 +577,7 @@ class Cronjob_bank extends CI_Controller
 			];
 		}
 
-		$targetValue = 5060;
+		$targetValue = $amount;
 		$found = false;
 		$selectedValues = [];
 
