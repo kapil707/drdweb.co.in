@@ -293,7 +293,7 @@ class Manage_bank_processing extends CI_Controller {
 		$this->load->view("admin/header_footer/footer",$data);
 	}
 
-	public function add_chemist_done()
+	public function add_done_chemist_id()
 	{
 		$id 			= $_POST["id"];
 		$done_chemist_id = $_POST["done_chemist_id"];

@@ -156,7 +156,7 @@ function add_done_chemist_id(id){
 	$.ajax({
 		type : "POST",
 		data : {id:id,done_chemist_id:done_chemist_id,received_from:received_from,},
-		url  : "<?= base_url()?>admin/<?= $Page_name?>/add_done_chemist",
+		url  : "<?= base_url()?>admin/<?= $Page_name?>/add_done_chemist_id",
 		cache: true,
 		error: function(){
 		},
