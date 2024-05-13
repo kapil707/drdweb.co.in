@@ -510,9 +510,9 @@ class Cronjob_bank extends CI_Controller
 			$rr = $rr->result();
 			foreach($rr as $tt){
 				$total = round($tt->amt) + $total;
+				$jsonArray[] = $tt->chemist_id.":-".$tt->gstvno." Amt.".$tt->amt;
 				if(round($total)==round($amount)){
-
-					$jsonArray[] = $tt->chemist_id.":-".$tt->gstvno." Amt.".$tt->amt;
+					break;					
 				}
 			}
 			if(!empty($jsonArray)){
