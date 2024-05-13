@@ -150,7 +150,7 @@ function add_done_chemist_id(id){
 	$(".text_done_chemist_id_"+id).hide();
 	$(".add_done_chemist_id_"+id).hide();
 
-	$(".span_done_chemist_id_"+id).html(chemist_done);
+	$(".span_done_chemist_id_"+id).html(done_chemist_id);
 	$(".span_done_chemist_id_"+id).show();
 	$(".edit_done_chemist_id_"+id).show();
 	$.ajax({
@@ -165,10 +165,10 @@ function add_done_chemist_id(id){
 	});
 }
 function edit_done_chemist_id(id){
-	$(".done_chemist_id_text_"+id).show();
-	$(".add_done_chemist_id_btn_"+id).show();
+	$(".text_done_chemist_id_"+id).show();
+	$(".add_done_chemist_id_"+id).show();
 
-	$(".done_chemist_id_done_"+id).hide();
-	$(".edit_done_chemist_id_btn_"+id).hide();
+	$(".span_done_chemist_id_"+id).hide();
+	$(".edit_done_chemist_id_"+id).hide();
 }
 </script>
