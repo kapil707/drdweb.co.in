@@ -138,10 +138,12 @@
 						</td>
 						<td><?= ($highlighted_text); ?></td>
 						<td>
-							<?php foreach($find_chemist_id_array as $rows){
+							<?php 
+							foreach($find_chemist_id_array as $rows){
 								echo $rows;
 								echo $chemist_fafa[$rows];
 								echo "<br>";
+							}
 							?>
 						</td>
 						<td><?= ($find_invoice_chemist_id1); ?></td>
