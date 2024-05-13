@@ -112,7 +112,8 @@ class Manage_bank_processing extends CI_Controller {
 					for ($row=$start_row; $row<=$highestRow; $row++)
 					{
 						$amount1 = $worksheet->getCell($amount.$row)->getValue();
-						$statment_date1 = $worksheet->getCell($statment_date.$row)->getValue();
+						//$statment_date1 = $worksheet->getCell($statment_date.$row)->getValue();
+						$statment_date1 = $worksheet->getCell($value_date.$row)->getValue();
 						$text = $worksheet->getCell($narrative.$row)->getValue();
 						//$text = trim($text);
 						//$text = str_replace("'", "", $text);
