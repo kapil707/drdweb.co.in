@@ -78,7 +78,7 @@
 					$find_chemist_id_array = explode(",", $row->find_chemist_id);
 					$find_chemist_id_array = array_unique($find_chemist_id_array);					
 					if(count($find_chemist_id_array)==1){
-						$find_chemist_id2 = $rows;
+						$find_chemist_id2 = $rows[0];
 					}
 
 					$find_invoice_chemist_id1 = "";
