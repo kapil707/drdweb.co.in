@@ -107,7 +107,8 @@
 
 					foreach($find_invoice_chemist_id_array as $rows){
 						foreach($find_chemist_id_array as $rows1){
-							if($rows==$rows1){
+							$done_chemist_id = explode(":-",$rows);
+							if($arr==$rows1){
 								$find_all = "new-done";
 								$done_chemist_id = $find_chemist_id2;
 								$tr_style = "background-color: #D9C0FF;";
