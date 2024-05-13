@@ -296,15 +296,15 @@ class Manage_bank_processing extends CI_Controller {
 	public function add_chemist_done()
 	{
 		$id 			= $_POST["id"];
-		$chemist_done 	= $_POST["chemist_done"];
+		$done_chemist_id = $_POST["done_chemist_id"];
 		$received_from 	= $_POST["received_from"];
-		if(!empty($id) && !empty($chemist_done) && !empty($received_from)){
+		if(!empty($id) && !empty($done_chemist_id) && !empty($received_from)){
 
 			$query = $this->BankModel->select_query("SELECT * FROM `tbl_bank_chemist` where string_value='$received_from'");
 			$row = $query->row();
 			if(empty($row)){
 				$dt = array(
-					'chemist_id' => $chemist_done,
+					'chemist_id' => $done_chemist_id,
 					'string_value' => $received_from,
 					'date'=>date('Y-m-d'),
 					'time'=>time(),
@@ -329,37 +329,10 @@ class Manage_bank_processing extends CI_Controller {
 				'id' => $id,
 			);
 			$dt = array(
-				'chemist_done'=>$chemist_done,
+				'done_chemist_id'=>$done_chemist_id,
 				'status' => '5',
 			);
 			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
-		}
-	}
-
-	public function add_received_from()
-	{
-		$id 			= $_POST["id"];
-		$chemist_id 	= $_POST["chemist_id"];
-		$string_value 	= $_POST["string_value"];
-		if(!empty($id) && !empty($chemist_id) && !empty($string_value)){
-
-			$where = array(
-				'id' => $id,
-			);
-			$dt = array(
-				'status' => '0',
-			);
-			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
-			
-			/************************************************* */
-			$dt = array(
-				'chemist_id' => $chemist_id,
-				'string_value' => $string_value,
-				'date'=>date('Y-m-d'),
-				'time'=>time(),
-				'user_id'=>$this->session->userdata("user_id")
-			);
-			$this->BankModel->insert_fun("tbl_bank_chemist", $dt);
 		}
 	}
 }

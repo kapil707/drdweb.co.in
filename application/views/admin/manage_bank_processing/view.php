@@ -62,16 +62,6 @@
 					
 					$search_escaped = preg_quote($search, '/');
 					$highlighted_text = preg_replace('/(' . $search_escaped . ')/i', '<span style="background-color: yellow;">$1</span>', $row->process_value);
-
-					$invoice_chemist = "";
-					$find_invoice_chemist_id = "";
-					$fruits_array = explode(",", $row->find_invoice_chemist_id);
-					foreach($fruits_array as $rows){
-						$find_invoice_chemist_id.= $rows."<br>";
-
-						$arr = explode(":-",$rows);
-						$invoice_chemist = $arr[0];
-					}
 					
 					$find = "find by ";
 					if(!empty($row->find_invoice_chemist_id)){
@@ -85,23 +75,34 @@
 					}
 					
 					$find_chemist_id1 = "";
-					$chemist_done = "";
+					$find_chemist_id2 = "";
 					$find_chemist_id_array = explode(",", $row->find_chemist_id);
 					$find_chemist_id_array = array_unique($find_chemist_id_array);
 					foreach($find_chemist_id_array as $rows){
-						$find_chemist_id1.= $rows."<br>"; 
-						$chemist_done = $rows;
+						$find_chemist_id1.= $rows."<br>";
+						$find_chemist_id2 = $rows;
+					}
+
+					$find_invoice_chemist_id1 = "";
+					$find_invoice_chemist_id2 = "";
+					$find_invoice_chemist_id_array = explode(",", $row->find_invoice_chemist_id);
+					foreach($find_invoice_chemist_id_array as $rows){
+						$find_invoice_chemist_id1.= $rows."<br>";
+
+						$arr = explode(":-",$rows);
+						$find_invoice_chemist_id2 = $arr[0];
 					}
 					
-					$chemist_done1 = "";
 					$find_all = "";
-					if((strtolower($chemist_done)==strtolower($invoice_chemist)) && (!empty($invoice_chemist) && !empty($chemist_done))){
+					if((strtolower($find_chemist_id2)==strtolower($find_invoice_chemist_id2)) && (!empty($find_invoice_chemist_id2) && !empty($find_chemist_id2))){
 						$find_all = "done";
-						$chemist_done1 = $chemist_done; 
 						$tr_style = "background-color: #ffe1c0;";
+
+						$done_chemist_id = $find_chemist_id2;
 					}
 					if($row->status==5){
 						$tr_style = "background-color: #e8ffe2;";
+						$done_chemist_id = $row->done_chemist_id;
 					}
 					?>
 
@@ -119,19 +120,19 @@
 						</td>
 						<td><?= ($highlighted_text); ?></td>
 						<td><?= ($find_chemist_id1); ?></td>
-						<td><?= ($find_invoice_chemist_id); ?></td>
+						<td><?= ($find_invoice_chemist_id1); ?></td>
 						<td><?= ($row->find_by); ?><br><?= ($find); ?></td>
 						<td><?= ($find_all); ?></td>
 						<td>
-							<input type="hidden" value="<?php echo $row->received_from ?>" class="received_from_text_<?php echo $row->id; ?>">
+							<input type="hidden" value="<?php echo $row->received_from ?>" class="text_received_from_<?php echo $row->id; ?>">
 
-							<input type="text" value="<?php echo $chemist_done1 ?>" class="chemist_done_text_<?php echo $row->id; ?>" <?php if($row->status==5) { ?>style="display:none" <?php } ?>>
+							<input type="text" value="<?php echo $chemist_done1 ?>" class="text_done_chemist_id_<?php echo $row->id; ?>" <?php if($row->status==5) { ?>style="display:none" <?php } ?>>
 							
-							<i class="fa fa-check add_chemist_done_btn_<?php echo $row->id; ?>" aria-hidden="true" onclick="add_chemist_done('<?php echo $row->id; ?>')" <?php if($row->status==5) { ?>style="display:none" <?php } ?>></i>
+							<i class="fa fa-check add_done_chemist_id_<?php echo $row->id; ?>" aria-hidden="true" onclick="add_done_chemist_id('<?php echo $row->id; ?>')" <?php if($row->status==5) { ?>style="display:none" <?php } ?>></i>
 
-							<span class="chemist_done_<?php echo $row->id; ?>" <?php if($row->status!=5) { ?>style="display:none" <?php } ?>><?php echo $chemist_done ?></span>
+							<span class="span_done_chemist_id_<?php echo $row->id; ?>" <?php if($row->status!=5) { ?>style="display:none" <?php } ?>><?php echo $done_chemist_id ?></span>
 
-							<i class="fa fa-pencil edit_chemist_done_btn_<?php echo $row->id; ?>" aria-hidden="true" onclick="edit_chemist_done('<?php echo $row->id; ?>')" <?php if($row->status!=5) { ?>style="display:none" <?php } ?>></i>
+							<i class="fa fa-pencil edit_done_chemist_id_<?php echo $row->id; ?>" aria-hidden="true" onclick="edit_done_chemist_id('<?php echo $row->id; ?>')" <?php if($row->status!=5) { ?>style="display:none" <?php } ?>></i>
 						</td>
 					</tr>
 					<?php } ?>
@@ -141,20 +142,20 @@
     </div>
 </div>
 <script>
-function add_chemist_done(id){
-	var received_from = $(".received_from_text_"+id).val();
+function add_done_chemist_id(id){
+	var received_from = $(".text_received_from_"+id).val();
 
-	var chemist_done = $(".chemist_done_text_"+id).val();
-	$(".chemist_done_text_"+id).hide();
-	$(".add_chemist_done_btn_"+id).hide();
+	var done_chemist_id = $(".text_done_chemist_id_"+id).val();
+	$(".text_done_chemist_id_"+id).hide();
+	$(".add_done_chemist_id_"+id).hide();
 
-	$(".chemist_done_"+id).html(chemist_done);
-	$(".chemist_done_"+id).show();
-	$(".edit_chemist_done_btn_"+id).show();
+	$(".span_done_chemist_id_"+id).html(chemist_done);
+	$(".span_done_chemist_id_"+id).show();
+	$(".edit_done_chemist_id_"+id).show();
 	$.ajax({
 		type : "POST",
-		data : {id:id,chemist_done:chemist_done,received_from:received_from,},
-		url  : "<?= base_url()?>admin/<?= $Page_name?>/add_chemist_done",
+		data : {id:id,done_chemist_id:done_chemist_id,received_from:received_from,},
+		url  : "<?= base_url()?>admin/<?= $Page_name?>/add_done_chemist",
 		cache: true,
 		error: function(){
 		},
@@ -162,11 +163,11 @@ function add_chemist_done(id){
 		}
 	});
 }
-function edit_chemist_done(id){
-	$(".chemist_done_text_"+id).show();
-	$(".add_chemist_done_btn_"+id).show();
+function edit_done_chemist_id(id){
+	$(".done_chemist_id_text_"+id).show();
+	$(".add_done_chemist_id_btn_"+id).show();
 
-	$(".chemist_done_done_"+id).hide();
-	$(".edit_chemist_done_btn_"+id).hide();
+	$(".done_chemist_id_done_"+id).hide();
+	$(".edit_done_chemist_id_btn_"+id).hide();
 }
 </script>
