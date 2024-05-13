@@ -140,6 +140,9 @@
 							extracted_text
                         </th>
 						<th>
+							vision_text
+                        </th>
+						<th>
 							from_number 
 						</th>
 						<th> 
@@ -197,6 +200,7 @@
 								<td><?php echo $body; ?></td>
 								<td><?php echo $date; ?></td>
 								<td><?php echo $extracted_text; ?></td>
+								<td><?php echo $vision_text; ?></td>
 								<td><?php echo $from_number; ?></td>
 								<td><?php echo $id; ?></td>
 								<td>
