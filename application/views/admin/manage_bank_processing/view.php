@@ -65,23 +65,23 @@
 					$highlighted_text = preg_replace('/(' . $search_escaped . ')/i', '<span style="background-color: yellow;">$1</span>', $row->process_value);
 
 					$invoice_chemist = "";
-					$process_invoice = "";
-					$fruits_array = explode(",", $row->process_invoice);
+					$find_invoice_chemist_id = "";
+					$fruits_array = explode(",", $row->find_invoice_chemist_id);
 					foreach($fruits_array as $rows){
-						$process_invoice.= $rows."<br>";
+						$find_invoice_chemist_id.= $rows."<br>";
 
 						$arr = explode(":-",$rows);
 						$invoice_chemist = $arr[0];
 					}
 					
 					$find = "find by ";
-					if(!empty($row->process_invoice)){
+					if(!empty($row->find_invoice_chemist_id)){
 						$find.= "<b>invoice</b>,";
 					}
 					if(!empty($row->chemist_id)){
 						$find.= "<b>chemist</b>";
 					}
-					if(empty($process_invoice) && empty($row->chemist_id)){
+					if(empty($find_invoice_chemist_id) && empty($row->chemist_id)){
 						$find = "N/A";
 					}
 					
@@ -119,7 +119,7 @@
 						</td>
 						<td><?= ($highlighted_text); ?></td>
 						<td><?= ($chemist_dt); ?></td>
-						<td><?= ($process_invoice); ?></td>
+						<td><?= ($find_invoice_chemist_id); ?></td>
 						<td><?= ($row->find_by); ?><br><?= ($find); ?></td>
 						<td><?= ($find_all); ?></td>
 						<td>
