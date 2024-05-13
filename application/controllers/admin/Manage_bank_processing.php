@@ -330,7 +330,7 @@ class Manage_bank_processing extends CI_Controller {
 			);
 			$dt = array(
 				'done_chemist_id'=>$done_chemist_id,
-				'status' => '5',
+				'done_status' => '1',
 			);
 			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 		}

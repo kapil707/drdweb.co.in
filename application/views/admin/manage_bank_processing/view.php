@@ -101,7 +101,7 @@
 
 						$done_chemist_id = $find_chemist_id2;
 					}
-					if($row->status==5){
+					if($row->done_status==1){
 						$tr_style = "background-color: #e8ffe2;";
 						$done_chemist_id = $row->done_chemist_id;
 					}
@@ -116,7 +116,7 @@
 							<span class="received_from_<?php echo $row->id; ?>">
 								<?= ($row->received_from); ?> 
 							</span>
-							<?php if($row->status==5) { ?>
+							<?php if($row->done_status==1) { ?>
 							<i class="fa fa-pencil edit_received_from_btn_<?php echo $row->id; ?>" aria-hidden="true" onclick="edit_received_from('<?php echo $row->id; ?>')" style=""></i>	
 							<?php } ?>					
 						</td>
@@ -128,13 +128,13 @@
 						<td class="display: flex;">
 							<input type="hidden" value="<?php echo $row->received_from ?>" class="text_received_from_<?php echo $row->id; ?>">
 								
-							<input type="text" value="<?php echo $done_chemist_id ?>" class="text_done_chemist_id_<?php echo $row->id; ?>" style="<?php if($row->status==5) { ?>display:none;<?php } ?> float: left; width: 100px;">
+							<input type="text" value="<?php echo $done_chemist_id ?>" class="text_done_chemist_id_<?php echo $row->id; ?>" style="<?php if($row->done_status==1) { ?>display:none;<?php } ?> float: left; width: 100px;">
 							
-							<i class="fa fa-check add_done_chemist_id_<?php echo $row->id; ?>" aria-hidden="true" onclick="add_done_chemist_id('<?php echo $row->id; ?>')" style="<?php if($row->status==5) { ?>display:none;<?php } ?> float: left;font-size: 20px;"></i>
+							<i class="fa fa-check add_done_chemist_id_<?php echo $row->id; ?>" aria-hidden="true" onclick="add_done_chemist_id('<?php echo $row->id; ?>')" style="<?php if($row->done_status==1) { ?>display:none;<?php } ?> float: left;font-size: 20px;"></i>
 
-							<span class="span_done_chemist_id_<?php echo $row->id; ?>" <?php if($row->status!=5) { ?>style="display:none" <?php } ?>><?php echo $done_chemist_id ?></span>
+							<span class="span_done_chemist_id_<?php echo $row->id; ?>" <?php if($row->done_status==0) { ?>style="display:none" <?php } ?>><?php echo $done_chemist_id ?></span>
 
-							<i class="fa fa-pencil edit_done_chemist_id_<?php echo $row->id; ?>" aria-hidden="true" onclick="edit_done_chemist_id('<?php echo $row->id; ?>')" <?php if($row->status!=5) { ?>style="display:none" <?php } ?>></i>
+							<i class="fa fa-pencil edit_done_chemist_id_<?php echo $row->id; ?>" aria-hidden="true" onclick="edit_done_chemist_id('<?php echo $row->id; ?>')" <?php if($row->done_status==0) { ?>style="display:none" <?php } ?>></i>
 						</td>
 					</tr>
 					<?php } ?>
