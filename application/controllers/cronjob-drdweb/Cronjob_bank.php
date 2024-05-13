@@ -155,7 +155,7 @@ class Cronjob_bank extends CI_Controller
 			$amount 		= $row->amount;
 			$date 			= $row->date;
 
-			$start_date = date('Y-m-d', strtotime($date . ' -3 day'));
+			$start_date = date('Y-m-d', strtotime($date . ' -2 day'));
 			$end_date = date('Y-m-d', strtotime($date));
 
 			$find_by = "";
