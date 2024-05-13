@@ -515,7 +515,7 @@ class Cronjob_bank extends CI_Controller
 					break;					
 				}
 			}
-			if(!empty($jsonArray)){
+			if(!empty($jsonArray) && $total!=0){
 				$find_invoice_chemist_id = implode(',', $jsonArray);
 			}
 		}
