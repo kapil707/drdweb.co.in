@@ -310,7 +310,7 @@ class Cronjob_bank extends CI_Controller
 			/************************************************* */
 			$result = $this->find_by_invoice($amount,$start_date,$end_date,$find_chemist_id);
 			$find_invoice_chemist_id = $result["find_invoice_chemist_id"];
-			
+
 			if(!empty($find_chemist_id)){
 				if(empty($find_invoice_chemist_id)){
 					$result = $this->find_by_invoice_amount($amount,$start_date,$end_date,$find_chemist_id);
@@ -512,7 +512,7 @@ class Cronjob_bank extends CI_Controller
 			$rr = $rr->result();
 			foreach($rr as $tt){
 				$total = round($tt->amt) + $total;
-				$jsonArray[] = $tt->chemist_id.":-".$tt->gstvno." Amt.".$tt->amt;
+				$jsonArray[] = $tt->chemist_id.":-".$tt->gstvno." Amt-x.".$tt->amt;
 				if(round($total)==round($amount)){
 					break;					
 				}
