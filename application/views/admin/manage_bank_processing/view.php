@@ -17,7 +17,7 @@
 						<th width="80">
 							Date
                         </th>
-						<th width="150"> 
+						<th width="150px"> 
 							Upi No /
 							Orderid
                         </th>
@@ -33,7 +33,7 @@
 						<th>
                         	Chemist
                         </th>
-						<th width="150px">
+						<th>
                         	Invoice
                         </th>
 						<th>
