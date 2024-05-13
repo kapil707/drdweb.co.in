@@ -575,7 +575,8 @@ class Cronjob_bank extends CI_Controller
 			];
 		}
 
-		print_r($resultArray);
+		print_r($resultArray); 
+		
 
 		$targetValue = $amount;
 		$found = false;
