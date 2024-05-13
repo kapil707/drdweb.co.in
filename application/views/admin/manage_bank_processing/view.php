@@ -132,9 +132,9 @@
 							
 							<i class="fa fa-check add_done_chemist_id_<?php echo $row->id; ?>" aria-hidden="true" onclick="add_done_chemist_id('<?php echo $row->id; ?>')" style="<?php if($row->done_status==1) { ?>display:none;<?php } ?> float: left;font-size: 20px;"></i>
 
-							<span class="span_done_chemist_id_<?php echo $row->id; ?>" <?php if($row->done_status==0) { ?>style="display:none" <?php } ?>><?php echo $done_chemist_id ?></span>
+							<span class="span_done_chemist_id_<?php echo $row->id; ?>" <?php if($row->done_status==0 || $row->done_status==2) { ?>style="display:none" <?php } ?>><?php echo $done_chemist_id ?></span>
 
-							<i class="fa fa-pencil edit_done_chemist_id_<?php echo $row->id; ?>" aria-hidden="true" onclick="edit_done_chemist_id('<?php echo $row->id; ?>')" <?php if($row->done_status==0) { ?>style="display:none" <?php } ?>></i>
+							<i class="fa fa-pencil edit_done_chemist_id_<?php echo $row->id; ?>" aria-hidden="true" onclick="edit_done_chemist_id('<?php echo $row->id; ?>')" <?php if($row->done_status==0 || $row->done_status==2) { ?>style="display:none" <?php } ?>></i>
 						</td>
 					</tr>
 					<?php } ?>
