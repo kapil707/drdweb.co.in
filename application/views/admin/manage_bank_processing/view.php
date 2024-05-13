@@ -78,17 +78,17 @@
 					if(!empty($row->find_invoice_chemist_id)){
 						$find.= "<b>invoice</b>,";
 					}
-					if(!empty($row->chemist_id)){
+					if(!empty($row->find_chemist_id)){
 						$find.= "<b>chemist</b>";
 					}
-					if(empty($find_invoice_chemist_id) && empty($row->chemist_id)){
+					if(empty($find_invoice_chemist_id) && empty($row->find_chemist_id)){
 						$find = "N/A";
 					}
 					
 					$chemist_done = "";
-					$chemist_id_array = explode(",", $row->chemist_id);
-					$chemist_id_array = array_unique($chemist_id_array);
-					foreach($chemist_id_array as $rows){
+					$find_chemist_id_array = explode(",", $row->find_chemist_id);
+					$find_chemist_id_array = array_unique($find_chemist_id_array);
+					foreach($find_chemist_id_array as $rows){
 						$chemist_dt.= $rows."<br>"; 
 						$chemist_done = $rows;
 					}
