@@ -187,6 +187,8 @@
 							$date = isset($message['date']) ? $message['date'] : "Date not found";
 
 							$extracted_text = isset($message['extracted_text']) ? $message['extracted_text'] : "extracted_text not found";
+							
+							$vision_text = isset($message['vision_text']) ? $message['vision_text'] : "vision_text not found";
 
 							$from_number = isset($message['from_number']) ? $message['from_number'] : "Date not found";
 							
