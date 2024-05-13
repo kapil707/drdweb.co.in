@@ -534,7 +534,27 @@ class Cronjob_bank extends CI_Controller
 			];
 		}
 
-		if(!empty($jsonArray)){
+		$targetValue = $amount;
+		$found = false;
+		$selectedValues = [];
+
+		for ($i = 0; $i < count($resultArray); $i++) {
+			for ($j = $i + 1; $j < count($resultArray); $j++) {
+				if ($resultArray[$i]['amount'] + $resultArray[$j]['amount'] == $targetValue) {
+					$selectedValues[] = [$resultArray[$i], $resultArray[$j]];
+					$found = true;
+					break 2; // Exit both loops
+				}
+			}
+		}
+
+		if($found){
+			if ($found) {
+				for ($i = 0; $i < count($selectedValues); $i++) {
+					$rt = $selectedValues[0][$i];
+					$jsonArray[] = $rt['chemist_id'].":-".$rt['gstvno']." Amt-x.".$rt['amount'];
+				}
+			}
 			$find_invoice_chemist_id = implode(',', $jsonArray);
 		}
 
