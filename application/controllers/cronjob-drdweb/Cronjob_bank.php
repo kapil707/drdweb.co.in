@@ -514,11 +514,13 @@ class Cronjob_bank extends CI_Controller
 				$total = round($tt->amt) + $total;
 				$jsonArray[] = $tt->chemist_id.":-".$tt->gstvno." Amt-x.".$tt->amt;
 				if(round($total)==round($amount)){
-					break;					
+					break;
 				}
 			}
-			if(!empty($jsonArray) && $total!=0){
-				$find_invoice_chemist_id = implode(',', $jsonArray);
+			if(!empty($jsonArray)){
+				if($total!=0){
+					$find_invoice_chemist_id = implode(',', $jsonArray);
+				}
 			}
 		}
 
