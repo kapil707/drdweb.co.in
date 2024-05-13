@@ -159,146 +159,146 @@ class Cronjob_bank extends CI_Controller
 			$end_date = date('Y-m-d', strtotime($date));
 
 			$find_by = "";
-			$chemist_id = "";
+			$find_chemist_id = "";
 			$process_value = "";
 			$process_name = "";
 
 			if(!empty($received_from)){
 				$result = $this->find_by_full_name($received_from);
-				$chemist_id = $result["chemist_id"];
+				$find_chemist_id = $result["find_chemist_id"];
 				$find_by = "Chemist name-done";
 				$process_value = $result["process_value"];
 				$process_name = $result["process_name"];
 			}
 
-			if(empty($chemist_id)){
+			if(empty($find_chemist_id)){
 				$result = $this->find_by_name($received_from);
-				$chemist_id = $result["chemist_id"];
+				$find_chemist_id = $result["find_chemist_id"];
 				$find_by = "Chemist name";
 				$process_value = $result["process_value"];
 				$process_name = $result["process_name"];
 			}
 
-			if(empty($chemist_id)){
+			if(empty($find_chemist_id)){
 				$newString = str_replace(' ', '%', $received_from);
 				$result = $this->find_by_name($newString);
-				$chemist_id = $result["chemist_id"];
+				$find_chemist_id = $result["find_chemist_id"];
 				$find_by = "Chemist name1";
 				$process_value = $result["process_value"];
 				$process_name = $result["process_name"];
 			}
 
 			/************************************************* */
-			if(empty($chemist_id)){
+			if(empty($find_chemist_id)){
 				$splitValues = explode('@', $received_from);
 				$before_at = $splitValues[0];
 				$result = $this->find_by_name($before_at);
-				$chemist_id = $result["chemist_id"];
+				$find_chemist_id = $result["find_chemist_id"];
 				$find_by = "Chemist remove @";
 				$process_value = $result["process_value"];
 				$process_name = $result["process_name"];
 			}
 
-			if(empty($chemist_id)){
+			if(empty($find_chemist_id)){
 				$splitValues = explode('@', $received_from);
 				$before_at = $splitValues[0];
 				$newString = substr($before_at, 0, -1);
 				$result = $this->find_by_name($newString);
-				$chemist_id = $result["chemist_id"];
+				$find_chemist_id = $result["find_chemist_id"];
 				$find_by = "Chemist remove @ 1";
 				$process_value = $result["process_value"];
 				$process_name = $result["process_name"];
 			}
 
-			if(empty($chemist_id)){
+			if(empty($find_chemist_id)){
 				$splitValues = explode('@', $received_from);
 				$before_at = $splitValues[0];
 				$newString = substr($before_at, 0, -2);
 				$result = $this->find_by_name($newString);
-				$chemist_id = $result["chemist_id"];
+				$find_chemist_id = $result["find_chemist_id"];
 				$find_by = "Chemist remove @ 2";
 				$process_value = $result["process_value"];
 				$process_name = $result["process_name"];
 			}
 
-			if(empty($chemist_id)){
+			if(empty($find_chemist_id)){
 				$splitValues = explode('@', $received_from);
 				$before_at = $splitValues[0];
 				$newString = substr($before_at, 0, -3);
 				$result = $this->find_by_name($newString);
-				$chemist_id = $result["chemist_id"];
+				$find_chemist_id = $result["find_chemist_id"];
 				$find_by = "Chemist remove @ 3";
 				$process_value = $result["process_value"];
 				$process_name = $result["process_name"];
 			}
 
-			if(empty($chemist_id)){
+			if(empty($find_chemist_id)){
 				$splitValues = explode('@', $received_from);
 				$before_at = $splitValues[0];
 				$newString = substr($before_at, 0, -4);
 				$result = $this->find_by_name($before_at);
-				$chemist_id = $result["chemist_id"];
+				$find_chemist_id = $result["find_chemist_id"];
 				$find_by = "Chemist remove @ 4";
 				$process_value = $result["process_value"];
 				$process_name = $result["process_name"];
 			}
 
 			/************************************************* */
-			if(empty($chemist_id)){
+			if(empty($find_chemist_id)){
 				$newString = substr($received_from, 0, -1);
 				$result = $this->find_by_title($newString);
-				$chemist_id = $result["chemist_id"];
+				$find_chemist_id = $result["find_chemist_id"];
 				$find_by = "Chemist Table1";
 				$process_value = $result["process_value"];
 				$process_name = $result["process_name"];
 			}
 
-			if(empty($chemist_id)){
+			if(empty($find_chemist_id)){
 				$newString = substr($received_from, 0, -2);
 				$result = $this->find_by_title($newString);
-				$chemist_id = $result["chemist_id"];
+				$find_chemist_id = $result["find_chemist_id"];
 				$find_by = "Chemist Table2";
 				$process_value = $result["process_value"];
 				$process_name = $result["process_name"];
 			}
 
-			if(empty($chemist_id)){
+			if(empty($find_chemist_id)){
 				$newString = substr($received_from, 0, -3);
 				$result = $this->find_by_title($newString);
-				$chemist_id = $result["chemist_id"];
+				$find_chemist_id = $result["find_chemist_id"];
 				$find_by = "Chemist Table3";
 				$process_value = $result["process_value"];
 				$process_name = $result["process_name"];
 			}
 
-			if(empty($chemist_id)){
+			if(empty($find_chemist_id)){
 				$newString = substr($received_from, 0, -4);
 				$result = $this->find_by_title($newString);
-				$chemist_id = $result["chemist_id"];
+				$find_chemist_id = $result["find_chemist_id"];
 				$find_by = "Chemist Table4";
 				$process_value = $result["process_value"];
 				$process_name = $result["process_name"];
 			}
 
 			/************************************************* */
-			if(empty($chemist_id)){
+			if(empty($find_chemist_id)){
 				$pattern = '/(\d{10})/';
 				preg_match($pattern, $received_from, $matches);
 				if (isset($matches[1])) {
 					$result = $this->find_by_title($matches[1]);
-					$chemist_id = $result["chemist_id"];
+					$find_chemist_id = $result["find_chemist_id"];
 					$find_by = "Chemist mobile";
 					$process_value = $result["process_value"];
 					$process_name = $result["process_name"];
 				}
 			}
 
-			if(empty($chemist_id)){
+			if(empty($find_chemist_id)){
 				$pattern = '/(\d{10})/';
 				preg_match($pattern, $received_from, $matches);
 				if (isset($matches[1])) {
 					$result = $this->find_by_acm_tbl($matches[1]);
-					$chemist_id = $result["chemist_id"];
+					$find_chemist_id = $result["find_chemist_id"];
 					$find_by = "Acm mobile";
 					$process_value = $result["process_value"];
 					$process_name = $result["process_name"];
@@ -306,7 +306,7 @@ class Cronjob_bank extends CI_Controller
 			}
 
 			/************************************************* */
-			$result = $this->find_by_invoice($amount,$start_date,$end_date,$chemist_id);
+			$result = $this->find_by_invoice($amount,$start_date,$end_date,$find_chemist_id);
 			$find_invoice_chemist_id = $result["invoice"];
 
 			/************************************************* */
