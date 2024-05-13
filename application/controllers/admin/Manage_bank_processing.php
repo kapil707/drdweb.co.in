@@ -84,7 +84,7 @@ class Manage_bank_processing extends CI_Controller {
 					//$this->load->view('upload_success', $data);
 				}
 			}
-			$data["filename"] = $image;
+			$filename = $image;
 
 			$account_no 			= "A";
 			$branch_no 				= "B";
