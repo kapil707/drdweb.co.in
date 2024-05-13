@@ -125,7 +125,7 @@
 						<td><?= ($find_invoice_chemist_id1); ?></td>
 						<td><?= ($row->find_by); ?><br><?= ($find); ?></td>
 						<td><?= ($find_all); ?></td>
-						<td>
+						<td class="display: flex;">
 							<input type="hidden" value="<?php echo $row->received_from ?>" class="text_received_from_<?php echo $row->id; ?>">
 								
 							<input type="text" value="<?php echo $done_chemist_id ?>" class="text_done_chemist_id_<?php echo $row->id; ?>" style="<?php if($row->status==5) { ?>display:none;<?php } ?> float: left; width: 100px;">
