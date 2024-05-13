@@ -116,8 +116,9 @@
 							<span class="received_from_<?php echo $row->id; ?>">
 								<?= ($row->received_from); ?> 
 							</span>
-
-							<i class="fa fa-pencil edit_received_from_btn_<?php echo $row->id; ?>" aria-hidden="true" onclick="edit_received_from('<?php echo $row->id; ?>')" style=""></i>						
+							<?php if($row->status==5) { ?>
+							<i class="fa fa-pencil edit_received_from_btn_<?php echo $row->id; ?>" aria-hidden="true" onclick="edit_received_from('<?php echo $row->id; ?>')" style=""></i>	
+							<?php } ?>					
 						</td>
 						<td><?= ($highlighted_text); ?></td>
 						<td><?= ($find_chemist_id1); ?></td>
