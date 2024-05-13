@@ -85,34 +85,141 @@ class Manage_bank_processing extends CI_Controller {
 				}
 			}
 			$data["filename"] = $image;
-			
 
-			/*$result = "";
-			$dt = array(
-				'status' => $status,
-			);
-			$result = $this->BankModel->insert_fun("tbl_bank_file", $dt);
-			$change_text = "hello";
-			if ($result) {
-				$message_db = "$change_text - Edit Successfully.";
-				$message = "Edit Successfully.";
-				$this->session->set_flashdata("message_type", "success");
-			} else {
-				$message_db = "$change_text - Not Add.";
-				$message = "Not Add.";
-				$this->session->set_flashdata("message_type", "error");
-			}
-			if ($message_db != "") {
-				$message = $Page_title . " - " . $message;
-				$message_db = $Page_title . " - " . $message_db;
-				$this->session->set_flashdata("message_footer", "yes");
-				$this->session->set_flashdata("full_message", $message);
-				$this->Admin_Model->Add_Activity_log($message_db);
-				if ($result) {
-					//redirect(current_url());
-					//redirect(base_url()."admin/$page_controllers/view");
+			$account_no 			= "A";
+			$branch_no 				= "B";
+			$statment_date 			= "C";
+			$amount 				= "F";
+			$enter_date 			= "G";
+			$value_date 			= "H";
+			$bank_reference 		= "I";
+			$customer_reference 	= "J";
+			$narrative 				= "K";
+			$transaction_description= "L";
+
+			$start_row = "13";
+
+			$upload_path = "uploads/manage_bank_processing/myfile/";
+			$excelFile = $upload_path.$filename;
+			$i=1;
+			if(file_exists($excelFile))
+			{
+				$this->load->library('excel');
+				$objPHPExcel = PHPExcel_IOFactory::load($excelFile);
+				foreach ($objPHPExcel->getWorksheetIterator() as $worksheet)
+				{
+					$highestRow = $worksheet->getHighestRow();
+					for ($row=$start_row; $row<=$highestRow; $row++)
+					{
+						$amount1 = $worksheet->getCell($amount.$row)->getValue();
+						$statment_date1 = $worksheet->getCell($statment_date.$row)->getValue();
+						$text = $worksheet->getCell($narrative.$row)->getValue();
+						//$text = trim($text);
+						//$text = str_replace("'", "", $text);
+						//$text = "+91-9899067942 411801191476 FROM GUPTAMEDICALSTORE 9300966180 CITI0000 9026 NA UBIN0579203";
+
+						$transaction_description1 = $worksheet->getCell($transaction_description.$row)->getValue();
+						
+						//$mydate = date('Y-m-d', strtotime($statment_date1));
+						echo $statment_date1 = date('Y-m-d', strtotime($statment_date1));
+						echo "<br>";
+
+						// echo $i.". ";
+						// $i++;
+						// echo $text;
+						//$text = str_replace("@ ", "@", $text);
+						//echo $text = preg_replace('/@\s/', "@", $text, 1);
+
+						$received_from = "";
+						// Use regular expression to extract text after "FROM"
+
+						$from_value = "";
+						preg_match("/FROM\s+(\d+)@\s+(\w+)/", $text, $matches);
+						if (!empty($matches) && empty($from_value)){
+							$received_from = trim($matches[1])."@".trim($matches[2]);
+							$received_from = str_replace("'", "", $received_from);
+							$received_from = str_replace(" ", "", $received_from);
+							$received_from = str_replace("\n", "", $received_from);
+							//$from_value = "<b>find: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+							$from_value = $received_from;
+						}
+
+						
+						preg_match("/FROM\s+(\d+)\s+@\s*(\w+)/", $text, $matches);
+						if (!empty($matches) && empty($from_value)){
+							$received_from = trim($matches[1])."@".trim($matches[2]);
+							$received_from = str_replace("'", "", $received_from);
+							$received_from = str_replace(" ", "", $received_from);
+							$received_from = str_replace("\n", "", $received_from);
+							//$from_value = "<b>find2: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+							$from_value = $received_from;
+						}
+
+						preg_match("/FROM\s+(\w+)\d+@\s*(\w+)/", $text, $matches);
+						if (!empty($matches) && empty($from_value)){
+							$received_from = trim($matches[1])."@".trim($matches[2]);
+							$received_from = str_replace("'", "", $received_from);
+							$received_from = str_replace(" ", "", $received_from);
+							$received_from = str_replace("\n", "", $received_from);
+							//$from_value = "<b>find3: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+							$from_value = $received_from;
+						}
+
+						preg_match("/FROM\s+([^\s@]+)\s+@\s*(\w+)/", $text, $matches);
+						if (!empty($matches) && empty($from_value)){
+							$received_from = trim($matches[1])."@".trim($matches[2]);
+							$received_from = str_replace("'", "", $received_from);
+							$received_from = str_replace(" ", "", $received_from);
+							$received_from = str_replace("\n", "", $received_from);
+							//$from_value = "<b>find4: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+							$from_value = $received_from;
+						}
+
+						preg_match("/FROM\s+([^\@]+)@\s*(\w+)/", $text, $matches);
+						if (!empty($matches) && empty($from_value)){
+							$received_from = trim($matches[1])."@".trim($matches[2]);
+							$received_from = str_replace("'", "", $received_from);
+							$received_from = str_replace(" ", "", $received_from);
+							$received_from = str_replace("\n", "", $received_from);
+							//$from_value = "<b>find5: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+							$from_value = $received_from;
+						}
+
+						preg_match("/FROM\s+(.*)/", $text, $matches);
+						if (!empty($matches) && empty($from_value)){
+							$received_from = trim($matches[1]);
+							//$received_from = str_replace("'", "", $received_from);
+							//$received_from = str_replace(" ", "", $received_from);
+							//$received_from = str_replace("\n", "", $received_from);
+							//$from_value = "<b>find6: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+							$from_value = $received_from;
+						}
+
+						$upi_no = $orderid = $worksheet->getCell($customer_reference.$row)->getValue();
+						
+						$_id = 1;
+						$received_from = $from_value;
+						if(!empty($received_from)){
+							$status = 0;
+							$type = "Statment";
+							$dt = array(
+								'status'=>$status,
+								'amount'=>$amount1,
+								'date'=>$statment_date1,
+								'received_from'=>$received_from,
+								'upi_no'=>$upi_no,
+								'orderid'=>$orderid,
+								'type'=>$type,
+								'_id'=>$_id,
+							);
+							$this->BankModel->insert_fun("tbl_bank_processing", $dt);
+						}
+						/*************************** */					
+					}
 				}
-			}*/
+			}
+			
+			redirect(base_url()."admin/$page_controllers/view");
 		}
 
 		$this->load->view("admin/header_footer/header",$data);
