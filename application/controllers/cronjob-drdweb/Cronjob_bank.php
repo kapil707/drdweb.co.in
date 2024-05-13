@@ -577,7 +577,7 @@ class Cronjob_bank extends CI_Controller
 			];
 		}
 
-		$targetValue = 10849;
+		$targetValue = 5060;
 		$found = false;
 		$selectedValues = [];
 
