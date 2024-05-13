@@ -557,10 +557,24 @@ class Cronjob_bank extends CI_Controller
 			];
 		}
 
-		print_r($resultArray);
+		$targetValue = 10849;
+		$found = false;
+		$selectedValues = [];
 
-		if(!empty($jsonArray)){
-			$find_invoice_chemist_id = implode(',', $jsonArray);
+		for ($i = 0; $i < count($resultArray); $i++) {
+			for ($j = $i + 1; $j < count($resultArray); $j++) {
+				if ($resultArray[$i]['amount'] + $resultArray[$j]['amount'] == $targetValue) {
+					$selectedValues[] = [$resultArray[$i], $resultArray[$j]];
+					$found = true;
+					break 2; // Exit both loops
+				}
+			}
+		}
+
+		if ($found) {
+			print_r($selectedValues);
+		} else {
+			echo "No two values found with the total of $targetValue";
 		}
 	}
 
