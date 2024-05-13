@@ -486,6 +486,7 @@ class Cronjob_bank extends CI_Controller
 			$done_status = "2";
 			$done_chemist_id = "";
 			if((strtolower($find_chemist_id2)==strtolower($find_invoice_chemist_id2)) && (!empty($find_invoice_chemist_id2) && !empty($find_chemist_id2))){
+				$done_status = "1";
 				$done_chemist_id = $find_chemist_id2;
 			}
 
