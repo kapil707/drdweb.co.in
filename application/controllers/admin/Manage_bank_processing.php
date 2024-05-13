@@ -297,8 +297,35 @@ class Manage_bank_processing extends CI_Controller {
 	{
 		$id 			= $_POST["id"];
 		$final_chemist 	= $_POST["final_chemist"];
-		if(!empty($id) && !empty($final_chemist)){
+		$received_from 	= $_POST["received_from"];
+		if(!empty($id) && !empty($final_chemist) && !empty($received_from)){
 
+			$query = $this->BankModel->select_query("SELECT * FROM `tbl_bank_chemist` where string_value='$received_from'");
+			$row = $query->row();
+			if(empty($row)){
+				$dt = array(
+					'chemist_id' => $final_chemist,
+					'string_value' => $received_from,
+					'date'=>date('Y-m-d'),
+					'time'=>time(),
+					'user_id'=>$this->session->userdata("user_id")
+				);
+				$this->BankModel->insert_fun("tbl_bank_chemist", $dt);
+			}
+
+			/********************************************* */
+			// agar kisi from user ko chmist say add kartay ha to jitnay be from user ha sab ka status 0 ho jaya or wo re-process hota ha 
+			$where = array(				
+				'received_from'=>$received_from,
+				'status' => '1',
+			);
+			$dt = array(
+				'status' => '0',
+			);
+			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
+
+			
+			/********************************************* */
 			$where = array(
 				'id' => $id,
 			);

@@ -111,10 +111,6 @@
 						<td><?= ($row->upi_no); ?><br><?= ($row->orderid); ?></td>
 						<td><?= ($row->amount); ?></td>
 						<td>
-							<input type="text" value="<?php echo $row->received_from ?>" class="received_from_text_<?php echo $row->id; ?>" style="display:none">
-
-							<i class="fa fa-check add_received_from_btn_<?php echo $row->id; ?>" aria-hidden="true" onclick="add_received_from('<?php echo $row->id; ?>')" style="display:none"></i>
-
 							<span class="received_from_<?php echo $row->id; ?>">
 								<?= ($row->received_from); ?> 
 							</span>
@@ -127,6 +123,8 @@
 						<td><?= ($row->find_by); ?><br><?= ($find); ?></td>
 						<td><?= ($find_all); ?></td>
 						<td>
+							<input type="hidden" value="<?php echo $row->received_from ?>" class="received_from_text_<?php echo $row->id; ?>">
+
 							<input type="text" value="<?php echo $done_chemist ?>" class="final_chemist_text_<?php echo $row->id; ?>" <?php if($row->status==5) { ?>style="display:none" <?php } ?>>
 							
 							<i class="fa fa-check add_final_chemist_btn_<?php echo $row->id; ?>" aria-hidden="true" onclick="add_final_chemist('<?php echo $row->id; ?>')" <?php if($row->status==5) { ?>style="display:none" <?php } ?>></i>
@@ -144,6 +142,8 @@
 </div>
 <script>
 function add_final_chemist(id){
+	var received_from = $(".received_from_text_"+id).val();
+
 	var final_chemist = $(".final_chemist_text_"+id).val();
 	$(".final_chemist_text_"+id).hide();
 	$(".add_final_chemist_btn_"+id).hide();
@@ -153,12 +153,12 @@ function add_final_chemist(id){
 	$(".edit_final_chemist_btn_"+id).show();
 	$.ajax({
 		type : "POST",
-		data : {id:id,final_chemist:final_chemist,},
+		data : {id:id,final_chemist:final_chemist,received_from:received_from,},
 		url  : "<?= base_url()?>admin/<?= $Page_name?>/add_final_chemist",
 		cache: true,
 		error: function(){
 		},
-		success    : function(data){
+		success: function(data){
 		}
 	});
 }
@@ -168,31 +168,5 @@ function edit_final_chemist(id){
 
 	$(".final_chemist_done_"+id).hide();
 	$(".edit_final_chemist_btn_"+id).hide();
-}
-function add_received_from(id){
-	var received_from = $(".received_from_text_"+id).val();
-	$(".received_from_text_"+id).hide();
-	$(".add_received_from_btn_"+id).hide();
-
-	$(".received_from_"+id).html(received_from);
-	$(".received_from_"+id).show();
-	$(".edit_received_from_btn_"+id).show();
-	$.ajax({
-		type : "POST",
-		data : {id:id,received_from:received_from,},
-		url  : "<?= base_url()?>admin/<?= $Page_name?>/add_received_from",
-		cache: true,
-		error: function(){
-		},
-		success    : function(data){
-		}
-	});
-}
-function edit_received_from(id){
-	$(".received_from_text_"+id).show();
-	$(".add_received_from_btn_"+id).show();
-
-	$(".received_from_"+id).hide();
-	$(".edit_received_from_btn_"+id).hide();
 }
 </script>
