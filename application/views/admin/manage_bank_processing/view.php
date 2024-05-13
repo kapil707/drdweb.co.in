@@ -138,9 +138,13 @@
 							<span class="received_from_<?php echo $row->id; ?>">
 								<?= ($row->received_from); ?> 
 							</span>
-							<?php if($row->done_status==1) { ?>
+							<input type="text" value="" class="received_from_chemist_id_<?php echo $row->id; ?>" style="">
+							
+							<i class="fa fa-pencil add_received_from_chemist_id_<?php echo $row->id; ?>" aria-hidden="true" onclick="add_received_from_chemist_id('<?php echo $row->id; ?>')" style=""></i>	
+
+							<!-- <?php if($row->done_status==1) { ?>
 							<i class="fa fa-pencil edit_received_from_btn_<?php echo $row->id; ?>" aria-hidden="true" onclick="edit_received_from('<?php echo $row->id; ?>')" style=""></i>	
-							<?php } ?>					
+							<?php } ?>					 -->
 						</td>
 						<td><?= ($highlighted_text); ?></td>
 						<td>
@@ -210,4 +214,25 @@ function edit_done_chemist_id(id){
 	$(".span_done_chemist_id_"+id).hide();
 	$(".edit_done_chemist_id_"+id).hide();
 }
+
+function add_received_from_chemist_id(id){
+	var received_from = $(".text_received_from_"+id).val();
+
+	var chemist_id = $(".received_from_chemist_id_"+id).val();
+	if(chemist_id.trim()==""){
+		alert("Etner any chemist id")
+	}else{
+		$.ajax({
+			type : "POST",
+			data : {chemist_id:chemist_id,received_from:received_from,},
+			url  : "<?= base_url()?>admin/<?= $Page_name?>/add_received_from_chemist_id",
+			cache: true,
+			error: function(){
+			},
+			success: function(data){
+			}
+		});
+	}
+}
+
 </script>
