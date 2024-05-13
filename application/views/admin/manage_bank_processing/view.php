@@ -138,13 +138,12 @@
 							<span class="received_from_<?php echo $row->id; ?>">
 								<?= ($row->received_from); ?> 
 							</span>
-							<input type="text" value="" class="received_from_chemist_id_<?php echo $row->id; ?>" style="">
-							
-							<i class="fa fa-pencil add_received_from_chemist_id_<?php echo $row->id; ?>" aria-hidden="true" onclick="add_received_from_chemist_id('<?php echo $row->id; ?>')" style=""></i>	
 
-							<!-- <?php if($row->done_status==1) { ?>
-							<i class="fa fa-pencil edit_received_from_btn_<?php echo $row->id; ?>" aria-hidden="true" onclick="edit_received_from('<?php echo $row->id; ?>')" style=""></i>	
-							<?php } ?>					 -->
+							<input type="hidden" value="<?php echo $row->received_from ?>" class="text_received_from_<?php echo $row->id; ?>">
+
+							<input type="text" value="<?php echo $row->find_chemist_id; ?>" class="received_from_chemist_id_<?php echo $row->id; ?>" style="">
+							
+							<i class="fa fa-pencil add_received_from_chemist_id_<?php echo $row->id; ?>" aria-hidden="true" onclick="add_received_from_chemist_id('<?php echo $row->id; ?>')" style=""></i>
 						</td>
 						<td><?= ($highlighted_text); ?></td>
 						<td>
@@ -164,8 +163,6 @@
 						<td><?= ($row->find_by); ?><br><?= ($find); ?></td>
 						<td><?= ($find_all); ?></td>
 						<td class="display: flex;">
-							<input type="hidden" value="<?php echo $row->received_from ?>" class="text_received_from_<?php echo $row->id; ?>">
-								
 							<input type="text" value="<?php echo $done_chemist_id ?>" class="text_done_chemist_id_<?php echo $row->id; ?>" style="<?php if($row->done_status==1) { ?>display:none;<?php } ?> float: left; width: 100px;">
 							
 							<i class="fa fa-check add_done_chemist_id_<?php echo $row->id; ?>" aria-hidden="true" onclick="add_done_chemist_id('<?php echo $row->id; ?>')" style="<?php if($row->done_status==1) { ?>display:none;<?php } ?> float: left;font-size: 20px;"></i>
