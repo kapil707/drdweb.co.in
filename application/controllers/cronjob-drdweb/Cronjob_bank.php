@@ -503,6 +503,23 @@ class Cronjob_bank extends CI_Controller
 			}
 		}
 
+		/*******yha kisi 2 yha 3 invoice ke total ko check karta ha */
+		if(empty($find_invoice_chemist_id)){
+			$total = "0";
+			$rr = $this->InvoiceModel->select_query("select * as total from tbl_invoice_new where (vdt BETWEEN '$start_date' and '$end_date') $where");
+			$rr = $rr->result();
+			foreach($rr as $tt){
+				$total = $rr->amt + $total;
+				if(round($total)==round($amount)){
+
+					$jsonArray[] = $tt->chemist_id.":-".$tt->gstvno." Amt.".$tt->amt;
+				}
+			}
+			if(!empty($jsonArray)){
+				$find_invoice_chemist_id = implode(',', $jsonArray);
+			}
+		}
+
 		$return["find_invoice_chemist_id"] = $find_invoice_chemist_id;
 
 		return $return;
