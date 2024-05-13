@@ -307,7 +307,7 @@ class Cronjob_bank extends CI_Controller
 
 			/************************************************* */
 			$result = $this->find_by_invoice($amount,$start_date,$end_date,$chemist_id);
-			$process_invoice = $result["invoice"];
+			$find_invoice_chemist_id = $result["invoice"];
 
 			/************************************************* */
 			$id = $row->id;
@@ -318,7 +318,7 @@ class Cronjob_bank extends CI_Controller
 				'status'=>1,
 				'process_name'=>$process_name,
 				'process_value'=>$process_value,
-				'process_invoice'=>$process_invoice,
+				'find_invoice_chemist_id'=>$find_invoice_chemist_id,
 			);
 			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 			/************************************************* */
@@ -329,7 +329,7 @@ class Cronjob_bank extends CI_Controller
 
 		$jsonArray = array();
 
-		$chemist_id = "";
+		$find_chemist_id = "";
 		$process_name = $received_from;
 		$process_value = "";
 		
@@ -341,10 +341,10 @@ class Cronjob_bank extends CI_Controller
 		}
 
 		if(!empty($jsonArray)){
-			$chemist_id = implode(',', $jsonArray);
+			$find_chemist_id = implode(',', $jsonArray);
 		}
 
-		$return["chemist_id"] = $chemist_id;
+		$return["find_chemist_id"] = $find_chemist_id;
 		$return["process_name"] = $process_name;
 		$return["process_value"] = $process_value;
 
@@ -355,7 +355,7 @@ class Cronjob_bank extends CI_Controller
 
 		$jsonArray = array();
 
-		$chemist_id = "";
+		$find_chemist_id = "";
 		$process_name = $received_from;
 		$process_value = "";
 
@@ -368,10 +368,10 @@ class Cronjob_bank extends CI_Controller
 		}
 
 		if(!empty($jsonArray)){
-			$chemist_id = implode(',', $jsonArray);
+			$find_chemist_id = implode(',', $jsonArray);
 		}
 
-		$return["chemist_id"] = $chemist_id;
+		$return["find_chemist_id"] = $find_chemist_id;
 		$return["process_name"] = $process_name;
 		$return["process_value"] = $process_value;
 
@@ -382,7 +382,7 @@ class Cronjob_bank extends CI_Controller
 
 		$jsonArray = array();
 
-		$chemist_id = "";
+		$find_chemist_id = "";
 		$process_name = $received_from;
 		$process_value = "";
 
@@ -397,10 +397,10 @@ class Cronjob_bank extends CI_Controller
 		}
 
 		if(!empty($jsonArray)){
-			$chemist_id = implode(',', $jsonArray);
+			$find_chemist_id = implode(',', $jsonArray);
 		}
 
-		$return["chemist_id"] = $chemist_id;
+		$return["find_chemist_id"] = $find_chemist_id;
 		$return["process_name"] = $process_name;
 		$return["process_value"] = $process_value;
 
@@ -411,7 +411,7 @@ class Cronjob_bank extends CI_Controller
 
 		$jsonArray = array();
 
-		$chemist_id = "";
+		$find_chemist_id = "";
 		$process_name = $received_from;
 		$process_value = "";
 
@@ -424,28 +424,28 @@ class Cronjob_bank extends CI_Controller
 		}
 
 		if(!empty($jsonArray)){
-			$chemist_id = implode(',', $jsonArray);
+			$find_chemist_id = implode(',', $jsonArray);
 		}
 
-		$return["chemist_id"] = $chemist_id;
+		$return["find_chemist_id"] = $find_chemist_id;
 		$return["process_name"] = $process_name;
 		$return["process_value"] = $process_value;
 
 		return $return;
 	}
 
-	function find_by_invoice($amount,$start_date,$end_date,$chemist_id){
+	function find_by_invoice($amount,$start_date,$end_date,$find_chemist_id){
 
 		$jsonArray = array();
 
 		$where = "";
-		if(!empty($chemist_id)){
-			$fruits_array = explode(",", $chemist_id);
+		if(!empty($find_chemist_id)){
+			$fruits_array = explode(",", $find_chemist_id);
 			foreach($fruits_array as $rows){
-				$chemist_id = "'$rows',";
+				$find_chemist_id = "'$rows',";
 			}
-			$chemist_id = substr($chemist_id, 0, -1);
-			$where = " and chemist_id in ($chemist_id)";
+			$find_chemist_id = substr($find_chemist_id, 0, -1);
+			$where = " and chemist_id in ($find_chemist_id)";
 		}
 
 		$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where amt='$amount' and (vdt BETWEEN '$start_date' and '$end_date') $where");
@@ -454,12 +454,12 @@ class Cronjob_bank extends CI_Controller
 			$jsonArray[] = $tt->chemist_id.":-".$tt->gstvno;
 		}
 
-		$chemist_id = "";
+		$find_invoice_chemist_id = "";
 		if(!empty($jsonArray)){
-			$chemist_id = implode(',', $jsonArray);
+			$find_invoice_chemist_id = implode(',', $jsonArray);
 		}
 
-		$return["invoice"] = $chemist_id;
+		$return["find_invoice_chemist_id"] = $find_invoice_chemist_id;
 
 		return $return;
 	}

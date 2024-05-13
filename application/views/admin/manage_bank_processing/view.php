@@ -85,19 +85,19 @@
 						$find = "N/A";
 					}
 					
-					$final_chemist = "";
+					$chemist_done = "";
 					$chemist_id_array = explode(",", $row->chemist_id);
 					$chemist_id_array = array_unique($chemist_id_array);
 					foreach($chemist_id_array as $rows){
 						$chemist_dt.= $rows."<br>"; 
-						$final_chemist = $rows;
+						$chemist_done = $rows;
 					}
 					
-					$done_chemist = "";
+					$chemist_done1 = "";
 					$find_all = "";
-					if((strtolower($final_chemist)==strtolower($invoice_chemist)) && (!empty($invoice_chemist) && !empty($final_chemist))){
+					if((strtolower($chemist_done)==strtolower($invoice_chemist)) && (!empty($invoice_chemist) && !empty($chemist_done))){
 						$find_all = "done";
-						$done_chemist = $final_chemist; 
+						$chemist_done1 = $chemist_done; 
 						$tr_style = "background-color: #ffe1c0;";
 					}
 					if($row->status==5){
@@ -125,13 +125,13 @@
 						<td>
 							<input type="hidden" value="<?php echo $row->received_from ?>" class="received_from_text_<?php echo $row->id; ?>">
 
-							<input type="text" value="<?php echo $done_chemist ?>" class="final_chemist_text_<?php echo $row->id; ?>" <?php if($row->status==5) { ?>style="display:none" <?php } ?>>
+							<input type="text" value="<?php echo $chemist_done1 ?>" class="chemist_done_text_<?php echo $row->id; ?>" <?php if($row->status==5) { ?>style="display:none" <?php } ?>>
 							
-							<i class="fa fa-check add_final_chemist_btn_<?php echo $row->id; ?>" aria-hidden="true" onclick="add_final_chemist('<?php echo $row->id; ?>')" <?php if($row->status==5) { ?>style="display:none" <?php } ?>></i>
+							<i class="fa fa-check add_chemist_done_btn_<?php echo $row->id; ?>" aria-hidden="true" onclick="add_chemist_done('<?php echo $row->id; ?>')" <?php if($row->status==5) { ?>style="display:none" <?php } ?>></i>
 
-							<span class="final_chemist_done_<?php echo $row->id; ?>" <?php if($row->status!=5) { ?>style="display:none" <?php } ?>><?php echo $final_chemist ?></span>
+							<span class="chemist_done_<?php echo $row->id; ?>" <?php if($row->status!=5) { ?>style="display:none" <?php } ?>><?php echo $chemist_done ?></span>
 
-							<i class="fa fa-pencil edit_final_chemist_btn_<?php echo $row->id; ?>" aria-hidden="true" onclick="edit_final_chemist('<?php echo $row->id; ?>')" <?php if($row->status!=5) { ?>style="display:none" <?php } ?>></i>
+							<i class="fa fa-pencil edit_chemist_done_btn_<?php echo $row->id; ?>" aria-hidden="true" onclick="edit_chemist_done('<?php echo $row->id; ?>')" <?php if($row->status!=5) { ?>style="display:none" <?php } ?>></i>
 						</td>
 					</tr>
 					<?php } ?>
@@ -141,20 +141,20 @@
     </div>
 </div>
 <script>
-function add_final_chemist(id){
+function add_chemist_done(id){
 	var received_from = $(".received_from_text_"+id).val();
 
-	var final_chemist = $(".final_chemist_text_"+id).val();
-	$(".final_chemist_text_"+id).hide();
-	$(".add_final_chemist_btn_"+id).hide();
+	var chemist_done = $(".chemist_done_text_"+id).val();
+	$(".chemist_done_text_"+id).hide();
+	$(".add_chemist_done_btn_"+id).hide();
 
-	$(".final_chemist_done_"+id).html(final_chemist);
-	$(".final_chemist_done_"+id).show();
-	$(".edit_final_chemist_btn_"+id).show();
+	$(".chemist_done_done_"+id).html(chemist_done);
+	$(".chemist_done_done_"+id).show();
+	$(".edit_chemist_done_btn_"+id).show();
 	$.ajax({
 		type : "POST",
-		data : {id:id,final_chemist:final_chemist,received_from:received_from,},
-		url  : "<?= base_url()?>admin/<?= $Page_name?>/add_final_chemist",
+		data : {id:id,chemist_done:chemist_done,received_from:received_from,},
+		url  : "<?= base_url()?>admin/<?= $Page_name?>/add_chemist_done",
 		cache: true,
 		error: function(){
 		},
@@ -162,11 +162,11 @@ function add_final_chemist(id){
 		}
 	});
 }
-function edit_final_chemist(id){
-	$(".final_chemist_text_"+id).show();
-	$(".add_final_chemist_btn_"+id).show();
+function edit_chemist_done(id){
+	$(".chemist_done_text_"+id).show();
+	$(".add_chemist_done_btn_"+id).show();
 
-	$(".final_chemist_done_"+id).hide();
-	$(".edit_final_chemist_btn_"+id).hide();
+	$(".chemist_done_done_"+id).hide();
+	$(".edit_chemist_done_btn_"+id).hide();
 }
 </script>

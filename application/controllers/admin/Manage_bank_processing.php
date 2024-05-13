@@ -293,18 +293,18 @@ class Manage_bank_processing extends CI_Controller {
 		$this->load->view("admin/header_footer/footer",$data);
 	}
 
-	public function add_final_chemist()
+	public function add_chemist_done()
 	{
 		$id 			= $_POST["id"];
-		$final_chemist 	= $_POST["final_chemist"];
+		$chemist_done 	= $_POST["chemist_done"];
 		$received_from 	= $_POST["received_from"];
-		if(!empty($id) && !empty($final_chemist) && !empty($received_from)){
+		if(!empty($id) && !empty($chemist_done) && !empty($received_from)){
 
 			$query = $this->BankModel->select_query("SELECT * FROM `tbl_bank_chemist` where string_value='$received_from'");
 			$row = $query->row();
 			if(empty($row)){
 				$dt = array(
-					'chemist_id' => $final_chemist,
+					'chemist_id' => $chemist_done,
 					'string_value' => $received_from,
 					'date'=>date('Y-m-d'),
 					'time'=>time(),
@@ -329,7 +329,7 @@ class Manage_bank_processing extends CI_Controller {
 				'id' => $id,
 			);
 			$dt = array(
-				'final_chemist'=>$final_chemist,
+				'chemist_done'=>$chemist_done,
 				'status' => '5',
 			);
 			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
