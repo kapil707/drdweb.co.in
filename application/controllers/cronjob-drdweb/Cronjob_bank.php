@@ -488,15 +488,16 @@ class Cronjob_bank extends CI_Controller
 		if(!empty($rr)){
 			if($rr->total==$amount){
 
-			$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where (vdt BETWEEN '$start_date' and '$end_date') $where");
-			$rr = $rr->result();
-			foreach($rr as $tt){			
-				$jsonArray[] = $tt->chemist_id.":-".$tt->gstvno." Amt.".$tt->amt;
-			}
+				$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where (vdt BETWEEN '$start_date' and '$end_date') $where");
+				$rr = $rr->result();
+				foreach($rr as $tt){			
+					$jsonArray[] = $tt->chemist_id.":-".$tt->gstvno." Amt.".$tt->amt;
+				}
 
-			$find_invoice_chemist_id = "";
-			if(!empty($jsonArray)){
-				$find_invoice_chemist_id = implode(',', $jsonArray);
+				$find_invoice_chemist_id = "";
+				if(!empty($jsonArray)){
+					$find_invoice_chemist_id = implode(',', $jsonArray);
+				}
 			}
 		}
 
