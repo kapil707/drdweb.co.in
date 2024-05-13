@@ -139,9 +139,11 @@
 
 							<input type="hidden" value="<?php echo $row->received_from ?>" class="text_received_from_<?php echo $row->id; ?>">
 
-							<input type="text" value="<?php echo $row->find_chemist_id; ?>" class="received_from_chemist_id_<?php echo $row->id; ?>" style="">
+							<input type="text" value="<?php echo $row->find_chemist_id; ?>" class="text_received_from_chemist_id_<?php echo $row->id; ?>" style="display:none">
+
+							<i class="fa fa-check add_received_from_chemist_id_<?php echo $row->id; ?>" aria-hidden="true" onclick="add_received_from_chemist_id('<?php echo $row->id; ?>')" style="display:none"></i>
 							
-							<i class="fa fa-pencil add_received_from_chemist_id_<?php echo $row->id; ?>" aria-hidden="true" onclick="add_received_from_chemist_id('<?php echo $row->id; ?>')" style=""></i>
+							<i class="fa fa-pencil edit_received_from_chemist_id_<?php echo $row->id; ?>" aria-hidden="true" onclick="edit_received_from_chemist_id_('<?php echo $row->id; ?>')"></i>
 						</td>
 						<td><?= ($highlighted_text); ?></td>
 						<td>
@@ -213,7 +215,7 @@ function edit_done_chemist_id(id){
 function add_received_from_chemist_id(id){
 	var received_from = $(".text_received_from_"+id).val();
 
-	var chemist_id = $(".received_from_chemist_id_"+id).val();
+	var chemist_id = $(".text_received_from_chemist_id_"+id).val();
 	if(chemist_id.trim()==""){
 		alert("Etner any chemist id")
 	}else{
@@ -228,6 +230,13 @@ function add_received_from_chemist_id(id){
 			}
 		});
 	}
+}
+
+function edit_received_from_chemist_id(id){
+	$(".text_received_from_chemist_id_"+id).show();
+	$(".add_received_from_chemist_id_"+id).show();
+
+	$(".edit_received_from_chemist_id_"+id).hide();
 }
 
 </script>
