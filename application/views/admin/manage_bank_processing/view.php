@@ -111,7 +111,7 @@
 								$arr = explode(":-",$rows);
 								if($arr[0]==$rows1){
 									$find_all = "new-done";
-									$done_chemist_id = $find_chemist_id2;
+									$done_chemist_id = $rows1;
 									$tr_style = "background-color: #D9C0FF;";
 								}
 							}
