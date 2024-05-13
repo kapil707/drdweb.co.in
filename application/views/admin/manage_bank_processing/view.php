@@ -105,7 +105,7 @@
 						foreach($find_invoice_chemist_id_array as $rows){
 							foreach($find_chemist_id_array as $rows1){
 								$arr = explode(":-",$rows);
-								if($arr[0]==$rows1){
+								if($arr[0]==$rows1 && !empty($arr[0]) && !empty($rows1)){
 									$find_all = "new-done";
 									$done_chemist_id = $rows1;
 
