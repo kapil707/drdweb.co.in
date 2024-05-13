@@ -80,7 +80,9 @@
 					$find_chemist_id_array = array_unique($find_chemist_id_array);
 					foreach($find_chemist_id_array as $rows){
 						$find_chemist_id1.= $rows."<br>";
-						$find_chemist_id2 = $rows;
+						if(count($find_chemist_id_array)==1){
+							$find_chemist_id2 = $rows;
+						}
 					}
 
 					$find_invoice_chemist_id1 = "";

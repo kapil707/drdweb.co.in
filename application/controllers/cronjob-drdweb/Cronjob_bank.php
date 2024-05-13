@@ -456,7 +456,7 @@ class Cronjob_bank extends CI_Controller
 		$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where amt='$amount' and (vdt BETWEEN '$start_date' and '$end_date') $where");
 		$rr = $rr->result();
 		foreach($rr as $tt){			
-			$jsonArray[] = $tt->chemist_id.":-".$tt->gstvno;
+			$jsonArray[] = $tt->chemist_id.":-".$tt->gstvno." Amt.".$tt->amt;
 		}
 
 		$find_invoice_chemist_id = "";
