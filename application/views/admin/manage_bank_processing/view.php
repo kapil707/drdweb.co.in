@@ -51,7 +51,7 @@
 				<?php
 				foreach ($result as $row) {
 					$tr_style = "";
-					// $chemist_fafa = "";
+					$chemist_fafa[] = "";
 					// if($row->process_status=="1"){
 					// 	$chemist_fafa = '<i class="fa fa-check-circle" aria-hidden="true" style="color: green;font-size: 20px;"></i>';
 					// }
@@ -74,15 +74,11 @@
 						$find = "N/A";
 					}
 					
-					$find_chemist_id1 = "";
 					$find_chemist_id2 = "";
 					$find_chemist_id_array = explode(",", $row->find_chemist_id);
-					$find_chemist_id_array = array_unique($find_chemist_id_array);
-					foreach($find_chemist_id_array as $rows){
-						$find_chemist_id1.= $rows."<br>";
-						if(count($find_chemist_id_array)==1){
-							$find_chemist_id2 = $rows;
-						}
+					$find_chemist_id_array = array_unique($find_chemist_id_array);					
+					if(count($find_chemist_id_array)==1){
+						$find_chemist_id2 = $rows;
 					}
 
 					$find_invoice_chemist_id1 = "";
@@ -112,6 +108,9 @@
 								if($arr[0]==$rows1){
 									$find_all = "new-done";
 									$done_chemist_id = $rows1;
+
+									$chemist_fafa[$done_chemist_id] = '<i class="fa fa-check-circle" aria-hidden="true" style="color: green;font-size: 20px;"></i>';
+
 									$tr_style = "background-color: #D9C0FF;";
 								}
 							}
@@ -138,7 +137,13 @@
 							<?php } ?>					
 						</td>
 						<td><?= ($highlighted_text); ?></td>
-						<td><?= ($find_chemist_id1); ?></td>
+						<td>
+							<?php foreach($find_chemist_id_array as $rows){
+								echo $rows;
+								echo $chemist_fafa[$rows];
+								echo "<br>";
+							?>
+						</td>
 						<td><?= ($find_invoice_chemist_id1); ?></td>
 						<td><?= ($row->find_by); ?><br><?= ($find); ?></td>
 						<td><?= ($find_all); ?></td>
