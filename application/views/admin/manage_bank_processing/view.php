@@ -126,7 +126,13 @@
 					<tr style="<?php echo $tr_style ?>">
 						<td><?= ($row->status); ?> / <?= ($row->type); ?></td>
 						<td><?= ($row->date); ?></td>
-						<td><?= ($row->upi_no); ?><br><?= ($row->orderid); ?></td>
+						<td>
+							<div style="word-wrap:break-word">
+								<?= ($row->upi_no); ?>
+								<br>
+								<?= ($row->orderid); ?>
+							</div>
+						</td>
 						<td><?= ($row->amount); ?></td>
 						<td>
 							<span class="received_from_<?php echo $row->id; ?>">
