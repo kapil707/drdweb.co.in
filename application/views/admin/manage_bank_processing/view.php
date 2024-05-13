@@ -141,7 +141,9 @@
 							<?php 
 							foreach($find_chemist_id_array as $rows){
 								echo $rows;
-								echo $chemist_fafa[$rows];
+								if(!empty($chemist_fafa[$rows])){
+									echo $chemist_fafa[$rows];
+								}
 								echo "<br>";
 							}
 							?>
