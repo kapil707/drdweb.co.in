@@ -311,7 +311,7 @@ class Cronjob_bank extends CI_Controller
 			$result = $this->find_by_invoice($amount,$start_date,$end_date,$find_chemist_id);
 			$find_invoice_chemist_id = $result["find_invoice_chemist_id"];
 			*/
-			
+
 			if(!empty($find_chemist_id)){
 				if(empty($find_invoice_chemist_id)){
 					$result = $this->find_by_invoice_amount($amount,$start_date,$end_date,$find_chemist_id);
@@ -549,15 +549,14 @@ class Cronjob_bank extends CI_Controller
 			}
 		}
 
-		if($found){
-			if ($found) {
-				for ($i = 0; $i < count($selectedValues[0]); $i++) {
-					$rt = $selectedValues[0][$i];
-					$jsonArray[] = $rt['chemist_id'].":-".$rt['gstvno']." Amt-x.".$rt['amount'];
-				}
+		
+		if ($found) {
+			for ($i = 0; $i < count($selectedValues[0]); $i++) {
+				$rt = $selectedValues[0][$i];
+				$jsonArray[] = $rt['chemist_id'].":-".$rt['gstvno']." Amt-x.".$rt['amount'];
 			}
-			$find_invoice_chemist_id = implode(',', $jsonArray);
 		}
+		$find_invoice_chemist_id = implode(',', $jsonArray);
 
 
 		$return["find_invoice_chemist_id"] = $find_invoice_chemist_id;
