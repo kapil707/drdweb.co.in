@@ -139,12 +139,14 @@
 						<td><?= ($highlighted_text); ?></td>
 						<td>
 							<?php 
-							foreach($find_chemist_id_array as $rows){
-								echo $rows;
-								if(!empty($chemist_fafa[$rows])){
-									echo $chemist_fafa[$rows];
+							if(!empty($find_chemist_id_array)){
+								foreach($find_chemist_id_array as $rows){
+									echo $rows;
+									if(!empty($chemist_fafa[$rows])){
+										echo $chemist_fafa[$rows];
+									}
+									echo "<br>";
 								}
-								echo "<br>";
 							}
 							?>
 						</td>
