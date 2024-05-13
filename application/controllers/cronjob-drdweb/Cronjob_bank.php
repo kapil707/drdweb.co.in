@@ -486,7 +486,7 @@ class Cronjob_bank extends CI_Controller
 		$rr = $this->InvoiceModel->select_query("select sum(amt) as total from tbl_invoice_new where (vdt BETWEEN '$start_date' and '$end_date') $where");
 		$rr = $rr->row();
 		if(!empty($rr)){
-			if($rr->total==$amount){
+			if(round($rr->total)==round($amount)){
 
 				$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where (vdt BETWEEN '$start_date' and '$end_date') $where");
 				$rr = $rr->result();
