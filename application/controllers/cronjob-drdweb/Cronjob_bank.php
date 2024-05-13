@@ -463,4 +463,40 @@ class Cronjob_bank extends CI_Controller
 
 		return $return;
 	}
+
+	public function bank_processing_done(){
+	
+		$result = $this->BankModel->select_query("select * from tbl_bank_processing where status='1' and done_status=0 limit 100");
+		$result = $result->result();
+		foreach($result as $row){
+			$find_chemist_id2 = "";
+			$find_chemist_id_array = explode(",", $row->find_chemist_id);
+			$find_chemist_id_array = array_unique($find_chemist_id_array);
+			foreach($find_chemist_id_array as $rows){
+				$find_chemist_id2 = $rows;
+			}
+
+			$find_invoice_chemist_id2 = "";
+			$find_invoice_chemist_id_array = explode(",", $row->find_invoice_chemist_id);
+			foreach($find_invoice_chemist_id_array as $rows){
+				$arr = explode(":-",$rows);
+				$find_invoice_chemist_id2 = $arr[0];
+			}
+			
+			$done_status = "2";
+			$done_chemist_id = "";
+			if((strtolower($find_chemist_id2)==strtolower($find_invoice_chemist_id2)) && (!empty($find_invoice_chemist_id2) && !empty($find_chemist_id2))){
+				$done_chemist_id = $find_chemist_id2;
+			}
+
+			$where = array(
+				'id' => $row->id,
+			);
+			$dt = array(
+				'done_chemist_id'=>$done_chemist_id,
+				'done_status'=>$done_status,
+			);
+			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
+		}
+	}
 }
