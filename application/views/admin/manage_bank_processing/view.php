@@ -93,6 +93,7 @@
 						$find_invoice_chemist_id2 = $arr[0];
 					}
 					
+					$done_chemist_id = "";
 					$find_all = "";
 					if((strtolower($find_chemist_id2)==strtolower($find_invoice_chemist_id2)) && (!empty($find_invoice_chemist_id2) && !empty($find_chemist_id2))){
 						$find_all = "done";
