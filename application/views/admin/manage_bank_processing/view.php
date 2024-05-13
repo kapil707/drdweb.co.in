@@ -148,8 +148,8 @@ function add_chemist_done(id){
 	$(".chemist_done_text_"+id).hide();
 	$(".add_chemist_done_btn_"+id).hide();
 
-	$(".chemist_done_done_"+id).html(chemist_done);
-	$(".chemist_done_done_"+id).show();
+	$(".chemist_done_"+id).html(chemist_done);
+	$(".chemist_done_"+id).show();
 	$(".edit_chemist_done_btn_"+id).show();
 	$.ajax({
 		type : "POST",
