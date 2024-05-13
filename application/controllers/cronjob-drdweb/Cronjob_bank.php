@@ -550,7 +550,7 @@ class Cronjob_bank extends CI_Controller
 
 		if($found){
 			if ($found) {
-				for ($i = 0; $i < count($selectedValues); $i++) {
+				for ($i = 0; $i < count($selectedValues[0]); $i++) {
 					$rt = $selectedValues[0][$i];
 					$jsonArray[] = $rt['chemist_id'].":-".$rt['gstvno']." Amt-x.".$rt['amount'];
 				}
