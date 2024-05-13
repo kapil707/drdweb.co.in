@@ -314,10 +314,10 @@ class Cronjob_bank extends CI_Controller
 			$where = array('id'=>$id);
 			$dt = array(
 				'find_by'=>$find_by,
-				'chemist_id'=>$chemist_id,
 				'status'=>1,
 				'process_name'=>$process_name,
 				'process_value'=>$process_value,
+				'find_chemist_id'=>$find_chemist_id,
 				'find_invoice_chemist_id'=>$find_invoice_chemist_id,
 			);
 			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
