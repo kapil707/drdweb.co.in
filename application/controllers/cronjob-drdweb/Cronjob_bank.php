@@ -558,7 +558,6 @@ class Cronjob_bank extends CI_Controller
 		}
 		$find_invoice_chemist_id = implode(',', $jsonArray);
 
-
 		$return["find_invoice_chemist_id"] = $find_invoice_chemist_id;
 
 		return $return;
