@@ -488,7 +488,7 @@ class Cronjob_bank extends CI_Controller
 		}
 
 		$find_invoice_chemist_id = "";
-		$rr = $this->InvoiceModel->select_query("select sum(amt) as total from tbl_invoice_new where (vdt BETWEEN '$start_date' and '$end_date') $where");
+		/*$rr = $this->InvoiceModel->select_query("select sum(amt) as total from tbl_invoice_new where (vdt BETWEEN '$start_date' and '$end_date') $where");
 		$rr = $rr->row();
 		if(!empty($rr)){
 			if(round($rr->total)==round($amount)){
@@ -506,7 +506,7 @@ class Cronjob_bank extends CI_Controller
 		}
 
 		/*******yha kisi 2 yha 3 invoice ke total ko check karta ha */
-		if(empty($find_invoice_chemist_id)){
+		/*if(empty($find_invoice_chemist_id)){
 			$total = 0;
 			$work = 0;
 			$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where (vdt BETWEEN '$start_date' and '$end_date') $where");
@@ -522,11 +522,46 @@ class Cronjob_bank extends CI_Controller
 			if(!empty($jsonArray) && $work==1){
 				$find_invoice_chemist_id = implode(',', $jsonArray);
 			}
+		}*/
+		$resultArray = [];
+		$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where (vdt BETWEEN '$start_date' and '$end_date') $where");
+		$rr = $rr->result();
+		foreach($rr as $tt){
+			$resultArray[] = [
+				'chemist_id' => $tt->chemist_id,
+				'gstvno' => $tt->gstvno,
+				'amount' => $tt->amt
+			];
 		}
+
+		if(!empty($jsonArray)){
+			$find_invoice_chemist_id = implode(',', $jsonArray);
+		}
+
 
 		$return["find_invoice_chemist_id"] = $find_invoice_chemist_id;
 
 		return $return;
+	}
+
+	public function test(){
+
+		$resultArray = [];
+		$rr = $this->InvoiceModel->select_query("SELECT * FROM `tbl_invoice_new` WHERE (vdt BETWEEN '2024-04-25' and '2024-04-27') and `chemist_id`='S847'");
+		$rr = $rr->result();
+		foreach($rr as $tt){
+			$resultArray[] = [
+				'chemist_id' => $tt->chemist_id,
+				'gstvno' => $tt->gstvno,
+				'amount' => $tt->amt
+			];
+		}
+
+		print_r($resultArray);
+
+		if(!empty($jsonArray)){
+			$find_invoice_chemist_id = implode(',', $jsonArray);
+		}
 	}
 
 	public function bank_processing_done(){
