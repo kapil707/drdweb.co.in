@@ -51,7 +51,6 @@
 				<?php
 				foreach ($result as $row) {
 					$tr_style = "";
-					$chemist_dt = "";
 					// $chemist_fafa = "";
 					// if($row->process_status=="1"){
 					// 	$chemist_fafa = '<i class="fa fa-check-circle" aria-hidden="true" style="color: green;font-size: 20px;"></i>';
@@ -85,11 +84,12 @@
 						$find = "N/A";
 					}
 					
+					$find_chemist_id1 = "";
 					$chemist_done = "";
 					$find_chemist_id_array = explode(",", $row->find_chemist_id);
 					$find_chemist_id_array = array_unique($find_chemist_id_array);
 					foreach($find_chemist_id_array as $rows){
-						$chemist_dt.= $rows."<br>"; 
+						$find_chemist_id1.= $rows."<br>"; 
 						$chemist_done = $rows;
 					}
 					
@@ -118,7 +118,7 @@
 							<i class="fa fa-pencil edit_received_from_btn_<?php echo $row->id; ?>" aria-hidden="true" onclick="edit_received_from('<?php echo $row->id; ?>')" style=""></i>						
 						</td>
 						<td><?= ($highlighted_text); ?></td>
-						<td><?= ($chemist_dt); ?></td>
+						<td><?= ($find_chemist_id1); ?></td>
 						<td><?= ($find_invoice_chemist_id); ?></td>
 						<td><?= ($row->find_by); ?><br><?= ($find); ?></td>
 						<td><?= ($find_all); ?></td>
