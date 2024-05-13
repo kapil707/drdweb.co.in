@@ -310,7 +310,7 @@ class Cronjob_bank extends CI_Controller
 			$find_invoice_chemist_id = $result["find_invoice_chemist_id"];
 
 			if(empty($find_invoice_chemist_id)){
-				$result = $this->find_by_invoice_amount($start_date,$end_date,$find_chemist_id);
+				$result = $this->find_by_invoice_amount($amount,$start_date,$end_date,$find_chemist_id);
 				$find_invoice_chemist_id = $result["find_invoice_chemist_id"];
 			}
 
@@ -469,7 +469,7 @@ class Cronjob_bank extends CI_Controller
 		return $return;
 	}
 
-	function find_by_invoice_amount($start_date,$end_date,$find_chemist_id){
+	function find_by_invoice_amount($amount,$start_date,$end_date,$find_chemist_id){
 
 		$jsonArray = array();
 
@@ -483,15 +483,21 @@ class Cronjob_bank extends CI_Controller
 			$where = " and chemist_id in ($find_chemist_id)";
 		}
 
-		$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where (vdt BETWEEN '$start_date' and '$end_date') $where");
-		$rr = $rr->result();
-		foreach($rr as $tt){			
-			$jsonArray[] = $tt->chemist_id.":-".$tt->gstvno." Amt.".$tt->amt;
-		}
+		$rr = $this->InvoiceModel->select_query("select sum(amt) as total from tbl_invoice_new where (vdt BETWEEN '$start_date' and '$end_date') $where");
+		$rr = $rr->row();
+		if(!empty($rr)){
+			if($rr->total==$amount){
 
-		$find_invoice_chemist_id = "";
-		if(!empty($jsonArray)){
-			$find_invoice_chemist_id = implode(',', $jsonArray);
+			$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where (vdt BETWEEN '$start_date' and '$end_date') $where");
+			$rr = $rr->result();
+			foreach($rr as $tt){			
+				$jsonArray[] = $tt->chemist_id.":-".$tt->gstvno." Amt.".$tt->amt;
+			}
+
+			$find_invoice_chemist_id = "";
+			if(!empty($jsonArray)){
+				$find_invoice_chemist_id = implode(',', $jsonArray);
+			}
 		}
 
 		$return["find_invoice_chemist_id"] = $find_invoice_chemist_id;
