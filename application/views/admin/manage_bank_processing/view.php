@@ -135,9 +135,7 @@
 						</td>
 						<td><?= ($row->amount); ?></td>
 						<td>
-							<span class="received_from_<?php echo $row->id; ?>">
-								<?= ($row->received_from); ?> 
-							</span>
+							<?= ($row->received_from); ?>
 
 							<input type="hidden" value="<?php echo $row->received_from ?>" class="text_received_from_<?php echo $row->id; ?>">
 
