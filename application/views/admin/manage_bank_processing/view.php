@@ -148,22 +148,26 @@ function add_done_chemist_id(id){
 	var received_from = $(".text_received_from_"+id).val();
 
 	var done_chemist_id = $(".text_done_chemist_id_"+id).val();
-	$(".text_done_chemist_id_"+id).hide();
-	$(".add_done_chemist_id_"+id).hide();
+	if(done_chemist_id.trim()==""){
+		alert("Etner any chemist id")
+	}else{
+		$(".text_done_chemist_id_"+id).hide();
+		$(".add_done_chemist_id_"+id).hide();
 
-	$(".span_done_chemist_id_"+id).html(done_chemist_id);
-	$(".span_done_chemist_id_"+id).show();
-	$(".edit_done_chemist_id_"+id).show();
-	$.ajax({
-		type : "POST",
-		data : {id:id,done_chemist_id:done_chemist_id,received_from:received_from,},
-		url  : "<?= base_url()?>admin/<?= $Page_name?>/add_done_chemist_id",
-		cache: true,
-		error: function(){
-		},
-		success: function(data){
-		}
-	});
+		$(".span_done_chemist_id_"+id).html(done_chemist_id);
+		$(".span_done_chemist_id_"+id).show();
+		$(".edit_done_chemist_id_"+id).show();
+		$.ajax({
+			type : "POST",
+			data : {id:id,done_chemist_id:done_chemist_id,received_from:received_from,},
+			url  : "<?= base_url()?>admin/<?= $Page_name?>/add_done_chemist_id",
+			cache: true,
+			error: function(){
+			},
+			success: function(data){
+			}
+		});
+	}
 }
 function edit_done_chemist_id(id){
 	$(".text_done_chemist_id_"+id).show();
