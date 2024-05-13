@@ -97,12 +97,24 @@
 					
 					$done_chemist_id = "";
 					$find_all = "";
+					
 					if((strtolower($find_chemist_id2)==strtolower($find_invoice_chemist_id2)) && (!empty($find_invoice_chemist_id2) && !empty($find_chemist_id2))){
 						$find_all = "done";
 						$tr_style = "background-color: #ffe1c0;";
 
 						$done_chemist_id = $find_chemist_id2;
 					}
+
+					foreach($find_invoice_chemist_id_array as $rows){
+						foreach($find_chemist_id_array as $rows1){
+							if($rows==$row1){
+								$find_all = "new-done";
+								$done_chemist_id = $find_chemist_id2;
+								$tr_style = "background-color: #D9C0FF;";
+							}
+						}
+					}
+
 					if($row->done_status==1){
 						$tr_style = "background-color: #e8ffe2;";
 						$done_chemist_id = $row->done_chemist_id;
