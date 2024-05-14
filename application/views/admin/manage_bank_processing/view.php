@@ -194,8 +194,10 @@ function add_done_chemist_id(id){
 			url  : "<?= base_url()?>admin/<?= $Page_name?>/add_done_chemist_id",
 			cache: true,
 			error: function(){
+				toastr.error('Error');
 			},
 			success: function(data){
+				toastr.info('Save successfully');
 			}
 		});
 	}
@@ -222,8 +224,10 @@ function add_received_from_chemist_id(id){
 			url  : "<?= base_url()?>admin/<?= $Page_name?>/add_received_from_chemist_id",
 			cache: true,
 			error: function(){
+				toastr.error('Error');
 			},
 			success: function(data){
+				toastr.info('Chemist set successfully');
 			}
 		});
 	}
