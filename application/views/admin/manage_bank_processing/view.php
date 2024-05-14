@@ -117,7 +117,7 @@
 					}
 					?>
 
-					<tr style="<?php echo $tr_style ?>">
+					<tr class="tr_css_<?php echo $row->id; ?>" style="<?php echo $tr_style ?>">
 						<td><?= ($row->status); ?> / <?= ($row->type); ?></td>
 						<td><?= ($row->date); ?></td>
 						<td>
@@ -198,6 +198,7 @@ function add_done_chemist_id(id){
 			},
 			success: function(data){
 				toastr.info('Save successfully');
+				$(".tr_css_"+id).css("background-color", "#e8ffe2");
 			}
 		});
 	}
