@@ -52,12 +52,6 @@
 				foreach ($result as $row) {
 					$tr_style = "";
 					$chemist_fafa[] = "";
-					// if($row->process_status=="1"){
-					// 	$chemist_fafa = '<i class="fa fa-check-circle" aria-hidden="true" style="color: green;font-size: 20px;"></i>';
-					// }
-					// if($row->process_status=="0"){
-					// 	$chemist_fafa = '<i class="fa fa-question-circle" aria-hidden="true" style="color: orange;font-size: 20px;"></i>';
-					// }
 					$search = $row->process_name;
 					
 					$search_escaped = preg_quote($search, '/');
@@ -142,6 +136,8 @@
 							<input type="text" value="<?php echo $row->find_chemist_id; ?>" class="text_received_from_chemist_id_<?php echo $row->id; ?>" style="display:none">
 
 							<i class="fa fa-check add_received_from_chemist_id_<?php echo $row->id; ?>" aria-hidden="true" onclick="add_received_from_chemist_id('<?php echo $row->id; ?>')" style="display:none"></i>
+
+							<i class="fa fa-times cancel_received_from_chemist_id_<?php echo $row->id; ?>" aria-hidden="true" onclick="cancel_received_from_chemist_id('<?php echo $row->id; ?>')" style="display:none"></i>
 							
 							<i class="fa fa-pencil edit_received_from_chemist_id_<?php echo $row->id; ?>" aria-hidden="true" onclick="edit_received_from_chemist_id('<?php echo $row->id; ?>')"></i>
 						</td>
@@ -219,6 +215,7 @@ function add_received_from_chemist_id(id){
 	if(chemist_id.trim()==""){
 		alert("Etner any chemist id")
 	}else{
+		cancel_received_from_chemist_id(id);
 		$.ajax({
 			type : "POST",
 			data : {chemist_id:chemist_id,received_from:received_from,},
@@ -235,8 +232,17 @@ function add_received_from_chemist_id(id){
 function edit_received_from_chemist_id(id){
 	$(".text_received_from_chemist_id_"+id).show();
 	$(".add_received_from_chemist_id_"+id).show();
+	$(".cancel_received_from_chemist_id_"+id).show();
 
 	$(".edit_received_from_chemist_id_"+id).hide();
+}
+
+function cancel_received_from_chemist_id(id){
+	$(".text_received_from_chemist_id_"+id).hide();
+	$(".add_received_from_chemist_id_"+id).hide();
+	$(".cancel_received_from_chemist_id_"+id).hide();
+
+	$(".edit_received_from_chemist_id_"+id).show();
 }
 
 </script>
