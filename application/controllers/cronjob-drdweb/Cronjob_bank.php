@@ -652,14 +652,20 @@ class Cronjob_bank extends CI_Controller
 
 		//$result = $this->BankModel->select_query("SELECT tbl_whatsapp_message.id,tbl_whatsapp_message.vision_text,tbl_bank_processing.upi_no,tbl_bank_processing.id as myid FROM tbl_bank_processing, tbl_whatsapp_message WHERE tbl_whatsapp_message.vision_text LIKE CONCAT('%', tbl_bank_processing.upi_no, '%') and tbl_bank_processing.status=1");
 
-		$result = $this->BankModel->select_query("SELECT id,upi_no from tbl_bank_processing where status=1 limit 50");
+		$result = $this->BankModel->select_query("SELECT id,upi_no,amount from tbl_bank_processing where status=1 limit 50");
 		$result = $result->result();
 		foreach($result as $row){
 
 			$upi_no = $row->upi_no;
+			$amount = $row->amount;
 
 			$row1 = $this->BankModel->select_query("SELECT vision_text,id FROM `tbl_whatsapp_message` WHERE REPLACE(`vision_text`, ' ', '') LIKE '%$upi_no%'");
 			$row1 = $row1->row();
+
+			if(empty($row1)){
+				$row1 = $this->BankModel->select_query("SELECT vision_text,id FROM `tbl_whatsapp_message` WHERE REPLACE(`vision_text`, ',', '') LIKE '%$amount%'");
+				$row1 = $row1->row();
+			}
 			
 			$vision_text = $whatsapp_message_id = "N/a";
 			if(!empty($row1)){
