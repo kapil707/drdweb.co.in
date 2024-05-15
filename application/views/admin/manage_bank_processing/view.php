@@ -12,14 +12,10 @@
                 <thead>
                     <tr>
 						<th width="50">
-							Status / Type
+							Id
 						</th>
-						<th width="80">
-							Date
-                        </th>
-						<th width="150px"> 
-							Upi No /
-							Orderid
+						<th>
+
                         </th>
 						<th>
 							Amount
@@ -118,14 +114,14 @@
 					?>
 
 					<tr class="tr_css_<?php echo $row->id; ?>" style="<?php echo $tr_style ?>">
-						<td><?= ($row->status); ?> / <?= ($row->type); ?></td>
-						<td><?= ($row->date); ?></td>
+						<td><?php echo $row->id; ?> </td>
 						<td>
-							<div style="word-wrap:break-word;width:95px;">
-								<?= ($row->upi_no); ?>
-								<br>
-								<?= ($row->orderid); ?>
-							</div>
+							<?= ($row->status); ?> / <?= ($row->type); ?> 
+							Date : <?= ($row->date); ?>
+							<br>
+							Upi No : <?= ($row->upi_no); ?>
+							<br>
+							Orderid : <?= ($row->orderid); ?>
 						</td>
 						<td><?= ($row->amount); ?></td>
 						<td>
