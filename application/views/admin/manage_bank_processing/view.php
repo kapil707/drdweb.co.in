@@ -120,7 +120,7 @@
 							Upi No : <?= ($row->upi_no); ?>
 							<br><br>
 								
-							<div style="word-wrap:break-word;width:95px;">
+							<div style="word-wrap:break-word;width:200px;">
 								Orderid : <?= ($row->orderid); ?>
 							</div>
 
