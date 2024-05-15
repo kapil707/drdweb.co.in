@@ -647,7 +647,7 @@ class Cronjob_bank extends CI_Controller
 
 	public function bank_check_in_whatsapp(){
 
-		$result = $this->BankModel->select_query("SELECT tbl_whatsapp_message.id,tbl_whatsapp_message.vision_text,tbl_bank_processing.upi_no,tbl_bank_processing.id as myid, FROM tbl_bank_processing, tbl_whatsapp_message WHERE tbl_whatsapp_message.vision_text LIKE CONCAT('%', tbl_bank_processing.upi_no, '%') and ");
+		$result = $this->BankModel->select_query("SELECT tbl_whatsapp_message.id,tbl_whatsapp_message.vision_text,tbl_bank_processing.upi_no,tbl_bank_processing.id as myid, FROM tbl_bank_processing, tbl_whatsapp_message WHERE tbl_whatsapp_message.vision_text LIKE CONCAT('%', tbl_bank_processing.upi_no, '%') and tbl_bank_processing.status=1");
 		$result = $result->result();
 		foreach($result as $row){
 			
