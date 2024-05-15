@@ -666,11 +666,6 @@ class Cronjob_bank extends CI_Controller
 				$row1 = $this->BankModel->select_query("SELECT vision_text,id FROM `tbl_whatsapp_message` WHERE REPLACE(`vision_text`, ',', '') LIKE '%$amount%'");
 				$row1 = $row1->row();
 			}
-
-			if(empty($row1)){
-				$row1 = $this->BankModel->select_query("SELECT vision_text,id FROM `tbl_whatsapp_message` WHERE `vision_text` LIKE '%$amount%'");
-				$row1 = $row1->row();
-			}
 			
 			$vision_text = $whatsapp_message_id = "N/a";
 			if(!empty($row1)){
