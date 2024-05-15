@@ -12,11 +12,11 @@ class Cronjob_bank extends CI_Controller
 	
 	public function get_whatsapp_message()
 	{
-		// $start_date = "14/05/2024";//date('d/m/Y');
-		// $end_date 	= "14/05/2024";//date('d/m/Y');
+		$start_date = "13/05/2024";//date('d/m/Y');
+		$end_date 	= "13/05/2024";//date('d/m/Y');
 
-		$start_date = date('d/m/Y');
-		$end_date 	= date('d/m/Y');
+		//$start_date = date('d/m/Y');
+		//$end_date 	= date('d/m/Y');
 
 
 		$sender_name_place = "Online%20Details";
