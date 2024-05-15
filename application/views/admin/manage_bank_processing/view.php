@@ -138,10 +138,7 @@
 								Find : <?= ($highlighted_text); ?> || <b>(<?= ($row->find_by); ?>)</b>
 							</div>
 							<br><br>
-							<b><?= ($find); ?></b>
-						</td>
-						<td>
-							<b>Chemist : 
+							<b>Chemist : </b>
 							<?php 
 							if(!empty($find_chemist_id_array)){
 								foreach($find_chemist_id_array as $rows){
@@ -152,7 +149,10 @@
 									echo "<br>";
 								}
 							}
-							?></b>
+							?>
+						</td>
+						<td>
+							<b><?= ($find); ?></b>
 						</td>
 						<td><?= ($find_invoice_chemist_id1); ?></td>
 						<td><?= ($row->vision_text); ?></td>
