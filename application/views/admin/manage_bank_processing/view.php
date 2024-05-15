@@ -113,7 +113,7 @@
 					<tr class="tr_css_<?php echo $row->id; ?>" style="<?php echo $tr_style ?>">
 						<td><?php echo $row->id; ?> </td>
 						<td>
-							<?= ($row->status); ?> / <?= ($row->type); ?>
+							Status : <?= ($row->status); ?>
 							<br><br>
 							Date : <?= ($row->date); ?>
 							<br><br>
@@ -128,7 +128,7 @@
 							<b>Amount : <?= ($row->amount); ?></b>
 						</td>
 						<td>
-							<?= ($row->received_from); ?>
+							<?= ($row->type); ?> : <?= ($row->received_from); ?>
 
 							<input type="hidden" value="<?php echo $row->received_from ?>" class="text_received_from_<?php echo $row->id; ?>">
 
