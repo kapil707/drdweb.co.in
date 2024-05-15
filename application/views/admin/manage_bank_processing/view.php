@@ -137,9 +137,9 @@
 							
 							<i class="fa fa-pencil edit_received_from_chemist_id_<?php echo $row->id; ?>" aria-hidden="true" onclick="edit_received_from_chemist_id('<?php echo $row->id; ?>')"></i>
 							<br><br>
-							Find : <?= ($highlighted_text); ?>
+							Find : <?= ($highlighted_text); ?><b><?= ($row->find_by); ?></b>
 							<br><br>
-							<b><?= ($row->find_by); ?></b><?= ($find); ?>
+							<b><?= ($find); ?></b>
 						</td>
 						<td><?= ($row->vision_text); ?></td>
 						<td>
