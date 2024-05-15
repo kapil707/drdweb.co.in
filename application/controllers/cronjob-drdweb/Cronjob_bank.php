@@ -664,7 +664,8 @@ class Cronjob_bank extends CI_Controller
 			$vision_text = $whatsapp_message_id = "N/a";
 			if(!empty($row1)){
 				$vision_text = $row1->vision_text;
-				$whatsapp_message_id = $row1->id;
+				echo $whatsapp_message_id = $row1->id;
+				echo "<br>";
 			}
 
 			$where = array(
