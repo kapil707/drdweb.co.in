@@ -18,9 +18,6 @@
 
                         </th>
 						<th>
-							Amount
-						</th>
-						<th>
 							From 
 						</th>
 						<th>
@@ -117,17 +114,19 @@
 						<td><?php echo $row->id; ?> </td>
 						<td>
 							<?= ($row->status); ?> / <?= ($row->type); ?>
-							
+							<br><br>
 							Date : <?= ($row->date); ?>
-							<br>
+							<br><br>
 							Upi No : <?= ($row->upi_no); ?>
-							<br>
+							<br><br>
 								
 							<div style="word-wrap:break-word;width:95px;">
 								Orderid : <?= ($row->orderid); ?>
 							</div>
+
+							<br><br>
+							<b>Amount : <?= ($row->amount); ?></b>
 						</td>
-						<td><?= ($row->amount); ?></td>
 						<td>
 							<?= ($row->received_from); ?>
 
