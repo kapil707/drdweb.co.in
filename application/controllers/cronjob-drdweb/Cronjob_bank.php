@@ -672,11 +672,11 @@ class Cronjob_bank extends CI_Controller
 			}
 
 			if(empty($row1)){
-				$string = "xx ".$upi_no;
+				/*$string = "xx ".$upi_no;
 				$last_four_digits = substr($string, -4);
 				
 				$row1 = $this->BankModel->select_query("SELECT vision_text,id FROM `tbl_whatsapp_message` WHERE `vision_text` LIKE '%$last_four_digits%'");
-				$row1 = $row1->row();
+				$row1 = $row1->row();*/
 			}
 			
 			$vision_text = $whatsapp_message_id = "N/a";
