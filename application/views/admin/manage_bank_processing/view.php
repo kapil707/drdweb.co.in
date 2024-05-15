@@ -139,10 +139,11 @@
 							<i class="fa fa-times cancel_received_from_chemist_id_<?php echo $row->id; ?>" aria-hidden="true" onclick="cancel_received_from_chemist_id('<?php echo $row->id; ?>')" style="display:none"></i>
 							
 							<i class="fa fa-pencil edit_received_from_chemist_id_<?php echo $row->id; ?>" aria-hidden="true" onclick="edit_received_from_chemist_id('<?php echo $row->id; ?>')"></i>
+
+							Find : <?= ($highlighted_text); ?>
 						</td>
 						<td><?= ($row->vision_text); ?></td>
 						<td>
-							<?= ($highlighted_text); ?>
 							<br>
 							<b>Chemist : 
 							<?php 
