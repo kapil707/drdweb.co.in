@@ -116,12 +116,16 @@
 					<tr class="tr_css_<?php echo $row->id; ?>" style="<?php echo $tr_style ?>">
 						<td><?php echo $row->id; ?> </td>
 						<td>
-							<?= ($row->status); ?> / <?= ($row->type); ?> 
+							<?= ($row->status); ?> / <?= ($row->type); ?>
+							
 							Date : <?= ($row->date); ?>
 							<br>
 							Upi No : <?= ($row->upi_no); ?>
 							<br>
-							Orderid : <?= ($row->orderid); ?>
+								
+							<div style="word-wrap:break-word;width:95px;">
+								Orderid : <?= ($row->orderid); ?>
+							</div>
 						</td>
 						<td><?= ($row->amount); ?></td>
 						<td>
