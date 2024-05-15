@@ -145,7 +145,7 @@
 						<td>
 							<?= ($highlighted_text); ?>
 							<br>
-							Chemist : 
+							<b>Chemist : 
 							<?php 
 							if(!empty($find_chemist_id_array)){
 								foreach($find_chemist_id_array as $rows){
@@ -156,7 +156,7 @@
 									echo "<br>";
 								}
 							}
-							?>
+							?></b>
 						</td>
 						<td><?= ($find_invoice_chemist_id1); ?></td>
 						<td><?= ($row->find_by); ?><br><?= ($find); ?></td>
