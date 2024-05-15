@@ -657,7 +657,6 @@ class Cronjob_bank extends CI_Controller
 		foreach($result as $row){
 
 			echo $upi_no = $row->upi_no;
-			echo "<br>";
 			$amount = $row->amount;
 
 			$row1 = $this->BankModel->select_query("SELECT vision_text,id FROM `tbl_whatsapp_message` WHERE REPLACE(`vision_text`, ' ', '') LIKE '%$upi_no%'");
@@ -672,9 +671,10 @@ class Cronjob_bank extends CI_Controller
 			
 			$vision_text = $whatsapp_message_id = "N/a";
 			if(!empty($row1)){
-				$vision_text = $row1->vision_text;
+				echo $vision_text = $row1->vision_text;
 				$whatsapp_message_id = $row1->id;
 			}
+			echo "<br>";
 
 			$where = array(
 				'id' => $row->id,
