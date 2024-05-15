@@ -12,13 +12,18 @@ class Cronjob_bank extends CI_Controller
 	
 	public function get_whatsapp_message()
 	{
+		$start_date = date('d/m/Y');
+		$end_date 	= date('d/m/Y');
+
+		$sender_name_place = "Online%20Details";
+
 		$parmiter = '';
 		$curl = curl_init();
 		
 		curl_setopt_array(
 			$curl,
 			array(
-				CURLOPT_URL =>"http://97.74.82.55:5000/messages?from=07/04/2024&to=07/04/2024",
+				CURLOPT_URL =>"http://172.105.50.148:5000/messages?from=$start_date&to=$end_date&sender_name_place=$sender_name_place",
 				CURLOPT_RETURNTRANSFER => true,
 				CURLOPT_ENCODING => '',
 				CURLOPT_MAXREDIRS => 0,
@@ -29,6 +34,7 @@ class Cronjob_bank extends CI_Controller
 				CURLOPT_POSTFIELDS => $parmiter,
 				CURLOPT_HTTPHEADER => array(
 					'Content-Type: application/json',
+					'Authorization: Bearer THIRTEENWOLVESWENTHUNTINGBUT10CAMEBACK'
 				),
 			)
 		);
@@ -46,6 +52,8 @@ class Cronjob_bank extends CI_Controller
 				$date = isset($message['date']) ? $message['date'] : "Date not found";
 
 				$extracted_text = isset($message['extracted_text']) ? $message['extracted_text'] : "extracted_text not found";
+
+				$vision_text = isset($message['vision_text']) ? $message['vision_text'] : "vision_text not found";
 
 				$from_number = isset($message['from_number']) ? $message['from_number'] : "Date not found";
 				
@@ -65,6 +73,7 @@ class Cronjob_bank extends CI_Controller
 					'message_id' => $id,
 					'screenshot_image' => $screenshot_image,
 					'timestamp' => $timestamp,
+					'vision_text' => $vision_text,
 				);
 				$this->BankModel->insert_fun("tbl_whatsapp_message", $dt);
 			}
