@@ -650,15 +650,25 @@ class Cronjob_bank extends CI_Controller
 
 	public function bank_check_in_whatsapp(){
 
-		$result = $this->BankModel->select_query("SELECT tbl_whatsapp_message.id,tbl_whatsapp_message.vision_text,tbl_bank_processing.upi_no,tbl_bank_processing.id as myid FROM tbl_bank_processing, tbl_whatsapp_message WHERE tbl_whatsapp_message.vision_text LIKE CONCAT('%', tbl_bank_processing.upi_no, '%') and tbl_bank_processing.status=1");
+		//$result = $this->BankModel->select_query("SELECT tbl_whatsapp_message.id,tbl_whatsapp_message.vision_text,tbl_bank_processing.upi_no,tbl_bank_processing.id as myid FROM tbl_bank_processing, tbl_whatsapp_message WHERE tbl_whatsapp_message.vision_text LIKE CONCAT('%', tbl_bank_processing.upi_no, '%') and tbl_bank_processing.status=1");
+
+		$result = $this->BankModel->select_query("SELECT id,upi_no from tbl_bank_processing where status=1 limit 50");
 		$result = $result->result();
 		foreach($result as $row){
+
+			$upi_no = $row->upi_no;
+
+			$row1 = $this->BankModel->select_query("SELECT vision_text,id FROM `tbl_whatsapp_message` WHERE `vision_text` LIKE '%$upi_no%'");
+			$row1 = $row1->result();
 			
-			$vision_text = $row->vision_text;
-			$whatsapp_message_id = $row->id;
+			$vision_text = $whatsapp_message_id = "N/a";
+			if(!emtpy($row1)){
+				$vision_text = $row1->vision_text;
+				$whatsapp_message_id = $row1->id;
+			}
 
 			$where = array(
-				'id' => $row->myid,
+				'id' => $row->id,
 			);
 			$dt = array(
 				'status'=>2,
