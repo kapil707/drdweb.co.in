@@ -28,6 +28,9 @@
 							From 
 						</th>
 						<th>
+							WhatsApp 
+						</th>
+						<th>
                         	Find By
                         </th>
 						<th>
@@ -141,6 +144,7 @@
 							
 							<i class="fa fa-pencil edit_received_from_chemist_id_<?php echo $row->id; ?>" aria-hidden="true" onclick="edit_received_from_chemist_id('<?php echo $row->id; ?>')"></i>
 						</td>
+						<td><?= ($row->vision_text); ?></td>
 						<td><?= ($highlighted_text); ?></td>
 						<td>
 							<?php 
