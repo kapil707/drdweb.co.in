@@ -33,9 +33,6 @@
                         	Find
                         </th>
 						<th>
-                        	Find
-                        </th>
-						<th>
                         	Edit
                         </th>
                     </tr>
@@ -141,10 +138,11 @@
 							<i class="fa fa-pencil edit_received_from_chemist_id_<?php echo $row->id; ?>" aria-hidden="true" onclick="edit_received_from_chemist_id('<?php echo $row->id; ?>')"></i>
 							<br><br>
 							Find : <?= ($highlighted_text); ?>
+							<br><br>
+							<b><?= ($row->find_by); ?></b><?= ($find); ?>
 						</td>
 						<td><?= ($row->vision_text); ?></td>
 						<td>
-							<br>
 							<b>Chemist : 
 							<?php 
 							if(!empty($find_chemist_id_array)){
@@ -159,7 +157,6 @@
 							?></b>
 						</td>
 						<td><?= ($find_invoice_chemist_id1); ?></td>
-						<td><?= ($row->find_by); ?><br><?= ($find); ?></td>
 						<td><?= ($find_all); ?></td>
 						<td class="display: flex;">
 							<input type="text" value="<?php echo $done_chemist_id ?>" class="text_done_chemist_id_<?php echo $row->id; ?>" style="<?php if($row->done_status==1) { ?>display:none;<?php } ?> float: left; width: 100px;">
