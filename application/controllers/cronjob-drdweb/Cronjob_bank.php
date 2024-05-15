@@ -658,6 +658,7 @@ class Cronjob_bank extends CI_Controller
 				'id' => $row->myid,
 			);
 			$dt = array(
+				'status'=>2,
 				'vision_text'=>$vision_text,
 				'whatsapp_message_id'=>$whatsapp_message_id,
 			);
