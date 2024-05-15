@@ -14,7 +14,7 @@ class Cronjob_bank extends CI_Controller
 	{
 		$start_date = "14/05/2024";//date('d/m/Y');
 		$end_date 	= "14/05/2024";//date('d/m/Y');
-		
+
 
 		$sender_name_place = "Online%20Details";
 
@@ -640,6 +640,26 @@ class Cronjob_bank extends CI_Controller
 			$dt = array(
 				'done_chemist_id'=>$done_chemist_id,
 				'done_status'=>$done_status,
+			);
+			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
+		}
+	}
+
+	public function bank_check_in_whatsapp(){
+
+		$result = $this->BankModel->select_query("SELECT tbl_whatsapp_message.id,tbl_whatsapp_message.vision_text,tbl_bank_processing.upi_no,tbl_bank_processing.id as myid, FROM tbl_bank_processing, tbl_whatsapp_message WHERE tbl_whatsapp_message.vision_text LIKE CONCAT('%', tbl_bank_processing.upi_no, '%') and ");
+		$result = $result->result();
+		foreach($result as $row){
+			
+			$vision_text = $row->vision_text;
+			$whatsapp_message_id = $row->id;
+
+			$where = array(
+				'id' => $row->myid,
+			);
+			$dt = array(
+				'vision_text'=>$vision_text,
+				'whatsapp_message_id'=>$whatsapp_message_id,
 			);
 			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 		}
