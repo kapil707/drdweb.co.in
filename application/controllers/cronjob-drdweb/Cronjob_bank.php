@@ -676,7 +676,7 @@ class Cronjob_bank extends CI_Controller
 			if(empty($row1)){
 				$row1 = $this->BankModel->select_query("SELECT vision_text,id FROM `tbl_whatsapp_message` WHERE `vision_text` LIKE '%$upi_no%'");
 				$row1 = $row1->row();
-			}ð
+			}
 			
 			$whatsapp_id = 0;
 			$whatsapp_body = $whatsapp_image = $whatsapp_body2 = "N/a";
