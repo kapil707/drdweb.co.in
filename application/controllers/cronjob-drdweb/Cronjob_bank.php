@@ -114,8 +114,7 @@ class Cronjob_bank extends CI_Controller
 
 			// Extracting time using preg_match
 			if (preg_match($pattern, $message_body, $matches)) {
-				$time = $matches[0];
-				$gettime = $time;
+				$gettime = $matches[0];
 			} else {
 				$gettime = "Time not found.";
 			}
