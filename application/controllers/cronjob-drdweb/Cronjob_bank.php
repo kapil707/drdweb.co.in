@@ -704,6 +704,6 @@ class Cronjob_bank extends CI_Controller
 
 	public function delete_duplicate_rec(){
 		
-		$this->BankModel->select_query("DELETE FROM tbl_bank_processing WHERE upi_no IN (SELECT upi_no FROM (SELECT upi_no FROM tbl_bank_processing GROUP BY upi_no HAVING COUNT(upi_no) > 1) AS duplicates) AND id NOT IN (SELECT MIN(id) FROM (SELECT id, upi_no FROM tbl_bank_processing GROUP BY upi_no HAVING COUNT(upi_no) > 1) AS duplicates GROUP BY upi_no");
+		$this->BankModel->select_query("DELETE tbl_bank_processing FROM tbl_bank_processing INNER JOIN ( SELECT MIN(id) as min_id, upi_no FROM tbl_bank_processing GROUP BY upi_no HAVING COUNT(upi_no) > 1 ) AS duplicates ON tbl_bank_processing.id != duplicates.min_id AND tbl_bank_processing.upi_no = duplicates.upi_no");
 	}
 }
