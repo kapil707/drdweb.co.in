@@ -90,7 +90,7 @@ class Cronjob_bank extends CI_Controller
 
 		$date = date('Y-m-d');
 
-		$result = $this->BankModel->select_query("select * from tbl_sms where status='0' and date='$date' limit 100");
+		$result = $this->BankModel->select_query("select * from tbl_sms where status='0' limit 100");
 		$result = $result->result();
 		foreach($result as $row){
 			$message_body = $row->message_body;
