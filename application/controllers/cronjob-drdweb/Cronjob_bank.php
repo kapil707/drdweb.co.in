@@ -117,7 +117,7 @@ class Cronjob_bank extends CI_Controller
 				$time = $matches[0];
 				$gettime = $time;
 			} else {
-				echo "Time not found.";
+				$gettime = "Time not found.";
 			}
 
 			$pattern = '/received from (\S+)/';
