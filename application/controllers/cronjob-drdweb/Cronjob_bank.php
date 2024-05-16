@@ -685,6 +685,8 @@ class Cronjob_bank extends CI_Controller
 				$whatsapp_body = $row1->body;
 				$whatsapp_image = $row1->screenshot_image;
 				$whatsapp_body2 = $row1->vision_text;
+
+				$row1 = $this->BankModel->select_query("SELECT * FROM `tbl_whatsapp_message` WHERE `vision_text` LIKE '%$upi_no%'");
 			}
 			echo "<br>";
 
