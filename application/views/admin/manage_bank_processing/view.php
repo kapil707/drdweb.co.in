@@ -149,7 +149,7 @@
 							?>
 						</td>
 						<td><?= ($find_invoice_chemist_id1); ?></td>
-						<td><?= ($row->vision_text); ?></td>
+						<td><?= ($row->whatsapp_body2); ?></td>
 						<td class="display: flex;">
 							<b><?= ($find); ?></b>
 							<br>

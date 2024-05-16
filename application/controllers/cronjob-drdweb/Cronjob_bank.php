@@ -670,30 +670,21 @@ class Cronjob_bank extends CI_Controller
 			echo $upi_no = trim($row->upi_no);
 			$amount = $row->amount;
 
-			//echo "SELECT vision_text,id FROM `tbl_whatsapp_message` WHERE REPLACE(`vision_text`, ' ', '') LIKE '%$upi_no%'";
-
 			$row1 = $this->BankModel->select_query("SELECT vision_text,id FROM `tbl_whatsapp_message` WHERE REPLACE(`vision_text`, ' ', '') LIKE '%$upi_no%'");
 			$row1 = $row1->row();
 
 			if(empty($row1)){
 				$row1 = $this->BankModel->select_query("SELECT vision_text,id FROM `tbl_whatsapp_message` WHERE `vision_text` LIKE '%$upi_no%'");
 				$row1 = $row1->row();
-				// $row1 = $this->BankModel->select_query("SELECT vision_text,id FROM `tbl_whatsapp_message` WHERE REPLACE(`vision_text`, ',', '') LIKE '%$amount%'");
-				// $row1 = $row1->row();
-			}
-
-			if(empty($row1)){
-				/*$string = "xx ".$upi_no;
-				$last_four_digits = substr($string, -4);
-				
-				$row1 = $this->BankModel->select_query("SELECT vision_text,id FROM `tbl_whatsapp_message` WHERE `vision_text` LIKE '%$last_four_digits%'");
-				$row1 = $row1->row();*/
-			}
+			}ð
 			
-			$vision_text = $whatsapp_message_id = "N/a";
+			$whatsapp_id = 0;
+			$whatsapp_body = $whatsapp_image = $whatsapp_body2 = "N/a";
 			if(!empty($row1)){
-				echo $vision_text = $row1->vision_text;
-				$whatsapp_message_id = $row1->id;
+				$whatsapp_id = $row1->id;
+				$whatsapp_body = $row1->body;
+				$whatsapp_image = $row1->screenshot_image;
+				$whatsapp_body2 = $row1->vision_text;
 			}
 			echo "<br>";
 
@@ -702,8 +693,10 @@ class Cronjob_bank extends CI_Controller
 			);
 			$dt = array(
 				'status'=>2,
-				'vision_text'=>$vision_text,
-				'whatsapp_message_id'=>$whatsapp_message_id,
+				'whatsapp_id'=>$whatsapp_id,
+				'whatsapp_body'=>$whatsapp_body,
+				'whatsapp_image'=>$whatsapp_image,
+				'whatsapp_body2'=>$whatsapp_body2,
 			);
 			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 		}
