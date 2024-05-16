@@ -157,9 +157,6 @@
 						<th>
 							timestamp
                         </th>
-						<th>
-                        	Edit
-                        </th>
                     </tr>
                 </thead>
 				<tbody>
@@ -221,8 +218,7 @@
 									echo "Price 1: $price1";
 									?>
 								</td>
-								<td><?php echo $timestamp; ?></td>
-								<td><?php echo $timestamp; ?></td>
+								<td><?php echo date('Y-m-d H:i:s', $timestamp); ?></td>
 							</tr>
 							<?php
 						}
