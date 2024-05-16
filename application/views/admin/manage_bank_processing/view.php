@@ -147,6 +147,11 @@
 								}
 							}
 							?>
+							<br><br>
+							<b>Invoice : </b>
+							<br><br>
+							<b>WhatsApp : </b>
+							<?php echo $row->whatsapp_body; ?>
 						</td>
 						<td><?= ($find_invoice_chemist_id1); ?></td>
 						<td><?= ($row->whatsapp_body2); ?></td>
