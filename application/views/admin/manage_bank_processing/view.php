@@ -147,7 +147,7 @@
 								}
 							}
 							?>
-							<br><br>
+							<br>
 							<b>Invoice : </b>
 							<br><br>
 							<b>WhatsApp : </b>
