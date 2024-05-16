@@ -109,6 +109,17 @@ class Cronjob_bank extends CI_Controller
 				$getdate = "Date not found";
 			}
 
+			// Regex pattern to extract time
+			$pattern = "/(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})/";
+
+			// Extracting time using preg_match
+			if (preg_match($pattern, $message_body, $matches)) {
+				$time = $matches[0];
+				$gettime = $matches[1];
+			} else {
+				echo "Time not found.";
+			}
+
 			$pattern = '/received from (\S+)/';
 			if (preg_match($pattern, $message_body, $matches)) {
 				$received_from = $matches[1];
@@ -139,6 +150,7 @@ class Cronjob_bank extends CI_Controller
 				'status'=>$status,
 				'amount'=>$amount,
 				'date'=>$getdate,
+				'time'=>$gettime,
 				'received_from'=>$received_from,
 				'upi_no'=>$upi_no,
 				'orderid'=>$orderid,
