@@ -256,7 +256,7 @@ class Manage_bank_processing extends CI_Controller {
 		$upload_path = "./uploads/$page_controllers/photo/";
 		
 		$query = $this->BankModel->select_query("SELECT upi_no, GROUP_CONCAT(id SEPARATOR ', ') AS id, 
-		GROUP_CONCAT(process_name SEPARATOR ', ') AS process_name, GROUP_CONCAT(date SEPARATOR ', ') AS date, GROUP_CONCAT(process_value SEPARATOR ', ') AS process_value, GROUP_CONCAT(find_chemist_id SEPARATOR ', ') AS find_chemist_id, GROUP_CONCAT(find_invoice_chemist_id SEPARATOR ', ') AS find_invoice_chemist_id, GROUP_CONCAT(done_status SEPARATOR ', ') AS done_status, GROUP_CONCAT(status SEPARATOR ', ') AS status, GROUP_CONCAT(received_from SEPARATOR ', ') AS received_from, GROUP_CONCAT(amount SEPARATOR ', ') AS amount, GROUP_CONCAT(orderid SEPARATOR ', ') AS orderid, GROUP_CONCAT(type SEPARATOR ', ') AS type FROM `tbl_bank_processing` GROUP BY upi_no");
+		GROUP_CONCAT(process_name SEPARATOR ', ') AS process_name, GROUP_CONCAT(date SEPARATOR ', ') AS date,GROUP_CONCAT(time SEPARATOR ', ') AS time, GROUP_CONCAT(process_value SEPARATOR ', ') AS process_value, GROUP_CONCAT(find_chemist_id SEPARATOR ', ') AS find_chemist_id, GROUP_CONCAT(find_invoice_chemist_id SEPARATOR ', ') AS find_invoice_chemist_id, GROUP_CONCAT(done_status SEPARATOR ', ') AS done_status, GROUP_CONCAT(status SEPARATOR ', ') AS status, GROUP_CONCAT(received_from SEPARATOR ', ') AS received_from, GROUP_CONCAT(amount SEPARATOR ', ') AS amount, GROUP_CONCAT(orderid SEPARATOR ', ') AS orderid, GROUP_CONCAT(type SEPARATOR ', ') AS type FROM `tbl_bank_processing` GROUP BY upi_no");
 		$data["result"] = $query->result();
 
 		$this->load->view("admin/header_footer/header",$data);
