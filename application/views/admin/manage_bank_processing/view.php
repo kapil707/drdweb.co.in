@@ -33,7 +33,7 @@
                 </thead>
 				<tbody>
 				<?php
-				print_r($row);
+				print_r($result);
 				die();
 				$combined_records = array();
 				foreach ($result as $row) {
