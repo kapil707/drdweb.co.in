@@ -207,7 +207,7 @@
 					/****************************************************** */
 					$orderid = "<b>Orderid</b> <br>";
 					if(!empty($entry['statement']['orderid'])){
-						$orderid.= "Statement : ".$entry['statement']['orderid']."<br><br>";
+						$orderid.= "Statement : ".$entry['statement']['orderid']."<br>";
 					}
 					if(!empty($entry['sms']['time'])){
 						$orderid.= "SMS : ".$entry['sms']['orderid'];
@@ -215,7 +215,7 @@
 					/****************************************************** */
 					$amount = "<b>Amount</b> <br>";
 					if(!empty($entry['statement']['amount'])){
-						$amount.= "Statement : ".$entry['statement']['amount']."<br><br>";
+						$amount.= "Statement : ".$entry['statement']['amount']."<br>";
 					}
 					if(!empty($entry['sms']['amount'])){
 						$amount.= "SMS : ".$entry['sms']['amount'];
@@ -224,7 +224,7 @@
 					/****************************************************** */
 					$received_from = "";
 					if(!empty($entry['statement']['received_from'])){
-						$received_from.= "Statement : ".$entry['statement']['received_from']."<br><br>";
+						$received_from.= "Statement : ".$entry['statement']['received_from']."<br>";
 					}
 					if(!empty($entry['sms']['received_from'])){
 						$received_from.= "SMS : ".$entry['sms']['received_from'];
