@@ -345,7 +345,7 @@
 
 							<input type="hidden" value="<?php echo $received_from1 ?>" class="text_received_from_<?= ($row_id); ?>">
 
-							<input type="text" value="<?php // echo $row->find_chemist_id; ?>" class="text_received_from_chemist_id_<?= ($row_id); ?>" style="display:none">
+							<input type="text" value="<?php echo $find_chemist_id; ?>" class="text_received_from_chemist_id_<?= ($row_id); ?>" style="display:none">
 
 							<i class="fa fa-check add_received_from_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="add_received_from_chemist_id('<?= ($row_id); ?>')" style="display:none"></i>
 
