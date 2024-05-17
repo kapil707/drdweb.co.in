@@ -42,30 +42,55 @@
 				
 				foreach ($result as $item) {
 					$types = split_csv_values($item->type);
+					$sms_data = [];
+					$statement_data = [];
+
 					foreach ($types as $index => $type) {
 						$type = strtolower(trim($type));
-						if (!isset($processed_data[$item->upi_no])) {
-							$processed_data[$item->upi_no] = [];
+						if ($type == 'sms') {
+							$sms_data = [
+								"id" => split_csv_values($item->id)[$index] ?? '',
+								"find_by" => split_csv_values($item->find_by)[$index] ?? '',
+								"whatsapp_body" => split_csv_values($item->whatsapp_body)[$index] ?? '',
+								"whatsapp_body2" => split_csv_values($item->whatsapp_body2)[$index] ?? '',
+								"process_name" => split_csv_values($item->process_name)[$index] ?? '',
+								"date" => split_csv_values($item->date)[$index] ?? '',
+								"time" => split_csv_values($item->time)[$index] ?? '',
+								"process_value" => split_csv_values($item->process_value)[$index] ?? '',
+								"find_chemist_id" => split_csv_values($item->find_chemist_id)[$index] ?? '',
+								"find_invoice_chemist_id" => split_csv_values($item->find_invoice_chemist_id)[$index] ?? '',
+								"done_status" => split_csv_values($item->done_status)[$index] ?? '',
+								"status" => split_csv_values($item->status)[$index] ?? '',
+								"received_from" => split_csv_values($item->received_from)[$index] ?? '',
+								"amount" => split_csv_values($item->amount)[$index] ?? '',
+								"orderid" => split_csv_values($item->orderid)[$index] ?? ''
+							];
+						} elseif ($type == 'statment') {
+							$statement_data = [
+								"id" => split_csv_values($item->id)[$index] ?? '',
+								"find_by" => split_csv_values($item->find_by)[$index] ?? '',
+								"whatsapp_body" => split_csv_values($item->whatsapp_body)[$index] ?? '',
+								"whatsapp_body2" => split_csv_values($item->whatsapp_body2)[$index] ?? '',
+								"process_name" => split_csv_values($item->process_name)[$index] ?? '',
+								"date" => split_csv_values($item->date)[$index] ?? '',
+								"time" => split_csv_values($item->time)[$index] ?? '',
+								"process_value" => split_csv_values($item->process_value)[$index] ?? '',
+								"find_chemist_id" => split_csv_values($item->find_chemist_id)[$index] ?? '',
+								"find_invoice_chemist_id" => split_csv_values($item->find_invoice_chemist_id)[$index] ?? '',
+								"done_status" => split_csv_values($item->done_status)[$index] ?? '',
+								"status" => split_csv_values($item->status)[$index] ?? '',
+								"received_from" => split_csv_values($item->received_from)[$index] ?? '',
+								"amount" => split_csv_values($item->amount)[$index] ?? '',
+								"orderid" => split_csv_values($item->orderid)[$index] ?? ''
+							];
 						}
-						$processed_data[$item->upi_no][$type] = (object)[
-							"upi_no" => $item->upi_no,
-							"id" => split_csv_values($item->id)[$index] ?? '',
-							"find_by" => split_csv_values($item->find_by)[$index] ?? '',
-							"whatsapp_body" => split_csv_values($item->whatsapp_body)[$index] ?? '',
-							"whatsapp_body2" => split_csv_values($item->whatsapp_body2)[$index] ?? '',
-							"process_name" => split_csv_values($item->process_name)[$index] ?? '',
-							"date" => split_csv_values($item->date)[$index] ?? '',
-							"time" => split_csv_values($item->time)[$index] ?? '',
-							"process_value" => split_csv_values($item->process_value)[$index] ?? '',
-							"find_chemist_id" => split_csv_values($item->find_chemist_id)[$index] ?? '',
-							"find_invoice_chemist_id" => split_csv_values($item->find_invoice_chemist_id)[$index] ?? '',
-							"done_status" => split_csv_values($item->done_status)[$index] ?? '',
-							"status" => split_csv_values($item->status)[$index] ?? '',
-							"received_from" => split_csv_values($item->received_from)[$index] ?? '',
-							"amount" => split_csv_values($item->amount)[$index] ?? '',
-							"orderid" => split_csv_values($item->orderid)[$index] ?? ''
-						];
 					}
+
+					$processed_data[] = [
+						"upi_no" => $item->upi_no,
+						"sms" => $sms_data,
+						"statement" => $statement_data
+					];
 				}
 				
 				// Display the processed data
@@ -73,34 +98,12 @@
 				print_r($processed_data);
 				echo "</pre>";
 
-				echo "<table border='1'>";
-echo "<tr><th>UPI No</th><th>Type</th><th>ID</th><th>Find By</th><th>WhatsApp Body</th><th>WhatsApp Body2</th><th>Process Name</th><th>Date</th><th>Time</th><th>Process Value</th><th>Find Chemist ID</th><th>Find Invoice Chemist ID</th><th>Done Status</th><th>Status</th><th>Received From</th><th>Amount</th><th>Order ID</th></tr>";
+				foreach ($processed_data as $entry) {
+					echo "<tr>";
+					echo "<td>{$entry['upi_no']}</td>";
+					echo "<td>{$entry['sms']['id']}</td>
 
-foreach ($processed_data as $upi_no => $types) {
-    foreach ($types as $type => $info) {
-        echo "<tr>";
-        echo "<td>{$info->upi_no}</td>";
-        echo "<td>{$type}</td>";
-        echo "<td>{$info->id}</td>";
-        echo "<td>{$info->find_by}</td>";
-        echo "<td>{$info->whatsapp_body}</td>";
-        echo "<td>{$info->whatsapp_body2}</td>";
-        echo "<td>{$info->process_name}</td>";
-        echo "<td>{$info->date}</td>";
-        echo "<td>{$info->time}</td>";
-        echo "<td>{$info->process_value}</td>";
-        echo "<td>{$info->find_chemist_id}</td>";
-        echo "<td>{$info->find_invoice_chemist_id}</td>";
-        echo "<td>{$info->done_status}</td>";
-        echo "<td>{$info->status}</td>";
-        echo "<td>{$info->received_from}</td>";
-        echo "<td>{$info->amount}</td>";
-        echo "<td>{$info->orderid}</td>";
-        echo "</tr>";
-    }
-}
-
-echo "</table>";
+				}
 				die();
 				$combined_records = array();
 				foreach ($result as $row) {
