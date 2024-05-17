@@ -110,6 +110,9 @@
 
 					$tr_style = "";
 					$chemist_fafa[] = "";
+
+					if()
+
 					$search = $entry['statement']['process_name'];
 					
 					$search_escaped = preg_quote($search, '/');
@@ -180,9 +183,16 @@
 					$upi_no = $entry['upi_no'];
 					$orderid = $entry['statement']['orderid'];
 					$amount = $entry['statement']['amount'];
-					$received_from = $entry['statement']['received_from'];
+
+					$received_from = "";
+					if(!empty($entry['statement']['received_from'])){
+						$received_from.= "Statement : ".$entry['statement']['received_from'];
+					}
+					if(!empty($entry['sms']['received_from'])){
+						$received_from.= "SMS : ".$entry['sms']['received_from'];
+					}
 					$find_by = $entry['statement']['find_by'];
-					$find_by = $entry['statement']['find_by'];
+					
 					$whatsapp_body = $entry['statement']['whatsapp_body'];
 					$whatsapp_body2 = $entry['statement']['whatsapp_body2'];
 					$done_status = $entry['statement']['done_status'];
@@ -213,7 +223,7 @@
 								echo $banktype; 
 							} */?>
 
-							: <?= ($received_from); ?>
+							<?= ($received_from); ?>
 
 							<input type="hidden" value="<?php echo $row->received_from ?>" class="text_received_from_<?= ($row_id); ?>">
 
