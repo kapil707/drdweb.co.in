@@ -110,6 +110,7 @@
 
 					$tr_style = "";
 					$chemist_fafa[] = "";
+					
 					$process_name = "";
 					if(!empty($entry['sms']['process_name'])){
 						$process_name = $entry['sms']['process_name'];
@@ -117,9 +118,17 @@
 					if(!empty($entry['statement']['process_name'])){
 						$process_name = $entry['statement']['process_name'];
 					}
+
+					$process_value = "";
+					if(!empty($entry['sms']['process_name'])){
+						$process_value = $entry['sms']['process_value'];
+					}
+					if(!empty($entry['statement']['process_name'])){
+						$process_value = $entry['statement']['process_value'];
+					}
 					
 					$search_escaped = preg_quote($process_name, '/');
-					$highlighted_text = preg_replace('/(' . $search_escaped . ')/i', '<span style="background-color: yellow;">$1</span>', $entry['statement']['process_value']);
+					$highlighted_text = preg_replace('/(' . $search_escaped . ')/i', '<span style="background-color: yellow;">$1</span>', $process_value);
 					
 					$find = "find by ";
 					if(!empty($entry['statement']['find_invoice_chemist_id'])){
