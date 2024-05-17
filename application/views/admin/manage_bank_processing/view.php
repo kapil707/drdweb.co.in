@@ -34,6 +34,7 @@
 				<tbody>
 				<?php
 				print_r($row);
+				die();
 				$combined_records = array();
 				foreach ($result as $row) {
 
