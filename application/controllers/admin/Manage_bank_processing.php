@@ -32,7 +32,6 @@ class Manage_bank_processing extends CI_Controller {
 		$Page_tbl 	= $this->Page_tbl;
 		$page_controllers 	= $this->page_controllers;	
 		
-
 		$this->Admin_Model->permissions_check_or_set($Page_title,$Page_name,$user_type);		
 
 		$data['title1'] = $Page_title." || Edit";
@@ -256,7 +255,7 @@ class Manage_bank_processing extends CI_Controller {
 		$data['url_path'] = base_url()."uploads/$page_controllers/photo/";
 		$upload_path = "./uploads/$page_controllers/photo/";
 		
-		$query = $this->BankModel->select_query("SELECT * FROM `tbl_bank_processing`");
+		$query = $this->BankModel->select_query("SELECT upi_no, GROUP_CONCAT(date SEPARATOR ', ') AS date, GROUP_CONCAT(amount SEPARATOR ', ') AS amount, GROUP_CONCAT(orderid SEPARATOR ', ') AS orderid, GROUP_CONCAT(type SEPARATOR ', ') AS type FROM `tbl_bank_processing`");
 		$data["result"] = $query->result();
 
 		$this->load->view("admin/header_footer/header",$data);
