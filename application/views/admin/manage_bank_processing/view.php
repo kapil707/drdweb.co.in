@@ -179,7 +179,7 @@
 					/****************************************************** */
 					$status = "<b>Status</b><br>";
 					if(!empty($entry['statement']['status'])){
-						$status.= "Statement : ".$entry['statement']['status']."<br>";
+						$status.= "Bank : ".$entry['statement']['status']."<br>";
 					}
 					if(!empty($entry['sms']['status'])){
 						$status.= "SMS : ".$entry['sms']['status'];
@@ -188,7 +188,7 @@
 					/****************************************************** */
 					$date = "<b>Date</b><br>";
 					if(!empty($entry['statement']['date'])){
-						$date.= "Statement : ".$entry['statement']['date']."<br>";
+						$date.= "Bank : ".$entry['statement']['date']."<br>";
 					}
 					if(!empty($entry['sms']['date'])){
 						$date.= "SMS : ".$entry['sms']['date'];
@@ -197,7 +197,7 @@
 					/****************************************************** */
 					$time = "<b>Time</b><br>";
 					if(!empty($entry['statement']['time'])){
-						$time.= "Statement : ".$entry['statement']['time']."<br>";
+						$time.= "Bank : ".$entry['statement']['time']."<br>";
 					}
 					if(!empty($entry['sms']['time'])){
 						$time.= "SMS : ".$entry['sms']['time'];
@@ -207,7 +207,7 @@
 					/****************************************************** */
 					$orderid = "<b>Orderid</b> <br>";
 					if(!empty($entry['statement']['orderid'])){
-						$orderid.= "Statement : ".$entry['statement']['orderid']."<br>";
+						$orderid.= "Bank : ".$entry['statement']['orderid']."<br>";
 					}
 					if(!empty($entry['sms']['time'])){
 						$orderid.= "SMS : ".$entry['sms']['orderid'];
@@ -215,7 +215,7 @@
 					/****************************************************** */
 					$amount = "<b>Amount</b> <br>";
 					if(!empty($entry['statement']['amount'])){
-						$amount.= "Statement : ".$entry['statement']['amount']."<br>";
+						$amount.= "Bank : ".$entry['statement']['amount']."<br>";
 					}
 					if(!empty($entry['sms']['amount'])){
 						$amount.= "SMS : ".$entry['sms']['amount'];
@@ -224,7 +224,7 @@
 					/****************************************************** */
 					$received_from = "";
 					if(!empty($entry['statement']['received_from'])){
-						$received_from.= "Statement : ".$entry['statement']['received_from']."<br>";
+						$received_from.= "Bank : ".$entry['statement']['received_from']."<br>";
 					}
 					if(!empty($entry['sms']['received_from'])){
 						$received_from.= "SMS : ".$entry['sms']['received_from'];
