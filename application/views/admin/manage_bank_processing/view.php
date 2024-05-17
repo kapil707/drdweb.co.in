@@ -34,14 +34,6 @@
 				<tbody>
 				<?php
 				foreach ($result as $row) {
-
-					if($row->type=="SMS"){
-						$main_sms = array("upi_no"=>$row->upi_no);
-					}
-
-					if($row->type=="Statment"){
-						$main_statment = array("upi_no"=>$row->upi_no);
-					}
 					
 					$tr_style = "";
 					$chemist_fafa[] = "";
@@ -109,11 +101,25 @@
 						$done_chemist_id = $row->done_chemist_id;
 					}
 
-					// foreach($type as $newtype){
-					// 	if($newtype=="SMS"){
-					// 		$main_sms[] = array('type'=> 'SMS', 'amount' => 'value1');
-					// 	}
-					// }
+					if($row->type=="SMS"){
+						$main_sms = array(
+							"upi_no"=>$row->upi_no,
+							"status"=>$row->status,
+							"status_done"=>$row->status_done,
+							"upi_no"=>$row->upi_no,
+							"upi_no"=>$row->upi_no,
+							"upi_no"=>$row->upi_no,
+							"upi_no"=>$row->upi_no,
+							"upi_no"=>$row->upi_no,
+							"upi_no"=>$row->upi_no,
+							"upi_no"=>$row->upi_no
+
+						);
+					}
+
+					if($row->type=="Statment"){
+						$main_statment = array("upi_no"=>$row->upi_no);
+					}
 					?>
 
 					<tr class="tr_css_<?php echo $row->id; ?>" style="<?php echo $tr_style ?>">
