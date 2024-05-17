@@ -156,9 +156,17 @@
 						$find_chemist_id2 = $find_chemist_id_array[0];
 					}
 
+					$find_invoice_chemist_id = "";
+					if(!empty($entry['sms']['process_name'])){
+						$find_invoice_chemist_id = $entry['sms']['find_invoice_chemist_id'];
+					}
+					if(!empty($entry['statement']['process_name'])){
+						$find_invoice_chemist_id = $entry['statement']['find_invoice_chemist_id'];
+					}
+
 					$find_invoice_chemist_id1 = "";
 					$find_invoice_chemist_id2 = "";
-					$find_invoice_chemist_id_array = explode(",", $entry['statement']['find_invoice_chemist_id']);
+					$find_invoice_chemist_id_array = explode(",", $find_invoice_chemist_id);
 					foreach($find_invoice_chemist_id_array as $rows){
 						$find_invoice_chemist_id1.= $rows."<br>";
 
