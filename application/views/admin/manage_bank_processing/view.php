@@ -114,7 +114,9 @@
 					}*/
 					?>
 
-<?php foreach ($combined_records as $upi_no => $types): ?>
+<?php 
+print_r($combined_records);
+foreach ($combined_records as $upi_no => $types): ?>
             <tr>
                 <td><?php echo $upi_no; ?></td>
                 <td><?php echo isset($types->sms) ? $types->status : ''; ?></td>
