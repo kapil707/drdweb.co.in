@@ -126,6 +126,7 @@
 							<b>Amount : <?= ($row->amount); ?></b>
 						</td>
 						<td>
+							<?php print_r($newrow); ?>
 							<?php foreach($newrow as $banktype){
 								echo $banktype; 
 							} ?>
