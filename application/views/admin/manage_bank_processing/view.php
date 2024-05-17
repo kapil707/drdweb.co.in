@@ -110,7 +110,7 @@
 
 					$tr_style = "";
 					$chemist_fafa[] = "";
-					$search = $row_id;
+					$search = $entry['statement']['process_name'];
 					
 					$search_escaped = preg_quote($search, '/');
 					$highlighted_text = preg_replace('/(' . $search_escaped . ')/i', '<span style="background-color: yellow;">$1</span>', $entry['statement']['process_value']);
