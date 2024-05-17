@@ -292,9 +292,7 @@ class Manage_bank_processing extends CI_Controller {
 		$tbl = $Page_tbl;	
 
 		$this->load->view("admin/header_footer/header",$data);
-		$this->load->view("admin/$Page_view/view",$data);
-		$this->load->view("admin/header_footer/footer",$data);
-		$this->load->view("admin/$Page_view/footer2",$data);
+		$this->load->view("admin/$Page_view/test",$data);
 	}
 	public function edit($id)
 	{
