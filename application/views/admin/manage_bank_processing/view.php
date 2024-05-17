@@ -34,6 +34,13 @@
 				<tbody>
 				<?php
 				foreach ($result as $row) {
+					
+					$newrow = array();
+					$type = explode(",", $row->type);
+					foreach($type as $newtype){
+						$newrow[] = $newtype;
+					}
+					
 					$tr_style = "";
 					$chemist_fafa[] = "";
 					$search = $row->process_name;
@@ -119,8 +126,7 @@
 							<b>Amount : <?= ($row->amount); ?></b>
 						</td>
 						<td>
-							<?php $type = explode(",", $row->type);?>
-							<?php foreach($type as $banktype){
+							<?php foreach($newrow as $banktype){
 								echo $banktype; 
 							} ?>
 							
