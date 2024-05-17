@@ -343,7 +343,7 @@
 						<td>
 							<?= ($received_from); ?>
 
-							<input type="text" value="<?php echo $received_from1 ?>" class="text_received_from_<?= ($row_id); ?>">
+							<input type="hidden" value="<?php echo $received_from1 ?>" class="text_received_from_<?= ($row_id); ?>">
 
 							<input type="text" value="<?php // echo $row->find_chemist_id; ?>" class="text_received_from_chemist_id_<?= ($row_id); ?>" style="display:none">
 
