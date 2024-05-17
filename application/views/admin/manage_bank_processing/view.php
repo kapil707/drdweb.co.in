@@ -294,7 +294,13 @@
 						}
 					}
 
-					$find_by = $entry['statement']['find_by'];
+					$find_by = "";
+					if(!empty($entry['sms']['find_by'])){
+						$find_by = $entry['sms']['find_by'];
+					}
+					if(!empty($entry['statement']['find_by'])){
+						$find_by = $entry['statement']['find_by'];
+					}
 					
 					$whatsapp_body = $entry['statement']['whatsapp_body'];
 					$whatsapp_body2 = $entry['statement']['whatsapp_body2'];
