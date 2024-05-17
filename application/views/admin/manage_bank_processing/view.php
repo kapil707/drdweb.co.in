@@ -173,14 +173,55 @@
 						$tr_style = "background-color: #e8ffe2;";
 						$done_chemist_id = $entry['statement']['done_chemist_id'];
 					}
-					$row_id = $entry['statement']['id'];
-					$status = $entry['statement']['status'];
-					$date = $entry['statement']['date'];
-					$time = $entry['statement']['time'];
-					$upi_no = $entry['upi_no'];
-					$orderid = $entry['statement']['orderid'];
-					$amount = $entry['statement']['amount'];
 
+					$row_id = $entry['statement']['id'];
+					
+					/****************************************************** */
+					$status = "";
+					if(!empty($entry['statement']['status'])){
+						$status.= "Statement : ".$entry['statement']['status']."<br><br>";
+					}
+					if(!empty($entry['sms']['status'])){
+						$status.= "SMS : ".$entry['sms']['status'];
+					}
+
+					/****************************************************** */
+					$date = "";
+					if(!empty($entry['statement']['date'])){
+						$status.= "Statement : ".$entry['statement']['date']."<br><br>";
+					}
+					if(!empty($entry['sms']['date'])){
+						$status.= "SMS : ".$entry['sms']['date'];
+					}
+
+					/****************************************************** */
+					$time = "";
+					if(!empty($entry['statement']['time'])){
+						$time.= "Statement : ".$entry['statement']['time']."<br><br>";
+					}
+					if(!empty($entry['sms']['time'])){
+						$time.= "SMS : ".$entry['sms']['time'];
+					}
+					/****************************************************** */
+					$upi_no = $entry['upi_no'];
+					/****************************************************** */
+					$orderid = "";
+					if(!empty($entry['statement']['orderid'])){
+						$orderid.= "Statement : ".$entry['statement']['orderid']."<br><br>";
+					}
+					if(!empty($entry['sms']['time'])){
+						$orderid.= "SMS : ".$entry['sms']['orderid'];
+					}
+					/****************************************************** */
+					$amount = "";
+					if(!empty($entry['statement']['amount'])){
+						$amount.= "Statement (Amount) : ".$entry['statement']['amount']."<br><br>";
+					}
+					if(!empty($entry['sms']['amount'])){
+						$amount.= "SMS (Amount) : ".$entry['sms']['amount'];
+					}
+
+					/****************************************************** */
 					$received_from = "";
 					if(!empty($entry['statement']['received_from'])){
 						$received_from.= "Statement : ".$entry['statement']['received_from']."<br><br>";
@@ -188,6 +229,8 @@
 					if(!empty($entry['sms']['received_from'])){
 						$received_from.= "SMS : ".$entry['sms']['received_from'];
 					}
+
+
 					$find_by = $entry['statement']['find_by'];
 					
 					$whatsapp_body = $entry['statement']['whatsapp_body'];
@@ -201,19 +244,20 @@
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
 						<td><?php echo $row_id; ?> </td>
 						<td>
-							Status : <?= ($status); ?>
+							<?= ($status); ?>
 							<br><br>
-							Date : <?= ($date); ?>
+							<?= ($date); ?>
+							<br><br>
+							<?= ($time); ?>
 							<br><br>
 							Upi No : <?= $upi_no; ?>
 							<br><br>
 								
 							<div style="word-wrap:break-word;width:200px;">
-								Orderid : <?= $orderid; ?>
+								<?= $orderid; ?>
 							</div>
-
 							<br><br>
-							<b>Amount : <?= $amount; ?></b>
+							<b><?= $amount; ?></b>
 						</td>
 						<td>
 							<?php /* foreach($newrow as $banktype){
