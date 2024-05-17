@@ -182,7 +182,7 @@
 						$status.= "Bank : ".$entry['statement']['status']."<br>";
 					}
 					if(!empty($entry['sms']['status'])){
-						$status.= "SMS : ".$entry['sms']['status'];
+						$status.= "SMS  : ".$entry['sms']['status'];
 					}
 
 					/****************************************************** */
@@ -191,7 +191,7 @@
 						$date.= "Bank : ".$entry['statement']['date']."<br>";
 					}
 					if(!empty($entry['sms']['date'])){
-						$date.= "SMS : ".$entry['sms']['date'];
+						$date.= "SMS  : ".$entry['sms']['date'];
 					}
 
 					/****************************************************** */
@@ -200,7 +200,7 @@
 						$time.= "Bank : ".$entry['statement']['time']."<br>";
 					}
 					if(!empty($entry['sms']['time'])){
-						$time.= "SMS : ".$entry['sms']['time'];
+						$time.= "SMS  : ".$entry['sms']['time'];
 					}
 					/****************************************************** */
 					$upi_no = $entry['upi_no'];
@@ -210,7 +210,7 @@
 						$orderid.= "Bank : ".$entry['statement']['orderid']."<br>";
 					}
 					if(!empty($entry['sms']['time'])){
-						$orderid.= "SMS : ".$entry['sms']['orderid'];
+						$orderid.= "SMS  : ".$entry['sms']['orderid'];
 					}
 					/****************************************************** */
 					$amount = "<b>Amount</b> <br>";
@@ -218,7 +218,7 @@
 						$amount.= "Bank : ".$entry['statement']['amount']."<br>";
 					}
 					if(!empty($entry['sms']['amount'])){
-						$amount.= "SMS : ".$entry['sms']['amount'];
+						$amount.= "SMS  : ".$entry['sms']['amount'];
 					}
 
 					/****************************************************** */
@@ -227,7 +227,7 @@
 						$received_from.= "Bank : ".$entry['statement']['received_from']."<br>";
 					}
 					if(!empty($entry['sms']['received_from'])){
-						$received_from.= "SMS : ".$entry['sms']['received_from'];
+						$received_from.= "SMS  : ".$entry['sms']['received_from'];
 					}
 
 
