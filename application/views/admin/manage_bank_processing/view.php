@@ -33,9 +33,20 @@
                 </thead>
 				<tbody>
 				<?php
+				$combined_records = array();
 				foreach ($result as $row) {
+
+					$upi_no = $row->upi_no;
+					$type = strtolower($row->type);
 					
-					$tr_style = "";
+					if (!isset($combined_records[$upi_no])) {
+						$combined_records[$upi_no] = array();
+					}
+					
+					$combined_records[$upi_no][$type] = $row;
+				}
+					
+					/*$tr_style = "";
 					$chemist_fafa[] = "";
 					$search = $row->process_name;
 					
@@ -100,56 +111,34 @@
 						$tr_style = "background-color: #e8ffe2;";
 						$done_chemist_id = $row->done_chemist_id;
 					}
-
-					if($row->type=="SMS"){
-						$main_sms = array(
-							"status"=>$row->status,
-							"amount"=>$row->amount,
-							"date"=>$row->date,
-							"time"=>$row->time,
-							"upi_no"=>$row->upi_no,
-							"orderid"=>$row->orderid,
-							"_id"=>$row->_id,
-							"find_by"=>$row->find_by,
-							"find_chemist_id"=>$row->find_chemist_id,
-							"received_from"=>$row->received_from,
-							"process_value"=>$row->process_value,
-							"process_name"=>$row->process_name,
-							"find_invoice_chemist_id"=>$row->find_invoice_chemist_id,
-							"done_chemist_id"=>$row->done_chemist_id,
-							"done_status"=>$row->done_status,
-							"whatsapp_id"=>$row->whatsapp_id,
-							"whatsapp_body"=>$row->whatsapp_body,
-							"whatsapp_image"=>$row->whatsapp_image,
-							"whatsapp_body2"=>$row->whatsapp_body2,
-						);
-					}
-
-					if($row->type=="Statment"){
-						$main_statment = array(
-							"status"=>$row->status,
-							"amount"=>$row->amount,
-							"date"=>$row->date,
-							"time"=>$row->time,
-							"upi_no"=>$row->upi_no,
-							"orderid"=>$row->orderid,
-							"_id"=>$row->_id,
-							"find_by"=>$row->find_by,
-							"find_chemist_id"=>$row->find_chemist_id,
-							"received_from"=>$row->received_from,
-							"process_value"=>$row->process_value,
-							"process_name"=>$row->process_name,
-							"find_invoice_chemist_id"=>$row->find_invoice_chemist_id,
-							"done_chemist_id"=>$row->done_chemist_id,
-							"done_status"=>$row->done_status,
-							"whatsapp_id"=>$row->whatsapp_id,
-							"whatsapp_body"=>$row->whatsapp_body,
-							"whatsapp_image"=>$row->whatsapp_image,
-							"whatsapp_body2"=>$row->whatsapp_body2,
-						);
-					}
+					}*/
 					?>
 
+<?php foreach ($combined_records as $upi_no => $types): ?>
+            <tr>
+                <td><?php echo $upi_no; ?></td>
+                <td><?php echo isset($types['sms']) ? $types['sms']['status'] : ''; ?></td>
+                <td><?php echo isset($types['sms']) ? $types['sms']['amount'] : ''; ?></td>
+                <td><?php echo isset($types['sms']) ? $types['sms']['date'] : ''; ?></td>
+                <td><?php echo isset($types['sms']) ? $types['sms']['time'] : ''; ?></td>
+                <td><?php echo isset($types['sms']) ? $types['sms']['orderid'] : ''; ?></td>
+                <td><?php echo isset($types['sms']) ? $types['sms']['received_from'] : ''; ?></td>
+                <td><?php echo isset($types['sms']) ? $types['sms']['process_name'] : ''; ?></td>
+                <td><?php echo isset($types['sms']) ? $types['sms']['find_invoice_chemist_id'] : ''; ?></td>
+                <td><?php echo isset($types['sms']) ? $types['sms']['whatsapp_body'] : ''; ?></td>
+                <td><?php echo isset($types['statement']) ? $types['statement']['status'] : ''; ?></td>
+                <td><?php echo isset($types['statement']) ? $types['statement']['amount'] : ''; ?></td>
+                <td><?php echo isset($types['statement']) ? $types['statement']['date'] : ''; ?></td>
+                <td><?php echo isset($types['statement']) ? $types['statement']['time'] : ''; ?></td>
+                <td><?php echo isset($types['statement']) ? $types['statement']['orderid'] : ''; ?></td>
+                <td><?php echo isset($types['statement']) ? $types['statement']['received_from'] : ''; ?></td>
+                <td><?php echo isset($types['statement']) ? $types['statement']['process_name'] : ''; ?></td>
+                <td><?php echo isset($types['statement']) ? $types['statement']['find_invoice_chemist_id'] : ''; ?></td>
+                <td><?php echo isset($types['statement']) ? $types['statement']['whatsapp_body'] : ''; ?></td>
+            </tr>
+        <?php endforeach; ?>
+
+<?php die(); ?>
 					<tr class="tr_css_<?php echo $row->id; ?>" style="<?php echo $tr_style ?>">
 						<td><?php echo $row->id; ?> </td>
 						<td>
