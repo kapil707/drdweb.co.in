@@ -168,7 +168,7 @@
 							}
 						}
 					}
-
+					$done_status = $entry['statement']['done_status'];
 					if($done_status==1){
 						$tr_style = "background-color: #e8ffe2;";
 						$done_chemist_id = $entry['statement']['done_chemist_id'];
