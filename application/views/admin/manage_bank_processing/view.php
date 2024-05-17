@@ -177,7 +177,7 @@
 					$row_id = $entry['statement']['id'];
 					
 					/****************************************************** */
-					$status = "Status <br>";
+					$status = "<b>Status</b><br>";
 					if(!empty($entry['statement']['status'])){
 						$status.= "Statement : ".$entry['statement']['status']."<br>";
 					}
@@ -186,7 +186,7 @@
 					}
 
 					/****************************************************** */
-					$date = "Date <br>";
+					$date = "<b>Date</b><br>";
 					if(!empty($entry['statement']['date'])){
 						$date.= "Statement : ".$entry['statement']['date']."<br>";
 					}
@@ -195,7 +195,7 @@
 					}
 
 					/****************************************************** */
-					$time = "Time <br>";
+					$time = "<b>Time</b><br>";
 					if(!empty($entry['statement']['time'])){
 						$time.= "Statement : ".$entry['statement']['time']."<br>";
 					}
@@ -205,7 +205,7 @@
 					/****************************************************** */
 					$upi_no = $entry['upi_no'];
 					/****************************************************** */
-					$orderid = "";
+					$orderid = "<b>Orderid</b> <br>";
 					if(!empty($entry['statement']['orderid'])){
 						$orderid.= "Statement : ".$entry['statement']['orderid']."<br><br>";
 					}
@@ -213,12 +213,12 @@
 						$orderid.= "SMS : ".$entry['sms']['orderid'];
 					}
 					/****************************************************** */
-					$amount = "";
+					$amount = "<b>Amount</b> <br>";
 					if(!empty($entry['statement']['amount'])){
-						$amount.= "Statement (Amount) : ".$entry['statement']['amount']."<br><br>";
+						$amount.= "Statement : ".$entry['statement']['amount']."<br><br>";
 					}
 					if(!empty($entry['sms']['amount'])){
-						$amount.= "SMS (Amount) : ".$entry['sms']['amount'];
+						$amount.= "SMS : ".$entry['sms']['amount'];
 					}
 
 					/****************************************************** */
