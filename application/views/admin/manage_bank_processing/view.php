@@ -317,7 +317,6 @@
 					if(!empty($entry['statement']['whatsapp_body'])){
 						$whatsapp_body2 = $entry['statement']['whatsapp_body2'];
 					}
-					
 					?>
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
 						<td><?php echo $row_id; ?> </td>
