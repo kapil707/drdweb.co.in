@@ -174,7 +174,7 @@
 						$done_chemist_id = $entry['statement']['done_chemist_id'];
 					}
 					?>
-					<tr class="tr_css_<?php echo $$entry['statement']['id']; ?>" style="<?php echo $tr_style ?>">
+					<tr class="tr_css_<?php echo $entry['statement']['id']; ?>" style="<?php echo $tr_style ?>">
 						<td><?php echo $entry['statement']['id']; ?> </td>
 						<td>
 							Status : <?= ($entry['statement']['status']); ?>
