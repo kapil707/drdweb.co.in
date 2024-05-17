@@ -110,6 +110,14 @@
 
 					$tr_style = "";
 					$chemist_fafa[] = "";
+
+					$row_id = "";
+					if(!empty($entry['sms']['id'])){
+						$row_id = $entry['sms']['id'];
+					}
+					if(!empty($entry['statement']['id'])){
+						$row_id = $entry['statement']['id'];
+					}
 					
 					$process_name = "";
 					if(!empty($entry['sms']['process_name'])){
@@ -220,8 +228,6 @@
 						$tr_style = "background-color: #e8ffe2;";
 						$done_chemist_id = $my_done_chemist_id;
 					}
-
-					$row_id = $entry['statement']['id'];
 					
 					/****************************************************** */
 					$status = "<b>Status</b><br>";
