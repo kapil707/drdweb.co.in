@@ -117,24 +117,16 @@
 <?php foreach ($combined_records as $upi_no => $types): ?>
             <tr>
                 <td><?php echo $upi_no; ?></td>
-                <td><?php echo isset($types['sms']) ? $types['sms']['status'] : ''; ?></td>
-                <td><?php echo isset($types['sms']) ? $types['sms']['amount'] : ''; ?></td>
-                <td><?php echo isset($types['sms']) ? $types['sms']['date'] : ''; ?></td>
-                <td><?php echo isset($types['sms']) ? $types['sms']['time'] : ''; ?></td>
-                <td><?php echo isset($types['sms']) ? $types['sms']['orderid'] : ''; ?></td>
-                <td><?php echo isset($types['sms']) ? $types['sms']['received_from'] : ''; ?></td>
-                <td><?php echo isset($types['sms']) ? $types['sms']['process_name'] : ''; ?></td>
-                <td><?php echo isset($types['sms']) ? $types['sms']['find_invoice_chemist_id'] : ''; ?></td>
-                <td><?php echo isset($types['sms']) ? $types['sms']['whatsapp_body'] : ''; ?></td>
-                <td><?php echo isset($types['statement']) ? $types['statement']['status'] : ''; ?></td>
-                <td><?php echo isset($types['statement']) ? $types['statement']['amount'] : ''; ?></td>
-                <td><?php echo isset($types['statement']) ? $types['statement']['date'] : ''; ?></td>
-                <td><?php echo isset($types['statement']) ? $types['statement']['time'] : ''; ?></td>
-                <td><?php echo isset($types['statement']) ? $types['statement']['orderid'] : ''; ?></td>
-                <td><?php echo isset($types['statement']) ? $types['statement']['received_from'] : ''; ?></td>
-                <td><?php echo isset($types['statement']) ? $types['statement']['process_name'] : ''; ?></td>
-                <td><?php echo isset($types['statement']) ? $types['statement']['find_invoice_chemist_id'] : ''; ?></td>
-                <td><?php echo isset($types['statement']) ? $types['statement']['whatsapp_body'] : ''; ?></td>
+                <td><?php echo isset($types->sms) ? $types->sms['status'] : ''; ?></td>
+                <td><?php echo isset($types->sms) ? $types->sms['amount'] : ''; ?></td>
+                <td><?php echo isset($types->sms) ? $types->sms['date'] : ''; ?></td>
+                <td><?php echo isset($types->sms) ? $types->sms['time'] : ''; ?></td>
+                <td><?php echo isset($types->sms) ? $types->sms['orderid'] : ''; ?></td>
+                <td><?php echo isset($types->sms) ? $types->sms['received_from'] : ''; ?></td>
+                <td><?php echo isset($types->sms) ? $types->sms['process_name'] : ''; ?></td>
+                <td><?php echo isset($types->sms) ? $types->sms['find_invoice_chemist_id'] : ''; ?></td>
+                <td><?php echo isset($types->sms) ? $types->sms['whatsapp_body'] : ''; ?></td>
+                
             </tr>
         <?php endforeach; ?>
 
