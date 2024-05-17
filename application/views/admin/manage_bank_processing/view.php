@@ -291,6 +291,10 @@
 					}else{
 						if(!empty($entry['statement']['received_from'])){
 							$received_from1 = $entry['statement']['received_from'];
+						}else{
+							if(!empty($entry['sms']['received_from'])){
+								$received_from1 = $entry['sms']['received_from'];
+							}
 						}
 					}
 
@@ -339,7 +343,7 @@
 						<td>
 							<?= ($received_from); ?>
 
-							<input type="hidden" value="<?php echo $received_from1 ?>" class="text_received_from_<?= ($row_id); ?>">
+							<input type="text" value="<?php echo $received_from1 ?>" class="text_received_from_<?= ($row_id); ?>">
 
 							<input type="text" value="<?php // echo $row->find_chemist_id; ?>" class="text_received_from_chemist_id_<?= ($row_id); ?>" style="display:none">
 
