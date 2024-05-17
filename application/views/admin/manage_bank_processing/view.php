@@ -301,10 +301,23 @@
 					if(!empty($entry['statement']['find_by'])){
 						$find_by = $entry['statement']['find_by'];
 					}
+
+					$whatsapp_body = "";
+					if(!empty($entry['sms']['whatsapp_body'])){
+						$whatsapp_body = $entry['sms']['whatsapp_body'];
+					}
+					if(!empty($entry['statement']['whatsapp_body'])){
+						$whatsapp_body = $entry['statement']['whatsapp_body'];
+					}
+
+					$whatsapp_body2 = "";
+					if(!empty($entry['sms']['whatsapp_body2'])){
+						$whatsapp_body2 = $entry['sms']['whatsapp_body2'];
+					}
+					if(!empty($entry['statement']['whatsapp_body'])){
+						$whatsapp_body2 = $entry['statement']['whatsapp_body2'];
+					}
 					
-					$whatsapp_body = $entry['statement']['whatsapp_body'];
-					$whatsapp_body2 = $entry['statement']['whatsapp_body2'];
-					$done_status = $entry['statement']['done_status'];
 					?>
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
 						<td><?php echo $row_id; ?> </td>
