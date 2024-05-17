@@ -119,7 +119,13 @@
 							<b>Amount : <?= ($row->amount); ?></b>
 						</td>
 						<td>
-							<?= ($row->type); ?> : <?= ($row->received_from); ?>
+							<?php $type = explode(",", $row->type);?>
+							<?php foreach($type as $banktype){
+								echo $banktype; 
+							} ?>
+							
+							
+							: <?= ($row->received_from); ?>
 
 							<input type="hidden" value="<?php echo $row->received_from ?>" class="text_received_from_<?php echo $row->id; ?>">
 
