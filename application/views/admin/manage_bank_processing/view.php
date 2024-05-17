@@ -110,9 +110,6 @@
 
 					$tr_style = "";
 					$chemist_fafa[] = "";
-
-					if()
-
 					$search = $entry['statement']['process_name'];
 					
 					$search_escaped = preg_quote($search, '/');
