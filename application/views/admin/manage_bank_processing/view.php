@@ -102,7 +102,7 @@
 				// 	echo "<tr>";
 				// 	echo "<td>{$entry['upi_no']}</td>";
 				// 	echo "<td>{$entry['sms']['id']}</td>";
-				// 	echo "<td>{$entry['statement']['id']}</td>";
+				// 	echo "<td>{$row_id}</td>";
 
 				// }
 				
@@ -110,7 +110,7 @@
 
 					$tr_style = "";
 					$chemist_fafa[] = "";
-					$search = $entry['statement']['id'];
+					$search = $row_id;
 					
 					$search_escaped = preg_quote($search, '/');
 					$highlighted_text = preg_replace('/(' . $search_escaped . ')/i', '<span style="background-color: yellow;">$1</span>', $entry['statement']['process_value']);
@@ -169,47 +169,60 @@
 						}
 					}
 
-					if($entry['statement']['done_status']==1){
+					if($done_status==1){
 						$tr_style = "background-color: #e8ffe2;";
 						$done_chemist_id = $entry['statement']['done_chemist_id'];
 					}
+					$row_id = $entry['statement']['id'];
+					$status = $entry['statement']['status'];
+					$date = $entry['statement']['date'];
+					$time = $entry['statement']['time'];
+					$upi_no = $entry['upi_no'];
+					$orderid = $entry['statement']['orderid'];
+					$amount = $entry['statement']['amount'];
+					$received_from = $entry['statement']['received_from'];
+					$find_by = $entry['statement']['find_by'];
+					$find_by = $entry['statement']['find_by'];
+					$whatsapp_body = $entry['statement']['whatsapp_body'];
+					$whatsapp_body2 = $entry['statement']['whatsapp_body2'];
+					$done_status = $entry['statement']['done_status'];
 					?>
-					<tr class="tr_css_<?php echo $entry['statement']['id']; ?>" style="<?php echo $tr_style ?>">
-						<td><?php echo $entry['statement']['id']; ?> </td>
+					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
+						<td><?php echo $row_id; ?> </td>
 						<td>
-							Status : <?= ($entry['statement']['status']); ?>
+							Status : <?= ($status); ?>
 							<br><br>
-							Date : <?= ($entry['statement']['time']); ?>
+							Date : <?= ($date); ?>
 							<br><br>
-							Upi No : <?= $entry['upi_no']; ?>
+							Upi No : <?= $upi_no; ?>
 							<br><br>
 								
 							<div style="word-wrap:break-word;width:200px;">
-								Orderid : <?= ($entry['statement']['orderid']); ?>
+								Orderid : <?= $orderid; ?>
 							</div>
 
 							<br><br>
-							<b>Amount : <?= ($entry['statement']['amount']); ?></b>
+							<b>Amount : <?= $amount; ?></b>
 						</td>
 						<td>
 							<?php /* foreach($newrow as $banktype){
 								echo $banktype; 
 							} */?>
 
-							: <?= ($entry['statement']['received_from']); ?>
+							: <?= ($received_from); ?>
 
-							<input type="hidden" value="<?php echo $row->received_from ?>" class="text_received_from_<?= ($entry['statement']['id']); ?>">
+							<input type="hidden" value="<?php echo $row->received_from ?>" class="text_received_from_<?= ($row_id); ?>">
 
-							<input type="text" value="<?php echo $row->find_chemist_id; ?>" class="text_received_from_chemist_id_<?= ($entry['statement']['id']); ?>" style="display:none">
+							<input type="text" value="<?php echo $row->find_chemist_id; ?>" class="text_received_from_chemist_id_<?= ($row_id); ?>" style="display:none">
 
-							<i class="fa fa-check add_received_from_chemist_id_<?= ($entry['statement']['id']); ?>" aria-hidden="true" onclick="add_received_from_chemist_id('<?= ($entry['statement']['id']); ?>')" style="display:none"></i>
+							<i class="fa fa-check add_received_from_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="add_received_from_chemist_id('<?= ($row_id); ?>')" style="display:none"></i>
 
-							<i class="fa fa-times cancel_received_from_chemist_id_<?= ($entry['statement']['id']); ?>" aria-hidden="true" onclick="cancel_received_from_chemist_id('<?= ($entry['statement']['id']); ?>')" style="display:none"></i>
+							<i class="fa fa-times cancel_received_from_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="cancel_received_from_chemist_id('<?= ($row_id); ?>')" style="display:none"></i>
 							
-							<i class="fa fa-pencil edit_received_from_chemist_id_<?= ($entry['statement']['id']); ?>" aria-hidden="true" onclick="edit_received_from_chemist_id('<?= ($entry['statement']['id']); ?>')"></i>
+							<i class="fa fa-pencil edit_received_from_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_received_from_chemist_id('<?= ($row_id); ?>')"></i>
 							<br><br>
 							<div style="word-wrap:break-word;width:250px;">
-								Find : <?= ($highlighted_text); ?> || <b>(<?= ($row->find_by); ?>)</b>
+								Find : <?= ($highlighted_text); ?> || <b>(<?= ($find_by); ?>)</b>
 							</div>
 							<br><br>
 							<b>Chemist : </b>
@@ -228,20 +241,20 @@
 							<b>Invoice : </b>
 							<br><br>
 							<b>WhatsApp : </b>
-							<?= ($entry['statement']['whatsapp_body']); ?>
+							<?= ($whatsapp_body); ?>
 						</td>
 						<td><?= ($find_invoice_chemist_id1); ?></td>
-						<td><?= ($entry['statement']['whatsapp_body2']); ?></td>
+						<td><?= ($whatsapp_body2); ?></td>
 						<td class="display: flex;">
 							<b><?= ($find); ?></b>
 							<br>
-							<input type="text" value="<?php echo $done_chemist_id ?>" class="text_done_chemist_id_<?= ($entry['statement']['id']); ?>" style="<?php if($entry['statement']['done_status']==1) { ?>display:none;<?php } ?> float: left; width: 100px;">
+							<input type="text" value="<?php echo $done_chemist_id ?>" class="text_done_chemist_id_<?= ($row_id); ?>" style="<?php if($done_status==1) { ?>display:none;<?php } ?> float: left; width: 100px;">
 							
-							<i class="fa fa-check add_done_chemist_id_<?= ($entry['statement']['id']); ?>" aria-hidden="true" onclick="add_done_chemist_id('<?= ($entry['statement']['id']); ?>')" style="<?php if($entry['statement']['done_status']==1) { ?>display:none;<?php } ?> float: left;font-size: 20px;"></i>
+							<i class="fa fa-check add_done_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="add_done_chemist_id('<?= ($row_id); ?>')" style="<?php if($done_status==1) { ?>display:none;<?php } ?> float: left;font-size: 20px;"></i>
 
-							<span class="span_done_chemist_id_<?= ($entry['statement']['id']); ?>" <?php if($entry['statement']['done_status']==0 || $entry['statement']['done_status']==2) { ?>style="display:none" <?php } ?>><?php echo $done_chemist_id ?></span>
+							<span class="span_done_chemist_id_<?= ($row_id); ?>" <?php if($done_status==0 || $done_status==2) { ?>style="display:none" <?php } ?>><?php echo $done_chemist_id ?></span>
 
-							<i class="fa fa-pencil edit_done_chemist_id_<?= ($entry['statement']['id']); ?>" aria-hidden="true" onclick="edit_done_chemist_id('<?= ($entry['statement']['id']); ?>')" <?php if($entry['statement']['done_status']==0 || $entry['statement']['done_status']==2) { ?>style="display:none" <?php } ?>></i>
+							<i class="fa fa-pencil edit_done_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_done_chemist_id('<?= ($row_id); ?>')" <?php if($done_status==0 || $done_status==2) { ?>style="display:none" <?php } ?>></i>
 						</td>
 					</tr>
 					<?php } ?>
