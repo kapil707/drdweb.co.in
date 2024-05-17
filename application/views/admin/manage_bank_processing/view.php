@@ -284,7 +284,7 @@
 					}
 
 					$received_from1 = "";
-					if(!empty($entry['statement']['received_from']) && !empty($entry['statement']['received_from'])){
+					if(!empty($entry['statement']['received_from']) && !empty($entry['sms']['received_from'])){
 						if(strtolower($entry['statement']['received_from']) == strtolower($entry['sms']['received_from'])){
 							$received_from1 = $entry['sms']['received_from'];
 						}
