@@ -106,7 +106,7 @@
 						<td>
 							Status : <?= ($row->status); ?>
 							<br><br>
-							Date : <?= ($row->date); ?>
+							Date : <?= ($row->time); ?>
 							<br><br>
 							Upi No : <?= ($row->upi_no); ?>
 							<br><br>
