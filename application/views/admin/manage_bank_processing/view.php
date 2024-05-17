@@ -140,9 +140,17 @@
 					if(empty($entry['statement']['find_invoice_chemist_id']) && empty($entry['statement']['find_chemist_id'])){
 						$find = "N/A";
 					}
+
+					$find_chemist_id = "";
+					if(!empty($entry['sms']['process_name'])){
+						$find_chemist_id = $entry['sms']['find_chemist_id'];
+					}
+					if(!empty($entry['statement']['process_name'])){
+						$find_chemist_id = $entry['statement']['find_chemist_id'];
+					}
 					
 					$find_chemist_id2 = "";
-					$find_chemist_id_array = explode(",", $entry['statement']['find_chemist_id']);
+					$find_chemist_id_array = explode(",", $find_chemist_id);
 					$find_chemist_id_array = array_unique($find_chemist_id_array);					
 					if(count($find_chemist_id_array)==1){
 						$find_chemist_id2 = $find_chemist_id_array[0];
