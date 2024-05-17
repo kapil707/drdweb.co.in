@@ -233,11 +233,11 @@
 					$received_from1 = "";
 					if(!empty($entry['statement']['received_from']) && !empty($entry['statement']['received_from'])){
 						if(strtolower($entry['statement']['received_from']) == strtolower($entry['sms']['received_from'])){
-							$received_from1 = strtolower($entry['sms']['received_from'];
+							$received_from1 = $entry['sms']['received_from'];
 						}
 					}else{
 						if(!empty($entry['statement']['received_from'])){
-							$received_from1 = strtolower($entry['statement']['received_from'];
+							$received_from1 = $entry['statement']['received_from'];
 						}
 					}
 
