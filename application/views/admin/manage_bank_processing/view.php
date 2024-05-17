@@ -183,7 +183,7 @@
 
 					$received_from = "";
 					if(!empty($entry['statement']['received_from'])){
-						$received_from.= "Statement : ".$entry['statement']['received_from']."<br>";
+						$received_from.= "Statement : ".$entry['statement']['received_from']."<br><br>";
 					}
 					if(!empty($entry['sms']['received_from'])){
 						$received_from.= "SMS : ".$entry['sms']['received_from'];
