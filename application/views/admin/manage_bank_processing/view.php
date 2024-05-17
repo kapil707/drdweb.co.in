@@ -177,27 +177,27 @@
 					$row_id = $entry['statement']['id'];
 					
 					/****************************************************** */
-					$status = "";
+					$status = "Status <br>";
 					if(!empty($entry['statement']['status'])){
-						$status.= "Statement : ".$entry['statement']['status']."<br><br>";
+						$status.= "Statement : ".$entry['statement']['status']."<br>";
 					}
 					if(!empty($entry['sms']['status'])){
 						$status.= "SMS : ".$entry['sms']['status'];
 					}
 
 					/****************************************************** */
-					$date = "";
+					$date = "Date <br>";
 					if(!empty($entry['statement']['date'])){
-						$status.= "Statement : ".$entry['statement']['date']."<br><br>";
+						$date.= "Statement : ".$entry['statement']['date']."<br>";
 					}
 					if(!empty($entry['sms']['date'])){
-						$status.= "SMS : ".$entry['sms']['date'];
+						$date.= "SMS : ".$entry['sms']['date'];
 					}
 
 					/****************************************************** */
-					$time = "";
+					$time = "Time <br>";
 					if(!empty($entry['statement']['time'])){
-						$time.= "Statement : ".$entry['statement']['time']."<br><br>";
+						$time.= "Statement : ".$entry['statement']['time']."<br>";
 					}
 					if(!empty($entry['sms']['time'])){
 						$time.= "SMS : ".$entry['sms']['time'];
