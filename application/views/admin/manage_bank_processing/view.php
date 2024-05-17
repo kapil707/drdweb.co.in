@@ -101,7 +101,7 @@
 				foreach ($processed_data as $entry) {
 					echo "<tr>";
 					echo "<td>{$entry['upi_no']}</td>";
-					echo "<td>{$entry['sms']['id']}</td>
+					echo "<td>{$entry['sms']['id']}</td>";
 
 				}
 				die();
