@@ -33,7 +33,45 @@
                 </thead>
 				<tbody>
 				<?php
-				print_r($result);
+				function split_csv_values($value) {
+					return array_map('trim', explode(',', $value));
+				}
+				
+				// Process the data
+				$processed_data = [];
+				
+				foreach ($result as $item) {
+					$types = split_csv_values($item->type);
+					foreach ($types as $index => $type) {
+						$type = strtolower(trim($type));
+						if (!isset($processed_data[$item->upi_no])) {
+							$processed_data[$item->upi_no] = [];
+						}
+						$processed_data[$item->upi_no][$type] = (object)[
+							"upi_no" => $item->upi_no,
+							"id" => split_csv_values($item->id)[$index] ?? '',
+							"find_by" => split_csv_values($item->find_by)[$index] ?? '',
+							"whatsapp_body" => split_csv_values($item->whatsapp_body)[$index] ?? '',
+							"whatsapp_body2" => split_csv_values($item->whatsapp_body2)[$index] ?? '',
+							"process_name" => split_csv_values($item->process_name)[$index] ?? '',
+							"date" => split_csv_values($item->date)[$index] ?? '',
+							"time" => split_csv_values($item->time)[$index] ?? '',
+							"process_value" => split_csv_values($item->process_value)[$index] ?? '',
+							"find_chemist_id" => split_csv_values($item->find_chemist_id)[$index] ?? '',
+							"find_invoice_chemist_id" => split_csv_values($item->find_invoice_chemist_id)[$index] ?? '',
+							"done_status" => split_csv_values($item->done_status)[$index] ?? '',
+							"status" => split_csv_values($item->status)[$index] ?? '',
+							"received_from" => split_csv_values($item->received_from)[$index] ?? '',
+							"amount" => split_csv_values($item->amount)[$index] ?? '',
+							"orderid" => split_csv_values($item->orderid)[$index] ?? ''
+						];
+					}
+				}
+				
+				// Display the processed data
+				echo "<pre>";
+				print_r($processed_data);
+				echo "</pre>";
 				die();
 				$combined_records = array();
 				foreach ($result as $row) {
