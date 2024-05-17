@@ -109,11 +109,11 @@
 						$done_chemist_id = $row->done_chemist_id;
 					}
 
-					foreach($type as $newtype){
-						if($newtype=="SMS"){
-							$main_sms[] = array('type'=> 'SMS', 'amount' => 'value1');
-						}
-					}
+					// foreach($type as $newtype){
+					// 	if($newtype=="SMS"){
+					// 		$main_sms[] = array('type'=> 'SMS', 'amount' => 'value1');
+					// 	}
+					// }
 					?>
 
 					<tr class="tr_css_<?php echo $row->id; ?>" style="<?php echo $tr_style ?>">
