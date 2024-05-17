@@ -72,6 +72,35 @@
 				echo "<pre>";
 				print_r($processed_data);
 				echo "</pre>";
+
+				echo "<table border='1'>";
+echo "<tr><th>UPI No</th><th>Type</th><th>ID</th><th>Find By</th><th>WhatsApp Body</th><th>WhatsApp Body2</th><th>Process Name</th><th>Date</th><th>Time</th><th>Process Value</th><th>Find Chemist ID</th><th>Find Invoice Chemist ID</th><th>Done Status</th><th>Status</th><th>Received From</th><th>Amount</th><th>Order ID</th></tr>";
+
+foreach ($processed_data as $upi_no => $types) {
+    foreach ($types as $type => $info) {
+        echo "<tr>";
+        echo "<td>{$info->upi_no}</td>";
+        echo "<td>{$type}</td>";
+        echo "<td>{$info->id}</td>";
+        echo "<td>{$info->find_by}</td>";
+        echo "<td>{$info->whatsapp_body}</td>";
+        echo "<td>{$info->whatsapp_body2}</td>";
+        echo "<td>{$info->process_name}</td>";
+        echo "<td>{$info->date}</td>";
+        echo "<td>{$info->time}</td>";
+        echo "<td>{$info->process_value}</td>";
+        echo "<td>{$info->find_chemist_id}</td>";
+        echo "<td>{$info->find_invoice_chemist_id}</td>";
+        echo "<td>{$info->done_status}</td>";
+        echo "<td>{$info->status}</td>";
+        echo "<td>{$info->received_from}</td>";
+        echo "<td>{$info->amount}</td>";
+        echo "<td>{$info->orderid}</td>";
+        echo "</tr>";
+    }
+}
+
+echo "</table>";
 				die();
 				$combined_records = array();
 				foreach ($result as $row) {
