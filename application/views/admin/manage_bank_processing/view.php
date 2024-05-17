@@ -35,10 +35,12 @@
 				<?php
 				foreach ($result as $row) {
 					
-					$newrow = array();
+					$maindata = array();
 					$type = explode(",", $row->type);
 					foreach($type as $newtype){
-						$newrow[] = $newtype;
+						if($newtype=="SMS"){
+							$maindata[] = array('type'=> 'SMS', 'other_field' => 'value1');
+						}
 					}
 					
 					$tr_style = "";
@@ -126,10 +128,10 @@
 							<b>Amount : <?= ($row->amount); ?></b>
 						</td>
 						<td>
-							<?php print_r($newrow); ?>
-							<?php foreach($newrow as $banktype){
+							<?php print_r($maindata); ?>
+							<?php /* foreach($newrow as $banktype){
 								echo $banktype; 
-							} ?>
+							} */?>
 							
 							
 							: <?= ($row->received_from); ?>
