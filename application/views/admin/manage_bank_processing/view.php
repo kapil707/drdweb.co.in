@@ -120,10 +120,10 @@
 					}
 
 					$process_value = "";
-					if(!empty($entry['sms']['process_name'])){
+					if(!empty($entry['sms']['process_value'])){
 						$process_value = $entry['sms']['process_value'];
 					}
-					if(!empty($entry['statement']['process_name'])){
+					if(!empty($entry['statement']['process_value'])){
 						$process_value = $entry['statement']['process_value'];
 					}
 					
@@ -142,10 +142,10 @@
 					}
 
 					$find_chemist_id = "";
-					if(!empty($entry['sms']['process_name'])){
+					if(!empty($entry['sms']['find_chemist_id'])){
 						$find_chemist_id = $entry['sms']['find_chemist_id'];
 					}
-					if(!empty($entry['statement']['process_name'])){
+					if(!empty($entry['statement']['find_chemist_id'])){
 						$find_chemist_id = $entry['statement']['find_chemist_id'];
 					}
 					
@@ -157,10 +157,10 @@
 					}
 
 					$find_invoice_chemist_id = "";
-					if(!empty($entry['sms']['process_name'])){
+					if(!empty($entry['sms']['find_invoice_chemist_id'])){
 						$find_invoice_chemist_id = $entry['sms']['find_invoice_chemist_id'];
 					}
-					if(!empty($entry['statement']['process_name'])){
+					if(!empty($entry['statement']['find_invoice_chemist_id'])){
 						$find_invoice_chemist_id = $entry['statement']['find_invoice_chemist_id'];
 					}
 
@@ -199,10 +199,26 @@
 							}
 						}
 					}
-					$done_status = $entry['statement']['done_status'];
+
+					$done_status = "";
+					if(!empty($entry['sms']['done_status'])){
+						$done_status = $entry['sms']['done_status'];
+					}
+					if(!empty($entry['statement']['done_status'])){
+						$done_status = $entry['statement']['done_status'];
+					}
+
+					$my_done_chemist_id = "";
+					if(!empty($entry['sms']['done_chemist_id'])){
+						$my_done_chemist_id = $entry['sms']['done_chemist_id'];
+					}
+					if(!empty($entry['statement']['done_chemist_id'])){
+						$my_done_chemist_id = $entry['statement']['done_chemist_id'];
+					}
+
 					if($done_status==1){
 						$tr_style = "background-color: #e8ffe2;";
-						$done_chemist_id = $entry['statement']['done_chemist_id'];
+						$done_chemist_id = $my_done_chemist_id;
 					}
 
 					$row_id = $entry['statement']['id'];
