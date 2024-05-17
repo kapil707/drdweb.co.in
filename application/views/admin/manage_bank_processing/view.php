@@ -103,22 +103,50 @@
 
 					if($row->type=="SMS"){
 						$main_sms = array(
-							"upi_no"=>$row->upi_no,
 							"status"=>$row->status,
-							"status_done"=>$row->status_done,
+							"amount"=>$row->amount,
+							"date"=>$row->date,
+							"time"=>$row->time,
 							"upi_no"=>$row->upi_no,
-							"upi_no"=>$row->upi_no,
-							"upi_no"=>$row->upi_no,
-							"upi_no"=>$row->upi_no,
-							"upi_no"=>$row->upi_no,
-							"upi_no"=>$row->upi_no,
-							"upi_no"=>$row->upi_no
-
+							"orderid"=>$row->orderid,
+							"_id"=>$row->_id,
+							"find_by"=>$row->find_by,
+							"find_chemist_id"=>$row->find_chemist_id,
+							"received_from"=>$row->received_from,
+							"process_value"=>$row->process_value,
+							"process_name"=>$row->process_name,
+							"find_invoice_chemist_id"=>$row->find_invoice_chemist_id,
+							"done_chemist_id"=>$row->done_chemist_id,
+							"done_status"=>$row->done_status,
+							"whatsapp_id"=>$row->whatsapp_id,
+							"whatsapp_body"=>$row->whatsapp_body,
+							"whatsapp_image"=>$row->whatsapp_image,
+							"whatsapp_body2"=>$row->whatsapp_body2,
 						);
 					}
 
 					if($row->type=="Statment"){
-						$main_statment = array("upi_no"=>$row->upi_no);
+						$main_statment = array(
+							"status"=>$row->status,
+							"amount"=>$row->amount,
+							"date"=>$row->date,
+							"time"=>$row->time,
+							"upi_no"=>$row->upi_no,
+							"orderid"=>$row->orderid,
+							"_id"=>$row->_id,
+							"find_by"=>$row->find_by,
+							"find_chemist_id"=>$row->find_chemist_id,
+							"received_from"=>$row->received_from,
+							"process_value"=>$row->process_value,
+							"process_name"=>$row->process_name,
+							"find_invoice_chemist_id"=>$row->find_invoice_chemist_id,
+							"done_chemist_id"=>$row->done_chemist_id,
+							"done_status"=>$row->done_status,
+							"whatsapp_id"=>$row->whatsapp_id,
+							"whatsapp_body"=>$row->whatsapp_body,
+							"whatsapp_image"=>$row->whatsapp_image,
+							"whatsapp_body2"=>$row->whatsapp_body2,
+						);
 					}
 					?>
 
