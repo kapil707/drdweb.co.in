@@ -119,7 +119,7 @@ print_r($combined_records);
 foreach ($combined_records as $upi_no => $types): ?>
             <tr>
                 <td><?php echo $upi_no; ?>
-				<?php echo $types; ?></td>
+				<?php print_r($types); ?></td>
                 <td><?php echo isset($types->sms) ? $types->status : ''; ?></td>
                 <td><?php echo isset($types->sms) ? $types->sms['amount'] : ''; ?></td>
                 <td><?php echo isset($types->sms) ? $types->sms['date'] : ''; ?></td>
