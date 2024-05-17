@@ -138,7 +138,7 @@
             </tr>
         <?php endforeach; ?>
 
-<?php die(); ?>
+<?php die(); /*?>
 					<tr class="tr_css_<?php echo $row->id; ?>" style="<?php echo $tr_style ?>">
 						<td><?php echo $row->id; ?> </td>
 						<td>
@@ -163,7 +163,7 @@
 								echo $banktype; 
 							} */?>
 							
-							
+							<?php /*
 							: <?= ($row->received_from); ?>
 
 							<input type="hidden" value="<?php echo $row->received_from ?>" class="text_received_from_<?php echo $row->id; ?>">
