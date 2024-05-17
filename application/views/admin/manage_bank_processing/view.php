@@ -110,9 +110,15 @@
 
 					$tr_style = "";
 					$chemist_fafa[] = "";
-					$search = $entry['statement']['process_name'];
+					$process_name = "";
+					if(!empty($entry['sms']['process_name'])){
+						$process_name = $entry['sms']['process_name'];
+					}
+					if(!empty($entry['statement']['process_name'])){
+						$process_name = $entry['statement']['process_name'];
+					}
 					
-					$search_escaped = preg_quote($search, '/');
+					$search_escaped = preg_quote($process_name, '/');
 					$highlighted_text = preg_replace('/(' . $search_escaped . ')/i', '<span style="background-color: yellow;">$1</span>', $entry['statement']['process_value']);
 					
 					$find = "find by ";
