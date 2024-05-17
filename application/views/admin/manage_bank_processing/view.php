@@ -117,7 +117,7 @@
 <?php foreach ($combined_records as $upi_no => $types): ?>
             <tr>
                 <td><?php echo $upi_no; ?></td>
-                <td><?php echo isset($types->sms) ? $types->sms['status'] : ''; ?></td>
+                <td><?php echo isset($types->sms) ? $types->status : ''; ?></td>
                 <td><?php echo isset($types->sms) ? $types->sms['amount'] : ''; ?></td>
                 <td><?php echo isset($types->sms) ? $types->sms['date'] : ''; ?></td>
                 <td><?php echo isset($types->sms) ? $types->sms['time'] : ''; ?></td>
