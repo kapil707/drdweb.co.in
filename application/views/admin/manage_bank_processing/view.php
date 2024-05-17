@@ -34,13 +34,13 @@
 				<tbody>
 				<?php
 				foreach ($result as $row) {
-					
-					$maindata = array();
-					$type = explode(",", $row->type);
-					foreach($type as $newtype){
-						if($newtype=="SMS"){
-							$maindata[] = array('type'=> 'SMS', 'other_field' => 'value1');
-						}
+
+					if($row->type=="SMS"){
+						$main_sms = array("upi_no"=>$row->upi_no);
+					}
+
+					if($row->type=="Statment"){
+						$main_statment = array("upi_no"=>$row->upi_no);
 					}
 					
 					$tr_style = "";
@@ -108,6 +108,12 @@
 						$tr_style = "background-color: #e8ffe2;";
 						$done_chemist_id = $row->done_chemist_id;
 					}
+
+					foreach($type as $newtype){
+						if($newtype=="SMS"){
+							$main_sms[] = array('type'=> 'SMS', 'amount' => 'value1');
+						}
+					}
 					?>
 
 					<tr class="tr_css_<?php echo $row->id; ?>" style="<?php echo $tr_style ?>">
@@ -128,7 +134,8 @@
 							<b>Amount : <?= ($row->amount); ?></b>
 						</td>
 						<td>
-							<?php print_r($maindata); ?>
+							<?php print_r($main_sms); ?>
+							<?php print_r($main_statment); ?>
 							<?php /* foreach($newrow as $banktype){
 								echo $banktype; 
 							} */?>
