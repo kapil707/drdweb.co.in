@@ -678,11 +678,6 @@ class Cronjob_bank extends CI_Controller
 				$row1 = $this->BankModel->select_query("SELECT * FROM `tbl_whatsapp_message` WHERE `vision_text` LIKE '%$upi_no%'");
 				$row1 = $row1->row();
 			}
-
-			if(empty($row1)){
-				$row1 = $this->BankModel->select_query("SELECT * FROM `tbl_whatsapp_message` WHERE REPLACE(`body`, ' ', '') LIKE '%$upi_no%'");
-				$row1 = $row1->row();
-			}
 			
 			$whatsapp_id = 0;
 			$whatsapp_body = $whatsapp_image = $whatsapp_body2 = "N/a";
@@ -702,6 +697,22 @@ class Cronjob_bank extends CI_Controller
 					$whatsapp_body = $row2->body;
 				}
 			}
+
+
+
+			if(empty($row1)){
+				$row2 = $this->BankModel->select_query("SELECT * FROM `tbl_whatsapp_message` WHERE REPLACE(`body`, ' ', '') LIKE '%$upi_no%'");
+				$row2 = $row2->row();
+
+				$whatsapp_id = $row2->id;
+				$whatsapp_body = $row2->body;
+				$whatsapp_image = $row2->screenshot_image;
+				$whatsapp_body2 = $row2->body;
+
+				$from_number = $row2->from_number;
+				$timestamp = date('Y-m-d H:i:s', $row2->timestamp);
+			}
+
 			$whatsapp_body  = str_replace(',', '', $whatsapp_body);
 			$whatsapp_body2 = str_replace(',', '', $whatsapp_body2);
 			echo "<br>";
