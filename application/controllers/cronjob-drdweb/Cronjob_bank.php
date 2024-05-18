@@ -697,7 +697,8 @@ class Cronjob_bank extends CI_Controller
 					$whatsapp_body = $row2->body;
 				}
 			}
-			echo $whatsapp_body2;
+			$whatsapp_body  = str_replace(',', '', $whatsapp_body);
+			$whatsapp_body2 = str_replace(',', '', $whatsapp_body2);
 			echo "<br>";
 
 			$where = array(
