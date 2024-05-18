@@ -254,8 +254,20 @@ class Manage_bank_processing extends CI_Controller {
 
 		$data['url_path'] = base_url()."uploads/$page_controllers/photo/";
 		$upload_path = "./uploads/$page_controllers/photo/";
+
+		$start_date = $end_date = date('d-m-Y');
+		if(isset($_GET["date-range"])){
+			$date_range = $_GET["date-range"];
+	
+			// `to` ke aas paas se string ko tukdon mein vibhajit karen
+			$date_parts = explode(" to ", $date_range);
+	
+			// Start date aur end date ko extract karen
+			$start_date = $date_parts[0];
+			$end_date 	= $date_parts[1];
+		}
 		
-		$query = $this->BankModel->select_query("SELECT upi_no, GROUP_CONCAT(id SEPARATOR ', ') AS id, GROUP_CONCAT(find_by SEPARATOR ', ') AS find_by,GROUP_CONCAT(whatsapp_body SEPARATOR ', ') AS whatsapp_body,GROUP_CONCAT(whatsapp_body2 SEPARATOR ', ') AS whatsapp_body2, GROUP_CONCAT(process_name SEPARATOR ', ') AS process_name, GROUP_CONCAT(date SEPARATOR ', ') AS date,GROUP_CONCAT(time SEPARATOR ', ') AS time, GROUP_CONCAT(process_value SEPARATOR ', ') AS process_value, GROUP_CONCAT(find_chemist_id SEPARATOR ', ') AS find_chemist_id, GROUP_CONCAT(find_invoice_chemist_id SEPARATOR ', ') AS find_invoice_chemist_id, GROUP_CONCAT(done_status SEPARATOR ', ') AS done_status, GROUP_CONCAT(status SEPARATOR ', ') AS status, GROUP_CONCAT(received_from SEPARATOR ', ') AS received_from, GROUP_CONCAT(amount SEPARATOR ', ') AS amount, GROUP_CONCAT(orderid SEPARATOR ', ') AS orderid, GROUP_CONCAT(type SEPARATOR ', ') AS type FROM `tbl_bank_processing` GROUP BY upi_no order by type asc");
+		$query = $this->BankModel->select_query("SELECT upi_no, GROUP_CONCAT(id SEPARATOR ', ') AS id, GROUP_CONCAT(find_by SEPARATOR ', ') AS find_by,GROUP_CONCAT(whatsapp_body SEPARATOR ', ') AS whatsapp_body,GROUP_CONCAT(whatsapp_body2 SEPARATOR ', ') AS whatsapp_body2, GROUP_CONCAT(process_name SEPARATOR ', ') AS process_name, GROUP_CONCAT(date SEPARATOR ', ') AS date,GROUP_CONCAT(time SEPARATOR ', ') AS time, GROUP_CONCAT(process_value SEPARATOR ', ') AS process_value, GROUP_CONCAT(find_chemist_id SEPARATOR ', ') AS find_chemist_id, GROUP_CONCAT(find_invoice_chemist_id SEPARATOR ', ') AS find_invoice_chemist_id, GROUP_CONCAT(done_status SEPARATOR ', ') AS done_status, GROUP_CONCAT(status SEPARATOR ', ') AS status, GROUP_CONCAT(received_from SEPARATOR ', ') AS received_from, GROUP_CONCAT(amount SEPARATOR ', ') AS amount, GROUP_CONCAT(orderid SEPARATOR ', ') AS orderid, GROUP_CONCAT(type SEPARATOR ', ') AS type FROM `tbl_bank_processing` where date BETWEEN '$start_date' AND '$end_date' GROUP BY upi_no order by type asc");
 		//$query = $this->BankModel->select_query("SELECT * FROM `tbl_bank_processing`");
 		$data["result"] = $query->result();
 
