@@ -153,3 +153,22 @@ function add_chemist_id_by_link_name(){
 }
 </script>
 <script src="https://cdn.datatables.net/scroller/2.2.0/js/dataTables.scroller.min.js"></script> */ ?>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<script>
+$(document).ready(function(){
+	$('#date-range').daterangepicker({
+		opens: 'left', // Date picker position
+		locale: {
+			format: 'DD-MM-YYYY', // Date format
+			separator: ' to ',
+			applyLabel: 'Apply',
+			cancelLabel: 'Cancel',
+			daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr','Sa'],
+			monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+		}
+	});
+});
+</script>
