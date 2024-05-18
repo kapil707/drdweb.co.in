@@ -678,6 +678,11 @@ class Cronjob_bank extends CI_Controller
 				$row1 = $this->BankModel->select_query("SELECT * FROM `tbl_whatsapp_message` WHERE `vision_text` LIKE '%$upi_no%'");
 				$row1 = $row1->row();
 			}
+
+			if(empty($row1)){
+				$row1 = $this->BankModel->select_query("SELECT * FROM `tbl_whatsapp_message` WHERE REPLACE(`body`, ' ', '') LIKE '%$upi_no%'");
+				$row1 = $row1->row();
+			}
 			
 			$whatsapp_id = 0;
 			$whatsapp_body = $whatsapp_image = $whatsapp_body2 = "N/a";
@@ -717,6 +722,6 @@ class Cronjob_bank extends CI_Controller
 
 	public function delete_duplicate_rec(){
 		
-		$this->BankModel->select_query("DELETE tbl_bank_processing FROM tbl_bank_processing INNER JOIN ( SELECT MIN(id) as min_id, upi_no FROM tbl_bank_processing GROUP BY upi_no HAVING COUNT(upi_no) > 1 ) AS duplicates ON tbl_bank_processing.id != duplicates.min_id AND tbl_bank_processing.upi_no = duplicates.upi_no");
+		$this->BankModel->select_query("DELETE tbl_bank_processing FROM tbl_bank_processing INNER JOIN ( SELECT MIN(id) as min_id, upi_no FROM tbl_bank_processing GROUP BY upi_no HAVING COUNT(upi_no) > 1 ) AS duplicates ON tbl_bank_processing.id != duplicates.min_id AND tbl_bank_processing.upi_no = duplicates.upi_no where type='sms'");
 	}
 }
