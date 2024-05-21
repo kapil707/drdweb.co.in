@@ -216,6 +216,7 @@ class Cronjob_bank extends CI_Controller
 
 		$this->bank_check_in_whatsapp();
 		$this->bank_sms_processing();
+		$this->get_whatsapp_message();
 	
 		$result = $this->BankModel->select_query("select * from tbl_bank_processing where status='0' limit 100");
 		$result = $result->result();
