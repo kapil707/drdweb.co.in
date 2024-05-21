@@ -68,7 +68,7 @@ class Cronjob_bank extends CI_Controller
 
 		$messages = json_decode($response, true); 
 		// Convert JSON string to associative 
-		print_r($response);
+		//print_r($response);
 		
 		foreach ($messages as $message) {
             $data = array(
@@ -85,7 +85,7 @@ class Cronjob_bank extends CI_Controller
             );
 
             // Call the model function to insert the message
-            if ($this->Message_model->add_message($data)) {
+            if ($this->BankModel->add_message($data)) {
                 echo "Message added successfully.";
             } else {
                 echo "Duplicate message, not added.";
