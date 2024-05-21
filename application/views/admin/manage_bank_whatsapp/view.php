@@ -194,6 +194,9 @@
 							$screenshot_image = isset($message['screenshot_image']) ? $message['screenshot_image'] : "screenshot_image not found";
 
 							$timestamp = isset($message['timestamp']) ? $message['timestamp'] : "timestamp not found";
+
+							$extracted_text = str_replace("\n", "<br>", $extracted_text);
+							$vision_text = str_replace("\n", "<br>", $vision_text);
 							?>
 							<tr>
 								<td><?php echo $body; ?></td>
