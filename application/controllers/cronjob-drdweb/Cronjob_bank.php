@@ -85,7 +85,7 @@ class Cronjob_bank extends CI_Controller
             );
 
             // Call the model function to insert the message
-            if ($this->BankModel->add_message($data)) {
+            if ($this->BankModel->add_whatsapp_messages($data)) {
                 echo "Message added successfully.";
             } else {
                 echo "Duplicate message, not added.";
