@@ -25,7 +25,6 @@ class Cronjob_bank extends CI_Controller
                     "timestamp": "1716260485",
                     "vision_text": "18:15 <Transaction Summary..."
                 }
-                // ...other messages...
             ]
         }';
 
