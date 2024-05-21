@@ -67,8 +67,30 @@ class Cronjob_bank extends CI_Controller
 		//print_r($response);
 		curl_close($curl);
 
-		$data = json_decode($response, true); // Convert JSON string to associative 
-		print_r($data);
+		$messages = json_decode($response, true); 
+		// Convert JSON string to associative 
+		
+		foreach ($messages as $message) {
+            $data = array(
+                'body' => $message['body'],
+                'date' => date('Y-m-d H:i:s', strtotime($message['date'])),
+                'extracted_text' => $message['extracted_text'],
+                'from_number' => $message['from_number'],
+                'message_id' => $message['id'],
+                'ist_timestamp' => date('Y-m-d H:i:s', strtotime($message['ist_timestamp'])),
+                'screenshot_image' => $message['screenshot_image'],
+                'sender_name_place' => $message['sender_name_place'],
+                'timestamp' => $message['timestamp'],
+                'vision_text' => $message['vision_text']
+            );
+
+            // Call the model function to insert the message
+            if ($this->Message_model->add_message($data)) {
+                echo "Message added successfully.";
+            } else {
+                echo "Duplicate message, not added.";
+            }
+        }
 
 
 		/*array
