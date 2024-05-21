@@ -7,10 +7,10 @@ class BankModel extends CI_Model
 		$db_bank = $this->load->database('bank_db', TRUE);
 
         $db_bank->where('message_id', $data['message_id']);
-        $query = $db_bank->get('tbl_whatsapp_messages');
+        $query = $db_bank->get('tbl_whatsapp_message');
         if ($query->num_rows() == 0) {
             // Insert new message
-            return $db_bank->insert('tbl_whatsapp_messages', $data);
+            return $db_bank->insert('tbl_whatsapp_message', $data);
         } else {
             return false; // Duplicate entry
         }
