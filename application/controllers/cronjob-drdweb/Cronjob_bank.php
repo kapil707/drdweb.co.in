@@ -70,18 +70,18 @@ class Cronjob_bank extends CI_Controller
 		// Convert JSON string to associative 
 		// print_r($messages);
 		
-		foreach ($messages as $message) {
+		foreach ($messages[0] as $message) {
             $data = array(
-                'body' => $message[0]['body'],
-                'date' => date('Y-m-d H:i:s', strtotime($message[0]['date'])),
-                'extracted_text' => $message[0]['extracted_text'],
-                'from_number' => $message[0]['from_number'],
-                'message_id' => $message[0]['id'],
-                'ist_timestamp' => date('Y-m-d H:i:s', strtotime($message[0]['ist_timestamp'])),
-                'screenshot_image' => $message[0]['screenshot_image'],
-                'sender_name_place' => $message[0]['sender_name_place'],
-                'timestamp' => $message[0]['timestamp'],
-                'vision_text' => $message[0]['vision_text']
+                'body' => $message['body'],
+                'date' => date('Y-m-d H:i:s', strtotime($message['date'])),
+                'extracted_text' => $message['extracted_text'],
+                'from_number' => $message['from_number'],
+                'message_id' => $message['id'],
+                'ist_timestamp' => date('Y-m-d H:i:s', strtotime($message['ist_timestamp'])),
+                'screenshot_image' => $message['screenshot_image'],
+                'sender_name_place' => $message['sender_name_place'],
+                'timestamp' => $message['timestamp'],
+                'vision_text' => $message['vision_text']
             );
 
             // Call the model function to insert the message
