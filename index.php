@@ -1,6 +1,5 @@
 <?php
-
-/*die();
+die();
 /**
  * CodeIgniter
  *
