@@ -2,6 +2,18 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class BankModel extends CI_Model  
 {
+	public function add_whatsapp_messages($data) {
+        // Check if the message already exists
+        $this->db->where('message_id', $data['message_id']);
+        $query = $this->db->get('messages');
+        if ($query->num_rows() == 0) {
+            // Insert new message
+            return $this->db->insert('messages', $data);
+        } else {
+            return false; // Duplicate entry
+        }
+    }
+
 	function select_query($query)
 	{
 		$db_bank = $this->load->database('bank_db', TRUE);

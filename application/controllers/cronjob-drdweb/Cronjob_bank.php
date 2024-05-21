@@ -9,15 +9,35 @@ class Cronjob_bank extends CI_Controller
 		$this->load->model("model-drdweb/BankModel");
 		$this->load->model("model-drdweb/InvoiceModel");
 	}
+
+	public function kkss(){
+		$json_data = '{
+            "messages": [
+                {
+                    "body": "S-874 Se A/M=2000. Cash=1786.",
+                    "date": "2024-05-21T03:01:25.000Z",
+                    "extracted_text": "oO 1815 OBA @ Secure Environment...",
+                    "from_number": "+919910402492",
+                    "id": "D413C0F5EBA913620DBE321AAD0A2F36",
+                    "ist_timestamp": "2024-05-21 08:31:25 IST",
+                    "screenshot_image": "/v1/chat/646f5b15ab5ee824ea9bdd5f/files/664c0e9116fd7e000b220f35/download",
+                    "sender_name_place": "Online Details",
+                    "timestamp": "1716260485",
+                    "vision_text": "18:15 <Transaction Summary..."
+                }
+                // ...other messages...
+            ]
+        }';
+
+        // Decode JSON data
+        $messages = json_decode($json_data, true)['messages'];
+		print_r($messages);
+	}
 	
 	public function get_whatsapp_message()
 	{
 		$start_date = date('d/m/Y');
 		$end_date 	= date('d/m/Y');
-
-		//$start_date = date('d/m/Y');
-		//$end_date 	= date('d/m/Y');
-
 
 		$sender_name_place = "Online%20Details";
 
@@ -47,7 +67,11 @@ class Cronjob_bank extends CI_Controller
 		//print_r($response);
 		curl_close($curl);
 
-		$data = json_decode($response, true); // Convert JSON string to associative array
+		$data = json_decode($response, true); // Convert JSON string to associative 
+		print_r($data);
+
+
+		/*array
 
 		if (isset($data['messages'])) {
 			foreach ($data['messages'] as $message) {
@@ -82,10 +106,7 @@ class Cronjob_bank extends CI_Controller
 					'vision_text' => $vision_text,
 				);
 				$this->BankModel->insert_fun("tbl_whatsapp_message", $dt);
-			}
-		} else {
-			echo "No messages found.\n";
-		}
+			}*/
 	}
 
 	public function bank_sms_processing(){
