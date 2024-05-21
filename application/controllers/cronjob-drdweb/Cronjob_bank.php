@@ -12,8 +12,8 @@ class Cronjob_bank extends CI_Controller
 	
 	public function get_whatsapp_message()
 	{
-		$start_date = "19/05/2024";//date('d/m/Y');
-		$end_date 	= "19/05/2024";//date('d/m/Y');
+		$start_date = date('d/m/Y');
+		$end_date 	= date('d/m/Y');
 
 		//$start_date = date('d/m/Y');
 		//$end_date 	= date('d/m/Y');
@@ -68,6 +68,8 @@ class Cronjob_bank extends CI_Controller
 				$timestamp = isset($message['timestamp']) ? $message['timestamp'] : "timestamp not found";
 
 				$body = utf8_encode($body);
+				$extracted_text = utf8_encode($extracted_text);
+				$vision_text = utf8_encode($vision_text);
 
 				$dt = array(
 					'body' => $body,

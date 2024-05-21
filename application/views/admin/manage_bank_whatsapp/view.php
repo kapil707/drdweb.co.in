@@ -131,8 +131,14 @@
                 <thead>
                     <tr>
 						<th>
+							ID
+						</th>
+						<th>
 							Date / Time
                         </th>
+						<th>
+							Number
+						</th>
 						<th>
 							Body
 						</th>
@@ -142,9 +148,6 @@
 						<th>
 							Vision Text
                         </th>
-						<th>
-							Number / Message
-						</th>
 						<th>
 							Image
                         </th>
@@ -164,7 +167,7 @@
 
 							$from_number = isset($message['from_number']) ? $message['from_number'] : "Date not found";
 							
-							$id = isset($message['id']) ? $message['from_number'] : "id not found";
+							$id = isset($message['id']) ? $message['id'] : "id not found";
 
 							$screenshot_image = isset($message['screenshot_image']) ? $message['screenshot_image'] : "screenshot_image not found";
 
@@ -174,15 +177,18 @@
 							$vision_text = str_replace("\n", "<br>", $vision_text);
 							?>
 							<tr>
-								<td><?php echo date('Y-m-d H:i:s', $timestamp); ?></td>
+								<td>
+									<?php echo $id; ?>
+								</td>
+								<td>
+									<?php echo date('Y-m-d H:i:s', $timestamp); ?>
+								</td>
+								<td>
+									<?php echo $from_number; ?>
+								</td>
 								<td><?php echo $body; ?></td>
 								<td><?php echo $extracted_text; ?></td>
 								<td><?php echo $vision_text; ?></td>
-								<td>
-									<?php echo $from_number; ?>
-									<Br>
-									<?php echo $id; ?>
-								</td>
 								<td>
 									<?php if(!empty($screenshot_image)) { ?>
 									<a href="https://api.wassi.chat<?php echo $screenshot_image; ?>?token=531fe5caf0e132bdb6000bf01ed66d8cfb75b53606cc8f6eed32509d99d74752f47f288db155557e" target="_blank">	
