@@ -69,6 +69,7 @@ class Cronjob_bank extends CI_Controller
 
 		$messages = json_decode($response, true); 
 		// Convert JSON string to associative 
+		print_r($messages);
 		
 		foreach ($messages as $message) {
             $data = array(
