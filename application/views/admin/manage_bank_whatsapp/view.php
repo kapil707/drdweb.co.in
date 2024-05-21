@@ -127,7 +127,7 @@
 		?>
 	<div class="col-xs-12">
         <div class="table-responsive">
-			<table class="table table-striped table-bordered table-hover dataTables-example">
+			<table class="table table-striped table-bordered table-hover dataTables-example21">
                 <thead>
                     <tr>
 						<th>
