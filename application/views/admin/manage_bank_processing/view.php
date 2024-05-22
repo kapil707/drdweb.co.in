@@ -323,6 +323,10 @@
 						$tr_style = "background-color: lemonchiffon";
 					}
 
+					if(($whatsapp_body=="N/a" || empty($whatsapp_body)) && empty($find_chemist_id2) && empty($find_invoice_chemist_id2)){
+						$tr_style = "background-color: darksalmon";
+					}
+
 					if((strtolower($find_chemist_id2)==strtolower($find_invoice_chemist_id2)) && (!empty($find_invoice_chemist_id2) && !empty($find_chemist_id2))){
 						$find_all = "done";
 						$tr_style = "background-color: aqua;";
