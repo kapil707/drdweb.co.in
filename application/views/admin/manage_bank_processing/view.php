@@ -182,11 +182,11 @@
 						$find_chemist_id2 = $find_chemist_id_array[0];
 					}
 
-					$find_invoice_chemist_id1 = "";
+					$find_invoice_server = "";
 					$find_invoice_chemist_id2 = "";
 					$find_invoice_chemist_id_array = explode("||", $find_invoice_chemist_id);
 					foreach($find_invoice_chemist_id_array as $rows){
-						$find_invoice_chemist_id1.= $rows."<br>";
+						$find_invoice_server.= $rows."<br>";
 
 						$arr = explode(":-",$rows);
 						$find_invoice_chemist_id2.= $arr[0]." || ";
@@ -370,8 +370,8 @@
 					if(empty($find_invoice_chemist_id2)){
 						$find_invoice_chemist_id2 = "N/a";
 					}
-					if(empty($find_invoice_chemist_id1)){
-						$find_invoice_chemist_id1 = "N/a";
+					if(empty($find_invoice_server)){
+						$find_invoice_server = "N/a";
 					}
 					?>
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
@@ -430,7 +430,7 @@
 							<b>WhatsApp : </b>
 							<?= ($whatsapp_body); ?>
 						</td>
-						<td><?= ($find_invoice_chemist_id1); ?></td>
+						<td><?= ($find_invoice_server); ?></td>
 						<td><?= ($whatsapp_body2); ?></td>
 						<td class="display: flex;">
 							<b><?= ($find); ?></b>
