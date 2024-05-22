@@ -323,7 +323,7 @@
 						$tr_style = "background-color: cornsilk";
 					}
 
-					if((!empty($server_invoice_chemist_id))){
+					if((!empty($get_all_invoice_chemist))){
 						$tr_style = "background-color: khaki";
 					}
 
@@ -331,11 +331,11 @@
 						$tr_style = "background-color: lemonchiffon";
 					}
 
-					if(($whatsapp_body=="N/a" || empty($whatsapp_body)) && empty($find_chemist_id2) && empty($server_invoice_chemist_id)){
+					if(($whatsapp_body=="N/a" || empty($whatsapp_body)) && empty($find_chemist_id2) && empty($get_all_invoice_chemist)){
 						$tr_style = "background-color: darksalmon";
 					}
 
-					if((strtolower($find_chemist_id2)==strtolower($server_invoice_chemist_id)) && (!empty($server_invoice_chemist_id) && !empty($find_chemist_id2))){
+					if((strtolower($find_chemist_id2)==strtolower($get_all_invoice_chemist)) && (!empty($get_all_invoice_chemist) && !empty($find_chemist_id2))){
 						$find_all = "done";
 						$tr_style = "background-color: darkseagreen;";
 
@@ -349,7 +349,7 @@
 						$done_chemist_id = $find_chemist_id2;
 					}
 
-					if((strtolower($find_chemist_id2)==strtolower($server_invoice_chemist_id)) && (strtolower($find_chemist_id2)==strtolower($whatsapp_body)) && (!empty($server_invoice_chemist_id) && !empty($find_chemist_id2) && !empty($whatsapp_body))){
+					if((strtolower($find_chemist_id2)==strtolower($get_all_invoice_chemist)) && (strtolower($find_chemist_id2)==strtolower($whatsapp_body)) && (!empty($get_all_invoice_chemist) && !empty($find_chemist_id2) && !empty($whatsapp_body))){
 						$find_all = "done-all";
 						$tr_style = "background-color: darkkhaki;";
 
