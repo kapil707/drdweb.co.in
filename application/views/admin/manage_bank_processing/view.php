@@ -184,12 +184,12 @@
 
 					$find_invoice_chemist_id1 = "";
 					$find_invoice_chemist_id2 = "";
-					$find_invoice_chemist_id_array = explode(",", $find_invoice_chemist_id);
+					$find_invoice_chemist_id_array = explode("||", $find_invoice_chemist_id);
 					foreach($find_invoice_chemist_id_array as $rows){
 						$find_invoice_chemist_id1.= $rows."<br>";
 
 						$arr = explode(":-",$rows);
-						$find_invoice_chemist_id2 = $arr[0];
+						$find_invoice_chemist_id2.= $arr[0]." || ";
 					}
 					
 					$done_chemist_id = "";
