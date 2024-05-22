@@ -439,7 +439,6 @@ class Cronjob_bank extends CI_Controller
 		$process_name = $received_from;
 		$process_value = "";
 
-		echo "SELECT * FROM `tbl_bank_chemist` WHERE `string_value` LIKE '%$received_from%'";
 		$rr = $this->BankModel->select_query("SELECT * FROM `tbl_bank_chemist` WHERE `string_value` LIKE '%$received_from%'");
 		$rr = $rr->result();
 		foreach($rr as $tt){
