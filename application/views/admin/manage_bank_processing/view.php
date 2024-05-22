@@ -182,14 +182,6 @@
 						$find_chemist_id2 = $find_chemist_id_array[0];
 					}
 
-					$find_invoice_chemist_id = "";
-					if(!empty($entry['sms']['find_invoice_chemist_id'])){
-						$find_invoice_chemist_id = $entry['sms']['find_invoice_chemist_id'];
-					}
-					if(!empty($entry['statement']['find_invoice_chemist_id'])){
-						$find_invoice_chemist_id = $entry['statement']['find_invoice_chemist_id'];
-					}
-
 					$find_invoice_chemist_id1 = "";
 					$find_invoice_chemist_id2 = "";
 					$find_invoice_chemist_id_array = explode(",", $find_invoice_chemist_id);
@@ -389,6 +381,7 @@
 							?>
 							<br>
 							<b>Invoice : </b>
+							<?= $find_invoice_chemist_id2 ?>
 							<br><br>
 							<b>WhatsApp : </b>
 							<?= ($whatsapp_body); ?>
