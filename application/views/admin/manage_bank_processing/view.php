@@ -348,7 +348,7 @@
 						$tr_style = "background-color: lemonchiffon";
 					}
 
-					if(($whatsapp_body=="N/a" || empty($whatsapp_body)) && empty($find_chemist_id2) && empty($get_all_invoice_chemist)){
+					if(($whatsapp_body=="N/a" || empty($whatsapp_body)) && $get_all_chemist_id=="N/a" && empty($get_all_invoice_chemist)){
 						$tr_style = "background-color: darksalmon";
 					}
 
