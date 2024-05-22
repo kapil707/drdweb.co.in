@@ -421,7 +421,7 @@ class Cronjob_bank extends CI_Controller
 		}
 
 		if(!empty($jsonArray)){
-			$find_chemist_id = implode(',', $jsonArray);
+			$find_chemist_id = implode('||', $jsonArray);
 		}
 
 		$return["find_chemist_id"] = $find_chemist_id;
@@ -448,7 +448,7 @@ class Cronjob_bank extends CI_Controller
 		}
 
 		if(!empty($jsonArray)){
-			$find_chemist_id = implode(',', $jsonArray);
+			$find_chemist_id = implode('||', $jsonArray);
 		}
 
 		$return["find_chemist_id"] = $find_chemist_id;
@@ -477,7 +477,7 @@ class Cronjob_bank extends CI_Controller
 		}
 
 		if(!empty($jsonArray)){
-			$find_chemist_id = implode(',', $jsonArray);
+			$find_chemist_id = implode('||', $jsonArray);
 		}
 
 		$return["find_chemist_id"] = $find_chemist_id;
@@ -529,7 +529,7 @@ class Cronjob_bank extends CI_Controller
 		}
 
 		if(!empty($jsonArray)){
-			$find_chemist_id = implode(',', $jsonArray);
+			$find_chemist_id = implode('||', $jsonArray);
 		}
 
 		$return["find_chemist_id"] = $find_chemist_id;
