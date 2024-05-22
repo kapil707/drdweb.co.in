@@ -192,7 +192,7 @@
 						$find_invoice_chemist_id2.= $arr[0]." || ";
 					}
 
-					if(empty($find_invoice_chemist_id_array)){
+					if(empty($find_invoice_chemist_id)){
 						$find_invoice_server = "N/a";
 					}
 
