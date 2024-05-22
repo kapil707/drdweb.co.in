@@ -191,6 +191,10 @@
 						$arr = explode(":-",$rows);
 						$find_invoice_chemist_id2.= $arr[0]." || ";
 					}
+
+					if(!empty($find_invoice_chemist_id2)){
+						$find_invoice_chemist_id2 = substr($find_invoice_chemist_id2, 2, -1);
+					}
 					
 					$done_chemist_id = "";
 					$find_all = "";
