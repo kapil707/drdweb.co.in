@@ -185,16 +185,16 @@
 					$find_invoice_chemist_id_array = explode("||", $find_invoice_chemist_id);
 
 					$server_invoice = "";
-					$server_invoice_chemist_id = "";
+					$get_all_invoice = "";
 					foreach($find_invoice_chemist_id_array as $rows){
-						$server_invoice_chemist_id.= $rows."<br>";
+						$get_all_invoice.= $rows."<br>";
 
 						$arr = explode(":-",$rows);
 						$server_invoice_chemist_id.= $arr[0]." || ";
 					}
 
 					if(empty($find_invoice_chemist_id)){
-						$server_invoice = "N/a";
+						$get_all_invoice = "N/a";
 					}
 
 					if(!empty($server_invoice_chemist_id)){
@@ -432,7 +432,7 @@
 							<b>WhatsApp : </b>
 							<?= ($whatsapp_body); ?>
 						</td>
-						<td><?= ($server_invoice); ?></td>
+						<td><?= ($get_all_invoice); ?></td>
 						<td><?= ($whatsapp_body2); ?></td>
 						<td class="display: flex;">
 							<b><?= ($find); ?></b>
