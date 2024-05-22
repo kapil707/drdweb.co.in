@@ -264,7 +264,7 @@ class Cronjob_bank extends CI_Controller
 				$splitValues = explode('@', $received_from);
 				$before_at = $splitValues[0];
 				$result = $this->find_by_name($before_at);
-				$find_chemist_id = $result["find_chemist_id"];
+				echo $find_chemist_id = $result["find_chemist_id"];
 				$find_by = "Chemist remove @";
 				$process_value = $result["process_value"];
 				$process_name = $result["process_name"];
