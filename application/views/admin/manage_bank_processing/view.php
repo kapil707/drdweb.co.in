@@ -182,18 +182,18 @@
 						$find_chemist_id2 = $find_chemist_id_array[0];
 					}
 
-					$find_invoice_chemist_id1 = "";
-					$find_invoice_chemist_id2 = "";
+					$find_invoice = "";
+					$find_invoice_chemist_id = "";
 					$find_invoice_chemist_id_array = explode("||", $find_invoice_chemist_id);
 					foreach($find_invoice_chemist_id_array as $rows){
-						$find_invoice_chemist_id1.= $rows."<br>";
+						$find_invoice.= $rows."<br>";
 
 						$arr = explode(":-",$rows);
-						$find_invoice_chemist_id2.= $arr[0]." || ";
+						$find_invoice_chemist_id.= $arr[0]." || ";
 					}
 
-					if(!empty($find_invoice_chemist_id2)){
-						$find_invoice_chemist_id2 = substr($find_invoice_chemist_id2, 0, -4);
+					if(!empty($find_invoice_chemist_id)){
+						$find_invoice_chemist_id = substr($find_invoice_chemist_id, 0, -4);
 					}
 					
 					$done_chemist_id = "";
@@ -319,7 +319,7 @@
 						$tr_style = "background-color: cornsilk";
 					}
 
-					if((!empty($find_invoice_chemist_id2))){
+					if((!empty($find_invoice_chemist_id))){
 						$tr_style = "background-color: khaki";
 					}
 
@@ -327,11 +327,11 @@
 						$tr_style = "background-color: lemonchiffon";
 					}
 
-					if(($whatsapp_body=="N/a" || empty($whatsapp_body)) && empty($find_chemist_id2) && empty($find_invoice_chemist_id2)){
+					if(($whatsapp_body=="N/a" || empty($whatsapp_body)) && empty($find_chemist_id2) && empty($find_invoice_chemist_id)){
 						$tr_style = "background-color: darksalmon";
 					}
 
-					if((strtolower($find_chemist_id2)==strtolower($find_invoice_chemist_id2)) && (!empty($find_invoice_chemist_id2) && !empty($find_chemist_id2))){
+					if((strtolower($find_chemist_id2)==strtolower($find_invoice_chemist_id)) && (!empty($find_invoice_chemist_id) && !empty($find_chemist_id2))){
 						$find_all = "done";
 						$tr_style = "background-color: darkseagreen;";
 
@@ -345,7 +345,7 @@
 						$done_chemist_id = $find_chemist_id2;
 					}
 
-					if((strtolower($find_chemist_id2)==strtolower($find_invoice_chemist_id2)) && (strtolower($find_chemist_id2)==strtolower($whatsapp_body)) && (!empty($find_invoice_chemist_id2) && !empty($find_chemist_id2) && !empty($whatsapp_body))){
+					if((strtolower($find_chemist_id2)==strtolower($find_invoice_chemist_id)) && (strtolower($find_chemist_id2)==strtolower($whatsapp_body)) && (!empty($find_invoice_chemist_id) && !empty($find_chemist_id2) && !empty($whatsapp_body))){
 						$find_all = "done-all";
 						$tr_style = "background-color: darkkhaki;";
 
@@ -367,11 +367,11 @@
 							}
 						}
 					}
-					if(empty($find_invoice_chemist_id2)){
-						$find_invoice_chemist_id2 = "N/a";
+					if(empty($find_invoice_chemist_id)){
+						$find_invoice_chemist_id = "N/a";
 					}
-					if(empty($find_invoice_chemist_id1)){
-						$find_invoice_chemist_id1 = "N/a";
+					if(empty($find_invoice)){
+						$find_invoice = "N/a";
 					}
 					?>
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
@@ -425,12 +425,12 @@
 							?>
 							<br>
 							<b>Invoice : </b>
-							<?= $find_invoice_chemist_id2 ?>
+							<?= $find_invoice_chemist_id ?>
 							<br><br>
 							<b>WhatsApp : </b>
 							<?= ($whatsapp_body); ?>
 						</td>
-						<td><?= ($find_invoice_chemist_id1); ?></td>
+						<td><?= ($find_invoice); ?></td>
 						<td><?= ($whatsapp_body2); ?></td>
 						<td class="display: flex;">
 							<b><?= ($find); ?></b>
