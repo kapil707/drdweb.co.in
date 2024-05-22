@@ -561,7 +561,7 @@ class Cronjob_bank extends CI_Controller
 
 		$find_invoice_chemist_id = "";
 		if(!empty($jsonArray)){
-			$find_invoice_chemist_id = implode(',', $jsonArray);
+			$find_invoice_chemist_id = implode('||', $jsonArray);
 		}
 
 		$return["find_invoice_chemist_id"] = $find_invoice_chemist_id;
@@ -584,41 +584,6 @@ class Cronjob_bank extends CI_Controller
 		}
 
 		$find_invoice_chemist_id = "";
-		/*$rr = $this->InvoiceModel->select_query("select sum(amt) as total from tbl_invoice_new where (vdt BETWEEN '$start_date' and '$end_date') $where");
-		$rr = $rr->row();
-		if(!empty($rr)){
-			if(round($rr->total)==round($amount)){
-
-				$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where (vdt BETWEEN '$start_date' and '$end_date') $where");
-				$rr = $rr->result();
-				foreach($rr as $tt){			
-					$jsonArray[] = $tt->chemist_id.":-".$tt->gstvno." Amt.".$tt->amt;
-				}
-
-				if(!empty($jsonArray)){
-					$find_invoice_chemist_id = implode(',', $jsonArray);
-				}
-			}
-		}
-
-		/*******yha kisi 2 yha 3 invoice ke total ko check karta ha */
-		/*if(empty($find_invoice_chemist_id)){
-			$total = 0;
-			$work = 0;
-			$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where (vdt BETWEEN '$start_date' and '$end_date') $where");
-			$rr = $rr->result();
-			foreach($rr as $tt){
-				$total = round($tt->amt) + $total;
-				$jsonArray[] = $tt->chemist_id.":-".$tt->gstvno." Amt-x.".$tt->amt;
-				if(round($total)==round($amount)){
-					$work = 1;
-					break;
-				}
-			}
-			if(!empty($jsonArray) && $work==1){
-				$find_invoice_chemist_id = implode(',', $jsonArray);
-			}
-		}*/
 		$resultArray = [];
 		$rr = $this->InvoiceModel->select_query("select * from tbl_invoice_new where (vdt BETWEEN '$start_date' and '$end_date') $where");
 		$rr = $rr->result();
@@ -651,7 +616,7 @@ class Cronjob_bank extends CI_Controller
 				$jsonArray[] = $rt['chemist_id'].":-".$rt['gstvno']." Amt-x.".$rt['amount'];
 			}
 		}
-		$find_invoice_chemist_id = implode(',', $jsonArray);
+		$find_invoice_chemist_id = implode('||', $jsonArray);
 
 		$return["find_invoice_chemist_id"] = $find_invoice_chemist_id;
 
