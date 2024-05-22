@@ -319,7 +319,7 @@
 						$tr_style = "background-color: khaki";
 					}
 
-					if((!empty($whatsapp_body))){
+					if((!empty($whatsapp_body)) && $whatsapp_body!="N/a"){
 						$tr_style = "background-color: lemonchiffon";
 					}
 
