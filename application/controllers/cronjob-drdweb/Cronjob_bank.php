@@ -495,14 +495,11 @@ class Cronjob_bank extends CI_Controller
 		$process_name = $received_from;
 		$process_value = "";
 
-		echo "SELECT * FROM `tbl_acm` WHERE `telephone` like '%$received_from%' ";
-
 		$rr = $this->db->query("SELECT * FROM `tbl_acm` WHERE `telephone` like '%$received_from%' ");
 		$rr = $rr->result();
 		foreach($rr as $tt){
 			$jsonArray[] = $tt->altercode;
 			$process_value = $tt->telephone;
-			$process_value = str_replace(',', '||', $process_value);
 			//$chemist_id = $tt->chemist_id;
 		}
 
@@ -512,7 +509,6 @@ class Cronjob_bank extends CI_Controller
 			foreach($rr as $tt){
 				$jsonArray[] = $tt->altercode;
 				$process_value = $tt->telephone1;
-				$process_value = str_replace(',', '||', $process_value);
 				//$chemist_id = $tt->chemist_id;
 			}
 		}
@@ -523,7 +519,6 @@ class Cronjob_bank extends CI_Controller
 			foreach($rr as $tt){
 				$jsonArray[] = $tt->altercode;
 				$process_value = $tt->mobile;
-				$process_value = str_replace(',', '||', $process_value);
 				//$chemist_id = $tt->chemist_id;
 			}
 		}
