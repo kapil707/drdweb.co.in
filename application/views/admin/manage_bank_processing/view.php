@@ -191,12 +191,14 @@
 							}
 							$get_all_chemist_id.= " || ";
 						}
-					}else{
-						$get_all_chemist_id = "N/a";
 					}
 
 					if(!empty($get_all_chemist_id)){
 						$get_all_chemist_id = substr($get_all_chemist_id, 0, -4);
+					}
+
+					if(empty($get_all_chemist_id)){
+						$get_all_invoice = "N/a";
 					}
 
 					$find_invoice_chemist_id_array = explode("||", $find_invoice_chemist_id);
