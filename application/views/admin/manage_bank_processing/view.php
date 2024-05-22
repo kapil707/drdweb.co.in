@@ -116,19 +116,6 @@
 					];
 				}
 				
-				// // Display the processed data
-				// echo "<pre>";
-				// print_r($processed_data);
-				// echo "</pre>";
-
-				// foreach ($processed_data as $entry) {
-				// 	echo "<tr>";
-				// 	echo "<td>{$entry['upi_no']}</td>";
-				// 	echo "<td>{$entry['sms']['id']}</td>";
-				// 	echo "<td>{$row_id}</td>";
-
-				// }
-				
 				foreach ($processed_data as $entry) {
 
 					$tr_style = "";
@@ -157,19 +144,13 @@
 					if(!empty($entry['statement']['process_value'])){
 						$process_value = $entry['statement']['process_value'];
 					}
-					
-					$search_escaped = preg_quote($process_name, '/');
-					$highlighted_text = preg_replace('/(' . $search_escaped . ')/i', '<span style="background-color: yellow;">$1</span>', $process_value);
-					
-					$find = "find by ";
+
+					$find_invoice_chemist_id = "";
+					if(!empty($entry['sms']['find_invoice_chemist_id'])){
+						$find_invoice_chemist_id = $entry['sms']['find_invoice_chemist_id'];
+					}
 					if(!empty($entry['statement']['find_invoice_chemist_id'])){
-						$find.= "<b>invoice</b>,";
-					}
-					if(!empty($entry['statement']['find_chemist_id'])){
-						$find.= "<b>chemist</b>";
-					}
-					if(empty($entry['statement']['find_invoice_chemist_id']) && empty($entry['statement']['find_chemist_id'])){
-						$find = "N/A";
+						$find_invoice_chemist_id = $entry['statement']['find_invoice_chemist_id'];
 					}
 
 					$find_chemist_id = "";
@@ -178,6 +159,20 @@
 					}
 					if(!empty($entry['statement']['find_chemist_id'])){
 						$find_chemist_id = $entry['statement']['find_chemist_id'];
+					}
+					
+					$search_escaped = preg_quote($process_name, '/');
+					$highlighted_text = preg_replace('/(' . $search_escaped . ')/i', '<span style="background-color: yellow;">$1</span>', $process_value);
+					
+					$find = "find by ";
+					if(!empty($find_invoice_chemist_id)){
+						$find.= "<b>invoice</b>,";
+					}
+					if(!empty($find_chemist_id)){
+						$find.= "<b>chemist</b>";
+					}
+					if(empty($find_invoice_chemist_id) && empty($find_chemist_id)){
+						$find = "N/A";
 					}
 					
 					$find_chemist_id2 = "";
