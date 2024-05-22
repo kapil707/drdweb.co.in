@@ -363,7 +363,12 @@
 							}
 						}
 					}
-
+					if(empty($find_chemist_id_array)){
+						$find_chemist_id_array = "N/a";
+					}
+					if(empty($find_invoice_chemist_id2)){
+						$find_invoice_chemist_id2 = "N/a";
+					}
 					?>
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
 						<td><?php echo $row_id; ?> </td>
