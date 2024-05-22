@@ -429,7 +429,7 @@
 							<br><br>
 							<b>Chemist : </b>
 							<?= $get_all_chemist_id;?>
-							<br>
+							<br><br>
 							<b>Invoice : </b>
 							<?= $get_all_invoice_chemist ?>
 							<br><br>
