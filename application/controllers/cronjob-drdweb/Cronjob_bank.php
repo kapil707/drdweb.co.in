@@ -495,6 +495,8 @@ class Cronjob_bank extends CI_Controller
 		$process_name = $received_from;
 		$process_value = "";
 
+		echo "SELECT * FROM `tbl_acm` WHERE `telephone` like '%$received_from%' ";
+
 		$rr = $this->db->query("SELECT * FROM `tbl_acm` WHERE `telephone` like '%$received_from%' ");
 		$rr = $rr->result();
 		foreach($rr as $tt){
