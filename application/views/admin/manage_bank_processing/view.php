@@ -370,6 +370,9 @@
 					if(empty($find_invoice_chemist_id2)){
 						$find_invoice_chemist_id2 = "N/a";
 					}
+					if(empty($find_invoice_chemist_id1)){
+						$find_invoice_chemist_id1 = "N/a";
+					}
 					?>
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
 						<td><?php echo $row_id; ?> </td>
