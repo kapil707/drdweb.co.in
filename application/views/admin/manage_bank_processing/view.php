@@ -431,7 +431,7 @@
 							<br><br>
 							<b>Chemist : </b>
 							<?= $get_all_chemist_id;?>
-							<?php print_r($get_all_chemist_id); ?>
+							<?php print_r($find_chemist_id_array); ?>
 							<br><br>
 							<b>Invoice : </b>
 							<?= $get_all_invoice_chemist ?>
