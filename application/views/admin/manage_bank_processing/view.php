@@ -184,21 +184,20 @@
 
 					$find_invoice_chemist_id_array = explode("||", $find_invoice_chemist_id);
 
-					$server_invoice = "";
-					$get_all_invoice = "";
+					$get_all_invoice = $get_all_invoice_chemist = "";
 					foreach($find_invoice_chemist_id_array as $rows){
 						$get_all_invoice.= $rows."<br>";
 
 						$arr = explode(":-",$rows);
-						$server_invoice_chemist_id.= $arr[0]." || ";
+						$get_all_invoice_chemist.= $arr[0]." || ";
 					}
 
 					if(empty($find_invoice_chemist_id)){
 						$get_all_invoice = "N/a";
 					}
 
-					if(!empty($server_invoice_chemist_id)){
-						$server_invoice_chemist_id = substr($server_invoice_chemist_id, 0, -4);
+					if(!empty($get_all_invoice_chemist)){
+						$get_all_invoice_chemist = substr($get_all_invoice_chemist, 0, -4);
 					}
 					
 					$done_chemist_id = "";
@@ -372,8 +371,8 @@
 							}
 						}
 					}
-					if(empty($server_invoice_chemist_id)){
-						$server_invoice_chemist_id = "N/a";
+					if(empty($get_all_invoice_chemist)){
+						$get_all_invoice_chemist = "N/a";
 					}
 					?>
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
@@ -427,7 +426,7 @@
 							?>
 							<br>
 							<b>Invoice : </b>
-							<?= $server_invoice_chemist_id ?>
+							<?= $get_all_invoice_chemist ?>
 							<br><br>
 							<b>WhatsApp : </b>
 							<?= ($whatsapp_body); ?>
