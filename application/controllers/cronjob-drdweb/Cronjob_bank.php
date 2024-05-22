@@ -502,6 +502,7 @@ class Cronjob_bank extends CI_Controller
 		foreach($rr as $tt){
 			$jsonArray[] = $tt->altercode;
 			$process_value = $tt->telephone;
+			$process_value = str_replace(',', '||', $process_value);
 			//$chemist_id = $tt->chemist_id;
 		}
 
@@ -511,6 +512,7 @@ class Cronjob_bank extends CI_Controller
 			foreach($rr as $tt){
 				$jsonArray[] = $tt->altercode;
 				$process_value = $tt->telephone1;
+				$process_value = str_replace(',', '||', $process_value);
 				//$chemist_id = $tt->chemist_id;
 			}
 		}
@@ -521,6 +523,7 @@ class Cronjob_bank extends CI_Controller
 			foreach($rr as $tt){
 				$jsonArray[] = $tt->altercode;
 				$process_value = $tt->mobile;
+				$process_value = str_replace(',', '||', $process_value);
 				//$chemist_id = $tt->chemist_id;
 			}
 		}
