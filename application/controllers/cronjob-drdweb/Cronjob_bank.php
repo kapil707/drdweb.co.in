@@ -376,7 +376,7 @@ class Cronjob_bank extends CI_Controller
 				}
 			}
 
-			$find_chemist_id = str_replace("/",",",$find_chemist_id);
+			//$find_chemist_id = str_replace("/",",",$find_chemist_id);
 
 			/************************************************* */
 			$result = $this->find_by_invoice($amount,$start_date,$end_date,$find_chemist_id);
