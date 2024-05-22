@@ -182,6 +182,23 @@
 						$find_chemist_id2 = $find_chemist_id_array[0];
 					}
 
+					$get_all_chemist_id = "";
+					if(!empty($find_chemist_id_array)){
+						foreach($find_chemist_id_array as $rows){
+							$get_all_chemist_id.= $rows;
+							if(!empty($chemist_fafa[$rows])){
+								$get_all_chemist_id. $chemist_fafa[$rows];
+							}
+							$get_all_chemist_id. " || ";
+						}
+					}else{
+						$get_all_chemist_id = "N/a";
+					}
+
+					if(!empty($get_all_chemist_id)){
+						$get_all_chemist_id = substr($get_all_chemist_id, 0, -4);
+					}
+
 					$find_invoice_chemist_id_array = explode("||", $find_invoice_chemist_id);
 
 					$get_all_invoice = $get_all_invoice_chemist = "";
@@ -384,7 +401,7 @@
 							<br><br>
 							<?= ($time); ?>
 							<br><br>
-							Upi No : <?= $upi_no; ?>
+								Upi No : <?= $upi_no; ?>
 							<br><br>
 								
 							<div style="word-wrap:break-word;width:200px;">
@@ -411,19 +428,7 @@
 							</div>
 							<br><br>
 							<b>Chemist : </b>
-							<?php 
-							if(!empty($find_chemist_id_array)){
-								foreach($find_chemist_id_array as $rows){
-									echo $rows;
-									if(!empty($chemist_fafa[$rows])){
-										echo $chemist_fafa[$rows];
-									}
-									echo "<br>";
-								}
-							}else{
-								echo "N/a";
-							}
-							?>
+							<?= $get_all_chemist_id;?>
 							<br>
 							<b>Invoice : </b>
 							<?= $get_all_invoice_chemist ?>
