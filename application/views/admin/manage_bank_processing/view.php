@@ -192,6 +192,10 @@
 						$find_invoice_chemist_id2.= $arr[0]." || ";
 					}
 
+					if(empty($find_invoice_chemist_id_array)){
+						$find_invoice_server = "N/a";
+					}
+
 					if(!empty($find_invoice_chemist_id2)){
 						$find_invoice_chemist_id2 = substr($find_invoice_chemist_id2, 0, -4);
 					}
@@ -369,9 +373,6 @@
 					}
 					if(empty($find_invoice_chemist_id2)){
 						$find_invoice_chemist_id2 = "N/a";
-					}
-					if(empty($find_invoice_server)){
-						$find_invoice_server = "N/a";
 					}
 					?>
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
