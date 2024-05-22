@@ -196,7 +196,7 @@
 					}
 
 					if(!empty($get_all_chemist_id)){
-						$get_all_chemist_id = substr($get_all_chemist_id, 0, -4);
+						//$get_all_chemist_id = substr($get_all_chemist_id, 0, -4);
 					}
 
 					$find_invoice_chemist_id_array = explode("||", $find_invoice_chemist_id);
