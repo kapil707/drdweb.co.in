@@ -495,12 +495,32 @@ class Cronjob_bank extends CI_Controller
 		$process_name = $received_from;
 		$process_value = "";
 
-		$rr = $this->db->query("SELECT * FROM `tbl_acm` WHERE `mobile` = '$received_from'");
+		$rr = $this->db->query("SELECT * FROM `tbl_acm` WHERE `telephone` = '$received_from' ");
 		$rr = $rr->result();
 		foreach($rr as $tt){
 			$jsonArray[] = $tt->altercode;
-			$process_value = $tt->mobile;
+			$process_value = $tt->telephone;
 			//$chemist_id = $tt->chemist_id;
+		}
+
+		if(empty($process_value)){
+			$rr = $this->db->query("SELECT * FROM `tbl_acm` WHERE `telephone1` = '$received_from' ");
+			$rr = $rr->result();
+			foreach($rr as $tt){
+				$jsonArray[] = $tt->altercode;
+				$process_value = $tt->telephone1;
+				//$chemist_id = $tt->chemist_id;
+			}
+		}
+
+		if(empty($process_value)){
+			$rr = $this->db->query("SELECT * FROM `tbl_acm` WHERE `mobile` = '$received_from' ");
+			$rr = $rr->result();
+			foreach($rr as $tt){
+				$jsonArray[] = $tt->altercode;
+				$process_value = $tt->mobile;
+				//$chemist_id = $tt->chemist_id;
+			}
 		}
 
 		if(!empty($jsonArray)){
