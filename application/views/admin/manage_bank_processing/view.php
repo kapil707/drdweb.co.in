@@ -194,30 +194,6 @@
 					
 					$done_chemist_id = "";
 					$find_all = "";
-					
-					if((strtolower($find_chemist_id2)==strtolower($find_invoice_chemist_id2)) && (!empty($find_invoice_chemist_id2) && !empty($find_chemist_id2))){
-						$find_all = "done";
-						$tr_style = "background-color: #ffe1c0;";
-
-						$done_chemist_id = $find_chemist_id2;
-					}
-
-					if(empty($find_all) && !empty($find_invoice_chemist_id_array) &&  !empty($find_chemist_id_array)){
-						foreach($find_invoice_chemist_id_array as $rows){
-							foreach($find_chemist_id_array as $rows1){
-								$arr = explode(":-",$rows);
-								if($arr[0]==$rows1 && !empty($arr[0]) && !empty($rows1)){
-									$find_all = "new-done";
-									$done_chemist_id = $rows1;
-
-									$chemist_fafa[$done_chemist_id] = '<i class="fa fa-check-circle" aria-hidden="true" style="color: green;font-size: 20px;"></i>';
-
-									$tr_style = "background-color: #D9C0FF;";
-								}
-							}
-						}
-					}
-
 					$done_status = "";
 					if(!empty($entry['sms']['done_status'])){
 						$done_status = $entry['sms']['done_status'];
@@ -331,6 +307,37 @@
 					if(!empty($entry['statement']['whatsapp_body'])){
 						$whatsapp_body2 = $entry['statement']['whatsapp_body2'];
 					}
+
+					if((strtolower($find_chemist_id2)==strtolower($find_invoice_chemist_id2)) && (!empty($find_invoice_chemist_id2) && !empty($find_chemist_id2))){
+						$find_all = "done";
+						$tr_style = "background-color: #ffe1c0;";
+
+						$done_chemist_id = $find_chemist_id2;
+					}
+
+					if((strtolower($find_chemist_id2)==strtolower($find_invoice_chemist_id2)) && (strtolower($find_chemist_id2)==strtolower($whatsapp_body)) && (!empty($find_invoice_chemist_id2) && !empty($find_chemist_id2) && !empty($whatsapp_body))){
+						$find_all = "done";
+						$tr_style = "background-color: #77D6EE;";
+
+						$done_chemist_id = $find_chemist_id2;
+					}
+
+					if(empty($find_all) && !empty($find_invoice_chemist_id_array) &&  !empty($find_chemist_id_array)){
+						foreach($find_invoice_chemist_id_array as $rows){
+							foreach($find_chemist_id_array as $rows1){
+								$arr = explode(":-",$rows);
+								if($arr[0]==$rows1 && !empty($arr[0]) && !empty($rows1)){
+									$find_all = "new-done";
+									$done_chemist_id = $rows1;
+
+									$chemist_fafa[$done_chemist_id] = '<i class="fa fa-check-circle" aria-hidden="true" style="color: green;font-size: 20px;"></i>';
+
+									$tr_style = "background-color: #D9C0FF;";
+								}
+							}
+						}
+					}
+
 					?>
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
 						<td><?php echo $row_id; ?> </td>
