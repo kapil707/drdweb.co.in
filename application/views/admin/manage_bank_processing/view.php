@@ -176,7 +176,7 @@
 					}
 					
 					$find_chemist_id2 = "";
-					$find_chemist_id_array = explode(",", $find_chemist_id);
+					$find_chemist_id_array = explode("||", $find_chemist_id);
 					$find_chemist_id_array = array_unique($find_chemist_id_array);					
 					if(count($find_chemist_id_array)==1){
 						$find_chemist_id2 = $find_chemist_id_array[0];
@@ -367,9 +367,6 @@
 							}
 						}
 					}
-					if(empty($find_chemist_id_array)){
-						$find_chemist_id_array = "N/a";
-					}
 					if(empty($find_invoice_chemist_id2)){
 						$find_invoice_chemist_id2 = "N/a";
 					}
@@ -419,6 +416,8 @@
 									}
 									echo "<br>";
 								}
+							}else{
+								echo "N/a";
 							}
 							?>
 							<br>
