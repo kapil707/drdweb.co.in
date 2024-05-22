@@ -311,6 +311,18 @@
 						$whatsapp_body2 = $entry['statement']['whatsapp_body2'];
 					}
 
+					if((!empty($find_chemist_id2))){
+						$tr_style = "background-color: cornsilk";
+					}
+
+					if((!empty($find_invoice_chemist_id2))){
+						$tr_style = "background-color: khaki";
+					}
+
+					if((!empty($whatsapp_body))){
+						$tr_style = "background-color: lemonchiffon";
+					}
+
 					if((strtolower($find_chemist_id2)==strtolower($find_invoice_chemist_id2)) && (!empty($find_invoice_chemist_id2) && !empty($find_chemist_id2))){
 						$find_all = "done";
 						$tr_style = "background-color: #ffe1c0;";
@@ -320,7 +332,7 @@
 
 					if((strtolower($find_chemist_id2)==strtolower($whatsapp_body)) && (!empty($whatsapp_body) && !empty($find_chemist_id2))){
 						$find_all = "done";
-						$tr_style = "background-color: #ffe1c0;";
+						$tr_style = "background-color: #23c6c8;";
 
 						$done_chemist_id = $find_chemist_id2;
 					}
