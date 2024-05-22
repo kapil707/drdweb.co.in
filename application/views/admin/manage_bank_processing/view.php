@@ -193,7 +193,7 @@
 					}
 
 					if(!empty($find_invoice_chemist_id2)){
-						$find_invoice_chemist_id2 = substr($find_invoice_chemist_id2, 2, -1);
+						$find_invoice_chemist_id2 = substr($find_invoice_chemist_id2, 0, -2);
 					}
 					
 					$done_chemist_id = "";
