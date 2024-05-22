@@ -316,7 +316,7 @@
 					}
 
 					if((strtolower($find_chemist_id2)==strtolower($find_invoice_chemist_id2)) && (strtolower($find_chemist_id2)==strtolower($whatsapp_body)) && (!empty($find_invoice_chemist_id2) && !empty($find_chemist_id2) && !empty($whatsapp_body))){
-						$find_all = "done";
+						$find_all = "done-all";
 						$tr_style = "background-color: #77D6EE;";
 
 						$done_chemist_id = $find_chemist_id2;
