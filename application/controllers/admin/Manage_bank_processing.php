@@ -456,40 +456,21 @@ class Manage_bank_processing extends CI_Controller {
 		$received_from 	= $_POST["received_from"];
 		if(!empty($id) && !empty($done_chemist_id) && !empty($received_from)){
 
-			/*$query = $this->BankModel->select_query("SELECT * FROM `tbl_bank_chemist` where string_value='$received_from'");
+			$query = $this->BankModel->select_query("SELECT * FROM `tbl_bank_processing` where id='$id'");
 			$row = $query->row();
-			if(empty($row)){
-				$dt = array(
-					'chemist_id' => $done_chemist_id,
-					'string_value' => $received_from,
-					'date'=>date('Y-m-d'),
-					'time'=>time(),
-					'user_id'=>$this->session->userdata("user_id")
-				);
-				$this->BankModel->insert_fun("tbl_bank_chemist", $dt);
-			}
-
-			/********************************************* */
-			// agar kisi from user ko chmist say add kartay ha to jitnay be from user ha sab ka status 0 ho jaya or wo re-process hota ha 
-			/*
-			$where = array(				
-				'received_from'=>$received_from,
-				'status' => '1',
-			);
-			$dt = array(
-				'status' => '0',
-			);
-			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);*/
+			$upi_no = $row->upi_no;
 			
 			/********************************************* */
-			$where = array(
-				'id' => $id,
-			);
-			$dt = array(
-				'done_chemist_id'=>$done_chemist_id,
-				'done_status' => '1',
-			);
-			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
+			if(!empty($upi_no)){
+				$where = array(
+					'upi_no' => $upi_no,
+				);
+				$dt = array(
+					'done_chemist_id'=>$done_chemist_id,
+					'done_status' => '1',
+				);
+				$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
+			}
 		}
 	}
 
