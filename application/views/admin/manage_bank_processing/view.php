@@ -328,8 +328,6 @@
 					
 					
 					$done_chemist_id = "";
-					$find_all = "";
-					
 
 
 					
@@ -372,19 +370,19 @@
 					// jab koi be chemist find na ho to
 					/********************************************** */
 					if(empty($find_chemist_id_array[0])){
-						$row_find_by_chemist_id = "N/a";
+						//$row_find_by_chemist_id = "N/a";
 					}
 
 					// jab koi be invoice say chemist find na ho to
 					/********************************************** */
 					if(empty($row_find_by_invoice_chemist_id)){
-						$row_find_by_invoice_chemist_id = "N/a";
+						//$row_find_by_invoice_chemist_id = "N/a";
 					}
 
 					// jab koi be whatapp say chemist find na ho to
 					/********************************************** */
 					if(empty($row_find_by_whatsapp_chemist_id)){
-						$row_find_by_whatsapp_chemist_id = "N/a";
+						//$row_find_by_whatsapp_chemist_id = "N/a";
 					}
 					?>
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
