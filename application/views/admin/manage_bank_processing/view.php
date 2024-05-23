@@ -327,12 +327,6 @@
 					if(!empty($entry['statement']['done_chemist_id'])){
 						$my_done_chemist_id = $entry['statement']['done_chemist_id'];
 					}
-
-
-					
-					
-					
-
 					/********************************************** */
 					
 					
@@ -409,15 +403,15 @@
 					}
 
 					/********************************************** */
-					$find = "find by ";
-					if(!empty($find_invoice_chemist_id)){
-						$find.= "<b>invoice</b>,";
-					}
+					$row_find_by = "find by ";
 					if(!empty($find_chemist_id)){
-						$find.= "<b>chemist</b>";
+						$row_find_by.= "<b>chemist</b>,";
+					}
+					if(!empty($find_invoice_chemist_id)){
+						$row_find_by.= "<b>invoice</b>,";
 					}
 					if(empty($find_invoice_chemist_id) && empty($find_chemist_id)){
-						$find = "N/A";
+						$row_find_by = "N/A";
 					}
 					?>
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
@@ -453,6 +447,11 @@
 							<div style="word-wrap:break-word;width:250px;">
 								<b>Find : </b> 
 								<?= ($row_received_from_find); ?> <?= $row_received_from_logic; ?>
+							</div>
+							<br>
+							<div style="word-wrap:break-word;width:250px;">
+								<b>Find by : </b> 
+								<?= $row_find_by; ?>
 							</div>
 							<br>
 							<div style="word-wrap:break-word;width:250px;">
