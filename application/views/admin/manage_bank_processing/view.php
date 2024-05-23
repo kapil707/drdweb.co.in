@@ -350,30 +350,6 @@
 						$done_chemist_id = $my_done_chemist_id;
 					}
 					
-					/********************************************** */
-					if(!empty($entry['statement']['received_from']) && !empty($entry['sms']['received_from'])){
-						if(strtolower($entry['statement']['received_from']) == strtolower($entry['sms']['received_from'])){
-							$hidden_text_received_from = $entry['sms']['received_from'];
-						}
-					}else{
-						if(!empty($entry['statement']['received_from'])){
-							$hidden_text_received_from = $entry['statement']['received_from'];
-						}else{
-							if(!empty($entry['sms']['received_from'])){
-								$hidden_text_received_from = $entry['sms']['received_from'];
-							}
-						}
-					}
-
-					
-
-					
-
-					
-
-					
-
-					
 
 					if((!empty($find_chemist_id2))){
 						$tr_style = "background-color: cornsilk";
@@ -464,7 +440,7 @@
 						<td>
 							<?= ($row_received_from); ?>
 
-							<input type="hidden" value="<?php echo $text_received_from ?>" class="text_received_from_<?= ($row_id); ?>">
+							<input type="hidden" value="<?php echo $hidden_text_received_from ?>" class="text_received_from_<?= ($row_id); ?>">
 
 							<input type="text" value="<?php echo $find_chemist_id; ?>" class="text_received_from_chemist_id_<?= ($row_id); ?>" style="display:none">
 
