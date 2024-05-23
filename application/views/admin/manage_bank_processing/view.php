@@ -220,7 +220,7 @@
 					}
 
 					if(!empty($row_received_from_logic)){
-						$row_received_from_logic = "($row_received_from_logic)";
+						$row_received_from_logic = " || ($row_received_from_logic)";
 					}
 
 					/********************************************** */
