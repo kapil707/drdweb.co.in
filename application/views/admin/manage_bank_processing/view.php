@@ -430,19 +430,29 @@
 							<i class="fa fa-pencil edit_received_from_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_received_from_chemist_id('<?= ($row_id); ?>')"></i>
 							<br><br>
 							<div style="word-wrap:break-word;width:250px;">
-								Find : <?= ($highlighted_text); ?> 
+								<b>Find : </b> 
+								<?= ($highlighted_text); ?> 
 							</div>
-							<br><br>
-							<b>Find by : </b> <?= ($find_by); ?>
-							<br><br>
-							<b>Chemist : </b>
-							<?= $get_all_chemist_id;?>
-							<br><br>
-							<b>Invoice : </b>
-							<?= $get_all_invoice_chemist ?>
-							<br><br>
-							<b>WhatsApp : </b>
-							<?= ($whatsapp_body); ?>
+							<br>
+							<div style="word-wrap:break-word;width:250px;">
+								<b>Find by : </b> 
+								<?= $find_by; ?>
+							</div>
+							<br>
+							<div style="word-wrap:break-word;width:250px;"></div>
+								<b>Chemist : </b>
+								<?= $get_all_chemist_id;?>
+							</div>
+							<br>
+							<div style="word-wrap:break-word;width:250px;"></div>
+								<b>Invoice : </b>
+								<?= $get_all_invoice_chemist ?>
+							</div>
+							<br>
+							<div style="word-wrap:break-word;width:250px;">
+								<b>WhatsApp : </b>
+								<?= ($whatsapp_body); ?>
+							</div>
 						</td>
 						<td><?= ($get_all_invoice); ?></td>
 						<td><?= ($whatsapp_body2); ?></td>
