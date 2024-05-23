@@ -383,7 +383,7 @@
 					}
 
 					if($done_status==1){
-						$tr_style = "background-color: #e8ffe2;";						
+						$tr_style = "background-color: #e8ffe2;";					
 					}
 					?>
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
