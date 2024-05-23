@@ -236,11 +236,10 @@
 						$find_chemist_id = $entry['statement']['find_chemist_id'];
 					}
 
-					$find_chemist_id2 = "";
 					$find_chemist_id_array = explode("||", $find_chemist_id);
 					$find_chemist_id_array = array_unique($find_chemist_id_array);					
 					// if(count($find_chemist_id_array)==1){
-					// 	$find_chemist_id2 = $find_chemist_id_array[0];
+					// 	$singal_chemist_id = $find_chemist_id_array[0];
 					// }
 					
 					$row_find_by_chemist_id = "";
@@ -343,9 +342,6 @@
 					}
 					
 
-					if((!empty($find_chemist_id2))){
-						$tr_style = "background-color: cornsilk";
-					}
 
 					if((!empty($row_find_by_invoice_chemist_id))){
 						$tr_style = "background-color: khaki";
@@ -400,6 +396,7 @@
 					$row_find_by = "";
 					if(!empty($row_find_by_chemist_id)){
 						$row_find_by.= "chemist,";
+						$tr_style = "background-color: cornsilk";
 					}
 					if(!empty($row_find_by_invoice_chemist_id)){
 						$row_find_by.= "invoice,";
