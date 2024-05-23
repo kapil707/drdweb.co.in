@@ -258,10 +258,6 @@
 						$row_find_by_chemist_id = substr($row_find_by_chemist_id, 0, -4);
 					}
 
-					if(empty($find_chemist_id_array[0])){
-						$row_find_by_chemist_id = "N/a";
-					}
-
 					// invoice say chemist find karta ha yha logic
 					/********************************************** */
 					$find_invoice_chemist_id = "";
@@ -302,9 +298,6 @@
 					$whatsapp_body_1 = str_replace('-', '', $whatsapp_body_1);
 
 					$row_find_by_whatsapp_chemist_id = $whatsapp_body;
-					if(empty($row_find_by_whatsapp_chemist_id)){
-						$row_find_by_whatsapp_chemist_id = "N/a";
-					}
 
 					/********************************************** */
 					$whatsapp_body2 = "";
@@ -403,23 +396,37 @@
 						}
 					}
 
+					/********************************************** */
+					$row_find_by = "";
+					if(!empty($row_find_by_chemist_id)){
+						$row_find_by.= "chemist,";
+					}
+					if(!empty($row_find_by_invoice_chemist_id)){
+						$row_find_by.= "invoice,";
+					}
+					if(!empty($row_find_by_whatsapp_chemist_id)){
+						$row_find_by.= "whatsapp";
+					}
+					if(empty($row_find_by_chemist_id) && empty($row_find_by_invoice_chemist_id) && empty($row_find_by_whatsapp_chemist_id)){
+						$row_find_by = "N/A";
+					}
+					
+					// jab koi be chemist find na ho to
+					/********************************************** */
+					if(empty($find_chemist_id_array[0])){
+						$row_find_by_chemist_id = "N/a";
+					}
+
+					// jab koi be invoice say chemist find na ho to
+					/********************************************** */
 					if(empty($row_find_by_invoice_chemist_id)){
 						$row_find_by_invoice_chemist_id = "N/a";
 					}
 
+					// jab koi be whatapp say chemist find na ho to
 					/********************************************** */
-					$row_find_by = "find by ";
-					if(!empty($row_find_by_chemist_id)){
-						$row_find_by.= "<b>chemist</b>,";
-					}
-					if(!empty($row_find_by_invoice_chemist_id)){
-						$row_find_by.= "<b>invoice</b>,";
-					}
-					if(!empty($row_find_by_whatsapp_chemist_id)){
-						$row_find_by.= "<b>whatsapp</b>";
-					}
-					if(empty($find_invoice_chemist_id) && empty($find_chemist_id)){
-						$row_find_by = "N/A";
+					if(empty($row_find_by_whatsapp_chemist_id)){
+						$row_find_by_whatsapp_chemist_id = "N/a";
 					}
 					?>
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
