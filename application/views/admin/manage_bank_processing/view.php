@@ -86,7 +86,8 @@
 								"status" => split_csv_values($item->status)[$index] ?? '',
 								"received_from" => split_csv_values($item->received_from)[$index] ?? '',
 								"amount" => split_csv_values($item->amount)[$index] ?? '',
-								"orderid" => split_csv_values($item->orderid)[$index] ?? ''
+								"orderid" => split_csv_values($item->orderid)[$index] ?? '',
+								"done_chemist_id" => split_csv_values($item->done_chemist_id)[$index] ?? ''
 							];
 						} elseif ($type == 'statment') {
 							$statement_data = [
@@ -104,7 +105,8 @@
 								"status" => split_csv_values($item->status)[$index] ?? '',
 								"received_from" => split_csv_values($item->received_from)[$index] ?? '',
 								"amount" => split_csv_values($item->amount)[$index] ?? '',
-								"orderid" => split_csv_values($item->orderid)[$index] ?? ''
+								"orderid" => split_csv_values($item->orderid)[$index] ?? '',
+								"done_chemist_id" => split_csv_values($item->done_chemist_id)[$index] ?? ''
 							];
 						}
 					}
