@@ -152,6 +152,10 @@
 					$process_name = preg_quote($process_name, '/');
 					$fine_user_info = preg_replace('/(' . $process_name . ')/i', '<span style="background-color: yellow;">$1</span>', $process_value);
 
+					if(empty($process_value)){
+						$fine_user_info = "N/a";
+					}
+
 					/********************************************** */
 					$find_invoice_chemist_id = "";
 					if(!empty($entry['sms']['find_invoice_chemist_id'])){
