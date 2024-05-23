@@ -234,6 +234,7 @@
 
 					// chemist find karta ha yha logic
 					/********************************************** */
+					$find_chemist_id2 = "";
 					$find_chemist_id_array = explode("||", $find_chemist_id);
 					$find_chemist_id_array = array_unique($find_chemist_id_array);					
 					// if(count($find_chemist_id_array)==1){
