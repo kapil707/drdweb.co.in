@@ -176,7 +176,7 @@
 					}
 
 					/****************************************************** */
-					$row_received_from = "";
+					$row_received_from = "<b>From</b> <br>";
 					if(!empty($entry['statement']['received_from'])){
 						$row_received_from.= "Bank : ".$entry['statement']['received_from']."<br>";
 					}
@@ -208,6 +208,15 @@
 
 					if(empty($process_value)){
 						$row_received_from_find = "N/a";
+					}
+
+					/********************************************** */
+					$row_received_from_logic = "";
+					if(!empty($entry['sms']['find_by'])){
+						$row_received_from_logic = $entry['sms']['find_by'];
+					}
+					if(!empty($entry['statement']['find_by'])){
+						$row_received_from_logic = $entry['statement']['find_by'];
 					}
 
 					/********************************************** */
@@ -246,14 +255,6 @@
 						$my_done_chemist_id = $entry['statement']['done_chemist_id'];
 					}
 
-					/********************************************** */
-					$find_by_logic = "";
-					if(!empty($entry['sms']['find_by'])){
-						$find_by_logic = $entry['sms']['find_by'];
-					}
-					if(!empty($entry['statement']['find_by'])){
-						$find_by_logic = $entry['statement']['find_by'];
-					}
 
 					/********************************************** */
 					$whatsapp_body = "";
@@ -270,24 +271,6 @@
 					}
 					if(!empty($entry['statement']['whatsapp_body'])){
 						$whatsapp_body2 = $entry['statement']['whatsapp_body2'];
-					}
-					
-					
-
-					
-
-					
-					
-					/********************************************** */
-					$find = "find by ";
-					if(!empty($find_invoice_chemist_id)){
-						$find.= "<b>invoice</b>,";
-					}
-					if(!empty($find_chemist_id)){
-						$find.= "<b>chemist</b>";
-					}
-					if(empty($find_invoice_chemist_id) && empty($find_chemist_id)){
-						$find = "N/A";
 					}
 					
 					/********************************************** */
@@ -373,9 +356,7 @@
 
 					
 
-					if(empty($find_by_logic)){
-						$find_by_logic = "N/a";
-					}
+					
 
 					
 
@@ -436,8 +417,21 @@
 							}
 						}
 					}
+
 					if(empty($get_all_invoice_chemist)){
 						$get_all_invoice_chemist = "N/a";
+					}
+
+					/********************************************** */
+					$find = "find by ";
+					if(!empty($find_invoice_chemist_id)){
+						$find.= "<b>invoice</b>,";
+					}
+					if(!empty($find_chemist_id)){
+						$find.= "<b>chemist</b>";
+					}
+					if(empty($find_invoice_chemist_id) && empty($find_chemist_id)){
+						$find = "N/A";
 					}
 					?>
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
@@ -472,12 +466,7 @@
 							<br><br>
 							<div style="word-wrap:break-word;width:250px;">
 								<b>Find : </b> 
-								<?= ($row_received_from_find); ?> 
-							</div>
-							<br>
-							<div style="word-wrap:break-word;width:250px;">
-								<b>Find by : </b> 
-								<?= $find_by_logic; ?>
+								<?= ($row_received_from_find); ?> <?= $row_received_from_logic; ?>
 							</div>
 							<br>
 							<div style="word-wrap:break-word;width:250px;">
