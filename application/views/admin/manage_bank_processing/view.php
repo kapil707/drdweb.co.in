@@ -223,6 +223,7 @@
 						$row_received_from_logic = " || ($row_received_from_logic)";
 					}
 
+					// chemist find karta ha yha logic
 					/********************************************** */
 					$find_chemist_id = "";
 					if(!empty($entry['sms']['find_chemist_id'])){
@@ -232,8 +233,6 @@
 						$find_chemist_id = $entry['statement']['find_chemist_id'];
 					}
 
-					// chemist find karta ha yha logic
-					/********************************************** */
 					$find_chemist_id2 = "";
 					$find_chemist_id_array = explode("||", $find_chemist_id);
 					$find_chemist_id_array = array_unique($find_chemist_id_array);					
@@ -268,6 +267,24 @@
 					}
 					if(!empty($entry['statement']['find_invoice_chemist_id'])){
 						$find_invoice_chemist_id = $entry['statement']['find_invoice_chemist_id'];
+					}
+
+					$find_invoice_chemist_id_array = explode("||", $find_invoice_chemist_id);
+
+					$row_find_invoice_all = $row_find_invoice_chemist_id = "";
+					foreach($find_invoice_chemist_id_array as $rows){
+						$row_find_invoice_all.= $rows."<br>";
+
+						$arr = explode(":-",$rows);
+						$row_find_invoice_chemist_id.= $arr[0]." || ";
+					}
+
+					if(empty($find_invoice_chemist_id)){
+						$row_find_invoice_all = "N/a";
+					}
+
+					if(!empty($row_find_invoice_chemist_id)){
+						$row_find_invoice_chemist_id = substr($row_find_invoice_chemist_id, 0, -4);
 					}
 
 					/********************************************** */
@@ -309,23 +326,7 @@
 					
 
 					/********************************************** */
-					$find_invoice_chemist_id_array = explode("||", $find_invoice_chemist_id);
-
-					$get_all_invoice = $get_all_invoice_chemist = "";
-					foreach($find_invoice_chemist_id_array as $rows){
-						$get_all_invoice.= $rows."<br>";
-
-						$arr = explode(":-",$rows);
-						$get_all_invoice_chemist.= $arr[0]." || ";
-					}
-
-					if(empty($find_invoice_chemist_id)){
-						$get_all_invoice = "N/a";
-					}
-
-					if(!empty($get_all_invoice_chemist)){
-						$get_all_invoice_chemist = substr($get_all_invoice_chemist, 0, -4);
-					}
+					
 					
 					$done_chemist_id = "";
 					$find_all = "";
@@ -376,7 +377,7 @@
 						$tr_style = "background-color: cornsilk";
 					}
 
-					if((!empty($get_all_invoice_chemist))){
+					if((!empty($row_find_invoice_chemist_id))){
 						$tr_style = "background-color: khaki";
 					}
 
@@ -384,11 +385,11 @@
 						$tr_style = "background-color: lemonchiffon";
 					}
 
-					if(($whatsapp_body_1=="N/a" || empty($whatsapp_body_1)) && $row_find_chemist_id=="N/a" && empty($get_all_invoice_chemist)){
+					if(($whatsapp_body_1=="N/a" || empty($whatsapp_body_1)) && $row_find_chemist_id=="N/a" && empty($row_find_invoice_chemist_id)){
 						$tr_style = "background-color: darksalmon";
 					}
 
-					if((strtolower($find_chemist_id2)==strtolower($get_all_invoice_chemist)) && (!empty($get_all_invoice_chemist) && !empty($find_chemist_id2))){
+					if((strtolower($find_chemist_id2)==strtolower($row_find_invoice_chemist_id)) && (!empty($row_find_invoice_chemist_id) && !empty($find_chemist_id2))){
 						$find_all = "done";
 						$tr_style = "background-color: darkseagreen;";
 
@@ -402,7 +403,7 @@
 						$done_chemist_id = $find_chemist_id2;
 					}
 
-					if((strtolower($find_chemist_id2)==strtolower($get_all_invoice_chemist)) && (strtolower($find_chemist_id2)==strtolower($whatsapp_body_1)) && (!empty($get_all_invoice_chemist) && !empty($find_chemist_id2) && !empty($whatsapp_body_1))){
+					if((strtolower($find_chemist_id2)==strtolower($row_find_invoice_chemist_id)) && (strtolower($find_chemist_id2)==strtolower($whatsapp_body_1)) && (!empty($row_find_invoice_chemist_id) && !empty($find_chemist_id2) && !empty($whatsapp_body_1))){
 						$find_all = "done-all";
 						$tr_style = "background-color: darkkhaki;";
 
@@ -425,8 +426,8 @@
 						}
 					}
 
-					if(empty($get_all_invoice_chemist)){
-						$get_all_invoice_chemist = "N/a";
+					if(empty($row_find_invoice_chemist_id)){
+						$row_find_invoice_chemist_id = "N/a";
 					}
 
 					/********************************************** */
@@ -483,7 +484,7 @@
 							<br>
 							<div style="word-wrap:break-word;width:250px;">
 								<b>Invoice : </b>
-								<?= $get_all_invoice_chemist ?>
+								<?= $row_find_invoice_chemist_id ?>
 							</div>
 							<br>
 							<div style="word-wrap:break-word;width:250px;">
@@ -491,7 +492,7 @@
 								<?= ($whatsapp_body); ?>
 							</div>
 						</td>
-						<td><?= ($get_all_invoice); ?></td>
+						<td><?= ($row_find_invoice_all); ?></td>
 						<td><?= ($whatsapp_body2); ?></td>
 						<td class="display: flex;">
 							<b><?= ($find); ?></b>
