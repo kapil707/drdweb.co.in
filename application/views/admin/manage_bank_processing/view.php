@@ -232,6 +232,7 @@
 						$find_chemist_id = $entry['statement']['find_chemist_id'];
 					}
 
+					// chemist find karta ha yha logic
 					/********************************************** */
 					$find_chemist_id_array = explode("||", $find_chemist_id);
 					$find_chemist_id_array = array_unique($find_chemist_id_array);					
@@ -258,6 +259,7 @@
 						$row_find_chemist_id = "N/a";
 					}
 
+					// invoice say chemist find karta ha yha logic
 					/********************************************** */
 					$find_invoice_chemist_id = "";
 					if(!empty($entry['sms']['find_invoice_chemist_id'])){
