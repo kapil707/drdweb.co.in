@@ -223,6 +223,41 @@
 						$row_received_from_logic = " || ($row_received_from_logic)";
 					}
 
+					/********************************************** *
+					$find_chemist_id = "";
+					if(!empty($entry['sms']['find_chemist_id'])){
+						$find_chemist_id = $entry['sms']['find_chemist_id'];
+					}
+					if(!empty($entry['statement']['find_chemist_id'])){
+						$find_chemist_id = $entry['statement']['find_chemist_id'];
+					}
+
+					/********************************************** */
+					$find_chemist_id_array = explode("||", $find_chemist_id);
+					$find_chemist_id_array = array_unique($find_chemist_id_array);					
+					// if(count($find_chemist_id_array)==1){
+					// 	$find_chemist_id2 = $find_chemist_id_array[0];
+					// }
+					
+					$row_find_chemist_id = "";
+					if(!empty($find_chemist_id_array)){
+						foreach($find_chemist_id_array as $rows){
+							$row_find_chemist_id.= $rows;
+							if(!empty($chemist_fafa[$rows])){
+								$row_find_chemist_id.= $chemist_fafa[$rows];
+							}
+							$row_find_chemist_id.= " || ";
+						}
+					}
+
+					if(!empty($row_find_chemist_id)){
+						$row_find_chemist_id = substr($row_find_chemist_id, 0, -4);
+					}
+
+					if(empty($find_chemist_id_array[0])){
+						$row_find_chemist_id = "N/a";
+					}
+
 					/********************************************** */
 					$find_invoice_chemist_id = "";
 					if(!empty($entry['sms']['find_invoice_chemist_id'])){
@@ -230,15 +265,6 @@
 					}
 					if(!empty($entry['statement']['find_invoice_chemist_id'])){
 						$find_invoice_chemist_id = $entry['statement']['find_invoice_chemist_id'];
-					}
-
-					/********************************************** */
-					$find_chemist_id = "";
-					if(!empty($entry['sms']['find_chemist_id'])){
-						$find_chemist_id = $entry['sms']['find_chemist_id'];
-					}
-					if(!empty($entry['statement']['find_chemist_id'])){
-						$find_chemist_id = $entry['statement']['find_chemist_id'];
 					}
 
 					/********************************************** */
@@ -277,33 +303,7 @@
 						$whatsapp_body2 = $entry['statement']['whatsapp_body2'];
 					}
 					
-					/********************************************** */
-					$find_chemist_id2 = "";
-					$find_chemist_id_array = explode("||", $find_chemist_id);
-					$find_chemist_id_array = array_unique($find_chemist_id_array);					
-					if(count($find_chemist_id_array)==1){
-						$find_chemist_id2 = $find_chemist_id_array[0];
-					}
-
-					/********************************************** */
-					$get_all_chemist_id = "";
-					if(!empty($find_chemist_id_array)){
-						foreach($find_chemist_id_array as $rows){
-							$get_all_chemist_id.= $rows;
-							if(!empty($chemist_fafa[$rows])){
-								$get_all_chemist_id.= $chemist_fafa[$rows];
-							}
-							$get_all_chemist_id.= " || ";
-						}
-					}
-
-					if(!empty($get_all_chemist_id)){
-						$get_all_chemist_id = substr($get_all_chemist_id, 0, -4);
-					}
-
-					if(empty($find_chemist_id_array[0])){
-						$get_all_chemist_id = "N/a";
-					}
+					
 
 					/********************************************** */
 					$find_invoice_chemist_id_array = explode("||", $find_invoice_chemist_id);
@@ -381,7 +381,7 @@
 						$tr_style = "background-color: lemonchiffon";
 					}
 
-					if(($whatsapp_body_1=="N/a" || empty($whatsapp_body_1)) && $get_all_chemist_id=="N/a" && empty($get_all_invoice_chemist)){
+					if(($whatsapp_body_1=="N/a" || empty($whatsapp_body_1)) && $row_find_chemist_id=="N/a" && empty($get_all_invoice_chemist)){
 						$tr_style = "background-color: darksalmon";
 					}
 
@@ -475,7 +475,7 @@
 							<br>
 							<div style="word-wrap:break-word;width:250px;">
 								<b>Chemist : </b>
-								<?= $get_all_chemist_id;?>
+								<?= $row_find_chemist_id;?>
 							</div>
 							<br>
 							<div style="word-wrap:break-word;width:250px;">
