@@ -132,56 +132,59 @@
 
 					/****************************************************** */
 					$row_status = "<b>Status</b><br>";
-					if(!empty($entry['statement']['status'])){
-						$row_status.= "Bank : ".$entry['statement']['status']."<br>";
-					}
 					if(!empty($entry['sms']['status'])){
-						$row_status.= "SMS  : ".$entry['sms']['status'];
+						$row_status.= "SMS  : ".$entry['sms']['status']."<br>";
+					}
+					if(!empty($entry['statement']['status'])){
+						$row_status.= "Bank : ".$entry['statement']['status'];
 					}
 
 					/****************************************************** */
 					$row_date = "<b>Date</b><br>";
-					if(!empty($entry['statement']['date'])){
-						$row_date.= "Bank : ".$entry['statement']['date']."<br>";
-					}
 					if(!empty($entry['sms']['date'])){
-						$row_date.= "SMS  : ".$entry['sms']['date'];
+						$row_date.= "SMS  : ".$entry['sms']['date']."<br>";
+					}
+					if(!empty($entry['statement']['date'])){
+						$row_date.= "Bank : ".$entry['statement']['date'];
 					}
 
 					/****************************************************** */
 					$row_time = "<b>Time</b><br>";
-					if(!empty($entry['statement']['time'])){
-						$row_time.= "Bank : ".$entry['statement']['time']."<br>";
-					}
 					if(!empty($entry['sms']['time'])){
-						$row_time.= "SMS  : ".$entry['sms']['time'];
+						$row_time.= "SMS  : ".$entry['sms']['time']."<br>";
+					}
+					if(!empty($entry['statement']['time'])){
+						$row_time.= "Bank : ".$entry['statement']['time'];
 					}
 					/****************************************************** */
 					$row_upi_no = $entry['upi_no'];
 					/****************************************************** */
 					$row_orderid = "<b>Orderid</b> <br>";
-					if(!empty($entry['statement']['orderid'])){
-						$row_orderid.= "Bank : ".$entry['statement']['orderid']."<br>";
-					}
 					if(!empty($entry['sms']['time'])){
-						$row_orderid.= "SMS  : ".$entry['sms']['orderid'];
+						$row_orderid.= "SMS  : ".$entry['sms']['orderid']."<br>";
+					}
+					if(!empty($entry['statement']['orderid'])){
+						$row_orderid.= "Bank : ".$entry['statement']['orderid'];
 					}
 					/****************************************************** */
 					$row_amount = "<b>Amount</b> <br>";
-					if(!empty($entry['statement']['amount'])){
-						$row_amount.= "Bank : ".$entry['statement']['amount']."<br>";
-					}
 					if(!empty($entry['sms']['amount'])){
-						$row_amount.= "SMS  : ".$entry['sms']['amount'];
+						$row_amount.= "SMS  : ".$entry['sms']['amount']."<br>";
+					}
+					if(!empty($entry['statement']['amount'])){
+						$row_amount.= "Bank : ".$entry['statement']['amount'];
 					}
 
 					/****************************************************** */
+					$hidden_text_received_from = "";
 					$row_received_from = "<b>From</b> <br>";
-					if(!empty($entry['statement']['received_from'])){
-						$row_received_from.= "Bank : ".$entry['statement']['received_from']."<br>";
-					}
 					if(!empty($entry['sms']['received_from'])){
 						$row_received_from.= "SMS  : ".$entry['sms']['received_from'];
+						$hidden_text_received_from = $entry['sms']['received_from'];
+					}
+					if(!empty($entry['statement']['received_from'])){
+						$row_received_from.= "Bank : ".$entry['statement']['received_from']."<br>";
+						$hidden_text_received_from = $entry['statement']['received_from'];
 					}
 					
 					/********************************************** */
@@ -288,6 +291,26 @@
 					}
 
 					/********************************************** */
+					$whatsapp_body = "";
+					if(!empty($entry['sms']['whatsapp_body'])){
+						$whatsapp_body = $entry['sms']['whatsapp_body'];
+					}
+					if(!empty($entry['statement']['whatsapp_body'])){
+						$whatsapp_body = $entry['statement']['whatsapp_body'];
+					}
+					$whatsapp_body_1 = str_replace(' ', '', $whatsapp_body);
+					$whatsapp_body_1 = str_replace('-', '', $whatsapp_body_1);
+
+					/********************************************** */
+					$whatsapp_body2 = "";
+					if(!empty($entry['sms']['whatsapp_body2'])){
+						$whatsapp_body2 = $entry['sms']['whatsapp_body2'];
+					}
+					if(!empty($entry['statement']['whatsapp_body'])){
+						$whatsapp_body2 = $entry['statement']['whatsapp_body2'];
+					}
+
+					/********************************************** */
 					$done_status = "";
 					if(!empty($entry['sms']['done_status'])){
 						$done_status = $entry['sms']['done_status'];
@@ -306,22 +329,7 @@
 					}
 
 
-					/********************************************** */
-					$whatsapp_body = "";
-					if(!empty($entry['sms']['whatsapp_body'])){
-						$whatsapp_body = $entry['sms']['whatsapp_body'];
-					}
-					if(!empty($entry['statement']['whatsapp_body'])){
-						$whatsapp_body = $entry['statement']['whatsapp_body'];
-					}
-					/********************************************** */
-					$whatsapp_body2 = "";
-					if(!empty($entry['sms']['whatsapp_body2'])){
-						$whatsapp_body2 = $entry['sms']['whatsapp_body2'];
-					}
-					if(!empty($entry['statement']['whatsapp_body'])){
-						$whatsapp_body2 = $entry['statement']['whatsapp_body2'];
-					}
+					
 					
 					
 
@@ -342,22 +350,17 @@
 						$done_chemist_id = $my_done_chemist_id;
 					}
 					
-					
-
-					
-					
-					/****************************************************** */
-					$received_from1 = "";
+					/********************************************** */
 					if(!empty($entry['statement']['received_from']) && !empty($entry['sms']['received_from'])){
 						if(strtolower($entry['statement']['received_from']) == strtolower($entry['sms']['received_from'])){
-							$received_from1 = $entry['sms']['received_from'];
+							$hidden_text_received_from = $entry['sms']['received_from'];
 						}
 					}else{
 						if(!empty($entry['statement']['received_from'])){
-							$received_from1 = $entry['statement']['received_from'];
+							$hidden_text_received_from = $entry['statement']['received_from'];
 						}else{
 							if(!empty($entry['sms']['received_from'])){
-								$received_from1 = $entry['sms']['received_from'];
+								$hidden_text_received_from = $entry['sms']['received_from'];
 							}
 						}
 					}
@@ -368,8 +371,7 @@
 
 					
 
-					$whatsapp_body_1 = str_replace(' ', '', $whatsapp_body);
-					$whatsapp_body_1 = str_replace('-', '', $whatsapp_body_1);
+					
 
 					
 
@@ -462,7 +464,7 @@
 						<td>
 							<?= ($row_received_from); ?>
 
-							<input type="hidden" value="<?php echo $received_from1 ?>" class="text_received_from_<?= ($row_id); ?>">
+							<input type="hidden" value="<?php echo $text_received_from ?>" class="text_received_from_<?= ($row_id); ?>">
 
 							<input type="text" value="<?php echo $find_chemist_id; ?>" class="text_received_from_chemist_id_<?= ($row_id); ?>" style="display:none">
 
