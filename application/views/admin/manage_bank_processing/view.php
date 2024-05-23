@@ -129,6 +129,60 @@
 					if(!empty($entry['statement']['id'])){
 						$row_id = $entry['statement']['id'];
 					}
+
+					/****************************************************** */
+					$row_status = "<b>Status</b><br>";
+					if(!empty($entry['statement']['status'])){
+						$row_status.= "Bank : ".$entry['statement']['status']."<br>";
+					}
+					if(!empty($entry['sms']['status'])){
+						$row_status.= "SMS  : ".$entry['sms']['status'];
+					}
+
+					/****************************************************** */
+					$row_date = "<b>Date</b><br>";
+					if(!empty($entry['statement']['date'])){
+						$row_date.= "Bank : ".$entry['statement']['date']."<br>";
+					}
+					if(!empty($entry['sms']['date'])){
+						$row_date.= "SMS  : ".$entry['sms']['date'];
+					}
+
+					/****************************************************** */
+					$row_time = "<b>Time</b><br>";
+					if(!empty($entry['statement']['time'])){
+						$row_time.= "Bank : ".$entry['statement']['time']."<br>";
+					}
+					if(!empty($entry['sms']['time'])){
+						$row_time.= "SMS  : ".$entry['sms']['time'];
+					}
+					/****************************************************** */
+					$row_upi_no = $entry['upi_no'];
+					/****************************************************** */
+					$row_orderid = "<b>Orderid</b> <br>";
+					if(!empty($entry['statement']['orderid'])){
+						$row_orderid.= "Bank : ".$entry['statement']['orderid']."<br>";
+					}
+					if(!empty($entry['sms']['time'])){
+						$row_orderid.= "SMS  : ".$entry['sms']['orderid'];
+					}
+					/****************************************************** */
+					$row_amount = "<b>Amount</b> <br>";
+					if(!empty($entry['statement']['amount'])){
+						$row_amount.= "Bank : ".$entry['statement']['amount']."<br>";
+					}
+					if(!empty($entry['sms']['amount'])){
+						$row_amount.= "SMS  : ".$entry['sms']['amount'];
+					}
+
+					/****************************************************** */
+					$row_received_from = "";
+					if(!empty($entry['statement']['received_from'])){
+						$row_received_from.= "Bank : ".$entry['statement']['received_from']."<br>";
+					}
+					if(!empty($entry['sms']['received_from'])){
+						$row_received_from.= "SMS  : ".$entry['sms']['received_from'];
+					}
 					
 					/********************************************** */
 					$process_name = "";
@@ -147,13 +201,13 @@
 					if(!empty($entry['statement']['process_value'])){
 						$process_value = $entry['statement']['process_value'];
 					}
-					
+
 					/********************************************** */
 					$process_name = preg_quote($process_name, '/');
-					$fine_user_info = preg_replace('/(' . $process_name . ')/i', '<span style="background-color: yellow;">$1</span>', $process_value);
+					$row_received_from_find = preg_replace('/(' . $process_name . ')/i', '<span style="background-color: yellow;">$1</span>', $process_value);
 
 					if(empty($process_value)){
-						$fine_user_info = "N/a";
+						$row_received_from_find = "N/a";
 					}
 
 					/********************************************** */
@@ -165,6 +219,7 @@
 						$find_invoice_chemist_id = $entry['statement']['find_invoice_chemist_id'];
 					}
 
+					/********************************************** */
 					$find_chemist_id = "";
 					if(!empty($entry['sms']['find_chemist_id'])){
 						$find_chemist_id = $entry['sms']['find_chemist_id'];
@@ -172,7 +227,58 @@
 					if(!empty($entry['statement']['find_chemist_id'])){
 						$find_chemist_id = $entry['statement']['find_chemist_id'];
 					}
+
+					/********************************************** */
+					$done_status = "";
+					if(!empty($entry['sms']['done_status'])){
+						$done_status = $entry['sms']['done_status'];
+					}
+					if(!empty($entry['statement']['done_status'])){
+						$done_status = $entry['statement']['done_status'];
+					}
+
+					/********************************************** */
+					$my_done_chemist_id = "";
+					if(!empty($entry['sms']['done_chemist_id'])){
+						$my_done_chemist_id = $entry['sms']['done_chemist_id'];
+					}
+					if(!empty($entry['statement']['done_chemist_id'])){
+						$my_done_chemist_id = $entry['statement']['done_chemist_id'];
+					}
+
+					/********************************************** */
+					$find_by_logic = "";
+					if(!empty($entry['sms']['find_by'])){
+						$find_by_logic = $entry['sms']['find_by'];
+					}
+					if(!empty($entry['statement']['find_by'])){
+						$find_by_logic = $entry['statement']['find_by'];
+					}
+
+					/********************************************** */
+					$whatsapp_body = "";
+					if(!empty($entry['sms']['whatsapp_body'])){
+						$whatsapp_body = $entry['sms']['whatsapp_body'];
+					}
+					if(!empty($entry['statement']['whatsapp_body'])){
+						$whatsapp_body = $entry['statement']['whatsapp_body'];
+					}
+					/********************************************** */
+					$whatsapp_body2 = "";
+					if(!empty($entry['sms']['whatsapp_body2'])){
+						$whatsapp_body2 = $entry['sms']['whatsapp_body2'];
+					}
+					if(!empty($entry['statement']['whatsapp_body'])){
+						$whatsapp_body2 = $entry['statement']['whatsapp_body2'];
+					}
 					
+					
+
+					
+
+					
+					
+					/********************************************** */
 					$find = "find by ";
 					if(!empty($find_invoice_chemist_id)){
 						$find.= "<b>invoice</b>,";
@@ -184,6 +290,7 @@
 						$find = "N/A";
 					}
 					
+					/********************************************** */
 					$find_chemist_id2 = "";
 					$find_chemist_id_array = explode("||", $find_chemist_id);
 					$find_chemist_id_array = array_unique($find_chemist_id_array);					
@@ -191,6 +298,7 @@
 						$find_chemist_id2 = $find_chemist_id_array[0];
 					}
 
+					/********************************************** */
 					$get_all_chemist_id = "";
 					if(!empty($find_chemist_id_array)){
 						foreach($find_chemist_id_array as $rows){
@@ -210,6 +318,7 @@
 						$get_all_chemist_id = "N/a";
 					}
 
+					/********************************************** */
 					$find_invoice_chemist_id_array = explode("||", $find_invoice_chemist_id);
 
 					$get_all_invoice = $get_all_invoice_chemist = "";
@@ -230,81 +339,23 @@
 					
 					$done_chemist_id = "";
 					$find_all = "";
-					$done_status = "";
-					if(!empty($entry['sms']['done_status'])){
-						$done_status = $entry['sms']['done_status'];
-					}
-					if(!empty($entry['statement']['done_status'])){
-						$done_status = $entry['statement']['done_status'];
-					}
+					
 
-					$my_done_chemist_id = "";
-					if(!empty($entry['sms']['done_chemist_id'])){
-						$my_done_chemist_id = $entry['sms']['done_chemist_id'];
-					}
-					if(!empty($entry['statement']['done_chemist_id'])){
-						$my_done_chemist_id = $entry['statement']['done_chemist_id'];
-					}
+
+					
+
+					/********************************************** */
 
 					if($done_status==1){
 						$tr_style = "background-color: #e8ffe2;";
 						$done_chemist_id = $my_done_chemist_id;
 					}
 					
-					/****************************************************** */
-					$status = "<b>Status</b><br>";
-					if(!empty($entry['statement']['status'])){
-						$status.= "Bank : ".$entry['statement']['status']."<br>";
-					}
-					if(!empty($entry['sms']['status'])){
-						$status.= "SMS  : ".$entry['sms']['status'];
-					}
+					
 
+					
+					
 					/****************************************************** */
-					$date = "<b>Date</b><br>";
-					if(!empty($entry['statement']['date'])){
-						$date.= "Bank : ".$entry['statement']['date']."<br>";
-					}
-					if(!empty($entry['sms']['date'])){
-						$date.= "SMS  : ".$entry['sms']['date'];
-					}
-
-					/****************************************************** */
-					$time = "<b>Time</b><br>";
-					if(!empty($entry['statement']['time'])){
-						$time.= "Bank : ".$entry['statement']['time']."<br>";
-					}
-					if(!empty($entry['sms']['time'])){
-						$time.= "SMS  : ".$entry['sms']['time'];
-					}
-					/****************************************************** */
-					$upi_no = $entry['upi_no'];
-					/****************************************************** */
-					$orderid = "<b>Orderid</b> <br>";
-					if(!empty($entry['statement']['orderid'])){
-						$orderid.= "Bank : ".$entry['statement']['orderid']."<br>";
-					}
-					if(!empty($entry['sms']['time'])){
-						$orderid.= "SMS  : ".$entry['sms']['orderid'];
-					}
-					/****************************************************** */
-					$amount = "<b>Amount</b> <br>";
-					if(!empty($entry['statement']['amount'])){
-						$amount.= "Bank : ".$entry['statement']['amount']."<br>";
-					}
-					if(!empty($entry['sms']['amount'])){
-						$amount.= "SMS  : ".$entry['sms']['amount'];
-					}
-
-					/****************************************************** */
-					$received_from = "";
-					if(!empty($entry['statement']['received_from'])){
-						$received_from.= "Bank : ".$entry['statement']['received_from']."<br>";
-					}
-					if(!empty($entry['sms']['received_from'])){
-						$received_from.= "SMS  : ".$entry['sms']['received_from'];
-					}
-
 					$received_from1 = "";
 					if(!empty($entry['statement']['received_from']) && !empty($entry['sms']['received_from'])){
 						if(strtolower($entry['statement']['received_from']) == strtolower($entry['sms']['received_from'])){
@@ -320,36 +371,18 @@
 						}
 					}
 
-					$find_by_logic = "";
-					if(!empty($entry['sms']['find_by'])){
-						$find_by_logic = $entry['sms']['find_by'];
-					}
-					if(!empty($entry['statement']['find_by'])){
-						$find_by_logic = $entry['statement']['find_by'];
-					}
+					
 
 					if(empty($find_by_logic)){
 						$find_by_logic = "N/a";
 					}
 
-					$whatsapp_body = "";
-					if(!empty($entry['sms']['whatsapp_body'])){
-						$whatsapp_body = $entry['sms']['whatsapp_body'];
-					}
-					if(!empty($entry['statement']['whatsapp_body'])){
-						$whatsapp_body = $entry['statement']['whatsapp_body'];
-					}
+					
 
 					$whatsapp_body_1 = str_replace(' ', '', $whatsapp_body);
 					$whatsapp_body_1 = str_replace('-', '', $whatsapp_body_1);
 
-					$whatsapp_body2 = "";
-					if(!empty($entry['sms']['whatsapp_body2'])){
-						$whatsapp_body2 = $entry['sms']['whatsapp_body2'];
-					}
-					if(!empty($entry['statement']['whatsapp_body'])){
-						$whatsapp_body2 = $entry['statement']['whatsapp_body2'];
-					}
+					
 
 					if((!empty($find_chemist_id2))){
 						$tr_style = "background-color: cornsilk";
@@ -410,23 +443,22 @@
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
 						<td><?php echo $row_id; ?> </td>
 						<td>
-							<?= ($status); ?>
+							<?= $row_status; ?>
 							<br><br>
-							<?= ($date); ?>
+							<?= $row_date; ?>
 							<br><br>
-							<?= ($time); ?>
+							<?= $row_time; ?>
 							<br><br>
-								Upi No : <?= $upi_no; ?>
-							<br><br>
-								
+								Upi No : <?= $row_upi_no; ?>
+							<br><br>								
 							<div style="word-wrap:break-word;width:200px;">
-								<?= $orderid; ?>
+								<?= $row_orderid; ?>
 							</div>
 							<br><br>
-							<b><?= $amount; ?></b>
+							<b><?= $row_amount; ?></b>
 						</td>
 						<td>
-							<?= ($received_from); ?>
+							<?= ($row_received_from); ?>
 
 							<input type="hidden" value="<?php echo $received_from1 ?>" class="text_received_from_<?= ($row_id); ?>">
 
@@ -440,7 +472,7 @@
 							<br><br>
 							<div style="word-wrap:break-word;width:250px;">
 								<b>Find : </b> 
-								<?= ($fine_user_info); ?> 
+								<?= ($row_received_from_find); ?> 
 							</div>
 							<br>
 							<div style="word-wrap:break-word;width:250px;">
