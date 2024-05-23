@@ -319,6 +319,10 @@
 						$find_by = $entry['statement']['find_by'];
 					}
 
+					if(empty($find_by)){
+						$find_by = "N/a";
+					}
+
 					$whatsapp_body = "";
 					if(!empty($entry['sms']['whatsapp_body'])){
 						$whatsapp_body = $entry['sms']['whatsapp_body'];
@@ -426,8 +430,10 @@
 							<i class="fa fa-pencil edit_received_from_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_received_from_chemist_id('<?= ($row_id); ?>')"></i>
 							<br><br>
 							<div style="word-wrap:break-word;width:250px;">
-								Find : <?= ($highlighted_text); ?> || <b>(<?= ($find_by); ?>)</b>
+								Find : <?= ($highlighted_text); ?> 
 							</div>
+							<br><br>
+							<b>Find by : </b> <?= ($find_by); ?>
 							<br><br>
 							<b>Chemist : </b>
 							<?= $get_all_chemist_id;?>
