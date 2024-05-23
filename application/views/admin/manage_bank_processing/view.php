@@ -382,8 +382,10 @@
 						$row_find_by_whatsapp_chemist_id = "N/a";
 					}
 
+					// jab user done kar dayta ha to color change hota ha iss say
+					/********************************************** */
 					if($done_status==1){
-						$tr_style = "background-color: #e8ffe2;";						
+						$tr_style = "background-color: #e8ffe2;";					
 					}
 					?>
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
