@@ -286,17 +286,13 @@
 					}
 
 					/********************************************** */
-					$whatsapp_body = "";
+					$row_find_by_whatsapp_chemist_id = "";
 					if(!empty($entry['sms']['whatsapp_body'])){
-						$whatsapp_body = $entry['sms']['whatsapp_body'];
+						$row_find_by_whatsapp_chemist_id = $entry['sms']['whatsapp_body'];
 					}
 					if(!empty($entry['statement']['whatsapp_body'])){
-						$whatsapp_body = $entry['statement']['whatsapp_body'];
+						$row_find_by_whatsapp_chemist_id = $entry['statement']['whatsapp_body'];
 					}
-					$whatsapp_body_1 = str_replace(' ', '', $whatsapp_body);
-					$whatsapp_body_1 = str_replace('-', '', $whatsapp_body_1);
-
-					$row_find_by_whatsapp_chemist_id = $whatsapp_body;
 
 					/********************************************** */
 					$whatsapp_body2 = "";
@@ -359,6 +355,10 @@
 						$tr_style = "background-color: khaki";
 					}
 					/********************************************** */
+					$row_find_by_whatsapp_chemist_id1 = 
+					$row_find_by_whatsapp_chemist_id1 = str_replace(' ', '', $row_find_by_whatsapp_chemist_id);
+					$row_find_by_whatsapp_chemist_id1 = str_replace('-', '', $row_find_by_whatsapp_chemist_id1);
+
 					if((strtolower($row_find_by_chemist_id)==strtolower($row_find_by_invoice_chemist_id)) && (strtolower($row_find_by_chemist_id)==strtolower($row_find_by_whatsapp_chemist_id)) && (!empty($row_find_by_chemist_id) && !empty($row_find_by_invoice_chemist_id) && !empty($row_find_by_whatsapp_chemist_id))){
 
 						$tr_style = "background-color: darkkhaki;";
