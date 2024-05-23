@@ -716,7 +716,7 @@ class Cronjob_bank extends CI_Controller
 			}
 			
 			$whatsapp_id = 0;
-			$whatsapp_body = $whatsapp_image = $whatsapp_body2 = "N/a";
+			$whatsapp_body = $whatsapp_image = $whatsapp_body2 = "";
 			if(!empty($row1)){
 				$whatsapp_id = $row1->id;
 				$whatsapp_body = $row1->body;
