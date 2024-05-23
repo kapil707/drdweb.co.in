@@ -353,10 +353,10 @@
 						$tr_style = "background-color: salmon";
 					}
 					if($row_find_i==1){
-						$tr_style = "background-color: darksalmon";
+						$tr_style = "background-color: goldenrod";
 					}
 					if($row_find_i==2){
-						$tr_style = "background-color: palevioletred";
+						$tr_style = "background-color: khaki";
 					}
 					/********************************************** */
 					if((strtolower($row_find_by_chemist_id)==strtolower($row_find_by_invoice_chemist_id)) && (strtolower($row_find_by_chemist_id)==strtolower($row_find_by_whatsapp_chemist_id)) && (!empty($row_find_by_chemist_id) && !empty($row_find_by_invoice_chemist_id) && !empty($row_find_by_whatsapp_chemist_id))){
