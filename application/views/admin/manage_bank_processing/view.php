@@ -316,8 +316,17 @@
 						$done_status = $entry['statement']['done_status'];
 					}
 
-					/********************************************** */	
+					/********************************************** */
 					$done_chemist_id = "";
+					if(!empty($entry['sms']['done_chemist_id'])){
+						$done_chemist_id = $entry['sms']['done_chemist_id'];
+					}
+					if(!empty($entry['statement']['done_chemist_id'])){
+						$done_chemist_id = $entry['statement']['done_chemist_id'];
+					}
+
+					/********************************************** */	
+					$textbox_done_chemist_id = "";
 					$row_find_by = "";
 					$row_find_i = 0;
 					if(!empty($row_find_by_chemist_id)){
@@ -350,7 +359,7 @@
 					if((strtolower($row_find_by_chemist_id)==strtolower($row_find_by_invoice_chemist_id)) && (strtolower($row_find_by_chemist_id)==strtolower($row_find_by_whatsapp_chemist_id1)) && (!empty($row_find_by_chemist_id) && !empty($row_find_by_invoice_chemist_id) && !empty($row_find_by_whatsapp_chemist_id1))){
 
 						$tr_style = "background-color: #1ab394;";
-						$done_chemist_id = $row_find_by_chemist_id;
+						$textbox_done_chemist_id = $row_find_by_chemist_id;
 					}
 					
 					// jab koi be chemist find na ho to
@@ -429,7 +438,7 @@
 						<td><?= ($row_find_invoice_all); ?></td>
 						<td><?= ($whatsapp_body2); ?></td>
 						<td class="display: flex;">
-							<input type="text" value="<?php echo $done_chemist_id ?>" class="text_done_chemist_id_<?= ($row_id); ?>" style="<?php if($done_status==1) { ?>display:none;<?php } ?> float: left; width: 100px;">
+							<input type="text" value="<?php echo $textbox_done_chemist_id ?>" class="text_done_chemist_id_<?= ($row_id); ?>" style="<?php if($done_status==1) { ?>display:none;<?php } ?> float: left; width: 100px;">
 							
 							<i class="fa fa-check add_done_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="add_done_chemist_id('<?= ($row_id); ?>')" style="<?php if($done_status==1) { ?>display:none;<?php } ?> float: left;font-size: 20px;"></i>
 
