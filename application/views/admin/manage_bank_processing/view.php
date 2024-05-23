@@ -256,7 +256,7 @@
 					if(!empty($row_find_by_chemist_id)){
 						$row_find_by_chemist_id = substr($row_find_by_chemist_id, 0, -4);
 					}
-					
+
 					if(empty($find_chemist_id_array[0])){
 						$row_find_by_chemist_id = "";
 					}
@@ -353,7 +353,7 @@
 						$tr_style = "background-color: salmon";
 					}
 					if($row_find_i==1){
-						$tr_style = "background-color: goldenrod";
+						$tr_style = "background-color: khaki";
 					}
 					if($row_find_i==2){
 						$tr_style = "background-color: darkseagreen";
