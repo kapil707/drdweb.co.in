@@ -243,23 +243,23 @@
 					// 	$find_chemist_id2 = $find_chemist_id_array[0];
 					// }
 					
-					$row_find_chemist_id = "";
+					$row_find_by_chemist_id = "";
 					if(!empty($find_chemist_id_array)){
 						foreach($find_chemist_id_array as $rows){
-							$row_find_chemist_id.= $rows;
+							$row_find_by_chemist_id.= $rows;
 							if(!empty($chemist_fafa[$rows])){
-								$row_find_chemist_id.= $chemist_fafa[$rows];
+								$row_find_by_chemist_id.= $chemist_fafa[$rows];
 							}
-							$row_find_chemist_id.= " || ";
+							$row_find_by_chemist_id.= " || ";
 						}
 					}
 
-					if(!empty($row_find_chemist_id)){
-						$row_find_chemist_id = substr($row_find_chemist_id, 0, -4);
+					if(!empty($row_find_by_chemist_id)){
+						$row_find_by_chemist_id = substr($row_find_by_chemist_id, 0, -4);
 					}
 
 					if(empty($find_chemist_id_array[0])){
-						$row_find_chemist_id = "N/a";
+						$row_find_by_chemist_id = "N/a";
 					}
 
 					// invoice say chemist find karta ha yha logic
@@ -274,20 +274,20 @@
 
 					$find_invoice_chemist_id_array = explode("||", $find_invoice_chemist_id);
 
-					$row_find_invoice_all = $row_find_invoice_chemist_id = "";
+					$row_find_invoice_all = $row_find_by_invoice_chemist_id = "";
 					foreach($find_invoice_chemist_id_array as $rows){
 						$row_find_invoice_all.= $rows."<br>";
 
 						$arr = explode(":-",$rows);
-						$row_find_invoice_chemist_id.= $arr[0]." || ";
+						$row_find_by_invoice_chemist_id.= $arr[0]." || ";
 					}
 
 					if(empty($find_invoice_chemist_id)){
 						$row_find_invoice_all = "N/a";
 					}
 
-					if(!empty($row_find_invoice_chemist_id)){
-						$row_find_invoice_chemist_id = substr($row_find_invoice_chemist_id, 0, -4);
+					if(!empty($row_find_by_invoice_chemist_id)){
+						$row_find_by_invoice_chemist_id = substr($row_find_by_invoice_chemist_id, 0, -4);
 					}
 
 					/********************************************** */
@@ -300,6 +300,11 @@
 					}
 					$whatsapp_body_1 = str_replace(' ', '', $whatsapp_body);
 					$whatsapp_body_1 = str_replace('-', '', $whatsapp_body_1);
+
+					$row_find_by_whatsapp_chemist_id = $whatsapp_body;
+					if(empty($row_find_by_whatsapp_chemist_id)){
+						$row_find_by_whatsapp_chemist_id = "N/a";
+					}
 
 					/********************************************** */
 					$whatsapp_body2 = "";
@@ -349,7 +354,7 @@
 						$tr_style = "background-color: cornsilk";
 					}
 
-					if((!empty($row_find_invoice_chemist_id))){
+					if((!empty($row_find_by_invoice_chemist_id))){
 						$tr_style = "background-color: khaki";
 					}
 
@@ -357,11 +362,11 @@
 						$tr_style = "background-color: lemonchiffon";
 					}
 
-					if(($whatsapp_body_1=="N/a" || empty($whatsapp_body_1)) && $row_find_chemist_id=="N/a" && empty($row_find_invoice_chemist_id)){
+					if(($whatsapp_body_1=="N/a" || empty($whatsapp_body_1)) && $row_find_by_chemist_id=="N/a" && empty($row_find_by_invoice_chemist_id)){
 						$tr_style = "background-color: darksalmon";
 					}
 
-					if((strtolower($find_chemist_id2)==strtolower($row_find_invoice_chemist_id)) && (!empty($row_find_invoice_chemist_id) && !empty($find_chemist_id2))){
+					if((strtolower($find_chemist_id2)==strtolower($row_find_by_invoice_chemist_id)) && (!empty($row_find_by_invoice_chemist_id) && !empty($find_chemist_id2))){
 						$find_all = "done";
 						$tr_style = "background-color: darkseagreen;";
 
@@ -375,7 +380,7 @@
 						$done_chemist_id = $find_chemist_id2;
 					}
 
-					if((strtolower($find_chemist_id2)==strtolower($row_find_invoice_chemist_id)) && (strtolower($find_chemist_id2)==strtolower($whatsapp_body_1)) && (!empty($row_find_invoice_chemist_id) && !empty($find_chemist_id2) && !empty($whatsapp_body_1))){
+					if((strtolower($find_chemist_id2)==strtolower($row_find_by_invoice_chemist_id)) && (strtolower($find_chemist_id2)==strtolower($whatsapp_body_1)) && (!empty($row_find_by_invoice_chemist_id) && !empty($find_chemist_id2) && !empty($whatsapp_body_1))){
 						$find_all = "done-all";
 						$tr_style = "background-color: darkkhaki;";
 
@@ -398,17 +403,20 @@
 						}
 					}
 
-					if(empty($row_find_invoice_chemist_id)){
-						$row_find_invoice_chemist_id = "N/a";
+					if(empty($row_find_by_invoice_chemist_id)){
+						$row_find_by_invoice_chemist_id = "N/a";
 					}
 
 					/********************************************** */
 					$row_find_by = "find by ";
-					if(!empty($find_chemist_id)){
+					if(!empty($row_find_by_chemist_id)){
 						$row_find_by.= "<b>chemist</b>,";
 					}
-					if(!empty($find_invoice_chemist_id)){
+					if(!empty($row_find_by_invoice_chemist_id)){
 						$row_find_by.= "<b>invoice</b>,";
+					}
+					if(!empty($row_find_by_whatsapp_chemist_id)){
+						$row_find_by.= "<b>whatsapp</b>";
 					}
 					if(empty($find_invoice_chemist_id) && empty($find_chemist_id)){
 						$row_find_by = "N/A";
@@ -456,17 +464,17 @@
 							<br>
 							<div style="word-wrap:break-word;width:250px;">
 								<b>Chemist : </b>
-								<?= $row_find_chemist_id;?>
+								<?= $row_find_by_chemist_id;?>
 							</div>
 							<br>
 							<div style="word-wrap:break-word;width:250px;">
 								<b>Invoice : </b>
-								<?= $row_find_invoice_chemist_id ?>
+								<?= $row_find_by_invoice_chemist_id ?>
 							</div>
 							<br>
 							<div style="word-wrap:break-word;width:250px;">
 								<b>WhatsApp : </b>
-								<?= ($whatsapp_body); ?>
+								<?= $row_find_by_whatsapp_chemist_id; ?>
 							</div>
 						</td>
 						<td><?= ($row_find_invoice_all); ?></td>
