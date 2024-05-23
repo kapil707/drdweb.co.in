@@ -381,6 +381,10 @@
 					if(empty($row_find_by_whatsapp_chemist_id)){
 						$row_find_by_whatsapp_chemist_id = "N/a";
 					}
+
+					if($done_status==1){
+						$tr_style = "background-color: #e8ffe2;";						
+					}
 					?>
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
 						<td><?php echo $row_id; ?> </td>
