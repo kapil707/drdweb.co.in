@@ -197,7 +197,7 @@
 						$get_all_chemist_id = substr($get_all_chemist_id, 0, -4);
 					}
 
-					if(empty($find_chemist_id_array)){
+					if(empty($find_chemist_id_array[0])){
 						$get_all_chemist_id = "N/a";
 					}
 
@@ -431,7 +431,6 @@
 							<br><br>
 							<b>Chemist : </b>
 							<?= $get_all_chemist_id;?>
-							<?php print_r($find_chemist_id_array[0]); ?>
 							<br><br>
 							<b>Invoice : </b>
 							<?= $get_all_invoice_chemist ?>
