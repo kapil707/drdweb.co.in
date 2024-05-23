@@ -365,11 +365,12 @@
 					}
 					if(empty($row_find_by_chemist_id) && empty($row_find_by_invoice_chemist_id) && empty($row_find_by_whatsapp_chemist_id)){
 						$row_find_by = "N/A";
+						$tr_style = "background-color: darksalmon";
 					}
 
 					/********************************************** */
 					if((strtolower($row_find_by_chemist_id)==strtolower($row_find_by_invoice_chemist_id)) && (strtolower($row_find_by_chemist_id)==strtolower($row_find_by_whatsapp_chemist_id)) && (!empty($row_find_by_chemist_id) && !empty($row_find_by_invoice_chemist_id) && !empty($row_find_by_whatsapp_chemist_id))){
-						
+
 						$tr_style = "background-color: darkkhaki;";
 						$done_chemist_id = $row_find_by_chemist_id;
 					}
