@@ -327,8 +327,8 @@
 						$whatsapp_body = $entry['statement']['whatsapp_body'];
 					}
 
-					$whatsapp_body = str_replace(' ', '', $whatsapp_body);
-					$whatsapp_body = str_replace('-', '', $whatsapp_body);
+					$whatsapp_body_1 = str_replace(' ', '', $whatsapp_body);
+					$whatsapp_body_1 = str_replace('-', '', $whatsapp_body_1);
 
 					$whatsapp_body2 = "";
 					if(!empty($entry['sms']['whatsapp_body2'])){
@@ -346,11 +346,11 @@
 						$tr_style = "background-color: khaki";
 					}
 
-					if((!empty($whatsapp_body)) && $whatsapp_body!="N/a"){
+					if((!empty($whatsapp_body_1)) && $whatsapp_body_1!="N/a"){
 						$tr_style = "background-color: lemonchiffon";
 					}
 
-					if(($whatsapp_body=="N/a" || empty($whatsapp_body)) && $get_all_chemist_id=="N/a" && empty($get_all_invoice_chemist)){
+					if(($whatsapp_body_1=="N/a" || empty($whatsapp_body_1)) && $get_all_chemist_id=="N/a" && empty($get_all_invoice_chemist)){
 						$tr_style = "background-color: darksalmon";
 					}
 
@@ -361,14 +361,14 @@
 						$done_chemist_id = $find_chemist_id2;
 					}
 
-					if((strtolower($find_chemist_id2)==strtolower($whatsapp_body)) && (!empty($whatsapp_body) && !empty($find_chemist_id2))){
+					if((strtolower($find_chemist_id2)==strtolower($whatsapp_body_1)) && (!empty($whatsapp_body_1) && !empty($find_chemist_id2))){
 						$find_all = "done";
 						$tr_style = "background-color: lightseagreen;";
 
 						$done_chemist_id = $find_chemist_id2;
 					}
 
-					if((strtolower($find_chemist_id2)==strtolower($get_all_invoice_chemist)) && (strtolower($find_chemist_id2)==strtolower($whatsapp_body)) && (!empty($get_all_invoice_chemist) && !empty($find_chemist_id2) && !empty($whatsapp_body))){
+					if((strtolower($find_chemist_id2)==strtolower($get_all_invoice_chemist)) && (strtolower($find_chemist_id2)==strtolower($whatsapp_body_1)) && (!empty($get_all_invoice_chemist) && !empty($find_chemist_id2) && !empty($whatsapp_body_1))){
 						$find_all = "done-all";
 						$tr_style = "background-color: darkkhaki;";
 
@@ -431,7 +431,7 @@
 							<br><br>
 							<b>Chemist : </b>
 							<?= $get_all_chemist_id;?>
-							<?php print_r($find_chemist_id_array); ?>
+							<?php print_r(count($find_chemist_id_array)); ?>
 							<br><br>
 							<b>Invoice : </b>
 							<?= $get_all_invoice_chemist ?>
