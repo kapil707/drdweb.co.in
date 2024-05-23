@@ -361,7 +361,7 @@
 
 					if((strtolower($row_find_by_chemist_id)==strtolower($row_find_by_invoice_chemist_id)) && (strtolower($row_find_by_chemist_id)==strtolower($row_find_by_whatsapp_chemist_id1)) && (!empty($row_find_by_chemist_id) && !empty($row_find_by_invoice_chemist_id) && !empty($row_find_by_whatsapp_chemist_id1))){
 
-						$tr_style = "background-color: darkkhaki;";
+						$tr_style = "background-color: #1ab394;";
 						$done_chemist_id = $row_find_by_chemist_id;
 					}
 					
