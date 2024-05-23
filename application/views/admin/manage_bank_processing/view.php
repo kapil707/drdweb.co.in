@@ -121,6 +121,7 @@
 					$tr_style = "";
 					$chemist_fafa[] = "";
 
+					/********************************************** */
 					$row_id = "";
 					if(!empty($entry['sms']['id'])){
 						$row_id = $entry['sms']['id'];
@@ -129,6 +130,7 @@
 						$row_id = $entry['statement']['id'];
 					}
 					
+					/********************************************** */
 					$process_name = "";
 					if(!empty($entry['sms']['process_name'])){
 						$process_name = $entry['sms']['process_name'];
@@ -137,6 +139,7 @@
 						$process_name = $entry['statement']['process_name'];
 					}
 
+					/********************************************** */
 					$process_value = "";
 					if(!empty($entry['sms']['process_value'])){
 						$process_value = $entry['sms']['process_value'];
@@ -144,7 +147,12 @@
 					if(!empty($entry['statement']['process_value'])){
 						$process_value = $entry['statement']['process_value'];
 					}
+					
+					/********************************************** */
+					$process_name = preg_quote($process_name, '/');
+					$fine_user_info = preg_replace('/(' . $process_name . ')/i', '<span style="background-color: yellow;">$1</span>', $process_value);
 
+					/********************************************** */
 					$find_invoice_chemist_id = "";
 					if(!empty($entry['sms']['find_invoice_chemist_id'])){
 						$find_invoice_chemist_id = $entry['sms']['find_invoice_chemist_id'];
@@ -160,9 +168,6 @@
 					if(!empty($entry['statement']['find_chemist_id'])){
 						$find_chemist_id = $entry['statement']['find_chemist_id'];
 					}
-					
-					$search_escaped = preg_quote($process_name, '/');
-					$highlighted_text = preg_replace('/(' . $search_escaped . ')/i', '<span style="background-color: yellow;">$1</span>', $process_value);
 					
 					$find = "find by ";
 					if(!empty($find_invoice_chemist_id)){
@@ -311,16 +316,16 @@
 						}
 					}
 
-					$find_by = "";
+					$find_by_logic = "";
 					if(!empty($entry['sms']['find_by'])){
-						$find_by = $entry['sms']['find_by'];
+						$find_by_logic = $entry['sms']['find_by'];
 					}
 					if(!empty($entry['statement']['find_by'])){
-						$find_by = $entry['statement']['find_by'];
+						$find_by_logic = $entry['statement']['find_by'];
 					}
 
-					if(empty($find_by)){
-						$find_by = "N/a";
+					if(empty($find_by_logic)){
+						$find_by_logic = "N/a";
 					}
 
 					$whatsapp_body = "";
@@ -431,12 +436,12 @@
 							<br><br>
 							<div style="word-wrap:break-word;width:250px;">
 								<b>Find : </b> 
-								<?= ($highlighted_text); ?> 
+								<?= ($fine_user_info); ?> 
 							</div>
 							<br>
 							<div style="word-wrap:break-word;width:250px;">
 								<b>Find by : </b> 
-								<?= $find_by; ?>
+								<?= $find_by_logic; ?>
 							</div>
 							<br>
 							<div style="word-wrap:break-word;width:250px;">
