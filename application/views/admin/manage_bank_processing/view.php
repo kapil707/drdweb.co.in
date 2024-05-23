@@ -223,7 +223,7 @@
 						$row_received_from_logic = " || ($row_received_from_logic)";
 					}
 
-					/********************************************** *
+					/********************************************** */
 					$find_chemist_id = "";
 					if(!empty($entry['sms']['find_chemist_id'])){
 						$find_chemist_id = $entry['sms']['find_chemist_id'];
