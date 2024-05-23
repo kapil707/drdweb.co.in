@@ -330,25 +330,7 @@
 					$done_chemist_id = "";
 
 
-					
-
-					/********************************************** */
-
-					if($done_status==1){
-						$tr_style = "background-color: #e8ffe2;";
-						$done_chemist_id = $my_done_chemist_id;
-					}
-					
-
-
-					if((!empty($row_find_by_invoice_chemist_id))){
-						$tr_style = "background-color: khaki";
-					}
-
-					if((!empty($whatsapp_body_1)) && $whatsapp_body_1!="N/a"){
-						$tr_style = "background-color: lemonchiffon";
-					}
-
+				
 
 
 					/********************************************** */
@@ -359,9 +341,11 @@
 					}
 					if(!empty($row_find_by_invoice_chemist_id)){
 						$row_find_by.= "invoice,";
+						$tr_style = "background-color: khaki";
 					}
 					if(!empty($row_find_by_whatsapp_chemist_id)){
 						$row_find_by.= "whatsapp";
+						$tr_style = "background-color: lemonchiffon";
 					}
 					if(empty($row_find_by_chemist_id) && empty($row_find_by_invoice_chemist_id) && empty($row_find_by_whatsapp_chemist_id)){
 						$row_find_by = "N/A";
