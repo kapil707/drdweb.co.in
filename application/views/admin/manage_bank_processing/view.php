@@ -439,12 +439,12 @@
 								<?= $find_by; ?>
 							</div>
 							<br>
-							<div style="word-wrap:break-word;width:250px;"></div>
+							<div style="word-wrap:break-word;width:250px;">
 								<b>Chemist : </b>
 								<?= $get_all_chemist_id;?>
 							</div>
 							<br>
-							<div style="word-wrap:break-word;width:250px;"></div>
+							<div style="word-wrap:break-word;width:250px;">
 								<b>Invoice : </b>
 								<?= $get_all_invoice_chemist ?>
 							</div>
