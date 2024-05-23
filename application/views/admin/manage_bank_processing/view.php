@@ -472,8 +472,6 @@
 						<td><?= ($row_find_invoice_all); ?></td>
 						<td><?= ($whatsapp_body2); ?></td>
 						<td class="display: flex;">
-							<b><?= ($find); ?></b>
-							<br>
 							<input type="text" value="<?php echo $done_chemist_id ?>" class="text_done_chemist_id_<?= ($row_id); ?>" style="<?php if($done_status==1) { ?>display:none;<?php } ?> float: left; width: 100px;">
 							
 							<i class="fa fa-check add_done_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="add_done_chemist_id('<?= ($row_id); ?>')" style="<?php if($done_status==1) { ?>display:none;<?php } ?> float: left;font-size: 20px;"></i>
