@@ -256,6 +256,10 @@
 					if(!empty($row_find_by_chemist_id)){
 						$row_find_by_chemist_id = substr($row_find_by_chemist_id, 0, -4);
 					}
+					
+					if(empty($find_chemist_id_array[0])){
+						$row_find_by_chemist_id = "";
+					}
 
 					// invoice say chemist find karta ha yha logic
 					/********************************************** */
@@ -367,7 +371,7 @@
 					
 					// jab koi be chemist find na ho to
 					/********************************************** */
-					if(empty($find_chemist_id_array[0])){
+					if(empty($row_find_by_chemist_id)){
 						$row_find_by_chemist_id = "N/a";
 					}
 
