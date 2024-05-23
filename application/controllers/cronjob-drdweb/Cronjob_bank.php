@@ -698,7 +698,7 @@ class Cronjob_bank extends CI_Controller
 		$result = $result->result();
 		foreach($result as $row){
 
-			echo $upi_no = trim($row->upi_no);
+			$upi_no = trim($row->upi_no);
 			$amount = $row->amount;
 
 			$row1 = $this->BankModel->select_query("SELECT * FROM `tbl_whatsapp_message` WHERE REPLACE(`vision_text`, ' ', '') LIKE '%$upi_no%'");
@@ -742,12 +742,19 @@ class Cronjob_bank extends CI_Controller
 
 				if(!empty($row2)){
 					$whatsapp_id = $row2->id;
-					$whatsapp_body = $row2->body;
+					$whatsapp_body = "";
 					$whatsapp_image = $row2->screenshot_image;
 					$whatsapp_body2 = $row2->body;
 
 					$from_number = $row2->from_number;
 					$timestamp = date('Y-m-d H:i:s', $row2->timestamp);
+
+					if(empty($whatsapp_body)){
+						$row2 = $this->BankModel->select_query("SELECT body FROM `tbl_whatsapp_message` WHERE from_number='$from_number' AND FROM_UNIXTIME(timestamp) BETWEEN DATE_SUB('$timestamp', INTERVAL 7 MINUTE) AND DATE_ADD('$timestamp', INTERVAL 7 MINUTE) and body!='' LIMIT 0, 25");
+						//echo "SELECT body FROM `tbl_whatsapp_message` WHERE from_number='$from_number' AND FROM_UNIXTIME(timestamp) BETWEEN DATE_SUB('$timestamp', INTERVAL 7 MINUTE) AND DATE_ADD('$timestamp', INTERVAL 7 MINUTE) and body!='' LIMIT 0, 25";
+						$row2 = $row2->row();
+						$whatsapp_body = $row2->body;
+					}
 				}
 			}
 
