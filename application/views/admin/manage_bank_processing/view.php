@@ -316,24 +316,8 @@
 						$done_status = $entry['statement']['done_status'];
 					}
 
-					/********************************************** */
-					$my_done_chemist_id = "";
-					if(!empty($entry['sms']['done_chemist_id'])){
-						$my_done_chemist_id = $entry['sms']['done_chemist_id'];
-					}
-					if(!empty($entry['statement']['done_chemist_id'])){
-						$my_done_chemist_id = $entry['statement']['done_chemist_id'];
-					}
-					/********************************************** */
-					
-					
+					/********************************************** */	
 					$done_chemist_id = "";
-
-
-				
-
-
-					/********************************************** */
 					$row_find_by = "";
 					$row_find_i = 0;
 					if(!empty($row_find_by_chemist_id)){
