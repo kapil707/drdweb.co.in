@@ -219,6 +219,10 @@
 						$row_received_from_logic = $entry['statement']['find_by'];
 					}
 
+					if(!empty($row_received_from_logic)){
+						$row_received_from_logic = "($row_received_from_logic)";
+					}
+
 					/********************************************** */
 					$find_invoice_chemist_id = "";
 					if(!empty($entry['sms']['find_invoice_chemist_id'])){
