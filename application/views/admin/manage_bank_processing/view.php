@@ -460,13 +460,13 @@ td{
 							</div>
 						</td>
 						<td>
-							<div class="td_div0">
+							<div class="td_div">
 								<b>Upi No : </b><?= $row_upi_no; ?>
 							</div>
-							<div class="td_div0">
+							<div class="td_div">
 								<?= $row_orderid; ?>
 							</div>
-							<div class="td_div01">
+							<div class="td_div1">
 								<?= $row_amount; ?>
 							</div>
 						</td>
