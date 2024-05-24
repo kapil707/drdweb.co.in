@@ -1,4 +1,7 @@
 <style>
+td{
+	padding: 0px !important;
+}
 .td_div0 {
     word-wrap: break-word;
     width: 200px;
