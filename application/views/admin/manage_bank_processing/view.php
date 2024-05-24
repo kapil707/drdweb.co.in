@@ -427,43 +427,40 @@
 								<?= $row_orderid; ?>
 							</div>
 							<div class="td_div">
-								<b><?= $row_amount; ?></b>
+								<?= $row_amount; ?>
 							</div>
 						</td>
 						<td>
-							<?= ($row_received_from); ?>
+							<div class="td_div">
+								<?= ($row_received_from); ?>
 
-							<input type="hidden" value="<?php echo $hidden_text_received_from ?>" class="text_received_from_<?= ($row_id); ?>">
+								<input type="hidden" value="<?php echo $hidden_text_received_from ?>" class="text_received_from_<?= ($row_id); ?>">
 
-							<input type="text" value="<?php echo $find_chemist_id; ?>" class="text_received_from_chemist_id_<?= ($row_id); ?>" style="display:none">
+								<input type="text" value="<?php echo $find_chemist_id; ?>" class="text_received_from_chemist_id_<?= ($row_id); ?>" style="display:none">
 
-							<i class="fa fa-check add_received_from_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="add_received_from_chemist_id('<?= ($row_id); ?>')" style="display:none"></i>
+								<i class="fa fa-check add_received_from_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="add_received_from_chemist_id('<?= ($row_id); ?>')" style="display:none"></i>
 
-							<i class="fa fa-times cancel_received_from_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="cancel_received_from_chemist_id('<?= ($row_id); ?>')" style="display:none"></i>
-							
-							<i class="fa fa-pencil edit_received_from_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_received_from_chemist_id('<?= ($row_id); ?>')"></i>
-							<br><br>
-							<div style="word-wrap:break-word;width:250px;">
+								<i class="fa fa-times cancel_received_from_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="cancel_received_from_chemist_id('<?= ($row_id); ?>')" style="display:none"></i>
+								
+								<i class="fa fa-pencil edit_received_from_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_received_from_chemist_id('<?= ($row_id); ?>')"></i>
+							</div>
+							<div class="td_div">
 								<b>Find : </b> 
 								<?= ($row_received_from_find); ?> <?= $row_received_from_logic; ?>
 							</div>
-							<br>
-							<div style="word-wrap:break-word;width:250px;">
+							<div class="td_div">
 								<b>Find by : </b> 
 								<?= $row_find_by; ?>
 							</div>
-							<br>
-							<div style="word-wrap:break-word;width:250px;">
+							<div class="td_div">
 								<b>Chemist : </b>
 								<?= $row_find_by_chemist_id;?>
 							</div>
-							<br>
-							<div style="word-wrap:break-word;width:250px;">
+							<div class="td_div">
 								<b>Invoice : </b>
 								<?= $row_find_by_invoice_chemist_id ?>
 							</div>
-							<br>
-							<div style="word-wrap:break-word;width:250px;">
+							<div class="td_div">
 								<b>WhatsApp : </b>
 								<?= $row_find_by_whatsapp_chemist_id; ?>
 							</div>
