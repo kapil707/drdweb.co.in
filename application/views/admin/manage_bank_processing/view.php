@@ -513,7 +513,7 @@ td{
 								<br>
 								<?= $row_find_by_invoice_chemist_id ?>
 							</div>
-							<div class="td_div1">
+							<div class="td_div">
 								<b>WhatsApp : </b>
 								<br>
 								<?= $row_find_by_whatsapp_chemist_id; ?>
