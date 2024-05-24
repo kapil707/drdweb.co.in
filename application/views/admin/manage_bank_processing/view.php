@@ -5,12 +5,13 @@ table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, 
 th{
 	padding: 0px !important;
 	border: 1px solid #333333 !important;
+	border-right: none !important;
 }
 td{
 	padding: 0px !important;
 	border-top: none !important;
+	border-right: none !important;
     border-left: 1px solid #333333 !important;
-	border-right: 1px solid #333333 !important;
 	border-bottom: 2px solid #333333 !important;
 }
 .td_div0 {
