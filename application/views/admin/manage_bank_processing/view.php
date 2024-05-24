@@ -451,7 +451,7 @@ tr:hover{
 								<i class="fa fa-pencil edit_received_from_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_received_from_chemist_id('<?= ($row_id); ?>')"></i>
 							</div>
 							<div class="td_div">
-								<b>Find : </b><br>
+								<b>Find : </b>
 								<?= ($row_received_from_find); ?> <?= $row_received_from_logic; ?>
 							</div>
 							<div class="td_div1">
