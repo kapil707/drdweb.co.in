@@ -72,9 +72,7 @@ tr:hover{
 						<th width="200px"></th>
 						<th width="200px"></th>
 						<th width="200px"></th>
-						<th>
-							
-						</th>
+						<th width=""></th>
 						<th width="200px"></th>
                     </tr>
                 </thead>
@@ -476,33 +474,29 @@ tr:hover{
 						<td>
 							<div class="td_div0">
 								<b>Invoice : </b>
-								<br>
 								<?= ($row_find_invoice_all); ?>
 							</div>
 							<div class="td_div01">
 								<b>WhatsApp : </b>
-								<br>
 								<?= ($whatsapp_body2); ?>
 							</div>
 						</td>
 						<td>
 							<div class="td_div">
 								<b>Chemist : </b>
-								<br>
 								<?= $row_find_by_chemist_id;?>
 							</div>
 							<div class="td_div">
 								<b>Invoice : </b>
-								<br>
 								<?= $row_find_by_invoice_chemist_id ?>
 							</div>
 							<div class="td_div">
 								<b>WhatsApp : </b>
-								<br>
 								<?= $row_find_by_whatsapp_chemist_id; ?>
 							</div>
 
 							<div class="td_div1">
+								<b>Add Chemist : </b>
 								<input type="text" value="<?php echo $textbox_done_chemist_id ?>" class="text_done_chemist_id_<?= ($row_id); ?>" style="<?php if($done_status==1) { ?>display:none;<?php } ?> float: left; width: 100px;">
 								
 								<i class="fa fa-check add_done_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="add_done_chemist_id('<?= ($row_id); ?>')" style="<?php if($done_status==1) { ?>display:none;<?php } ?> float: left;font-size: 20px;"></i>
