@@ -1,10 +1,4 @@
 <style>
-table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting_desc:after, table.dataTable thead .sorting_asc_disabled:after, table.dataTable thead .sorting_desc_disabled:after {
-    bottom: 3px !important;
-}
-th{
-	padding: 3px !important;
-}
 td{
 	padding: 3px !important;
 	border: none !important;
