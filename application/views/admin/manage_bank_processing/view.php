@@ -4,6 +4,7 @@ table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, 
 }
 th{
 	padding: 0px !important;
+	border: 1px solid #333333 !important;
 }
 td{
 	padding: 0px !important;
