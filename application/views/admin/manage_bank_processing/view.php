@@ -1,24 +1,24 @@
 <style>
 .td_div0 {
     word-wrap: break-word;
-    width: 205px;
+    width: 200px;
     border-bottom: solid 1px #f6f6f6;
     padding: 5px;
 }
 .td_div01 {
     word-wrap: break-word;
-    width: 205px;
+    width: 200px;
     padding: 5px;
 }
 .td_div {
     word-wrap: break-word;
-    width: 325px;
+    width: 250px;
     border-bottom: solid 1px #f6f6f6;
     padding: 5px;
 }
 .td_div1 {
     word-wrap: break-word;
-    width: 325px;
+    width: 250px;
     padding: 5px;
 }
 </style>
@@ -473,6 +473,16 @@
 							</div>
 						</td>
 						<td>
+							<div class="td_div">
+								<b>Invoice : </b>
+								<?= ($row_find_invoice_all); ?>
+							</div>
+							<div class="td_div1">
+								<b>WhatsApp : </b>
+								<?= ($whatsapp_body2); ?>
+							</div>
+						</td>
+						<td>
 							<div class="td_div0">
 								<b>Chemist : </b>
 								<?= $row_find_by_chemist_id;?>
@@ -484,16 +494,6 @@
 							<div class="td_div01">
 								<b>WhatsApp : </b>
 								<?= $row_find_by_whatsapp_chemist_id; ?>
-							</div>
-						</td>
-						<td>
-							<div class="td_div">
-								<b>Invoice : </b>
-								<?= ($row_find_invoice_all); ?>
-							</div>
-							<div class="td_div1">
-								<b>WhatsApp : </b>
-								<?= ($whatsapp_body2); ?>
 							</div>
 						</td>
 						<td class="display: flex;">
