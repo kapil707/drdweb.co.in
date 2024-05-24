@@ -413,10 +413,10 @@
 					?>
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
 						<td>
-							<?php echo $row_id; ?>
-							<i class="fa fa-refresh row_refresh_id_<?= ($row_id); ?>" aria-hidden="true" onclick="row_refresh('<?= ($row_id); ?>')"></i>
-						</td>
-						<td>
+							<div class="td_div">
+								<?php echo $row_id; ?>
+								<i class="fa fa-refresh row_refresh_id_<?= ($row_id); ?>" aria-hidden="true" onclick="row_refresh('<?= ($row_id); ?>')"></i>
+							</div>
 							<div class="td_div">
 								<?= $row_status; ?>
 							</div>
@@ -429,7 +429,7 @@
 						</td>
 						<td>
 							<div class="td_div">
-								Upi No : <?= $row_upi_no; ?>
+								<b>Upi No : </b><?= $row_upi_no; ?>
 							</div>
 							<div class="td_div">
 								<?= $row_orderid; ?>
@@ -456,10 +456,12 @@
 								<b>Find : </b> 
 								<?= ($row_received_from_find); ?> <?= $row_received_from_logic; ?>
 							</div>
-							<div class="td_div">
+							<div class="td_div1">
 								<b>Find by : </b> 
 								<?= $row_find_by; ?>
 							</div>
+						</td>
+						<td>
 							<div class="td_div">
 								<b>Chemist : </b>
 								<?= $row_find_by_chemist_id;?>
