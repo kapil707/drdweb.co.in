@@ -486,24 +486,29 @@ td{
 						<td>
 							<div class="td_div">
 								<b>Invoice : </b>
+								<br>
 								<?= ($row_find_invoice_all); ?>
 							</div>
 							<div class="td_div1">
 								<b>WhatsApp : </b>
+								<br>
 								<?= ($whatsapp_body2); ?>
 							</div>
 						</td>
 						<td>
 							<div class="td_div0">
 								<b>Chemist : </b>
+								<br>
 								<?= $row_find_by_chemist_id;?>
 							</div>
 							<div class="td_div0">
 								<b>Invoice : </b>
+								<br>
 								<?= $row_find_by_invoice_chemist_id ?>
 							</div>
 							<div class="td_div01">
 								<b>WhatsApp : </b>
+								<br>
 								<?= $row_find_by_whatsapp_chemist_id; ?>
 							</div>
 						</td>
