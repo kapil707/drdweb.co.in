@@ -11,40 +11,55 @@ td{
 	border: none !important;
 	border-bottom: 2px solid #333333 !important;
 }
-.td_div0 {
+.td_div {
     word-wrap: break-word;
     width: 200px;
-    border-bottom: solid 1px #333333;
     padding: 5px;
+    border: solid 1px #676a6c;
+    border-right: none;
+    border-bottom: none;
+}
+.td_div1 {
+    word-wrap: break-word;
+    width: 200px;
+    padding: 5px;
+	border: solid 1px #676a6c;
+    border-right: none;
+    border-bottom: none;
+}
+.td_div0 {
+    word-wrap: break-word;
+    width: 250px;
+    padding: 5px;
+	border: solid 1px #676a6c;
+    border-right: none;
+    border-bottom: none;
 }
 .td_div01 {
     word-wrap: break-word;
-    width: 200px;
+    width: 250px;
     padding: 5px;
+	border: solid 1px #676a6c;
+    border-right: none;
+    border-bottom: none;
 }
 .td_div00 {
     word-wrap: break-word;
-    border-bottom: solid 1px #333333;
     padding: 5px;
+	border: solid 1px #676a6c;
+    border-right: none;
+    border-bottom: none;
 	max-height: 120px;
     overflow: scroll;
 }
 .td_div001 {
     word-wrap: break-word;
     padding: 5px;
+	border: solid 1px #676a6c;
+    border-right: none;
+    border-bottom: none;
     max-height: 120px;
     overflow: scroll;
-}
-.td_div {
-    word-wrap: break-word;
-    width: 250px;
-    border-bottom: solid 1px #333333;
-    padding: 5px;
-}
-.td_div1 {
-    word-wrap: break-word;
-    width: 250px;
-    padding: 5px;
 }
 </style>
 <div class="row">
@@ -441,18 +456,18 @@ td{
 					?>
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
 						<td>
-							<div class="td_div0">
+							<div class="td_div">
 								<b>Id:</b>
 								<?php echo $row_id; ?>
 								<i class="fa fa-refresh row_refresh_id_<?= ($row_id); ?>" aria-hidden="true" onclick="row_refresh('<?= ($row_id); ?>')"></i>
 							</div>
-							<div class="td_div0">
+							<div class="td_div">
 								<?= $row_status; ?>
 							</div>
-							<div class="td_div0">
+							<div class="td_div">
 								<?= $row_date; ?>
 							</div>
-							<div class="td_div01">
+							<div class="td_div1">
 								<?= $row_time; ?>
 							</div>
 						</td>
@@ -503,24 +518,24 @@ td{
 							</div>
 						</td>
 						<td>
-							<div class="td_div0">
+							<div class="td_div">
 								<b>Chemist : </b>
 								<br>
 								<?= $row_find_by_chemist_id;?>
 							</div>
-							<div class="td_div0">
+							<div class="td_div">
 								<b>Invoice : </b>
 								<br>
 								<?= $row_find_by_invoice_chemist_id ?>
 							</div>
-							<div class="td_div01">
+							<div class="td_div1">
 								<b>WhatsApp : </b>
 								<br>
 								<?= $row_find_by_whatsapp_chemist_id; ?>
 							</div>
 						</td>
 						<td class="display: flex;">
-							<div class="td_div01">
+							<div class="td_div1">
 								<input type="text" value="<?php echo $textbox_done_chemist_id ?>" class="text_done_chemist_id_<?= ($row_id); ?>" style="<?php if($done_status==1) { ?>display:none;<?php } ?> float: left; width: 100px;">
 								
 								<i class="fa fa-check add_done_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="add_done_chemist_id('<?= ($row_id); ?>')" style="<?php if($done_status==1) { ?>display:none;<?php } ?> float: left;font-size: 20px;"></i>
