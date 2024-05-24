@@ -223,7 +223,7 @@ td{
 
 					/****************************************************** */
 					$hidden_text_received_from = "";
-					$row_received_from = "<b>From</b> <br>";
+					$row_received_from = "<b>From :</b> <br>";
 					if(!empty($entry['sms']['received_from'])){
 						$row_received_from.= "SMS  : ".$entry['sms']['received_from'];
 						$hidden_text_received_from = $entry['sms']['received_from'];
@@ -471,7 +471,7 @@ td{
 							</div>
 						</td>
 						<td>
-							<div class="td_div">
+							<div class="td_div01">
 								<?= ($row_received_from); ?>
 
 								<input type="hidden" value="<?php echo $hidden_text_received_from ?>" class="text_received_from_<?= ($row_id); ?>">
@@ -484,11 +484,11 @@ td{
 								
 								<i class="fa fa-pencil edit_received_from_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_received_from_chemist_id('<?= ($row_id); ?>')"></i>
 							</div>
-							<div class="td_div">
-								<b>Find : </b> 
+							<div class="td_div01">
+								<b>Find : </b><br>
 								<?= ($row_received_from_find); ?> <?= $row_received_from_logic; ?>
 							</div>
-							<div class="td_div1">
+							<div class="td_div01">
 								<b>Find by : </b> 
 								<?= $row_find_by; ?>
 							</div>
