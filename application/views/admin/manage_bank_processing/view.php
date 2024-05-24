@@ -1,4 +1,7 @@
 <style>
+th{
+	padding: 0px !important;
+}
 td{
 	padding: 0px !important;
     border-bottom: 2px solid #333333 !important;
