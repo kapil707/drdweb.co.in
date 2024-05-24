@@ -225,7 +225,7 @@
 					}
 
 					if(!empty($row_received_from_logic)){
-						$row_received_from_logic = " || ($row_received_from_logic)";
+						$row_received_from_logic = " || (<b>$row_received_from_logic</b>)";
 					}
 
 					// chemist find karta ha yha logic
