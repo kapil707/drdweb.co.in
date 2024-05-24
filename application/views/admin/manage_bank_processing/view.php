@@ -73,7 +73,7 @@ tr:hover{
             <table class="table table-striped table-bordered table-hover dataTables-example21">
                 <thead>
                     <tr>
-						<th width="200px"></th>
+						<th width="200px">Id || Status || Date / Time</th>
 						<th width="200px"></th>
 						<th width="200px"></th>
 						<th width=""></th>
@@ -168,7 +168,7 @@ tr:hover{
 					}
 
 					/****************************************************** */
-					$row_date = "<b>Date Time</b><br>";
+					$row_date = "<b>Date / Time</b><br>";
 					if(!empty($entry['sms']['time'])){
 						$row_date.= "SMS  : ".$entry['sms']['time']."<br>";
 					}
