@@ -382,6 +382,12 @@
 						$row_find_by_whatsapp_chemist_id = "N/a";
 					}
 
+					// jab koi be whatapp say chemist find na ho to
+					/********************************************** */
+					if(empty($whatsapp_body2)){
+						$whatsapp_body2 = "N/a";
+					}
+
 					// jab user done kar dayta ha to color change hota ha iss say
 					/********************************************** */
 					if($done_status==1){
