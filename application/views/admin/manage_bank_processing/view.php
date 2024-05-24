@@ -48,7 +48,7 @@
 
                         </th>
 						<th>
-							From 
+							
 						</th>
 						<th width="225px">
                         	Invoice
@@ -56,7 +56,7 @@
 						<th width="225px">
 							WhatsApp 
 						</th>
-						<th>
+						<th width="155px">
                         	Edit
                         </th>
                     </tr>
