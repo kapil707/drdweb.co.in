@@ -50,10 +50,10 @@
 						<th>
 							
 						</th>
-						<th width="225px">
+						<th>
                         	Invoice
                         </th>
-						<th width="225px">
+						<th>
 							WhatsApp 
 						</th>
 						<th width="155px">
