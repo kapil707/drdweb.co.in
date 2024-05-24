@@ -74,10 +74,10 @@ tr:hover{
                 <thead>
                     <tr>
 						<th width="200px">Id || Status || Date / Time</th>
-						<th width="200px"></th>
-						<th width="200px"></th>
-						<th width=""></th>
-						<th width="200px"></th>
+						<th width="200px">Upi No || Orderid || Amount</th>
+						<th width="200px">From || Find || Find by</th>
+						<th width="">Invoice || WhatsApp</th>
+						<th width="200px">Chemist || Invoice || WhatsApp</th>
                     </tr>
                 </thead>
 				<tbody>
