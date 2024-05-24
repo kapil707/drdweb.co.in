@@ -29,10 +29,14 @@ td{
     word-wrap: break-word;
     border-bottom: solid 1px #333333;
     padding: 5px;
+	max-height: 120px;
+    overflow: scroll;
 }
 .td_div001 {
     word-wrap: break-word;
     padding: 5px;
+    max-height: 120px;
+    overflow: scroll;
 }
 .td_div {
     word-wrap: break-word;
