@@ -7,6 +7,7 @@ th{
 }
 td{
 	padding: 0px !important;
+	border:none;
     border-bottom: 2px solid #333333 !important;
 }
 .td_div0 {
