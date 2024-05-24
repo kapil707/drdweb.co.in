@@ -29,7 +29,6 @@ tr:hover{
 .td_div01 {
     word-wrap: break-word;
     padding: 5px;
-	border-bottom: solid 1px #676a6c;
     max-height: 120px;
     overflow: scroll;
 }
