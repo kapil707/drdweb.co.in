@@ -395,7 +395,10 @@
 					}
 					?>
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
-						<td><?php echo $row_id; ?> </td>
+						<td>
+							<?php echo $row_id; ?>
+							<i class="fa fa-refresh row_refresh_id_<?= ($row_id); ?>" aria-hidden="true" onclick="row_refresh('<?= ($row_id); ?>')"></i>
+						</td>
 						<td>
 							<?= $row_status; ?>
 							<br><br>
@@ -542,6 +545,21 @@ function cancel_received_from_chemist_id(id){
 	$(".cancel_received_from_chemist_id_"+id).hide();
 
 	$(".edit_received_from_chemist_id_"+id).show();
+}
+
+function row_refresh(id){
+	$.ajax({
+		type : "POST",
+		data : {id:id},
+		url  : "<?= base_url()?>admin/<?= $Page_name?>/row_refresh",
+		cache: true,
+		error: function(){
+			toastr.error('Error');
+		},
+		success: function(data){
+			toastr.info('Refresh successfully');
+		}
+	});
 }
 
 </script>

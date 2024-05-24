@@ -504,4 +504,36 @@ class Manage_bank_processing extends CI_Controller {
 			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 		}
 	}
+
+	public function row_refresh(){
+		$id 			= $_POST["id"];
+		if(!empty($id)){
+
+			$query = $this->BankModel->select_query("SELECT * FROM `tbl_bank_processing` where id='$id'");
+			$row = $query->row();
+			$upi_no = $row->upi_no;
+			
+			/********************************************* */
+			if(!empty($upi_no)){
+				$where = array(
+					'upi_no' => $upi_no,
+				);
+				$dt = array(
+					'status'=>0,
+					'find_by'=>"",
+					'find_chemist_id'=>"",
+					'process_value'=>"",
+					'process_name'=>"",
+					'find_invoice_chemist_id'=>"",
+					'done_chemist_id'=>"",
+					'done_status' =>0,
+					'whatsapp_id'=>"",
+					'whatsapp_body'=>"",
+					'whatsapp_image'=>"",
+					'whatsapp_body2'=>"",
+				);
+				$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
+			}
+		}
+	}
 }
