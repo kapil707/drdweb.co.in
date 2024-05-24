@@ -429,11 +429,8 @@
 							<div class="td_div">
 								Upi No : <?= $row_upi_no; ?>
 							</div>
-							<div class="td_div">
-								<?= $row_orderid; ?>
-							</div>
 							<div class="td_div1">
-								<?= $row_amount; ?>
+								<?= $row_orderid; ?>
 							</div>
 						</td>
 						<td>
@@ -474,6 +471,10 @@
 						<td><?= ($row_find_invoice_all); ?></td>
 						<td><?= ($whatsapp_body2); ?></td>
 						<td class="display: flex;">
+
+							<div class="td_div">
+								<?= $row_amount; ?>
+							</div>
 
 							<input type="text" value="<?php echo $textbox_done_chemist_id ?>" class="text_done_chemist_id_<?= ($row_id); ?>" style="<?php if($done_status==1) { ?>display:none;<?php } ?> float: left; width: 100px;">
 							
