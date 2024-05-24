@@ -61,8 +61,8 @@ td{
             <table class="table table-striped table-bordered table-hover dataTables-example21">
                 <thead>
                     <tr>
-						<th>
-							Id
+						<th width="200px">
+							
 						</th>
 						<th>
 
