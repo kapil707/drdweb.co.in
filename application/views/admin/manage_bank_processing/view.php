@@ -9,9 +9,7 @@ th{
 }
 td{
 	padding: 0px !important;
-	border-top: none !important;
-	border-right: none !important;
-    border-left: 1px solid #333333 !important;
+	border: none !important;
 	border-bottom: 1px solid #333333 !important;
 }
 .td_div0 {
