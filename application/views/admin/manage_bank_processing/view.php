@@ -9,17 +9,20 @@ tr:hover{
 	background-color: #eeeeee !important;
 }
 .td_div {
+	word-break: break-all;
     word-wrap: break-word;
     width: 250px;
     padding: 3px;
     border-bottom: solid 1px #676a6c;
 }
 .td_div1 {
+	word-break: break-all;
     word-wrap: break-word;
     width: 250px;
     padding: 3px;
 }
 .td_div0 {
+	word-break: break-all;
     word-wrap: break-word;
     padding: 3px;
 	border-bottom: solid 1px #676a6c;
@@ -27,6 +30,7 @@ tr:hover{
     overflow: scroll;
 }
 .td_div01 {
+	word-break: break-all;
     word-wrap: break-word;
     padding: 3px;
     max-height: 120px;
