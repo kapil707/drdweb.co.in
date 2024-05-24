@@ -468,8 +468,16 @@
 								<?= $row_find_by_whatsapp_chemist_id; ?>
 							</div>
 						</td>
-						<td><?= ($row_find_invoice_all); ?></td>
-						<td><?= ($whatsapp_body2); ?></td>
+						<td>
+							<div class="td_div">
+								<b>Invoice : </b>
+								<?= ($row_find_invoice_all); ?>
+							</div>
+							<div class="td_div1">
+								<b>WhatsApp : </b>
+								<?= ($whatsapp_body2); ?>
+							</div>
+						</td>
 						<td class="display: flex;">
 
 							<div class="td_div">
