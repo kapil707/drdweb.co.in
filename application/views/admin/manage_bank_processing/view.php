@@ -298,7 +298,7 @@ tr:hover{
 
 					$row_find_invoice_all = $row_find_by_invoice_chemist_id = "";
 					foreach($find_invoice_chemist_id_array as $rows){
-						$row_find_invoice_all.= $rows."<br>";
+						$row_find_invoice_all.= $rows."/-<br>";
 
 						$arr = explode(":-",$rows);
 						$row_find_by_invoice_chemist_id.= $arr[0]." || ";
