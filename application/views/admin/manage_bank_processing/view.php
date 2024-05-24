@@ -1,4 +1,15 @@
 <style>
+.td_div0 {
+    word-wrap: break-word;
+    width: 205px;
+    border-bottom: solid 1px #f6f6f6;
+    padding: 5px;
+}
+.td_div01 {
+    word-wrap: break-word;
+    width: 205px;
+    padding: 5px;
+}
 .td_div {
     word-wrap: break-word;
     width: 325px;
@@ -47,7 +58,7 @@
             <table class="table table-striped table-bordered table-hover dataTables-example21">
                 <thead>
                     <tr>
-						<th width="50">
+						<th>
 							Id
 						</th>
 						<th>
@@ -413,17 +424,17 @@
 					?>
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
 						<td>
-							<div class="td_div">
+							<div class="td_div0">
 								<?php echo $row_id; ?>
 								<i class="fa fa-refresh row_refresh_id_<?= ($row_id); ?>" aria-hidden="true" onclick="row_refresh('<?= ($row_id); ?>')"></i>
 							</div>
-							<div class="td_div">
+							<div class="td_div0">
 								<?= $row_status; ?>
 							</div>
-							<div class="td_div">
+							<div class="td_div0">
 								<?= $row_date; ?>
 							</div>
-							<div class="td_div">
+							<div class="td_div01">
 								<?= $row_time; ?>
 							</div>
 						</td>
