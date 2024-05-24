@@ -1,8 +1,14 @@
 <style>
-.td_div{
-	word-wrap: break-word;
-	width: 200px;
-	border-bottom: solid 1px #f6f6f6;
+.td_div {
+    word-wrap: break-word;
+    width: 225px;
+    border-bottom: solid 1px #f6f6f6;
+    padding: 5px;
+}
+.td_div1 {
+    word-wrap: break-word;
+    width: 225px;
+    padding: 5px;
 }
 </style>
 <div class="row">
@@ -426,7 +432,7 @@
 							<div class="td_div">
 								<?= $row_orderid; ?>
 							</div>
-							<div class="td_div">
+							<div class="td_div1">
 								<?= $row_amount; ?>
 							</div>
 						</td>
@@ -460,7 +466,7 @@
 								<b>Invoice : </b>
 								<?= $row_find_by_invoice_chemist_id ?>
 							</div>
-							<div class="td_div">
+							<div class="td_div1">
 								<b>WhatsApp : </b>
 								<?= $row_find_by_whatsapp_chemist_id; ?>
 							</div>
