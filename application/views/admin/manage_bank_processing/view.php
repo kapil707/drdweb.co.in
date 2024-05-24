@@ -4,12 +4,12 @@ table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, 
 }
 th{
 	padding: 0px !important;
-	border: 1px solid #333333 !important;
+	border: none !important;
 }
 td{
 	padding: 0px !important;
 	border: none !important;
-	border-bottom: 1px solid #333333 !important;
+	border-bottom: 2px solid #333333 !important;
 }
 .td_div0 {
     word-wrap: break-word;
