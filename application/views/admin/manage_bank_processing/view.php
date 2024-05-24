@@ -164,21 +164,12 @@ tr:hover{
 					}
 
 					/****************************************************** */
-					$row_date = "<b>Date</b><br>";
-					if(!empty($entry['sms']['date'])){
-						$row_date.= "SMS  : ".$entry['sms']['date']."<br>";
+					$row_date = "<b>Date Time</b><br>";
+					if(!empty($entry['sms']['time'])){
+						$row_date.= "SMS  : ".$entry['sms']['time']."<br>";
 					}
 					if(!empty($entry['statement']['date'])){
 						$row_date.= "Bank : ".$entry['statement']['date'];
-					}
-
-					/****************************************************** */
-					$row_time = "<b>Time</b><br>";
-					if(!empty($entry['sms']['time'])){
-						$row_time.= "SMS  : ".$entry['sms']['time']."<br>";
-					}
-					if(!empty($entry['statement']['time'])){
-						$row_time.= "Bank : ".$entry['statement']['time'];
 					}
 					/****************************************************** */
 					$row_upi_no = $entry['upi_no'];
@@ -430,11 +421,8 @@ tr:hover{
 							<div class="td_div">
 								<?= $row_status; ?>
 							</div>
-							<div class="td_div">
-								<?= $row_date; ?>
-							</div>
 							<div class="td_div1">
-								<?= $row_time; ?>
+								<?= $row_date; ?>
 							</div>
 						</td>
 						<td>
