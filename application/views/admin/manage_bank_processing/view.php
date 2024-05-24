@@ -558,6 +558,7 @@ function row_refresh(id){
 		},
 		success: function(data){
 			toastr.info('Refresh successfully');
+			$(".tr_css_"+id).css("background-color", "aliceblue");
 		}
 	});
 }
