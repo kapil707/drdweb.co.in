@@ -228,6 +228,10 @@
 						$row_received_from_logic = " || (<b>$row_received_from_logic</b>)";
 					}
 
+					if(empty($process_value)){
+						$row_received_from_logic = ""; //yha jab work karta ha jab chemist find nahi hua or find me kuch aa raha ha to wo empty ho jaya
+					}
+
 					// chemist find karta ha yha logic
 					/********************************************** */
 					$find_chemist_id = "";
