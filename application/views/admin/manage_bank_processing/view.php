@@ -10,7 +10,7 @@ tr:hover{
 }
 .td_div {
     word-wrap: break-word;
-    width: 200px;
+    width: 250px;
     padding: 5px;
     border-bottom: solid 1px #676a6c;
 }
@@ -21,24 +21,12 @@ tr:hover{
 }
 .td_div0 {
     word-wrap: break-word;
-    width: 250px;
-    padding: 5px;
-	border-bottom: solid 1px #676a6c;
-}
-.td_div01 {
-    word-wrap: break-word;
-    width: 250px;
-    padding: 5px;
-	border-bottom: solid 1px #676a6c;
-}
-.td_div00 {
-    word-wrap: break-word;
     padding: 5px;
 	border-bottom: solid 1px #676a6c;
 	max-height: 120px;
     overflow: scroll;
 }
-.td_div001 {
+.td_div01 {
     word-wrap: break-word;
     padding: 5px;
 	border-bottom: solid 1px #676a6c;
@@ -464,7 +452,7 @@ tr:hover{
 							</div>
 						</td>
 						<td>
-							<div class="td_div01">
+							<div class="td_div">
 								<?= ($row_received_from); ?>
 
 								<input type="hidden" value="<?php echo $hidden_text_received_from ?>" class="text_received_from_<?= ($row_id); ?>">
@@ -477,22 +465,22 @@ tr:hover{
 								
 								<i class="fa fa-pencil edit_received_from_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_received_from_chemist_id('<?= ($row_id); ?>')"></i>
 							</div>
-							<div class="td_div01">
+							<div class="td_div">
 								<b>Find : </b><br>
 								<?= ($row_received_from_find); ?> <?= $row_received_from_logic; ?>
 							</div>
-							<div class="td_div01">
+							<div class="td_div1">
 								<b>Find by : </b> 
 								<?= $row_find_by; ?>
 							</div>
 						</td>
 						<td>
-							<div class="td_div00">
+							<div class="td_div0">
 								<b>Invoice : </b>
 								<br>
 								<?= ($row_find_invoice_all); ?>
 							</div>
-							<div class="td_div001">
+							<div class="td_div01">
 								<b>WhatsApp : </b>
 								<br>
 								<?= ($whatsapp_body2); ?>
