@@ -57,6 +57,9 @@
 							
 						</th>
 						<th>
+							
+						</th>
+						<th>
 							 
 						</th>
 						<th width="155px">
@@ -423,11 +426,16 @@
 							<div class="td_div">
 								<?= $row_time; ?>
 							</div>
+						</td>
+						<td>
 							<div class="td_div">
 								Upi No : <?= $row_upi_no; ?>
 							</div>
-							<div class="td_div1">
+							<div class="td_div">
 								<?= $row_orderid; ?>
+							</div>
+							<div class="td_div1">
+								<?= $row_amount; ?>
 							</div>
 						</td>
 						<td>
@@ -476,10 +484,6 @@
 							</div>
 						</td>
 						<td class="display: flex;">
-
-							<div class="td_div">
-								<?= $row_amount; ?>
-							</div>
 							<div class="td_div1">
 								<input type="text" value="<?php echo $textbox_done_chemist_id ?>" class="text_done_chemist_id_<?= ($row_id); ?>" style="<?php if($done_status==1) { ?>display:none;<?php } ?> float: left; width: 100px;">
 								
