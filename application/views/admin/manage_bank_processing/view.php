@@ -75,16 +75,12 @@ td{
                     <tr>
 						<th width="200px"></th>
 						<th width="200px"></th>
+						<th width="200px"></th>
 						<th>
 							
 						</th>
-						<th>
-							
-						</th>
-						<th>
-							 
-						</th>
-						<th width="155px">
+						<th width="200px"></th>
+						<th width="200px">
                         	Edit
                         </th>
                     </tr>
