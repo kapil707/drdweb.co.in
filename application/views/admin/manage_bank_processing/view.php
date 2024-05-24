@@ -1,3 +1,10 @@
+<style>
+.td_div{
+	word-wrap: break-word;
+	width: 200px;
+	border-bottom: solid 1px #f6f6f6;
+}
+</style>
 <div class="row">
     <div class="col-xs-12" style="margin-bottom:5px;">
     	<a href="add">
@@ -404,19 +411,24 @@
 							<i class="fa fa-refresh row_refresh_id_<?= ($row_id); ?>" aria-hidden="true" onclick="row_refresh('<?= ($row_id); ?>')"></i>
 						</td>
 						<td>
-							<?= $row_status; ?>
-							<br><br>
-							<?= $row_date; ?>
-							<br><br>
-							<?= $row_time; ?>
-							<br><br>
+							<div class="td_div">
+								<?= $row_status; ?>
+							</div>
+							<div class="td_div">
+								<?= $row_date; ?>
+							</div>
+							<div class="td_div">
+								<?= $row_time; ?>
+							</div>
+							<div class="td_div">
 								Upi No : <?= $row_upi_no; ?>
-							<br><br>								
-							<div style="word-wrap:break-word;width:200px;">
+							</div>
+							<div class="td_div">
 								<?= $row_orderid; ?>
 							</div>
-							<br><br>
-							<b><?= $row_amount; ?></b>
+							<div class="td_div">
+								<b><?= $row_amount; ?></b>
+							</div>
 						</td>
 						<td>
 							<?= ($row_received_from); ?>
