@@ -73,12 +73,8 @@ td{
             <table class="table table-striped table-bordered table-hover dataTables-example21">
                 <thead>
                     <tr>
-						<th width="200px">
-							
-						</th>
-						<th>
-
-                        </th>
+						<th width="200px"></th>
+						<th width="200px"></th>
 						<th>
 							
 						</th>
