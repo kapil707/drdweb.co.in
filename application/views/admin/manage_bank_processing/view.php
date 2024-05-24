@@ -1,13 +1,13 @@
 <style>
 .td_div {
     word-wrap: break-word;
-    width: 225px;
+    width: 325px;
     border-bottom: solid 1px #f6f6f6;
     padding: 5px;
 }
 .td_div1 {
     word-wrap: break-word;
-    width: 225px;
+    width: 325px;
     padding: 5px;
 }
 </style>
