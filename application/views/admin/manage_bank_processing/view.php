@@ -11,24 +11,24 @@ tr:hover{
 .td_div {
     word-wrap: break-word;
     width: 250px;
-    padding: 5px;
+    padding: 3px;
     border-bottom: solid 1px #676a6c;
 }
 .td_div1 {
     word-wrap: break-word;
-    width: 200px;
-    padding: 5px;
+    width: 250px;
+    padding: 3px;
 }
 .td_div0 {
     word-wrap: break-word;
-    padding: 5px;
+    padding: 3px;
 	border-bottom: solid 1px #676a6c;
 	max-height: 120px;
     overflow: scroll;
 }
 .td_div01 {
     word-wrap: break-word;
-    padding: 5px;
+    padding: 3px;
     max-height: 120px;
     overflow: scroll;
 }
