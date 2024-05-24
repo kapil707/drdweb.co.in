@@ -6,7 +6,7 @@ td{
 	border-bottom: 2px solid #676a6c !important;
 }
 tr:hover{
-	background-color: salmon !important;
+	background-color: #eeeeee !important;
 }
 .td_div {
     word-wrap: break-word;
