@@ -57,10 +57,7 @@
 							
 						</th>
 						<th>
-                        	Invoice
-                        </th>
-						<th>
-							WhatsApp 
+							 
 						</th>
 						<th width="155px">
                         	Edit
