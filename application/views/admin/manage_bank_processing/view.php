@@ -93,9 +93,6 @@ td{
 							
 						</th>
 						<th width="200px"></th>
-						<th width="200px">
-                        	Edit
-                        </th>
                     </tr>
                 </thead>
 				<tbody>
@@ -521,8 +518,7 @@ td{
 								<br>
 								<?= $row_find_by_whatsapp_chemist_id; ?>
 							</div>
-						</td>
-						<td class="display: flex;">
+
 							<div class="td_div1">
 								<input type="text" value="<?php echo $textbox_done_chemist_id ?>" class="text_done_chemist_id_<?= ($row_id); ?>" style="<?php if($done_status==1) { ?>display:none;<?php } ?> float: left; width: 100px;">
 								
