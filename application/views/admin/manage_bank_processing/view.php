@@ -12,12 +12,12 @@ td{
 	border-top: none !important;
 	border-right: none !important;
     border-left: 1px solid #333333 !important;
-	border-bottom: 2px solid #333333 !important;
+	border-bottom: 1px solid #333333 !important;
 }
 .td_div0 {
     word-wrap: break-word;
     width: 200px;
-    border-bottom: solid 1px #f6f6f6;
+    border-bottom: solid 1px #333333;
     padding: 5px;
 }
 .td_div01 {
@@ -28,7 +28,7 @@ td{
 .td_div {
     word-wrap: break-word;
     width: 250px;
-    border-bottom: solid 1px #f6f6f6;
+    border-bottom: solid 1px #333333;
     padding: 5px;
 }
 .td_div1 {
