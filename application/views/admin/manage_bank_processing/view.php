@@ -439,13 +439,13 @@
 							</div>
 						</td>
 						<td>
-							<div class="td_div">
+							<div class="td_div0">
 								<b>Upi No : </b><?= $row_upi_no; ?>
 							</div>
-							<div class="td_div">
+							<div class="td_div0">
 								<?= $row_orderid; ?>
 							</div>
-							<div class="td_div1">
+							<div class="td_div01">
 								<?= $row_amount; ?>
 							</div>
 						</td>
@@ -473,15 +473,15 @@
 							</div>
 						</td>
 						<td>
-							<div class="td_div">
+							<div class="td_div0">
 								<b>Chemist : </b>
 								<?= $row_find_by_chemist_id;?>
 							</div>
-							<div class="td_div">
+							<div class="td_div0">
 								<b>Invoice : </b>
 								<?= $row_find_by_invoice_chemist_id ?>
 							</div>
-							<div class="td_div1">
+							<div class="td_div01">
 								<b>WhatsApp : </b>
 								<?= $row_find_by_whatsapp_chemist_id; ?>
 							</div>
