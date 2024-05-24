@@ -25,6 +25,15 @@ td{
     width: 200px;
     padding: 5px;
 }
+.td_div00 {
+    word-wrap: break-word;
+    border-bottom: solid 1px #333333;
+    padding: 5px;
+}
+.td_div001 {
+    word-wrap: break-word;
+    padding: 5px;
+}
 .td_div {
     word-wrap: break-word;
     width: 250px;
@@ -432,6 +441,7 @@ td{
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
 						<td>
 							<div class="td_div0">
+								<b>Id:</b>
 								<?php echo $row_id; ?>
 								<i class="fa fa-refresh row_refresh_id_<?= ($row_id); ?>" aria-hidden="true" onclick="row_refresh('<?= ($row_id); ?>')"></i>
 							</div>
@@ -480,12 +490,12 @@ td{
 							</div>
 						</td>
 						<td>
-							<div class="td_div">
+							<div class="td_div00">
 								<b>Invoice : </b>
 								<br>
 								<?= ($row_find_invoice_all); ?>
 							</div>
-							<div class="td_div1">
+							<div class="td_div001">
 								<b>WhatsApp : </b>
 								<br>
 								<?= ($whatsapp_body2); ?>
