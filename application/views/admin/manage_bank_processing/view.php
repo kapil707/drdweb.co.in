@@ -9,55 +9,43 @@ th{
 td{
 	padding: 0px !important;
 	border: none !important;
-	border-bottom: 2px solid #333333 !important;
+	border-right: 1px solid #676a6c !important;
+	border-bottom: 2px solid #676a6c !important;
 }
 .td_div {
     word-wrap: break-word;
     width: 200px;
     padding: 5px;
-    border: solid 1px #676a6c;
-    border-right: none;
-    border-bottom: none;
+    border-bottom: solid 1px #676a6c;
 }
 .td_div1 {
     word-wrap: break-word;
     width: 200px;
     padding: 5px;
-	border: solid 1px #676a6c;
-    border-right: none;
-    border-bottom: none;
 }
 .td_div0 {
     word-wrap: break-word;
     width: 250px;
     padding: 5px;
-	border: solid 1px #676a6c;
-    border-right: none;
-    border-bottom: none;
+	border-bottom: solid 1px #676a6c;
 }
 .td_div01 {
     word-wrap: break-word;
     width: 250px;
     padding: 5px;
-	border: solid 1px #676a6c;
-    border-right: none;
-    border-bottom: none;
+	border-bottom: solid 1px #676a6c;
 }
 .td_div00 {
     word-wrap: break-word;
     padding: 5px;
-	border: solid 1px #676a6c;
-    border-right: none;
-    border-bottom: none;
+	border-bottom: solid 1px #676a6c;
 	max-height: 120px;
     overflow: scroll;
 }
 .td_div001 {
     word-wrap: break-word;
     padding: 5px;
-	border: solid 1px #676a6c;
-    border-right: none;
-    border-bottom: none;
+	border-bottom: solid 1px #676a6c;
     max-height: 120px;
     overflow: scroll;
 }
