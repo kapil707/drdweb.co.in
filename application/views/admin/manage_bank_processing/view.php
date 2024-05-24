@@ -497,7 +497,7 @@
 							</div>
 						</td>
 						<td class="display: flex;">
-							<div class="td_div1">
+							<div class="td_div01">
 								<input type="text" value="<?php echo $textbox_done_chemist_id ?>" class="text_done_chemist_id_<?= ($row_id); ?>" style="<?php if($done_status==1) { ?>display:none;<?php } ?> float: left; width: 100px;">
 								
 								<i class="fa fa-check add_done_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="add_done_chemist_id('<?= ($row_id); ?>')" style="<?php if($done_status==1) { ?>display:none;<?php } ?> float: left;font-size: 20px;"></i>
