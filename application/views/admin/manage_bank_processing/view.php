@@ -188,10 +188,10 @@ tr:hover{
 					/****************************************************** */
 					$row_amount = "<b>Amount</b> <br>";
 					if(!empty($entry['sms']['amount'])){
-						$row_amount.= "SMS  : ".$entry['sms']['amount']."<br>";
+						$row_amount.= "SMS  : Rs.".$entry['sms']['amount']."/-<br>";
 					}
 					if(!empty($entry['statement']['amount'])){
-						$row_amount.= "Bank : ".$entry['statement']['amount'];
+						$row_amount.= "Bank : Rs.".$entry['statement']['amount']."/-";
 					}
 
 					/****************************************************** */
