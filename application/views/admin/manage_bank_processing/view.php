@@ -5,7 +5,7 @@ td{
 	border-right: 1px solid #676a6c !important;
 	border-bottom: 2px solid #676a6c !important;
 }
-td:hover{
+tr:hover{
 	background-color: salmon !important;
 }
 .td_div {
