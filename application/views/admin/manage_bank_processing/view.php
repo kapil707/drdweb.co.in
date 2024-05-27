@@ -621,18 +621,17 @@ function get_whats_message(row_whatsapp_id){
 			toastr.error('Error');
 		},
 		success: function(data){
+			var table = $(".get_whats_message");
 			$.each(data.items, function(i,item){
 				if (item)
 				{
-					body			= item.body;
-					alert(body)
-					// item_image			= item.item_image;
-					// item_name 			= item.item_name;
-					// item_quantity 		= item.item_quantity;				
-
-					// div_all_data = "<div class='medicine_details_all_data_"+item_code+"' item_image='"+item_image+"' item_name='"+item_name+"' item_packing='' item_expiry='' item_company='' item_quantity='0' item_stock='' item_ptr='' item_mrp='' item_price='' item_scheme='' item_margin='' item_featured='' item_description1='' similar_items=''></div>"
-					
-					// $(".get_medicine_favourite_api_div").append('<div class="main_box_div_data"><a href="javascript:void(0)" onClick="get_single_medicine_info('+item_code+')" style="text-decoration: none;"><div class="favourite_medicines_box_left_div"><img class="all_item_image" src="'+default_img+'" alt="'+item_name+'"><img class="all_item_image_load" src="'+item_image+'" alt="'+item_name+'" onload="showActualImage(this)" onerror="setDefaultImage(this);"></div><div class="favourite_medicines_box_right_div"><div class="text-capitalize all_item_name">'+item_name+'</div><div class="text-left all_item_order_quantity">Last order quantity : '+item_quantity+'</div></div></a></div>'+div_all_data);
+					var row = "<tr>" +
+							"<td>" + item.body + "</td>" +
+							"<td>Time value</td>" +
+							"<td>Vision Text value</td>" +
+							"<td>Image value</td>" +
+							"</tr>";
+					table.append(row);
 				}
 			});
 		},
@@ -651,7 +650,14 @@ function get_whats_message(row_whatsapp_id){
         <h4 class="modal-title">Modal Header</h4>
       </div>
       <div class="modal-body">
-        <p>Some text in the modal.</p>
+        <table class="get_whats_message">
+			<tr>
+				<td>Body</td>
+				<td>Time</td>
+				<td>Vision Text</td>
+				<td>Image</td>
+			</tr>
+		</table>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
