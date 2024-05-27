@@ -622,6 +622,7 @@ function get_whats_message(row_whatsapp_id){
 		},
 		success: function(data){
 			var table = $(".get_whats_message");
+			table.find("tr:gt(0)").remove();
 			$.each(data.items, function(i,item){
 				if (item)
 				{
@@ -650,7 +651,7 @@ function get_whats_message(row_whatsapp_id){
         <h4 class="modal-title">Modal Header</h4>
       </div>
       <div class="modal-body">
-        <table class="get_whats_message">
+        <table class="table table-striped table-bordered table-hover get_whats_message">
 			<tr>
 				<td>Body</td>
 				<td>Time</td>
