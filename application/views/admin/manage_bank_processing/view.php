@@ -1,6 +1,6 @@
 <style>
 .myinput1{
-	display:none;
+	display:none !important;
 	border-radius: 10px;
 }
 .dataTables-example21 td{
