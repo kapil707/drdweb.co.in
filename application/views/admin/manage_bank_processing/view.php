@@ -303,7 +303,7 @@
 
 					$row_find_invoice_all = $row_find_by_invoice_chemist_id = "";
 					foreach($find_invoice_chemist_id_array as $rows){
-						$rows1 = str_replace('Amt.', 'Rs.', $rows);
+						$rows = str_replace('Amt.', 'Rs.', $rows);
 						$rows1 = str_replace('Amt-x.', 'Rs.', $rows);
 
 						$row_find_invoice_all.= $rows1."/-<br>";
