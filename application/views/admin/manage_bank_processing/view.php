@@ -1,6 +1,5 @@
 <style>
 .myinput1{
-	display:none !important;
 	border-radius: 10px;
 }
 .dataTables-example21 td{
@@ -464,7 +463,7 @@
 
 								<input type="hidden" value="<?php echo $hidden_text_received_from ?>" class="text_received_from_<?= ($row_id); ?>">
 
-								<input type="text" value="<?php echo $find_chemist_id; ?>" class="form-control myinput1 text_received_from_chemist_id_<?= ($row_id); ?>">
+								<input type="text" value="<?php echo $find_chemist_id; ?>" class="form-control myinput1 text_received_from_chemist_id_<?= ($row_id); ?>" style="display:none;">
 
 								<i class="fa fa-check add_received_from_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="add_received_from_chemist_id('<?= ($row_id); ?>')" style="display:none"></i>
 
