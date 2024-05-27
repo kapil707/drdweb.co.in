@@ -630,7 +630,7 @@ function get_whats_message(row_whatsapp_id){
 							"<td>" + item.body + "</td>" +
 							"<td>" +item.ist_timestamp+ "</td>" +
 							"<td>" +item.vision_text+ "</td>" +
-							"<td>" +screenshot_image+ "</td>" +
+							"<td>" +item.screenshot_image+ "</td>" +
 							"</tr>";
 					table.append(row);
 				}
