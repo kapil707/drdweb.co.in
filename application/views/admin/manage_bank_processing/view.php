@@ -483,7 +483,7 @@ tr:hover{
 								<?= ($row_find_invoice_all); ?>
 							</div>
 							<div class="td_div01">
-								<b onclick="get_whats_message('<?= ($row_whatsapp_id); ?>')">WhatsApp : </b>
+								<b onclick="get_whats_message('<?= ($row_whatsapp_id); ?>')" data-toggle="modal" data-target="#myModal">Open Modal</button>>WhatsApp : </b>
 								<?= ($whatsapp_body2); ?>
 							</div>
 						</td>
@@ -640,10 +640,6 @@ function get_whats_message(row_whatsapp_id){
 	});
 }
 </script>
-
-<!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
