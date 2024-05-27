@@ -621,7 +621,7 @@ function get_whats_message(row_whatsapp_id){
 			toastr.error('Error');
 		},
 		success: function(data){
-			$.each(data.data, function(i,item){
+			$.each(data.items, function(i,item){
 				if (item)
 				{
 					body			= item.body;
