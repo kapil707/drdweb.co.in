@@ -483,7 +483,7 @@
 								<?= ($row_find_invoice_all); ?>
 							</div>
 							<div class="td_div01">
-								<b onclick="get_whats_message('<?= ($row_whatsapp_id); ?>')" data-toggle="modal" data-target="#myModal">WhatsApp : </b>
+								<b onclick="get_whats_message('<?= ($row_whatsapp_id); ?>','<?= $row_upi_no; ?>')" data-toggle="modal" data-target="#myModal">WhatsApp : </b>
 								<?= ($whatsapp_body2); ?>
 							</div>
 						</td>
@@ -611,7 +611,8 @@ function row_refresh(id){
 	});
 }
 
-function get_whats_message(row_whatsapp_id){
+function get_whats_message(row_whatsapp_id,row_upi_no){
+	$(".modal-title").html("Upi No : "+row_upi_no);
 	$.ajax({
 		type : "POST",
 		data : {row_whatsapp_id:row_whatsapp_id},
@@ -648,7 +649,7 @@ function get_whats_message(row_whatsapp_id){
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
+        <h4 class="modal-title"></h4>
       </div>
       <div class="modal-body">
         <table class="table table-striped table-bordered table-hover get_whats_message">
