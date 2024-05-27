@@ -483,7 +483,7 @@ tr:hover{
 								<?= ($row_find_invoice_all); ?>
 							</div>
 							<div class="td_div01">
-								<b onclick="open_whats_message('<?= ($row_id); ?>')">WhatsApp : </b>
+								<b onclick="get_whats_message('<?= ($row_whatsapp_id); ?>')">WhatsApp : </b>
 								<?= ($whatsapp_body2); ?>
 							</div>
 						</td>
@@ -611,18 +611,17 @@ function row_refresh(id){
 	});
 }
 
-function open_whats_message(id){
+function get_whats_message(row_whatsapp_id){
 	$.ajax({
 		type : "POST",
-		data : {id:id},
-		url  : "<?= base_url()?>admin/<?= $Page_name?>/row_refresh",
+		data : {row_whatsapp_id:row_whatsapp_id},
+		url  : "<?= base_url()?>admin/<?= $Page_name?>/get_whats_message",
 		cache: true,
 		error: function(){
 			toastr.error('Error');
 		},
 		success: function(data){
-			toastr.info('Refresh successfully');
-			$(".tr_css_"+id).css("background-color", "aliceblue");
+			console.log(data);
 		}
 	});
 }
