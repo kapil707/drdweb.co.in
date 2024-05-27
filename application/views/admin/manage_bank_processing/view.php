@@ -100,6 +100,7 @@ tr:hover{
 							$sms_data = [
 								"id" => split_csv_values($item->id)[$index] ?? '',
 								"find_by" => split_csv_values($item->find_by)[$index] ?? '',
+								"whatsapp_id" => split_csv_values($item->whatsapp_id)[$index] ?? '',
 								"whatsapp_body" => split_csv_values($item->whatsapp_body)[$index] ?? '',
 								"whatsapp_body2" => split_csv_values($item->whatsapp_body2)[$index] ?? '',
 								"process_name" => split_csv_values($item->process_name)[$index] ?? '',
@@ -119,6 +120,7 @@ tr:hover{
 							$statement_data = [
 								"id" => split_csv_values($item->id)[$index] ?? '',
 								"find_by" => split_csv_values($item->find_by)[$index] ?? '',
+								"whatsapp_id" => split_csv_values($item->whatsapp_id)[$index] ?? '',
 								"whatsapp_body" => split_csv_values($item->whatsapp_body)[$index] ?? '',
 								"whatsapp_body2" => split_csv_values($item->whatsapp_body2)[$index] ?? '',
 								"process_name" => split_csv_values($item->process_name)[$index] ?? '',
@@ -316,6 +318,15 @@ tr:hover{
 					}
 
 					/********************************************** */
+					$row_whatsapp_id = "";
+					if(!empty($entry['sms']['whatsapp_id'])){
+						$row_whatsapp_id = $entry['sms']['whatsapp_id'];
+					}
+					if(!empty($entry['statement']['whatsapp_id'])){
+						$row_whatsapp_id = $entry['statement']['whatsapp_id'];
+					}
+
+					/********************************************** */
 					$row_find_by_whatsapp_chemist_id = "";
 					if(!empty($entry['sms']['whatsapp_body'])){
 						$row_find_by_whatsapp_chemist_id = $entry['sms']['whatsapp_body'];
@@ -472,7 +483,7 @@ tr:hover{
 								<?= ($row_find_invoice_all); ?>
 							</div>
 							<div class="td_div01">
-								<b>WhatsApp : </b>
+								<b onclick="open_whats_message('<?= ($row_id); ?>')">WhatsApp : </b>
 								<?= ($whatsapp_body2); ?>
 							</div>
 						</td>
@@ -600,4 +611,19 @@ function row_refresh(id){
 	});
 }
 
+function open_whats_message(id){
+	$.ajax({
+		type : "POST",
+		data : {id:id},
+		url  : "<?= base_url()?>admin/<?= $Page_name?>/row_refresh",
+		cache: true,
+		error: function(){
+			toastr.error('Error');
+		},
+		success: function(data){
+			toastr.info('Refresh successfully');
+			$(".tr_css_"+id).css("background-color", "aliceblue");
+		}
+	});
+}
 </script>
