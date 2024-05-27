@@ -503,7 +503,8 @@
 
 							<div class="td_div1">
 								<b style="float: left;">Add Chemist : </b>
-								<input type="text" value="<?php echo $textbox_done_chemist_id ?>" class="form-control text_done_chemist_id_<?= ($row_id); ?>" style="<?php if($done_status==1) { ?>display:none;<?php } ?> float: left; width: 100px;" placeholder="Chemist Id">
+								
+								<input type="text" value="<?php echo $textbox_done_chemist_id ?>" class="form-control text_done_chemist_id_<?= ($row_id); ?>" style="<?php if($done_status==1) { ?>display:none;<?php } ?> float: left; width: 100px; border-radius: 10px;" placeholder="Chemist Id">
 								
 								<i class="fa fa-check add_done_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="add_done_chemist_id('<?= ($row_id); ?>')" style="<?php if($done_status==1) { ?>display:none;<?php } ?> float: left;font-size: 20px;"></i>
 
