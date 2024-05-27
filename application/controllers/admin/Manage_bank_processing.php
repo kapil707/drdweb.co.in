@@ -546,19 +546,10 @@ class Manage_bank_processing extends CI_Controller {
 			$timestamp = date('Y-m-d H:i:s', $row1->timestamp);
 
 			$result = $this->BankModel->select_query("SELECT body FROM `tbl_whatsapp_message` WHERE from_number='$from_number' AND FROM_UNIXTIME(timestamp) BETWEEN DATE_SUB('$timestamp', INTERVAL 7 MINUTE) AND DATE_ADD('$timestamp', INTERVAL 7 MINUTE) and body!='' LIMIT 0, 25");
-
 			$result = $result->result();
-			$data = [];
+			$data[] = $result;
 
-			if ($result->num_rows > 0) {
-				// output data of each row
-				while($row = $result->fetch_assoc()) {
-					$data[] = $row;
-				}
-				echo json_encode(['data' => $data]);
-			} else {
-				echo json_encode(['data' => []]);
-			}
+			echo json_encode(['data' => $data]);
 		}
 	}
 }
