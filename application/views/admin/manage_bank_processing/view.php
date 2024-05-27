@@ -631,7 +631,7 @@ function get_whats_message(row_whatsapp_id,row_upi_no){
 							"<td>" + item.body + "</td>" +
 							"<td>" +item.ist_timestamp+ "</td>" +
 							"<td>" +item.vision_text+ "</td>" +
-							"<td> <a href='https://api.wassi.chat" +item.vision_text+ "?token=531fe5caf0e132bdb6000bf01ed66d8cfb75b53606cc8f6eed32509d99d74752f47f288db155557e' target='_blank'>	<img src='https://api.wassi.chat" +item.vision_text+ "?token=531fe5caf0e132bdb6000bf01ed66d8cfb75b53606cc8f6eed32509d99d74752f47f288db155557e' width='100px'></a> </td>" +
+							"<td> <a href='https://api.wassi.chat" +item.vision_text+ "?token=531fe5caf0e132bdb6000bf01ed66d8cfb75b53606cc8f6eed32509d99d74752f47f288db155557e' target='_blank'>	<img src='https://api.wassi.chat" +item.screenshot_image+ "?token=531fe5caf0e132bdb6000bf01ed66d8cfb75b53606cc8f6eed32509d99d74752f47f288db155557e' width='100px'></a> </td>" +
 							"</tr>";
 					table.append(row);
 				}
