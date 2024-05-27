@@ -540,9 +540,10 @@ class Manage_bank_processing extends CI_Controller {
 	public function get_whats_message(){
 		$row_whatsapp_id = $_POST["row_whatsapp_id"];
 		if(!empty($row_whatsapp_id)){
-			$row1 = $this->BankModel->select_query("SELECT from_number FROM `tbl_whatsapp_message` WHERE id='$row_whatsapp_id'");
+			$row1 = $this->BankModel->select_query("SELECT from_number,timestamp FROM `tbl_whatsapp_message` WHERE id='$row_whatsapp_id'");
 			$row1 = $row1->row();
 			$from_number = $row1->from_number;
+			$timestamp = date('Y-m-d H:i:s', $row1->timestamp);
 
 			$row2 = $this->BankModel->select_query("SELECT body FROM `tbl_whatsapp_message` WHERE from_number='$from_number' AND FROM_UNIXTIME(timestamp) BETWEEN DATE_SUB('$timestamp', INTERVAL 7 MINUTE) AND DATE_ADD('$timestamp', INTERVAL 7 MINUTE) and body!='' LIMIT 0, 25");
 
