@@ -500,7 +500,7 @@
 								<?= $row_find_by_invoice_chemist_id ?>
 							</div>
 							<div class="td_div">
-								<b>WhatsApp : </b>
+								<b onclick="get_whats_message('<?= ($row_whatsapp_id); ?>','<?= $row_upi_no; ?>')" data-toggle="modal" data-target="#myModal">WhatsApp : </b>
 								<?= $row_find_by_whatsapp_chemist_id; ?>
 							</div>
 
