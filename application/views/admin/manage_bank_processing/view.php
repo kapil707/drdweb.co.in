@@ -486,7 +486,7 @@
 								<?= ($row_find_invoice_all); ?>
 							</div>
 							<div class="td_div01">
-								<b onclick="get_whats_message('<?= ($row_whatsapp_id); ?>','<?= $row_upi_no; ?>')" data-toggle="modal" data-target="#myModal">WhatsApp : </b>
+								<b onclick="get_whats_message('<?= ($row_id); ?>','<?= ($row_whatsapp_id); ?>','<?= $row_upi_no; ?>')" data-toggle="modal" data-target="#myModal">WhatsApp : </b>
 								<?= ($whatsapp_body2); ?>
 							</div>
 						</td>
@@ -500,7 +500,7 @@
 								<?= $row_find_by_invoice_chemist_id ?>
 							</div>
 							<div class="td_div">
-								<b onclick="get_whats_message('<?= ($row_whatsapp_id); ?>','<?= $row_upi_no; ?>')" data-toggle="modal" data-target="#myModal">WhatsApp : </b>
+								<b onclick="get_whats_message('<?= ($row_id); ?>','<?= ($row_whatsapp_id); ?>','<?= $row_upi_no; ?>')" data-toggle="modal" data-target="#myModal">WhatsApp : </b>
 								<?= $row_find_by_whatsapp_chemist_id; ?>
 							</div>
 
@@ -614,8 +614,9 @@ function row_refresh(id){
 		}
 	});
 }
-
-function get_whats_message(row_whatsapp_id,row_upi_no){
+var row_id;
+function get_whats_message(row_id1,row_whatsapp_id,row_upi_no){
+	row_id = row_id1;
 	$(".modal-title").html("Upi No : "+row_upi_no);
 	$.ajax({
 		type : "POST",
@@ -644,6 +645,26 @@ function get_whats_message(row_whatsapp_id,row_upi_no){
 		timeout: 60000
 	});
 }
+
+function add_whatapp_chemist_id(){
+	var whatapp_chemist = $(".text_whatapp_chemist_id").val();
+	if(whatapp_chemist.trim()==""){
+		alert("Etner any chemist id")
+	}else{
+		$.ajax({
+			type : "POST",
+			data : {row_id:row_id,whatapp_chemist:whatapp_chemist,},
+			url  : "<?= base_url()?>admin/<?= $Page_name?>/add_whatapp_chemist_id",
+			cache: true,
+			error: function(){
+				toastr.error('Error');
+			},
+			success: function(data){
+				toastr.info('Chemist set successfully');
+			}
+		});
+	}
+}
 </script>
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
@@ -666,9 +687,9 @@ function get_whats_message(row_whatsapp_id,row_upi_no){
 		</table>
 		<b style="float: left;">Add WhatsApp Chemist : </b>
 								
-		<input type="text" value="<?php echo $textbox_done_chemist_id ?>" class="form-control text_done_chemist_id_<?= ($row_id); ?>" style="<?php if($done_status==1) { ?>display:none;<?php } ?> float: left; width: 100px; border-radius: 10px;" placeholder="Chemist Id">
+		<input type="text" value="<?php echo $textbox_done_chemist_id ?>" class="form-control text_whatapp_chemist_id" style="float: left; width: 100px; border-radius: 10px;" placeholder="Chemist Id">
 		
-		<i class="fa fa-check add_done_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="add_done_chemist_id('<?= ($row_id); ?>')" style="<?php if($done_status==1) { ?>display:none;<?php } ?> float: left;font-size: 20px;"></i>
+		<i class="fa fa-check add_whatapp_chemist_id" aria-hidden="true" onclick="add_whatapp_chemist_id()" style="float: left;font-size: 20px;"></i>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

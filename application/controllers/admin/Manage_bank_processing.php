@@ -561,4 +561,27 @@ class Manage_bank_processing extends CI_Controller {
 			echo json_encode($response);
 		}
 	}
+
+	public function add_whatapp_chemist_id()
+	{
+		$id 				= $_POST["row_id"];
+		$whatapp_chemist 	= $_POST["whatapp_chemist"];
+		if(!empty($id) && !empty($whatapp_chemist)){
+
+			$query = $this->BankModel->select_query("SELECT * FROM `tbl_bank_processing` where id='$id'");
+			$row = $query->row();
+			$upi_no = $row->upi_no;
+
+			/********************************************* */
+			if(!empty($upi_no)){
+				$where = array(
+					'upi_no' => $upi_no,
+				);
+				$dt = array(
+					'whatsapp_body'=>$whatapp_chemist
+				);
+				$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
+			}
+		}
+	}
 }
