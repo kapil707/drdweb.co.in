@@ -1,11 +1,11 @@
 <style>
-td{
+.td{
 	padding: 3px !important;
 	border: none !important;
 	border-right: 1px solid #676a6c !important;
 	border-bottom: 2px solid #676a6c !important;
 }
-tr:hover{
+.tr:hover{
 	background-color: #eeeeee !important;
 }
 .td_div {
@@ -429,8 +429,8 @@ tr:hover{
 						$tr_style = "background-color: #e8ffe2;";					
 					}
 					?>
-					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
-						<td>
+					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?> tr">
+						<td class="td">
 							<div class="td_div">
 								<b>Id:</b>
 								<?php echo $row_id; ?>
@@ -443,7 +443,7 @@ tr:hover{
 								<?= $row_date; ?>
 							</div>
 						</td>
-						<td>
+						<td class="td">
 							<div class="td_div">
 								<b>Upi No : </b><?= $row_upi_no; ?>
 							</div>
@@ -454,7 +454,7 @@ tr:hover{
 								<?= $row_amount; ?>
 							</div>
 						</td>
-						<td>
+						<td class="td">
 							<div class="td_div">
 								<?= ($row_received_from); ?>
 
@@ -477,7 +477,7 @@ tr:hover{
 								<?= $row_find_by; ?>
 							</div>
 						</td>
-						<td>
+						<td class="td">
 							<div class="td_div0">
 								<b>Invoice : </b>
 								<?= ($row_find_invoice_all); ?>
@@ -487,7 +487,7 @@ tr:hover{
 								<?= ($whatsapp_body2); ?>
 							</div>
 						</td>
-						<td>
+						<td class="td">
 							<div class="td_div">
 								<b>Chemist : </b>
 								<?= $row_find_by_chemist_id;?>
