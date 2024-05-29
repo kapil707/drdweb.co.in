@@ -46,6 +46,7 @@
 						<th>Customer Reference</th>
 						<th>Narrative</th>
 						<th>Transaction Description</th>
+						<th>Chemist</th>
                     </tr>
                 </thead>
 				<tbody>
@@ -87,6 +88,9 @@
 						</td>
 						<td>
 							<?php echo $row->transaction_description; ?>
+						</td>
+						<td>
+							<?php echo $row->chemist_id; ?>
 						</td>
 					</tr>
 					<?php } ?>

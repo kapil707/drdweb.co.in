@@ -333,6 +333,7 @@ class Cronjob_bank extends CI_Controller
 	}
 	public function bank_processing(){
 
+		$this->get_statment();
 		$this->bank_check_in_whatsapp();
 		$this->bank_sms_processing();
 		$this->get_whatsapp_message();

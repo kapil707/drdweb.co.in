@@ -203,7 +203,7 @@ class Manage_bank_statment extends CI_Controller {
 		$start_date = $start_date->format('Y-m-d');
 		$end_date 	= $end_date->format('Y-m-d');
 		
-		$query = $this->BankModel->select_query("SELECT * from tbl_statment where value_date BETWEEN '$start_date' AND '$end_date'");
+		$query = $this->BankModel->select_query("SELECT s.*,p.done_chemist_id as chemist_id from tbl_statment as s left JOIN tbl_bank_processing as p on p._id=s.id where p.type='Statment' and p.value_date BETWEEN '$start_date' AND '$end_date'");
 		$data["result"] = $query->result();
 
 		$this->load->view("admin/header_footer/header",$data);
