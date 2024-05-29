@@ -88,6 +88,8 @@ class Manage_bank_processing extends CI_Controller {
 			$account_no 			= "A";
 			$branch_no 				= "B";
 			$statment_date 			= "C";
+			$closing_ledger_balance = "D";
+			$calculated_balances 	= "E";
 			$amount 				= "F";
 			$enter_date 			= "G";
 			$value_date 			= "H";
@@ -95,8 +97,9 @@ class Manage_bank_processing extends CI_Controller {
 			$customer_reference 	= "J";
 			$narrative 				= "K";
 			$transaction_description= "L";
+			$iban_number			= "M";
 
-			$start_row = "13";
+			$start_row 				= "13";
 
 			$upload_path = "uploads/manage_bank_processing/myfile/";
 			$excelFile = $upload_path.$filename;
@@ -110,6 +113,41 @@ class Manage_bank_processing extends CI_Controller {
 					$highestRow = $worksheet->getHighestRow();
 					for ($row=$start_row; $row<=$highestRow; $row++)
 					{
+						$account_no1 = $worksheet->getCell($account_no.$row)->getValue();
+						$branch_no1 = $worksheet->getCell($branch_no.$row)->getValue();
+						$statment_date1 = $worksheet->getCell($statment_date.$row)->getValue();
+						$closing_ledger_balance1 = $worksheet->getCell($closing_ledger_balance.$row)->getValue();
+						$calculated_balances1 = $worksheet->getCell($calculated_balances.$row)->getValue();
+						$amount1 = $worksheet->getCell($amount.$row)->getValue();
+						$enter_date1 = $worksheet->getCell($enter_date.$row)->getValue();
+						$value_date1 = $worksheet->getCell($value_date.$row)->getValue();
+						$bank_reference1 = $worksheet->getCell($bank_reference.$row)->getValue();
+						$customer_reference1 = $worksheet->getCell($customer_reference.$row)->getValue();
+						$narrative1 = $worksheet->getCell($narrative.$row)->getValue();
+						$transaction_description1 = $worksheet->getCell($transaction_description.$row)->getValue();
+						$iban_number1 = $worksheet->getCell($iban_number.$row)->getValue();
+
+						$dt = array(
+							'account_no'=>$account_no1,
+							'branch_no'=>$branch_no1,
+							'statment_date'=>$statment_date1,
+							'closing_ledger_balance'=>$closing_ledger_balance1,
+							'calculated_balances'=>$calculated_balances1,
+							'amount'=>$amount1,
+							'enter_date'=>$enter_date1,
+							'value_date'=>$value_date1,
+							'bank_reference'=>$bank_reference1,
+							'customer_reference'=>$customer_reference1,
+							'narrative'=>$narrative1,
+							'transaction_description'=>$transaction_description1,
+							'iban_number'=>$iban_number1,
+						);
+						$this->BankModel->insert_fun("tbl_statment", $dt);
+					}
+				}
+			}
+
+			/*
 						$amount1 = $worksheet->getCell($amount.$row)->getValue();
 						//$statment_date1 = $worksheet->getCell($statment_date.$row)->getValue();
 						$statment_date1 = $worksheet->getCell($value_date.$row)->getValue();
@@ -213,11 +251,10 @@ class Manage_bank_processing extends CI_Controller {
 								'_id'=>$_id,
 							);
 							$this->BankModel->insert_fun("tbl_bank_processing", $dt);
-						}
-						/*************************** */					
+						}			
 					}
 				}
-			}
+			}*/
 			
 			redirect(base_url()."admin/$page_controllers/view");
 		}
