@@ -127,7 +127,7 @@ class Manage_bank_statment extends CI_Controller {
 						$transaction_description1 = $worksheet->getCell($transaction_description.$row)->getValue();
 						$iban_number1 = $worksheet->getCell($iban_number.$row)->getValue();
 
-						$value_date1 = DateTime::createFromFormat('d/m/Y', $value_date1);
+						$value_date1 = DateTime::createFromFormat('m/d/Y', $value_date1);
 					
 						$value_date1 = $value_date1->format('Y-m-d');
 
