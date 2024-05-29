@@ -74,7 +74,7 @@
 							<?php echo $row->enter_date; ?>
 						</td>
 						<td>
-							<?php echo $row->value_date; ?>
+							<?php echo date('m/d/Y', strtotime($row->value_date)); ?>
 						</td>
 						<td>
 							<?php echo $row->bank_reference; ?>
