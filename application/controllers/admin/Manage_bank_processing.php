@@ -125,6 +125,7 @@ class Manage_bank_processing extends CI_Controller {
 						$customer_reference1 = $worksheet->getCell($customer_reference.$row)->getValue();
 						$narrative1 = $worksheet->getCell($narrative.$row)->getValue();
 						$transaction_description1 = $worksheet->getCell($transaction_description.$row)->getValue();
+						$iban_number1 = $worksheet->getCell($iban_number.$row)->getValue();
 
 						$dt = array(
 							'account_no'=>$account_no1,
@@ -139,6 +140,7 @@ class Manage_bank_processing extends CI_Controller {
 							'customer_reference'=>$customer_reference1,
 							'narrative'=>$narrative1,
 							'transaction_description'=>$transaction_description1,
+							'iban_number'=>$iban_number1,
 						);
 						$this->BankModel->insert_fun("tbl_statment", $dt);
 					}
