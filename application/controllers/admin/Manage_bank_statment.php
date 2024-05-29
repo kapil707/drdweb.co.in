@@ -200,9 +200,8 @@ class Manage_bank_statment extends CI_Controller {
 	
 		$start_date = $start_date->format('d/m/Y');
 		$end_date 	= $end_date->format('d/m/Y');
-		
+		echo "SELECT * from tbl_statment where value_date BETWEEN '$start_date' AND '$end_date'";
 		$query = $this->BankModel->select_query("SELECT * from tbl_statment where value_date BETWEEN '$start_date' AND '$end_date'");
-		//$query = $this->BankModel->select_query("SELECT * FROM `tbl_bank_processing`");
 		$data["result"] = $query->result();
 
 		$this->load->view("admin/header_footer/header",$data);
