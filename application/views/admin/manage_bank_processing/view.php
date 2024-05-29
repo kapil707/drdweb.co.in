@@ -44,11 +44,11 @@
 </style>
 <div class="row">
     <div class="col-xs-12" style="margin-bottom:5px;">
-    	<a href="add">
+    	<!-- <a href="add">
             <button type="submit" class="btn btn-info">
                 Add
             </button>
-        </a>
+        </a> -->
    	</div>
 	<?php
 	$date_range = "";
