@@ -5,45 +5,29 @@
     <div class="col-xs-12">
         <!-- PAGE CONTENT BEGINS -->
         <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
-        <?php
-        foreach ($result as $row)
-        { ?>
-        	<input type="hidden" name="old_exp_date" value="<?= $row->exp_date; ?>" />
-            <div class="form-group" id="data_5">
-				<div class="col-sm-6">
+			<div class="form-group">			
+           		<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
-                            Status
+                            File
                         </label>
                     </div>
                     <div class="col-sm-8">
-                        <select name="status" id="status" data-placeholder="Select Status" class="chosen-select" >
-							<option value="1" <?php if($row->status1==1) { ?> selected <?php } ?>>
-								Active
-							</option>
-							<option value="0" <?php if($row->status1=="0") { ?> selected <?php } ?>>
-								Inactive
-							</option>
-						</select>
+                        <input type="file" class="form-control" id="form-field-1" placeholder="Name" name="myfile" value="<?= set_value('myfile'); ?>" required="required" />
                     </div>
-				</div>
-				<div class="col-sm-6">
-                    <div class="col-sm-4 text-right">
-                        <label class="control-label" for="form-field-1">
-                            New Password
-                        </label>
+                    <div class="help-inline col-sm-12 has-error">
+                        <span class="help-block reset middle">  
+                            <?= form_error('name'); ?>
+                        </span>
                     </div>
-                    <div class="col-sm-8">
-						<input type="text" class="form-control"  value="" name="new_password">
-                    </div>
-				</div>
-          	</div>
-            
+                </div>
+          	</div>               
+			
             <div class="space-4"></div>
             <br /><br />
             <div class="clearfix form-actions">
                 <div class="col-md-offset-3 col-md-9">
-                    <button type="submit" class="btn btn-info" name="Submit">
+                    <button type="submit" class="btn btn-info submit_button" name="Submit">
                         <i class="ace-icon fa fa-check bigger-110"></i>
                         Submit
                     </button>
@@ -54,40 +38,50 @@
                     </button>
                 </div>
             </div>
-            <?php } ?>
         </form>
         <!-- PAGE CONTENT ENDS -->
+		<?php
+
+		/*$chemist = "B";
+		$itemname = "C";
+		$filename1 = "kapilji.xlsx";
+		$upload_path = "./uploads/";
+		$excelFile = $upload_path.$filename1;
+		$rows = array();
+		if(file_exists($excelFile))
+		{
+			$this->load->library('excel');
+			$objPHPExcel = PHPExcel_IOFactory::load($excelFile);
+			foreach ($objPHPExcel->getWorksheetIterator() as $worksheet)
+			{
+				$highestRow = $worksheet->getHighestRow();
+				for ($row=2; $row<=$highestRow; $row++)
+				{
+					$itemname1 = $worksheet->getCell($itemname.$row)->getValue();
+					$chemist1 = $worksheet->getCell($chemist.$row)->getValue();
+					//$rows[$chemist1] = $itemname1;
+
+					$dt = array(
+						'string_value'=>$itemname1,
+						'chemist_id'=>$chemist1,
+					);
+					//$this->Scheme_Model->insert_fun("tbl_upload_sms",$dt);
+					$this->BankModel->insert_fun("tbl_chemist", $dt);
+				}
+			}
+		}*/
+		//print_r($rows);
+
+		/*foreach($rows as $mydt){
+			echo $mydt;
+			echo "<br>";
+		}*/
+
+		
+		?>
     </div><!-- /.col -->
 </div><!-- /.row -->
 <script>
-var delete_rec1 = 0;
-function delete_photo(id)
-{
-	if (confirm('Are you sure Delete?')) { 
-	if(delete_rec1==0)
-	{
-		delete_rec1 = 1;
-		$.ajax({
-			type       : "POST",
-			data       :  { id : id ,} ,
-			url        : "<?= base_url()?>admin/manage_owner/delete_photo",
-			success    : function(data){
-					if(data!="")
-					{
-						java_alert_function("success","Delete Successfully");
-						$("#imgchange").html('<img src="<?= $url_path ?>default.jpg" class="img-responsive" />');
-					}					
-					else
-					{
-						java_alert_function("error","Something Wrong")
-					}
-					delete_rec1 = 0;
-				}
-			});
-		}
-	}
-}
-//setTimeout('url_change()',1000);
 function url_change()
 {
 	name = $(".name1").val();
@@ -109,7 +103,6 @@ function change_url()
 	disabled_submit_button();
 	$('.url_error').html("");
 	url1 = $('.url').val();
-	
 	name = url1;
 	name = name.replace(/&/g,'and');
 	name = name.trim(name).replace(/ /g,'-');
@@ -117,7 +110,6 @@ function change_url()
 	$(".url1").html(name)
 	$(".url").val(name)
 	a_href_change(name)
-	
 	$.ajax({
 	type       : "POST",
 	data       :  { url1 : url1,id : '<?= $row->id; ?>',} ,
