@@ -33,6 +33,125 @@ class Cronjob_bank extends CI_Controller
 		print_r($messages);
 	}
 	
+	public function get_statment(){
+		
+		$result = $this->BankModel->select_query("select * from tbl_statment where status='0' limit 100");
+		$result = $result->result();
+		foreach($result as $row){
+		
+			$amount1 = $row->amount;
+			$statment_date1 = $row->value_date;
+			$text = $row->narrative;
+			//$text = trim($text);
+			//$text = str_replace("'", "", $text);
+			//$text = "+91-9899067942 411801191476 FROM GUPTAMEDICALSTORE 9300966180 CITI0000 9026 NA UBIN0579203";
+
+			$transaction_description1 = $row->transaction_description;
+			
+			//$mydate = date('Y-m-d', strtotime($statment_date1));
+			//echo $statment_date1 = date('Y-m-d', strtotime($statment_date1));
+			//echo "<br>";
+
+			// echo $i.". ";
+			// $i++;
+			// echo $text;
+			//$text = str_replace("@ ", "@", $text);
+			//echo $text = preg_replace('/@\s/', "@", $text, 1);
+
+			$received_from = "";
+			// Use regular expression to extract text after "FROM"
+
+			$from_value = "";
+			preg_match("/FROM\s+(\d+)@\s+(\w+)/", $text, $matches);
+			if (!empty($matches) && empty($from_value)){
+				$received_from = trim($matches[1])."@".trim($matches[2]);
+				$received_from = str_replace("'", "", $received_from);
+				$received_from = str_replace(" ", "", $received_from);
+				$received_from = str_replace("\n", "", $received_from);
+				//$from_value = "<b>find: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+				$from_value = $received_from;
+			}
+
+			
+			preg_match("/FROM\s+(\d+)\s+@\s*(\w+)/", $text, $matches);
+			if (!empty($matches) && empty($from_value)){
+				$received_from = trim($matches[1])."@".trim($matches[2]);
+				$received_from = str_replace("'", "", $received_from);
+				$received_from = str_replace(" ", "", $received_from);
+				$received_from = str_replace("\n", "", $received_from);
+				//$from_value = "<b>find2: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+				$from_value = $received_from;
+			}
+
+			preg_match("/FROM\s+(\w+)\d+@\s*(\w+)/", $text, $matches);
+			if (!empty($matches) && empty($from_value)){
+				$received_from = trim($matches[1])."@".trim($matches[2]);
+				$received_from = str_replace("'", "", $received_from);
+				$received_from = str_replace(" ", "", $received_from);
+				$received_from = str_replace("\n", "", $received_from);
+				//$from_value = "<b>find3: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+				$from_value = $received_from;
+			}
+
+			preg_match("/FROM\s+([^\s@]+)\s+@\s*(\w+)/", $text, $matches);
+			if (!empty($matches) && empty($from_value)){
+				$received_from = trim($matches[1])."@".trim($matches[2]);
+				$received_from = str_replace("'", "", $received_from);
+				$received_from = str_replace(" ", "", $received_from);
+				$received_from = str_replace("\n", "", $received_from);
+				//$from_value = "<b>find4: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+				$from_value = $received_from;
+			}
+
+			preg_match("/FROM\s+([^\@]+)@\s*(\w+)/", $text, $matches);
+			if (!empty($matches) && empty($from_value)){
+				$received_from = trim($matches[1])."@".trim($matches[2]);
+				$received_from = str_replace("'", "", $received_from);
+				$received_from = str_replace(" ", "", $received_from);
+				$received_from = str_replace("\n", "", $received_from);
+				//$from_value = "<b>find5: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+				$from_value = $received_from;
+			}
+
+			preg_match("/FROM\s+(.*)/", $text, $matches);
+			if (!empty($matches) && empty($from_value)){
+				$received_from = trim($matches[1]);
+				//$received_from = str_replace("'", "", $received_from);
+				//$received_from = str_replace(" ", "", $received_from);
+				//$received_from = str_replace("\n", "", $received_from);
+				//$from_value = "<b>find6: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+				$from_value = $received_from;
+			}
+
+			$upi_no = $orderid = $row->customer_reference;
+			
+			$_id = $row->id;
+			$received_from = $from_value;
+			if(!empty($received_from)){
+				$status = 0;
+				$type = "Statment";
+				$dt = array(
+					'status'=>$status,
+					'amount'=>$amount1,
+					'date'=>$statment_date1,
+					'received_from'=>$received_from,
+					'upi_no'=>$upi_no,
+					'orderid'=>$orderid,
+					'type'=>$type,
+					'_id'=>$_id,
+				);
+				$this->BankModel->insert_fun("tbl_bank_processing", $dt);
+			}
+			/****************************************************** */
+			$id = $row->id;
+			$where = array('id'=>$id);
+			$dt = array(
+				'status'=>'1',
+			);
+			$this->BankModel->edit_fun("tbl_statment", $dt,$where);
+		}
+	}
+
 	public function get_whatsapp_message()
 	{
 		$start_date = date('d/m/Y');
