@@ -198,9 +198,9 @@ class Manage_bank_statment extends CI_Controller {
 		$start_date = DateTime::createFromFormat('d-m-Y', $start_date);
 		$end_date 	= DateTime::createFromFormat('d-m-Y', $end_date);
 	
-		$start_date = $start_date->format('d/m/Y');
-		$end_date 	= $end_date->format('d/m/Y');
-		echo "SELECT * from tbl_statment where value_date BETWEEN '$start_date' AND '$end_date'";
+		$start_date = $start_date->format('Y-m-d');
+		$end_date 	= $end_date->format('Y-m-d');
+		
 		$query = $this->BankModel->select_query("SELECT * from tbl_statment where value_date BETWEEN '$start_date' AND '$end_date'");
 		$data["result"] = $query->result();
 
