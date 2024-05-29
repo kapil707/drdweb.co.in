@@ -30,14 +30,16 @@
     padding: 3px;
 	border-bottom: solid 1px #676a6c;
 	max-height: 120px;
-    overflow: scroll;
+    overflow: auto;
+    overflow-x: auto;	
 }
 .td_div01 {
 	word-break: break-all;
     word-wrap: break-word;
     padding: 3px;
     max-height: 120px;
-    overflow: scroll;
+	overflow: auto;
+    overflow-x: auto;
 }
 </style>
 <div class="row">
