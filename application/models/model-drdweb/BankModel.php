@@ -94,7 +94,18 @@ class BankModel extends CI_Model
 		$objPHPExcel = new PHPExcel();
 		$objPHPExcel->setActiveSheetIndex(0);
 		
-		ob_clean();		
+		ob_clean();
+
+		$objPHPExcel->setActiveSheetIndex(0)
+		->setCellValue('B1','Account Statement Inquiry')
+		->setCellValue('A3','Search Criteria:')
+		->setCellValue('A5',"Account:'Equals' 712866012")
+		->setCellValue('A6',"Branch:'Equals' 807")
+		->setCellValue('A7',"Customer:'Equals' 712866")
+		->setCellValue('A8',"Cheques: Include Cheques")
+		->setCellValue('A9',"Statement Date Range:Today");
+
+		$objPHPExcel->getActiveSheet()->mergeCells('B1:E1'); 
 
 		$objPHPExcel->setActiveSheetIndex(0)
 		->setCellValue('A10','Account Number')
