@@ -635,6 +635,7 @@ function get_whats_message(row_id1,row_whatsapp_id,row_upi_no){
 				if (item)
 				{
 					var row = "<tr>" +
+							"<td>" + item.from_number + "</td>" +
 							"<td>" + item.body + "</td>" +
 							"<td>" +item.ist_timestamp+ "</td>" +
 							"<td>" +item.vision_text+ "</td>" +
@@ -681,6 +682,7 @@ function add_whatapp_chemist_id(){
       <div class="modal-body">
         <table class="table table-striped table-bordered table-hover get_whats_message">
 			<tr>
+				<td>From</td>
 				<td>Body</td>
 				<td>Time</td>
 				<td>Vision Text</td>
