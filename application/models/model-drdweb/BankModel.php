@@ -157,9 +157,9 @@ class BankModel extends CI_Model
 		{
 			$fileok=1;
 			
-			$objPHPExcel->getActiveSheet()->SetCellValue('A'.$rowCount,$account_no);
-			$objPHPExcel->getActiveSheet()->SetCellValue('B'.$rowCount,$branch_no);
-			$objPHPExcel->getActiveSheet()->SetCellValue('C'.$rowCount,$statment_date);
+			$objPHPExcel->getActiveSheet()->SetCellValue('A'.$rowCount,$row->account_no);
+			$objPHPExcel->getActiveSheet()->SetCellValue('B'.$rowCount,$row->branch_no);
+			$objPHPExcel->getActiveSheet()->SetCellValue('C'.$rowCount,$row->statment_date);
 			$objPHPExcel->getActiveSheet()->SetCellValue('D'.$rowCount,$row->closing_ledger_balance);
 			$objPHPExcel->getActiveSheet()->SetCellValue('E'.$rowCount,$row->calculated_balances);
 			//$objPHPExcel->getActiveSheet()->SetCellValue('F'.$rowCount,(int)$row->amount);
