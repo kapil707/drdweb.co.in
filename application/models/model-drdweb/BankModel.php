@@ -154,7 +154,7 @@ class BankModel extends CI_Model
 			)
 		  )
 		);
-		$objPHPExcel->getActiveSheet()->getStyle('A10:N10')->applyFromArray($BStyle);		
+		$objPHPExcel->getActiveSheet()->getStyle('A11:N11')->applyFromArray($BStyle);		
 		
 		$start_date = "2024-05-31";
 		$end_date = "2024-05-31";
