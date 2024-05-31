@@ -108,20 +108,20 @@ class BankModel extends CI_Model
 		$objPHPExcel->getActiveSheet()->mergeCells('B1:E1'); 
 
 		$objPHPExcel->setActiveSheetIndex(0)
-		->setCellValue('A10','Account Number')
-		->setCellValue('B10','Branch Number')
-		->setCellValue('C10','Statement Date')
-		->setCellValue('D10','Closing Ledger Balance')
-		->setCellValue('E10','Calculated Balances')
-		->setCellValue('F10','Amount')
-		->setCellValue('G10','Entry Date')
-		->setCellValue('H10','Value Date')
-		->setCellValue('I10','Bank Reference')
-		->setCellValue('J10','Customer Reference')
-		->setCellValue('K10','Narrative')
-		->setCellValue('L10','Transaction Description')
-		->setCellValue('M10','IBAN Number')
-		->setCellValue('N10','Chemist Id');
+		->setCellValue('A11','Account Number')
+		->setCellValue('B11','Branch Number')
+		->setCellValue('C11','Statement Date')
+		->setCellValue('D11','Closing Ledger Balance')
+		->setCellValue('E11','Calculated Balances')
+		->setCellValue('F11','Amount')
+		->setCellValue('G11','Entry Date')
+		->setCellValue('H11','Value Date')
+		->setCellValue('I11','Bank Reference')
+		->setCellValue('J11','Customer Reference')
+		->setCellValue('K11','Narrative')
+		->setCellValue('L11','Transaction Description')
+		->setCellValue('M11','IBAN Number')
+		->setCellValue('N11','Chemist Id');
 		
 		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(20);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(20);
@@ -161,7 +161,7 @@ class BankModel extends CI_Model
 
 		$query = $this->BankModel->select_query("SELECT s.*,p.done_chemist_id as chemist_id from tbl_statment as s left JOIN tbl_bank_processing as p on p._id=s.id where p.type='Statment' and s.value_date BETWEEN '$start_date' AND '$end_date'");
 		$result = $query->result();
-		$rowCount = 11;
+		$rowCount = 12;
 		$fileok=0;
 		foreach($result as $row)
 		{
