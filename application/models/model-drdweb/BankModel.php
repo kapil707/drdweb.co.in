@@ -140,7 +140,7 @@ class BankModel extends CI_Model
 		
 		$objPHPExcel->getActiveSheet()->getStyle('A1:N1')->applyFromArray(array('font' => array('size' =>10,'bold' => TRUE,'name'  => 'Arial','color' => ['rgb' => '800000'],)));
 		
-		$objPHPExcel->getActiveSheet()
+		/*$objPHPExcel->getActiveSheet()
         ->getStyle('A1:N1')
         ->getFill()
         ->setFillType(PHPExcel_Style_Fill::FILL_SOLID)
@@ -154,7 +154,7 @@ class BankModel extends CI_Model
 			)
 		  )
 		);
-		$objPHPExcel->getActiveSheet()->getStyle('A11:N11')->applyFromArray($BStyle);		
+		$objPHPExcel->getActiveSheet()->getStyle('A11:N11')->applyFromArray($BStyle);*/	
 		
 		$start_date = "2024-05-31";
 		$end_date = "2024-05-31";
