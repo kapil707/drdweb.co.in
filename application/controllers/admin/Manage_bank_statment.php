@@ -211,4 +211,9 @@ class Manage_bank_statment extends CI_Controller {
 		$this->load->view("admin/header_footer/footer",$data);
 		$this->load->view("admin/$Page_view/footer2",$data);
 	}
+
+	public function statment_excel_file()
+	{
+		$this->BankModel->statment_excel_file("direct_download");
+	}
 }

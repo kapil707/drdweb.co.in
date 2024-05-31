@@ -664,6 +664,7 @@ function add_whatapp_chemist_id(){
 			},
 			success: function(data){
 				toastr.info('Chemist set successfully');
+				$(".text_whatapp_chemist_id").val('');
 			}
 		});
 	}
