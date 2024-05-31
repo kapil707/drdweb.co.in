@@ -177,7 +177,7 @@ class BankModel extends CI_Model
 			$rowCount++;
 		}
 		
-		$name = $gstvno;
+		$name = "statment";
 		if($download_type=="direct_download")
 		{
 			$file_name = $name.".xls";
