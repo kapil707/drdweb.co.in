@@ -86,7 +86,7 @@ class BankModel extends CI_Model
 		return $db_bank->get($tbl);	
 	}
 
-	public function statment_excel_file($download_type)
+	public function statment_excel_file($download_type,$start_date,$end_date)
 	{	
 		error_reporting(0);
 		
@@ -155,10 +155,6 @@ class BankModel extends CI_Model
 		  )
 		);
 		$objPHPExcel->getActiveSheet()->getStyle('A11:N11')->applyFromArray($BStyle);
-		
-		$start_date = "2024-05-23";
-		$end_date = "2024-05-23";
-
 
 		$query = $this->BankModel->select_query("SELECT s.*,p.done_chemist_id as chemist_id from tbl_statment as s left JOIN tbl_bank_processing as p on p._id=s.id where p.type='Statment' and s.value_date BETWEEN '$start_date' AND '$end_date'");
 		$result = $query->result();

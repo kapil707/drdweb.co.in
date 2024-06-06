@@ -213,7 +213,9 @@ class Manage_bank_statment extends CI_Controller {
 	}
 
 	public function statment_excel_file()
-	{
-		$this->BankModel->statment_excel_file("direct_download");
+	{		
+		$start_date = date("Y-m-d");
+		$end_date = date("Y-m-d");
+		$this->BankModel->statment_excel_file("direct_download",$start_date,$end_date);
 	}
 }
