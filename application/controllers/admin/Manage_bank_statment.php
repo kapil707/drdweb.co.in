@@ -213,9 +213,25 @@ class Manage_bank_statment extends CI_Controller {
 	}
 
 	public function statment_excel_file()
-	{		
-		$start_date = date("Y-m-d");
-		$end_date = date("Y-m-d");
+	{
+		$start_date = $end_date = date('d-m-Y');
+		if(isset($_GET["date-range"])){
+			$date_range = $_GET["date-range"];
+	
+			// `to` ke aas paas se string ko tukdon mein vibhajit karen
+			$date_parts = explode(" to ", $date_range);
+	
+			// Start date aur end date ko extract karen
+			$start_date = $date_parts[0];
+			$end_date 	= $date_parts[1];
+		}
+
+		$start_date = DateTime::createFromFormat('d-m-Y', $start_date);
+		$end_date 	= DateTime::createFromFormat('d-m-Y', $end_date);
+	
+		$start_date = $start_date->format('Y-m-d');
+		$end_date 	= $end_date->format('Y-m-d');
+		
 		$this->BankModel->statment_excel_file("direct_download",$start_date,$end_date);
 	}
 }

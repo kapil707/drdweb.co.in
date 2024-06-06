@@ -20,9 +20,6 @@
 			<input type="text" id="date-range" class="form-control" name="date-range" value="<?php echo $date_range ?>">
 		</div>
 		<div class="col-md-3">
-			
-		</div>
-		<div class="col-md-3">
 			<button type="submit" class="btn btn-info submit_button" name="Submit">
 				<i class="ace-icon fa fa-check bigger-110"></i>
 				Submit
