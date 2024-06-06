@@ -27,6 +27,9 @@
 				<i class="ace-icon fa fa-check bigger-110"></i>
 				Submit
 			</button>
+		</div>		
+		<div class="col-md-3">
+			<a href="<?= base_url()?>admin/<?= $Page_name?>/statment_excel_file" class="btn btn-info">Download Statment</a>
 		</div>
 	</form>
 	<div class="col-xs-12">
