@@ -159,6 +159,9 @@ class BankModel extends CI_Model
 		$start_date = "2024-05-23";
 		$end_date = "2024-05-23";
 
+		echo "SELECT s.*,p.done_chemist_id as chemist_id from tbl_statment as s left JOIN tbl_bank_processing as p on p._id=s.id where p.type='Statment' and s.value_date BETWEEN '$start_date' AND '$end_date'";
+		die();
+
 		$query = $this->BankModel->select_query("SELECT s.*,p.done_chemist_id as chemist_id from tbl_statment as s left JOIN tbl_bank_processing as p on p._id=s.id where p.type='Statment' and s.value_date BETWEEN '$start_date' AND '$end_date'");
 		$result = $query->result();
 		$rowCount = 12;
