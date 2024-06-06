@@ -185,7 +185,7 @@ class BankModel extends CI_Model
 		$name = "statment";
 		if($download_type=="direct_download")
 		{
-			$file_name = $name.".xls";
+			$file_name = $name."-".$start_date."-to-".$end_date.".xls";
 			
 			//$objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
 			$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel,'Excel5');
