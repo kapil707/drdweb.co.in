@@ -140,7 +140,7 @@ class BankModel extends CI_Model
 		
 		$objPHPExcel->getActiveSheet()->getStyle('A1:N1')->applyFromArray(array('font' => array('size' =>10,'bold' => TRUE,'name'  => 'Arial','color' => ['rgb' => '800000'],)));
 		
-		/*$objPHPExcel->getActiveSheet()
+		$objPHPExcel->getActiveSheet()
         ->getStyle('A1:N1')
         ->getFill()
         ->setFillType(PHPExcel_Style_Fill::FILL_SOLID)
@@ -154,11 +154,13 @@ class BankModel extends CI_Model
 			)
 		  )
 		);
-		$objPHPExcel->getActiveSheet()->getStyle('A11:N11')->applyFromArray($BStyle);*/	
+		//$objPHPExcel->getActiveSheet()->getStyle('A11:N11')->applyFromArray($BStyle);
 		
 		$start_date = "2024-05-23";
 		$end_date = "2024-05-23";
-		/*$query = $this->BankModel->select_query("SELECT s.*,p.done_chemist_id as chemist_id from tbl_statment as s left JOIN tbl_bank_processing as p on p._id=s.id where p.type='Statment' and s.value_date BETWEEN '$start_date' AND '$end_date'");
+
+
+		$query = $this->BankModel->select_query("SELECT s.*,p.done_chemist_id as chemist_id from tbl_statment as s left JOIN tbl_bank_processing as p on p._id=s.id where p.type='Statment' and s.value_date BETWEEN '$start_date' AND '$end_date'");
 		$result = $query->result();
 		$rowCount = 12;
 		$fileok=0;
@@ -182,7 +184,7 @@ class BankModel extends CI_Model
 			
 			$objPHPExcel->getActiveSheet()->getStyle('A'.$rowCount.':N'.$rowCount)->applyFromArray($BStyle);
 			$rowCount++;
-		}*/
+		}
 		
 		$name = "statment";
 		if($download_type=="direct_download")
