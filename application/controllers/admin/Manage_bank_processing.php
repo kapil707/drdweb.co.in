@@ -496,19 +496,43 @@ class Manage_bank_processing extends CI_Controller {
 			$query = $this->BankModel->select_query("SELECT * FROM `tbl_bank_processing` where id='$id'");
 			$row = $query->row();
 			$upi_no = $row->upi_no;
+			$invoices = $row->find_invoice_chemist_id;
 			
 			/********************************************* */
+			$done_invoice_chemist_id = $this->get_done_invoice($invoices,$done_chemist_id);
 			if(!empty($upi_no)){
 				$where = array(
 					'upi_no' => $upi_no,
 				);
 				$dt = array(
 					'done_chemist_id'=>$done_chemist_id,
+					'done_invoice_chemist_id'=>$done_invoice_chemist_id,
 					'done_status' => '1',
 				);
 				$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 			}
 		}
+	}
+
+	private function get_done_invoice($invoices,$search_invoice){
+		$invoice_lines = explode("||", $invoices);
+		//$search_invoice = 'U44';
+
+		// इनवॉइस को खोजें
+		$selected_invoice = '';
+		foreach ($invoice_lines as $line) {
+			if (strpos($line, $search_invoice) !== false) {
+				$selected_invoice = $line;
+				break;
+			}
+		}
+		$done_invoie = "N/a";
+		if (!empty($selected_invoice)) {
+			$selected_invoice1 	= explode(":-", $selected_invoice);
+			$selected_invoice 	= explode("Amt.", $selected_invoice1[1]);
+			$done_invoie = $selected_invoice[0];
+		}
+		return $done_invoie;
 	}
 
 	public function add_received_from_chemist_id()
