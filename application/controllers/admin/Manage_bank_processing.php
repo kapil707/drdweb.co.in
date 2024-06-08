@@ -499,14 +499,14 @@ class Manage_bank_processing extends CI_Controller {
 			$invoices = $row->find_invoice_chemist_id;
 			
 			/********************************************* */
-			$done_invoice_chemist_id = $this->get_done_invoice($invoices,$done_chemist_id);
+			$done_invoice = $this->get_done_invoice($invoices,$done_chemist_id);
 			if(!empty($upi_no)){
 				$where = array(
 					'upi_no' => $upi_no,
 				);
 				$dt = array(
 					'done_chemist_id'=>$done_chemist_id,
-					'done_invoice_chemist_id'=>$done_invoice_chemist_id,
+					'done_invoice'=>$done_invoice,
 					'done_status' => '1',
 				);
 				$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
