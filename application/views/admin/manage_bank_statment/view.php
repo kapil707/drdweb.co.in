@@ -47,6 +47,7 @@
 						<th>Narrative</th>
 						<th>Transaction Description</th>
 						<th>Chemist</th>
+						<th>Invoice</th>
                     </tr>
                 </thead>
 				<tbody>
@@ -91,6 +92,9 @@
 						</td>
 						<td>
 							<?php echo $row->chemist_id; ?>
+						</td>
+						<td>
+							<?php echo $row->done_invoice; ?>
 						</td>
 					</tr>
 					<?php } ?>
