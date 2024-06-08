@@ -121,7 +121,9 @@ class BankModel extends CI_Model
 		->setCellValue('K11','Narrative')
 		->setCellValue('L11','Transaction Description')
 		->setCellValue('M11','IBAN Number')
-		->setCellValue('N11','Chemist Id');
+		->setCellValue('N11','Chemist Id')
+		->setCellValue('O11','Invoice')
+		->setCellValue('P11','Find By');
 		
 		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(20);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(20);
@@ -137,11 +139,13 @@ class BankModel extends CI_Model
 		$objPHPExcel->getActiveSheet()->getColumnDimension('L')->setWidth(20);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('M')->setWidth(20);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('N')->setWidth(20);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('O')->setWidth(20);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('P')->setWidth(20);
 		
-		$objPHPExcel->getActiveSheet()->getStyle('A1:N1')->applyFromArray(array('font' => array('size' =>10,'bold' => TRUE,'name'  => 'Arial','color' => ['rgb' => '800000'],)));
+		$objPHPExcel->getActiveSheet()->getStyle('A1:P1')->applyFromArray(array('font' => array('size' =>10,'bold' => TRUE,'name'  => 'Arial','color' => ['rgb' => '800000'],)));
 		
 		$objPHPExcel->getActiveSheet()
-        ->getStyle('A1:N1')
+        ->getStyle('A1:P1')
         ->getFill()
         ->setFillType(PHPExcel_Style_Fill::FILL_SOLID)
         ->getStartColor()
@@ -154,7 +158,7 @@ class BankModel extends CI_Model
 			)
 		  )
 		);
-		$objPHPExcel->getActiveSheet()->getStyle('A11:N11')->applyFromArray($BStyle);
+		$objPHPExcel->getActiveSheet()->getStyle('A11:P11')->applyFromArray($BStyle);
 
 		$query = $this->BankModel->select_query("SELECT s.*,p.done_chemist_id as chemist_id,p.done_invoice as done_invoice from tbl_statment as s left JOIN tbl_bank_processing as p on p._id=s.id where p.type='Statment' and s.value_date BETWEEN '$start_date' AND '$end_date'");
 		$result = $query->result();
@@ -179,7 +183,7 @@ class BankModel extends CI_Model
 			$objPHPExcel->getActiveSheet()->SetCellValue('N'.$rowCount,$row->chemist_id);
 			$objPHPExcel->getActiveSheet()->SetCellValue('O'.$rowCount,$row->done_invoice);
 			
-			$objPHPExcel->getActiveSheet()->getStyle('A'.$rowCount.':O'.$rowCount)->applyFromArray($BStyle);
+			$objPHPExcel->getActiveSheet()->getStyle('A'.$rowCount.':P'.$rowCount)->applyFromArray($BStyle);
 			$rowCount++;
 		}
 		
