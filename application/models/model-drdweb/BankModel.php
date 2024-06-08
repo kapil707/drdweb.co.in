@@ -99,11 +99,11 @@ class BankModel extends CI_Model
 		$objPHPExcel->setActiveSheetIndex(0)
 		->setCellValue('B1','Account Statement Inquiry')
 		->setCellValue('A3','Search Criteria:')
-		->setCellValue('A5',"Account:'Equals' 712866012")
-		->setCellValue('A6',"Branch:'Equals' 807")
-		->setCellValue('A7',"Customer:'Equals' 712866")
-		->setCellValue('A8',"Cheques: Include Cheques")
-		->setCellValue('A9',"Statement Date Range:Today");
+		->setCellValue('A5',"Account:'Equals'")
+		->setCellValue('A6',"Branch:'Equals'")
+		->setCellValue('A7',"Customer:'Equals'")
+		->setCellValue('A8',"Cheques: ")
+		->setCellValue('A9',"Statement Date Range:");
 
 		$objPHPExcel->getActiveSheet()->mergeCells('B1:E1'); 
 
@@ -156,7 +156,7 @@ class BankModel extends CI_Model
 		);
 		$objPHPExcel->getActiveSheet()->getStyle('A11:N11')->applyFromArray($BStyle);
 
-		$query = $this->BankModel->select_query("SELECT s.*,p.done_chemist_id as chemist_id from tbl_statment as s left JOIN tbl_bank_processing as p on p._id=s.id where p.type='Statment' and s.value_date BETWEEN '$start_date' AND '$end_date'");
+		$query = $this->BankModel->select_query("SELECT s.*,p.done_chemist_id,p.done_invoice as done_invoice  as chemist_id from tbl_statment as s left JOIN tbl_bank_processing as p on p._id=s.id where p.type='Statment' and s.value_date BETWEEN '$start_date' AND '$end_date'");
 		$result = $query->result();
 		$rowCount = 12;
 		$fileok=0;
@@ -177,8 +177,9 @@ class BankModel extends CI_Model
 			$objPHPExcel->getActiveSheet()->SetCellValue('L'.$rowCount,$row->transaction_description);
 			$objPHPExcel->getActiveSheet()->SetCellValue('M'.$rowCount,$row->iban_number);
 			$objPHPExcel->getActiveSheet()->SetCellValue('N'.$rowCount,$row->chemist_id);
+			$objPHPExcel->getActiveSheet()->SetCellValue('O'.$rowCount,$row->done_invoice);
 			
-			$objPHPExcel->getActiveSheet()->getStyle('A'.$rowCount.':N'.$rowCount)->applyFromArray($BStyle);
+			$objPHPExcel->getActiveSheet()->getStyle('A'.$rowCount.':O'.$rowCount)->applyFromArray($BStyle);
 			$rowCount++;
 		}
 		
