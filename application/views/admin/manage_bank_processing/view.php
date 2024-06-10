@@ -480,6 +480,7 @@
 							<div class="td_div1">
 								<b>Find by : </b> 
 								<?= $row_find_by; ?>
+								<input type="" class="find_by_<?= ($row_id); ?>" value="<?= $row_find_by; ?>">
 							</div>
 						</td>
 						<td>
