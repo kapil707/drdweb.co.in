@@ -488,9 +488,10 @@ class Manage_bank_processing extends CI_Controller {
 
 	public function add_done_chemist_id()
 	{
-		$id 			= $_POST["id"];
-		$done_chemist_id = $_POST["done_chemist_id"];
-		$received_from 	= $_POST["received_from"];
+		$id 				= $_POST["id"];
+		$done_chemist_id 	= $_POST["done_chemist_id"];
+		$received_from 		= $_POST["received_from"];
+		$done_find_by		= $_POST["done_find_by"];
 		if(!empty($id) && !empty($done_chemist_id) && !empty($received_from)){
 
 			$query = $this->BankModel->select_query("SELECT * FROM `tbl_bank_processing` where id='$id'");
@@ -507,6 +508,7 @@ class Manage_bank_processing extends CI_Controller {
 				$dt = array(
 					'done_chemist_id'=>$done_chemist_id,
 					'done_invoice'=>$done_invoice,
+					'done_find_by'=>$done_find_by,
 					'done_status' => '1',
 				);
 				$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);

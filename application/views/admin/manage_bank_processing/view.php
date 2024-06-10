@@ -380,8 +380,11 @@
 						$row_find_i++;
 					}
 					if(!empty($row_find_by_whatsapp_chemist_id)){
-						$row_find_by.= "whatsapp";
+						$row_find_by.= "whatsapp,";
 						$row_find_i++;
+					}
+					if(!empty($row_find_by)){
+						$row_find_by = substr($row_find_by, 0, -1);
 					}
 					if(empty($row_find_by_chemist_id) && empty($row_find_by_invoice_chemist_id) && empty($row_find_by_whatsapp_chemist_id)){
 						$row_find_by = "N/A";
@@ -480,7 +483,7 @@
 							<div class="td_div1">
 								<b>Find by : </b> 
 								<?= $row_find_by; ?>
-								<input type="" class="find_by_<?= ($row_id); ?>" value="<?= $row_find_by; ?>">
+								<input type="hidden" class="text_find_by_<?= ($row_id); ?>" value="<?= $row_find_by; ?>">
 							</div>
 						</td>
 						<td>
@@ -528,6 +531,7 @@
 </div>
 <script>
 function add_done_chemist_id(id){
+	var done_find_by = $(".text_find_by_"+id).val();
 	var received_from = $(".text_received_from_"+id).val();
 
 	var done_chemist_id = $(".text_done_chemist_id_"+id).val();
@@ -542,7 +546,7 @@ function add_done_chemist_id(id){
 		$(".edit_done_chemist_id_"+id).show();
 		$.ajax({
 			type : "POST",
-			data : {id:id,done_chemist_id:done_chemist_id,received_from:received_from,},
+			data : {id:id,done_chemist_id:done_chemist_id,received_from:received_from,done_find_by:done_find_by,},
 			url  : "<?= base_url()?>admin/<?= $Page_name?>/add_done_chemist_id",
 			cache: true,
 			error: function(){

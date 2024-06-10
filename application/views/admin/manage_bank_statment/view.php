@@ -48,6 +48,7 @@
 						<th>Transaction Description</th>
 						<th>Chemist</th>
 						<th>Invoice</th>
+						<th>Find By</th>
                     </tr>
                 </thead>
 				<tbody>
@@ -95,6 +96,9 @@
 						</td>
 						<td>
 							<?php echo $row->done_invoice; ?>
+						</td>
+						<td>
+							<?php echo $row->done_find_by; ?>
 						</td>
 					</tr>
 					<?php } ?>

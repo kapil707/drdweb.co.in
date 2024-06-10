@@ -160,7 +160,7 @@ class BankModel extends CI_Model
 		);
 		$objPHPExcel->getActiveSheet()->getStyle('A11:P11')->applyFromArray($BStyle);
 
-		$query = $this->BankModel->select_query("SELECT s.*,p.done_chemist_id as chemist_id,p.done_invoice as done_invoice from tbl_statment as s left JOIN tbl_bank_processing as p on p._id=s.id where p.type='Statment' and s.value_date BETWEEN '$start_date' AND '$end_date'");
+		$query = $this->BankModel->select_query("SELECT s.*,p.done_chemist_id as chemist_id,p.done_invoice as done_invoice,p.done_find_by as done_find_by from tbl_statment as s left JOIN tbl_bank_processing as p on p._id=s.id where p.type='Statment' and s.value_date BETWEEN '$start_date' AND '$end_date'");
 		$result = $query->result();
 		$rowCount = 12;
 		$fileok=0;
@@ -182,6 +182,7 @@ class BankModel extends CI_Model
 			$objPHPExcel->getActiveSheet()->SetCellValue('M'.$rowCount,$row->iban_number);
 			$objPHPExcel->getActiveSheet()->SetCellValue('N'.$rowCount,$row->chemist_id);
 			$objPHPExcel->getActiveSheet()->SetCellValue('O'.$rowCount,$row->done_invoice);
+			$objPHPExcel->getActiveSheet()->SetCellValue('O'.$rowCount,$row->done_find_by);
 			
 			$objPHPExcel->getActiveSheet()->getStyle('A'.$rowCount.':P'.$rowCount)->applyFromArray($BStyle);
 			$rowCount++;
