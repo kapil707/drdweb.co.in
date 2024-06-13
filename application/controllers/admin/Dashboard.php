@@ -191,10 +191,10 @@ class Dashboard extends CI_Controller {
 		$data["get_online_users"] = $this->Admin_new_Model->get_online_users();
 
 		$this->load->view('admin/header_footer/header_dashbord',$data);
-		$this->load->view("admin/$Page_view/index",$data);
 		if($user_type=="Super_Admin" || $user_type=="Admin"){
-			$this->load->view('admin/header_footer/footer_dashbord',$data);
+			$this->load->view("admin/$Page_view/index",$data);
 		}
+		$this->load->view('admin/header_footer/footer_dashbord',$data);		
 		$this->load->view("admin/$Page_view/".$Page_view."_footer",$data);
 	}	
 
