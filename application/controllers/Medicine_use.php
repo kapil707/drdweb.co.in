@@ -1,0 +1,30 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+class Medicine_use extends CI_Controller {
+	public function __construct(){
+		parent::__construct();
+	}
+	
+	public function get_medicine_use($item_code=""){
+		if($_POST["item_code"]){
+			$item_code = $_POST["item_code"];
+		}
+		$items = "";
+		$php_files = glob('./uploads/manage_medicine_use/'.$item_code.'/*');
+		foreach($php_files as $file) {
+			$file = str_replace("./","",$file);
+			$file = base_url().$file;		
+
+			$ext = pathinfo($file, PATHINFO_EXTENSION);
+			if($ext=="jpg"){
+				$file_type = "image";
+			}
+			if($ext=="mp4"){
+				$file_type = "video";
+			}
+$items.= <<<EOD
+{"file":"{$file}","file_type":"{$file_type}"},
+EOD;
+		}
+    }
+}
