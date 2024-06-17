@@ -5,7 +5,7 @@ class Medicine_use extends CI_Controller {
 		parent::__construct();
 	}
 	
-	public function get_medicine_use($item_code=""){
+	public function get_medicine_use(){
 		if($_POST["item_code"]){
 			$item_code = $_POST["item_code"];
 		}
