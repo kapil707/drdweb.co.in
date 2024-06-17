@@ -205,7 +205,7 @@
 					$hidden_text_received_from = "";
 					$row_received_from = "<b>From :</b> <br>";
 					if(!empty($entry['sms']['received_from'])){
-						$row_received_from.= "SMS  : ".$entry['sms']['received_from'];
+						$row_received_from.= "SMS  : ".$entry['sms']['received_from']."<br>";
 						$hidden_text_received_from = $entry['sms']['received_from'];
 					}
 					if(!empty($entry['statement']['received_from'])){
