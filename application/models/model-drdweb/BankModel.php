@@ -34,15 +34,16 @@ class BankModel extends CI_Model
 
 	public function insert_statment($table, $data) {
 		// Check for duplicate customer_reference
-		$this->db->where('customer_reference', $data['customer_reference']);
-		$query = $this->db->get($table);
+		$db_bank = $this->load->database('bank_db', TRUE);
+		$db_bank->where('customer_reference', $data['customer_reference']);
+		$query = $db_bank->get($table);
 	
 		if ($query->num_rows() > 0) {
 			// Customer reference already exists
 			return false; // or you can return a custom error message
 		} else {
 			// Insert the data
-			return $this->db->insert($table, $data);
+			return $db_bank->insert($table, $data);
 		}
 	}
 
