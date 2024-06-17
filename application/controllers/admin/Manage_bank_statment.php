@@ -144,7 +144,11 @@ class Manage_bank_statment extends CI_Controller {
 							'transaction_description'=>$transaction_description1,
 							'iban_number'=>$iban_number1,
 						);
-						$this->BankModel->insert_fun("tbl_statment", $dt);
+						$row = $this->BankModel->select_query("select customer_reference from tbl_statment where customer_reference='$customer_reference1'");
+						$row = $row->row();
+						if(empty($row->customer_reference)){
+							$this->BankModel->insert_fun("tbl_statment", $dt);
+						}
 					}
 				}
 			}
