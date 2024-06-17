@@ -26,5 +26,12 @@ $items.= <<<EOD
 {"file":"{$file}","file_type":"{$file_type}"},
 EOD;
 		}
+		if ($items != '') {
+			$items = substr($items, 0, -1);
+		}
+		$medicine_details = "";
+		?>
+{"result":[{"medicine_details":[<?php echo $medicine_details ?>]},{"medicine_use":[<?php echo $items ?>]}]}
+		<?php
     }
 }
