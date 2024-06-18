@@ -30,15 +30,13 @@ class Medicine_use extends CI_Controller {
 			);
 			$jsonArray[] = $dt;
 		}
-		if ($items != '') {
-			$items = substr($items, 0, -1);
-		}
+
 		$medicine_details = "";
 		
 		$response = array(
             'success' => "1",
             'message' => 'Data load successfully',
-            'medicine_details' => $medicine_details,
+            'medicine_details' => $jsonArray,
             'medicine_use' => $medicine_use
         );
 
