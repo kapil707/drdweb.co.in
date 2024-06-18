@@ -9,7 +9,8 @@ class Medicine_use extends CI_Controller {
 		if($_POST["item_code"]){
 			$item_code = $_POST["item_code"];
 		}
-		$items = "";
+		$jsonArray = array();
+
 		$php_files = glob('./uploads/manage_medicine_use/'.$item_code.'/*');
 		foreach($php_files as $file) {
 			$file = str_replace("./","",$file);
@@ -22,16 +23,27 @@ class Medicine_use extends CI_Controller {
 			if($ext=="mp4"){
 				$file_type = "video";
 			}
-$items.= <<<EOD
-{"file":"{$file}","file_type":"{$file_type}"},
-EOD;
+
+			$dt = array(
+				'file' => $file,
+				'file_type' => $file_type,
+			);
+			$jsonArray[] = $dt;
 		}
 		if ($items != '') {
 			$items = substr($items, 0, -1);
 		}
 		$medicine_details = "";
-		?>
-{"result":[{"medicine_details":[<?php echo $medicine_details ?>]},{"medicine_use":[<?php echo $items ?>]}]}
-		<?php
+		
+		$response = array(
+            'success' => "1",
+            'message' => 'Data load successfully',
+            'medicine_details' => $medicine_details,
+            'medicine_use' => $medicine_use
+        );
+
+        // Send JSON response
+        header('Content-Type: application/json');
+        echo "[".json_encode($response)."]";
     }
 }
