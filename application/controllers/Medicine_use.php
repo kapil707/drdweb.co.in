@@ -30,14 +30,14 @@ class Medicine_use extends CI_Controller {
 			);
 			$jsonArray[] = $dt;
 		}
-
+		
 		$medicine_details = "";
 		
 		$response = array(
             'success' => "1",
             'message' => 'Data load successfully',
-            'medicine_details' => $jsonArray,
-            'medicine_use' => $medicine_use
+            'medicine_details' => $medicine_details,
+            'medicine_use' => $jsonArray
         );
 
         // Send JSON response
