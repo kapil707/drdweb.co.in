@@ -42,6 +42,6 @@ class Medicine_use extends CI_Controller {
 
         // Send JSON response
         header('Content-Type: application/json');
-        echo "[".json_encode($response)."]";
+        echo json_encode($response);
     }
 }
