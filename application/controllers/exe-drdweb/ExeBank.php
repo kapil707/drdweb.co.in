@@ -11,7 +11,7 @@ class ExeBank extends CI_Controller
 	}
 	public function download_sms()
 	{
-		$result = $this->BankModel->select_query("SELECT * FROM `tbl_sms` where download_status=0 order by id asc limit 100");
+		$result = $this->BankModel->select_query("SELECT * FROM `tbl_sms` where download_status=0 order by id asc limit 2");
 		//$result = $result->result();
 		if ($result) {
 			// Fetch the result array
