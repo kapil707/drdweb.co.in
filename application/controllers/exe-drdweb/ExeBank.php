@@ -11,9 +11,9 @@ class ExeBank extends CI_Controller
 	}
 	public function download_sms()
 	{
-		if($_POST["last_id"]){
+		if(!empty($_POST["last_id"])){
 			$last_id = $_POST["last_id"];
-			echo "SELECT * FROM `tbl_sms` where id>$last_id order by id asc limit 100";
+			//echo "SELECT * FROM `tbl_sms` where id>$last_id order by id asc limit 100";
 			$result = $this->BankModel->select_query("SELECT * FROM `tbl_sms` where id>$last_id order by id asc limit 100");
 			//$result = $result->result();
 			if ($result) {
