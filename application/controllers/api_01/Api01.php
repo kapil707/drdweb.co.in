@@ -7,7 +7,7 @@ class Api01 extends CI_Controller {
         $this->load->database(); // Load the database
     }
 	public function index($id) {
-        $query = $this->db->query("SELECT * FROM tbl_medicine WHERE id > '$id' LIMIT 250");
+        $query = $this->db->query("SELECT * FROM tbl_medicine WHERE id > '$id' LIMIT 1000");
         $result = $query->result();
 
         // Return data as JSON
