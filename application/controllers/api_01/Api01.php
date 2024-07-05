@@ -7,7 +7,7 @@ class Api01 extends CI_Controller {
         $this->load->database(); // Load the database
     }
 	public function index() {
-        $query = $this->db->get('tbl_medicine');
+        $query = $this->db->limit(10)->get('tbl_medicine');
         $result = $query->result();
 
         // Return data as JSON
