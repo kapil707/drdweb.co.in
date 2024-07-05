@@ -6,8 +6,8 @@ class Api01 extends CI_Controller {
 		parent::__construct();
         $this->load->database(); // Load the database
     }
-	public function index() {
-        $query = $this->db->limit(10)->get('tbl_medicine');
+	public function index($id) {
+        $query = $this->db->query('SELECT * FROM tbl_medicine WHERE id > $id LIMIT 1');
         $result = $query->result();
 
         // Return data as JSON
