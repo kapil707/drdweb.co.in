@@ -376,4 +376,12 @@ class ExeDownloadOrder extends CI_Controller
 			echo json_encode($response);
 		}
 	}
+
+	public function download_order_gstvno($order_id,$gstvno)
+	{
+		if(!empty($order_id) && !empty($gstvno))
+		{
+			$this->db->query("update tbl_order set gstvno='$gstvno' where order_id='$order_id'");
+		}
+	}
 }
