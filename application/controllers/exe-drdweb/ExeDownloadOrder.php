@@ -382,6 +382,17 @@ class ExeDownloadOrder extends CI_Controller
 		if(!empty($order_id) && !empty($gstvno))
 		{
 			$this->db->query("update tbl_order set gstvno='$gstvno' where order_id='$order_id'");
+			
+			
 		}
+	}
+
+	public function testtest()
+	{
+		/***************only for group message***********************/
+		$group2_message = "New order recieved from ";
+		$whatsapp_group2 = $this->Scheme_Model->get_website_data("whatsapp_group2");
+		$this->Message_Model->insert_whatsapp_group_message($whatsapp_group2,$group2_message);
+		/*************************************************************/
 	}
 }
