@@ -381,7 +381,7 @@ class ExeDownloadOrder extends CI_Controller
 	{
 		if(!empty($order_id) && !empty($gstvno))
 		{
-			$this->db->query("update tbl_order set gstvno='$gstvno' where order_id='$order_id'");
+			$this->db->query("update tbl_order set gstvno='$gstvno',download_status=1 where order_id='$order_id'");
 			/***************only for group message***********************/
 			$group2_message = "Order No. $order_id download properly - Easysol No. $gstvno inserted time is : ".date("d-M-y H:i");
 			$whatsapp_group2 = $this->Scheme_Model->get_website_data("whatsapp_group2");
