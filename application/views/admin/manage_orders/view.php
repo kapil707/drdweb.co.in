@@ -73,7 +73,10 @@
 					$total = $total + ($row->total);
 					$total_amount = $total_amount + $total;
 					?>
-                    <tr id="row_<?= $row->order_id; ?>">
+                    <tr id="row_<?= $row->order_id; ?>" 
+					<?php if($row->download_line!=$line_items) { 
+						?>style="background:red;"
+					<?php } ?>>
                     	<td>
                         	<?= $i; ?>
                         </td>
@@ -117,8 +120,7 @@
                         	<?php echo money_format('%!i',$total); ?>
                         </td>
 						<td>
-							<?= $row->download_line;?>/
-                        	<?= $line_items;?>
+							<?= $row->download_line;?>/<?= $line_items;?>
                         </td>
 						<td class="text-right">
 							<div class="btn-group">
