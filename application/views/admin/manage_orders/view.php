@@ -117,6 +117,7 @@
                         	<?php echo money_format('%!i',$total); ?>
                         </td>
 						<td>
+							<?= $row->download_line;?>/
                         	<?= $line_items;?>
                         </td>
 						<td class="text-right">
