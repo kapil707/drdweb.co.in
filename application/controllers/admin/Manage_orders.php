@@ -96,7 +96,7 @@ class Manage_orders extends CI_Controller {
 		}
 		$data["vdt1"] = $vdt;
 
-		$query = $this->db->query("SELECT DISTINCT(order_id) as order_id,sum(`sale_rate`*`quantity`) as total,gstvno,date,time,chemist_id,selesman_id,download_status,order_type,count(id) as line_items FROM `tbl_order` WHERE `date`= '$vdt' GROUP BY order_id,gstvno,date,time,chemist_id,selesman_id,download_status,order_type order by order_id desc");
+		$query = $this->db->query("SELECT DISTINCT(order_id) as order_id,sum(`sale_rate`*`quantity`) as total,gstvno,date,time,chemist_id,selesman_id,download_status,order_type,count(id) as line_items,download_line FROM `tbl_order` WHERE `date`= '$vdt' GROUP BY order_id,gstvno,date,time,chemist_id,selesman_id,download_status,order_type,download_line order by order_id desc");
   		$data["result"] = $query->result();
 		
 
