@@ -390,7 +390,7 @@ class ExeDownloadOrder extends CI_Controller
 			$whatsapp_group2 = $this->Scheme_Model->get_website_data("whatsapp_group2");
 			$this->Message_Model->insert_whatsapp_group_message($whatsapp_group2,$group2_message);
 
-			if($total==$total1){
+			if($total!=$total1){
 				$group1_message = "Test Order No. $order_id download Line Items ($total/$total1) - Easysol No. $gstvno inserted at : ".date("d-M-y H:i");
 				$whatsapp_group1 = $this->Scheme_Model->get_website_data("whatsapp_group1");
 				$this->Message_Model->insert_whatsapp_group_message($whatsapp_group1,$group1_message);
