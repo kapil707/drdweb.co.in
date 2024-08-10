@@ -75,7 +75,7 @@
 					?>
                     <tr id="row_<?= $row->order_id; ?>" 
 					<?php if($row->download_line!=$line_items) { 
-						?>style="background:red;"
+						?>style="background:#a0c2a1;"
 					<?php } ?>>
                     	<td>
                         	<?= $i; ?>
