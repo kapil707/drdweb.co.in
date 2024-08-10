@@ -314,8 +314,7 @@ class ExeDownloadOrder extends CI_Controller
 			$result = $this->db->query("select id,order_id,i_code,item_code,quantity,user_type,chemist_id,selesman_id,temp_rec,sale_rate,remarks,date,time from tbl_order where temp_rec='" . $temp_rec . "'")->result();
 			foreach ($result as $row) {
 				$total_line++;
-			}
-			foreach ($result as $row) {
+				
 				$dt = array(
 					'total_line' => $total_line,
 					'online_id' => $row->id,
