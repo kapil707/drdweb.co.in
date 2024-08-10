@@ -389,21 +389,13 @@ class ExeDownloadOrder extends CI_Controller
 			$group2_message = "Order No. $order_id download Line Items ($total/$total1) - Easysol No. $gstvno inserted at : ".date("d-M-y H:i");
 			$whatsapp_group2 = $this->Scheme_Model->get_website_data("whatsapp_group2");
 			$this->Message_Model->insert_whatsapp_group_message($whatsapp_group2,$group2_message);
+
+			if($total==$total1){
+				$group1_message = "Test Order No. $order_id download Line Items ($total/$total1) - Easysol No. $gstvno inserted at : ".date("d-M-y H:i");
+				$whatsapp_group1 = $this->Scheme_Model->get_website_data("whatsapp_group1");
+				$this->Message_Model->insert_whatsapp_group_message($whatsapp_group1,$group1_message);
+			}
 			/*************************************************************/
 		}
-	}
-
-	public function test01()
-	{
-		$group2_message = "test message 01";
-		$whatsapp_group1 = $this->Scheme_Model->get_website_data("whatsapp_group1");
-		$this->Message_Model->insert_whatsapp_group_message($whatsapp_group1,$group2_message);
-	}
-
-	public function test03()
-	{
-		$group2_message = "test message 03";
-		$whatsapp_group3 = $this->Scheme_Model->get_website_data("whatsapp_group3");
-		$this->Message_Model->insert_whatsapp_group_message($whatsapp_group3,$group2_message);
 	}
 }
