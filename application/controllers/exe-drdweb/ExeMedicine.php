@@ -33,9 +33,7 @@ class ExeMedicine extends CI_Controller
 					'i_code'=>$i_code,
 				);
 
-				if (!empty($row["i_code"])) {
-					$this->Scheme_Model->insert_fun("tbl_medicine_test", $dt);
-				}
+				$this->Scheme_Model->insert_fun("tbl_medicine_test", $dt);
 			}
 
 			// Response dena
