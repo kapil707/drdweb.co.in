@@ -27,8 +27,9 @@ class ExeMedicine extends CI_Controller
 			// Example: Data ko print karna (ya log karna)
 			//file_put_contents("log.txt", print_r($data, true), FILE_APPEND);
 
-			$i_code = "";
+			$i_code_array = array();
 			foreach ($data as $record) {
+				$i_code_array[] = $record['i_code'];
 				$i_code = $record['i_code'];
 				$item_code = $record['item_code'];
 				$item_name = $record['item_name'];
@@ -104,12 +105,12 @@ class ExeMedicine extends CI_Controller
 				);
 
 				if (!empty($i_code)) {
-					$this->Scheme_Model->insert_fun("tbl_medicine_test", $dt);
+					//$this->Scheme_Model->insert_fun("tbl_medicine_test", $dt);
 				}		
 			}
 
 			// Response dena
-			echo json_encode(["i_code" => $i_code,"status" => "success", "message" => "Data received successfully"]);
+			echo json_encode(["i_code" => $i_code_array,"status" => "success", "message" => "Data received successfully"]);
 		} else {
 			// Agar data valid nahi hai to error response dena
 			echo json_encode(["i_code" => "error","status" => "error", "message" => "Invalid data"]);
