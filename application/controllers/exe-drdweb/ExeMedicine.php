@@ -108,9 +108,9 @@ class ExeMedicine extends CI_Controller
 					//$this->Scheme_Model->insert_fun("tbl_medicine_test", $dt);
 				}		
 			}
-
+			$commaSeparatedString = implode(',', $i_code_array);
 			// Response dena
-			echo json_encode(["i_code" => $i_code_array,"status" => "success", "message" => "Data received successfully"]);
+			echo json_encode(["return_values" => $commaSeparatedString,"status" => "success", "message" => "Data received successfully"]);
 		} else {
 			// Agar data valid nahi hai to error response dena
 			echo json_encode(["i_code" => "error","status" => "error", "message" => "Invalid data"]);
