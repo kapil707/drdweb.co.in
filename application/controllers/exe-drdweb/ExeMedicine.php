@@ -17,6 +17,7 @@ class ExeMedicine extends CI_Controller
 		// JSON data ko PHP array me convert karna
 		$data = json_decode($inputData, true);
 
+		
 		// Data ko check karna
 		if ($data && is_array($data)) {
 			// Aap yaha data ko process kar sakte hain, jaise ki database me save karna, logging karna, etc.
@@ -27,15 +28,17 @@ class ExeMedicine extends CI_Controller
 			//file_put_contents("log.txt", print_r($data, true), FILE_APPEND);
 
 			foreach ($data as $record) {
-				$i_code = $record['i_code'];
-				$name = $record['name'];
-				
-				$dt = array(
-					'i_code'=>$i_code,
-				);
-
 				if (!empty($i_code)) {
-					$this->Scheme_Model->insert_fun("tbl_medicine_test", $dt);
+					$i_code = $record['i_code'];
+					$name = $record['name'];
+					
+					$dt = array(
+						'i_code'=>$i_code,
+					);
+
+					if (!empty($i_code)) {
+						$this->Scheme_Model->insert_fun("tbl_medicine_test", $dt);
+					}
 				}
 			}
 
