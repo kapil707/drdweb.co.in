@@ -105,7 +105,7 @@ class ExeMedicine extends CI_Controller
 				);
 
 				if (!empty($i_code)) {
-					//$this->Scheme_Model->insert_fun("tbl_medicine_test", $dt);
+					$this->Scheme_Model->insert_fun("tbl_medicine_test", $dt);
 				}		
 			}
 			$commaSeparatedString = implode(',', $i_code_array);
