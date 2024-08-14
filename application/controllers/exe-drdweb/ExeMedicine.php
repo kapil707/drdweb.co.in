@@ -21,7 +21,7 @@ class ExeMedicine extends CI_Controller
 		if ($data && is_array($data)) {
 			// Aap yaha data ko process kar sakte hain, jaise ki database me save karna, logging karna, etc.
 			
-			print_r($data);
+			//print_r($data);
 
 			// Example: Data ko print karna (ya log karna)
 			//file_put_contents("log.txt", print_r($data, true), FILE_APPEND);
