@@ -27,6 +27,7 @@ class ExeMedicine extends CI_Controller
 			// Example: Data ko print karna (ya log karna)
 			//file_put_contents("log.txt", print_r($data, true), FILE_APPEND);
 
+			$i_code = "";
 			foreach ($data as $record) {
 				if (!empty($i_code)) {
 					$i_code = $record['i_code'];
