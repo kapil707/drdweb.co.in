@@ -28,6 +28,7 @@ class ExeMedicine extends CI_Controller
 
 			foreach ($data as $record) {
 				$i_code = $record['i_code'];
+				$name = $record['name'];
 				
 				$dt = array(
 					'i_code'=>$i_code,
