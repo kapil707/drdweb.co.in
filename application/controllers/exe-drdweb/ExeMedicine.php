@@ -29,18 +29,15 @@ class ExeMedicine extends CI_Controller
 
 			$i_code = "";
 			foreach ($data as $record) {
-				if (isset($record['i_code'])) {
-					$i_code = $record['i_code'];
-					$name = $record['name'];
-					
-					$dt = array(
-						'i_code'=>$i_code,
-					);
+				$i_code = $record['i_code'];
+				
+				$dt = array(
+					'i_code'=>$i_code,
+				);
 
-					if (!empty($i_code)) {
-						$this->Scheme_Model->insert_fun("tbl_medicine_test", $dt);
-					}
-				}
+				if (!empty($i_code)) {
+					$this->Scheme_Model->insert_fun("tbl_medicine_test", $dt);
+				}				
 			}
 
 			// Response dena
