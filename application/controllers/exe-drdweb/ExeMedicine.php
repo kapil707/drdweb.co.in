@@ -29,7 +29,7 @@ class ExeMedicine extends CI_Controller
 
 			$i_code = "";
 			foreach ($data as $record) {
-				if (!empty($i_code)) {
+				if (isset($record['i_code'])) {
 					$i_code = $record['i_code'];
 					$name = $record['name'];
 					
