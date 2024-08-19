@@ -87,12 +87,12 @@ class ExeDownloadOrder_test extends CI_Controller
 			$total1 = $row->total1;
 			$this->db->query("update tbl_order set gstvno='$gstvno',download_status=1,download_line='$total' where order_id='$order_id'");
 			/***************only for group message***********************/
-			$group2_message = "Order No. $order_id download Line Items ($total/$total1) - Easysol No. $gstvno inserted at : ".date("d-M-y H:i");
+			$group2_message = "Test Order No. $order_id download Line Items ($total/$total1) - Easysol No. $gstvno inserted at : ".date("d-M-y H:i");
 			$whatsapp_group2 = $this->Scheme_Model->get_website_data("whatsapp_group2");
 			$this->Message_Model->insert_whatsapp_group_message($whatsapp_group2,$group2_message);
 
 			if($total!=$total1){
-				$group1_message = "Order No. $order_id download Line Items ($total/$total1) - Easysol No. $gstvno inserted at : ".date("d-M-y H:i");
+				$group1_message = "Test Order No. $order_id download Line Items ($total/$total1) - Easysol No. $gstvno inserted at : ".date("d-M-y H:i");
 				$whatsapp_group1 = $this->Scheme_Model->get_website_data("whatsapp_group1");
 				$this->Message_Model->insert_whatsapp_group_message($whatsapp_group1,$group1_message);
 			}
