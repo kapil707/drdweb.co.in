@@ -41,9 +41,21 @@ class ExeMedicine extends CI_Controller
 				$salescm1 = $record['salescm1'];
 				$salescm2 = $record['salescm2'];
 				$sale_rate = $record['sale_rate'];
+				if(empty($sale_rate)){
+					$sale_rate = 0;
+				}
 				$mrp = $record['mrp'];
+				if(empty($mrp)){
+					$mrp = 0;
+				}
 				$final_price = $record['final_price'];
+				if(empty($final_price)){
+					$final_price = 0;
+				}
 				$costrate = $record['costrate'];
+				if(empty($costrate)){
+					$costrate = 0;
+				}
 				$compcode = $record['compcode'];
 				$comp_altercode = $record['comp_altercode'];
 				$company_name = $record['company_name'];
@@ -57,6 +69,9 @@ class ExeMedicine extends CI_Controller
 				$gstper = $record['gstper'];
 				$itemjoinid = $record['itemjoinid'];
 				$present = $record['present'];
+				if(empty($present)){
+					$present = 0;
+				}
 				$time = $record['time'];
 				$margin = $record['margin'];
 				$hotdeals = $record['hotdeals'];
