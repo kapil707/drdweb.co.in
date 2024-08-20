@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class ExeDownloadOrder extends CI_Controller
 {
 	//new code bye 2024-07-12
-	public function download_order_new($order_id)
+	public function download_order($order_id)
 	{
 		$jsonArray_lines = array();
 		$jsonArray = array();
@@ -21,7 +21,6 @@ class ExeDownloadOrder extends CI_Controller
 			foreach ($result as $row) {
 				
 				$dt = array(
-					'total_line' => $total_line,
 					'online_id' => $row->id,
 					'i_code' => $row->i_code,
 					'item_code' => $row->item_code,
@@ -61,7 +60,6 @@ class ExeDownloadOrder extends CI_Controller
 				'total_line' => $total_line,
 				'temp_rec' => $temp_rec,
 				'new_temp_rec' => $new_temp_rec,
-				'order_status' => "0",
 			);
 			$jsonArray[] = $dt;
 
@@ -93,6 +91,7 @@ class ExeDownloadOrder extends CI_Controller
 			$whatsapp_group2 = $this->Scheme_Model->get_website_data("whatsapp_group2");
 			$this->Message_Model->insert_whatsapp_group_message($whatsapp_group2,$group2_message);
 
+			/*********************************************************** */
 			if($total!=$total1){
 				$group1_message = "Order No. $order_id download Line Items ($total/$total1) - Easysol No. $gstvno inserted at : ".date("d-M-y H:i");
 				$whatsapp_group1 = $this->Scheme_Model->get_website_data("whatsapp_group1");
@@ -104,7 +103,7 @@ class ExeDownloadOrder extends CI_Controller
 
 	/********************test********************************** */
 	//new code bye 2024-07-12
-	public function download_order_new_test($order_id)
+	public function download_order_test($order_id)
 	{
 		$jsonArray_lines = array();
 		$jsonArray = array();
