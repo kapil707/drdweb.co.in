@@ -118,6 +118,7 @@ class ExeMedicine extends CI_Controller
 					'discount' => $discount,
 					'note' => $note,
 					'category' => $category,
+					'insert_update' => $insert_update,
 				);
 
 				if($insert_update=="insert"){
@@ -125,7 +126,7 @@ class ExeMedicine extends CI_Controller
 						$this->Scheme_Model->insert_fun("tbl_medicine_test", $dt);
 					}
 				}
-				
+
 				if($insert_update=="update"){
 					if (!empty($i_code)) {
 						$where = array('i_code'=>$i_code);
