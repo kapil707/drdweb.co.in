@@ -80,6 +80,7 @@ class ExeMedicine extends CI_Controller
 				$discount = $record['discount'];
 				$note = $record['note'];
 				$category = $record['category'];
+				$insert_update = $record['insert_update'];
 
 				$dt = array(
 					'i_code' => $i_code,
@@ -119,9 +120,17 @@ class ExeMedicine extends CI_Controller
 					'category' => $category,
 				);
 
-				if (!empty($i_code)) {
-					$this->Scheme_Model->insert_fun("tbl_medicine_test", $dt);
-				}		
+				if($insert_update=="insert"){
+					if (!empty($i_code)) {
+						$this->Scheme_Model->insert_fun("tbl_medicine_test", $dt);
+					}
+				}
+				if($insert_update=="update"){
+					if (!empty($i_code)) {
+						$where = array('i_code'=>$i_code);
+						$result = $this->Scheme_Model->edit_fun("tbl_medicine_test",$dt,$where);
+					}
+				}
 			}
 			$commaSeparatedString = implode(',', $i_code_array);
 			// Response dena
