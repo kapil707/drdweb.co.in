@@ -125,6 +125,7 @@ class ExeMedicine extends CI_Controller
 						$this->Scheme_Model->insert_fun("tbl_medicine_test", $dt);
 					}
 				}
+				
 				if($insert_update=="update"){
 					if (!empty($i_code)) {
 						$where = array('i_code'=>$i_code);
