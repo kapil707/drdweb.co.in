@@ -87,7 +87,6 @@ class ExeMedicine extends CI_Controller
 				$image4 = $record['image4'];
 				$title2 = $record['title2'];
 				$description = $record['description'];
-				$insert_update = $record['insert_update'];
 
 				$dt = array(
 					'i_code' => $i_code,
@@ -134,26 +133,17 @@ class ExeMedicine extends CI_Controller
 					'description' => $description,
 				);
 
-				if($insert_update=="insert"){
-					if (!empty($i_code)) {
-						// Check karo agar record already exist karta hai
-						$existing_record = $this->Scheme_Model->select_row("tbl_medicine_test", array('i_code' => $i_code));
-				
-						if ($existing_record) {
-							// Agar record exist karta hai to update karo
-							$where = array('i_code' => $i_code);
-							$this->Scheme_Model->edit_fun("tbl_medicine_test", $dt, $where);
-						} else {
-							// Agar record exist nahi karta hai to insert karo
-							$this->Scheme_Model->insert_fun("tbl_medicine_test", $dt);
-						}
-					}
-				}
-
-				if($insert_update=="update"){
-					if (!empty($i_code)) {
-						$where = array('i_code'=>$i_code);
-						$result = $this->Scheme_Model->edit_fun("tbl_medicine_test",$dt,$where);
+				if (!empty($i_code)) {
+					// Check karo agar record already exist karta hai
+					$existing_record = $this->Scheme_Model->select_row("tbl_medicine_test", array('i_code' => $i_code));
+			
+					if ($existing_record) {
+						// Agar record exist karta hai to update karo
+						$where = array('i_code' => $i_code);
+						$this->Scheme_Model->edit_fun("tbl_medicine_test", $dt, $where);
+					} else {
+						// Agar record exist nahi karta hai to insert karo
+						$this->Scheme_Model->insert_fun("tbl_medicine_test", $dt);
 					}
 				}
 			}
