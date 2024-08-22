@@ -80,6 +80,13 @@ class ExeMedicine extends CI_Controller
 				$discount = $record['discount'];
 				$note = $record['note'];
 				$category = $record['category'];
+				$featured = $record['featured'];
+				$image1 = $record['image1'];
+				$image2 = $record['image2'];
+				$image3 = $record['image3'];
+				$image4 = $record['image4'];
+				$title2 = $record['title2'];
+				$description = $record['description'];
 				$insert_update = $record['insert_update'];
 
 				$dt = array(
@@ -118,7 +125,13 @@ class ExeMedicine extends CI_Controller
 					'discount' => $discount,
 					'note' => $note,
 					'category' => $category,
-					'insert_update' => $insert_update,
+					'featured' => $featured,
+					'image1' => $image1,
+					'image2' => $image2,
+					'image3' => $image3,
+					'image4' => $image4,
+					'title2' => $title2,
+					'description' => $description,
 				);
 
 				if($insert_update=="insert"){
@@ -221,6 +234,7 @@ class ExeMedicine extends CI_Controller
 				$image4 = $record['image4'];
 				$title2 = $record['title2'];
 				$description = $record['description'];
+				$insert_update = $record['insert_update'];
 
 				$dt = array(
 					'i_code' => $i_code,
@@ -267,8 +281,17 @@ class ExeMedicine extends CI_Controller
 					'description' => $description,
 				);
 
-				if (!empty($i_code)) {
-					$this->Scheme_Model->insert_fun("tbl_medicine_test2", $dt);
+				if($insert_update=="insert"){
+					if (!empty($i_code)) {
+						$this->Scheme_Model->insert_fun("tbl_medicine_test2", $dt);
+					}
+				}
+
+				if($insert_update=="update"){
+					if (!empty($i_code)) {
+						$where = array('i_code'=>$i_code);
+						$result = $this->Scheme_Model->edit_fun("tbl_medicine_test2",$dt,$where);
+					}
 				}		
 			}
 			$commaSeparatedString = implode(',', $i_code_array);
