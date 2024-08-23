@@ -403,13 +403,13 @@ class Exe02 extends CI_Controller
 				);
 
 				if (!empty($row["i_code"])) {
-					$row1 = $this->db->query("select i_code from tbl_medicine_new where i_code='" . $i_code . "' order by id desc")->row();
+					$row1 = $this->db->query("select i_code from tbl_medicine_test where i_code='" . $i_code . "' order by id desc")->row();
 					if (empty($row1->i_code)) {
-						$this->Scheme_Model->insert_fun("tbl_medicine_new", $dt);
+						$this->Scheme_Model->insert_fun("tbl_medicine_test", $dt);
 						$type = "insert";
 					} else {
 						$where = array('i_code'=>$i_code);
-						$this->Scheme_Model->edit_fun("tbl_medicine_new", $dt, $where);
+						$this->Scheme_Model->edit_fun("tbl_medicine_test", $dt, $where);
 						$type = "update";
 					}
 					$isdone = "yes";
