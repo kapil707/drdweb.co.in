@@ -88,6 +88,8 @@ class ExeMedicine extends CI_Controller
 				$title2 = $record['title2'];
 				$description = $record['description'];
 
+				$insert_time = date('Y-m-d,H:i');
+
 				$dt = array(
 					'i_code' => $i_code,
 					'item_code' => $item_code,
@@ -131,6 +133,7 @@ class ExeMedicine extends CI_Controller
 					'image4' => $image4,
 					'title2' => $title2,
 					'description' => $description,
+					'insert_time' => $insert_time,
 				);
 
 				if (!empty($i_code)) {
@@ -234,7 +237,8 @@ class ExeMedicine extends CI_Controller
 				$image4 = $record['image4'];
 				$title2 = $record['title2'];
 				$description = $record['description'];
-				$insert_update = $record['insert_update'];
+
+				$insert_time = date('Y-m-d,H:i');
 
 				$dt = array(
 					'i_code' => $i_code,
@@ -279,6 +283,7 @@ class ExeMedicine extends CI_Controller
 					'image4' => $image4,
 					'title2' => $title2,
 					'description' => $description,
+					'insert_time' => $insert_time,
 				);
 
 				if($insert_update=="insert"){
