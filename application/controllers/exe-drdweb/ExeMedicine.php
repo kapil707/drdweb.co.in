@@ -78,6 +78,9 @@ class ExeMedicine extends CI_Controller
 				$hotdeals_short = $record['hotdeals_short'];
 				$status = $record['status'];
 				$discount = $record['discount'];
+				if(empty($discount)){
+					$discount = 0;
+				}
 				$note = $record['note'];
 				$category = $record['category'];
 				$featured = $record['featured'];
