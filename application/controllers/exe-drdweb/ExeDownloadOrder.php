@@ -229,7 +229,7 @@ class ExeDownloadOrder extends CI_Controller
 
 			$group_message = $group2_message = "Test Problem Order No. $order_id (Total:$total/Download:$download_total_line/Insert:$insert_total_line) - at : ".date("d-M-y H:i");
 
-			/******************************************************* */
+			/******************************************************* *
 			$whatsapp_group1 = $this->Scheme_Model->get_website_data("whatsapp_group1");
 			$this->Message_Model->insert_whatsapp_group_message($whatsapp_group1,$group1_message);
 			
