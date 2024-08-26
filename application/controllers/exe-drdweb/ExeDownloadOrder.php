@@ -200,4 +200,14 @@ class ExeDownloadOrder extends CI_Controller
 			/*************************************************************/
 		}
 	}
+
+	public function update_order_gstvno_error_test($order_id,$gstvno,$total_line,$total)
+	{
+		if(!empty($order_id) && !empty($gstvno))
+		{
+			$group2_message = "Problem No. $order_id ($total/$total_line) - at : ".date("d-M-y H:i");
+			$whatsapp_group2 = $this->Scheme_Model->get_website_data("whatsapp_group2");
+			$this->Message_Model->insert_whatsapp_group_message($whatsapp_group2,$group2_message);
+		}
+	}
 }
