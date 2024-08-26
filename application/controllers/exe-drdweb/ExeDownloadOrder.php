@@ -108,7 +108,7 @@ class ExeDownloadOrder extends CI_Controller
 			$row = $this->db->query("SELECT count(id) as total1 FROM `tbl_order` WHERE `order_id`='$order_id'")->row();
 			$total = $row->total1;
 
-			$group2_message = "Test Problem Order No. $order_id (Total:$total/Download:$download_total_line/Insert:$insert_total_line) - at : ".date("d-M-y H:i");
+			$group2_message = "Problem Order No. $order_id (Total:$total/Download:$download_total_line/Insert:$insert_total_line) - at : ".date("d-M-y H:i");
 			$whatsapp_group2 = $this->Scheme_Model->get_website_data("whatsapp_group2");
 			$this->Message_Model->insert_whatsapp_group_message($whatsapp_group2,$group2_message);
 		}
