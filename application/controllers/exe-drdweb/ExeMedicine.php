@@ -231,6 +231,9 @@ class ExeMedicine extends CI_Controller
 				$hotdeals_short = $record['hotdeals_short'];
 				$status = $record['status'];
 				$discount = $record['discount'];
+				if(empty($discount)){
+					$discount = 0;
+				}
 				$note = $record['note'];
 				$category = $record['category'];
 				$featured = $record['featured'];
@@ -289,18 +292,19 @@ class ExeMedicine extends CI_Controller
 					'insert_time' => $insert_time,
 				);
 
-				if($insert_update=="insert"){
-					if (!empty($i_code)) {
-						$this->Scheme_Model->insert_fun("tbl_medicine_test2", $dt);
+				if (!empty($i_code)) {
+					// Check karo agar record already exist karta hai
+					$existing_record = $this->Scheme_Model->select_row("tbl_medicine_new_test", array('i_code' => $i_code));
+			
+					if ($existing_record) {
+						// Agar record exist karta hai to update karo
+						$where = array('i_code' => $i_code);
+						$this->Scheme_Model->edit_fun("tbl_medicine_new_test", $dt, $where);
+					} else {
+						// Agar record exist nahi karta hai to insert karo
+						$this->Scheme_Model->insert_fun("tbl_medicine_new_test", $dt);
 					}
 				}
-
-				if($insert_update=="update"){
-					if (!empty($i_code)) {
-						$where = array('i_code'=>$i_code);
-						$result = $this->Scheme_Model->edit_fun("tbl_medicine_test2",$dt,$where);
-					}
-				}		
 			}
 			$commaSeparatedString = implode(',', $i_code_array);
 			// Response dena
