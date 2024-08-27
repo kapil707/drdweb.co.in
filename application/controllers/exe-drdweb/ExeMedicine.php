@@ -74,8 +74,6 @@ class ExeMedicine extends CI_Controller
 				}
 				$time = $record['time'];
 				$margin = $record['margin'];
-				$hotdeals = $record['hotdeals'];
-				$hotdeals_short = $record['hotdeals_short'];
 				$status = $record['status'];
 				$discount = $record['discount'];
 				if(empty($discount)){
@@ -123,8 +121,6 @@ class ExeMedicine extends CI_Controller
 					'present' => $present,
 					'time' => $time,
 					'margin' => $margin,
-					'hotdeals' => $hotdeals,
-					'hotdeals_short' => $hotdeals_short,
 					'status' => $status,
 					'discount' => $discount,
 					'note' => $note,
@@ -227,8 +223,6 @@ class ExeMedicine extends CI_Controller
 				}
 				$time = $record['time'];
 				$margin = $record['margin'];
-				$hotdeals = $record['hotdeals'];
-				$hotdeals_short = $record['hotdeals_short'];
 				$status = $record['status'];
 				$discount = $record['discount'];
 				if(empty($discount)){
@@ -276,8 +270,6 @@ class ExeMedicine extends CI_Controller
 					'present' => $present,
 					'time' => $time,
 					'margin' => $margin,
-					'hotdeals' => $hotdeals,
-					'hotdeals_short' => $hotdeals_short,
 					'status' => $status,
 					'discount' => $discount,
 					'note' => $note,
