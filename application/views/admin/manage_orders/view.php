@@ -129,7 +129,7 @@
 							</div>
                         </td>
 						<td>
-                        	<a href="download_order/<?= $row->order_id; ?>">
+                        	<a href="https://www.drdistributor.com/order_download/<?= $row->chemist_id; ?>/<?= $row->order_id; ?>">
 								Download
 							</a>
                         </td>
