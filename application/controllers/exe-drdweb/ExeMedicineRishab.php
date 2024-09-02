@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class ExeMedicine extends CI_Controller
+class ExeMedicineRishab extends CI_Controller
 {
 	public function __construct(){
 
