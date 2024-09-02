@@ -11,7 +11,7 @@ class ExeOrderLimit extends CI_Controller
 	public function set_order_limit($limit)
 	{
 		if(!empty($limit)){
-			$this->db->query("UPDATE tbl_acm_other set order_limit='$limit',website_limit=='$limit',android_limit=='$limit'");
+			$this->db->query("UPDATE tbl_acm_other set order_limit='$limit',website_limit='$limit',android_limit='$limit'");
 			echo json_encode(array("message" => "order limit set at $limit"));
 		}
 	}
