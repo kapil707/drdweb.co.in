@@ -120,7 +120,7 @@ class ExeChemist extends CI_Controller
 
 			$code_array = array();
 			foreach ($data as $record) {
-				$codee_array[] = $record['code'];
+				$code_array[] = $record['code'];
 				$code = $record['code'];
 				$altercode = $record['altercode'];
 				$groupcode = $record['groupcode'];
