@@ -9,7 +9,7 @@ class ExeChemist extends CI_Controller
 		// Load model
 		//$this->load->model("model-drdweb/InvoiceModel");
 	}
-	public function upload_chemist()
+	public function upload()
 	{
 		// Data ko read karna (input stream se)
 		$inputData = file_get_contents("php://input");
@@ -100,7 +100,7 @@ class ExeChemist extends CI_Controller
 		}
 	}
 
-	public function upload_chemist_test()
+	public function upload_test()
 	{
 		// Data ko read karna (input stream se)
 		$inputData = file_get_contents("php://input");
