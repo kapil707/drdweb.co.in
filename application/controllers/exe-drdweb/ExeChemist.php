@@ -170,7 +170,7 @@ class ExeChemist extends CI_Controller
 
 				if (!empty($code)) {
 					// Check karo agar record already exist karta hai
-					$existing_record = $this->Scheme_Model->select_row("tbl_chemist_test", array('code' => $code));
+					$existing_record = $this->Scheme_Model->select_row("tbl_chemist_test", array('code' => $code,'slcd' => $slcd));
 			
 					if ($existing_record) {
 						// Agar record exist karta hai to update karo
