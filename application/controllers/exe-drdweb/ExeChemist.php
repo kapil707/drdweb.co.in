@@ -29,7 +29,7 @@ class ExeChemist extends CI_Controller
 
 			$code_array = array();
 			foreach ($data as $record) {
-				$codee_array[] = $record['code'];
+				$code_array[] = $record['code'];
 				$code = $record['code'];
 				$altercode = $record['altercode'];
 				$groupcode = $record['groupcode'];
@@ -79,15 +79,15 @@ class ExeChemist extends CI_Controller
 
 				if (!empty($code)) {
 					// Check karo agar record already exist karta hai
-					$existing_record = $this->Scheme_Model->select_row("tbl_chemist_new", array('code' => $code));
+					$existing_record = $this->Scheme_Model->select_row("tbl_chemist", array('code' => $code,'slcd' => $slcd));
 			
 					if ($existing_record) {
 						// Agar record exist karta hai to update karo
 						$where = array('code' => $code);
-						$this->Scheme_Model->edit_fun("tbl_chemist_new", $dt, $where);
+						$this->Scheme_Model->edit_fun("tbl_chemist", $dt, $where);
 					} else {
 						// Agar record exist nahi karta hai to insert karo
-						$this->Scheme_Model->insert_fun("tbl_chemist_new", $dt);
+						$this->Scheme_Model->insert_fun("tbl_chemist", $dt);
 					}
 				}
 			}
