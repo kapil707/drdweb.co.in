@@ -9,7 +9,7 @@ class ExeMedicine extends CI_Controller
 		// Load model
 		//$this->load->model("model-drdweb/InvoiceModel");
 	}
-	public function upload_medicine()
+	public function upload()
 	{
 		// Data ko read karna (input stream se)
 		$inputData = file_get_contents("php://input");
@@ -137,15 +137,15 @@ class ExeMedicine extends CI_Controller
 
 				if (!empty($i_code)) {
 					// Check karo agar record already exist karta hai
-					$existing_record = $this->Scheme_Model->select_row("tbl_medicine_new", array('i_code' => $i_code));
+					$existing_record = $this->Scheme_Model->select_row("tbl_medicine", array('i_code' => $i_code));
 			
 					if ($existing_record) {
 						// Agar record exist karta hai to update karo
 						$where = array('i_code' => $i_code);
-						$this->Scheme_Model->edit_fun("tbl_medicine_new", $dt, $where);
+						$this->Scheme_Model->edit_fun("tbl_medicine", $dt, $where);
 					} else {
 						// Agar record exist nahi karta hai to insert karo
-						$this->Scheme_Model->insert_fun("tbl_medicine_new", $dt);
+						$this->Scheme_Model->insert_fun("tbl_medicine", $dt);
 					}
 				}
 			}
@@ -158,7 +158,7 @@ class ExeMedicine extends CI_Controller
 		}
 	}
 
-	public function upload_medicine_test()
+	public function upload_test()
 	{
 		// Data ko read karna (input stream se)
 		$inputData = file_get_contents("php://input");
@@ -286,15 +286,15 @@ class ExeMedicine extends CI_Controller
 
 				if (!empty($i_code)) {
 					// Check karo agar record already exist karta hai
-					$existing_record = $this->Scheme_Model->select_row("tbl_medicine_new_test", array('i_code' => $i_code));
+					$existing_record = $this->Scheme_Model->select_row("tbl_medicine_test", array('i_code' => $i_code));
 			
 					if ($existing_record) {
 						// Agar record exist karta hai to update karo
 						$where = array('i_code' => $i_code);
-						$this->Scheme_Model->edit_fun("tbl_medicine_new_test", $dt, $where);
+						$this->Scheme_Model->edit_fun("tbl_medicine_test", $dt, $where);
 					} else {
 						// Agar record exist nahi karta hai to insert karo
-						$this->Scheme_Model->insert_fun("tbl_medicine_new_test", $dt);
+						$this->Scheme_Model->insert_fun("tbl_medicine_test", $dt);
 					}
 				}
 			}
