@@ -72,7 +72,6 @@ class ExeMedicine extends CI_Controller
 				if(empty($present)){
 					$present = 0;
 				}
-				$time = $record['time'];
 				$margin = $record['margin'];
 				$status = $record['status'];
 				$discount = $record['discount'];
@@ -89,6 +88,7 @@ class ExeMedicine extends CI_Controller
 				$title2 = $record['title2'];
 				$description = $record['description'];
 
+				$time = date('H:i');
 				$insert_time = date('Y-m-d,H:i');
 
 				$dt = array(
@@ -221,7 +221,6 @@ class ExeMedicine extends CI_Controller
 				if(empty($present)){
 					$present = 0;
 				}
-				$time = $record['time'];
 				$margin = $record['margin'];
 				$status = $record['status'];
 				$discount = $record['discount'];
@@ -238,6 +237,7 @@ class ExeMedicine extends CI_Controller
 				$title2 = $record['title2'];
 				$description = $record['description'];
 
+				$time = date('H:i');
 				$insert_time = date('Y-m-d,H:i');
 
 				$dt = array(
