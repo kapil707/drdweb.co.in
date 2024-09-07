@@ -137,15 +137,15 @@ class ExeMedicine extends CI_Controller
 
 				if (!empty($i_code)) {
 					// Check karo agar record already exist karta hai
-					$existing_record = $this->Scheme_Model->select_row("tbl_medicine_test", array('i_code' => $i_code));
+					$existing_record = $this->Scheme_Model->select_row("tbl_medicine", array('i_code' => $i_code));
 			
 					if ($existing_record) {
 						// Agar record exist karta hai to update karo
 						$where = array('i_code' => $i_code);
-						$this->Scheme_Model->edit_fun("tbl_medicine_test", $dt, $where);
+						$this->Scheme_Model->edit_fun("tbl_medicine", $dt, $where);
 					} else {
 						// Agar record exist nahi karta hai to insert karo
-						$this->Scheme_Model->insert_fun("tbl_medicine_test", $dt);
+						$this->Scheme_Model->insert_fun("tbl_medicine", $dt);
 					}
 				}
 			}
