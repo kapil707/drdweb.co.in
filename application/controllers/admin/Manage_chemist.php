@@ -6,7 +6,7 @@ class Manage_chemist extends CI_Controller {
 	var $Page_view  = "manage_chemist";
 	var $Page_menu  = "manage_chemist";
 	var $page_controllers = "manage_chemist";
-	var $Page_tbl   = "tbl_acm";
+	var $Page_tbl   = "tbl_chemist";
 	public function index()
 	{
 		$page_controllers = $this->page_controllers;
