@@ -6,7 +6,7 @@ class Manage_chemist extends CI_Controller {
 	var $Page_view  = "manage_chemist";
 	var $Page_menu  = "manage_chemist";
 	var $page_controllers = "manage_chemist";
-	var $Page_tbl   = "tbl_acm";
+	var $Page_tbl   = "tbl_chemist";
 	public function index()
 	{
 		$page_controllers = $this->page_controllers;
@@ -41,7 +41,7 @@ class Manage_chemist extends CI_Controller {
 		$upload_path = "./uploads/$page_controllers/photo/";	
 		
 		$this->load->library('pagination');
-		$result = $this->db->query("SELECT tbl_acm.code,tbl_acm.altercode,tbl_acm.name,tbl_acm.mobile,tbl_acm.email,tbl_acm.address,tbl_acm.address1,tbl_acm.address2,tbl_acm.address3,tbl_acm_other.website_limit,tbl_acm_other.android_limit,tbl_acm_other.status,tbl_acm.id as id,tbl_acm_other.id as id2 from tbl_acm left join tbl_acm_other on tbl_acm.code = tbl_acm_other.code where tbl_acm.slcd='CL' order by tbl_acm.id desc")->result();
+		$result = $this->db->query("SELECT tbl_chemist.code,tbl_chemist.altercode,tbl_chemist.name,tbl_chemist.mobile,tbl_chemist.email,tbl_chemist.address,tbl_chemist.address1,tbl_chemist.address2,tbl_chemist.address3,tbl_acm_other.website_limit,tbl_acm_other.android_limit,tbl_acm_other.status,tbl_chemist.id as id,tbl_acm_other.id as id2 from tbl_chemist left join tbl_acm_other on tbl_chemist.code = tbl_acm_other.code where tbl_chemist.slcd='CL' order by tbl_chemist.id desc")->result();
 		
   		$data["result"] = $result;
 		$this->load->view("admin/header_footer/header",$data);
@@ -83,7 +83,7 @@ class Manage_chemist extends CI_Controller {
 			$message_db = "";
 			$time = time();
 			$date = date("Y-m-d",$time);				
-			$query = $this->db->query("select * from tbl_acm where id='$id'")->row();
+			$query = $this->db->query("select * from tbl_chemist where id='$id'")->row();
 			$code = $query->code;
 			$altercode = $query->altercode;
 			if($block=="1" || $status==0)
@@ -161,12 +161,12 @@ class Manage_chemist extends CI_Controller {
 				}
 			}
 		}	
-		$query = $this->db->query("select tbl_acm.altercode,tbl_acm.code,tbl_acm.name,tbl_acm_other.status,tbl_acm_other.block,tbl_acm_other.order_limit,tbl_acm_other.website_limit,tbl_acm_other.android_limit,tbl_acm_other.image from tbl_acm,tbl_acm_other where tbl_acm.code=tbl_acm_other.code and tbl_acm.id='$id' order by tbl_acm.id desc");
+		$query = $this->db->query("select tbl_chemist.altercode,tbl_chemist.code,tbl_chemist.name,tbl_acm_other.status,tbl_acm_other.block,tbl_acm_other.order_limit,tbl_acm_other.website_limit,tbl_acm_other.android_limit,tbl_acm_other.image from tbl_chemist,tbl_acm_other where tbl_chemist.code=tbl_acm_other.code and tbl_chemist.id='$id' order by tbl_chemist.id desc");
   		$data["result"] = $query->result();	
 		$x = $query->result();	
 		if(empty($x))
 		{
-			$query = $this->db->query("select * from tbl_acm where id='$id'")->row();
+			$query = $this->db->query("select * from tbl_chemist where id='$id'")->row();
 			$code = $query->code;
 			if($code!="")
 			{
@@ -184,7 +184,7 @@ class Manage_chemist extends CI_Controller {
 		$this->load->model("model/WhatsAppModel");
 		$this->load->model("model/EmailModel");
 		
-		$q = $this->db->query("select * from tbl_acm where code='$code' ")->row();
+		$q = $this->db->query("select * from tbl_chemist where code='$code' ")->row();
 		if(!empty($q->altercode))
 		{
 			$chemist_name	= $q->name;
