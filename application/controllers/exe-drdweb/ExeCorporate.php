@@ -218,8 +218,8 @@ class ExeCorporate extends CI_Controller
 			}*/
 
 			foreach ($result_array as $row) {
-				//$this->db->query("update tbl_staffdetail_other set download_status=1 where id=''");
-				echo $row["id"];
+				$id = $row["id"];
+				$this->db->query("update tbl_staffdetail_other set download_status=1 where id='$id'");
 			}
 		
 			// Output the result as JSON
