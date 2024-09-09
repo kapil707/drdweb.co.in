@@ -242,7 +242,7 @@ class ExeCorporate extends CI_Controller
 		//$result = $result->result();
 		if ($result) {
 			// Fetch the result array
-			$result_array = $result->result_array();
+			$result_array = $result->result_array(); 
 			
 			/*// Add a new value to each element in the array
 			foreach ($result_array as &$row) {
