@@ -97,7 +97,7 @@ class ExeCorporate extends CI_Controller
 					}
 
 					/******************************************************* */
-					$daily_date = date('Y-m-d');
+					$monthly = $daily_date = date('Y-m-d');
 					// Check karo agar record already exist karta hai
 					$existing_record1 = $this->Scheme_Model->select_row("tbl_corporate_other", array('code' => $code));
 					if ($existing_record1) {
@@ -114,6 +114,7 @@ class ExeCorporate extends CI_Controller
 							'status'=>0,
 							'password'=>'',
 							'daily_date'=>$daily_date,
+							'monthly'=>$monthly,
 							'whatsapp_message'=>0,
 							'item_wise_report'=>0,
 							'item_wise_report_daily_email'=>0,
