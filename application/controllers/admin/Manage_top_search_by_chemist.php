@@ -53,7 +53,7 @@ class Manage_top_search_by_chemist extends CI_Controller {
 			$date = date("Y-m-d",$time);			
 
 			$result = "";
-			$query1 = $this->db->query("select * from tbl_acm where slcd='CL' order by id asc")->result();
+			$query1 = $this->db->query("select * from tbl_chemist where slcd='CL' order by id asc")->result();
 			foreach($query1 as $row1)
 			{
 				$user_email_id	= $row1->email;

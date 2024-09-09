@@ -76,11 +76,11 @@ class Manage_notification extends CI_Controller {
 			$result = "";
 			if($altercode=="0" || $altercode=="")
 			{
-				$query1 = $this->db->query("select * from tbl_acm where slcd='CL' order by name asc")->result();
+				$query1 = $this->db->query("select * from tbl_chemist where slcd='CL' order by name asc")->result();
 			}
 			else
 			{
-				$query1 = $this->db->query("select * from tbl_acm where slcd='CL' and altercode='$altercode' order by name asc")->result();
+				$query1 = $this->db->query("select * from tbl_chemist where slcd='CL' and altercode='$altercode' order by name asc")->result();
 			}
 			foreach($query1 as $row1)
 			{	
@@ -258,7 +258,7 @@ class Manage_notification extends CI_Controller {
 		error_reporting(0);
 		?><ul style="margin: 0px;padding: 0px;"><?php
 		$acm_name = $this->input->post('acm_name');
-		$result =  $this->db->query ("select * from tbl_acm where name Like '$acm_name%' or name Like '%$acm_name' or altercode='$acm_name' limit 50")->result();
+		$result =  $this->db->query ("select * from tbl_chemist where name Like '$acm_name%' or name Like '%$acm_name' or altercode='$acm_name' limit 50")->result();
 		foreach($result as $row)
 		{
 			$id = $row->altercode;

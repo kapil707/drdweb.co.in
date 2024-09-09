@@ -62,7 +62,7 @@ class Dashboard extends CI_Controller {
 			$total_medicine++;
 		}	
 
-		$result = $this->db->query("select id from tbl_acm where slcd='CL'")->result();
+		$result = $this->db->query("select id from tbl_chemist where slcd='CL'")->result();
 		foreach($result as $row)
 		{
 			$total_acm++;

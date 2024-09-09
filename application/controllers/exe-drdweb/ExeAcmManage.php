@@ -7,7 +7,7 @@ class ExeAcmManage extends CI_Controller
 		$items 	= "";
 		
 		if (empty($items)) {
-			$result = $this->db->query("select * from tbl_acm_other where download_status=0 order by id asc limit 100")->result();
+			$result = $this->db->query("select * from tbl_chemist_other where download_status=0 order by id asc limit 100")->result();
 			foreach ($result as $row) {
 
 				$id 			= $row->id;
@@ -43,7 +43,7 @@ echo $parmiter = '{"items": [' . $items . ']}';
 	public function update_acm_other_status($id,$status)
 	{
 		if(!empty($id) && !empty($status)){
-			echo $qry = "update tbl_acm_other set download_status='$status' where id<='$id'";	
+			echo $qry = "update tbl_chemist_other set download_status='$status' where id<='$id'";	
 			$this->db->query($qry);
 			//echo "done";
 		}

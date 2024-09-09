@@ -323,7 +323,7 @@ if ($items != '') {
 				$amt		=	$row->amt;
 				$gstvno		=	$row->gstvno;
 
-				$row1 = $this->db->query("select name from tbl_acm where altercode='$chemist_id' ")->row();
+				$row1 = $this->db->query("select name from tbl_chemist where altercode='$chemist_id' ")->row();
 				$name 		=	$row1->name;
 
 $items .= <<<EOD
@@ -358,7 +358,7 @@ if ($items != '') {
 				$amt		=	$row->amt;
 				$gstvno		=	$row->gstvno;
 
-				$row1 = $this->db->query("select name from tbl_acm where altercode='$chemist_id' ")->row();
+				$row1 = $this->db->query("select name from tbl_chemist where altercode='$chemist_id' ")->row();
 				$name 		=	$row1->name;
 
 $items .= <<<EOD

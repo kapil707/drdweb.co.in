@@ -73,7 +73,7 @@ class Manage_whatsapp_message extends CI_Controller {
 				}
 				foreach($query1 as $row)
 				{
-					$row1 = $this->db->query("select * from tbl_acm where slcd='CL' and altercode='$row->chemist_id' order by name asc")->row();
+					$row1 = $this->db->query("select * from tbl_chemist where slcd='CL' and altercode='$row->chemist_id' order by name asc")->row();
 					
 					$chemist_id1 	= $row1->altercode;
 					$mobile		 	= $row1->mobile;
@@ -118,7 +118,7 @@ class Manage_whatsapp_message extends CI_Controller {
 				{ 
 					$where = "and altercode='$altercode'";
 				}
-				$query1 = $this->db->query("select * from tbl_acm where slcd='CL' $where order by name asc")->result();
+				$query1 = $this->db->query("select * from tbl_chemist where slcd='CL' $where order by name asc")->result();
 				foreach($query1 as $row1)
 				{
 					$chemist_id1 	= $row1->altercode;
@@ -276,7 +276,7 @@ class Manage_whatsapp_message extends CI_Controller {
 		<li style="list-style: none;margin: 5px;"><a href="javascript:addacm('All','<?php echo base64_encode('All') ?>')">All</a></li>
 		<?php
 		$acm_name = $this->input->post('acm_name');
-		$result =  $this->db->query ("select * from tbl_acm where name Like '$acm_name%' or name Like '%$acm_name' or altercode='$acm_name' limit 50")->result();
+		$result =  $this->db->query ("select * from tbl_chemist where name Like '$acm_name%' or name Like '%$acm_name' or altercode='$acm_name' limit 50")->result();
 		foreach($result as $row)
 		{
 			$id = $row->altercode;

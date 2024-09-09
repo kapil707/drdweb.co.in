@@ -38,7 +38,7 @@ class ExeDownloadOrder extends CI_Controller
 				$time 			= $row->time;
 			}
 
-			$row1 = $this->db->query("SELECT code,slcd FROM `tbl_acm` WHERE `altercode`='" . $chemist_id . "'")->row();
+			$row1 = $this->db->query("SELECT code,slcd FROM `tbl_chemist` WHERE `altercode`='" . $chemist_id . "'")->row();
 			if (!empty($row1->code)) {
 				$acno = $row1->code;
 				$slcd = $row1->slcd;
@@ -157,7 +157,7 @@ class ExeDownloadOrder extends CI_Controller
 				$time 			= $row->time;
 			}
 
-			$row1 = $this->db->query("SELECT code,slcd FROM `tbl_acm` WHERE `altercode`='" . $chemist_id . "'")->row();
+			$row1 = $this->db->query("SELECT code,slcd FROM `tbl_chemist` WHERE `altercode`='" . $chemist_id . "'")->row();
 			if (!empty($row1->code)) {
 				$acno = $row1->code;
 				$slcd = $row1->slcd;

@@ -153,7 +153,7 @@ class Manage_import extends CI_Controller {
 		$query = $query->result();
 
 		$where 			= array('altercode'=>$row->chemist_id);
-		$users 			= $this->Scheme_Model->select_row("tbl_acm",$where);
+		$users 			= $this->Scheme_Model->select_row("tbl_chemist",$where);
 		$acm_altercode 	= $users->altercode;
 		$acm_name		= ucwords(strtolower($users->name));		
 		$chemist_excle 	= "$acm_name ($acm_altercode)";

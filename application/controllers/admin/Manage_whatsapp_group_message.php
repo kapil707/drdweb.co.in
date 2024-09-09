@@ -73,7 +73,7 @@ class Manage_whatsapp_group_message extends CI_Controller {
 				}
 				foreach($query1 as $row)
 				{
-					$row1 = $this->db->query("select * from tbl_acm where slcd='CL' and altercode='$row->chemist_id' order by name asc")->row();
+					$row1 = $this->db->query("select * from tbl_chemist where slcd='CL' and altercode='$row->chemist_id' order by name asc")->row();
 					
 					$chemist_id1 	= $row1->altercode;
 					$mobile		 	= $row1->mobile;
@@ -108,11 +108,11 @@ class Manage_whatsapp_group_message extends CI_Controller {
 				$result = "";
 				if($altercode=="0" || $altercode=="")
 				{
-					$query1 = $this->db->query("select * from tbl_acm where slcd='CL' order by name asc")->result();
+					$query1 = $this->db->query("select * from tbl_chemist where slcd='CL' order by name asc")->result();
 				}
 				else
 				{
-					$query1 = $this->db->query("select * from tbl_acm where slcd='CL' and altercode='$altercode' order by name asc")->result();
+					$query1 = $this->db->query("select * from tbl_chemist where slcd='CL' and altercode='$altercode' order by name asc")->result();
 				}
 				foreach($query1 as $row1)
 				{

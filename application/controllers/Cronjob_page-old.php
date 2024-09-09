@@ -270,7 +270,7 @@ class Cronjob_page extends CI_Controller
 		$result = $this->db->query("select count(id) as total from tbl_medicine")->row();
 		$massage1.= "\\nTotal medicine :- ".$result->total;
 		
-		$result = $this->db->query("select count(id) as total from tbl_acm where slcd='CL'")->row();
+		$result = $this->db->query("select count(id) as total from tbl_chemist where slcd='CL'")->row();
 		$massage1.= "\\nTotal chemist :- ".$result->total;
 		
 		$result = $this->db->query("select count(id) as total from tbl_users")->row();
