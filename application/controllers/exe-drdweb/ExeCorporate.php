@@ -202,4 +202,26 @@ class ExeCorporate extends CI_Controller
 			echo json_encode(["code" => "error","status" => "error", "message" => "Invalid data"]);
 		}
 	}
+
+	public function download(){
+		$result = $this->db->query("select * from tbl_staffdetail_other where download_status=0 order by id asc limit 100");
+		//$result = $result->result();
+		if ($result) {
+			// Fetch the result array
+			$result_array = $result->result_array();
+			
+			/*// Add a new value to each element in the array
+			foreach ($result_array as &$row) {
+				$row['bacno'] = '9972'; // Replace 'new_key' with the key name and 'new_value' with the value you want to add
+				$row['invoice1'] = '';
+				$row['invoice2'] = 'N/a';
+			}*/
+		
+			// Output the result as JSON
+			echo json_encode($result_array);
+		} else {
+			// Handle the case where the query fails
+			echo json_encode(array("error" => "Failed to fetch records"));
+		}
+	}
 }
