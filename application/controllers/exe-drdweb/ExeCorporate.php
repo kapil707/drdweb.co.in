@@ -103,7 +103,7 @@ class ExeCorporate extends CI_Controller
 					if ($existing_record1) {
 						$dt1 = array(
 							'daily_date'=>$daily_date,
-							'download_status'=>1,
+							'download_status'=>0,
 						);
 						// Agar record exist karta hai to update karo
 						$where1 = array('code' => $code);
