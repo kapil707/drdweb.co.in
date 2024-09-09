@@ -216,6 +216,11 @@ class ExeCorporate extends CI_Controller
 				$row['invoice1'] = '';
 				$row['invoice2'] = 'N/a';
 			}*/
+
+			foreach ($result_array as $row) {
+				//$this->db->query("update tbl_staffdetail_other set download_status=1 where id=''");
+				echo $row["id"];
+			}
 		
 			// Output the result as JSON
 			echo json_encode($result_array);
