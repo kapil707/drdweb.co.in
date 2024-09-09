@@ -95,6 +95,32 @@ class ExeCorporate extends CI_Controller
 						// Agar record exist nahi karta hai to insert karo
 						$this->Scheme_Model->insert_fun("tbl_corporate", $dt);
 					}
+
+					/******************************************************* */
+					$daily_date = date('Y-m-d');
+					// Check karo agar record already exist karta hai
+					$existing_record1 = $this->Scheme_Model->select_row("tbl_corporate_other", array('code' => $code));
+			
+					if ($existing_record1) {
+						$dt1 = array(
+							'code'=>$code,
+							'daily_date'=>$daily_date,
+							'download_status'=>'0',
+						);
+						// Agar record exist karta hai to update karo
+						$where1 = array('code' => $code);
+						$this->Scheme_Model->edit_fun("tbl_corporate_other", $dt1, $where1);
+					} else {
+						$dt1 = array(
+							'code'=>$code,
+							'daily_date'=>$daily_date,
+							'stock_and_sales_analysis'=>'1',
+							'stock_and_sales_analysis_daily_email'=>'1',
+							'download_status'=>'0',
+						);
+						// Agar record exist nahi karta hai to insert karo
+						$this->Scheme_Model->insert_fun("tbl_corporate_other", $dt1);
+					}
 				}
 			}
 			$commaSeparatedString = implode(',', $code_array);
