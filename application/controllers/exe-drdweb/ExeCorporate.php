@@ -112,6 +112,7 @@ class ExeCorporate extends CI_Controller
 						$dt1 = array(
 							'code'=>$code,
 							'status'=>0,
+							'password'=>'',
 							'daily_date'=>$daily_date,
 							'whatsapp_message'=>0,
 							'item_wise_report'=>0,
