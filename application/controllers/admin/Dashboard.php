@@ -68,7 +68,7 @@ class Dashboard extends CI_Controller {
 			$total_acm++;
 		}	
 
-		$result = $this->db->query("select id from tbl_staffdetail")->result();
+		$result = $this->db->query("select id from tbl_corporate")->result();
 		foreach($result as $row)
 		{
 			$total_staffdetail++;
