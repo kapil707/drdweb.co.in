@@ -54,7 +54,7 @@ class Cronjob_admin_report extends CI_Controller
 		$this->insert_meta_data("total_salesman",$result->total);
 		/*****************************************************/
 		
-		$result = $this->db->query("select count(id) as total from tbl_staffdetail")->row();
+		$result = $this->db->query("select count(id) as total from tbl_corporate")->row();
 		$massage1.= "\\nTotal Corporate :- ".$result->total;
 		
 		/*****************************************************/
