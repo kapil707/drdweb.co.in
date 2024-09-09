@@ -102,9 +102,8 @@ class ExeCorporate extends CI_Controller
 					$existing_record1 = $this->Scheme_Model->select_row("tbl_corporate_other", array('code' => $code));
 					if ($existing_record1) {
 						$dt1 = array(
-							'code'=>$code,
 							'daily_date'=>$daily_date,
-							'download_status'=>'0',
+							'download_status'=>1,
 						);
 						// Agar record exist karta hai to update karo
 						$where1 = array('code' => $code);
@@ -112,17 +111,18 @@ class ExeCorporate extends CI_Controller
 					} else {
 						$dt1 = array(
 							'code'=>$code,
+							'status'=>0,
 							'daily_date'=>$daily_date,
-							'whatsapp_message'=>'0',
-							'item_wise_report'=>'0',
-							'chemist_wise_report'=>'0',							
-							'stock_and_sales_analysis'=>'1',
-							'item_wise_report_daily_email'=>'0',
-							'chemist_wise_report_daily_email'=>'0',
-							'stock_and_sales_analysis_daily_email'=>'1',
-							'item_wise_report_monthly_email'=>'0',
-							'chemist_wise_report_monthly_email'=>'0',
-							'download_status'=>'0',
+							'whatsapp_message'=>0,
+							'item_wise_report'=>0,
+							'item_wise_report_daily_email'=>0,
+							'item_wise_report_monthly_email'=>0,	
+							'chemist_wise_report'=>0,
+							'chemist_wise_report_daily_email'=>0,
+							'chemist_wise_report_monthly_email'=>0,
+							'stock_and_sales_analysis'=>1,
+							'stock_and_sales_analysis_daily_email'=>1,
+							'download_status'=>0,
 						);
 						// Agar record exist nahi karta hai to insert karo
 						$this->Scheme_Model->insert_fun("tbl_corporate_other", $dt1);
