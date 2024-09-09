@@ -92,7 +92,7 @@
                         </td>
 						<td>
 							<?php
-							$row2 = $this->db->query("select name from tbl_acm where altercode='$row->chemist_id'")->row();
+							$row2 = $this->db->query("select name from tbl_chemist where altercode='$row->chemist_id'")->row();
 							?>
 							<?= $row2->name; ?> (<?= $row->chemist_id;?>)
 							<br>
