@@ -113,8 +113,15 @@ class ExeCorporate extends CI_Controller
 						$dt1 = array(
 							'code'=>$code,
 							'daily_date'=>$daily_date,
+							'whatsapp_message'=>'0',
+							'item_wise_report'=>'0',
+							'chemist_wise_report'=>'0',							
 							'stock_and_sales_analysis'=>'1',
+							'item_wise_report_daily_email'=>'0',
+							'chemist_wise_report_daily_email'=>'0',
 							'stock_and_sales_analysis_daily_email'=>'1',
+							'item_wise_report_monthly_email'=>'0',
+							'chemist_wise_report_monthly_email'=>'0',
 							'download_status'=>'0',
 						);
 						// Agar record exist nahi karta hai to insert karo
