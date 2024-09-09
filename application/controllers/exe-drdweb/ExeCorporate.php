@@ -238,7 +238,7 @@ class ExeCorporate extends CI_Controller
 	}
 
 	public function download(){
-		$result = $this->db->query("select * from tbl_corporate_other");
+		$result = $this->db->query("select * from tbl_corporate_other where download_status=0 order by id asc");
 		//$result = $result->result();
 		if ($result) {
 			// Fetch the result array
@@ -251,10 +251,10 @@ class ExeCorporate extends CI_Controller
 				$row['invoice2'] = 'N/a';
 			}*/
 
-			/*foreach ($result_array as $row) {
+			foreach ($result_array as $row) {
 				$id = $row["id"];
 				$this->db->query("update tbl_corporate_other set download_status=1 where id='$id'");
-			}*/
+			}
 		
 			// Output the result as JSON
 			echo json_encode($result_array);
