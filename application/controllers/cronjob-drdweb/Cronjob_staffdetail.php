@@ -6,16 +6,16 @@ class Cronjob_staffdetail extends CI_Controller
 	{
 		$time  = time();
 		$vdt   = date("Y-m-d",$time);
-		$this->db->query("update tbl_staffdetail_other set daily_date='$vdt',download_status='0'"); 
+		$this->db->query("update tbl_corporate_other set daily_date='$vdt',download_status='0'"); 
 
-		$result = $this->db->query("select * from tbl_staffdetail_other")->result();
+		$result = $this->db->query("select * from tbl_corporate_other")->result();
 		foreach($result as $row)
 		{
-			$row1 = $this->db->query("select * from tbl_staffdetail where code='$row->code'")->row();
+			$row1 = $this->db->query("select * from tbl_corporate where code='$row->code'")->row();
 			if(empty($row1->id))
 			{
 				$code = $row->code;
-				$this->db->query("delete from tbl_staffdetail_other where code='$code'");
+				$this->db->query("delete from tbl_corporate_other where code='$code'");
 			}
 		}
 		
