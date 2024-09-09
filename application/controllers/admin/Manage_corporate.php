@@ -6,7 +6,7 @@ class Manage_corporate extends CI_Controller {
 	var $Page_view  = "manage_corporate";
 	var $Page_menu  = "manage_corporate";
 	var $page_controllers = "manage_corporate";
-	var $Page_tbl   = "tbl_staffdetail";
+	var $Page_tbl   = "tbl_corporate";
 	public function index()
 	{
 		$page_controllers = $this->page_controllers;
@@ -47,12 +47,12 @@ class Manage_corporate extends CI_Controller {
 
 		$this->load->library('pagination');
 
-		$result = $this->db->query("select tbl_staffdetail.id,tbl_staffdetail.staffname as name,tbl_staffdetail.memail  as email,tbl_staffdetail.mobilenumber as mobile,tbl_staffdetail.company_full_name,tbl_staffdetail.division,tbl_staffdetail_other.status from tbl_staffdetail,tbl_staffdetail_other where tbl_staffdetail.code=tbl_staffdetail_other.code order by tbl_staffdetail.id desc")->result();
+		$result = $this->db->query("select tbl_corporate.id,tbl_corporate.staffname as name,tbl_corporate.memail  as email,tbl_corporate.mobilenumber as mobile,tbl_corporate.company_full_name,tbl_corporate.division,tbl_corporate_other.status from tbl_corporate,tbl_corporate_other where tbl_corporate.code=tbl_corporate_other.code order by tbl_corporate.id desc")->result();
 
 		if($_GET["search"]){
 			$data["search"] = $search = $_GET["search"];
 
-			$result = $this->db->query("select tbl_staffdetail.id,tbl_staffdetail.staffname as name,tbl_staffdetail.memail  as email,tbl_staffdetail.mobilenumber as mobile,tbl_staffdetail.company_full_name,tbl_staffdetail.division,tbl_staffdetail_other.status from tbl_staffdetail,tbl_staffdetail_other where tbl_staffdetail.code=tbl_staffdetail_other.code and (tbl_staffdetail.staffname like '%$search%' or tbl_staffdetail.memail like '%$search%') order by tbl_staffdetail.id desc")->result();
+			$result = $this->db->query("select tbl_corporate.id,tbl_corporate.staffname as name,tbl_corporate.memail  as email,tbl_corporate.mobilenumber as mobile,tbl_corporate.company_full_name,tbl_corporate.division,tbl_corporate_other.status from tbl_corporate,tbl_corporate_other where tbl_corporate.code=tbl_corporate_other.code and (tbl_corporate.staffname like '%$search%' or tbl_corporate.memail like '%$search%') order by tbl_corporate.id desc")->result();
 		}
 		
 		$config['total_rows'] = count($result);
@@ -88,12 +88,12 @@ class Manage_corporate extends CI_Controller {
 		
 		$data['user_id'] = $user_id;
 
-		$query = $this->db->query("select tbl_staffdetail.id,tbl_staffdetail.staffname as name,tbl_staffdetail.memail  as email,tbl_staffdetail.mobilenumber as mobile,tbl_staffdetail.company_full_name,tbl_staffdetail.division,tbl_staffdetail_other.status from tbl_staffdetail,tbl_staffdetail_other where tbl_staffdetail.code=tbl_staffdetail_other.code order by tbl_staffdetail.id desc LIMIT $per_page,100");
+		$query = $this->db->query("select tbl_corporate.id,tbl_corporate.staffname as name,tbl_corporate.memail  as email,tbl_corporate.mobilenumber as mobile,tbl_corporate.company_full_name,tbl_corporate.division,tbl_corporate_other.status from tbl_corporate,tbl_corporate_other where tbl_corporate.code=tbl_corporate_other.code order by tbl_corporate.id desc LIMIT $per_page,100");
 
 		$data["search"] = "";
 		if($_GET["search"]){
 			$data["search"] = $search = $_GET["search"];
-			$query = $this->db->query("select tbl_staffdetail.id,tbl_staffdetail.staffname as name,tbl_staffdetail.memail as email,tbl_staffdetail.mobilenumber as mobile,tbl_staffdetail.company_full_name,tbl_staffdetail.division,tbl_staffdetail_other.status from tbl_staffdetail,tbl_staffdetail_other where tbl_staffdetail.code=tbl_staffdetail_other.code and (tbl_staffdetail.staffname like '%$search%' or tbl_staffdetail.memail like '%$search%') order by tbl_staffdetail.id desc LIMIT $per_page,100");
+			$query = $this->db->query("select tbl_corporate.id,tbl_corporate.staffname as name,tbl_corporate.memail as email,tbl_corporate.mobilenumber as mobile,tbl_corporate.company_full_name,tbl_corporate.division,tbl_corporate_other.status from tbl_corporate,tbl_corporate_other where tbl_corporate.code=tbl_corporate_other.code and (tbl_corporate.staffname like '%$search%' or tbl_corporate.memail like '%$search%') order by tbl_corporate.id desc LIMIT $per_page,100");
 		}
 
   		$data["result"] = $query->result();
@@ -114,7 +114,7 @@ class Manage_corporate extends CI_Controller {
 		{
 			$search	= $_POST["search"];
 		}
-		$query = $this->db->query("select tbl_staffdetail.id,tbl_staffdetail.staffname,tbl_staffdetail.memail,tbl_staffdetail.mobilenumber,tbl_staffdetail.company_full_name,tbl_staffdetail.division,tbl_staffdetail_other.status from tbl_staffdetail,tbl_staffdetail_other where tbl_staffdetail.code=tbl_staffdetail_other.code and (tbl_staffdetail.staffname like '%$search%' or tbl_staffdetail.memail like '%$search%') order by tbl_staffdetail.id desc limit 10")->result();
+		$query = $this->db->query("select tbl_corporate.id,tbl_corporate.staffname,tbl_corporate.memail,tbl_corporate.mobilenumber,tbl_corporate.company_full_name,tbl_corporate.division,tbl_corporate_other.status from tbl_corporate,tbl_corporate_other where tbl_corporate.code=tbl_corporate_other.code and (tbl_corporate.staffname like '%$search%' or tbl_corporate.memail like '%$search%') order by tbl_corporate.id desc limit 10")->result();
 		foreach($query as $row)
 		{
 			$name = $row->staffname;
@@ -177,7 +177,7 @@ if ($items != '') {
 			$date = date("Y-m-d",$time);
 			$monthly = date('Y-m-01', strtotime('+1 month', strtotime($time)));		
 
-			$query = $this->db->query("select * from tbl_staffdetail where id='$id'")->row();
+			$query = $this->db->query("select * from tbl_corporate where id='$id'")->row();
 			$code = $query->code;
 			$where = array('code'=>$code);
 			
@@ -205,7 +205,7 @@ if ($items != '') {
 			'password'=>$password,
 			'download_status'=>'0'
 			);
-			$result = $this->Scheme_Model->edit_fun("tbl_staffdetail_other",$dt,$where);			
+			$result = $this->Scheme_Model->edit_fun("tbl_corporate_other",$dt,$where);			
 
 			if($result)
 			{
@@ -234,7 +234,7 @@ if ($items != '') {
 			}
 		}	
 
-		$query = $this->db->query("select tbl_staffdetail.id,tbl_staffdetail_other.password,tbl_staffdetail.code,tbl_staffdetail_other.status,tbl_staffdetail_other.whatsapp_message,tbl_staffdetail_other.item_wise_report,tbl_staffdetail_other.chemist_wise_report,tbl_staffdetail_other.stock_and_sales_analysis,tbl_staffdetail_other.item_wise_report_daily_email,tbl_staffdetail_other.chemist_wise_report_daily_email,tbl_staffdetail_other.stock_and_sales_analysis_daily_email,tbl_staffdetail_other.item_wise_report_monthly_email,tbl_staffdetail_other.chemist_wise_report_monthly_email from tbl_staffdetail,tbl_staffdetail_other where tbl_staffdetail.code=tbl_staffdetail_other.code and tbl_staffdetail.id='$id' order by tbl_staffdetail.id desc");
+		$query = $this->db->query("select tbl_corporate.id,tbl_corporate_other.password,tbl_corporate.code,tbl_corporate_other.status,tbl_corporate_other.whatsapp_message,tbl_corporate_other.item_wise_report,tbl_corporate_other.chemist_wise_report,tbl_corporate_other.stock_and_sales_analysis,tbl_corporate_other.item_wise_report_daily_email,tbl_corporate_other.chemist_wise_report_daily_email,tbl_corporate_other.stock_and_sales_analysis_daily_email,tbl_corporate_other.item_wise_report_monthly_email,tbl_corporate_other.chemist_wise_report_monthly_email from tbl_corporate,tbl_corporate_other where tbl_corporate.code=tbl_corporate_other.code and tbl_corporate.id='$id' order by tbl_corporate.id desc");
   		$data["result"] = $query->result();		
 
 		$this->load->view("admin/header_footer/header",$data);
@@ -245,7 +245,7 @@ if ($items != '') {
 
 	public function send_email_for_password_create($code,$password)
 	{
-		$q = $this->db->query("select code,memail as email,mobilenumber as mobile,staffname as name from tbl_staffdetail where code='$code' ")->row();
+		$q = $this->db->query("select code,memail as email,mobilenumber as mobile,staffname as name from tbl_corporate where code='$code' ")->row();
 		if($q->code!="")
 		{
 			$name		= $q->name;
@@ -281,11 +281,11 @@ if ($items != '') {
 		$id = $_POST["id"];
 		$password = strtolower($_POST["password"]);	
 
-		$row = $this->db->query("select tbl_staffdetail.code from tbl_staffdetail,tbl_staffdetail_other where tbl_staffdetail.code=tbl_staffdetail_other.code and tbl_staffdetail.id='$id' order by tbl_staffdetail.id desc")->row();
+		$row = $this->db->query("select tbl_corporate.code from tbl_corporate,tbl_corporate_other where tbl_corporate.code=tbl_corporate_other.code and tbl_corporate.id='$id' order by tbl_corporate.id desc")->row();
 		$code = $row->code;
 		$this->send_email_for_password_create($code,$password);
 		$password = md5($password);
-		$this->db->query("update tbl_staffdetail_other set password='$password' where code='$code'");
+		$this->db->query("update tbl_corporate_other set password='$password' where code='$code'");
 		echo "ok";
 	}
 
@@ -294,11 +294,11 @@ if ($items != '') {
 		$id = $_POST["id"];
 		$password = strtolower($this->randomPassword());	
 
-		$row = $this->db->query("select tbl_staffdetail.code from tbl_staffdetail,tbl_staffdetail_other where tbl_staffdetail.code=tbl_staffdetail_other.code and tbl_staffdetail.id='$id' order by tbl_staffdetail.id desc")->row();
+		$row = $this->db->query("select tbl_corporate.code from tbl_corporate,tbl_corporate_other where tbl_corporate.code=tbl_corporate_other.code and tbl_corporate.id='$id' order by tbl_corporate.id desc")->row();
 		$code = $row->code;
 		$this->send_email_for_password_create($code,$password);
 		$password = md5($password);
-		$this->db->query("update tbl_staffdetail_other set password='$password' where code='$code'");
+		$this->db->query("update tbl_corporate_other set password='$password' where code='$code'");
 		echo "ok";
 	}
 
