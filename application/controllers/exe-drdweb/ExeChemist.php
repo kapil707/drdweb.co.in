@@ -94,7 +94,7 @@ class ExeChemist extends CI_Controller
 			
 					if ($existing_record) {
 						// Agar record exist karta hai to update karo
-						$where = array('code' => $code);
+						$where = array('code' => $code,'slcd' => $slcd);
 						$this->Scheme_Model->edit_fun("tbl_chemist", $dt, $where);
 					} else {
 						// Agar record exist nahi karta hai to insert karo
