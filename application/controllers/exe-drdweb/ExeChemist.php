@@ -80,8 +80,11 @@ class ExeChemist extends CI_Controller
 				/********************************************* */
 				if($status=="*")
 				{
-					$this->db->query("update tbl_chemist_other set block='1' where code='$code'");
-					$this->db->query("update tbl_android_device_id  set logout='1' where user_type='chemist' and chemist_id='$altercode'");
+					$row = $this->db->query("select * from where code='$code'")->row();
+					if($row->id){
+						$this->db->query("update tbl_chemist_other set block='1' where code='$code'");
+						$this->db->query("update tbl_android_device_id  set logout='1' where user_type='chemist' and chemist_id='$altercode'");
+					}
 				}
 				/********************************************* */
 
