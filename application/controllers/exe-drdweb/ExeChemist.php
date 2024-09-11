@@ -77,7 +77,7 @@ class ExeChemist extends CI_Controller
 					'insert_time' => $insert_time,
 				);
 
-				/********************************************* */
+				/*********************************************  */
 				if($status=="*")
 				{
 					$row = $this->db->query("select * from tbl_chemist_other where code='$code'")->row();
