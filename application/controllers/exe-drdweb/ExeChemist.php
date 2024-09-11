@@ -168,6 +168,14 @@ class ExeChemist extends CI_Controller
 					'insert_time' => $insert_time,
 				);
 
+				/********************************************* */
+				if($status=="*")
+				{
+					$this->db->query("update tbl_chemist_other set block='1' where code='$code'");
+					$this->db->query("update tbl_android_device_id  set logout='1' where user_type='chemist' and chemist_id='$altercode'");
+				}
+				/********************************************* */
+				
 				if (!empty($code)) {
 					// Check karo agar record already exist karta hai
 					$existing_record = $this->Scheme_Model->select_row("tbl_chemist_test", array('code' => $code,'slcd' => $slcd));
