@@ -61,7 +61,7 @@ class Api01 extends CI_Controller {
 		$time = date("H:i",time());
 		$datetime = time();
 
-		$dt = array(
+		/*$dt = array(
 			'token'=>$token,
 			'phonenumber'=>$phonenumber,
 			'device_id'=>$device_id,
@@ -69,7 +69,7 @@ class Api01 extends CI_Controller {
 			'time'=>$time,
 			'datetime'=>$datetime,
 		);
-		$this->BankModel->insert_fun("tbl_firebase", $dt);
+		$this->BankModel->insert_fun("tbl_firebase", $dt);*/
 
 		$my_id = 0;
 		$row = $this->BankModel->select_query("SELECT max(_id) as myid FROM `tbl_sms`");
