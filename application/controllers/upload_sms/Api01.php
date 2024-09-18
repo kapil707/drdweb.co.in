@@ -48,7 +48,7 @@ class Api01 extends CI_Controller {
 					$data1 = json_decode($response, true); // Convert JSON string to associative array
 			}
 
-			$items = $data1;
+			$items = $data1["items"];
 			$response = array(
 				'success' => "1",
 				'message' => 'Data load successfully',
