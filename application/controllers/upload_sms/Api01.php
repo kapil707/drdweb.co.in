@@ -25,7 +25,7 @@ class Api01 extends CI_Controller {
 					curl_setopt_array(
 						$curl,
 						array(
-							CURLOPT_URL =>"http://122.160.139.36:7272/drd_local_server/upload_sms/api01/get_upload_sms?from_date=2024-09-18&to_date=2024-09-18",
+							CURLOPT_URL =>"http://122.160.139.36:7272/drd_local_server/upload_sms/api01/get_upload_sms?from_date=$from_date&to_date=$to_date",
 							CURLOPT_RETURNTRANSFER => true,
 							CURLOPT_ENCODING => '',
 							CURLOPT_MAXREDIRS => 0,
