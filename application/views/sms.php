@@ -71,7 +71,7 @@ $(document).ready(function(){
 
 	table = $('#example-table').DataTable({
 		ajax: {
-		url: 'https://www.drdweb.co.in/upload_sms/api01/get_upload_sms',
+		url: 'http://122.160.139.36:7272/drd_local_server/upload_sms/api01/get_upload_sms',
 			type: 'POST',
 			data: function(d) {
 				return $.extend({}, d, {
