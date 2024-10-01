@@ -21,7 +21,7 @@ class ExeInvoiceManage extends CI_Controller
 			foreach ($data as $record) {
 
 				if (!empty($record["id"])) {
-					$code_array[] 	= $record['id'];
+					$id_array[] 	= $record['id'];
 					$id 			= $record["id"];
 					$dispatchtime 	= $record["dispatchtime"];
 					$vdt 			= $record["vdt"];
