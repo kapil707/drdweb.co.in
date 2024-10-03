@@ -46,10 +46,7 @@ class ExeWhatsApp extends CI_Controller
 					'date' => $date,
 					'time' => $time,
 				);
-
-				if (!empty($id)) {
-					$this->Scheme_Model->insert_fun("tbl_whatsapp_message", $dt);
-				}
+				$this->Scheme_Model->insert_fun("tbl_whatsapp_message", $dt);				
 			}
 			// Response dena
 			echo json_encode(["return_values" => $id,"status" => "success", "message" => "Data received successfully"]);
@@ -96,10 +93,7 @@ class ExeWhatsApp extends CI_Controller
 					'date' => $date,
 					'time' => $time,
 				);
-
-				if (!empty($id)) {
-					$this->Scheme_Model->insert_fun("tbl_whatsapp_message", $dt);
-				}
+				$this->Scheme_Model->insert_fun("tbl_whatsapp_message", $dt);
 			}
 			// Response dena
 			echo json_encode(["return_values" => $id,"status" => "success", "message" => "Data received successfully"]);
