@@ -27,7 +27,7 @@ $(document).ready(function(){
 
 	table = $('#example-table').DataTable({
 		ajax: {
-		url: 'https://www.drdweb.co.in/upload_sms/api01/get_upload_sms',
+		url: 'https://www.drdweb.co.in/admin/manage_max_order/view_api?from_date=2&to_date=3',
 			type: 'POST',
 			data: function(d) {
 				return $.extend({}, d, {
