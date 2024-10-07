@@ -14,6 +14,8 @@ class ExeInvoiceManage extends CI_Controller
 		$isdone = "";
 		
 		$data = json_decode(file_get_contents('php://input'),true);
+		// Data ko check karna
+		$data = json_decode(file_get_contents('php://input'),true);
 		$items = $data["items"];
 		foreach($items as $row)
 		{
@@ -30,7 +32,7 @@ class ExeInvoiceManage extends CI_Controller
 				$deliverby 		= $row["deliverby"];
 				$amt 			= $row["amt"];
 				$taxamt 		= $row["taxamt"];
-                $acno 			= $row["acno"];
+				$acno 			= $row["acno"];
 				$chemist_id 	= $row["chemist_id"];
 				$chemist_name 	= $row["chemist_name"];
 				$chemist_email 	= $row["chemist_email"];
@@ -74,6 +76,7 @@ class ExeInvoiceManage extends CI_Controller
 					'status' => $status,
 				);
 				$this->InvoiceModel->insert_fun("tbl_invoice_new", $dt);
+
 				$isdone = "yes";
 			}
 		}
