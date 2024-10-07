@@ -48,4 +48,52 @@ class Manage_max_order extends CI_Controller {
 		$this->load->view("admin/header_footer/footer",$data);
 		$this->load->view("admin/$Page_view/footer2",$data);
 	}
+	public function view_api() {
+		
+		if(!empty($_REQUEST)){
+			$from_date 	= $_REQUEST["from_date"];
+			$to_date	= $_REQUEST['to_date'];
+
+			$jsonArray = array();
+
+			$items = "";
+			if(!empty($from_date) && !empty($to_date)){
+
+				$result = $this->db->query("SELECT `order_id`, `chemist_id`,`date`, ROUND(SUM(`sale_rate` * `quantity`)) as total FROM `tbl_order` WHERE `date` = '2024-10-06' GROUP BY `order_id`, `chemist_id`, `date` order by total desc");
+				$result = $result->result();
+
+				foreach($result as $row){
+
+					$order_id = $row->order_id;
+					$chemist_id = $row->chemist_id;
+					$total = $row->total;
+					$date = $row->date;
+
+					$dt = array(
+						'order_id' => $order_id,
+						'chemist_id' => $chemist_id,
+						'total'=>$total,
+						'date'=>$adate,
+					);
+					$jsonArray[] = $dt;
+				}
+			}
+
+			$items = $jsonArray;
+			$response = array(
+				'success' => "1",
+				'message' => 'Data load successfully',
+				'items' => $items,
+			);
+		}else{
+			$response = array(
+				'success' => "0",
+				'message' => '502 error',
+			);
+		}
+
+        // Send JSON response
+        header('Content-Type: application/json');
+        echo json_encode($response);
+	}
 }
