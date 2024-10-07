@@ -10,7 +10,7 @@ class Manage_max_order extends CI_Controller {
 	public function __construct()
     {
         parent::__construct();
-		$this->load->model("model-drdweb/BankModel");
+		//$this->load->model("model-drdweb/BankModel");
     }
 	public function index()
 	{
@@ -22,10 +22,10 @@ class Manage_max_order extends CI_Controller {
 		/******************session***********************/
 		$user_id = $this->session->userdata("user_id");
 		$user_type = $this->session->userdata("user_type");
-		/******************session***********************/		
-
+		/******************session***********************/
+		
 		$_SESSION["latitude"] = 
-		$_SESSION["longitude"] = "";		
+		$_SESSION["longitude"] = "";	
 
 		$Page_title = $this->Page_title;
 		$Page_name 	= $this->Page_name;
@@ -45,12 +45,6 @@ class Manage_max_order extends CI_Controller {
 		$this->breadcrumbs->push("View","admin/$page_controllers/view");	
 
 		$tbl = $Page_tbl;	
-
-		$data['url_path'] = base_url()."uploads/$page_controllers/photo/";
-		$upload_path = "./uploads/$page_controllers/photo/";
-		
-		$result = $this->BankModel->select_query("select * from tbl_whatsapp_message");
-		$data["result"] = $result->result();
 
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/view",$data);
