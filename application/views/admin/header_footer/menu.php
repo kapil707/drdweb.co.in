@@ -184,7 +184,7 @@
 				</ul>
 			</li>
 			<?php } 
-			$menu = $this->db->query("select DISTINCT tbl_permission_settings.page_type,sorting_order from tbl_permission_settings,tbl_permission_page where tbl_permission_settings.page_type=tbl_permission_page.page_type and user_type='$user_type' and (tbl_permission_settings.page_type='manage_import' or tbl_permission_settings.page_type='manage_fail_log' or tbl_permission_settings.page_type='manage_stock_available' or tbl_permission_settings.page_type='manage_stock_available_by_chemist' or tbl_permission_settings.page_type='manage_stock_price_low' or tbl_permission_settings.page_type='manage_stock_low' or tbl_permission_settings.page_type='manage_orders' or tbl_permission_settings.page_type='manage_daily_report') GROUP BY tbl_permission_settings.page_type,sorting_order order by sorting_order asc")->result();
+			$menu = $this->db->query("select DISTINCT tbl_permission_settings.page_type,sorting_order from tbl_permission_settings,tbl_permission_page where tbl_permission_settings.page_type=tbl_permission_page.page_type and user_type='$user_type' and (tbl_permission_settings.page_type='manage_import' or tbl_permission_settings.page_type='manage_fail_log' or tbl_permission_settings.page_type='manage_stock_available' or tbl_permission_settings.page_type='manage_stock_available_by_chemist' or tbl_permission_settings.page_type='manage_stock_price_low' or tbl_permission_settings.page_type='manage_stock_low' or tbl_permission_settings.page_type='manage_daily_report') GROUP BY tbl_permission_settings.page_type,sorting_order order by sorting_order asc")->result();
 			if(!empty($menu)){
 			?>
 			<li <?php foreach($menu as $mymenu){ if($Page_menu==$mymenu->page_type) { ?> class="active" <?php } }?>>
@@ -192,6 +192,27 @@
 					<span class="nav-label">
 						<i class="fa fa-th-large"></i>
 						Manage Stock
+					</span><span class="fa arrow"></span>
+				</a>
+				<ul class="nav nav-second-level collapse">
+				<?php 
+				foreach($menu as $mymenu){
+					$row = $this->db->query("select page_title from  tbl_permission_page where page_type='$mymenu->page_type'")->row();
+					?>
+					<li><a href="<?= base_url()?>admin/<?php echo $mymenu->page_type ?>/view" <?php if($Page_menu==$mymenu->page_type) { ?> class="active" <?php } ?>><?php echo $row->page_title;?></a>
+					</li> 
+				<?php } ?>
+				</ul>
+			</li>
+			<?php }
+			$menu = $this->db->query("select DISTINCT tbl_permission_settings.page_type,sorting_order from tbl_permission_settings,tbl_permission_page where tbl_permission_settings.page_type=tbl_permission_page.page_type and user_type='$user_type' and (tbl_permission_settings.page_type='manage_orders' or tbl_permission_settings.page_type='manage_max_order') GROUP BY tbl_permission_settings.page_type,sorting_order order by sorting_order asc")->result();
+			if(!empty($menu)){
+			?>
+			<li <?php foreach($menu as $mymenu){ if($Page_menu==$mymenu->page_type) { ?> class="active" <?php } }?>>
+				<a href="#">
+					<span class="nav-label">
+						<i class="fa fa-th-large"></i>
+						Manage Order
 					</span><span class="fa arrow"></span>
 				</a>
 				<ul class="nav nav-second-level collapse">
