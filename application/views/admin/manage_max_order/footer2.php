@@ -39,10 +39,12 @@ $(document).ready(function(){
 		},
 		order: [[4, 'desc']],
 		columns: [
-			{ data: 'order_id', title: 'OrderId' },
-			{ data: 'chemist_id', title: 'ChemistId' },
+			{ data: 'id', title: 'ID' },
+			{ data: 'sender', title: 'Sender' },
+			{ data: 'message_body', title: 'Message Body' },
 			{ data: 'date', title: 'Date' },
-			{ data: 'total', title: 'Total' }
+			{ data: 'time', title: 'Time' },
+			{ data: 'chemist_id', title: 'ChemistID' }
 		],
 		pageLength: 25,
 		responsive: true,
