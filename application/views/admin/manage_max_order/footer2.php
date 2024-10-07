@@ -37,14 +37,12 @@ $(document).ready(function(){
 			},
 			dataSrc: 'items'
 		},
-		order: [[4, 'desc']],
+		order: [[3, 'desc']],
 		columns: [
-			{ data: 'id', title: 'ID' },
-			{ data: 'sender', title: 'Sender' },
-			{ data: 'message_body', title: 'Message Body' },
+			{ data: 'order_id', title: 'OrderID' },
 			{ data: 'date', title: 'Date' },
-			{ data: 'time', title: 'Time' },
-			{ data: 'chemist_id', title: 'ChemistID' }
+			{ data: 'chemist_id', title: 'ChemistID' },
+			{ data: 'total', title: 'Total' }
 		],
 		pageLength: 25,
 		responsive: true,
