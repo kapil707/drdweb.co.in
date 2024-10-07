@@ -18,28 +18,8 @@
 				<div class="table-responsive">
 					<table class="table table-striped table-bordered table-hover" id="example-table">
 						<thead>
-							<tr>
-								<th>
-									Sno.
-								</th>
-								<th>
-									Sender
-								</th>
-								<th>
-									Message
-								</th>
-								<th>
-									Date
-								</th>
-								<th>
-									Time
-								</th>
-								<th>
-									ChemistID
-								</th>
-							</tr>
 						</thead>
-						
+						<tbody>
 						</tbody>
 					</table>
 				</div>
