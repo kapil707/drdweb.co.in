@@ -48,6 +48,7 @@ class Manage_max_order extends CI_Controller {
 		$this->load->view("admin/header_footer/footer",$data);
 		$this->load->view("admin/$Page_view/footer2",$data);
 	}
+
 	public function view_api() {
 		
 		if(!empty($_REQUEST)){
@@ -73,7 +74,7 @@ class Manage_max_order extends CI_Controller {
 						'order_id' => $order_id,
 						'chemist_id' => $chemist_id,
 						'total'=>$total,
-						'date'=>$adate,
+						'date'=>$date,
 					);
 					$jsonArray[] = $dt;
 				}
