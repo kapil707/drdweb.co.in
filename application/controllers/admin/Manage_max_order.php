@@ -22,7 +22,10 @@ class Manage_max_order extends CI_Controller {
 		/******************session***********************/
 		$user_id = $this->session->userdata("user_id");
 		$user_type = $this->session->userdata("user_type");
-		/******************session***********************/			
+		/******************session***********************/
+		
+		$_SESSION["latitude"] = 
+		$_SESSION["longitude"] = "";	
 
 		$Page_title = $this->Page_title;
 		$Page_name 	= $this->Page_name;
