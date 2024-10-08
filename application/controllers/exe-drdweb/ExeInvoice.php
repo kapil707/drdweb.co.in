@@ -128,7 +128,7 @@ class ExeInvoice extends CI_Controller
 				$halfp 			= $record["halfp"];
 				$mrp 			= $record["mrp"];
 				$hsncode 		= $record["hsncode"];
-				$hsncode 		= $record["hsncode"];
+				$expiry 		= $record["expiry"];
 				$scm1 			= $record["scm1"];
 				$scm2 			= $record["scm2"];
 				$scmper 		= $record["scmper"];
