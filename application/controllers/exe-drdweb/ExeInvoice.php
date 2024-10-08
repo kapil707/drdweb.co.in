@@ -193,7 +193,7 @@ class ExeInvoice extends CI_Controller
 			$commaSeparatedString = $id; //yha exe say he comaspred value aa rahi ha
 			//$commaSeparatedString = implode(',', $id_array);
 			// Response dena
-			echo json_encode(["return_values" => $commaSeparatedId,"status" => "success", "message" => "Data received successfully"]);
+			echo json_encode(["return_values" => $commaSeparatedString,"status" => "success", "message" => "Data received successfully"]);
 		} else {
 			// Agar data valid nahi hai to error response dena
 			echo json_encode(["return_values" => "error","status" => "error", "message" => "Invalid data"]);
