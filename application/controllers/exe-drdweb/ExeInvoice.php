@@ -108,11 +108,11 @@ class ExeInvoice extends CI_Controller
 			// Example: Data ko print karna (ya log karna)
 			//file_put_contents("log.txt", print_r($data, true), FILE_APPEND);
 
-			$id_array = array();
+			//$id_array = array();
 			foreach ($data as $record) {
-				$id_array[] 	= $record['id'];
+				//$id_array[] 	= $record['id'];
 				
-				$id 			= $record["id"];
+				$id 			= $record["id"]; //yha exe say he comaspred value aa rahi ha
 				$srlno 			= $record["srlno"];
 				$vno 			= $record["vno"];
 				$date 			= $record["date"];
@@ -190,9 +190,10 @@ class ExeInvoice extends CI_Controller
 					}
 				}
 			}
-			$commaSeparatedString = implode(',', $id_array);
+			$commaSeparatedString = $id; //yha exe say he comaspred value aa rahi ha
+			//$commaSeparatedString = implode(',', $id_array);
 			// Response dena
-			echo json_encode(["return_values" => $commaSeparatedString,"status" => "success", "message" => "Data received successfully"]);
+			echo json_encode(["return_values" => $commaSeparatedId,"status" => "success", "message" => "Data received successfully"]);
 		} else {
 			// Agar data valid nahi hai to error response dena
 			echo json_encode(["return_values" => "error","status" => "error", "message" => "Invalid data"]);
