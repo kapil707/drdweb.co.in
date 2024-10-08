@@ -6,7 +6,7 @@ class ExeInvoice extends CI_Controller
 		parent::__construct();
 	}
 
-	public function upload()
+	public function upload_invoice()
 	{
 		//OPTIMIZE TABLE tbl_medicine;
 
