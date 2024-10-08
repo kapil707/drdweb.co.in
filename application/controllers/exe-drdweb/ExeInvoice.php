@@ -151,7 +151,7 @@ class ExeInvoice extends CI_Controller
 					'itemc' => $itemc,
 					'batch' => $batch,
 					'qty' => $qty,
-					'qty' => $qty,
+					'fqty' => $fqty,
 					'ntrate' => $ntrate,
 					'ftrate' => $ftrate,
 					'dis' => $dis,
