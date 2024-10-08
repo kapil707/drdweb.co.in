@@ -28,7 +28,7 @@ class ExeInvoice extends CI_Controller
 
 			$id_array = array();
 			foreach ($data as $record) {
-				$id_array[] = $record['i_code'];
+				$id_array[] 	= $record['id'];
 				
 				$id 			= $record["id"];
 				$mtime 			= $record["mtime"];
