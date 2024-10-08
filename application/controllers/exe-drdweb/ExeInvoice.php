@@ -113,6 +113,7 @@ class ExeInvoice extends CI_Controller
 				$id_array[] 	= $record['id'];
 				
 				$id 			= $record["id"];
+				$srlno 			= $record["srlno"];
 				$vno 			= $record["vno"];
 				$date 			= $record["date"];
 				$psrlno			= $record["psrlno"];
@@ -145,6 +146,7 @@ class ExeInvoice extends CI_Controller
 				$insert_time 	= date('Y-m-d,H:i');
 
 				$dt = array(
+					'srlno' => $srlno,
 					'vno' => $vno,
 					'date' => $date,
 					'psrlno' => $psrlno,
