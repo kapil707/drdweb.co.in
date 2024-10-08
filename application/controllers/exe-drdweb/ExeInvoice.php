@@ -114,7 +114,7 @@ class ExeInvoice extends CI_Controller
 				
 				$id 			= $record["id"];
 				$vno 			= $record["vno"];
-				$vdt 			= $record["vdt"];
+				$date 			= $record["date"];
 				$psrlno			= $record["psrlno"];
 				$itemc 			= $record["itemc"];
 				$batch 			= $record["batch"];
@@ -146,7 +146,7 @@ class ExeInvoice extends CI_Controller
 
 				$dt = array(
 					'vno' => $vno,
-					'vdt' => $vdt,
+					'date' => $date,
 					'psrlno' => $psrlno,
 					'itemc' => $itemc,
 					'batch' => $batch,
