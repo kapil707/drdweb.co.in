@@ -138,6 +138,7 @@ class ExeInvoice extends CI_Controller
 				$sgst 			= $record["sgst"];
 				$igst 			= $record["igst"];
 				$igst 			= $record["igst"];
+				$adnlvat		= $record["adnlvat"];
 				$gdn 			= $record["gdn"];
 
 				
