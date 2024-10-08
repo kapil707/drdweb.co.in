@@ -65,7 +65,7 @@ class ExeInvoice extends CI_Controller
 					'insert_time' => $insert_time,
 				);
 				
-				if (!empty($i_code)) {
+				if (!empty($gstvno)) {
 					// Check karo agar record already exist karta hai
 					$existing_record = $this->Scheme_Model->select_row("tbl_invoice", array('gstvno' => $gstvno));
 			
