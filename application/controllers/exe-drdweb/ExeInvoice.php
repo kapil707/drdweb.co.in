@@ -176,19 +176,19 @@ class ExeInvoice extends CI_Controller
 					'insert_time' => $insert_time,
 				);
 				
-				/*if (!empty($gstvno)) {
+				if (!empty($srlno)) {
 					// Check karo agar record already exist karta hai
-					$existing_record = $this->Scheme_Model->select_row("tbl_invoice_item", array('gstvno' => $gstvno));
+					$existing_record = $this->Scheme_Model->select_row("tbl_invoice_item", array('srlno' => $srlno,'vno' => $vno));
 			
 					if ($existing_record) {
 						// Agar record exist karta hai to update karo
-						$where = array('gstvno' => $gstvno);
+						$where = array('srlno' => $srlno,'vno' => $vno);
 						$this->Scheme_Model->edit_fun("tbl_invoice_item", $dt, $where);
-					} else {*/
+					} else {
 						// Agar record exist nahi karta hai to insert karo
 						$this->Scheme_Model->insert_fun("tbl_invoice_item", $dt);
-					/*}
-				}*/
+					}
+				}
 			}
 			$commaSeparatedString = implode(',', $id_array);
 			// Response dena
