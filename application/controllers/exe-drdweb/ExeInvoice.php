@@ -147,7 +147,7 @@ class ExeInvoice extends CI_Controller
 				$dt = array(
 					'vno' => $vno,
 					'vdt' => $vdt,
-					'vdt' => $vdt,
+					'psrlno' => $psrlno,
 					'itemc' => $itemc,
 					'batch' => $batch,
 					'qty' => $qty,
