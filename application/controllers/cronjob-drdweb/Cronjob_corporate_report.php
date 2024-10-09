@@ -8,14 +8,16 @@ class Cronjob_corporate_report extends CI_Controller
 		// Load model
 	}
 	
-	public function delete_folder()
+	public function delete_folder($dt="")
 	{
 		// Usage
-		$dirPath = './corporate_report/2023-07-01';
-		if ($this->deleteDirectory($dirPath)) {
-			echo "Directory deleted successfully!";
-		} else {
-			echo "Failed to delete directory.";
+		if($dt!=""){
+			$dirPath = './corporate_report/'.$dt;
+			if ($this->deleteDirectory($dirPath)) {
+				echo "Directory deleted successfully!";
+			} else {
+				echo "Failed to delete directory.";
+			}
 		}
 	}
 
