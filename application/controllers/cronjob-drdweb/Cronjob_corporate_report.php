@@ -12,7 +12,7 @@ class Cronjob_corporate_report extends CI_Controller
 	{
 		// Usage
 		$dirPath = './corporate_report/2023-07-01';
-		if (deleteDirectory($dirPath)) {
+		if ($this->deleteDirectory($dirPath)) {
 			echo "Directory deleted successfully!";
 		} else {
 			echo "Failed to delete directory.";
