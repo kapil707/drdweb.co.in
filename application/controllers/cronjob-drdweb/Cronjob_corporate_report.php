@@ -8,29 +8,36 @@ class Cronjob_corporate_report extends CI_Controller
 		// Load model
 	}
 	
-	public function delete_folder($dt="")
+	public function delete_folder()
 	{
-		$start_date = new DateTime('2024-07-11');
-		$end_date = new DateTime('2024-07-15'); // today's date
+		$start_date = new DateTime('2023-06-01');
+		$end_date = new DateTime('2024-06-31'); // today's date
 
 		// Loop through each day
 		while ($start_date <= $end_date) {
 			// Output the date in yyyy-mm-dd format
-			echo $start_date->format('Y-m-d') . "\n";
-			
-			// Move to the next day
-			$start_date->modify('+1 day');
-		}
+			echo $dt = $start_date->format('Y-m-d');
 
-		// Usage
-		if($dt!=""){
 			$dirPath = './corporate_report/'.$dt;
 			if ($this->deleteDirectory($dirPath)) {
 				echo "Directory deleted successfully!";
 			} else {
 				echo "Failed to delete directory.";
 			}
+			echo "<br>";
+			// Move to the next day
+			$start_date->modify('+1 day');
 		}
+
+		// Usage
+		/*if($dt!=""){
+			$dirPath = './corporate_report/'.$dt;
+			if ($this->deleteDirectory($dirPath)) {
+				echo "Directory deleted successfully!";
+			} else {
+				echo "Failed to delete directory.";
+			}
+		}*/
 	}
 
 	public function deleteDirectory($dir)
