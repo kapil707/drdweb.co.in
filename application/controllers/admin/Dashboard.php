@@ -126,10 +126,8 @@ class Dashboard extends CI_Controller {
 		
 		
 		/*********************invoice part**************************/
-		$vdt = date("Y-m-d");
-		$where = array('vdt'=>$vdt);
-		$result = $this->InvoiceModel->select_fun("tbl_invoice_new",$where);
-		$result = $result->result();
+		$date = date("Y-m-d");
+		$result = $this->db->query("select id from tbl_invoice where date='$date'")->result();
 		foreach($result as $row)
 		{
 			$today_total_sales = $today_total_sales + round($row->amt);
@@ -137,15 +135,14 @@ class Dashboard extends CI_Controller {
 		}
 		
 		$top_sales_medicine = "";
-		$db_invoice = $this->load->database('default3', TRUE);
-		$result = $db_invoice->query("select DISTINCT item_name, COUNT(*) as ct FROM tbl_invoice_item where vdt='$vdt' GROUP BY item_name HAVING COUNT(*) > 1 order by ct desc limit 10")->result();
+		/*$result = $this->db->query("select DISTINCT item_name, COUNT(*) as ct FROM tbl_invoice where vdt='$vdt' GROUP BY item_name HAVING COUNT(*) > 1 order by ct desc limit 10")->result();
 		foreach($result as $row)
 		{
 			$top_sales_medicine.= "{ y: '$row->item_name', a: $row->ct},";
 		}
 		if ($top_sales_medicine != '') {
 			$top_sales_medicine = substr($top_sales_medicine, 0, -1);
-		}
+		}*/
 		
 		/****************************************************/
 		$top_search_medicine = "";
