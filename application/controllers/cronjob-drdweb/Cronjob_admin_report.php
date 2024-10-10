@@ -75,7 +75,7 @@ class Cronjob_admin_report extends CI_Controller
 		$row = $this->db->query("select count(id) as total, sum(amt) as total_amt, sum(taxamt) as total_taxamt from tbl_invoice where date='$date'")->row();
 		if(!empty($row))
 		{
-			$today_total_sales = round($row->total_taxamt);
+			$today_total_taxamt = round($row->total_taxamt);
 			$today_total_sales = round($row->total_amt);
 			$today_invoice = $row->total;
 		}
