@@ -1,76 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 class InvoiceModel extends CI_Model  
-{
-	function select_query($query)
-	{
-		$db_bank = $this->load->database('default3', TRUE);
-		return $db_bank->query($query);	
-	}
-	function select_fun($tbl,$where)
-	{
-		$db_invoice = $this->load->database('default3', TRUE);
-		if($where!="")
-		{
-			$db_invoice->where($where);
-		}
-		return $db_invoice->get($tbl);	
-	}
-	function insert_fun($tbl,$dt)
-	{
-		$db_invoice = $this->load->database('default3', TRUE);
-		if($db_invoice->insert($tbl,$dt))
-		{
-			return $db_invoice->insert_id();
-		}
-		else
-		{
-			return false;
-		}
-	}
-	function edit_fun($tbl,$dt,$where)
-	{
-		$db_invoice = $this->load->database('default3', TRUE);
-		if($db_invoice->update($tbl,$dt,$where))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-	function delete_fun($tbl,$where)
-	{
-		$db_invoice = $this->load->database('default3', TRUE);
-		if($db_invoice->delete($tbl,$where))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-	
-	function select_fun_limit($tbl,$where,$get_limit='',$order_by='')
-	{
-		$db_invoice = $this->load->database('default3', TRUE);
-		if(!empty($where))
-		{
-			$db_invoice->where($where);
-		}
-		if(!empty($order_by))
-		{
-			$db_invoice->order_by($order_by[0],$order_by[1]);
-		}
-		if(!empty($get_limit))
-		{
-			$db_invoice->limit($get_limit[0],$get_limit[1]);
-		}
-		return $db_invoice->get($tbl);	
-	}
-	
+{	
 	/********************************************************/
 	public function invoice_send_email_whatsapp(){
 		
@@ -88,16 +19,21 @@ class InvoiceModel extends CI_Model
 		*/
 		
 		$date = date("Y-m-d");
+		/***************************************** */
+		$where = array('date'=>$date,'pickedby!='=>'','status'=>0);
 
-		$order_by = array('id','asc');
-		$get_limit = array('15','0');
-		$where = array('vdt'=>$date,'deliverby!='=>'','status'=>0);
-		$query = $this->select_fun_limit("tbl_invoice_new",$where,$get_limit,$order_by);
+		$this->db->select('tbl_invoice.*, tbl_chemist.name as chemist_name, tbl_chemist.email as chemist_email, tbl_chemist.mobile as chemist_mobile');
+        $this->db->from('tbl_invoice');
+        $this->db->join('tbl_chemist', 'tbl_chemist.altercode = tbl_invoice.chemist_id', 'left');
+        $this->db->where($where);
+		$this->db->limit(1);
+		$query = $this->db->get();
+		/***************************************** */
 		$result = $query->result();
 		foreach($result as $row){
 			
 			$id				= $row->id;
-			$vdt 			= $row->vdt;
+			$date 			= $row->date;
 			$vno 			= $row->vno;
 			$vtype 			= $row->vtype;
 			$gstvno 		= $row->gstvno;
@@ -111,11 +47,8 @@ class InvoiceModel extends CI_Model
 			$chemist_name 	= $row->chemist_name;
 			$chemist_email 	= $row->chemist_email;
 			$chemist_mobile = "+91".$row->chemist_mobile;
-			$date 			= $row->date;
-			$update_at 		= $row->update_at;
-			$status 		= $row->status;
 			
-			$newdate 		= strtotime($row->vdt);
+			$newdate 		= strtotime($row->date);
 			$newdate 		= date('d-M-Y',$newdate);
 			
 			/******************************************/
@@ -123,8 +56,15 @@ class InvoiceModel extends CI_Model
 			
 			$invoice_item = "<table border='1' width='100%'><tr><td>Sr.No.</td><td>ITEM NAME</td><td>QTY</td><td>BATCH</td><td>EXPIRY</td></tr>";
 			
-			$where = array('vdt'=>$vdt,'vno'=>$vno);
-			$query = $this->select_fun("tbl_invoice_item",$where);
+			/************************************************** */
+			$where = array('date'=>$date,'vno'=>$vno);			
+			
+			$this->db->select('tbl_medicine.item_name, tbl_medicine.batchqty as qty, tbl_medicine.batch_no as batch, tbl_medicine.expiry, tbl_invoice_item.*');
+			$this->db->from('tbl_invoice_item');
+			$this->db->join('tbl_medicine', 'tbl_medicine.i_code = tbl_invoice_item.itemc', 'left');
+			$this->db->where('tbl_invoice.gstvno', $gstvno);
+			$query = $this->db->get();
+			/************************************************** */
 			$get_invoice_item = $query->result();
 			if(!empty($get_invoice_item)){
 				$invoice_status = 1;
@@ -144,7 +84,8 @@ class InvoiceModel extends CI_Model
 			$invoice_item_delete = "";
 			$whatsapp_message_delete = "<br><br>All items in your order have been billed *without any shortage*";
 			
-			$where = array('vdt'=>$vdt,'vno'=>$vno);
+			/*
+			$where = array('date'=>$date,'vno'=>$vno);
 			$query = $this->select_fun("tbl_invoice_item_delete",$where);
 			$get_invoice_item_delete = $query->result();
 			if(!empty($get_invoice_item_delete)){
@@ -183,7 +124,7 @@ class InvoiceModel extends CI_Model
 				$email_function= "invoice";
 				$email_other_bcc="";//"kapil707sharma@gmail.com";
 				$mail_server = "";
-				$this->EmailModel->insert_email($subject,$message,$user_email_id,$email_function,$email_other_bcc,$mail_server);
+				//$this->EmailModel->insert_email($subject,$message,$user_email_id,$email_function,$email_other_bcc,$mail_server);
 				
 				/************************************************/
 				//$chemist_mobile = "+919530005050"; 
@@ -191,15 +132,17 @@ class InvoiceModel extends CI_Model
 				{
 					$altercode = $chemist_id;
 					//echo $whatsapp_message;
-					$this->WhatsAppModel->insert_whatsapp($chemist_mobile,$whatsapp_message,$altercode);
+					//$this->WhatsAppModel->insert_whatsapp($chemist_mobile,$whatsapp_message,$altercode);
 				}
 							
 				/************************************************/
 				$dt = array('status'=>1);
 				$where = array('id'=>$id);
-				$this->edit_fun("tbl_invoice_new",$dt,$where);
+				$this->Scheme_Model->edit_fun("tbl_invoice",$dt,$where);
 				/************************************************/
 			}
+
+			echo $whatsapp_message;
 		}
 	}
 }	
