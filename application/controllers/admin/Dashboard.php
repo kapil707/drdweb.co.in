@@ -127,7 +127,7 @@ class Dashboard extends CI_Controller {
 		
 		/*********************invoice part**************************/
 		$date = date("Y-m-d");
-		$result = $this->db->query("select id from tbl_invoice where date='$date'")->result();
+		$result = $this->db->query("select amt from tbl_invoice where date='$date'")->result();
 		foreach($result as $row)
 		{
 			$today_total_sales = $today_total_sales + round($row->amt);
