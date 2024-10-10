@@ -62,7 +62,7 @@ class InvoiceModel extends CI_Model
 			$this->db->select('tbl_medicine.item_name, tbl_medicine.batchqty as qty, tbl_medicine.batch_no as batch, tbl_medicine.expiry, tbl_invoice_item.*');
 			$this->db->from('tbl_invoice_item');
 			$this->db->join('tbl_medicine', 'tbl_medicine.i_code = tbl_invoice_item.itemc', 'left');
-			$this->db->where('tbl_invoice.gstvno', $gstvno);
+			$this->db->where($where);
 			$query = $this->db->get();
 			/************************************************** */
 			$get_invoice_item = $query->result();
