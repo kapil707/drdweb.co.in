@@ -127,11 +127,11 @@ class Dashboard extends CI_Controller {
 		
 		/*********************invoice part**************************/
 		$date = date("Y-m-d");
-		$result = $this->db->query("select amt from tbl_invoice where date='$date'")->result();
-		foreach($result as $row)
+		$row = $this->db->query("select count(id) as total,sum(amt) as total_amt from tbl_invoice where date='$date'")->row();
+		if(!empty($row))
 		{
-			$today_total_sales = $today_total_sales + round($row->amt);
-			$today_invoice++;
+			$today_total_sales = round($row->total_amt);
+			$today_invoice = $row->total;
 		}
 		
 		$top_sales_medicine = "";
