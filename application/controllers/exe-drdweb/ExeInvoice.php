@@ -199,4 +199,78 @@ class ExeInvoice extends CI_Controller
 			echo json_encode(["return_values" => "error","status" => "error", "message" => "Invalid data"]);
 		}
 	}
+
+	public function upload_invoice_item_delete()
+	{
+		//OPTIMIZE TABLE tbl_medicine;
+
+		// Data ko read karna (input stream se)
+		$inputData = file_get_contents("php://input");
+
+		// JSON data ko PHP array me convert karna
+		$data = json_decode($inputData, true);
+
+		
+		// Data ko check karna
+		if ($data && is_array($data)) {
+			// Aap yaha data ko process kar sakte hain, jaise ki database me save karna, logging karna, etc.
+			
+			//print_r($data);
+
+			// Example: Data ko print karna (ya log karna)
+			//file_put_contents("log.txt", print_r($data, true), FILE_APPEND);
+
+			//$id_array = array();
+			foreach ($data as $record) {
+				//$id_array[] 	= $record['id'];
+				
+				$id 			= $record["id"]; //yha exe say he comaspred value aa rahi ha
+				$itemc 			= $record["itemc"];
+				$item_name 		= $record["item_name"];
+				$vno 			= $record["vno"];
+				$vdt			= $record["vdt"];
+				$slcd 			= $record["slcd"];
+				$amt 			= $record["amt"];
+				$namt 			= $record["namt"];
+				$remarks 		= $record["remarks"];
+				$descp 			= $record["descp"];
+				
+				$insert_time 	= date('Y-m-d,H:i');
+
+				$dt = array(
+					'itemc' => $itemc,
+					'item_name' => $item_name,
+					'vno' => $vno,
+					'vdt' => $vdt,
+					'slcd' => $slcd,
+					'amt' => $amt,
+					'namt' => $namt,
+					'remarks' => $remarks,
+					'descp' => $descp,
+					'insert_time' => $insert_time,
+				);
+				
+				if (!empty($srlno)) {
+					// Check karo agar record already exist karta hai
+					$existing_record = $this->Scheme_Model->select_row("tbl_invoice_item_delete", array('itemc' => $itemc,'vno' => $vno,'amt' => $amt,'namt' => $namt));
+			
+					if ($existing_record) {
+						// Agar record exist karta hai to update karo
+						$where = array('itemc' => $itemc,'vno' => $vno,'amt' => $amt,'namt' => $namt);
+						$this->Scheme_Model->edit_fun("tbl_invoice_item_delete", $dt, $where);
+					} else {
+						// Agar record exist nahi karta hai to insert karo
+						$this->Scheme_Model->insert_fun("tbl_invoice_item_delete", $dt);
+					}
+				}
+			}
+			$commaSeparatedString = $id; //yha exe say he comaspred value aa rahi ha
+			//$commaSeparatedString = implode(',', $id_array);
+			// Response dena
+			echo json_encode(["return_values" => $commaSeparatedString,"status" => "success", "message" => "Data received successfully"]);
+		} else {
+			// Agar data valid nahi hai to error response dena
+			echo json_encode(["return_values" => "error","status" => "error", "message" => "Invalid data"]);
+		}
+	}
 }
