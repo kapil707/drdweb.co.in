@@ -35,7 +35,6 @@ class InvoiceModel extends CI_Model
 			$id				= $row->id;
 			$date 			= $row->date;
 			$vno 			= $row->vno;
-			$vtype 			= $row->vtype;
 			$gstvno 		= $row->gstvno;
 			$pickedby 		= $row->pickedby;
 			$checkedby 		= $row->checkedby;
