@@ -37,7 +37,7 @@ $(document).ready(function(){
 			},
 			dataSrc: 'items'
 		},
-		order: [[3, 'desc']],
+		order: [[2, 'desc']],
 		columns: [
 			{ data: 'date', title: 'Date' },
 			{ data: 'chemist_id', title: 'ChemistID' },
