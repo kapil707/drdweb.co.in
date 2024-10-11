@@ -135,14 +135,14 @@ class Dashboard extends CI_Controller {
 		}
 		
 		$top_sales_medicine = "";
-		/*$result = $this->db->query("select DISTINCT item_name, COUNT(*) as ct FROM tbl_invoice where vdt='$vdt' GROUP BY item_name HAVING COUNT(*) > 1 order by ct desc limit 10")->result();
+		$result = $this->db->query("SELECT DISTINCT tbl_medicine.item_name, COUNT(*) as ct FROM tbl_invoice_item LEFT JOIN tbl_medicine ON tbl_medicine.i_code = tbl_invoice_item.itemc WHERE tbl_invoice_item.date = '$date' GROUP BY tbl_medicine.item_name HAVING COUNT(*) > 1 ORDER BY ct DESC LIMIT 10")->result();
 		foreach($result as $row)
 		{
 			$top_sales_medicine.= "{ y: '$row->item_name', a: $row->ct},";
 		}
 		if ($top_sales_medicine != '') {
 			$top_sales_medicine = substr($top_sales_medicine, 0, -1);
-		}*/
+		}
 		
 		/****************************************************/
 		$top_search_medicine = "";
