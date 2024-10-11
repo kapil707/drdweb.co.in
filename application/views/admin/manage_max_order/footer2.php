@@ -39,7 +39,6 @@ $(document).ready(function(){
 		},
 		order: [[3, 'desc']],
 		columns: [
-			{ data: 'order_id', title: 'OrderID' },
 			{ data: 'date', title: 'Date' },
 			{ data: 'chemist_id', title: 'ChemistID' },
 			{ data: 'total', title: 'Total' }
