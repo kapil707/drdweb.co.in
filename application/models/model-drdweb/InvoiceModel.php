@@ -130,7 +130,7 @@ class InvoiceModel extends CI_Model
 				if($chemist_mobile != "+91")
 				{
 					$altercode = $chemist_id;
-					//echo $whatsapp_message;
+					echo $whatsapp_message;
 					$this->WhatsAppModel->insert_whatsapp($chemist_mobile,$whatsapp_message,$altercode);
 				}
 							
