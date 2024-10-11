@@ -63,7 +63,7 @@ class Manage_max_order extends CI_Controller {
 			$items = "";
 			if(!empty($from_date) && !empty($to_date)){
 
-				$result = $this->db->query("SELECT DISTINCT(`chemist_id`),date, ROUND(SUM(`sale_rate` * `quantity`)) as total FROM `tbl_order` WHERE `date` BETWEEN '$from_date' and '$to_date' GROUP BY `chemist_id`,date order by total desc");
+				$result = $this->db->query("SELECT DISTINCT(`chemist_id`), ROUND(SUM(`sale_rate` * `quantity`)) as total FROM `tbl_order` WHERE `date` BETWEEN '$from_date' and '$to_date' GROUP BY `chemist_id` order by total desc");
 				$result = $result->result();
 
 				foreach($result as $row){
