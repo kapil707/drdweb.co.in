@@ -140,8 +140,6 @@ class InvoiceModel extends CI_Model
 				$this->Scheme_Model->edit_fun("tbl_invoice",$dt,$where);
 				/************************************************/
 			}
-
-			echo $whatsapp_message;
 		}
 	}
 }	
