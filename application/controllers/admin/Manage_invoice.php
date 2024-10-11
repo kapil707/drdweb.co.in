@@ -54,7 +54,7 @@ class Manage_invoice extends CI_Controller {
 		$data["vdt1"] = $vdt;
 		
 		$where = array('date'=>$vdt);
-		$result = $this->Scheme_Model->select_fun("tbl_invoice",$where);
+		$result = $this->Scheme_Model->select_all_result("tbl_invoice",$where);
 		$result = $result->result();
 		$data["result"] = $result;	
 		
