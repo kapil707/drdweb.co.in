@@ -26,7 +26,7 @@ class InvoiceModel extends CI_Model
         $this->db->from('tbl_invoice');
         $this->db->join('tbl_chemist', 'tbl_chemist.altercode = tbl_invoice.chemist_id', 'left');
         $this->db->where($where);
-		$this->db->limit(1);
+		$this->db->limit(100);
 		$query = $this->db->get();
 		/***************************************** */
 		$result = $query->result();
@@ -126,7 +126,7 @@ class InvoiceModel extends CI_Model
 				//$this->EmailModel->insert_email($subject,$message,$user_email_id,$email_function,$email_other_bcc,$mail_server);
 				
 				/************************************************/
-				//$chemist_mobile = "+919530005050"; 
+				$chemist_mobile = "+919530005050"; 
 				if($chemist_mobile != "+91")
 				{
 					$altercode = $chemist_id;
