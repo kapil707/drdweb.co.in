@@ -70,12 +70,10 @@ class Manage_max_order extends CI_Controller {
 
 					$chemist_id = $row->chemist_id;
 					$total = $row->total;
-					$date = $row->date;
 
 					$dt = array(
 						'chemist_id' => $chemist_id,
 						'total'=>$total,
-						'date'=>$date,
 					);
 					$jsonArray[] = $dt;
 				}
