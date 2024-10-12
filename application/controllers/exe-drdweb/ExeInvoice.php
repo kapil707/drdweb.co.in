@@ -86,7 +86,7 @@ class ExeInvoice extends CI_Controller
 						/************************************************* */
 						$this->db->query("delete from tbl_invoice_item where vno='$vno' and date='$date'");
 
-						$this->db->query("delete from tbl_invoice_item_delete where vno='$vno' and date='$date'");
+						$this->db->query("delete from tbl_invoice_item_delete where vno='$vno' and vdt='$date'");
 						/************************************************* */
 					} else {
 						// Agar record exist nahi karta hai to insert karo
