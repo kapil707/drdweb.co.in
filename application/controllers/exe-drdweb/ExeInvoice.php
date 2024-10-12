@@ -73,6 +73,13 @@ class ExeInvoice extends CI_Controller
 						// Agar record exist karta hai to update karo
 						$where = array('gstvno' => $gstvno);
 						$this->Scheme_Model->edit_fun("tbl_invoice", $dt, $where);
+
+						// yha delete karta ha taki jo medicines delete hui ha wo sahi rahy 
+						/************************************************* */
+						$this->db->query("delete from tbl_invoice_item where vno='$vno' and date='$date'");
+
+						$this->db->query("delete from tbl_invoice_item_delete where vno='$vno' and date='$date'");
+						/************************************************* */
 					} else {
 						// Agar record exist nahi karta hai to insert karo
 						$this->Scheme_Model->insert_fun("tbl_invoice", $dt);
