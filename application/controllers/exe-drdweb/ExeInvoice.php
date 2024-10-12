@@ -6,6 +6,14 @@ class ExeInvoice extends CI_Controller
 		parent::__construct();
 	}
 
+	public function not_found_invoice(){
+		$query = $this->db->query("SELECT t.vno FROM tbl_invoice AS t LEFT JOIN tbl_invoice_item AS ti ON t.vno = ti.vno WHERE ti.vno IS NULL limit 100");
+		$result = $query->result();
+		foreach($result as $row){
+			echo $row->vno.",";
+		}
+	}
+
 	public function upload_invoice()
 	{
 		//OPTIMIZE TABLE tbl_medicine;
