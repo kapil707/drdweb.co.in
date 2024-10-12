@@ -250,7 +250,7 @@ class ExeInvoice extends CI_Controller
 					'insert_time' => $insert_time,
 				);
 				
-				if (!empty($srlno)) {
+				if (!empty($itemc)) {
 					// Check karo agar record already exist karta hai
 					$existing_record = $this->Scheme_Model->select_row("tbl_invoice_item_delete", array('itemc' => $itemc,'vno' => $vno,'amt' => $amt,'namt' => $namt));
 			
