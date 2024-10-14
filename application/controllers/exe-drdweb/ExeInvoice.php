@@ -7,11 +7,14 @@ class ExeInvoice extends CI_Controller
 	}
 
 	public function not_found_invoice(){
+		$id_array = array();
 		$query = $this->db->query("SELECT t.vno FROM tbl_invoice AS t LEFT JOIN tbl_invoice_item AS ti ON t.vno = ti.vno WHERE ti.vno IS NULL limit 100");
 		$result = $query->result();
 		foreach($result as $row){
-			echo $row->vno.",";
+			$id_array[] 	= $row->vno;
 		}
+		$commaSeparatedString = implode(',', $id_array);
+		echo json_encode(["return_values" => $commaSeparatedString,"status" => "success", "message" => "Data received successfully"]);
 	}
 
 	public function upload_invoice()
