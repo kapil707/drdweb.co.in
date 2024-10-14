@@ -13,12 +13,10 @@ class Cronjob_chemist extends CI_Controller
 	{
 		$this->db->query("update tbl_chemist_other set block='0'");
 
-		$result = $this->db->query("select * from tbl_chemist where status='*'")->result();
+		$result = $this->db->query("SELECT tbl_chemist.code,tbl_chemist.altercode FROM `tbl_chemist` join tbl_chemist_other on tbl_chemist.code=tbl_chemist_other.code WHERE tbl_chemist.STATUS='*'")->result();
 		foreach($result as $row){
-
 			$this->db->query("update tbl_chemist_other set block='1' where code='$row->code'");
 			$this->db->query("update tbl_android_device_id  set logout='1' where user_type='chemist' and chemist_id='$row->altercode'");
-
 		}
 	}
 }
