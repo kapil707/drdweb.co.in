@@ -11,7 +11,7 @@ class ExeInvoice extends CI_Controller
 		$query = $this->db->query("SELECT t.vno FROM tbl_invoice AS t LEFT JOIN tbl_invoice_item AS ti ON t.vno = ti.vno WHERE ti.vno IS NULL limit 100");
 		$result = $query->result();
 		foreach($result as $row){
-			//$id_array[] 	= $row->vno;
+			$id_array[] 	= $row->vno;
 		}
 		if(!empty($id_array)){
 			$commaSeparatedString = implode(',', $id_array);
