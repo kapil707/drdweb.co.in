@@ -265,7 +265,7 @@ class ExeInvoice extends CI_Controller
 					'itemc' => $itemc,
 					'item_name' => $item_name,
 					'vno' => $vno,
-					'vdt' => $vdt,
+					'date' => $date,
 					'slcd' => $slcd,
 					'amt' => $amt,
 					'namt' => $namt,
