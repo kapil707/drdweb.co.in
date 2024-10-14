@@ -11,10 +11,16 @@ class ExeInvoice extends CI_Controller
 		$query = $this->db->query("SELECT t.vno FROM tbl_invoice AS t LEFT JOIN tbl_invoice_item AS ti ON t.vno = ti.vno WHERE ti.vno IS NULL limit 100");
 		$result = $query->result();
 		foreach($result as $row){
-			$id_array[] 	= $row->vno;
+			//$id_array[] 	= $row->vno;
 		}
-		$commaSeparatedString = implode(',', $id_array);
-		echo json_encode(["return_values" => $commaSeparatedString,"status" => "success", "message" => "Data received successfully"]);
+		if(!empty($id_array)){
+			$commaSeparatedString = implode(',', $id_array);
+			echo json_encode(["return_values" => $commaSeparatedString,"status" => "success", "message" => "Data received successfully"]);
+		}
+		else {
+			// Agar data valid nahi hai to error response dena
+			echo json_encode(["return_values" => "error","status" => "error", "message" => "Invalid data"]);
+		}
 	}
 
 	public function upload_invoice()
