@@ -252,7 +252,7 @@ class ExeInvoice extends CI_Controller
 				$itemc 			= $record["itemc"];
 				$item_name 		= $record["item_name"];
 				$vno 			= $record["vno"];
-				$vdt			= $record["vdt"];
+				$date			= $record["date"];
 				$slcd 			= $record["slcd"];
 				$amt 			= $record["amt"];
 				$namt 			= $record["namt"];

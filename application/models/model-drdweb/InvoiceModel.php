@@ -20,7 +20,7 @@ class InvoiceModel extends CI_Model
 		
 		$date = date("Y-m-d");
 		/***************************************** */
-		$where = array('date'=>$date,'pickedby!='=>'','tbl_invoice.status'=>0);
+		$where = array('date'=>$date,'deliverby!='=>'','tbl_invoice.status'=>0);
 
 		$this->db->select('tbl_invoice.*, tbl_chemist.name as chemist_name, tbl_chemist.email as chemist_email, tbl_chemist.mobile as chemist_mobile');
         $this->db->from('tbl_invoice');
@@ -121,9 +121,9 @@ class InvoiceModel extends CI_Model
 				$message = $email_message;
 				$user_email_id = $chemist_email;
 				$email_function= "invoice";
-				$email_other_bcc="";//"kapil707sharma@gmail.com";
+				$email_other_bcc="kapildrd@gmail.com";
 				$mail_server = "";
-				//$this->EmailModel->insert_email($subject,$message,$user_email_id,$email_function,$email_other_bcc,$mail_server);
+				$this->EmailModel->insert_email($subject,$message,$user_email_id,$email_function,$email_other_bcc,$mail_server);
 				
 				/************************************************/
 				//$chemist_mobile = "+919530005050"; 
