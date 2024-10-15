@@ -5,12 +5,12 @@ class Cronjob_Hot_Selling extends CI_Controller
 	public function __construct(){
 		parent::__construct();
 	}
-	
+
 	public function run_job()
 	{
 		$this->db->query("TRUNCATE TABLE tbl_hot_selling;");
 		$result = $this->db->query("SELECT `itemc`, COUNT(*) AS total_count FROM `tbl_invoice_item` WHERE `date` = '2024-10-15' GROUP BY `itemc` ORDER BY `total_count` DESC LIMIT 25")->result();
-		foreach($items as $row)
+		foreach($result as $row)
 		{
 			$item_code 	= $row["itemc"];
 			$total 		= $row["total_count"];
