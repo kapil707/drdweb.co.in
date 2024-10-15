@@ -12,8 +12,8 @@ class Cronjob_Hot_Selling extends CI_Controller
 		$result = $this->db->query("SELECT `itemc`, COUNT(*) AS total_count FROM `tbl_invoice_item` WHERE `date` = '2024-10-15' GROUP BY `itemc` ORDER BY `total_count` DESC LIMIT 25")->result();
 		foreach($result as $row)
 		{
-			$item_code 	= $row["itemc"];
-			$total 		= $row["total_count"];
+			$item_code 	= $row->itemc;
+			$total 		= $row->total_count;
 			$datetime 	= date("d-M-Y h:i a");
 			
 			$dt = array(
