@@ -18,8 +18,7 @@ class Cronjob_delete_records extends CI_Controller
 		$db2->query("DELETE FROM `tbl_medicine_compare_final` WHERE date<='$day30'");
 		
 		$db_master = $this->load->database('db_master', TRUE);
-		$db_master->query("DELETE FROM `drd_master_tbl_delivery` WHERE vdt<='$day7'");	
-		$db_master->query("update tbl_cronjob_time_for_exe set status=0");
+		$db_master->query("DELETE FROM `drd_master_tbl_delivery` WHERE vdt<='$day7'");
 		
 		$this->db->query("DELETE FROM `tbl_top_search` WHERE date<='$day30'");
 		
@@ -33,18 +32,7 @@ class Cronjob_delete_records extends CI_Controller
 		$this->db->query("DELETE FROM `tbl_stock_low` WHERE date<='$day15'");
 		$this->db->query("DELETE FROM `tbl_delete_import` WHERE date<='$day60'");
 		$this->db->query("DELETE FROM `tbl_android_device_id` WHERE date<='$day60'");
-
-		$result = $this->db->query("select * from tbl_staffdetail_other")->result();
-		foreach($result as $row)
-		{
-			$row1 = $this->db->query("select * from tbl_staffdetail where code='$row->code'")->row();
-			if(empty($row1->id))
-			{
-				$code = $row->code;
-				$this->db->query("delete from tbl_staffdetail_other where code='$code'");
-			}
-		}
-
+		
 		$result = $this->db->query("SELECT * FROM `tbl_email_send`  WHERE `date`<'$day60'")->result();
 		foreach($result as $row)
 		{
