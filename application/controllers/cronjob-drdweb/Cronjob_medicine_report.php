@@ -9,7 +9,7 @@ class Cronjob_medicine_report extends CI_Controller
 		$this->load->model('model/WhatsAppModel');
 	}
 	
-	public function duplicate_medicine_report()
+	public function medicine_report()
 	{
 		$massage = "Report:-".date('d-M h:i A');
 
