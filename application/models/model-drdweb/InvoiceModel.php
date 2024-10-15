@@ -26,7 +26,7 @@ class InvoiceModel extends CI_Model
         $this->db->from('tbl_invoice');
         $this->db->join('tbl_chemist', 'tbl_chemist.altercode = tbl_invoice.chemist_id', 'left');
         $this->db->where($where);
-		$this->db->limit(100);
+		$this->db->limit(25);
 		$query = $this->db->get();
 		/***************************************** */
 		$result = $query->result();

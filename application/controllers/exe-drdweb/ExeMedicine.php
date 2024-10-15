@@ -156,7 +156,7 @@ class ExeMedicine extends CI_Controller
 			echo json_encode(["return_values" => $commaSeparatedString,"status" => "success", "message" => "Data received successfully"]);
 		} else {
 			// Agar data valid nahi hai to error response dena
-			echo json_encode(["i_code" => "error","status" => "error", "message" => "Invalid data"]);
+			echo json_encode(["return_values" => "error","status" => "error", "message" => "Invalid data"]);
 		}
 	}
 
