@@ -27,25 +27,27 @@ class Cronjob_medicine_report extends CI_Controller
 		$massage1 = "\\n\\n*Medicine not added item code*";
 
 		$i = 0;
-		$result = $this->db->query("SELECT item_name,item_code,i_code FROM tbl_medicine where item_code=''")->result();
-		foreach($result as $row)
+		$result1 = $this->db->query("SELECT item_name,item_code,i_code FROM tbl_medicine where item_code=''")->result();
+		foreach($result1 as $row)
 		{
 			$i++;
 			$massage1.= "\\n$i :- ".$row->item_name." code(".$row->item_code.") -- id(".$row->i_code.")";
 		}
 
-		/***************only for group message***********************/
-		$group2_message 	= $massage.$massage1;
-		$whatsapp_group2 = $this->Scheme_Model->get_website_data("whatsapp_group2");
-		$this->WhatsAppModel->insert_whatsapp_group_message($whatsapp_group2,$group2_message);
-		/*************************************************************/
-		
-		/***************only for group message***********************/
-		$group3_message 	= $massage.$massage1;
-		$whatsapp_group3 = $this->Scheme_Model->get_website_data("whatsapp_group3");
-		$this->WhatsAppModel->insert_whatsapp_group_message($whatsapp_group3,$group3_message);
-		/*************************************************************/
-		
-		echo "Duplicate Medicine Report Working";
+		if(!empty($result) && !empty($result1))
+		{
+			/***************only for group message***********************/
+			$group2_message 	= $massage.$massage1;
+			$whatsapp_group2 = $this->Scheme_Model->get_website_data("whatsapp_group2");
+			$this->WhatsAppModel->insert_whatsapp_group_message($whatsapp_group2,$group2_message);
+			/*************************************************************/
+			
+			/***************only for group message***********************/
+			$group3_message 	= $massage.$massage1;
+			$whatsapp_group3 = $this->Scheme_Model->get_website_data("whatsapp_group3");
+			$this->WhatsAppModel->insert_whatsapp_group_message($whatsapp_group3,$group3_message);
+			/*************************************************************/
+		}
+		echo "Medicine Report Working";
 	}
 }
