@@ -9,7 +9,7 @@ class ExeLowStock extends CI_Controller
 	}
 	public function download()
 	{
-		$jsonArray = array();
+		$jsonArray = array(); 
 		
 		$result = $this->db->query("SELECT tbl_low_stock_alert.id,tbl_low_stock_alert.date,tbl_low_stock_alert.time,tbl_chemist.code,tbl_low_stock_alert.i_code FROM tbl_low_stock_alert,tbl_chemist where tbl_chemist.altercode=tbl_low_stock_alert.chemist_id and tbl_low_stock_alert.user_type='chemist' and tbl_low_stock_alert.download_status=0 order by id asc limit 1")->result();
 		foreach ($result as $row) {
