@@ -5,12 +5,12 @@ class ExeLowStock extends CI_Controller
 	public function __construct(){
 		parent::__construct();
 	}
-	
+
 	public function download()
 	{
 		$jsonArray = array(); 
 		
-		$result = $this->db->query("SELECT tbl_low_stock_alert.id,tbl_low_stock_alert.date,tbl_low_stock_alert.time,tbl_chemist.code,tbl_low_stock_alert.i_code FROM tbl_low_stock_alert,tbl_chemist where tbl_chemist.altercode=tbl_low_stock_alert.chemist_id and tbl_low_stock_alert.user_type='chemist' and tbl_low_stock_alert.download_status=0 order by id asc limit 1")->result();
+		$result = $this->db->query("SELECT tbl_stock_low.id,tbl_stock_low.date,tbl_stock_low.time,tbl_chemist.code,tbl_stock_low.i_code FROM tbl_stock_low,tbl_chemist where tbl_chemist.altercode=tbl_stock_low.chemist_id and tbl_stock_low.user_type='chemist' and tbl_stock_low.download_status=0 order by id asc limit 1")->result();
 		foreach ($result as $row) {
 
 			$id 	= $row->id;
