@@ -276,11 +276,11 @@ class ExeInvoice extends CI_Controller
 				
 				if (!empty($itemc)) {
 					// Check karo agar record already exist karta hai
-					$existing_record = $this->Scheme_Model->select_row("tbl_invoice_item_delete", array('itemc' => $itemc,'vno' => $vno,'amt' => $amt,'namt' => $namt));
+					$existing_record = $this->Scheme_Model->select_row("tbl_invoice_item_delete", array('itemc' => $itemc,'vno' => $vno,'amt' => $amt,'namt' => $namt,'remarks' => $remarks));
 			
 					if ($existing_record) {
 						// Agar record exist karta hai to update karo
-						$where = array('itemc' => $itemc,'vno' => $vno,'amt' => $amt,'namt' => $namt);
+						$where = array('itemc' => $itemc,'vno' => $vno,'amt' => $amt,'namt' => $namt,'remarks' => $remarks);
 						$this->Scheme_Model->edit_fun("tbl_invoice_item_delete", $dt, $where);
 					} else {
 						// Agar record exist nahi karta hai to insert karo
