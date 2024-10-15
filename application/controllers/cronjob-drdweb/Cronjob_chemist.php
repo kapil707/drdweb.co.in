@@ -25,7 +25,7 @@ class Cronjob_chemist extends CI_Controller
 
 	public function backup_table($tableName = 'tbl_chemist_other') {
         // Backup file name with date and time
-        $backupFile = FCPATH . 'backup_' . $tableName . '_' . date('Y-m-d_H-i-s') . '.sql';
+        $backupFile = FCPATH . 'backup_sql/backup_' . $tableName . '_' . date('Y-m-d_H-i-s') . '.sql';
 
         // Open file for writing
         $fileHandle = fopen($backupFile, 'w');
