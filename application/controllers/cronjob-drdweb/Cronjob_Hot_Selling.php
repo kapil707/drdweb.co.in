@@ -18,7 +18,7 @@ class Cronjob_Hot_Selling extends CI_Controller
 			$datetime 	= date("d-M-Y h:i a");
 			
 			$dt = array(
-				'item_code'=>$i_code,
+				'i_code'=>$i_code,
 				'total'=>$total,
 				'datetime'=>$datetime,
 			);
