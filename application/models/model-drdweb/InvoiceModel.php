@@ -121,7 +121,7 @@ class InvoiceModel extends CI_Model
 				$message = $email_message;
 				$user_email_id = $chemist_email;
 				$email_function= "invoice";
-				$email_other_bcc="kapildrd@gmail.com";
+				$email_other_bcc= "";//"kapildrd@gmail.com";
 				$mail_server = "";
 				$this->EmailModel->insert_email($subject,$message,$user_email_id,$email_function,$email_other_bcc,$mail_server);
 				

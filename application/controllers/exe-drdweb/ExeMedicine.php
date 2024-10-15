@@ -160,6 +160,69 @@ class ExeMedicine extends CI_Controller
 		}
 	}
 
+	public function upload_compare()
+	{
+		//OPTIMIZE TABLE tbl_medicine;
+
+		// Data ko read karna (input stream se)
+		$inputData = file_get_contents("php://input");
+
+		// JSON data ko PHP array me convert karna
+		$data = json_decode($inputData, true);
+
+		
+		// Data ko check karna
+		if ($data && is_array($data)) {
+			// Aap yaha data ko process kar sakte hain, jaise ki database me save karna, logging karna, etc.
+			
+			//print_r($data);
+
+			// Example: Data ko print karna (ya log karna)
+			//file_put_contents("log.txt", print_r($data, true), FILE_APPEND);
+
+			$i_code_array = array();
+			foreach ($data as $record) {
+				$i_code_array[] = $record['i_code'];
+				$i_code = $record['i_code'];
+				$compare_type = $record['compare_type'];
+				$compare_now = $record['compare_now'];
+				$compare_before = $record['compare_before'];
+				$date = $record['date'];
+
+				$insert_time = date('Y-m-d,H:i');
+
+				$dt = array(
+					'i_code' => $i_code,
+					'compare_type' => $compare_type,
+					'compare_now' => $compare_now,
+					'compare_before' => $compare_before,
+					'date' => $date,
+					'insert_time' => $insert_time,
+				);
+
+				if (!empty($i_code)) {
+					// Check karo agar record already exist karta hai
+					$existing_record = $this->Scheme_Model->select_row("tbl_medicine_compare", array('i_code' => $i_code,'compare_type' => $compare_type));
+			
+					if ($existing_record) {
+						// Agar record exist karta hai to update karo
+						$where =  array('i_code' => $i_code,'compare_type' => $compare_type);
+						$this->Scheme_Model->edit_fun("tbl_medicine_compare", $dt, $where);
+					} else {
+						// Agar record exist nahi karta hai to insert karo
+						$this->Scheme_Model->insert_fun("tbl_medicine_compare", $dt);
+					}
+				}
+			}
+			$commaSeparatedString = implode(',', $i_code_array);
+			// Response dena
+			echo json_encode(["return_values" => $commaSeparatedString,"status" => "success", "message" => "Data received successfully"]);
+		} else {
+			// Agar data valid nahi hai to error response dena
+			echo json_encode(["return_values" => "error","status" => "error", "message" => "Invalid data"]);
+		}
+	}
+
 	public function upload_test()
 	{
 		// Data ko read karna (input stream se)
@@ -305,7 +368,7 @@ class ExeMedicine extends CI_Controller
 			echo json_encode(["return_values" => $commaSeparatedString,"status" => "success", "message" => "Data received successfully"]);
 		} else {
 			// Agar data valid nahi hai to error response dena
-			echo json_encode(["i_code" => "error","status" => "error", "message" => "Invalid data"]);
+			echo json_encode(["return_values" => "error","status" => "error", "message" => "Invalid data"]);
 		}
 	}
 }
