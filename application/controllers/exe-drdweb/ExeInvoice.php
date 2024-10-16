@@ -302,25 +302,45 @@ class ExeInvoice extends CI_Controller
 
 		$inputData = file_get_contents("php://input");
 
-		// JSON data ko PHP array me convert karna
-		echo $data = $inputData;
+		$vno = $date = "";
+		$data = json_decode($inputData, true);
+		// Data ko check karna
+		if ($data && is_array($data)) {
+			// Aap yaha data ko process kar sakte hain, jaise ki database me save karna, logging karna, etc.
+			
+			//print_r($data);
+
+			// Example: Data ko print karna (ya log karna)
+			//file_put_contents("log.txt", print_r($data, true), FILE_APPEND);
+
+			//$id_array = array();
+			foreach ($data as $record) {
+				$vno 			= $record["vno"];
+				$date			= $record["date"];
+			}
+		}
+
+		if(!empty($vno) && !empty($date)){
+			// JSON data ko PHP array me convert karna
+			$data = $inputData;
 
 
-        // Folder to save the JSON file (ensure this folder exists and is writable)
-        $folder = './invoice_files/';
+			// Folder to save the JSON file (ensure this folder exists and is writable)
+			$folder = './invoice_files/';
 
-        // File name (based on current date/time to avoid overwriting)
-        $filename = 'json_response_' . date('Y-m-d_H-i-s') . '.json';
+			// File name (based on current date/time to avoid overwriting)
+			$filename = $date.'/' . $vno . '.json';
 
-        // Full path to save the file
-        $filepath = $folder . $filename;
+			// Full path to save the file
+			$filepath = $folder . $filename;
 
-        // Write JSON data to the file
-        if (file_put_contents($filepath, $data) !== false) {
-            echo "JSON file created successfully: " . base_url('invoice_files/' . $filename);
-        } else {
-            echo "Failed to create the JSON file.";
-        }
+			// Write JSON data to the file
+			if (file_put_contents($filepath, $data) !== false) {
+				echo "JSON file created successfully: " . base_url('invoice_files/' . $filename);
+			} else {
+				echo "Failed to create the JSON file.";
+			}
+		}
     }
 
 	public function insert_json_data_to_db() {
