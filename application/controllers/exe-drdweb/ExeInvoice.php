@@ -298,6 +298,31 @@ class ExeInvoice extends CI_Controller
 		}
 	}
 
+	private function save_json_file() {
+
+		$inputData = file_get_contents("php://input");
+
+		// JSON data ko PHP array me convert karna
+		$data = json_decode($inputData, true);
+
+
+        // Folder to save the JSON file (ensure this folder exists and is writable)
+        $folder = './invoice_files/';
+
+        // File name (based on current date/time to avoid overwriting)
+        $filename = 'json_response_' . date('Y-m-d_H-i-s') . '.json';
+
+        // Full path to save the file
+        $filepath = $folder . $filename;
+
+        // Write JSON data to the file
+        if (file_put_contents($filepath, $data) !== false) {
+            echo "JSON file created successfully: " . base_url('invoice_files/' . $filename);
+        } else {
+            echo "Failed to create the JSON file.";
+        }
+    }
+
 	public function insert_json_data_to_db() {
         // Path to the JSON file
         $jsonFilePath = './backup_sql/2024-04-01.json';  // Update this to your JSON file path
