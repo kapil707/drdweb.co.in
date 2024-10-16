@@ -353,50 +353,55 @@ class ExeInvoice extends CI_Controller
     }
 
 	public function insert_json_data_to_db() {
-        // Path to the JSON file
-        $jsonFilePath = './backup_sql/2024-04-01.json';  // Update this to your JSON file path
-        
-        // Check if file exists
-        if (!file_exists($jsonFilePath)) {
-            echo "File not found.";
-            return;
-        }
+		// Load the helper file for writing JSON files
+		$this->load->helper('file');
 
-        // Read the JSON file
-        $jsonData = file_get_contents($jsonFilePath);
+		$date = "2024-04-01";
 
-        // Decode JSON data into PHP array
-        $dataArray = json_decode($jsonData, true);  // true to convert JSON to associative array
-        
-        // Check if the JSON was properly decoded
-        if (json_last_error() !== JSON_ERROR_NONE) {
-            echo "Failed to decode JSON: " . json_last_error_msg();
-            return;
-        }
+		// Specify the path to the JSON file
+		$filePath = './invoice_files/'.$date.'.json';  // Adjust this path as needed
 
-        // Load database library (optional if autoload is not enabled)
-        $this->load->database();
+		// Check if the file exists
+		if (!file_exists($filePath)) {
+			echo 'File does not exist: ' . $filePath;
+			return;
+		}
+		$jsonData = file_get_contents($filePath);
+		$data = json_decode($jsonData, true);
+		if (json_last_error() !== JSON_ERROR_NONE) {
+			echo 'Error decoding JSON data: ' . json_last_error_msg();
+			return;
+		}
 
-        // Loop through the data array and insert each record into the database
-        foreach ($dataArray as $row) {
-            // Prepare data for insert (adjust keys to match your table columns)
-            $data = array(
-                'itemc'     => $row['itemc'],
-                'item_name' => $row['item_name'],
-                'vno'       => $row['vno'],
-                'date'      => $row['vdt'],         // Assuming vdt is in the correct format for your DB
-                'slcd'      => $row['slcd'],
-                'amt'       => $row['amt'],
-                'namt'      => $row['namt'],
-                'remarks'   => $row['remarks'],
-                'descp'     => $row['descp']
-            );
+		$vnoData = [];
+		foreach ($data as $item) {
+			$vno = $item['vno'];
+			if (!isset($vnoData[$vno])) {
+				$vnoData[$vno] = [];
+			}
+			$vnoData[$vno][] = $item;
+		}
 
-            // Insert the data into the table (replace 'your_table' with your actual table name)
-            $this->db->insert('tbl_invoice_item_delete', $data);
-        }
+		// Create JSON files for each `vno`
+		foreach ($vnoData as $vno => $items) {
 
-        // Print success message
-        echo "Data inserted successfully.";
-    }
+			$folder = './invoice_files/'.$date.'/';
+			 if (!is_dir($folder)) {
+				mkdir($folder, 0755, true);
+			}
+			$filename =  $vno . '.json';
+			$filepath = $folder . $filename;
+
+			if (file_exists($filepath)) {
+				unlink($filepath);
+			}
+			/********************************* */
+
+			if (file_put_contents($filepath, $data) !== false) {
+				echo "working";
+			} else {
+				echo "error";
+			}
+		}
+	}
 }
