@@ -2,8 +2,20 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Cronjob_delete_records extends CI_Controller 
 {
+	public function corporate_report_folder_create()
+	{
+		$time  = time();
+		$vdt   = date("Y-m-d",$time);
+
+		if (!file_exists('corporate_report/'.$vdt)) {
+			mkdir('corporate_report/'.$vdt, 0777, true);
+		}
+	}
+
     public function delete_old_records()
 	{	    
+		$this->corporate_report_folder_create();
+		
 		$time  = time();
 		$vdt   = date("Y-m-d",$time);
 		$day1  = date("Y-m-d", strtotime("-1 days", $time));
