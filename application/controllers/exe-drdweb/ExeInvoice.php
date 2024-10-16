@@ -352,11 +352,11 @@ class ExeInvoice extends CI_Controller
 		}
     }
 
-	public function insert_json_data_to_db() {
+	public function insert_json_data_to_db($date="") {
 		// Load the helper file for writing JSON files
         $this->load->helper('file');
 
-        $date = "2024-04-01";
+        //$date = "2024-04-01";
 
         // Specify the path to the main JSON file
         $filePath = './invoice_files/'.$date.'.json';  // Adjust this path as needed
