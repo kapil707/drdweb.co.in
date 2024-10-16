@@ -333,6 +333,11 @@ class ExeInvoice extends CI_Controller
 			// Full path to save the file
 			$filepath = $folder . $filename;
 
+			// Check if the file already exists, if so, delete it
+			if (file_exists($filepath)) {
+				unlink($filepath);  // Delete the existing file
+			}
+
 			// Write JSON data to the file
 			if (file_put_contents($filepath, $data) !== false) {
 				echo "JSON file created successfully: " . base_url('invoice_files/' . $filename);
