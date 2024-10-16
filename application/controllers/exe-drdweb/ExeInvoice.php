@@ -325,10 +325,15 @@ class ExeInvoice extends CI_Controller
 			$data = $inputData1;
 
 			// Folder to save the JSON file (ensure this folder exists and is writable)
-			$folder = './invoice_files/';
+			$folder = './invoice_files/'.$date.'/';
+
+			 // Check if the folder exists, if not create it
+			 if (!is_dir($folder)) {
+				mkdir($folder, 0755, true);  // Create the folder with read/write/execute permissions
+			}
 
 			// File name (based on current date/time to avoid overwriting)
-			$filename = $date.'/' . $vno . '.json';
+			$filename =  $vno . '.json';
 
 			// Full path to save the file
 			$filepath = $folder . $filename;
