@@ -298,7 +298,7 @@ class ExeInvoice extends CI_Controller
 		}
 	}
 
-	private function save_json_file() {
+	public function save_json_file() {
 
 		$inputData = file_get_contents("php://input");
 
