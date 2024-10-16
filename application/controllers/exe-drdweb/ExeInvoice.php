@@ -345,9 +345,10 @@ class ExeInvoice extends CI_Controller
 
 			// Write JSON data to the file
 			if (file_put_contents($filepath, $data) !== false) {
-				echo "JSON file created successfully: " . base_url('invoice_files/' . $filename);
+				echo json_encode(["return_values" => $vno,"status" => "success", "message" => "Data received successfully"]);
 			} else {
-				echo "Failed to create the JSON file.";
+				// Agar data valid nahi hai to error response dena
+				echo json_encode(["return_values" => "error","status" => "error", "message" => "Invalid data"]);
 			}
 		}
     }
