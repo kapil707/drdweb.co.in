@@ -146,14 +146,14 @@ class InvoiceModel extends CI_Model
 				$subject = "Invoice No. $gstvno From D.R. Distributors Pvt. Ltd.";
 				//echo $email_message;
 				$message = $email_message;
-				$user_email_id = "kapildrd@gmail.com";//$chemist_email;
+				$user_email_id = $chemist_email;
 				$email_function= "invoice";
 				$email_other_bcc= "";//"kapildrd@gmail.com";
 				$mail_server = "";
 				$this->EmailModel->insert_email($subject,$message,$user_email_id,$email_function,$email_other_bcc,$mail_server);
 				
 				/************************************************/
-				$chemist_mobile = "+919530005050"; 
+				//$chemist_mobile = "+919530005050"; 
 				if($chemist_mobile != "+91")
 				{
 					$altercode = $chemist_id;

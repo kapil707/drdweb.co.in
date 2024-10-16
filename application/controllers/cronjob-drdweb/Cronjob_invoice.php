@@ -15,10 +15,4 @@ class Cronjob_invoice extends CI_Controller
 		//$this->InvoiceModel->invoice_send_email_whatsapp();
 		echo "Invoice Send Working";
 	}
-
-	public function invoice_send_test()
-	{
-		$this->InvoiceModel->invoice_send_email_whatsapp();
-		echo "Invoice Send Working";
-	}
 }
