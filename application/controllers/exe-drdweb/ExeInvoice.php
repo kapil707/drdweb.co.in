@@ -300,7 +300,7 @@ class ExeInvoice extends CI_Controller
 
 	public function save_json_file() {
 
-		$inputData = file_get_contents("php://input");
+		$inputData = $inputData1 = file_get_contents("php://input");
 
 		$vno = $date = "";
 		$data = json_decode($inputData, true);
@@ -322,8 +322,7 @@ class ExeInvoice extends CI_Controller
 
 		if(!empty($vno) && !empty($date)){
 			// JSON data ko PHP array me convert karna
-			$data = $inputData;
-
+			$data = $inputData1;
 
 			// Folder to save the JSON file (ensure this folder exists and is writable)
 			$folder = './invoice_files/';
