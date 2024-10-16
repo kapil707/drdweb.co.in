@@ -354,54 +354,68 @@ class ExeInvoice extends CI_Controller
 
 	public function insert_json_data_to_db() {
 		// Load the helper file for writing JSON files
-		$this->load->helper('file');
+        $this->load->helper('file');
 
-		$date = "2024-04-01";
+        $date = "2024-04-01";
 
-		// Specify the path to the JSON file
-		$filePath = './invoice_files/'.$date.'.json';  // Adjust this path as needed
+        // Specify the path to the main JSON file
+        $filePath = './invoice_files/'.$date.'.json';  // Adjust this path as needed
 
-		// Check if the file exists
-		if (!file_exists($filePath)) {
-			echo 'File does not exist: ' . $filePath;
-			return;
-		}
-		$jsonData = file_get_contents($filePath);
-		$data = json_decode($jsonData, true);
-		if (json_last_error() !== JSON_ERROR_NONE) {
-			echo 'Error decoding JSON data: ' . json_last_error_msg();
-			return;
-		}
+        // Check if the file exists
+        if (!file_exists($filePath)) {
+            echo 'File does not exist: ' . $filePath;
+            return;
+        }
 
-		$vnoData = [];
-		foreach ($data as $item) {
-			$vno = $item['vno'];
-			if (!isset($vnoData[$vno])) {
-				$vnoData[$vno] = [];
-			}
-			$vnoData[$vno][] = $item;
-		}
+        // Read the contents of the JSON file
+        $jsonData = file_get_contents($filePath);
 
-		// Create JSON files for each `vno`
-		foreach ($vnoData as $vno => $items) {
+        // Decode JSON data into an array
+        $data = json_decode($jsonData, true);
 
-			$folder = './invoice_files/'.$date.'/';
-			 if (!is_dir($folder)) {
-				mkdir($folder, 0755, true);
-			}
-			$filename =  $vno . '.json';
-			$filepath = $folder . $filename;
+        // Check for errors during decoding
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            echo 'Error decoding JSON data: ' . json_last_error_msg();
+            return;
+        }
 
-			if (file_exists($filepath)) {
-				unlink($filepath);
-			}
-			/********************************* */
+        // Prepare an empty array to hold data for each `vno`
+        $vnoData = [];
 
-			if (file_put_contents($filepath, $data) !== false) {
-				echo "working";
-			} else {
-				echo "error";
-			}
-		}
+        // Organize data by `vno`
+        foreach ($data as $item) {
+            $vno = $item['vno'];
+            if (!isset($vnoData[$vno])) {
+                $vnoData[$vno] = [];
+            }
+            $vnoData[$vno][] = $item;
+        }
+
+        // Create a folder for saving the split files based on the date
+        $folder = './invoice_files/'.$date.'/';
+        if (!is_dir($folder)) {
+            mkdir($folder, 0755, true);
+        }
+
+        // Create JSON files for each `vno`
+        foreach ($vnoData as $vno => $items) {
+            $filename = $vno . '.json';
+            $filepath = $folder . $filename;
+
+            // If the file already exists, delete it
+            if (file_exists($filepath)) {
+                unlink($filepath);
+            }
+
+            // Encode the `vno` items into JSON format
+            $jsonContent = json_encode($items, JSON_PRETTY_PRINT);
+
+            // Write the JSON content to the file
+            if (file_put_contents($filepath, $jsonContent) !== false) {
+                echo "File created successfully for vno: $vno at $filepath<br>";
+            } else {
+                echo "Error writing file for vno: $vno<br>";
+            }
+        }
 	}
 }
