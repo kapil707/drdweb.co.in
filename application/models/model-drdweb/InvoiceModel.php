@@ -20,8 +20,7 @@ class InvoiceModel extends CI_Model
 		
 		$date = date("Y-m-d");
 		/***************************************** */
-		//$where = array('date'=>$date,'deliverby!='=>'','tbl_invoice.status'=>0);
-		$where = array('vno'=>'33');
+		$where = array('date'=>$date,'deliverby!='=>'','tbl_invoice.status'=>0);
 
 		$this->db->select('tbl_invoice.*, tbl_chemist.name as chemist_name, tbl_chemist.email as chemist_email, tbl_chemist.mobile as chemist_mobile');
         $this->db->from('tbl_invoice');
