@@ -303,7 +303,7 @@ class ExeInvoice extends CI_Controller
 		$inputData = file_get_contents("php://input");
 
 		// JSON data ko PHP array me convert karna
-		echo $data = json_decode($inputData, true);
+		echo $data = $inputData;
 
 
         // Folder to save the JSON file (ensure this folder exists and is writable)
