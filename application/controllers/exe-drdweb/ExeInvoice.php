@@ -224,7 +224,7 @@ class ExeInvoice extends CI_Controller
 		}
 	}
 
-	public function upload_invoice_item_delete()
+	/*public function upload_invoice_item_delete()
 	{
 		//OPTIMIZE TABLE tbl_medicine;
 
@@ -296,9 +296,9 @@ class ExeInvoice extends CI_Controller
 			// Agar data valid nahi hai to error response dena
 			echo json_encode(["return_values" => "error","status" => "error", "message" => "Invalid data"]);
 		}
-	}
+	}*/
 
-	public function save_json_file() {
+	public function upload_invoice_item_delete() {
 
 		$inputData = $inputData1 = file_get_contents("php://input");
 
