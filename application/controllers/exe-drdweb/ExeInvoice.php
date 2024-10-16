@@ -94,8 +94,6 @@ class ExeInvoice extends CI_Controller
 						// yha delete karta ha taki jo medicines delete hui ha wo sahi rahy 
 						/************************************************* */
 						$this->db->query("delete from tbl_invoice_item where vno='$vno' and date='$date'");
-
-						$this->db->query("delete from tbl_invoice_item_delete where vno='$vno' and date='$date'");
 						/************************************************* */
 					} else {
 						// Agar record exist nahi karta hai to insert karo
@@ -315,7 +313,8 @@ class ExeInvoice extends CI_Controller
 
 			//$id_array = array();
 			foreach ($data as $record) {
-				$vno 			= $record["vno"];
+				$id 			= $record["id"];
+				$vno			= $record["vno"];
 				$date			= $record["date"];
 			}
 		}
@@ -345,7 +344,7 @@ class ExeInvoice extends CI_Controller
 
 			// Write JSON data to the file
 			if (file_put_contents($filepath, $data) !== false) {
-				echo json_encode(["return_values" => $vno,"status" => "success", "message" => "Data received successfully"]);
+				echo json_encode(["return_values" => $id,"status" => "success", "message" => "Data received successfully"]);
 			} else {
 				// Agar data valid nahi hai to error response dena
 				echo json_encode(["return_values" => "error","status" => "error", "message" => "Invalid data"]);
