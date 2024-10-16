@@ -297,4 +297,52 @@ class ExeInvoice extends CI_Controller
 			echo json_encode(["return_values" => "error","status" => "error", "message" => "Invalid data"]);
 		}
 	}
+
+	public function insert_json_data_to_db() {
+        // Path to the JSON file
+        $jsonFilePath = './backup_sql/2024-04-01.json';  // Update this to your JSON file path
+        
+        // Check if file exists
+        if (!file_exists($jsonFilePath)) {
+            echo "File not found.";
+            return;
+        }
+
+        // Read the JSON file
+        $jsonData = file_get_contents($jsonFilePath);
+
+        // Decode JSON data into PHP array
+        $dataArray = json_decode($jsonData, true);  // true to convert JSON to associative array
+        
+        // Check if the JSON was properly decoded
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            echo "Failed to decode JSON: " . json_last_error_msg();
+            return;
+        }
+
+        // Load database library (optional if autoload is not enabled)
+        $this->load->database();
+
+        // Loop through the data array and insert each record into the database
+        foreach ($dataArray as $row) {
+            // Prepare data for insert (adjust keys to match your table columns)
+            $data = array(
+                'itemc'     => $row['itemc'],
+                'item_name' => $row['item_name'],
+                'vno'       => $row['vno'],
+                'date'      => $row['vdt'],         // Assuming vdt is in the correct format for your DB
+                'slcd'      => $row['slcd'],
+                'amt'       => $row['amt'],
+                'namt'      => $row['namt'],
+                'remarks'   => $row['remarks'],
+                'descp'     => $row['descp']
+            );
+
+            // Insert the data into the table (replace 'your_table' with your actual table name)
+            $this->db->insert('tbl_invoice_item_delete', $data);
+        }
+
+        // Print success message
+        echo "Data inserted successfully.";
+    }
 }
