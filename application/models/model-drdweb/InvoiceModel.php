@@ -20,7 +20,8 @@ class InvoiceModel extends CI_Model
 		
 		$date = date("Y-m-d");
 		/***************************************** */
-		$where = array('date'=>$date,'deliverby!='=>'','tbl_invoice.status'=>0);
+		//$where = array('date'=>$date,'deliverby!='=>'','tbl_invoice.status'=>0);
+		$where = array('vno'=>'33');
 
 		$this->db->select('tbl_invoice.*, tbl_chemist.name as chemist_name, tbl_chemist.email as chemist_email, tbl_chemist.mobile as chemist_mobile');
         $this->db->from('tbl_invoice');
@@ -82,6 +83,32 @@ class InvoiceModel extends CI_Model
 			
 			$invoice_item_delete = "";
 			$whatsapp_message_delete = "<br><br>All items in your order have been billed *without any shortage*";
+
+			/***************delete items***************************** */
+			// Path to your JSON file (ensure this file exists)
+			$jsonFilePath = './invoice_files/'.$date.'/'.$vno.'.json';
+			if (!file_exists($jsonFilePath)) {
+				
+			}else{
+
+				$invoice_item_delete = "<br><br>Following items have been <b>Delete</b> from your order: <br><br><table border='1' width='100%'><tr><td>Sr.No.</td><td>ITEM NAME</td><td>QTY</td></tr>";
+				$whatsapp_message_delete = "<br><br>Following items have been *Delete* from your order";
+
+				$myi = 0;
+				$jsonContent = file_get_contents($jsonFilePath);		
+				$dataArray = json_decode($jsonContent, true);
+				if (json_last_error() === JSON_ERROR_NONE) {
+					foreach ($dataArray as $item) {
+						//echo "itemc: " . $item['itemc'] . "<br>";
+						$myi++;
+						$item_name  = $item['item_name'];
+						$amt1  		= $item['amt'];
+						$invoice_item_delete.= "<tr><td>$myi</td><td>$item_name</td><td>$amt1</td></tr>";
+						$whatsapp_message_delete.="<br>*$myi*. *$item_name*<br>*Quantity : $amt1*";
+					}
+					$invoice_item_delete.= "</table>";
+				}
+			}
 			
 			/*
 			$where = array('date'=>$date,'vno'=>$vno);
@@ -119,11 +146,11 @@ class InvoiceModel extends CI_Model
 				$subject = "Invoice No. $gstvno From D.R. Distributors Pvt. Ltd.";
 				//echo $email_message;
 				$message = $email_message;
-				$user_email_id = $chemist_email;
+				$user_email_id = "kapildrd@gmail.com";//$chemist_email;
 				$email_function= "invoice";
 				$email_other_bcc= "";//"kapildrd@gmail.com";
 				$mail_server = "";
-				//$this->EmailModel->insert_email($subject,$message,$user_email_id,$email_function,$email_other_bcc,$mail_server);
+				$this->EmailModel->insert_email($subject,$message,$user_email_id,$email_function,$email_other_bcc,$mail_server);
 				
 				/************************************************/
 				//$chemist_mobile = "+919530005050"; 
