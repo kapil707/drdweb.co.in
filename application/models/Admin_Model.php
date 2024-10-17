@@ -127,11 +127,9 @@ class Admin_Model extends CI_Model
 	
 	function Manage_invoice_fun($vdt)
 	{ 
-		$db3 = $this->load->database('default3', TRUE);
-
-		$db3->select('*');
-		$db3->where('date', $vdt);	
-		return $db3->get("tbl_invoice")->result();
+		$this->db->select('*');
+		$this->db>where('date', $vdt);	
+		return $this->db->get("tbl_invoice")->result();
 	}
 	
 	function select_result($tbl='',$where='',$orderby='',$asc_desc='',$limit='')

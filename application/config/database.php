@@ -116,28 +116,6 @@ $db['default2'] = array(
 );
 
 
-$db['default3'] = array(
-	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'drdistributor_invoice',
-	'password' => 'lC2S_{0==mmh',
-	'database' => 'drdistributor_invoice_db',
-	'dbdriver' => 'mysqli',
-	'dbprefix' => '',
-	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
-	'cache_on' => FALSE,
-	'cachedir' => '',
-	'char_set' => 'utf8',
-	'dbcollat' => 'utf8_general_ci',
-	'swap_pre' => '',
-	'encrypt' => FALSE,
-	'compress' => FALSE,
-	'stricton' => FALSE,
-	'failover' => array(),
-	'save_queries' => TRUE
-);
-
 $db['db_master'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
