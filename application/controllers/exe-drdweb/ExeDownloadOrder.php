@@ -88,7 +88,7 @@ class ExeDownloadOrder extends CI_Controller
 		$date = date("Y-m-d");
 		$download_time = date("YmdHi");
 		$result = $this->db->query("SELECT	MAX(id) AS id,order_id,
-		i_code,	item_code,SUM(quantity) AS total_quantity,user_type,	chemist_id,	selesman_id,temp_rec,AVG(sale_rate) AS average_sale_rate,MAX(remarks) AS remarks, MAX(date) AS date,MAX(time) AS time FROM tbl_order WHERE order_id='$order_id' and download_time<='$download_time' GROUP BY  item_code,order_id,i_code,user_type,chemist_id,selesman_id,temp_rec")->result();
+		i_code,	item_code,SUM(quantity) AS quantity,user_type,	chemist_id,selesman_id,temp_rec,AVG(sale_rate) AS average_sale_rate,MAX(remarks) AS remarks, MAX(date) AS date,MAX(time) AS time FROM tbl_order WHERE order_id='$order_id' and download_time<='$download_time' GROUP BY  item_code,order_id,i_code,user_type,chemist_id,selesman_id,temp_rec")->result();
 		foreach ($result as $row) {
 			$total_line++;
 		}
