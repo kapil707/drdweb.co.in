@@ -89,11 +89,12 @@ class ExeDownloadOrder extends CI_Controller
 		$download_time = date("YmdHi");
 		$result = $this->db->query("SELECT	MAX(id) AS id,order_id,
 		i_code,	item_code,SUM(quantity) AS quantity,user_type,	chemist_id,selesman_id,temp_rec,sale_rate,MAX(remarks) AS remarks, MAX(date) AS date,MAX(time) AS time FROM tbl_order WHERE order_id='$order_id' and download_time<='$download_time' GROUP BY  item_code,order_id,i_code,user_type,chemist_id,selesman_id,temp_rec")->result();
+		// Count total lines
+		$total_line = count($result);
+
+		// Process each row from the result set
 		foreach ($result as $row) {
-			$total_line++;
-		}
-		foreach ($result as $row) {
-			
+			// Populate item details into the array
 			$dt = array(
 				'online_id' => $row->id,
 				'i_code' => $row->i_code,
@@ -102,27 +103,27 @@ class ExeDownloadOrder extends CI_Controller
 				'sale_rate' => $row->sale_rate,
 			);
 			$jsonArray_lines[] = $dt;
-			
-			$order_id 		= $row->order_id;
-			$user_type 		= $row->user_type;
-			$chemist_id 	= $row->chemist_id;
-			$salesman_id 	= $row->selesman_id;
-			$remarks 		= $row->remarks;
-			$date 			= $row->date;
-			$time 			= $row->time;
-			$temp_rec 		= $row->temp_rec;
+
+			// These values will represent the last processed row's details
+			$order_id = $row->order_id;
+			$user_type = $row->user_type;
+			$chemist_id = $row->chemist_id;
+			$salesman_id = $row->selesman_id;
+			$remarks = $row->remarks;
+			$date = $row->date;
+			$time = $row->time;
+			$temp_rec = $row->temp_rec;
 		}
 
-		if(!empty($result)){
-			$row1 = $this->db->query("SELECT code,slcd FROM `tbl_chemist` WHERE `altercode`='" . $chemist_id . "'")->row();
-			if (!empty($row1->code)) {
-				$acno = $row1->code;
-				$slcd = $row1->slcd;
-			}
+		// If result is not empty, proceed to fetch chemist details
+		if (!empty($result)) {
+			$row1 = $this->db->query("SELECT code, slcd FROM `tbl_chemist` WHERE `altercode`='" . $chemist_id . "'")->row();
+			$acno = !empty($row1->code) ? $row1->code : null;  // Use null if code not found
+			$slcd = !empty($row1->slcd) ? $row1->slcd : null; // Use null if slcd not found
 
-			$new_temp_rec = time();
-			//$remarks = $this->new_clean(htmlentities($remarks));
+			$new_temp_rec = time();  // New temp record timestamp
 
+			// Final order details
 			$dt = array(
 				'order_id' => $order_id,
 				'chemist_id' => $chemist_id,
@@ -139,19 +140,18 @@ class ExeDownloadOrder extends CI_Controller
 			);
 			$jsonArray[] = $dt;
 
-			$items = $jsonArray;
-			$items_other = $jsonArray_lines;
-
+			// Prepare the response structure
 			$response = array(
 				'success' => "1",
 				'message' => 'Data load successfully',
-				'items' => $items,
-				'items_other' => $items_other,
+				'items' => $jsonArray,
+				'items_other' => $jsonArray_lines,
 			);
-		}else{
+		} else {
+			// If no result found, prepare an empty response
 			$response = array(
 				'success' => "0",
-				'message' => 'Data load successfully',
+				'message' => 'No data found',
 				'items' => "",
 				'items_other' => "",
 			);
