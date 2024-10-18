@@ -87,6 +87,7 @@ class ExeDownloadOrder extends CI_Controller
 		$total_line = 0;
 		$date = date("Y-m-d");
 		$download_time = date("YmdHi");
+		echo "select temp_rec,date from tbl_order where order_id='$order_id' and download_time<='$download_time' order by id asc limit 1";
 		$q = $this->db->query("select temp_rec,date from tbl_order where order_id='$order_id' and download_time<='$download_time' order by id asc limit 1")->row(); 
 		if (!empty($q->temp_rec)) {
 			$temp_rec = $q->temp_rec;
