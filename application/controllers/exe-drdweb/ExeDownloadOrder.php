@@ -112,40 +112,49 @@ class ExeDownloadOrder extends CI_Controller
 			$temp_rec 		= $row->temp_rec;
 		}
 
-		$row1 = $this->db->query("SELECT code,slcd FROM `tbl_chemist` WHERE `altercode`='" . $chemist_id . "'")->row();
-		if (!empty($row1->code)) {
-			$acno = $row1->code;
-			$slcd = $row1->slcd;
+		if(!empty($result)){
+			$row1 = $this->db->query("SELECT code,slcd FROM `tbl_chemist` WHERE `altercode`='" . $chemist_id . "'")->row();
+			if (!empty($row1->code)) {
+				$acno = $row1->code;
+				$slcd = $row1->slcd;
+			}
+
+			$new_temp_rec = time();
+			//$remarks = $this->new_clean(htmlentities($remarks));
+
+			$dt = array(
+				'order_id' => $order_id,
+				'chemist_id' => $chemist_id,
+				'salesman_id' => $salesman_id,
+				'user_type' => $user_type,
+				'acno' => $acno,
+				'slcd' => $slcd,
+				'remarks' => $remarks,
+				'date' => $date,
+				'time' => $time,
+				'total_line' => $total_line,
+				'temp_rec' => $temp_rec,
+				'new_temp_rec' => $new_temp_rec,
+			);
+			$jsonArray[] = $dt;
+
+			$items = $jsonArray;
+			$items_other = $jsonArray_lines;
+
+			$response = array(
+				'success' => "1",
+				'message' => 'Data load successfully',
+				'items' => $items,
+				'items_other' => $items_other,
+			);
+		}else{
+			$response = array(
+				'success' => "0",
+				'message' => 'Data load successfully',
+				'items' => "",
+				'items_other' => "",
+			);
 		}
-
-		$new_temp_rec = time();
-		//$remarks = $this->new_clean(htmlentities($remarks));
-
-		$dt = array(
-			'order_id' => $order_id,
-			'chemist_id' => $chemist_id,
-			'salesman_id' => $salesman_id,
-			'user_type' => $user_type,
-			'acno' => $acno,
-			'slcd' => $slcd,
-			'remarks' => $remarks,
-			'date' => $date,
-			'time' => $time,
-			'total_line' => $total_line,
-			'temp_rec' => $temp_rec,
-			'new_temp_rec' => $new_temp_rec,
-		);
-		$jsonArray[] = $dt;
-
-		$items = $jsonArray;
-		$items_other = $jsonArray_lines;
-
-		$response = array(
-			'success' => "1",
-			'message' => 'Data load successfully',
-			'items' => $items,
-			'items_other' => $items_other,
-		);	
 		// Send JSON response
 		header('Content-Type: application/json');
 		echo json_encode($response);
