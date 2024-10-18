@@ -112,7 +112,6 @@ class ExeDownloadOrder extends CI_Controller
 			$remarks = $row->remarks;
 			$date = $row->date;
 			$time = $row->time;
-			$temp_rec = $row->temp_rec;
 		}
 
 		// If result is not empty, proceed to fetch chemist details
@@ -120,8 +119,6 @@ class ExeDownloadOrder extends CI_Controller
 			$row1 = $this->db->query("SELECT code, slcd FROM `tbl_chemist` WHERE `altercode`='" . $chemist_id . "'")->row();
 			$acno = !empty($row1->code) ? $row1->code : null;  // Use null if code not found
 			$slcd = !empty($row1->slcd) ? $row1->slcd : null; // Use null if slcd not found
-
-			$new_temp_rec = time();  // New temp record timestamp
 
 			// Final order details
 			$dt = array(
@@ -135,8 +132,6 @@ class ExeDownloadOrder extends CI_Controller
 				'date' => $date,
 				'time' => $time,
 				'total_line' => $total_line,
-				'temp_rec' => $temp_rec,
-				'new_temp_rec' => $new_temp_rec,
 			);
 			$jsonArray[] = $dt;
 
