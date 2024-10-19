@@ -50,7 +50,7 @@
 						<td>
 							<?php if($row->user_type=="chemist") { ?>
 							<?php
-							$row1 = $this->db->query("select name from tbl_acm where altercode='$row->chemist_id'")->row();
+							$row1 = $this->db->query("select name from tbl_chemist where altercode='$row->chemist_id'")->row();
 							?>
 							<?= $row1->name; ?> (<?= $row->chemist_id; ?>) - chemist
 							<?php } ?>
