@@ -281,8 +281,7 @@ class Manage_medicine_use extends CI_Controller {
 			}
 		}	*/	
 
-		$row = $this->db->query("SELECT DISTINCT(tbl_medicine_use.item_code),tbl_medicine.item_name,tbl_medicine.item_code,tbl_medicine.i_code FROM tbl_medicine_use left join tbl_medicine on tbl_medicine_use.item_code = tbl_medicine.i_code where tbl_medicine.i_code='$id'")->row();
-		$data["row"] = $row;
+		$data["row"] = $this->db->query("SELECT DISTINCT(tbl_medicine_use.item_code),tbl_medicine.item_name,tbl_medicine.item_code,tbl_medicine.i_code FROM tbl_medicine_use left join tbl_medicine on tbl_medicine_use.item_code = tbl_medicine.i_code where tbl_medicine.i_code='$id'")->row();
 
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/edit",$data);
