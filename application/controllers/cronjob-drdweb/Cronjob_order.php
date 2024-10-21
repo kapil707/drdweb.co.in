@@ -35,10 +35,10 @@ class Cronjob_order extends CI_Controller
             /****************************************************************/	
 		
             /*****************whtsapp message*****************************/	            
-            $whatsapp_email_how_to_use_dt = $this->whatsapp_email_how_to_use_dt($query);
-            $whatsapp_table_formet_dt 	= $whatsapp_email_how_to_use_dt[0];
-            $email_table_formet_dt 		= $whatsapp_email_how_to_use_dt[1];
-            $html_table_formet_dt 		= $whatsapp_email_how_to_use_dt[2];
+            $whatsapp_email_how_to_use_dt = "";
+            $whatsapp_table_formet_dt 	= "";// $whatsapp_email_how_to_use_dt[0];
+            $email_table_formet_dt 		= "";// $whatsapp_email_how_to_use_dt[1];
+            $html_table_formet_dt 		= "";// $whatsapp_email_how_to_use_dt[2];
             
             if($remarks){
                 $remarks = "<br>Remarks : ".$remarks;
@@ -150,7 +150,7 @@ class Cronjob_order extends CI_Controller
 	}
 
 
-	public function whatsapp_email_how_to_use_dt($query){
+	public function whatsapp_email_how_to_use_dt($id){
 		
 		$tbl = $tbl_w = $tbl_html = "";
 		$i = $t = 0;
