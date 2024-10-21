@@ -5,7 +5,9 @@
 		</a>
 	</div>
 	<div class="col-xs-12">
-		<?php echo $row->item_name; ?> (<?php echo $row->item_code; ?>)
+		<h2>
+			<?php echo $row->item_name; ?> (<?php echo $row->item_code; ?>)
+		</h2>
 	</div>
     <div class="col-xs-12">
 		<?php
