@@ -95,13 +95,13 @@
 			}
 			
 			if($file_type) {
-				$q = $this->db->query("select * from tbl_medicine_use_child where item_code='$item_code' and file_type='$file_type' and  file='$file'")->row();
+				$q = $this->db->query("select * from tbl_medicine_use where item_code='$item_code' and file_type='$file_type' and file='$file'")->row();
 				if(empty($q)){
-					$this->db->query("insert into tbl_medicine_use_child (item_code,file_type,file) values ('$item_code','$file_type','$file')");
+					$this->db->query("insert into tbl_medicine_use (item_code,file_type,file) values ('$item_code','$file_type','$file')");
 				}
 			}
 		}
-		$r = $this->db->query("select * from tbl_medicine_use_child where item_code='$item_code' order by file_type asc")->result();
+		$r = $this->db->query("select * from tbl_medicine_use where item_code='$item_code' order by file_type asc")->result();
 		foreach($r as $row){
 			if($row->file_type=="image"){
 				?>
