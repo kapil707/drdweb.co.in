@@ -11,7 +11,7 @@
 	</div>
     <div class="col-xs-12">
 		<?php
-		$folder_path = './manage_medicine_use';
+		$folder_path = './medicine_use/*';
 		$files = glob($folder_path);
 		
 		foreach ($files as $file) {
@@ -19,7 +19,7 @@
 		}
 		$item_code = $row->i_code;
 		$items = "";
-		$php_files = glob('./manage_medicine_use/'.$item_code.'/*');
+		$php_files = glob('./medicine_use/'.$item_code.'/*');
 		foreach($php_files as $file) {
 			$file = str_replace("./","",$file);
 			//$file = base_url().$file;
