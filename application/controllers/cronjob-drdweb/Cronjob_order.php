@@ -12,7 +12,7 @@ class Cronjob_order extends CI_Controller
         $this->db->from('tbl_cart_order');
         $this->db->join('tbl_chemist', 'tbl_cart_order.chemist_id = tbl_chemist.altercode', 'left');
 		$this->db->where($where);
-        $this->db->limit(10);
+        $this->db->limit(25);
         $query = $this->db->get()->result();
 		foreach($query as $row)
 		{
@@ -23,6 +23,8 @@ class Cronjob_order extends CI_Controller
 			$salesman_id= $row->salesman_id;
 			$total_rs 	= $row->total;
             $total_rs = round($total_rs);
+
+            $this->db->query("update tbl_cart_order set status=1 where id='$order_id'");
 
             /**************************************************** */
             $acm_altercode 	= $row->chemist_id;
@@ -63,7 +65,7 @@ class Cronjob_order extends CI_Controller
             {
                 $w_number 		= "+91".$acm_mobile;
                 $w_altercode 	= $acm_altercode;
-                $w_message 		= $txt_msg;
+                echo $w_message 		= $txt_msg;
                 $this->Message_Model->insert_whatsapp_message($w_number,$w_message,$w_altercode);
             }
             else
@@ -100,8 +102,7 @@ class Cronjob_order extends CI_Controller
             $this->Message_Model->insert_whatsapp_group_message($whatsapp_group1,$group1_message);
             /**********************************************************/
             
-            $subject = "DRD Order || ($order_id) || $acm_name ($acm_altercode)";
-            
+            $subject = "DRD Order || ($order_id) || $acm_name ($acm_altercode)";            
             $message = "";
             if($user_type == "sales"){
                 $message ="Salesman : ".$salesman_name." (".$salesman_altercode.")<br>";
