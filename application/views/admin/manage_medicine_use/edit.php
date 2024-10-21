@@ -18,9 +18,9 @@
                         </label>
                     </div>
                     <div class="col-sm-8">
-						<input type="hidden" id="i_code" name="i_code" value="<?= $i_code = $row->i_code?>"/>
+						<input type="hidden" id="item_code" name="item_code" value="<?= $item_code = $row->i_code?>"/>
 						<?php 
-						$row1 =  $this->db->query("select item_name,item_code from tbl_medicine where i_code='$i_code'")->row();
+						$row1 =  $this->db->query("select item_name,item_code from tbl_medicine where i_code='$item_code'")->row();
 						?>
 						<input type="text" class="form-control" id="item_name" name="item_name"tabindex="1" onkeydown="call_search_item()" onkeyup="call_search_item()" placeholder="Select Item" autocomplete="off" value="<?= $row1->item_name?> (<?= $row1->item_code?>)" />
 						<div class="call_search_item_result" style="position: absolute;z-index: 1;background: white;width: 300px;"></div>
@@ -79,9 +79,9 @@
         </form>
 		<br><br>
 		<?php
-		$i_code = $row->i_code;
+		$item_code = $row->item_code;
 		$items = "";
-		$php_files = glob('./uploads/manage_medicine_use/'.$i_code.'/*');
+		$php_files = glob('./uploads/manage_medicine_use/'.$item_code.'/*');
 		foreach($php_files as $file) {
 			$file = str_replace("./","",$file);
 			//$file = base_url().$file;
@@ -95,13 +95,13 @@
 			}
 			
 			if($file_type) {
-				$q = $this->db->query("select * from tbl_medicine_use_child where i_code='$i_code' and file_type='$file_type' and  file='$file'")->row();
+				$q = $this->db->query("select * from tbl_medicine_use_child where item_code='$item_code' and file_type='$file_type' and  file='$file'")->row();
 				if(empty($q)){
-					$this->db->query("insert into tbl_medicine_use_child (i_code,file_type,file) values ('$i_code','$file_type','$file')");
+					$this->db->query("insert into tbl_medicine_use_child (item_code,file_type,file) values ('$item_code','$file_type','$file')");
 				}
 			}
 		}
-		$r = $this->db->query("select * from tbl_medicine_use_child where i_code='$i_code' order by file_type asc")->result();
+		$r = $this->db->query("select * from tbl_medicine_use_child where item_code='$item_code' order by file_type asc")->result();
 		foreach($r as $row){
 			if($row->file_type=="image"){
 				?>
@@ -150,10 +150,10 @@ function call_search_item()
 		}
 	});
 }
-function additem(i_code,name)
+function additem(item_code,name)
 {
 	name = atob(name);
-	$("#i_code").val(i_code);
+	$("#item_code").val(item_code);
 	$("#item_name").val(name);
 	$(".call_search_item_result").html("");
 }

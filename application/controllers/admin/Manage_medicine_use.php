@@ -49,7 +49,7 @@ class Manage_medicine_use extends CI_Controller {
 		extract($_POST);
 		if(isset($Submit))
 		{
-			$itemid = $i_code;
+			$itemid = $item_code;
 			$message_db = "";
 			
 			$time = time();
@@ -82,7 +82,7 @@ class Manage_medicine_use extends CI_Controller {
 			'status'=>$status,
 			'date'=>$date,
 			'time'=>$time,
-			'i_code'=>$i_code,
+			'item_code'=>$item_code,
 			'description'=>$description,
 			);
 			$result = $this->Scheme_Model->insert_fun($tbl,$dt);

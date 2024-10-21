@@ -13,7 +13,7 @@
                         </label>
                     </div>
                     <div class="col-sm-8">
-						<input type="hidden" id="i_code" name="i_code" value=""/>
+						<input type="hidden" id="item_code" name="item_code" value=""/>
 						<input type="text" class="form-control" id="item_name" name="item_name"tabindex="1" onkeydown="call_search_item()" onkeyup="call_search_item()" placeholder="Select Item" autocomplete="off" />
 						<div class="call_search_item_result" style="position: absolute;z-index: 1;background: white;width: 300px;"></div>
                     </div>
@@ -85,10 +85,10 @@ function call_search_item()
 		}
 	});
 }
-function additem(i_code,name)
+function additem(item_code,name)
 {
 	name = atob(name);
-	$("#i_code").val(i_code);
+	$("#item_code").val(item_code);
 	$("#item_name").val(name);
 	$(".call_search_item_result").html("");
 }
