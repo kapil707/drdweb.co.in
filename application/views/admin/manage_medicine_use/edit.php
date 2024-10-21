@@ -5,79 +5,6 @@
 		</a>
 	</div>
     <div class="col-xs-12">
-        <!-- PAGE CONTENT BEGINS -->
-        <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
-        <?php
-        foreach ($result as $row)
-        { ?>
-            <div class="form-group">
-           		<div class="col-sm-6">
-                    <div class="col-sm-4 text-right">
-                        <label class="control-label" for="form-field-1">
-                            Select Item
-                        </label>
-                    </div>
-                    <div class="col-sm-8">
-						<input type="hidden" id="item_code" name="item_code" value="<?= $item_code?>"/>
-						<?php 
-						$row1 =  $this->db->query("select item_name,item_code from tbl_medicine where item_code='$item_code'")->row();
-						?>
-						<input type="text" class="form-control" id="item_name" name="item_name"tabindex="1" onkeydown="call_search_item()" onkeyup="call_search_item()" placeholder="Select Item" autocomplete="off" value="<?= $row1->item_name?> (<?= $row1->item_code?>)" />
-						<div class="call_search_item_result" style="position: absolute;z-index: 1;background: white;width: 300px;"></div>
-                    </div>
-                    <div class="help-inline col-sm-12 has-error">
-                        <span class="help-block reset middle">
-                            <?= form_error('itemid'); ?>
-                        </span>
-                    </div>
-                </div>
-			</div>
-			
-			<div class="form-group">
-				<div class="col-sm-6">
-                    <div class="col-sm-4 text-right">
-                        <label class="control-label" for="form-field-1">
-                            Status
-                        </label>
-                    </div>
-                    <div class="col-sm-8">
-                        <select name="status" id="status" data-placeholder="Select Status" class="form-control">
-							<option value="1" <?php if($row->status==1) { ?> selected <?php } ?>>
-								Active
-							</option>
-							<option value="0" <?php if($row->status==0) { ?> selected <?php } ?>>
-								Inactive
-							</option>
-						</select>
-                    </div>
-                    <div class="help-inline col-sm-12 has-error">
-                        <span class="help-block reset middle">  
-                            <?= form_error('status'); ?>
-                        </span>
-                    </div>
-                </div>
-			</div>
-            
-            <div class="space-4"></div>
-            <br /><br />
-            <div class="clearfix form-actions">
-                <div class="col-md-offset-3 col-md-9">
-                    <button type="submit" class="btn btn-info" name="Submit">
-                        <i class="ace-icon fa fa-check bigger-110"></i>
-                        Submit
-                    </button>
-
-                    &nbsp; &nbsp; &nbsp;
-                    <button class="btn" type="reset">
-                        <i class="ace-icon fa fa-undo bigger-110"></i>
-                        Reset
-                    </button>
-                </div>
-            </div>
-            <?php 
-			} ?>
-        </form>
-		<br><br>
 		<?php
 		$item_code = $row->item_code;
 		$items = "";
@@ -89,35 +16,22 @@
 			$ext = pathinfo($file, PATHINFO_EXTENSION);
 			if($ext=="jpg"){
 				$file_type = "image";
-			}
-			if($ext=="mp4"){
-				$file_type = "video";
-			}
-			
-			if($file_type) {
-				$q = $this->db->query("select * from tbl_medicine_use where item_code='$item_code' and file_type='$file_type' and file='$file'")->row();
-				if(empty($q)){
-					$this->db->query("insert into tbl_medicine_use (item_code,file_type,file) values ('$item_code','$file_type','$file')");
-				}
-			}
-		}
-		$r = $this->db->query("select * from tbl_medicine_use where item_code='$item_code' order by file_type asc")->result();
-		foreach($r as $row){
-			if($row->file_type=="image"){
 				?>
 				<div class="col-sm-2 medicine_use_div">
 					<img src="<?php echo base_url().$row->file; ?>" width="100%">
 				</div>
 				<?php
 			}
-			if($row->file_type=="video"){ ?>
+			if($ext=="mp4"){
+				$file_type = "video";
+				?>
 				<div class="col-sm-4 medicine_use_div1">
 					<video width="100%" height="250" controls="" poster="">
 						<source src="<?php echo base_url().$row->file; ?>" type="video/mp4">
 						Your browser does not support the video tag.
 					</video>
 				</div>
-			<?php
+				<?php
 			}
 		}
 		?>
