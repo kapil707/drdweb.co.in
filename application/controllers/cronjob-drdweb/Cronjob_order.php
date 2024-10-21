@@ -144,6 +144,7 @@ class Cronjob_order extends CI_Controller
                     'email_other_bcc'=>$email_other_bcc,
                     'date'=>$date,
                     'time'=>$time,
+                    'update_at'=>'0',
                 );
                 $this->Scheme_Model->insert_fun("tbl_email_send",$dt);				
             }
