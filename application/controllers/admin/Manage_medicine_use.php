@@ -189,7 +189,7 @@ class Manage_medicine_use extends CI_Controller {
 		
 		
 
-		$system_ip = $this->input->ip_address();
+		/*$system_ip = $this->input->ip_address();
 		extract($_POST);
 		if(isset($Submit))
 		{
@@ -279,9 +279,9 @@ class Manage_medicine_use extends CI_Controller {
 					//redirect(base_url()."admin/$page_controllers/view");
 				}
 			}
-		}		
+		}	*/	
 
-		$query = $this->db->query("select DISTINCT(item_code) from $tbl where item_code='$id' order by id desc");
+		$query = $this->db->query("select DISTINCT(item_code) from $tbl where item_code='$id'");
 		$data["result"] = $query->result();
 
 		$this->load->view("admin/header_footer/header",$data);
