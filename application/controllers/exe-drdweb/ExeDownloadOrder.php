@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class ExeDownloadOrder extends CI_Controller
 {
 	//new code bye 2024-07-12
-	public function download_order($order_id)
+	public function download_order_xx($order_id)
 	{
 		$jsonArray_lines = array();
 		$jsonArray = array();
@@ -79,7 +79,7 @@ class ExeDownloadOrder extends CI_Controller
 		}
 	}
 
-	public function download_order2($order_id)
+	public function download_order_xxx($order_id)
 	{
 		$jsonArray_lines = array();
 		$jsonArray = array();
@@ -156,7 +156,7 @@ class ExeDownloadOrder extends CI_Controller
 		echo json_encode($response);
 	}
 
-	public function download_order3($order_id)
+	public function download_order($order_id)
 	{
 		$jsonArray_lines = array();
 		$jsonArray = array();
@@ -240,6 +240,8 @@ class ExeDownloadOrder extends CI_Controller
 			$row = $this->db->query("SELECT count(id) as total1 FROM `tbl_order` WHERE `order_id`='$order_id'")->row();
 			$total = $row->total1;
 			$this->db->query("update tbl_order set gstvno='$gstvno',download_status=1,download_line='$insert_total_line' where order_id='$order_id'");
+
+			$this->db->query("update tbl_cart_order set gstvno='$gstvno',download_status=1,download_line='$insert_total_line' where order_id='$order_id'");
 			/***************only for group message***********************/
 			$group2_message = "Order No. $order_id download Line Items (Total:$total/Download:$download_total_line/Insert:$insert_total_line) - Easysol No. $gstvno inserted at : ".date("d-M-y H:i");
 			$whatsapp_group2 = $this->Scheme_Model->get_website_data("whatsapp_group2");
