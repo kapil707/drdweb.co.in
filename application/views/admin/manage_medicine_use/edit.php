@@ -6,7 +6,6 @@
 	</div>
     <div class="col-xs-12">
 		<?php
-		$item_code = $row->item_code;
 		$items = "";
 		$php_files = glob('./uploads/manage_medicine_use/'.$item_code.'/*');
 		foreach($php_files as $file) {
