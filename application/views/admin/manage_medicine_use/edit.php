@@ -79,9 +79,9 @@
         </form>
 		<br><br>
 		<?php
-		$item_code = $row->i_code;
+		$i_code = $row->i_code;
 		$items = "";
-		$php_files = glob('./uploads/manage_medicine_use/'.$item_code.'/*');
+		$php_files = glob('./uploads/manage_medicine_use/'.$i_code.'/*');
 		foreach($php_files as $file) {
 			$file = str_replace("./","",$file);
 			//$file = base_url().$file;
@@ -95,13 +95,13 @@
 			}
 			
 			if($file_type) {
-				$q = $this->db->query("select * from tbl_medicine_use_child where item_code='$item_code' and file_type='$file_type' and  file='$file'")->row();
+				$q = $this->db->query("select * from tbl_medicine_use_child where i_code='$i_code' and file_type='$file_type' and  file='$file'")->row();
 				if(empty($q)){
-					$this->db->query("insert into tbl_medicine_use_child (item_code,file_type,file) values ('$item_code','$file_type','$file')");
+					$this->db->query("insert into tbl_medicine_use_child (i_code,file_type,file) values ('$i_code','$file_type','$file')");
 				}
 			}
 		}
-		$r = $this->db->query("select * from tbl_medicine_use_child where item_code='$item_code' order by file_type asc")->result();
+		$r = $this->db->query("select * from tbl_medicine_use_child where i_code='$i_code' order by file_type asc")->result();
 		foreach($r as $row){
 			if($row->file_type=="image"){
 				?>
