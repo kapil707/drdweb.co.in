@@ -118,7 +118,6 @@ class Manage_medicine_use extends CI_Controller {
 
 	public function view()
 	{
-		error_reporting(0);
 		/******************session***********************/
 		$user_id = $this->session->userdata("user_id");
 		$user_type = $this->session->userdata("user_type");
@@ -149,7 +148,7 @@ class Manage_medicine_use extends CI_Controller {
 		$upload_resize 		= "./uploads/$page_controllers/photo/";	
 
 		
-		$query = $this->db->query("select * from $tbl order by id asc");
+		$query = $this->db->query("SELECT DISTINCT(tbl_medicine_use_child.item_code),tbl_medicine.item_name,tbl_medicine.item_code FROM tbl_medicine_use_child left join tbl_medicine on tbl_medicine_use_child.item_code = tbl_medicine.i_code");
 		$data["result"] = $query->result();
 		
 		$this->load->view("admin/header_footer/header",$data);
