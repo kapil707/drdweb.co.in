@@ -5,7 +5,7 @@ class Cronjob_order extends CI_Controller
     public function __construct(){
 		parent::__construct();
     }
-	public function start_job()
+	public function run_job()
 	{
 		$where = array('tbl_cart_order.status'=>0);
 		$this->db->select('tbl_cart_order.*, tbl_chemist.name, tbl_chemist.email, tbl_chemist.mobile');
