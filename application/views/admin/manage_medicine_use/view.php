@@ -1,11 +1,11 @@
 <div class="row">
-	<div class="col-xs-12" style="margin-bottom:5px;">
+	<!-- <div class="col-xs-12" style="margin-bottom:5px;">
     	<a href="add">
             <button type="submit" class="btn btn-info">
                 Add
             </button>
         </a>
-   	</div>
+   	</div> -->
     <div class="col-xs-12">
 		<div class="table-responsive">
 			<table class="table table-striped table-bordered table-hover dataTables-example">
@@ -45,7 +45,7 @@
 							<div class="btn-group">
 								<a href="edit/<?= $row->i_code; ?>" class="btn-white btn btn-xs">Edit
 								</a>
-								<a href="javascript:void(0)" onclick="delete_rec('<?= $row->i_code; ?>')" class="btn-white btn btn-xs">Delete</i> </a>
+								<!-- <a href="javascript:void(0)" onclick="delete_rec('<?= $row->i_code; ?>')" class="btn-white btn btn-xs">Delete</i> </a> -->
 							</div>
                         </td> 
 					</tr>

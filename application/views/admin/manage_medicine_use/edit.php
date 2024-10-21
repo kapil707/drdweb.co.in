@@ -4,8 +4,12 @@
 			<button type="button" class="btn btn-w-m btn-info"><< Back</button>
 		</a>
 	</div>
+	<div class="col-xs-12">
+		<?php echo $row->item_name; ?> (<?php echo $row->item_code; ?>)
+	</div>
     <div class="col-xs-12">
 		<?php
+		$item_code = $row->i_code;
 		$items = "";
 		$php_files = glob('./uploads/manage_medicine_use/'.$item_code.'/*');
 		foreach($php_files as $file) {

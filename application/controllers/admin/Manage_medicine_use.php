@@ -43,7 +43,7 @@ class Manage_medicine_use extends CI_Controller {
 		$upload_path 		= "./uploads/$page_controllers/photo/";
 		$upload_resize 		= "./uploads/$page_controllers/photo/";	
 
-		$system_ip = $this->input->ip_address();
+		/*$system_ip = $this->input->ip_address();
 		$user_type = $status = "";
 		extract($_POST);
 		if(isset($Submit))
@@ -109,7 +109,7 @@ class Manage_medicine_use extends CI_Controller {
 					redirect(base_url()."admin/$page_controllers/view");
 				}
 			}
-		}		
+		}	*/	
 
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/add",$data);
@@ -281,94 +281,11 @@ class Manage_medicine_use extends CI_Controller {
 			}
 		}	*/	
 
-		$data["item_code"] = $id;
+		$row = $this->db->query("SELECT DISTINCT(tbl_medicine_use.item_code),tbl_medicine.item_name,tbl_medicine.item_code,tbl_medicine.i_code FROM tbl_medicine_use left join tbl_medicine on tbl_medicine_use.item_code = tbl_medicine.i_code where tbl_medicine.i_code='$id'")->row();
+		$data["item_code"] = $row;
 
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/edit",$data);
 		$this->load->view("admin/header_footer/footer",$data);
-	}
-
-	public function delete_rec()
-	{
-		$id = $_POST["id"];
-		$Page_title = $this->Page_title;
-		$Page_tbl = $this->Page_tbl;	
-
-		$query = $this->db->query("select * from $Page_tbl where id='$id'");
-		$row1 = $query->row();
-		$name = ucfirst($row1->name);	
-
-		$result = $this->db->query("delete from $Page_tbl where id='$id'");
-		if($result)
-		{
-			$message = "$name Delete Successfully.";
-		}
-		else
-		{
-			$message = "$name Not Delete.";
-		}
-		$message = $Page_title." - ".$message;
-		$this->Admin_Model->Add_Activity_log($message);
-		echo "ok";
-	}
-	
-	public function call_search_item()
-	{		
-		error_reporting(0);
-		?><ul style="margin: 0px;padding: 0px;"><?php
-		$item_name = $this->input->post('item_name');
-		$result =  $this->db->query ("select id,i_code,item_name,item_code from tbl_medicine where item_name Like '$item_name%' or item_name Like '%$item_name' limit 50")->result();
-		foreach($result as $row)
-		{
-			$i_code 	= $row->i_code;
-			$item_name 	= ($row->item_name);
-			$item_code 	= ($row->item_code);
-			$item_name1 = base64_encode("$row->item_name ($item_code)");
-			?>
-			<li style="list-style: none;margin: 5px;"><a href="javascript:additem(<?= $i_code ?>,'<?= $item_name1 ?>')"><?= $item_name ?> (<?= $item_code ?>)</a></li>
-			<?php
-		}
-		?></ul><?php
-	}
-	
-	public function call_search_company()
-	{		
-		error_reporting(0);
-		?><ul style="margin: 0px;padding: 0px;"><?php
-		$company_full_name = $this->input->post('company_name');
-		$result =  $this->db->query ("select DISTINCT company_full_name,compcode from tbl_medicine where company_full_name Like '$company_full_name%' or company_name Like '%$company_full_name' limit 50")->result();
-		foreach($result as $row)
-		{
-			$id = $row->compcode;
-			$company_full_name = ($row->company_full_name);
-			$company_full_name1 = base64_encode($row->company_full_name);
-			$compcode = ($row->compcode);
-			?>
-			<li style="list-style: none;margin: 5px;"><a href="javascript:addcompany(<?= $id ?>,'<?= $company_full_name1 ?>')"><?= $company_full_name ?> (<?= $compcode ?>)</a></li>
-			<?php
-		}
-		?></ul><?php
-	}
-	
-	public function get_company_division()
-	{		
-		error_reporting(0);
-		$compid = $this->input->post('compid');
-		?><select name="division" id="division" class="form-control">
-			<option value="">
-				Select Company Division
-			</option>
-			<?php
-			$result =  $this->db->query ("select DISTINCT division from tbl_medicine where compcode='$compid' order by division asc")->result();
-			foreach($result as $row)
-			{
-				$division = $row->division;
-				?>
-				<option value="<?= $division ?>">
-					<?= $division ?>
-				</option>
-				<?php
-			}
-		?></select><?php
 	}
 }
