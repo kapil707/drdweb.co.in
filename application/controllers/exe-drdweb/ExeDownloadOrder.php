@@ -167,15 +167,6 @@ class ExeDownloadOrder extends CI_Controller
 		$result = $this->db->query("SELECT tbl_cart_order.*,tbl_chemist.code,tbl_chemist.slcd FROM tbl_cart_order LEFT JOIN tbl_chemist ON tbl_cart_order.chemist_id = tbl_chemist.altercode WHERE tbl_cart_order.id='$order_id' and download_time<='$download_time'")->result();
 		// Process each row from the result set
 		foreach ($result as $row) {
-			// Populate item details into the array
-			$dt = array(
-				'online_id' => $row->id,
-				'i_code' => $row->i_code,
-				'item_code' => $row->item_code,
-				'quantity' => $row->quantity,
-				'sale_rate' => $row->sale_rate,
-			);
-			$jsonArray_lines[] = $dt;
 
 			// These values will represent the last processed row's details
 			$order_id = $row->order_id;
@@ -189,6 +180,20 @@ class ExeDownloadOrder extends CI_Controller
 
 			$acno = $row->code;
 			$slcd = $row->slcd;
+			
+			/************************************************************ */
+			$result1 = $this->db->query("SELECT * from tbl_cart where order_id='$order_id'")->result();	
+			foreach ($result1 as $row1) {		
+				$dt = array(
+					'online_id' => $row1->id,
+					'i_code' => $row1->i_code,
+					'item_code' => $row1->item_code,
+					'quantity' => $row1->quantity,
+					'sale_rate' => $row1->sale_rate,
+				);
+				$jsonArray_lines[] = $dt;
+			}
+			/************************************************************ */
 		}
 
 		// If result is not empty, proceed to fetch chemist details
