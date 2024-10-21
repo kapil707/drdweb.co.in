@@ -16,6 +16,7 @@ class Cronjob_order extends CI_Controller
         $query = $this->db->get()->result();
 		foreach($query as $row)
 		{
+            $order_id   = $row->id;
 			$remarks 	= $row->remarks;
 			$user_type 	= $row->user_type;
 			$chemist_id = $row->chemist_id;
