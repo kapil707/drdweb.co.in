@@ -15,7 +15,6 @@ class Manage_medicine_use extends CI_Controller {
 	
 	public function add()
 	{
-		error_reporting(0);
 		/******************session***********************/
 		$user_id = $this->session->userdata("user_id");
 		$user_type = $this->session->userdata("user_type");
@@ -49,7 +48,6 @@ class Manage_medicine_use extends CI_Controller {
 		extract($_POST);
 		if(isset($Submit))
 		{
-			$itemid = $item_code;
 			$message_db = "";
 			
 			$time = time();
