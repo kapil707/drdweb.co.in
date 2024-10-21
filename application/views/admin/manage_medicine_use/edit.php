@@ -17,7 +17,7 @@
 				$file_type = "image";
 				?>
 				<div class="col-sm-2 medicine_use_div">
-					<img src="<?php echo base_url().$row->file; ?>" width="100%">
+					<img src="<?php echo base_url().$file ?>" width="100%">
 				</div>
 				<?php
 			}
@@ -26,7 +26,7 @@
 				?>
 				<div class="col-sm-4 medicine_use_div1">
 					<video width="100%" height="250" controls="" poster="">
-						<source src="<?php echo base_url().$row->file; ?>" type="video/mp4">
+						<source src="<?php echo base_url().$file ?>" type="video/mp4">
 						Your browser does not support the video tag.
 					</video>
 				</div>
