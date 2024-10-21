@@ -11,7 +11,7 @@
 	</div>
     <div class="col-xs-12">
 		<?php
-		$folder_path = './manage_medicine_use/*';
+		$folder_path = './manage_medicine_use';
 		$files = glob($folder_path);
 		
 		foreach ($files as $file) {
