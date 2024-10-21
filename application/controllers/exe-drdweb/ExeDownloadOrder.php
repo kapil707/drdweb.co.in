@@ -241,7 +241,7 @@ class ExeDownloadOrder extends CI_Controller
 			$total = $row->total1;
 			$this->db->query("update tbl_order set gstvno='$gstvno',download_status=1,download_line='$insert_total_line' where order_id='$order_id'");
 
-			$this->db->query("update tbl_cart_order set gstvno='$gstvno',download_status=1,download_line='$insert_total_line' where order_id='$order_id'");
+			$this->db->query("update tbl_cart_order set gstvno='$gstvno',download_status=1,download_line='$insert_total_line' where id='$order_id'");
 			/***************only for group message***********************/
 			$group2_message = "Order No. $order_id download Line Items (Total:$total/Download:$download_total_line/Insert:$insert_total_line) - Easysol No. $gstvno inserted at : ".date("d-M-y H:i");
 			$whatsapp_group2 = $this->Scheme_Model->get_website_data("whatsapp_group2");
