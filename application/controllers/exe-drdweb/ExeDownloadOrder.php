@@ -172,7 +172,7 @@ class ExeDownloadOrder extends CI_Controller
 			$order_id = $row->id;
 			$user_type = $row->user_type;
 			$chemist_id = $row->chemist_id;
-			$salesman_id = $row->selesman_id;
+			$salesman_id = $row->salesman_id;
 			$remarks = $row->remarks;
 			$date = $row->date;
 			$time = $row->time;
