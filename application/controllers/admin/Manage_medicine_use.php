@@ -14,7 +14,7 @@ class Manage_medicine_use extends CI_Controller {
 		$files = glob($folder_path);
 		
 		foreach ($files as $file) {
-			$item_code = basename($file) . "<br>";
+			$item_code = basename($file);
 
 			$row = $this->db->query("SELECT * from tbl_medicine_use where item_code='$item_code'")->row();
 			if(empty($row)){
