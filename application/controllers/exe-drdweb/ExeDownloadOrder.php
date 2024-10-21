@@ -169,7 +169,7 @@ class ExeDownloadOrder extends CI_Controller
 		foreach ($result as $row) {
 
 			// These values will represent the last processed row's details
-			$order_id = $row->order_id;
+			$order_id = $row->id;
 			$user_type = $row->user_type;
 			$chemist_id = $row->chemist_id;
 			$salesman_id = $row->selesman_id;
