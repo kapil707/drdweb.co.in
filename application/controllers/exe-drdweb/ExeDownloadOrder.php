@@ -185,7 +185,7 @@ class ExeDownloadOrder extends CI_Controller
 			$remarks = $row->remarks;
 			$date = $row->date;
 			$time = $row->time;
-			$total_line = "";//$row->total_line;
+			$total_line = (int)$row->items_total;
 
 			$acno = $row->code;
 			$slcd = $row->slcd;
