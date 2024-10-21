@@ -1,5 +1,10 @@
 <div class="row">
-    <div class="col-xs-12" style="margin-bottom:5px;">
+	<div class="col-xs-12" style="margin-bottom:5px;">
+    	<a href="add">
+            <button type="submit" class="btn btn-info">
+                Add
+            </button>
+        </a>
    	</div>
 	<!-- <form method="post">
 		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -51,11 +56,9 @@
                         </td>
 						<td class="text-right">
 							<div class="btn-group">
-								<a href="edit/<?= $row->id; ?>?pg=<?= $_GET["pg"]; ?>" class="btn-white btn btn-xs">Edit
+								<a href="edit/<?= $row->id; ?>" class="btn-white btn btn-xs">Edit
 								</a>
-								<?php if($count==0 && $count1==0) { ?>
 								<a href="javascript:void(0)" onclick="delete_rec('<?= $row->id; ?>')" class="btn-white btn btn-xs">Delete</i> </a>
-								<?php } ?>
 							</div>
                         </td> 
 					</tr>

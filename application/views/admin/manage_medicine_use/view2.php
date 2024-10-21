@@ -3,7 +3,7 @@
     	<a href="add">
             <button type="submit" class="btn btn-info">
                 Add
-            </button>            
+            </button>
         </a>
    	</div>
     <div class="col-xs-12">
