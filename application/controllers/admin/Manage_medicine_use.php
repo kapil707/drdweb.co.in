@@ -16,7 +16,7 @@ class Manage_medicine_use extends CI_Controller {
 		foreach ($files as $file) {
 			$item_code = basename($file) . "<br>";
 
-			$row = $this->db->query("SELECT * from tbl_medicine_use item_code='$item_code'")->row();
+			$row = $this->db->query("SELECT * from tbl_medicine_use where item_code='$item_code'")->row();
 			if(empty($row)){
 				$dt = array(
 					'item_code'=>$item_code,
