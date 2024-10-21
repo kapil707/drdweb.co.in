@@ -11,7 +11,7 @@ class Medicine_use extends CI_Controller {
 		}
 		$jsonArray = array();
 
-		$php_files = glob('./uploads/manage_medicine_use/'.$item_code.'/*');
+		$php_files = glob('./medicine_use/'.$item_code.'/*');
 		foreach($php_files as $file) {
 			$file = str_replace("./","",$file);
 			$file = base_url().$file;		
