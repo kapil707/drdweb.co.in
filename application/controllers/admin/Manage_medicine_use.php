@@ -279,9 +279,10 @@ class Manage_medicine_use extends CI_Controller {
 					//redirect(base_url()."admin/$page_controllers/view");
 				}
 			}
-		}
+		}		
 
-		$data["item_code"] = $id;
+		$query = $this->db->query("select DISTINCT(item_code) from $tbl where item_code='$id' order by id desc");
+		$data["result"] = $query->result();
 
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/edit",$data);
