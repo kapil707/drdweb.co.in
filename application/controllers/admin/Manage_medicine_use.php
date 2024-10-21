@@ -7,6 +7,24 @@ class Manage_medicine_use extends CI_Controller {
 	var $Page_menu  = "manage_medicine_use";
 	var $page_controllers = "manage_medicine_use";
 	var $Page_tbl   = "tbl_medicine_use";
+	public function __construct(){
+		parent::__construct();
+
+		$folder_path = './medicine_use/*';
+		$files = glob($folder_path);
+		
+		foreach ($files as $file) {
+			$item_code = basename($file) . "<br>";
+
+			$row = $this->db->query("SELECT * from tbl_medicine_use item_code='$item_code'")->row();
+			if(empty($row)){
+				$dt = array(
+					'item_code'=>$item_code,
+				);
+				$this->Scheme_Model->insert_fun("tbl_medicine_use",$dt);
+			}
+		}
+	}
 	public function index()
 	{
 		$page_controllers = $this->page_controllers;

@@ -11,12 +11,6 @@
 	</div>
     <div class="col-xs-12">
 		<?php
-		$folder_path = './medicine_use/*';
-		$files = glob($folder_path);
-		
-		foreach ($files as $file) {
-			echo basename($file) . "<br>";
-		}
 		$item_code = $row->i_code;
 		$items = "";
 		$php_files = glob('./medicine_use/'.$item_code.'/*');
