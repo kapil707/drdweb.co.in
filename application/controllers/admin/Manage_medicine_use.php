@@ -148,7 +148,7 @@ class Manage_medicine_use extends CI_Controller {
 		$upload_resize 		= "./uploads/$page_controllers/photo/";	
 
 		
-		$query = $this->db->query("SELECT DISTINCT(tbl_medicine_use_child.item_code),tbl_medicine.item_name,tbl_medicine.item_code FROM tbl_medicine_use_child left join tbl_medicine on tbl_medicine_use_child.item_code = tbl_medicine.i_code");
+		$query = $this->db->query("SELECT DISTINCT(tbl_medicine_use_child.item_code),tbl_medicine.item_name,tbl_medicine.item_code,tbl_medicine.i_code FROM tbl_medicine_use_child left join tbl_medicine on tbl_medicine_use_child.item_code = tbl_medicine.i_code");
 		$data["result"] = $query->result();
 		
 		$this->load->view("admin/header_footer/header",$data);
