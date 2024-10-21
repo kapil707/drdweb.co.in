@@ -56,9 +56,9 @@
                         </td>
 						<td class="text-right">
 							<div class="btn-group">
-								<a href="edit/<?= $row->id; ?>" class="btn-white btn btn-xs">Edit
+								<a href="edit/<?= $row->i_code; ?>" class="btn-white btn btn-xs">Edit
 								</a>
-								<a href="javascript:void(0)" onclick="delete_rec('<?= $row->id; ?>')" class="btn-white btn btn-xs">Delete</i> </a>
+								<a href="javascript:void(0)" onclick="delete_rec('<?= $row->i_code; ?>')" class="btn-white btn btn-xs">Delete</i> </a>
 							</div>
                         </td> 
 					</tr>
