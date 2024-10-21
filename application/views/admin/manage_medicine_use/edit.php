@@ -20,7 +20,7 @@
                     <div class="col-sm-8">
 						<input type="hidden" id="item_code" name="item_code" value="<?= $item_code?>"/>
 						<?php 
-						$row1 =  $this->db->query("select item_name,item_code from tbl_medicine where i_code='$item_code'")->row();
+						$row1 =  $this->db->query("select item_name,item_code from tbl_medicine where item_code='$item_code'")->row();
 						?>
 						<input type="text" class="form-control" id="item_name" name="item_name"tabindex="1" onkeydown="call_search_item()" onkeyup="call_search_item()" placeholder="Select Item" autocomplete="off" value="<?= $row1->item_name?> (<?= $row1->item_code?>)" />
 						<div class="call_search_item_result" style="position: absolute;z-index: 1;background: white;width: 300px;"></div>
