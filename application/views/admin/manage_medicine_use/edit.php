@@ -18,7 +18,7 @@
                         </label>
                     </div>
                     <div class="col-sm-8">
-						<input type="hidden" id="item_code" name="item_code" value="<?= $item_code = $row->i_code?>"/>
+						<input type="hidden" id="item_code" name="item_code" value="<?= $item_code?>"/>
 						<?php 
 						$row1 =  $this->db->query("select item_name,item_code from tbl_medicine where i_code='$item_code'")->row();
 						?>
