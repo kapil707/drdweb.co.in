@@ -5,6 +5,7 @@ class OrderModel extends CI_Model
     public function __construct(){
 		parent::__construct();
         $this->load->model("model-drdweb/EmailModel");
+        $this->load->model("model-drdweb/WhatsAppModel");
     }
     public function run_job(){
 
@@ -69,7 +70,7 @@ class OrderModel extends CI_Model
             {
                 $w_number 		= "+91".$acm_mobile;
                 $w_message = $notification_whatsapp_message;
-                $this->Message_Model->insert_whatsapp_message($w_number,$w_message,$chemist_id);
+                $this->WhatsAppModel->insert_whatsapp($w_number,$w_message,$chemist_id);
             }
             else
             {
@@ -89,7 +90,7 @@ class OrderModel extends CI_Model
                 {
                     $w_number 		= "+91".$salesman_mobile;//$c_cust_mobile;
                     $w_message 		= "New Order Placed - $order_id for $acm_name for amount $total_rs";
-                    $this->Message_Model->insert_whatsapp_message($w_number,$w_message,$chemist_id);
+                    $this->WhatsAppModel->insert_whatsapp($w_number,$w_message,$chemist_id);
                 }
             }
 
@@ -97,13 +98,13 @@ class OrderModel extends CI_Model
             $notification_whatsapp_message  = str_replace("Hello","",$notification_whatsapp_message);
             $group2_message 	= "New order recieved from ".$notification_whatsapp_message;
             $whatsapp_group2 = $this->Scheme_Model->get_website_data("whatsapp_group2");
-            $this->Message_Model->insert_whatsapp_group_message($whatsapp_group2,$group2_message);
+            $this->WhatsAppModel->insert_whatsapp_group_message($whatsapp_group2,$group2_message);
             /*************************************************************/
             
             /******************group message******************************/
             $group1_message 	= "New Order Recieved from ".$notification_whatsapp_message."Please check in Easy Sol";
             $whatsapp_group1 = $this->Scheme_Model->get_website_data("whatsapp_group1");
-            $this->Message_Model->insert_whatsapp_group_message($whatsapp_group1,$group1_message);
+            $this->WhatsAppModel->insert_whatsapp_group_message($whatsapp_group1,$group1_message);
             /**********************************************************/
             
             /**********************email************************/
