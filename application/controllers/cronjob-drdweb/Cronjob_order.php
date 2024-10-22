@@ -53,11 +53,11 @@ class Cronjob_order extends CI_Controller
             $whatsapp_footer_text = $this->Scheme_Model->get_website_data("whatsapp_footer_text");
 
             /*****************notification_whatsapp_message**************************/
-            $notification_whatsapp_message = "Hello $acm_name ($chemist_id)<br><br>".$default_place_order_text."<br><br>Order No. : $order_id<br>Total Rs. : $total_rs/- $remarks $how_to_use_for_whatsapp <br><br><b>You can check your order by clicking on </b><br><br>https://www.drdistributor.com/view_order/".$chemist_id."/".$order_id." <br><br><b>You can download your order by clicking on</b> <br><br>https://www.drdistributor.com/order_download/".$chemist_id."/".$order_id." ".$whatsapp_footer_text;
+            $notification_whatsapp_message = "Hello $acm_name ($chemist_id)<br><br>".$default_place_order_text."<br><br>Order No. : $order_id<br>Total Rs. : $total_rs/- $remarks $how_to_use_for_whatsapp <br><br><b>You can check your order by clicking on </b><br>View : https://www.drdistributor.com/view_order/".$chemist_id."/".$order_id." <br> Download : https://www.drdistributor.com/order_download/".$chemist_id."/".$order_id." ".$whatsapp_footer_text;
 
             /****************email_message******************************************/
             $email_footer_text = $this->Scheme_Model->get_website_data("email_footer_text");
-            $email_message = "Hello $acm_name ($chemist_id)<br><br>".$default_place_order_text."<br><br>Order No. : $order_id<br>Total Rs. : $total_rs/- $remarks $how_to_use_for_table <br><br><b>You can check your order by clicking on </b><br><br>https://www.drdistributor.com/view_order/".$chemist_id."/".$order_id." <br><br><b>You can download your order by clicking on</b> <br><br>https://www.drdistributor.com/order_download/".$chemist_id."/".$order_id." ".$email_footer_text."<br><br>".$how_to_use_for_html;
+            $email_message = "Hello $acm_name ($chemist_id)<br><br>".$default_place_order_text."<br><br>Order No. : $order_id<br>Total Rs. : $total_rs/- $remarks $how_to_use_for_table <br><br><b>You can check your order by clicking on </b><br>View : https://www.drdistributor.com/view_order/".$chemist_id."/".$order_id." <br> Download : https://www.drdistributor.com/order_download/".$chemist_id."/".$order_id." ".$email_footer_text."<br><br>".$how_to_use_for_html;
 			
             /****************notification***********************/
             $q_title 		= "New Order - $order_id";
@@ -159,7 +159,7 @@ class Cronjob_order extends CI_Controller
 	public function how_to_use($order_id){
 		
 		$for_html = "<br><br><h2><center>How to use this medicine</center></h2>";
-        $for_whatsapp = "<b>How to use this medicine</b><br>";
+        $for_whatsapp = "<br><br><b>How to use this medicine</b><br>";
         $for_table = "<br><br><table width='100%' border='1'><tr><th>SrNo.</th><th>Item Code</th><th>Item Name</th><th>Item quantity</th><th>Price</th><th>Total</th></tr> ";
         
         $i = 0;
