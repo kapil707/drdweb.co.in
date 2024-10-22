@@ -12,7 +12,7 @@ class WhatsAppModel extends CI_Model
 		}
 	}
 	
-	public function insert_whatsapp($mobile,$message,$altercode)
+	public function insert_whatsapp($mobile,$message,$chemist_id,$media='')
 	{
 		$date = date('Y-m-d');
 		$time = date("H:i",time());
@@ -22,8 +22,8 @@ class WhatsAppModel extends CI_Model
 		$dt = array(
 			'mobile'=>$mobile,
 			'message'=>$message,
-			'media'=>'',
-			'chemist_id'=>$altercode,
+			'chemist_id'=>$chemist_id,
+			'media'=>$media,
 			'date'=>$date,
 			'time'=>$time,
 			'timestamp'=>$timestamp,

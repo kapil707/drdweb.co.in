@@ -3,11 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class ExeWhatsApp extends CI_Controller
 {
 	public function __construct(){
-
 		parent::__construct();
-
-		// Load model
-		//$this->load->model("model-drdweb/InvoiceModel");
+		$this->load->model("model-drdweb/WhatsAppModel");
 	}
 	public function upload()
 	{
@@ -33,20 +30,10 @@ class ExeWhatsApp extends CI_Controller
 				$id = $record['id'];
 				$mobile = $record['mobile'];
 				$message = $record['message'];
-				$media = $record['media'];
 				$chemist_id = $record['chemist_id'];
-				$date = $record['date'];
-				$time = $record['time'];
+				$media = $record['media'];
 
-				$dt = array(
-					'mobile' => $mobile,
-					'message' => $message,
-					'media' => $media,
-					'chemist_id' => $chemist_id,
-					'date' => $date,
-					'time' => $time,
-				);
-				$this->Scheme_Model->insert_fun("tbl_whatsapp_message", $dt);				
+				$this->WhatsAppModel->insert_whatsapp($mobile,$message,$chemist_id,$media);
 			}
 			// Response dena
 			echo json_encode(["return_values" => $id,"status" => "success", "message" => "Data received successfully"]);
