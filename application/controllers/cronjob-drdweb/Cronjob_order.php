@@ -27,7 +27,6 @@ class Cronjob_order extends CI_Controller
             $this->db->query("update tbl_cart_order set status=1 where id='$order_id'");
 
             /**************************************************** */
-            $acm_altercode 	= $row->chemist_id;
             $acm_name		= ucwords(strtolower($row->name));
             $acm_email 		= $row->email;
             $acm_mobile 	= $row->mobile;	
@@ -50,29 +49,28 @@ class Cronjob_order extends CI_Controller
             $default_place_order_text = $this->Scheme_Model->get_website_data("default_place_order_text");
 
             $whatsapp_footer_text = $this->Scheme_Model->get_website_data("whatsapp_footer_text");
-            $txt_msg = "Hello $acm_name ($acm_altercode)<br><br>".$default_place_order_text."<br><br>Order No. : $order_id<br>Total Rs. : $total_rs/- $remarks $whatsapp_table_formet_dt <br><br><b>You can check your order by clicking on </b><br><br>https://www.drdistributor.com/view_order/".$acm_altercode."/".$order_id." <br><br><b>You can download your order by clicking on</b> <br><br>https://www.drdistributor.com/order_download/".$acm_altercode."/".$order_id." ".$whatsapp_footer_text;
+
+            $txt_msg = "Hello $acm_name ($chemist_id)<br><br>".$default_place_order_text."<br><br>Order No. : $order_id<br>Total Rs. : $total_rs/- $remarks $whatsapp_table_formet_dt <br><br><b>You can check your order by clicking on </b><br><br>https://www.drdistributor.com/view_order/".$chemist_id."/".$order_id." <br><br><b>You can download your order by clicking on</b> <br><br>https://www.drdistributor.com/order_download/".$chemist_id."/".$order_id." ".$whatsapp_footer_text;
 
             $email_footer_text = $this->Scheme_Model->get_website_data("email_footer_text");
-            $txt_msg_email = "Hello $acm_name ($acm_altercode)<br><br>".$default_place_order_text."<br><br>Order No. : $order_id<br>Total Rs. : $total_rs/- $remarks $email_table_formet_dt <br><br><b>You can check your order by clicking on </b><br><br>https://www.drdistributor.com/view_order/".$acm_altercode."/".$order_id." <br><br><b>You can download your order by clicking on</b> <br><br>https://www.drdistributor.com/order_download/".$acm_altercode."/".$order_id." ".$email_footer_text."<br><br>".$html_table_formet_dt;
+            $txt_msg_email = "Hello $acm_name ($chemist_id)<br><br>".$default_place_order_text."<br><br>Order No. : $order_id<br>Total Rs. : $total_rs/- $remarks $email_table_formet_dt <br><br><b>You can check your order by clicking on </b><br><br>https://www.drdistributor.com/view_order/".$chemist_id."/".$order_id." <br><br><b>You can download your order by clicking on</b> <br><br>https://www.drdistributor.com/order_download/".$chemist_id."/".$order_id." ".$email_footer_text."<br><br>".$html_table_formet_dt;
 			
             /************************************************/
-            $q_altercode 	= $acm_altercode;
             $q_title 		= "New Order - $order_id";
             $q_message		= $txt_msg;
-            $this->Message_Model->insert_android_notification("4",$q_title,$q_message,$q_altercode,"chemist");
+            $this->Message_Model->insert_android_notification("4",$q_title,$q_message,$chemist_id,"chemist");
             /************************************************/
             if(!empty($acm_mobile))
             {
                 $w_number 		= "+91".$acm_mobile;
-                $w_altercode 	= $acm_altercode;
-                echo $w_message 		= $txt_msg;
-                $this->Message_Model->insert_whatsapp_message($w_number,$w_message,$w_altercode);
+                echo $w_message = $txt_msg;
+                $this->Message_Model->insert_whatsapp_message($w_number,$w_message,$chemist_id);
             }
             else
             {
                 $err = "Number not Available";
                 $mobile = "";
-                $this->Message_Model->tbl_whatsapp_email_fail($mobile,$err,$acm_altercode);
+                $this->Message_Model->tbl_whatsapp_email_fail($mobile,$err,$chemist_id);
             }
             if($user_type=="sales")
             {
@@ -84,9 +82,8 @@ class Cronjob_order extends CI_Controller
                 if($salesman_mobile!="")
                 {
                     $w_number 		= "+91".$salesman_mobile;//$c_cust_mobile;
-                    $w_altercode 	= $acm_altercode;
                     $w_message 		= "New Order Placed - $order_id for $acm_name for amount $total_rs";
-                    $this->Message_Model->insert_whatsapp_message($w_number,$w_message,$w_altercode);
+                    $this->Message_Model->insert_whatsapp_message($w_number,$w_message,$chemist_id);
                 }
             }
             /***************only for group message***********************/
@@ -102,7 +99,7 @@ class Cronjob_order extends CI_Controller
             $this->Message_Model->insert_whatsapp_group_message($whatsapp_group1,$group1_message);
             /**********************************************************/
             
-            $subject = "DRD Order || ($order_id) || $acm_name ($acm_altercode)";            
+            $subject = "DRD Order || ($order_id) || $acm_name ($chemist_id)";            
             $message = "";
             if($user_type == "sales"){
                 $message ="Salesman : ".$salesman_name." (".$salesman_altercode.")<br>";
@@ -152,7 +149,6 @@ class Cronjob_order extends CI_Controller
         }
 	}
 
-
 	public function whatsapp_email_how_to_use_dt($order_id){
 		
 		$tbl = $tbl_w = $tbl_html = "";
@@ -164,26 +160,31 @@ class Cronjob_order extends CI_Controller
         foreach($result as $row)
         {
             $t++;
-            $view = "<b>How to use this medicine : </b><a href='".base_url()."medicine_use/".$row->i_code."'>View</a>";
-            $tbl_w.= $t.". ".$row->item_name."<br>".base_url()."medicine_use/".$row->i_code."<br>";
-            
-            /*$tbl_html.= "<br><br><hr><h2><center>How to use this medicine :<b>".$row->item_name."</b></center></h2><br>";
-            // for email html
-            $result2 = $this->db->query("select * from tbl_medicine_use_child where item_code='$row1->i_code' order by file_type asc")->result();
-            foreach($result2 as $row2){
-                if($row2->file_type=="image"){
-                    $tbl_html.= "<img src='".constant('img_url_site').$row2->file."' width='250px' style='object-fit: contain;height: 200px;margin-right:15px;margin-bottom:15px;border-radius:10px;'>";
+            $item_code = $row->i_code;
+
+            $view = "<b>How to use this medicine : </b><a href='https://www.drdistributor.com/medicine_use/".$item_code."'>View</a>";
+            $tbl_w.= $t.". ".$row->item_name."<br>".base_url()."medicine_use/".$item_code."<br>";
+
+            $tbl_html.= "<br><br><hr><h2><center>How to use this medicine :<b>".$row->item_name."</b></center></h2><br>";
+            $php_files = glob('./medicine_use/'.$item_code.'/*');
+            foreach($php_files as $file) {
+                $file = str_replace("./","",$file);
+                //$file = base_url().$file;
+                
+                $ext = pathinfo($file, PATHINFO_EXTENSION);
+                if($ext=="jpg"){
+                    $tbl_html.= "<img src='".base_url().$file."' width='250px' style='object-fit: contain;height: 200px;margin-right:15px;margin-bottom:15px;border-radius:10px;'>";
                 }
-                if($row2->file_type=="video"){ 
-                    $tbl_html.= "<a href='".constant('img_url_site').$row2->file."'><img src='https://www.drdistributor.com/img_v51/default-video-thumbnail.jpg' width='250px' style='object-fit: contain;height: 200px;margin-right:15px;margin-bottom:15px;border-radius:10px;'></a>";
+                if($ext=="mp4"){
+                    $tbl_html.= "<a href='".base_url().$file."'><img src='https://www.drdistributor.com/img_v51/default-video-thumbnail.jpg' width='250px' style='object-fit: contain;height: 200px;margin-right:15px;margin-bottom:15px;border-radius:10px;'></a>";
                 }
-            }*/
+            }
 		}
 			
-		//$tbl.= "<tr><td>".$i."</td><td>".$row->item_code."</td><td>".$row->item_name." ".$view."</td><td>".$row->quantity."</td><td>".$row->sale_rate."</td><td>".$row->sale_rate * $row->quantity."</td></tr>";
+		$tbl.= "<tr><td>".$i."</td><td>".$row->item_code."</td><td>".$row->item_name." ".$view."</td><td>".$row->quantity."</td><td>".$row->sale_rate."</td><td>".$row->sale_rate * $row->quantity."</td></tr>";
 		
 		
-		//$tbl = "<br><br><table width='100%' border='1'><tr><th>SrNo.</th><th>Item Code</th><th>Item Name</th><th>Item quantity</th><th>Price</th><th>Total</th></tr> ".$tbl."</table>";
+		$tbl = "<br><br><table width='100%' border='1'><tr><th>SrNo.</th><th>Item Code</th><th>Item Name</th><th>Item quantity</th><th>Price</th><th>Total</th></tr> ".$tbl."</table>";
 		if($tbl_w){
 			$tbl_w = "<br><br><b>How to use this medicine</b><br><br>".$tbl_w;
 		}
