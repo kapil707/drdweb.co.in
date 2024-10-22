@@ -179,9 +179,8 @@ class Cronjob_order extends CI_Controller
                     $tbl_html.= "<a href='".base_url().$file."'><img src='https://www.drdistributor.com/img_v51/default-video-thumbnail.jpg' width='250px' style='object-fit: contain;height: 200px;margin-right:15px;margin-bottom:15px;border-radius:10px;'></a>";
                 }
             }
-		}
-			
-		$tbl.= "<tr><td>".$i."</td><td>".$row->item_code."</td><td>".$row->item_name." ".$view."</td><td>".$row->quantity."</td><td>".$row->sale_rate."</td><td>".$row->sale_rate * $row->quantity."</td></tr>";
+            $tbl.= "<tr><td>".$i."</td><td>".$item_code."</td><td>".$row->item_name." ".$view."</td><td>".$row->quantity."</td><td>".$row->sale_rate."</td><td>".$row->sale_rate * $row->quantity."</td></tr>";
+		}		
 		
 		
 		$tbl = "<br><br><table width='100%' border='1'><tr><th>SrNo.</th><th>Item Code</th><th>Item Name</th><th>Item quantity</th><th>Price</th><th>Total</th></tr> ".$tbl."</table>";
