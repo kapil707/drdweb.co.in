@@ -203,6 +203,5 @@ class Cronjob_order extends CI_Controller
 		$return["for_html"]      = $for_html;
 		
 		return $return;
-        //print_r($x);
 	}
 }
