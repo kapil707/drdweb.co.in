@@ -36,26 +36,28 @@ class Cronjob_order extends CI_Controller
             $file_name_1 = $this->Order_Model->excel_save_order_to_server($query,$chemist_excle,"cronjob_download");
             /****************************************************************/	
 		
-            /*****************whtsapp message*****************************/	            
-            $whatsapp_email_how_to_use_dt = "";
-            $whatsapp_table_formet_dt 	= $whatsapp_email_how_to_use_dt[0];
-            $email_table_formet_dt 		= $whatsapp_email_how_to_use_dt[1];
-            $html_table_formet_dt 		= $whatsapp_email_how_to_use_dt[2];
-            
+            /*************************************************************/
+            $how_to_use              = $this->how_to_use($order_id);
+            $how_to_use_for_whatsapp = $how_to_use["for_whatsapp"];
+            $how_to_use_for_table 	 = $how_to_use["for_table"];
+            $how_to_use_for_html 	 = $how_to_use["for_html"];
+            /*************************************************************/
+
             if($remarks){
                 $remarks = "<br>Remarks : ".$remarks;
             }
 
+            /*************************************************************/
             $default_place_order_text = $this->Scheme_Model->get_website_data("default_place_order_text");
 
             $whatsapp_footer_text = $this->Scheme_Model->get_website_data("whatsapp_footer_text");
 
             /*****************notification_whatsapp_message**************************/
-            $notification_whatsapp_message = "Hello $acm_name ($chemist_id)<br><br>".$default_place_order_text."<br><br>Order No. : $order_id<br>Total Rs. : $total_rs/- $remarks $whatsapp_table_formet_dt <br><br><b>You can check your order by clicking on </b><br><br>https://www.drdistributor.com/view_order/".$chemist_id."/".$order_id." <br><br><b>You can download your order by clicking on</b> <br><br>https://www.drdistributor.com/order_download/".$chemist_id."/".$order_id." ".$whatsapp_footer_text;
+            $notification_whatsapp_message = "Hello $acm_name ($chemist_id)<br><br>".$default_place_order_text."<br><br>Order No. : $order_id<br>Total Rs. : $total_rs/- $remarks $how_to_use_for_whatsapp <br><br><b>You can check your order by clicking on </b><br><br>https://www.drdistributor.com/view_order/".$chemist_id."/".$order_id." <br><br><b>You can download your order by clicking on</b> <br><br>https://www.drdistributor.com/order_download/".$chemist_id."/".$order_id." ".$whatsapp_footer_text;
 
             /****************email_message******************************************/
             $email_footer_text = $this->Scheme_Model->get_website_data("email_footer_text");
-            $email_message = "Hello $acm_name ($chemist_id)<br><br>".$default_place_order_text."<br><br>Order No. : $order_id<br>Total Rs. : $total_rs/- $remarks $email_table_formet_dt <br><br><b>You can check your order by clicking on </b><br><br>https://www.drdistributor.com/view_order/".$chemist_id."/".$order_id." <br><br><b>You can download your order by clicking on</b> <br><br>https://www.drdistributor.com/order_download/".$chemist_id."/".$order_id." ".$email_footer_text."<br><br>".$html_table_formet_dt;
+            $email_message = "Hello $acm_name ($chemist_id)<br><br>".$default_place_order_text."<br><br>Order No. : $order_id<br>Total Rs. : $total_rs/- $remarks $how_to_use_for_table <br><br><b>You can check your order by clicking on </b><br><br>https://www.drdistributor.com/view_order/".$chemist_id."/".$order_id." <br><br><b>You can download your order by clicking on</b> <br><br>https://www.drdistributor.com/order_download/".$chemist_id."/".$order_id." ".$email_footer_text."<br><br>".$how_to_use_for_html;
 			
             /****************notification***********************/
             $q_title 		= "New Order - $order_id";
@@ -154,7 +156,7 @@ class Cronjob_order extends CI_Controller
         }
 	}
 
-	public function whatsapp_email_how_to_use_dt($order_id){
+	public function how_to_use($order_id){
 		
 		$for_html = "<br><br><h2><center>How to use this medicine</center></h2>";
         $for_whatsapp = "<b>How to use this medicine</b><br>";
