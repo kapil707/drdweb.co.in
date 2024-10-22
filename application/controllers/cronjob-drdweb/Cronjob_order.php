@@ -152,11 +152,14 @@ class Cronjob_order extends CI_Controller
 	public function whatsapp_email_how_to_use_dt($order_id){
 		
 		$for_html = "<br><br><h2><center>How to use this medicine</center></h2>";
-        $for_whatsapp = "<b>How to use this medicine</b>";
-        $for_table = "";
+        $for_whatsapp = "<b>How to use this medicine</b><br>";
+        $for_table = "<br><br><table width='100%' border='1'><tr><th>SrNo.</th><th>Item Code</th><th>Item Name</th><th>Item quantity</th><th>Price</th><th>Total</th></tr> ";
         
         $i = 0;
         $result = $this->db->query("SELECT tbl_cart.i_code,tbl_cart.item_name,tbl_cart.quantity,tbl_cart.sale_rate FROM tbl_medicine_use left join tbl_cart on tbl_cart.i_code = tbl_medicine_use.item_code where order_id='$order_id'")->result();
+        if(empty($result)){
+            $for_html = $for_whatsapp = $for_table = "";
+        }
         foreach($result as $row)
         {
             $i++;
@@ -184,12 +187,13 @@ class Cronjob_order extends CI_Controller
             }
             $for_table.= "<tr><td>".$i."</td><td>".$item_code."</td><td>".$item_name." <a href='".$url."'>View</a></td><td>".$quantity."</td><td>".$sale_rate."</td><td>".$sale_rate * $row->quantity."</td></tr>";
 		}
+        if(!empty($for_table)){		
+		    $for_table .= "</table>";
+        }
 		
-		$for_table = "<br><br><table width='100%' border='1'><tr><th>SrNo.</th><th>Item Code</th><th>Item Name</th><th>Item quantity</th><th>Price</th><th>Total</th></tr> ".$for_table."</table>";
-		
-		$x[0] = $for_whatsapp;
-		$x[1] = $for_table;
-		$x[2] = $for_html;
+		$x["for_whatsapp"]  = $for_whatsapp;
+		$x["for_table"]     = $for_table;
+		$x["for_html"]      = $for_html;
 		
 		//return $x;
         print_r($x);
