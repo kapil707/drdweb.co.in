@@ -151,21 +151,24 @@ class Cronjob_order extends CI_Controller
 
 	public function whatsapp_email_how_to_use_dt($order_id){
 		
-		$tbl = $tbl_w = $tbl_html = "";
-		$i = $t = 0;
+		$for_html = "<br><br><hr><h2><center>How to use this medicine</center></h2>";
+        $for_whatsapp = "<b>How to use this medicine</b>";
+        $for_table = "";
         
-        $i++;
-        $view = "";
+        $i = 0;
         $result = $this->db->query("SELECT tbl_cart.i_code,tbl_cart.item_name,tbl_cart.quantity,tbl_cart.sale_rate FROM tbl_medicine_use left join tbl_cart on tbl_cart.i_code = tbl_medicine_use.item_code where order_id='$order_id'")->result();
         foreach($result as $row)
         {
-            $t++;
-            $item_code = $row->i_code;
+            $i++;
+            $item_code  = $row->i_code;
+            $item_name  = $row->item_name;
+            $quantity   = $row->quantity;
+            $sale_rate  = $row->sale_rate;
+            $url = "https://www.drdistributor.com/medicine_use/".$item_code;
 
-            $view = "<b>How to use this medicine : </b><a href='https://www.drdistributor.com/medicine_use/".$item_code."'>View</a>";
-            $tbl_w.= $t.". ".$row->item_name."<br>".base_url()."medicine_use/".$item_code."<br>";
+            $for_whatsapp.= $i.". ".$item_name."<br>".$url."<br>";
 
-            $tbl_html.= "<br><br><hr><h2><center>How to use this medicine :<b>".$row->item_name."</b></center></h2><br>";
+            $for_html.= "<br><h2><center><b>".$item_name."</b></center></h2><br>";
             $php_files = glob('./medicine_use/'.$item_code.'/*');
             foreach($php_files as $file) {
                 $file = str_replace("./","",$file);
@@ -173,24 +176,20 @@ class Cronjob_order extends CI_Controller
                 
                 $ext = pathinfo($file, PATHINFO_EXTENSION);
                 if($ext=="jpg"){
-                    $tbl_html.= "<img src='".base_url().$file."' width='250px' style='object-fit: contain;height: 200px;margin-right:15px;margin-bottom:15px;border-radius:10px;'>";
+                    $for_html.= "<img src='".base_url().$file."' width='250px' style='object-fit: contain;height: 200px;margin-right:15px;margin-bottom:15px;border-radius:10px;'>";
                 }
                 if($ext=="mp4"){
-                    $tbl_html.= "<a href='".base_url().$file."'><img src='https://www.drdistributor.com/img_v51/default-video-thumbnail.jpg' width='250px' style='object-fit: contain;height: 200px;margin-right:15px;margin-bottom:15px;border-radius:10px;'></a>";
+                    $for_html.= "<a href='".base_url().$file."'><img src='https://www.drdistributor.com/img_v51/default-video-thumbnail.jpg' width='250px' style='object-fit: contain;height: 200px;margin-right:15px;margin-bottom:15px;border-radius:10px;'></a>";
                 }
             }
-            $tbl.= "<tr><td>".$i."</td><td>".$item_code."</td><td>".$row->item_name." ".$view."</td><td>".$row->quantity."</td><td>".$row->sale_rate."</td><td>".$row->sale_rate * $row->quantity."</td></tr>";
-		}		
-		
-		
-		$tbl = "<br><br><table width='100%' border='1'><tr><th>SrNo.</th><th>Item Code</th><th>Item Name</th><th>Item quantity</th><th>Price</th><th>Total</th></tr> ".$tbl."</table>";
-		if($tbl_w){
-			$tbl_w = "<br><br><b>How to use this medicine</b><br><br>".$tbl_w;
+            $for_table.= "<tr><td>".$i."</td><td>".$item_code."</td><td>".$item_name." ".$url."</td><td>".$quantity."</td><td>".$sale_rate."</td><td>".$sale_rate * $row->quantity."</td></tr>";
 		}
 		
-		$x[0] = $tbl_w;
-		$x[1] = $tbl;
-		$x[2] = $tbl_html;
+		$for_table = "<br><br><table width='100%' border='1'><tr><th>SrNo.</th><th>Item Code</th><th>Item Name</th><th>Item quantity</th><th>Price</th><th>Total</th></tr> ".$for_table."</table>";
+		
+		$x[0] = $for_whatsapp;
+		$x[1] = $for_table;
+		$x[2] = $for_html;
 		
 		//return $x;
         print_r($x);
