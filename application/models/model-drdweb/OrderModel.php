@@ -134,7 +134,6 @@ class OrderModel extends CI_Model
                 $subject = ($subject);
                 $message = ($message);
                 $email_function = "new_order";
-                $mail_server = "";
                 /************************************************/
                 $row1 = $this->db->query("select * from tbl_email where email_function='$email_function'")->row();
                 /***********************************************/
