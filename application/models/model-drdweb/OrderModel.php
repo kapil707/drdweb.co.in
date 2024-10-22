@@ -6,6 +6,7 @@ class OrderModel extends CI_Model
 		parent::__construct();
         $this->load->model("model-drdweb/EmailModel");
         $this->load->model("model-drdweb/WhatsAppModel");
+        $this->load->model("model-drdweb/NotificationModel");
     }
     public function run_job(){
 
@@ -64,7 +65,7 @@ class OrderModel extends CI_Model
             /****************notification***********************/
             $q_title 		= "New Order - $order_id";
             $q_message		= $notification_whatsapp_message;
-            $this->Message_Model->insert_android_notification("4",$q_title,$q_message,$chemist_id,"chemist");
+            $this->NotificationModel->insert_android_notification("4",$q_title,$q_message,$chemist_id,"chemist");
             /*****************whatsapp*************************/
             if(!empty($acm_mobile))
             {
