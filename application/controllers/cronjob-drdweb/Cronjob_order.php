@@ -202,7 +202,7 @@ class Cronjob_order extends CI_Controller
 		$x["for_table"]     = $for_table;
 		$x["for_html"]      = $for_html;
 		
-		//return $x;
-        print_r($x);
+		return $x;
+        //print_r($x);
 	}
 }
