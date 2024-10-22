@@ -156,7 +156,7 @@ class Cronjob_order extends CI_Controller
         
         $i++;
         $view = "";
-        $result = $this->db->query("SELECT tbl_cart.i_code,tbl_cart.item_name FROM tbl_medicine_use left join tbl_cart on tbl_cart.i_code = tbl_medicine_use.item_code where order_id='$order_id'")->result();
+        $result = $this->db->query("SELECT tbl_cart.i_code,tbl_cart.item_name,tbl_cart.quantity,tbl_cart.sale_rate FROM tbl_medicine_use left join tbl_cart on tbl_cart.i_code = tbl_medicine_use.item_code where order_id='$order_id'")->result();
         foreach($result as $row)
         {
             $t++;
