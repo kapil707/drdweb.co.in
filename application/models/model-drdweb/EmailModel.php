@@ -2,6 +2,10 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class EmailModel extends CI_Model
 {
+	public function __construct(){
+		parent::__construct();
+	}
+	
 	public function insert_email_message($user_email_id='',$subject='',$message='',$file_name1='',$file_name2='',$file_name3='',$file_name_1='',$file_name_2='',$file_name_3='',$mail_server='',$email_function='',$email_other_bcc='')
 	{
 		$date = date('Y-m-d');
