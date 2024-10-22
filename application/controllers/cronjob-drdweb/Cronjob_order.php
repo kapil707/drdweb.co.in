@@ -38,9 +38,9 @@ class Cronjob_order extends CI_Controller
 		
             /*****************whtsapp message*****************************/	            
             $whatsapp_email_how_to_use_dt = "";
-            $whatsapp_table_formet_dt 	= "";// $whatsapp_email_how_to_use_dt[0];
-            $email_table_formet_dt 		= "";// $whatsapp_email_how_to_use_dt[1];
-            $html_table_formet_dt 		= "";// $whatsapp_email_how_to_use_dt[2];
+            $whatsapp_table_formet_dt 	= $whatsapp_email_how_to_use_dt[0];
+            $email_table_formet_dt 		= $whatsapp_email_how_to_use_dt[1];
+            $html_table_formet_dt 		= $whatsapp_email_how_to_use_dt[2];
             
             if($remarks){
                 $remarks = "<br>Remarks : ".$remarks;
@@ -50,20 +50,22 @@ class Cronjob_order extends CI_Controller
 
             $whatsapp_footer_text = $this->Scheme_Model->get_website_data("whatsapp_footer_text");
 
-            $txt_msg = "Hello $acm_name ($chemist_id)<br><br>".$default_place_order_text."<br><br>Order No. : $order_id<br>Total Rs. : $total_rs/- $remarks $whatsapp_table_formet_dt <br><br><b>You can check your order by clicking on </b><br><br>https://www.drdistributor.com/view_order/".$chemist_id."/".$order_id." <br><br><b>You can download your order by clicking on</b> <br><br>https://www.drdistributor.com/order_download/".$chemist_id."/".$order_id." ".$whatsapp_footer_text;
+            /*****************notification_whatsapp_message**************************/
+            $notification_whatsapp_message = "Hello $acm_name ($chemist_id)<br><br>".$default_place_order_text."<br><br>Order No. : $order_id<br>Total Rs. : $total_rs/- $remarks $whatsapp_table_formet_dt <br><br><b>You can check your order by clicking on </b><br><br>https://www.drdistributor.com/view_order/".$chemist_id."/".$order_id." <br><br><b>You can download your order by clicking on</b> <br><br>https://www.drdistributor.com/order_download/".$chemist_id."/".$order_id." ".$whatsapp_footer_text;
 
+            /****************email_message******************************************/
             $email_footer_text = $this->Scheme_Model->get_website_data("email_footer_text");
-            $txt_msg_email = "Hello $acm_name ($chemist_id)<br><br>".$default_place_order_text."<br><br>Order No. : $order_id<br>Total Rs. : $total_rs/- $remarks $email_table_formet_dt <br><br><b>You can check your order by clicking on </b><br><br>https://www.drdistributor.com/view_order/".$chemist_id."/".$order_id." <br><br><b>You can download your order by clicking on</b> <br><br>https://www.drdistributor.com/order_download/".$chemist_id."/".$order_id." ".$email_footer_text."<br><br>".$html_table_formet_dt;
+            $email_message = "Hello $acm_name ($chemist_id)<br><br>".$default_place_order_text."<br><br>Order No. : $order_id<br>Total Rs. : $total_rs/- $remarks $email_table_formet_dt <br><br><b>You can check your order by clicking on </b><br><br>https://www.drdistributor.com/view_order/".$chemist_id."/".$order_id." <br><br><b>You can download your order by clicking on</b> <br><br>https://www.drdistributor.com/order_download/".$chemist_id."/".$order_id." ".$email_footer_text."<br><br>".$html_table_formet_dt;
 			
-            /************************************************/
+            /****************notification***********************/
             $q_title 		= "New Order - $order_id";
-            $q_message		= $txt_msg;
+            $q_message		= $notification_whatsapp_message;
             $this->Message_Model->insert_android_notification("4",$q_title,$q_message,$chemist_id,"chemist");
-            /************************************************/
+            /*****************whatsapp*************************/
             if(!empty($acm_mobile))
             {
                 $w_number 		= "+91".$acm_mobile;
-                echo $w_message = $txt_msg;
+                $w_message = $notification_whatsapp_message;
                 $this->Message_Model->insert_whatsapp_message($w_number,$w_message,$chemist_id);
             }
             else
@@ -72,6 +74,7 @@ class Cronjob_order extends CI_Controller
                 $mobile = "";
                 $this->Message_Model->tbl_whatsapp_email_fail($mobile,$err,$chemist_id);
             }
+            /*****************whatsapp or sales man*************************/
             if($user_type=="sales")
             {
                 $where = array('customer_code'=>$salesman_id);
@@ -86,25 +89,27 @@ class Cronjob_order extends CI_Controller
                     $this->Message_Model->insert_whatsapp_message($w_number,$w_message,$chemist_id);
                 }
             }
+
             /***************only for group message***********************/
-            $txt_msg1  = str_replace("Hello","",$txt_msg);
-            $group2_message 	= "New order recieved from ".$txt_msg1;
+            $notification_whatsapp_message  = str_replace("Hello","",$notification_whatsapp_message);
+            $group2_message 	= "New order recieved from ".$notification_whatsapp_message;
             $whatsapp_group2 = $this->Scheme_Model->get_website_data("whatsapp_group2");
             $this->Message_Model->insert_whatsapp_group_message($whatsapp_group2,$group2_message);
             /*************************************************************/
             
             /******************group message******************************/
-            $group1_message 	= "New Order Recieved from ".$txt_msg1."Please check in Easy Sol";
+            $group1_message 	= "New Order Recieved from ".$notification_whatsapp_message."Please check in Easy Sol";
             $whatsapp_group1 = $this->Scheme_Model->get_website_data("whatsapp_group1");
             $this->Message_Model->insert_whatsapp_group_message($whatsapp_group1,$group1_message);
             /**********************************************************/
             
+            /**********************email************************/
             $subject = "DRD Order || ($order_id) || $acm_name ($chemist_id)";            
             $message = "";
             if($user_type == "sales"){
-                $message ="Salesman : ".$salesman_name." (".$salesman_altercode.")<br>";
+                $message = "Salesman : ".$salesman_name." (".$salesman_altercode.")<br>";
             }		
-            $message.=$txt_msg_email;
+            $message.=$email_message;
             
             $user_email_id = $acm_email;
             if (filter_var($user_email_id, FILTER_VALIDATE_EMAIL)) {
@@ -113,7 +118,7 @@ class Cronjob_order extends CI_Controller
             else{			
                 $err = $user_email_id." is Wrong Email";
                 $mobile = "";
-                $this->Message_Model->tbl_whatsapp_email_fail($mobile,$err,$acm_altercode);
+                $this->Message_Model->tbl_whatsapp_email_fail($mobile,$err,$chemist_id);
                 $user_email_id = "kapildrd@gmail.com";			
             }
             if(!empty($user_email_id))
