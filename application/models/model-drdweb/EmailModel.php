@@ -5,12 +5,13 @@ class EmailModel extends CI_Model
 	public function __construct(){
 		parent::__construct();
 	}
-	
+
 	public function insert_email_message($user_email_id='',$subject='',$message='',$file_name1='',$file_name2='',$file_name3='',$file_name_1='',$file_name_2='',$file_name_3='',$mail_server='',$email_function='',$email_other_bcc='')
 	{
 		$date = date('Y-m-d');
 		$time = date("H:i",time());
 		$timestamp = time();
+		$update_at = time();
 
 		$dt = array(
 			'user_email_id'=>$user_email_id,
@@ -28,6 +29,7 @@ class EmailModel extends CI_Model
 			'date'=>$date,
 			'time'=>$time,
 			'timestamp'=>$timestamp,
+			'update_at'=>$update_at,
 			'status'=>0,
 		);
 		$this->Scheme_Model->insert_fun("tbl_email_send",$dt);
