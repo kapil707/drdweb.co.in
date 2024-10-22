@@ -161,7 +161,7 @@ class Cronjob_order extends CI_Controller
 		$for_html = "<br><br><h2><center>How to use this medicine</center></h2>";
         $for_whatsapp = "<br><b>How to use this medicine</b><br>";
         $for_table = "<br><table width='100%' border='1'><tr><th>SrNo.</th><th>Item Code</th><th>Item Name</th><th>Item quantity</th><th>Price</th><th>Total</th></tr> ";
-        
+
         $i = 0;
         $result = $this->db->query("SELECT tbl_cart.i_code,tbl_cart.item_name,tbl_cart.quantity,tbl_cart.sale_rate FROM tbl_medicine_use left join tbl_cart on tbl_cart.i_code = tbl_medicine_use.item_code where order_id='$order_id'")->result();
         if(empty($result)){
@@ -203,6 +203,5 @@ class Cronjob_order extends CI_Controller
 		$return["for_html"]      = $for_html;
 		
 		return $return;
-        //print_r($x);
 	}
 }
