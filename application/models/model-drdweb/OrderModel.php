@@ -4,6 +4,7 @@ class OrderModel extends CI_Model
 {	
     public function __construct(){
 		parent::__construct();
+        $this->load->model("model-drdweb/EmailModel");
     }
     public function run_job(){
 
@@ -139,8 +140,7 @@ class OrderModel extends CI_Model
                 $mail_server = "";
 				$file_name1 = $file_name2 = $file_name3 = "";
 				$file_name_1 = $file_name_2 = $file_name_3 = "";
-                $this->load->model("model-drdweb/EmailModel");
-				$this->EmailModel->insert_email($user_email_id,$subject,$message,$file_name1,$file_name2,$file_name3,$file_name_1,$file_name_2,$file_name_3,$mail_server,$email_function,$email_other_bcc);
+				$this->EmailModel->insert_email_message($user_email_id,$subject,$message,$file_name1,$file_name2,$file_name3,$file_name_1,$file_name_2,$file_name_3,$mail_server,$email_function,$email_other_bcc);
             }
         }
     }
