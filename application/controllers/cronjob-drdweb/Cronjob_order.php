@@ -198,11 +198,11 @@ class Cronjob_order extends CI_Controller
 		    $for_table .= "</table>";
         }
 		
-		$x["for_whatsapp"]  = $for_whatsapp;
-		$x["for_table"]     = $for_table;
-		$x["for_html"]      = $for_html;
+		$return["for_whatsapp"]  = $for_whatsapp;
+		$return["for_table"]     = $for_table;
+		$return["for_html"]      = $for_html;
 		
-		return $x;
+		return $return;
         //print_r($x);
 	}
 }
