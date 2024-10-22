@@ -151,7 +151,7 @@ class Cronjob_order extends CI_Controller
 
 	public function whatsapp_email_how_to_use_dt($order_id){
 		
-		$for_html = "<br><br><hr><h2><center>How to use this medicine</center></h2>";
+		$for_html = "<br><br><h2><center>How to use this medicine</center></h2>";
         $for_whatsapp = "<b>How to use this medicine</b>";
         $for_table = "";
         
@@ -168,7 +168,7 @@ class Cronjob_order extends CI_Controller
 
             $for_whatsapp.= $i.". ".$item_name."<br>".$url."<br>";
 
-            $for_html.= "<br><h2><center><b>".$item_name."</b></center></h2><br>";
+            $for_html.= "<hr><h2><center><b>".$item_name."</b></center></h2><br>";
             $php_files = glob('./medicine_use/'.$item_code.'/*');
             foreach($php_files as $file) {
                 $file = str_replace("./","",$file);
@@ -182,7 +182,7 @@ class Cronjob_order extends CI_Controller
                     $for_html.= "<a href='".base_url().$file."'><img src='https://www.drdistributor.com/img_v51/default-video-thumbnail.jpg' width='250px' style='object-fit: contain;height: 200px;margin-right:15px;margin-bottom:15px;border-radius:10px;'></a>";
                 }
             }
-            $for_table.= "<tr><td>".$i."</td><td>".$item_code."</td><td>".$item_name." ".$url."</td><td>".$quantity."</td><td>".$sale_rate."</td><td>".$sale_rate * $row->quantity."</td></tr>";
+            $for_table.= "<tr><td>".$i."</td><td>".$item_code."</td><td>".$item_name." <a href='".$url."'>View</a></td><td>".$quantity."</td><td>".$sale_rate."</td><td>".$sale_rate * $row->quantity."</td></tr>";
 		}
 		
 		$for_table = "<br><br><table width='100%' border='1'><tr><th>SrNo.</th><th>Item Code</th><th>Item Name</th><th>Item quantity</th><th>Price</th><th>Total</th></tr> ".$for_table."</table>";
