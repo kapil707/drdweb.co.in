@@ -182,7 +182,7 @@ class Manage_chemist extends CI_Controller {
 	public function send_email_for_password_create($code,$password)
 	{
 		$this->load->model("model/WhatsAppModel");
-		$this->load->model("model/EmailModel");
+		$this->load->model("model-drdweb/OrderModel");
 		
 		$q = $this->db->query("select * from tbl_chemist where code='$code' ")->row();
 		if(!empty($q->altercode))
@@ -220,7 +220,9 @@ class Manage_chemist extends CI_Controller {
 				$email_function= "password";
 				$email_other_bcc="kapildrd@gmail.com";
 				$mail_server = "";
-				$this->EmailModel->insert_email($subject,$message,$user_email_id,$email_function,$email_other_bcc,$mail_server);
+				$file_name1 = $file_name2 = $file_name3 = "";
+				$file_name_1 = $file_name_2 = $file_name_3 = "";
+				$this->EmailModel->insert_email($user_email_id,$subject,$message,$file_name1,$file_name2,$file_name3,$file_name_1,$file_name_2,$file_name_3,$mail_server,$email_function,$email_other_bcc);
 			}
 		}
 	}

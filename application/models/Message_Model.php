@@ -6,6 +6,7 @@ class Message_Model extends CI_Model
 	{
 		$date = date('Y-m-d');
 		$time = date("H:i",time());
+		$timestamp = time();
 
 		$dt = array(
 			'user_email_id'=>$user_email_id,
@@ -22,6 +23,7 @@ class Message_Model extends CI_Model
 			'email_other_bcc'=>$email_other_bcc,
 			'date'=>$date,
 			'time'=>$time,
+			'timestamp'=>$timestamp,
 			'status'=>0,
 		);
 		$this->Scheme_Model->insert_fun("tbl_email_send",$dt);

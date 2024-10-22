@@ -102,9 +102,7 @@ class Email_Model extends CI_Model
 			);
 			$this->Scheme_Model->insert_fun("tbl_email_send",$dt);				
 		}
-	}
-
-	
+	}	
 	
 	
 	public function test_email($email_function,$mail_server,$user_email_id)
