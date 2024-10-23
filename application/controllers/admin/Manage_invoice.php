@@ -63,7 +63,7 @@ class Manage_invoice extends CI_Controller {
 			$items = "";
 			if(!empty($from_date) && !empty($to_date)){
 
-				$result = $this->db->query("SELECT $Page_tbl.*,tbl_chemist.name FROM $Page_tbl left join $Page_tbl.chemist_id=tbl_chemist.altercode WHERE $Page_tbl.date BETWEEN '$from_date' and '$to_date' order by $Page_tbl.id desc");
+				$result = $this->db->query("SELECT $Page_tbl.*, tbl_chemist.name FROM $Page_tbl LEFT JOIN tbl_chemist ON $Page_tbl.chemist_id = tbl_chemist.altercode WHERE $Page_tbl.date BETWEEN '$from_date' AND '$to_date' ORDER BY $Page_tbl.id DESC");
 				$result = $result->result();
 
 				foreach($result as $row){
