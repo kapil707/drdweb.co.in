@@ -72,7 +72,7 @@ class Manage_notification_whatsapp extends CI_Controller {
 					$chemist_id1 	= $row1->altercode;
 					$mobile		 	= $row1->mobile;
 					$name		 	= $row1->name;
-					$message1 		= ("Hello $name ($chemist_id1),\\n\\n$message");
+					$message1 		= ("Hello $name ($chemist_id1),<br><br>$message");
 					
 					if($chemist_id1!="")
 					{
