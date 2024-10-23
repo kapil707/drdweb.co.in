@@ -82,7 +82,7 @@ class Manage_invoice extends CI_Controller {
 					$chemist_id = $row->chemist_id;
 					$user = $row->name."(".$row->chemist_id.")";
 					//$datetime = date("d-M-y",strtotime($row->date)) . " @ " .$row->time;
-					$datetime = $row->date . " @ ".$row->mtime;
+					$datetime = date("d-M-y",strtotime($row->date)) . " @ ".$row->mtime;
 
 					$dt = array(
 						'sr_no' => $sr_no,
