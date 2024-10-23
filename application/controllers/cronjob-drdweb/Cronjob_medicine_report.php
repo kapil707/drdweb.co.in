@@ -6,7 +6,7 @@ class Cronjob_medicine_report extends CI_Controller
 
 		parent::__construct();
 		// Load model
-		$this->load->model('model/WhatsAppModel');
+		$this->load->model("model-drdweb/WhatsAppModel");
 	}
 	
 	public function medicine_report()

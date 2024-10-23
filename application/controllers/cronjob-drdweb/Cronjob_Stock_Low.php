@@ -7,7 +7,7 @@ class Cronjob_Stock_Low extends CI_Controller
 		parent::__construct();
 		// Load model
 		$this->load->model('model-drdweb/StockLowModel');
-		$this->load->model('model/WhatsAppModel');
+		$this->load->model("model-drdweb/WhatsAppModel");
 	}
 	
 	public function send_stock_low_report()

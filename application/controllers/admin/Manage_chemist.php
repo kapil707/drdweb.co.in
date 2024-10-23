@@ -181,7 +181,7 @@ class Manage_chemist extends CI_Controller {
 	
 	public function send_email_for_password_create($code,$password)
 	{
-		$this->load->model("model/WhatsAppModel");
+		$this->load->model("model-drdweb/WhatsAppModel");
 		$this->load->model("model-drdweb/EmailModel");
 		
 		$q = $this->db->query("select * from tbl_chemist where code='$code' ")->row();
