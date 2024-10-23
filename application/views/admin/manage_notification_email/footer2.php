@@ -45,7 +45,7 @@ $(document).ready(function(){
 				title: 'Email / Type / Title',
 				orderable: false,
 				render: function (data, type, row) {
-					return `Email : ${row.email} <br> Type : ${row.type} Title : <br>${row.title}'`;
+					return `Email : ${row.email} <br> Type : ${row.type} Title : <br>${row.title}`;
 				}
 			},
 			{ data: 'message', title: 'Message' },
