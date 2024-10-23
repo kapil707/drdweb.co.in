@@ -238,7 +238,7 @@ class Manage_whatsapp_message extends CI_Controller {
 
 	public function view_api() {
 		
-		$i = 0;
+		$i = 1;
 		$Page_tbl = $this->Page_tbl;
 		if(!empty($_REQUEST)){
 			$from_date 	= $_REQUEST["from_date"];
