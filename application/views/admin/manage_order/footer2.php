@@ -55,7 +55,7 @@ $(document).ready(function(){
 				render: function (data, type, row) {
 					return `${row.items_total}/${row.download_line}`;
 				}
-			}
+			},
 			{ data: 'datetime', title: 'DateTime' },
 			/*{
 				data: null,
