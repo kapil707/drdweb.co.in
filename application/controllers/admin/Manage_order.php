@@ -79,6 +79,11 @@ class Manage_order extends CI_Controller {
 					$download_line = $row->download_line;
 					$datetime = date("d-M-y",strtotime($row->date)) . " @ " .$row->time;
 
+					$download_status1 = "No";
+					if($download_status==1){
+						$download_status1 = "Yes";
+					}
+
 					$dt = array(
 						'sr_no' => $sr_no,
 						'id' => $id,
@@ -90,7 +95,7 @@ class Manage_order extends CI_Controller {
 						'total'=>$total,
 						'gstvno'=>$gstvno,
 						'items_total'=>$items_total,
-						'download_status'=>$download_status,
+						'download_status'=>$download_status1,
 						'download_line'=>$download_line,
 						'datetime'=>$datetime,
 					);

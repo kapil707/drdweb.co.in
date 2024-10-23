@@ -40,12 +40,22 @@ $(document).ready(function(){
 		order: [[0, 'asc']],
 		columns: [
 			{ data: 'sr_no', title: 'Id' },
-			{ data: 'chemist_id', title: 'chemist_id' },
-			{ data: 'salesman_id', title: 'salesman_id' },
-			{ data: 'user_type', title: 'user_type' },
-			{ data: 'order_type', title: 'order_type' },
-			{ data: 'remarks', title: 'remarks' },
-			{ data: 'total', title: 'total' },
+			{ data: 'chemist_id', title: 'ChemistId' },
+			{ data: 'salesman_id', title: 'SalesmanId' },
+			{ data: 'user_type', title: 'UserType' },
+			{ data: 'order_type', title: 'OrderType' },
+			{ data: 'remarks', title: 'Remarks' },
+			{ data: 'total', title: 'Price' },
+			{ data: 'gstvno', title: 'gstvno' },
+			{ data: 'download_status', title: 'download_status' },
+			{
+				data: null,
+				title: 'Items / Download',
+				orderable: false,
+				render: function (data, type, row) {
+					return `${row.items_total}/${row.download_line}`;
+				}
+			}
 			{ data: 'datetime', title: 'DateTime' },
 			/*{
 				data: null,
