@@ -7,6 +7,10 @@ class Manage_notification_whatsapp extends CI_Controller {
 	var $Page_menu  = "manage_notification_whatsapp";
 	var $page_controllers = "manage_notification_whatsapp";
 	var $Page_tbl   = "tbl_whatsapp_message";
+	public function __construct(){
+		parent::__construct();
+		$this->load->model("model-drdweb/WhatsAppModel");
+	}
 	public function index()
 	{
 		$page_controllers = $this->page_controllers;
