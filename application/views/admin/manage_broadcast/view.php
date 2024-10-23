@@ -18,6 +18,28 @@
 		    <button type="button" class="btn btn-w-m btn-info">Broadcast Status</button>
 		</a>
    	</div>
+	<div class="col-xs-12">
+		<div class="row">
+			<div class="col-md-3">
+				<label for="date-range">Select Date Range:</label>
+				<input type="text" id="date-range" class="form-control">
+				<br>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12  pt-1 pb-5">
+				<div class="table-responsive">
+					<table class="table table-striped table-bordered table-hover" id="example-table">
+						<thead>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 	<form method="get">
 		<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 			<div class="form-group nk-datapk-ctm form-elet-mg" id="data_1">

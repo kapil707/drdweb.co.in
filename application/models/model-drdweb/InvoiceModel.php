@@ -2,11 +2,14 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class InvoiceModel extends CI_Model  
 {	
+	public function __construct() {
+        parent::__construct();
+		
+		$this->load->model("model-drdweb/WhatsAppModel");
+		$this->load->model("model/EmailModel");
+    }
 	/********************************************************/
 	public function invoice_send_email_whatsapp(){
-		
-		$this->load->model("model/WhatsAppModel");
-		$this->load->model("model/EmailModel");
 		
 		/*
 		$subject = "Drd test message";
