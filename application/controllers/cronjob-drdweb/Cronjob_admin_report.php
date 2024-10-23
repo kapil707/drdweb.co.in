@@ -30,39 +30,39 @@ class Cronjob_admin_report extends CI_Controller
 	{
 		$massage = "Report:-".date('d-M h:i A');
 		
-		$massage1 = "\\n";		
-		$massage1.= "\\n **************Main part**************";
+		$massage1 = "<br>";		
+		$massage1.= "<br>**************Main part**************";
 		
 		$result = $this->db->query("select count(id) as total from tbl_medicine")->row();
-		$massage1.= "\\nTotal Medicine :- ".$result->total;
+		$massage1.= "<br>Total Medicine :- ".$result->total;
 		
 		/*****************************************************/
 		$this->insert_meta_data("total_medicine",$result->total);
 		/*****************************************************/
 		
 		$result = $this->db->query("select count(id) as total from tbl_chemist where slcd='CL'")->row();
-		$massage1.= "\\nTotal Chemist :- ".$result->total;
+		$massage1.= "<br>Total Chemist :- ".$result->total;
 		
 		/*****************************************************/
 		$this->insert_meta_data("total_chemist",$result->total);
 		/*****************************************************/
 		
 		$result = $this->db->query("select count(id) as total from tbl_users")->row();
-		$massage1.= "\\nTotal Salesman :- ".$result->total;
+		$massage1.= "<br>Total Salesman :- ".$result->total;
 		
 		/*****************************************************/
 		$this->insert_meta_data("total_salesman",$result->total);
 		/*****************************************************/
 		
 		$result = $this->db->query("select count(id) as total from tbl_corporate")->row();
-		$massage1.= "\\nTotal Corporate :- ".$result->total;
+		$massage1.= "<br>Total Corporate :- ".$result->total;
 		
 		/*****************************************************/
 		$this->insert_meta_data("total_corporate",$result->total);
 		/*****************************************************/
 		
 		$result = $this->db->query("select count(id) as total from tbl_master where slcd='SM' and altercode!=''")->row();
-		$massage1.= "\\nTotal master :- ".$result->total;
+		$massage1.= "<br>Total master :- ".$result->total;
 		
 		/*****************************************************/
 		$this->insert_meta_data("total_master",$result->total);
@@ -85,10 +85,10 @@ class Cronjob_admin_report extends CI_Controller
 		
 		$today_total_sales = substr($today_total_sales, 0, -3);
 		
-		$massage2 = "\\n";
-		$massage2.= "\\n **************Sales part**************";
-		$massage2.= "\\nTotal Invoice :- ".$today_invoice;
-		$massage2.= "\\nTotal Sale :- ".$today_total_sales;
+		$massage2 = "<br>";
+		$massage2.= "<br> **************Sales part**************";
+		$massage2.= "<br>Total Invoice :- ".$today_invoice;
+		$massage2.= "<br>Total Sale :- ".$today_total_sales;
 		
 		/*****************************************************/
 		$this->insert_meta_data("total_invoice",$today_invoice);
@@ -110,12 +110,12 @@ class Cronjob_admin_report extends CI_Controller
 		$today_orders2_val = money_format('%!i', $today_orders2_val);
 		$today_orders2_val = substr($today_orders2_val, 0, -3);
 		
-		$massage3 = "\\n";
-		$massage3.= "\\n **************Order part**************";
-		$massage3.= "\\nPending Order :- ".$today_orders2;	
-		$massage3.= "\\nPending Order Value :- ".$today_orders2_val;
-		$massage3.= "\\n";	
-		$massage3.= "\\nToday Total Order :- ".$today_orders1;
+		$massage3 = "<br>";
+		$massage3.= "<br> **************Order part**************";
+		$massage3.= "<br>Pending Order :- ".$today_orders2;	
+		$massage3.= "<br>Pending Order Value :- ".$today_orders2_val;
+		$massage3.= "<br>";	
+		$massage3.= "<br>Today Total Order :- ".$today_orders1;
 		
 		/*****************************************************/
 		$this->insert_meta_data("pending_order",$today_orders2);
@@ -124,29 +124,29 @@ class Cronjob_admin_report extends CI_Controller
 		/*****************************************************/
 		
 		$result = $this->db->query("select count(DISTINCT chemist_id) as total from tbl_order where date='$date' ")->row();
-		$massage3.= "\\nUnique Orders :- ".$result->total;
+		$massage3.= "<br>Unique Orders :- ".$result->total;
 		
 		/*****************************************************/
 		$this->insert_meta_data("unique_orders",$result->total);
 		/*****************************************************/
 		
 		$result = $this->db->query("select count(DISTINCT order_id) as total from tbl_order where date='$date' and order_type='pc_mobile'")->row();
-		$massage3.= "\\nTotal Website Orders :- ".$result->total;
+		$massage3.= "<br>Total Website Orders :- ".$result->total;
 		
 		/*****************************************************/
 		$this->insert_meta_data("total_website_orders",$result->total);
 		/*****************************************************/
 		
 		$result = $this->db->query("select count(DISTINCT order_id) as total from tbl_order where date='$date' and order_type='android'")->row();
-		$massage3.= "\\nTotal Android Orders :- ".$result->total;
+		$massage3.= "<br>Total Android Orders :- ".$result->total;
 		
 		/*****************************************************/
 		$this->insert_meta_data("total_android_orders",$result->total);
 		/*****************************************************/
 
 
-		$massage4 = "\\n";
-		$massage4.= "\\n **************Email part**************";
+		$massage4 = "<br>";
+		$massage4.= "<br> **************Email part**************";
 		$result = $this->db->query("SELECT * FROM `tbl_email`")->result();
 		foreach ($result as $row){
 			$server_email_name = $row->server_email_name;
@@ -156,7 +156,7 @@ class Cronjob_admin_report extends CI_Controller
 
 			$row2 = $this->db->query("select count(id) as total from tbl_email_send where date='$date' and email_function='$email_function' and status=1")->row();
 
-			$massage4.= "\\nTotal ".$server_email_name." :- ".$row1->total."/".$row2->total;
+			$massage4.= "<br>Total ".$server_email_name." :- ".$row1->total."/".$row2->total;
 			
 			/*****************************************************/
 			$this->insert_meta_data($email_function,$row1->total."/".$row2->total);
@@ -177,8 +177,8 @@ class Cronjob_admin_report extends CI_Controller
 		$today_orders_price = money_format('%!i', $today_orders_price);
 		$today_orders_price = substr($today_orders_price, 0, -3);
 		
-		$massage3.= "\\nTotal Order Value :- ".$today_orders_price;
-		$massage3.= "\\nTotal Order Item :- ".$today_orders_items;
+		$massage3.= "<br>Total Order Value :- ".$today_orders_price;
+		$massage3.= "<br>Total Order Item :- ".$today_orders_items;
 		
 		/*****************************************************/
 		$this->insert_meta_data("total_order_value",$today_orders_price);

@@ -1,11 +1,11 @@
 <div class="row">
-    <div class="col-xs-12" style="margin-bottom:5px;">
+    <!-- <div class="col-xs-12" style="margin-bottom:5px;">
 		<a href="add">
             <button type="submit" class="btn btn-info">
                 Add
             </button>
         </a>
-   	</div>
+   	</div> -->
 	<div class="col-xs-12">
 		<div class="row">
 			<div class="col-md-3">
