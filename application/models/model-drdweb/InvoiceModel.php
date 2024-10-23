@@ -18,7 +18,6 @@ class InvoiceModel extends CI_Model
 		$email_function= "invoice";
 		$email_other_bcc="";
 		$mail_server = "";
-		$this->EmailModel->insert_email($subject,$message,$user_email_id,$email_function,$email_other_bcc,$mail_server);
 		*/
 		
 		$date = date("Y-m-d");
