@@ -83,7 +83,13 @@ $(document).ready(function(){
 							.css('font-size', 'inherit');
 				}
 			}
-		]
+		],
+		createdRow: function(row, data, dataIndex) {
+			// Check the condition for row coloring
+			if (data.download_error === '1') {
+				$(row).css('background-color', '#f2dede'); // Light red for 'Pending' status
+			} 
+		}
 	});
 
 	$('#date-range').daterangepicker({

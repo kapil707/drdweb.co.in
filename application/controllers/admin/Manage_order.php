@@ -84,6 +84,11 @@ class Manage_order extends CI_Controller {
 						$download_status1 = "Yes";
 					}
 
+					$download_error = "0";
+					if($items_total!=$download_line){
+						$download_error = "1";
+					}
+
 					$dt = array(
 						'sr_no' => $sr_no,
 						'id' => $id,
@@ -97,6 +102,7 @@ class Manage_order extends CI_Controller {
 						'items_total'=>$items_total,
 						'download_status'=>$download_status1,
 						'download_line'=>$download_line,
+						'download_error'=>$download_error,
 						'datetime'=>$datetime,
 					);
 					$jsonArray[] = $dt;
