@@ -41,7 +41,7 @@ $(document).ready(function(){
 		columns: [
 			{ data: 'sr_no', title: 'Id' },
 			{ data: 'email', title: 'Email' },
-			{ data: 'type', title: 'type' },
+			{ data: 'type', title: 'Type' },
 			{ data: 'title', title: 'Title' },
 			{ data: 'message', title: 'Message' },
 			{ data: 'datetime', title: 'DateTime' },
