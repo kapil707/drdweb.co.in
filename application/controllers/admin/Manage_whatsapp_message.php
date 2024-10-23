@@ -238,6 +238,7 @@ class Manage_whatsapp_message extends CI_Controller {
 
 	public function view_api() {
 		
+		$i = 0;
 		$Page_tbl = $this->Page_tbl;
 		if(!empty($_REQUEST)){
 			$from_date 	= $_REQUEST["from_date"];
@@ -253,11 +254,15 @@ class Manage_whatsapp_message extends CI_Controller {
 
 				foreach($result as $row){
 
+					$i = $i++;
+					$id = $row->id;
 					$mobile = $row->mobile;
 					$message = $row->message;
 					$datetime = date("d-M-y",strtotime($row->date)) . " @ " .$row->time;
 
 					$dt = array(
+						'i' => $i,
+						'id' => $id,
 						'mobile' => $mobile,
 						'message'=>$message,
 						'datetime'=>$datetime,

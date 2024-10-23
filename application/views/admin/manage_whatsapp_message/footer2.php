@@ -39,6 +39,7 @@ $(document).ready(function(){
 		},
 		order: [[1, 'desc']],
 		columns: [
+			{ data: 'i', title: 'Id' },
 			{ data: 'mobile', title: 'Mobile' },
 			{ data: 'message', title: 'Message' },
 			{ data: 'datetime', title: 'DateTime' }
