@@ -37,7 +37,7 @@ $(document).ready(function(){
 			},
 			dataSrc: 'items'
 		},
-		order: [[1, 'desc']],
+		order: [[0, 'desc']],
 		columns: [
 			{ data: 'sr_no', title: 'Id' },
 			{ data: 'mobile', title: 'Mobile' },
