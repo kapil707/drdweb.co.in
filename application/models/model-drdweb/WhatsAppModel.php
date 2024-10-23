@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class WhatsAppModel extends CI_Model
 {
 	public function __construct() {
-        parent::__construct();
+        parent::__construct(); 
     }
 	public function tbl_whatsapp_email_fail($number,$message,$altercode)
 	{
