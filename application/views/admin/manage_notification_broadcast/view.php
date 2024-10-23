@@ -6,15 +6,15 @@
             </button>
         </a>
 		
-		<a href="<?php echo base_url(); ?>admin/manage_broadcast/add2/broadcast_title">
+		<a href="<?php echo base_url(); ?>admin/manage_notification_broadcast/add2/broadcast_title">
 		    <button type="button" class="btn btn-w-m btn-info">Broadcast Title</button>
 		</a>
 		
-		<a href="<?php echo base_url(); ?>admin/manage_broadcast/add2/broadcast_message">
+		<a href="<?php echo base_url(); ?>admin/manage_notification_broadcast/add2/broadcast_message">
 		    <button type="button" class="btn btn-w-m btn-info">Broadcast Message</button>
 		</a>
 		
-		<a href="<?php echo base_url(); ?>admin/manage_broadcast/add2/broadcast_status">
+		<a href="<?php echo base_url(); ?>admin/manage_notification_broadcast/add2/broadcast_status">
 		    <button type="button" class="btn btn-w-m btn-info">Broadcast Status</button>
 		</a>
    	</div>
