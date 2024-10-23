@@ -51,12 +51,21 @@ $(document).ready(function(){
 			{ data: 'amt', title: 'amt' },
 			{ data: 'taxamt', title: 'taxamt' },
 			{ data: 'user', title: 'user' },
-			{ data: 'datetime', title: 'DateTime' },{
+			{ data: 'datetime', title: 'DateTime' },
+			{
+				data: null,
+				title: 'View',
+				orderable: false,
+				render: function (data, type, row) {
+					return `<a href="https://www.drdistributor.com/invoice/${row.chemist_id}/${row.gstvno}" class="btn-white btn btn-xs">View</a>`;
+				}
+			},
+			{
 				data: null,
 				title: 'Download',
 				orderable: false,
 				render: function (data, type, row) {
-					return `<a href="https://www.drdistributor.com/order_download/${row.chemist_id}/${row.id}" class="btn-white btn btn-xs">Download</a>`;
+					return `<a href="https://www.drdistributor.com/invoice_download/${row.chemist_id}/${row.gstvno}" class="btn-white btn btn-xs">Download</a>`;
 				}
 			}
 		],
