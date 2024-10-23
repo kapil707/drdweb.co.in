@@ -320,7 +320,7 @@ class Manage_broadcast extends CI_Controller {
 
 					$sr_no = $i++;
 					$id = $row->id;
-					$user = $row->name."(".$row->altercode.")";
+					$user = $row->name."(".$row->chemist_id.")";
 					$title = $row->title;
 					$message = $row->message;
 					$datetime = date("d-M-y",strtotime($row->date)) . " @ " .$row->time;
