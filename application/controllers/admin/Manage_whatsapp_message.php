@@ -222,8 +222,6 @@ class Manage_whatsapp_message extends CI_Controller {
 		}
 		$data["vdt1"] = $vdt;
 
-		$this->load->library('pagination');
-
 		$result = $this->db->query("select * from $tbl where `date`= '$vdt' order by id desc");
   		$data["result"] = $result->result();
 
@@ -231,27 +229,6 @@ class Manage_whatsapp_message extends CI_Controller {
 		$this->load->view("admin/$Page_view/view",$data);
 		$this->load->view("admin/header_footer/footer",$data);
 		$this->load->view("admin/$Page_view/footer2",$data);
-	}
-
-	public function call_search_acm()
-	{		
-		error_reporting(0);
-		?><ul style="margin: 0px;padding: 0px;">
-		<li style="list-style: none;margin: 5px;"><a href="javascript:addacm('All','<?php echo base64_encode('All') ?>')">All</a></li>
-		<?php
-		$acm_name = $this->input->post('acm_name');
-		$result =  $this->db->query ("select * from tbl_chemist where name Like '$acm_name%' or name Like '%$acm_name' or altercode='$acm_name' limit 50")->result();
-		foreach($result as $row)
-		{
-			$id = $row->altercode;
-			$name = ($row->name);
-			$name1 = base64_encode($row->name);
-			$altercode = ($row->altercode);
-			?>
-			<li style="list-style: none;margin: 5px;"><a href="javascript:addacm('<?= $id ?>','<?= $name1 ?>')"><?= $name ?> (<?= $altercode ?>)</a></li>
-			<?php
-		}
-		?></ul><?php
 	}
 
 	public function delete_rec()
@@ -271,5 +248,53 @@ class Manage_whatsapp_message extends CI_Controller {
 		$message = $Page_title." - ".$message;
 		$this->Admin_Model->Add_Activity_log($message);
 		echo "ok";
+	}
+
+	public function view_api() {
+		
+		$Page_tbl = $this->Page_tbl;
+		if(!empty($_REQUEST)){
+			$from_date 	= $_REQUEST["from_date"];
+			$to_date	= $_REQUEST['to_date'];
+
+			$jsonArray = array();
+
+			$items = "";
+			if(!empty($from_date) && !empty($to_date)){
+
+				$result = $this->db->query("SELECT * FROM `Page_tbl` WHERE `date` BETWEEN '$from_date' and '$to_date' order by id desc");
+				$result = $result->result();
+
+				foreach($result as $row){
+
+					$mobile = $row->mobile;
+					$message = $row->message;
+					$datetime = date("d-M-y",strtotime($row->date)) . " @ " .$row->time;
+
+					$dt = array(
+						'mobile' => $mobile,
+						'message'=>$message,
+						'datetime'=>$datetime,
+					);
+					$jsonArray[] = $dt;
+				}
+			}
+
+			$items = $jsonArray;
+			$response = array(
+				'success' => "1",
+				'message' => 'Data load successfully',
+				'items' => $items,
+			);
+		}else{
+			$response = array(
+				'success' => "0",
+				'message' => '502 error',
+			);
+		}
+
+        // Send JSON response
+        header('Content-Type: application/json');
+        echo json_encode($response);
 	}
 }

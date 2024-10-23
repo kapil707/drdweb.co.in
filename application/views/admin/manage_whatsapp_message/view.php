@@ -41,7 +41,7 @@
                 </thead>
 				<tbody>
                 <?php
-				$i=1;
+				/*$i=1;
                 foreach ($result as $row)
                 {
 					?>
@@ -64,7 +64,7 @@
 						</td>
                     </tr>
                     <?php
-                    }
+                    }*/
                     ?>
                 </tbody>
             </table>
