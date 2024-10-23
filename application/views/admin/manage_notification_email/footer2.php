@@ -47,7 +47,7 @@ $(document).ready(function(){
 				render: function (data, type, row) {
 					return `'${row.email}'<br>'${row.type}'<br>'${row.title}'`;
 				}
-			}
+			},
 			{ data: 'message', title: 'Message' },
 			{ data: 'datetime', title: 'DateTime' },
 			{
