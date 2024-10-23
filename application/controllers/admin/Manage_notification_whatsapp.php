@@ -98,7 +98,7 @@ class Manage_notification_whatsapp extends CI_Controller {
 				}
 				else
 				{
-					$message_db = "($property_title) - Not Add.";
+					$message_db = "Not Add.";
 					$message = "Not Add.";
 					$this->session->set_flashdata("message_type","error");
 				}
