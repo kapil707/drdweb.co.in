@@ -40,7 +40,8 @@ $(document).ready(function(){
 		order: [[0, 'asc']],
 		columns: [
 			{ data: 'sr_no', title: 'Id' },
-			{ data: 'mobile', title: 'Mobile' },
+			{ data: 'user', title: 'User' },
+			{ data: 'title', title: 'Title' },
 			{ data: 'message', title: 'Message' },
 			{ data: 'datetime', title: 'DateTime' },
 			{
