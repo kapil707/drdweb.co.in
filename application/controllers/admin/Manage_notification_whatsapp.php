@@ -92,7 +92,7 @@ class Manage_notification_whatsapp extends CI_Controller {
 			
 				if($result)
 				{
-					$message_db = "($property_title) - Add Successfully.";
+					$message_db = "Add Successfully.";
 					$message = "Add Successfully.";
 					$this->session->set_flashdata("message_type","success");
 				}
