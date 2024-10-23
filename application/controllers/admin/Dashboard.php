@@ -184,7 +184,7 @@ class Dashboard extends CI_Controller {
 		$data["today_android_orders_items"]	= $today_android_orders_items;
 		$data["today_excel_orders_items"]	= $today_excel_orders_items;
 
-		$data["get_online_users"] = $this->Admin_new_Model->get_online_users();
+		$data["get_online_users"] = 0;
 
 		$this->load->view('admin/header_footer/header_dashbord',$data);
 		if($user_type=="Super_Admin" || $user_type=="Admin"){
