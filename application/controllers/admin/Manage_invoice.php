@@ -6,8 +6,7 @@ class Manage_invoice extends CI_Controller {
 	var $Page_view  = "manage_invoice";
 	var $Page_menu  = "manage_invoice";
 	var $page_controllers = "manage_invoice";
-	var $Page_tbl   = "";
-	
+	var $Page_tbl   = "tbl_invoice";	
 	public function __construct()
     {
         // Call the Model constructor
@@ -41,27 +40,85 @@ class Manage_invoice extends CI_Controller {
 		$data['Page_menu'] = $Page_menu;	
 		$this->breadcrumbs->push("Admin","admin/");
 		$this->breadcrumbs->push("$Page_title","admin/$page_controllers/");
-		$this->breadcrumbs->push("View","admin/$page_controllers/view");		
-		$tbl = $Page_tbl;	
-		$data['url_path'] = base_url()."uploads/$page_controllers/photo/";
-		$upload_path = "./uploads/$page_controllers/photo/";
-		$vdt = date("Y-m-d");
-		if(isset($_POST["submit"]))
-		{
-			$vdt = $_POST["vdt"];
-			$vdt = date("Y-m-d",strtotime($vdt));
-		}
-		$data["vdt1"] = $vdt;
+		$this->breadcrumbs->push("View","admin/$page_controllers/view");
 		
-		$where = array('date'=>$vdt);
-		$result = $this->Scheme_Model->select_all_result("tbl_invoice",$where);
-		//$result = $result->result();
-		$data["result"] = $result;	
-		
+		$tbl = $Page_tbl;
+
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/view",$data);
 		$this->load->view("admin/header_footer/footer",$data);
 		$this->load->view("admin/$Page_view/footer2",$data);
+	}
+
+	public function view_api() {
 		
+		$i = 1;
+		$Page_tbl = $this->Page_tbl;
+		if(!empty($_REQUEST)){
+			$from_date 	= $_REQUEST["from_date"];
+			$to_date	= $_REQUEST['to_date'];
+
+			$jsonArray = array();
+
+			$items = "";
+			if(!empty($from_date) && !empty($to_date)){
+
+				$result = $this->db->query("SELECT $Page_tbl.*,tbl_chemist.name FROM $Page_tbl left join $Page_tbl.chemist_id=tbl_chemist.altercode WHERE $Page_tbl.date BETWEEN '$from_date' and '$to_date' order by $Page_tbl.id desc");
+				$result = $result->result();
+
+				foreach($result as $row){
+
+					$sr_no = $i++;
+					$id = $row->id;
+					$dispatchtime = $row->dispatchtime;
+					$vno = $row->vno;
+					$tagno = $row->tagno;
+					$gstvno = $row->gstvno;
+					$pickedby = $row->pickedby;
+					$checkedby = $row->checkedby;
+					$deliverby = $row->deliverby;
+					$amt = $row->amt;
+					$taxamt = $row->taxamt;
+					$chemist_id = $row->chemist_id;
+					$user = $row->name."(".$row->chemist_id.")";
+					//$datetime = date("d-M-y",strtotime($row->date)) . " @ " .$row->time;
+					$datetime = $row->date . " @ ".$row->mtime;
+
+					$dt = array(
+						'sr_no' => $sr_no,
+						'id' => $id,
+						'dispatchtime' => $dispatchtime,
+						'vno'=>$vno,
+						'tagno'=>$tagno,
+						'gstvno'=>$gstvno,
+						'pickedby'=>$pickedby,
+						'checkedby'=>$checkedby,
+						'deliverby'=>$deliverby,
+						'amt'=>$amt,
+						'taxamt'=>$taxamt,
+						'chemist_id'=>$chemist_id,
+						'user'=>$user,
+						'datetime'=>$datetime,
+					);
+					$jsonArray[] = $dt;
+				}
+			}
+
+			$items = $jsonArray;
+			$response = array(
+				'success' => "1",
+				'message' => 'Data load successfully',
+				'items' => $items,
+			);
+		}else{
+			$response = array(
+				'success' => "0",
+				'message' => '502 error',
+			);
+		}
+
+        // Send JSON response
+        header('Content-Type: application/json');
+        echo json_encode($response);
 	}
 }
