@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Manage_whatsapp_group_message extends CI_Controller {
-	var $Page_title = "Manage Whatsapp Group Message";	
-	var $Page_name  = "manage_whatsapp_group_message";
-	var $Page_view  = "manage_whatsapp_group_message";
-	var $Page_menu  = "manage_whatsapp_group_message";
-	var $page_controllers = "manage_whatsapp_group_message";
+class Manage_notification_whatsapp_group extends CI_Controller {
+	var $Page_title = "Manage Notification Whatsapp Group";	
+	var $Page_name  = "manage_notification_whatsapp_group";
+	var $Page_view  = "manage_notification_whatsapp_group";
+	var $Page_menu  = "manage_notification_whatsapp_group";
+	var $page_controllers = "manage_notification_whatsapp_group";
 	var $Page_tbl   = "tbl_whatsapp_group_message";
 	public function index()
 	{
