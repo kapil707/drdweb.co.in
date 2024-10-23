@@ -79,7 +79,7 @@ class Manage_android_info extends CI_Controller {
 
 		$this->load->library('pagination');
 
-		$query = $this->db->query("select * from $tbl order by time desc")->result();
+		$query = $this->db->query("select * from $tbl order by time desc");
   		$data["result"] = $query->result();
 
 		$this->load->view("admin/header_footer/header",$data);
