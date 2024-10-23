@@ -6,7 +6,7 @@ class Cronjob_admin_report extends CI_Controller
 
 		parent::__construct();
 		// Load model
-		$this->load->model('model/WhatsAppModel');
+		$this->load->model("model-drdweb/WhatsAppModel");
 		$this->load->model('model/NotificationModel');
 	}
 	
