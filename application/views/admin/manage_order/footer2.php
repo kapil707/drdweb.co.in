@@ -51,7 +51,7 @@ $(document).ready(function(){
 			{
 				data: null,
 				title: 'Items / Download',
-				orderable: false,
+				orderable: true,
 				render: function (data, type, row) {
 					return `${row.items_total}/${row.download_line}`;
 				}
