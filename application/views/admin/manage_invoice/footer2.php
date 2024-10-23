@@ -41,22 +41,16 @@ $(document).ready(function(){
 		columns: [
 			{ data: 'sr_no', title: 'Id' },
 			{ data: 'id', title: 'OrderNo' },
-			{ data: 'chemist_id', title: 'ChemistId' },
-			{ data: 'salesman_id', title: 'SalesmanId' },
-			{ data: 'user_type', title: 'UserType' },
-			{ data: 'order_type', title: 'OrderType' },
-			{ data: 'remarks', title: 'Remarks' },
-			{ data: 'total', title: 'Price' },
+			{ data: 'dispatchtime', title: 'dispatchtime' },
+			{ data: 'vno', title: 'vno' },
+			{ data: 'tagno', title: 'tagno' },
 			{ data: 'gstvno', title: 'gstvno' },
-			{ data: 'download_status', title: 'download_status' },
-			{
-				data: null,
-				title: 'Items / Download',
-				orderable: true,
-				render: function (data, type, row) {
-					return `${row.items_total}/${row.download_line}`;
-				}
-			},
+			{ data: 'pickedby', title: 'pickedby' },
+			{ data: 'checkedby', title: 'checkedby' },
+			{ data: 'deliverby', title: 'deliverby' },
+			{ data: 'amt', title: 'amt' },
+			{ data: 'taxamt', title: 'taxamt' },
+			{ data: 'user', title: 'user' },
 			{ data: 'datetime', title: 'DateTime' },{
 				data: null,
 				title: 'Download',
