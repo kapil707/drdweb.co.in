@@ -79,42 +79,7 @@ class Manage_android_info extends CI_Controller {
 
 		$this->load->library('pagination');
 
-		$result = $this->db->query("select * from $tbl order by time desc")->result();
-		
-		$config['total_rows'] = count($result);
-		$data["count_records"] = count($result);
-        $config['per_page'] = 100;
-
-        if($num!=""){
-           $config['per_page'] = $num;
-        }
-        $config['full_tag_open']="<ul class='pagination'>";
-        $config['full_tag_close']="</ul>";
-        $config['first_tag_open']='<li>';
-        $config['first_tag_close']='</li>';
-        $config['last_tag_open']='<li>';
-        $config['last_tag_close']='</li>';
-        $config['next_tag_open']='<li>';
-        $config['next_tag_close']='</li>';
-        $config['prev_tag_open']='<li>';
-        $config['prev_tag_close']='</li>';
-        $config['num_tag_open']='<li>';
-        $config['num_tag_close']='</li>';
-        $config['cur_tag_open']="<li class='active'><a>";
-        $config['cur_tag_close']='</a></li>';
-        $config['num_links'] = 100;    
-        $config['page_query_string'] = TRUE;
-		$per_page=$_GET["pg"];
-		if($per_page=="")
-		{
-			$per_page = 0;
-		}
-
-		$data['per_page']=$per_page;
-		
-		$data['user_id'] = $user_id;
-
-		$query = $this->db->query("select * from $tbl order by time desc LIMIT $per_page,100");
+		$query = $this->db->query("select * from $tbl order by time desc")->result();
   		$data["result"] = $query->result();
 
 		$this->load->view("admin/header_footer/header",$data);
