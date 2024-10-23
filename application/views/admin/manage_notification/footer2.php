@@ -41,7 +41,7 @@ $(document).ready(function(){
 		columns: [
 			{ data: 'sr_no', title: 'Id' },
 			{ data: 'myfun', title: 'Function' },
-			{ data: 'user', title: 'user' },
+			{ data: 'user', title: 'User' },
 			{ data: 'title', title: 'Title' },
 			{ data: 'message', title: 'Message' },
 			{ data: 'datetime', title: 'DateTime' },
