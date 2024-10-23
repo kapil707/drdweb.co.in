@@ -21,7 +21,7 @@
 		<div class="table-responsive">
 			<table class="table table-striped table-bordered table-hover dataTables-example">
                 <thead>
-                    <tr>
+                    <!-- <tr>
                     	<th>
                         	Sno.
                         </th>
@@ -37,7 +37,7 @@
 						<th>
 							Action
 						</th>
-                    </tr>
+                    </tr> -->
                 </thead>
 				<tbody>
                 <?php
