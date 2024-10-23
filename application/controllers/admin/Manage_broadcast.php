@@ -54,6 +54,7 @@ class Manage_broadcast extends CI_Controller {
 			
 			$date = date('Y-m-d');
 			$time = date("H:i",time());
+			$timestamp = time();
 			
 			$result = "";
 			$where 	= "";
@@ -79,7 +80,8 @@ class Manage_broadcast extends CI_Controller {
 					'title'=>$title,
 					'message'=>$message,
 					'date'=>$date,
-					'time'=>$time,);
+					'time'=>$time,
+					'timestamp'=>$timestamp,);
 					
 					$result = $this->Scheme_Model->insert_fun("tbl_broadcast",$dt);
 				}
