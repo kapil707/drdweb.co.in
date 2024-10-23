@@ -38,8 +38,6 @@ class Manage_notification_whatsapp extends CI_Controller {
 		$this->breadcrumbs->push("Add","admin/$page_controllers/add");		
 
 		$tbl = $Page_tbl;
-		$data['url_path'] = base_url()."uploads/$page_controllers/photo/";
-		$upload_path = "./uploads/$page_controllers/photo/";	
 
 		$android_user = $version_code = "";
 		$system_ip = $this->input->ip_address();
@@ -48,63 +46,9 @@ class Manage_notification_whatsapp extends CI_Controller {
 		{
 			$message_db = "";
 			
-			$date = date('Y-m-d');
-			$time = date("H:i",time());
-			$timestamp = time();
-			
 			$message = nl2br($message);
 			$message = str_replace("'","&#39;",$message);
 			$message = str_replace("\r\n","<br>",$message);
-
-			/*if($android_user==1)
-			{
-				$versioncode = "";
-				if($version_code!="")
-				{
-					$versioncode = " and versioncode='$version_code'";
-				}
-				if($altercode=="0" || $altercode=="")
-				{
-					$query1 = $this->db->query("SELECT DISTINCT `chemist_id` FROM `tbl_android_device_id` where (1 or 1) $versioncode")->result();
-				}
-				else
-				{
-					$query1 = $this->db->query("SELECT DISTINCT `chemist_id` FROM `tbl_android_device_id` where chemist_id='$altercode' $versioncode")->result();
-				}
-				foreach($query1 as $row)
-				{
-					$row1 = $this->db->query("select * from tbl_chemist where slcd='CL' and altercode='$row->chemist_id' order by name asc")->row();
-					
-					$chemist_id1 	= $row1->altercode;
-					$mobile		 	= $row1->mobile;
-					$name		 	= $row1->name;
-					$message1 		= ("Hello $name ($chemist_id1),\\n\\n$message");
-					
-					if($chemist_id1!="")
-					{
-						if($mobile!="")
-						{
-							$dt = array(
-							'mobile'=>"+91".$mobile,
-							'message'=>$message1,
-							'media'=>$media,
-							'date'=>$date,
-							'time'=>$time,
-							'chemist_id'=>$chemist_id1,
-							);
-							$result = $this->Scheme_Model->insert_fun("tbl_whatsapp_message",$dt);
-						}
-						else
-						{
-							$err = "Number not Available";
-							$mobile = "";
-							$this->Email_Model->tbl_whatsapp_email_fail($mobile,$err,$chemist_id1);
-						}
-					}
-				}
-			}
-			else
-			{*/
 
 			$result = "";
 			$where 	= "";
@@ -130,16 +74,8 @@ class Manage_notification_whatsapp extends CI_Controller {
 					{
 						if($mobile!="")
 						{
-							$dt = array(
-							'mobile'=>"+91".$mobile,
-							'message'=>$message1,
-							'media'=>$media,
-							'date'=>$date,
-							'time'=>$time,
-							'timestamp'=>$timestamp,
-							'chemist_id'=>$chemist_id1,
-							);
-							$result = $this->Scheme_Model->insert_fun("tbl_whatsapp_message",$dt);
+							$mobile1 = "+91".$mobile;
+							$this->insert_whatsapp->insert_whatsapp($mobile1,$message1,$chemist_id1,$media);
 						}
 						else
 						{
@@ -181,6 +117,7 @@ class Manage_notification_whatsapp extends CI_Controller {
 		$this->load->view("admin/$Page_view/add",$data);
 		$this->load->view("admin/header_footer/footer",$data);
 	}
+
 	public function view()
 	{
 		/******************session***********************/

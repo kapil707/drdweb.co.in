@@ -53,8 +53,6 @@ class WhatsAppModel extends CI_Model
 			$message 		= str_replace("<b>","*",$message);
 			$message 		= str_replace("</b>","*",$message);
 			$chemist_id 	= $row->chemist_id;
-
-			//$this->db->query("DELETE FROM `tbl_whatsapp_message` WHERE id='$mid'");
 		
 			if($media!="")
 			{

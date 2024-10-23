@@ -69,24 +69,14 @@ class ExeWhatsApp extends CI_Controller
 				$message = $record['message'];
 				$media = $record['media'];
 				$chemist_id = $record['chemist_id'];
-				$date = $record['date'];
-				$time = $record['time'];
 
-				$dt = array(
-					'mobile' => $mobile,
-					'message' => $message,
-					'media' => $media,
-					'chemist_id' => $chemist_id,
-					'date' => $date,
-					'time' => $time,
-				);
-				$this->Scheme_Model->insert_fun("tbl_whatsapp_message", $dt);
+				$this->WhatsAppModel->insert_whatsapp($mobile,$message,$chemist_id,$media);
 			}
 			// Response dena
 			echo json_encode(["return_values" => $id,"status" => "success", "message" => "Data received successfully"]);
 		} else {
 			// Agar data valid nahi hai to error response dena
-			echo json_encode(["i_code" => "error","status" => "error", "message" => "Invalid data"]);
+			echo json_encode(["return_values" => "error","status" => "error", "message" => "Invalid data"]);
 		}
 	}
 }
