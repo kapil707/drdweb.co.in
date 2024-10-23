@@ -40,9 +40,14 @@ $(document).ready(function(){
 		order: [[0, 'asc']],
 		columns: [
 			{ data: 'sr_no', title: 'Id' },
-			{ data: 'email', title: 'Email' },
-			{ data: 'type', title: 'Type' },
-			{ data: 'title', title: 'Title' },
+			{
+				data: null,
+				title: 'Email / Type / Title',
+				orderable: false,
+				render: function (data, type, row) {
+					return `'${row.email}'<br>'${row.type}'<br>'${row.title}'`;
+				}
+			}
 			{ data: 'message', title: 'Message' },
 			{ data: 'datetime', title: 'DateTime' },
 			{
