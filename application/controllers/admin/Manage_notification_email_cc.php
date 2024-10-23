@@ -1,10 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Manage_email_cc extends CI_Controller {	var $Page_title = "Manage Email CC";
-	var $Page_name  = "manage_email_cc";
-	var $Page_view  = "manage_email_cc";
-	var $Page_menu  = "manage_email_cc";
-	var $page_controllers = "manage_email_cc";
+class Manage_notification_email_cc extends CI_Controller {
+	var $Page_title = "Manage Notification Email CC";
+	var $Page_name  = "manage_notification_email_cc";
+	var $Page_view  = "manage_notification_email_cc";
+	var $Page_menu  = "manage_notification_email_cc";
+	var $page_controllers = "manage_notification_email_cc";
 	var $Page_tbl   = "tbl_email_cc";
 	public function index()
 	{
