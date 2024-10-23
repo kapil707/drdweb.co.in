@@ -51,6 +51,7 @@ class Manage_whatsapp_message extends CI_Controller {
 			
 			$date = date('Y-m-d');
 			$time = date("H:i",time());
+			$timestamp = time();
 			
 			$message = nl2br($message);
 			$message = str_replace("'","&#39;",$message);
@@ -136,6 +137,7 @@ class Manage_whatsapp_message extends CI_Controller {
 							'media'=>$media,
 							'date'=>$date,
 							'time'=>$time,
+							'timestamp'=>$timestamp,
 							'chemist_id'=>$chemist_id1,
 							);
 							$result = $this->Scheme_Model->insert_fun("tbl_whatsapp_message",$dt);

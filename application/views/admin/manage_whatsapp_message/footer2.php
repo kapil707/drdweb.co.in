@@ -113,5 +113,32 @@ function reload_page(){
 		reload_page();
 	}, 120000);
 }
+var delete_rec1 = 0;
+function delete_rec(id)
+{
+	if (confirm('Are you sure Delete?')) { 
+	if(delete_rec1==0)
+	{
+		delete_rec1 = 1;
+		$.ajax({
+			type       : "POST",
+			data       :  { id : id ,} ,
+			url        : "<?= base_url()?>admin/<?= $Page_name; ?>/delete_rec",
+			success    : function(data){
+					if(data!="")
+					{
+						java_alert_function("success","Delete Successfully");
+						reload_page();
+					}					
+					else
+					{
+						java_alert_function("error","Something Wrong")
+					}
+					delete_rec1 = 0;
+				}
+			});
+		}
+	}
+}
 </script>
 <script src="https://cdn.datatables.net/scroller/2.2.0/js/dataTables.scroller.min.js"></script>
