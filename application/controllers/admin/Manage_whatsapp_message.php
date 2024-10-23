@@ -209,21 +209,7 @@ class Manage_whatsapp_message extends CI_Controller {
 		$this->breadcrumbs->push("$Page_title","admin/$page_controllers/");
 		$this->breadcrumbs->push("View","admin/$page_controllers/view");	
 
-		$tbl = $Page_tbl;	
-
-		$data['url_path'] = base_url()."uploads/$page_controllers/photo/";
-		$upload_path = "./uploads/$page_controllers/photo/";
-		
-		$vdt = date("Y-m-d");
-		if($_GET["submit"])
-		{
-			$vdt = $_GET["vdt"];
-			$vdt = date("Y-m-d",strtotime($vdt));
-		}
-		$data["vdt1"] = $vdt;
-
-		$result = $this->db->query("select * from $tbl where `date`= '$vdt' order by id desc");
-  		$data["result"] = $result->result();
+		$tbl = $Page_tbl;
 
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/view",$data);
