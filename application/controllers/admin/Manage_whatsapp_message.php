@@ -248,7 +248,7 @@ class Manage_whatsapp_message extends CI_Controller {
 			$items = "";
 			if(!empty($from_date) && !empty($to_date)){
 
-				$result = $this->db->query("SELECT * FROM `Page_tbl` WHERE `date` BETWEEN '$from_date' and '$to_date' order by id desc");
+				$result = $this->db->query("SELECT * FROM $Page_tbl WHERE `date` BETWEEN '$from_date' and '$to_date' order by id desc");
 				$result = $result->result();
 
 				foreach($result as $row){
