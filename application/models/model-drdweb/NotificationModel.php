@@ -2,6 +2,9 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class NotificationModel extends CI_Model
 {
+	public function __construct() {
+        parent::__construct();
+    }
 	public function insert_android_notification($funtype,$title,$message,$chemist_id,$user_type)
 	{
 		$date = date('Y-m-d');
