@@ -40,6 +40,7 @@ $(document).ready(function(){
 		order: [[0, 'asc']],
 		columns: [
 			{ data: 'sr_no', title: 'Id' },
+			{ data: 'id', title: 'OrderNo' },
 			{ data: 'chemist_id', title: 'ChemistId' },
 			{ data: 'salesman_id', title: 'SalesmanId' },
 			{ data: 'user_type', title: 'UserType' },
@@ -57,14 +58,21 @@ $(document).ready(function(){
 				}
 			},
 			{ data: 'datetime', title: 'DateTime' },
-			/*{
+			{
 				data: null,
-				title: 'Action',
+				title: 'Download',
 				orderable: false,
 				render: function (data, type, row) {
-					return `<a href="javascript:void(0)" onclick="delete_rec('${row.id}')" class="btn-white btn btn-xs">Delete</a>`;
+					return `<a href="https://www.drdistributor.com/view_order/${row.chemist_id}/${row.id}" class="btn-white btn btn-xs">Delete</a>`;
 				}
-			}*/
+			},{
+				data: null,
+				title: 'Download',
+				orderable: false,
+				render: function (data, type, row) {
+					return `<a href="https://www.drdistributor.com/order_download/${row.chemist_id}/${row.id}" class="btn-white btn btn-xs">Delete</a>`;
+				}
+			}
 		],
 		pageLength: 25,
 		responsive: true,
