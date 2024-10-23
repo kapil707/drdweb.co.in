@@ -122,7 +122,6 @@ class Manage_notification extends CI_Controller {
 	}
 	public function view()
 	{
-		error_reporting(0);
 		/******************session***********************/
 		$user_id = $this->session->userdata("user_id");
 		$user_type = $this->session->userdata("user_type");
