@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Manage_max_order extends CI_Controller {
+class Manage_order_max extends CI_Controller {
 	var $Page_title = "Manage Order Max";
 	var $Page_name  = "manage_order_max";
 	var $Page_view  = "manage_order_max";
