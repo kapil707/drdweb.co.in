@@ -63,7 +63,7 @@ $(document).ready(function(){
 				title: 'View',
 				orderable: false,
 				render: function (data, type, row) {
-					return `<a href="https://www.drdistributor.com/view_order/${row.chemist_id}/${row.id}" class="btn-white btn btn-xs">View</a>`;
+					return `<a href="https://www.drdistributor.com/view_order/${row.chemist_id}/${row.id}" class="btn-white btn btn-xs" target="_blank">View</a>`;
 				}
 			},{
 				data: null,
