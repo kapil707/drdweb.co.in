@@ -57,7 +57,7 @@ $(document).ready(function(){
 				title: 'View',
 				orderable: false,
 				render: function (data, type, row) {
-					return `<a href="https://www.drdistributor.com/invoice/${row.chemist_id}/${row.gstvno}" class="btn-white btn btn-xs">View</a>`;
+					return `<a href="https://www.drdistributor.com/invoice/${row.chemist_id}/${row.gstvno}" class="btn-white btn btn-xs" target="_blank">View</a>`;
 				}
 			},
 			{
