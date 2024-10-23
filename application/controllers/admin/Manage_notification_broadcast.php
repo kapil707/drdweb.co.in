@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Manage_broadcast extends CI_Controller {
-	var $Page_title = "Manage Broadcast";	
-	var $Page_name  = "manage_broadcast";
-	var $Page_view  = "manage_broadcast";
-	var $Page_menu  = "manage_broadcast";
-	var $page_controllers = "manage_broadcast";
+class Manage_notification_broadcast extends CI_Controller {
+	var $Page_title = "Manage Notification Broadcast";	
+	var $Page_name  = "Manage_notification_broadcast";
+	var $Page_view  = "Manage_notification_broadcast";
+	var $Page_menu  = "Manage_notification_broadcast";
+	var $page_controllers = "Manage_notification_broadcast";
 	var $Page_tbl   = "tbl_broadcast";
 	public function index()
 	{
