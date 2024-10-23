@@ -6,7 +6,7 @@ class InvoiceModel extends CI_Model
         parent::__construct();
 		
 		$this->load->model("model-drdweb/WhatsAppModel");
-		$this->load->model("model/EmailModel");
+		$this->load->model("model-drdweb/EmailModel");
     }
 	/********************************************************/
 	public function invoice_send_email_whatsapp(){
@@ -150,9 +150,11 @@ class InvoiceModel extends CI_Model
 				$message = $email_message;
 				$user_email_id = $chemist_email;
 				$email_function= "invoice";
-				$email_other_bcc= "";//"kapildrd@gmail.com";
+				$email_other_bcc="";
 				$mail_server = "";
-				$this->EmailModel->insert_email($subject,$message,$user_email_id,$email_function,$email_other_bcc,$mail_server);
+				$file_name1 = $file_name2 = $file_name3 = "";
+				$file_name_1 = $file_name_2 = $file_name_3 = "";
+				$this->EmailModel->insert_email_message($user_email_id,$subject,$message,$file_name1,$file_name2,$file_name3,$file_name_1,$file_name_2,$file_name_3,$mail_server,$email_function,$email_other_bcc);
 				
 				/************************************************/
 				//$chemist_mobile = "+919530005050"; 

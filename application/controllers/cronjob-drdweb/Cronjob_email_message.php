@@ -6,7 +6,7 @@ class Cronjob_email_message extends CI_Controller
 
 		parent::__construct();
 		// Load model
-		$this->load->model('model/EmailModel');
+		$this->load->model("model-drdweb/EmailModel");
 	}
 	
 	public function send_email()
