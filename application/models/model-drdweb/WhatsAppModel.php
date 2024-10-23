@@ -33,7 +33,7 @@ class WhatsAppModel extends CI_Model
 			'status'=>0,
 			'respose'=>'',
 		);
-		$this->Scheme_Model->insert_fun("tbl_whatsapp_message",$dt);
+		return $this->Scheme_Model->insert_fun("tbl_whatsapp_message",$dt);
 	}
 	
 	public function send_whatsapp_message()

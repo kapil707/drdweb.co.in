@@ -79,7 +79,7 @@ class Manage_notification_whatsapp extends CI_Controller {
 						if($mobile!="")
 						{
 							$mobile1 = "+91".$mobile;
-							$this->WhatsAppModel->insert_whatsapp($mobile1,$message1,$chemist_id1,$media);
+							$result = $this->WhatsAppModel->insert_whatsapp($mobile1,$message1,$chemist_id1,$media);
 						}
 						else
 						{
