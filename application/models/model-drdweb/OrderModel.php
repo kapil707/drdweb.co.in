@@ -73,12 +73,6 @@ class OrderModel extends CI_Model
                 $w_message = $notification_whatsapp_message;
                 $this->WhatsAppModel->insert_whatsapp($w_number,$w_message,$chemist_id);
             }
-            else
-            {
-                $err = "Number not Available";
-                $mobile = "";
-                $this->Message_Model->tbl_whatsapp_email_fail($mobile,$err,$chemist_id);
-            }
             /*****************whatsapp or sales man*************************/
             if($user_type=="sales")
             {
