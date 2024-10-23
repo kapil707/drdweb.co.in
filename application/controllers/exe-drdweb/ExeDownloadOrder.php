@@ -2,6 +2,12 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class ExeDownloadOrder extends CI_Controller
 {
+	public function __construct(){
+
+		parent::__construct();
+		// Load model
+		$this->load->model("model-drdweb/WhatsAppModel");
+	}
 	//new code bye 2024-07-12
 	public function download_order_xx($order_id)
 	{
