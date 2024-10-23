@@ -254,14 +254,14 @@ class Manage_whatsapp_message extends CI_Controller {
 
 				foreach($result as $row){
 
-					$i = $i++;
+					$sr_no = $i++;
 					$id = $row->id;
 					$mobile = $row->mobile;
 					$message = $row->message;
 					$datetime = date("d-M-y",strtotime($row->date)) . " @ " .$row->time;
 
 					$dt = array(
-						'i' => $i,
+						'sr_no' => $sr_no,
 						'id' => $id,
 						'mobile' => $mobile,
 						'message'=>$message,
