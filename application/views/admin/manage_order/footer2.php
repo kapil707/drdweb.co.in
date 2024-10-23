@@ -60,17 +60,17 @@ $(document).ready(function(){
 			{ data: 'datetime', title: 'DateTime' },
 			{
 				data: null,
-				title: 'Download',
+				title: 'View',
 				orderable: false,
 				render: function (data, type, row) {
-					return `<a href="https://www.drdistributor.com/view_order/${row.chemist_id}/${row.id}" class="btn-white btn btn-xs">Delete</a>`;
+					return `<a href="https://www.drdistributor.com/view_order/${row.chemist_id}/${row.id}" class="btn-white btn btn-xs">View</a>`;
 				}
 			},{
 				data: null,
 				title: 'Download',
 				orderable: false,
 				render: function (data, type, row) {
-					return `<a href="https://www.drdistributor.com/order_download/${row.chemist_id}/${row.id}" class="btn-white btn btn-xs">Delete</a>`;
+					return `<a href="https://www.drdistributor.com/order_download/${row.chemist_id}/${row.id}" class="btn-white btn btn-xs">Download</a>`;
 				}
 			}
 		],
