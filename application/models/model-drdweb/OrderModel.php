@@ -120,12 +120,6 @@ class OrderModel extends CI_Model
             if (filter_var($user_email_id, FILTER_VALIDATE_EMAIL)) {
                 //$user_email_id = "drdwebmail1@gmail.com";	
             }
-            else{			
-                $err = $user_email_id." is Wrong Email";
-                $mobile = "";
-                $this->Message_Model->tbl_whatsapp_email_fail($mobile,$err,$chemist_id);
-                $user_email_id = "kapildrd@gmail.com";			
-            }
             if(!empty($user_email_id))
             {
                 //$file_name1 = $order_id;
