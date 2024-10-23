@@ -42,7 +42,15 @@ $(document).ready(function(){
 			{ data: 'i', title: 'Id' },
 			{ data: 'mobile', title: 'Mobile' },
 			{ data: 'message', title: 'Message' },
-			{ data: 'datetime', title: 'DateTime' }
+			{ data: 'datetime', title: 'DateTime' },
+			{
+				data: null,
+				title: 'Action',
+				orderable: false,
+				render: function (data, type, row) {
+					return `<a href="javascript:void(0)" onclick="delete_rec('${row.id}')" class="btn-white btn btn-xs">Delete</a>`;
+				}
+			}
 		],
 		pageLength: 25,
 		responsive: true,
