@@ -14,7 +14,6 @@ class Manage_notification_email extends CI_Controller {
 	}
 	public function add()
 	{
-		error_reporting(0);
 		/******************session***********************/
 		$user_id = $this->session->userdata("user_id");
 		$user_type = $this->session->userdata("user_type");
@@ -120,7 +119,6 @@ class Manage_notification_email extends CI_Controller {
 	
 	public function view()
 	{
-		error_reporting(0);
 		/******************session***********************/
 		$user_id = $this->session->userdata("user_id");
 		$user_type = $this->session->userdata("user_type");
@@ -144,75 +142,69 @@ class Manage_notification_email extends CI_Controller {
 		$this->breadcrumbs->push("$Page_title","admin/$page_controllers/");
 		$this->breadcrumbs->push("View","admin/$page_controllers/view");	
 
-		$tbl = $Page_tbl;	
-
-		$data['url_path'] = base_url()."uploads/$page_controllers/photo/";
-		$upload_path = "./uploads/$page_controllers/photo/";
-		
-		$vdt = date("Y-m-d");
-		if($_GET["submit"])
-		{
-			$vdt = $_GET["vdt"];
-			$vdt = date("Y-m-d",strtotime($vdt));
-		}
-		$data["vdt1"] = $vdt;
-
-		$this->load->library('pagination');
-
-		$result = $this->db->query("select * from $tbl where date='$vdt' order by id desc")->result();
-
-		if($_GET["name"])
-		{
-			$name = $_GET["name"];
-			$data["search"] = $name;
-			$result = $this->db->query("select * from $tbl where date='$vdt' and user_email_id='$name' order by id desc")->result();
-		}
-		
-		$config['total_rows'] = count($result);
-		$data["count_records"] = count($result);
-        $config['per_page'] = 100;
-
-        if($num!=""){
-           $config['per_page'] = $num;
-        }
-        $config['full_tag_open']="<ul class='pagination'>";
-        $config['full_tag_close']="</ul>";
-        $config['first_tag_open']='<li>';
-        $config['first_tag_close']='</li>';
-        $config['last_tag_open']='<li>';
-        $config['last_tag_close']='</li>';
-        $config['next_tag_open']='<li>';
-        $config['next_tag_close']='</li>';
-        $config['prev_tag_open']='<li>';
-        $config['prev_tag_close']='</li>';
-        $config['num_tag_open']='<li>';
-        $config['num_tag_close']='</li>';
-        $config['cur_tag_open']="<li class='active'><a>";
-        $config['cur_tag_close']='</a></li>';
-        $config['num_links'] = 100;    
-        $config['page_query_string'] = TRUE;
-		$per_page=$_GET["pg"];
-		if($per_page=="")
-		{
-			$per_page = 0;
-		}
-
-
-		$data['per_page']=$per_page;
-		
-		$data['user_id'] = $user_id;
-
-		$query = $this->db->query("select * from $tbl where date='$vdt' order by id desc LIMIT $per_page,100");
-		if($_GET["name"])
-		{
-			$name = $_GET["name"];
-			$query = $this->db->query("select * from $tbl where date='$vdt' and user_email_id='$name' order by id desc LIMIT $per_page,100");
-		}
-  		$data["result"] = $query->result();
+		$tbl = $Page_tbl;
 
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/view",$data);
 		$this->load->view("admin/header_footer/footer",$data);
+		$this->load->view("admin/$Page_view/footer2",$data);
+	}
+
+	public function view_api() {
+		
+		$i = 1;
+		$Page_tbl = $this->Page_tbl;
+		if(!empty($_REQUEST)){
+			$from_date 	= $_REQUEST["from_date"];
+			$to_date	= $_REQUEST['to_date'];
+
+			$jsonArray = array();
+
+			$items = "";
+			if(!empty($from_date) && !empty($to_date)){
+
+				$result = $this->db->query("SELECT $Page_tbl.*,tbl_email.server_email_name FROM $Page_tbl left join tbl_email on $Page_tbl.email_function=tbl_email.email_function WHERE $Page_tbl.date BETWEEN '$from_date' and '$to_date' order by $Page_tbl.id desc");
+				$result = $result->result();
+
+				foreach($result as $row){
+
+					$sr_no = $i++;
+					$id = $row->id;
+					$email = $row->user_email_id;
+					$message = $row->message;
+					$type = $row->server_email_name;
+					$title = $row->subject;
+					$datetime = date("d-M-y",strtotime($row->date)) . " @ " .$row->time;
+
+					$dt = array(
+						'sr_no' => $sr_no,
+						'id' => $id,
+						'email' => $email,
+						'title' => $title,
+						'message'=>$message,
+						'type'=>$type,
+						'datetime'=>$datetime,
+					);
+					$jsonArray[] = $dt;
+				}
+			}
+
+			$items = $jsonArray;
+			$response = array(
+				'success' => "1",
+				'message' => 'Data load successfully',
+				'items' => $items,
+			);
+		}else{
+			$response = array(
+				'success' => "0",
+				'message' => '502 error',
+			);
+		}
+
+        // Send JSON response
+        header('Content-Type: application/json');
+        echo json_encode($response);
 	}
 
 	public function call_search_acm()
