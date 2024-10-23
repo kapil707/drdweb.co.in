@@ -11,6 +11,7 @@
 			<div class="col-md-3">
 				<label for="date-range">Select Date Range:</label>
 				<input type="text" id="date-range" class="form-control">
+				<br>
 			</div>
 		</div>
 		<div class="row">
