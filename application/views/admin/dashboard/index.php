@@ -637,7 +637,7 @@ function fetchActiveUserCount() {
 		type: 'GET',
 		dataType: 'json',
 		success: function(response) {
-			if (response.total !== undefined) {
+			if (response.active_user_count !== undefined && response.today_active_user_count !== undefined) {
 				$('#active_user_count').text(response.active_user_count); 
 				$('#today_active_user_count').text(response.today_active_user_count);
 			}
