@@ -136,6 +136,6 @@ class Manage_invoice extends CI_Controller {
 			'total_invoices_amount' => $invoice_data['total_amt']
 		);
 	
-		echo json_encode($result);
+		echo json_encode([$result]);
 	}
 }

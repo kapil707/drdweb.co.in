@@ -99,17 +99,11 @@ class Manage_user_active extends CI_Controller {
 		$this->db->distinct();
 		$this->db->select('chemist_id');
 		$this->db->from('tbl_activity_logs');
-		$this->db->where('date', date('Y-m-d'));
+		$this->db->where('date =', date('Y-m-d'));
 	
 		$query = $this->db->get();
 		$today_active_user_count = $query->num_rows();
 
-		 // Combine both results into a single array
-		 $result = array(
-			'active_user_count' => $active_user_count,
-			'today_active_user_count' => $today_active_user_count
-		);
-	
-		return $result; // Return the combined data
+		echo json_encode(['total' => $active_user_count]);
 	}
 }
