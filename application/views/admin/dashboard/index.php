@@ -214,7 +214,7 @@
 						</div>
 						<div class="ibox-content">
 							<h1 class="no-margins">
-								<span id="today_invoice"></span>
+								<span id="total_invoices"></span>
 							</h1>
 							<div class="stat-percent font-bold text-success">100% <i class="fa fa-bolt"></i></div>
 							<small>Total Invoice</small>
@@ -230,7 +230,7 @@
 						</div>
 						<div class="ibox-content">
 							<h1 class="no-margins">
-								<span id="today_total_sales"></span>
+								<span id="total_invoices_amount"></span>
 							</h1>
 							<div class="stat-percent font-bold text-success">100% <i class="fa fa-bolt"></i></div>
 							<small>Total Sales</small>
@@ -622,8 +622,8 @@ function fetchInvoice() {
 		dataType: 'json',
 		success: function(response) {
 			if (response.total !== undefined) {
-				$('#today_total_sales').text(response.total_amount); 
-				$('#today_invoice').text(response.today_invoice); 
+				$('#total_invoices').text(response.total_invoices); 
+				$('#total_invoices_amount').text(response.total_invoices_amount); 
 			}
 		},
 		error: function() {

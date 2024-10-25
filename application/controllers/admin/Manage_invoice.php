@@ -129,14 +129,13 @@ class Manage_invoice extends CI_Controller {
 		$this->db->where('date', date('Y-m-d'));
 		$query = $this->db->get();
 		$invoice_data = $query->row_array();
-		$active_user_count = $query->num_rows();
 
 		// Combine both results into a single array
 		$result = array(
 			'total_invoices' => $invoice_data['total'],
-			'total_amount' => $invoice_data['total_amt']
+			'total_invoices_amount' => $invoice_data['total_amt']
 		);
 	
-		return $result; // Return the combined data
+		echo json_encode($result);
 	}
 }
