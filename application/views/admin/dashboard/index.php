@@ -298,22 +298,28 @@
 								<thead>
 										<tr>
 											<th>Sno.</th>
-											<th>Chemist Code</th>
-											<th>Active Time</th>
+											<th>ChemistId</th>
+											<th>SalesmanId</th>
+											<th>Date / Time</th>
 										</tr>
 								</thead>
 								<tbody>
 									<?php
 									$i = 0;
 									foreach($get_online_users as $row){
-										$user_altercode = $row->user_altercode;
-										if(empty($user_altercode)){
-											$user_altercode = "Guest User";
+										$chemist_id = $row->chemist_id;
+										$salesman_id = $row->salesman_id;
+										if(empty($chemist_id)){
+											$chemist_id = "Guest User";
+										}
+										if(empty($chemist_id)){
+											$chemist_id = "N/a";
 										}
 										?>
 										<tr>
 											<td><?php echo $i++ ?></td>
-											<td><?php echo $user_altercode ?></td>
+											<td><?php echo $chemist_id ?></td>
+											<td><?php echo $salesman_id ?></td>
 											<td><?php echo $row->date ?> / <?php echo $row->time ?></td>
 										</tr>
 										<?php
