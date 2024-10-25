@@ -104,6 +104,13 @@ class Manage_user_active extends CI_Controller {
 		$query = $this->db->get();
 		$today_active_user_count = $query->num_rows();
 
-		echo json_encode(['total' => $active_user_count]);
+		// Combine both results into a single array
+		$result = array(
+			'active_user_count' => $active_user_count,
+			'today_active_user_count' => $today_active_user_count
+		);
+
+		// Output the result as JSON
+		echo json_encode($result);
 	}
 }
