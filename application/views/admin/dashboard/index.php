@@ -50,7 +50,8 @@
 						</div>
 						<div class="ibox-content">
 							<h1 class="no-margins">
-							<?php echo $total_acm ?></h1>
+								<span id="total_chemist"></span>
+							</h1>
 							<div class="stat-percent font-bold text-success">100% <i class="fa fa-bolt"></i></div>
 							<small>Total Chemist</small>
 						</div>
