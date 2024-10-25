@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Manage_salesman extends CI_Controller {
+class Manage_user_salesman extends CI_Controller {
 	var $Page_title = "Manage salesman";
-	var $Page_name  = "manage_salesman";
-	var $Page_view  = "manage_salesman";
-	var $Page_menu  = "manage_salesman";
-	var $page_controllers = "manage_salesman";
+	var $Page_name  = "manage_user_salesman";
+	var $Page_view  = "manage_user_salesman";
+	var $Page_menu  = "manage_user_salesman";
+	var $page_controllers = "manage_user_salesman";
 	var $Page_tbl   = "tbl_users";
 	public function index()
 	{

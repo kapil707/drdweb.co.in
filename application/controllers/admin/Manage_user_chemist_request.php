@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Manage_chemist_request extends CI_Controller {
+class Manage_user_chemist_request extends CI_Controller {
 	var $Page_title = "Manage Chemist Request";
-	var $Page_name  = "manage_chemist_request";
-	var $Page_view  = "manage_chemist_request";
-	var $Page_menu  = "manage_chemist_request";
-	var $page_controllers = "manage_chemist_request";
+	var $Page_name  = "manage_user_chemist_request";
+	var $Page_view  = "manage_user_chemist_request";
+	var $Page_menu  = "manage_user_chemist_request";
+	var $page_controllers = "manage_user_chemist_request";
 	var $Page_tbl   = "tbl_new_password";
 	public function index()
 	{
