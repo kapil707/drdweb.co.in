@@ -622,7 +622,7 @@ function fetchMedicine() {
 		type: 'GET',
 		dataType: 'json',
 		success: function(response) {
-			if (response.total_invoices !== undefined) {
+			if (response.total_medicine !== undefined) {
                 $('#total_medicine').text(response.total_medicine);
             }
 		},
