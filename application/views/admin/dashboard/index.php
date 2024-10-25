@@ -173,11 +173,12 @@
 					<div class="ibox float-e-margins">
 						<div class="ibox-title">
 							<span class="label label-success pull-right">Now</span>
-							<h5>Website Order</h5>
+							<h5>Website/Mobile Order</h5>
 						</div>
 						<div class="ibox-content">
 							<h1 class="no-margins">
-							<?php echo $today_website_orders_items ?></h1>
+								<span id="total_pc_mobile_order"></span>
+							</h1>
 							<div class="stat-percent font-bold text-success">100% <i class="fa fa-bolt"></i></div>
 							<small>Total Website Order</small>
 						</div>
@@ -636,6 +637,7 @@ function fetchDashboardData() {
 			$('#total_rider').text(response.total_rider);
 			$('#total_cart').text(response.total_cart);
 			$('#total_unique_order').text(response.total_unique_order);
+			$('#total_pc_mobile_order').text(response.total_pc_mobile_order);
 			$('#total_android_order').text(response.total_android_order);
 			$('#total_invoices').text(response.total_invoices);
 			$('#total_invoices_amount').text(response.total_invoices_amount);
