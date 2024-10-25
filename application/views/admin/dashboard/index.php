@@ -621,10 +621,9 @@ function fetchInvoice() {
 		type: 'GET',
 		dataType: 'json',
 		success: function(response) {
-			alert(response.total_invoices)
 			if (response.total_invoices !== undefined && response.total_invoices_amount !== undefined) {
-                $('#total-invoices').text(response.total_invoices);
-                $('#total-invoices-amount').text(response.total_invoices_amount);
+                $('#total_invoices').text(response.total_invoices);
+                $('#total_invoices_amount').text(response.total_invoices_amount);
             }
 		},
 		error: function() {
