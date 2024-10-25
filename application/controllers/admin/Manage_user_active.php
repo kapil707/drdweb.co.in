@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Manage_user_active extends CI_Controller {
-	var $Page_title = "Manage chemist";
+	var $Page_title = "Manage Active User";
 	var $Page_name  = "manage_user_active";
 	var $Page_view  = "manage_user_active";
 	var $Page_menu  = "manage_user_active";
