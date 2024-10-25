@@ -184,7 +184,7 @@ class Dashboard extends CI_Controller {
 		$data["today_android_orders_items"]	= $today_android_orders_items;
 		$data["today_excel_orders_items"]	= $today_excel_orders_items;
 
-		$get_online_users = $this->db->query("SELECT chemist_id, salesman_id, date, time FROM ( SELECT chemist_id, salesman_id, date, time, timestamp FROM tbl_activity_logs WHERE timestamp >= (UNIX_TIMESTAMP() - 300) ORDER BY timestamp DESC ) AS subquery GROUP BY chemist_id, salesman_id, date, time LIMIT 0, 25")->result();
+		$get_online_users = $this->db->query("SELECT chemist_id, salesman_id, date, MAX(time) AS time FROM tbl_activity_logs WHERE timestamp >= (UNIX_TIMESTAMP() - 300) GROUP BY chemist_id, salesman_id, date ORDER BY MAX(timestamp) DESC LIMIT 0, 25")->result();
 		$data["get_online_users"] = $get_online_users;
 
 		$this->load->view('admin/header_footer/header_dashbord',$data);

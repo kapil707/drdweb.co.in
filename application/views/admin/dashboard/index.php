@@ -312,8 +312,8 @@
 										if(empty($chemist_id)){
 											$chemist_id = "Guest User";
 										}
-										if(empty($chemist_id)){
-											$chemist_id = "N/a";
+										if(empty($salesman_id)){
+											$salesman_id = "N/a";
 										}
 										?>
 										<tr>
