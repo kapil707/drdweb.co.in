@@ -294,39 +294,14 @@
 							<h5>Online Users</h5>
 						</div>
                     	<div class="ibox-content">
-							<table class='table table-striped table-bordered table-hover dataTables-example'>
-								<thead>
-										<tr>
-											<th>Sno.</th>
-											<th>ChemistId</th>
-											<th>SalesmanId</th>
-											<th>Date / Time</th>
-										</tr>
-								</thead>
-								<tbody>
-									<?php
-									$i = 1;
-									foreach($get_online_users as $row){
-										$chemist_id = $row->chemist_id;
-										$salesman_id = $row->salesman_id;
-										if(empty($chemist_id)){
-											$chemist_id = "Guest User";
-										}
-										if(empty($salesman_id)){
-											$salesman_id = "N/a";
-										}
-										?>
-										<tr>
-											<td><?php echo $i++ ?></td>
-											<td><?php echo $chemist_id ?></td>
-											<td><?php echo $salesman_id ?></td>
-											<td><?php echo date("d-M-y",strtotime($row->date)) ?> / <?php echo $row->time ?></td>
-										</tr>
-										<?php
-									}
-									?>
-								</tbody>
-							</table>
+							<div class="table-responsive">
+								<table class="table table-striped table-bordered table-hover" id="view_api_table">
+									<thead>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div><!-- /.row -->
