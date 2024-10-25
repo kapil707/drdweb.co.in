@@ -658,16 +658,11 @@ function fetchDashboardData() {
 			console.error('Failed to fetch active user count');
 		}
 	});
-}
-function allcall(){
-
-	fetchDashboardData();
-
 	setInterval(function () {
-		allcall();
+		fetchDashboardData();
 	}, 25000);
 }
 $(document).ready(function() {
-	allcall();
+	fetchDashboardData();
 });
 </script>
