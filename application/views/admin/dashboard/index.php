@@ -665,7 +665,7 @@ function allcall(){
 
 	setInterval(function () {
 		allcall();
-	}, 120000);
+	}, 25000);
 }
 $(document).ready(function() {
 	allcall();

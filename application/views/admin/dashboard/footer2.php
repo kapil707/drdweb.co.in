@@ -45,7 +45,7 @@ $(document).ready(function(){
 	// Set the reload interval to refresh the table every 2 minutes (120000 milliseconds)
 	setInterval(function () {
 		reload_page();
-	}, 120000);
+	}, 30000);
 });
 
 // Function to reload the DataTable
