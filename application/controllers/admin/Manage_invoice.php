@@ -133,7 +133,7 @@ class Manage_invoice extends CI_Controller {
 		// Combine both results into a single array
 		$result = array(
 			'total_invoices' => $invoice_data['total'],
-			'total_invoices_amount' => $invoice_data['total_amt']
+			'total_invoices_amount' => utf8_encode(money_format('%!.0n',$invoice_data['total_amt']))
 		);
 
 		// Output the result as JSON
