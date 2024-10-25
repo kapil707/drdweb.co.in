@@ -606,6 +606,13 @@ class Dashboard extends CI_Controller {
 		$total_order_amount = utf8_encode(money_format('%!.0n',$order_data['total_amt']));
 		/****************************************** */
 		$this->db->select('id');
+		$this->db->from('tbl_cart_order');
+		$this->db->where('date', date('Y-m-d'));
+		$this->db->where('download_status', '0');
+		$query = $this->db->get();
+		$total_order_download = $query->num_rows();
+		/****************************************** */
+		$this->db->select('id');
 		$this->db->from('tbl_cart');
 		$this->db->where('date', date('Y-m-d'));
 		$this->db->where('status', '1');
