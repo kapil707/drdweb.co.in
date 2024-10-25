@@ -244,7 +244,7 @@
 						</div>
 						<div class="ibox-content">
 							<h1 class="no-margins">
-							<?php echo $today_total_sales ?></h1>
+							<span id="active-user-count"></span>
 							<div class="stat-percent font-bold text-success">100% <i class="fa fa-bolt"></i></div>
 							<small>Active User Now</small>
 						</div>
@@ -608,4 +608,22 @@
 		}
 		return dt;
 	}
+</script>
+
+<script>
+function fetchActiveUserCount() {
+	$.ajax({
+		url: '<?php echo base_url(); ?>admin/manage_user_active/get_active_user_count',
+		type: 'GET',
+		dataType: 'json',
+		success: function(response) {
+			if (response.total !== undefined) {
+				$('#active-user-count').text(response.total); // Display the total count in the target div
+			}
+		},
+		error: function() {
+			console.error('Failed to fetch active user count');
+		}
+	});
+}
 </script>

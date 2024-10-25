@@ -84,4 +84,17 @@ class Manage_user_active extends CI_Controller {
         header('Content-Type: application/json');
         echo json_encode($response);
 	}
+
+	public function get_active_user_count() {
+
+		$this->db->distinct();
+		$this->db->select('chemist_id');
+		$this->db->from('tbl_activity_logs');
+		$this->db->where('timestamp >=', time() - 300); // Last 5 minutes
+	
+		$query = $this->db->get();
+		$active_user_count = $query->num_rows();
+
+		echo json_encode(['total' => $active_user_count]);
+	}
 }
