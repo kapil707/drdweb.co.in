@@ -164,7 +164,8 @@
 						</div>
 						<div class="ibox-content">
 							<h1 class="no-margins">
-							<?php echo $today_orders_items ?></h1>
+								<span id="total_order_items"></span>
+							</h1>
 							<div class="stat-percent font-bold text-success">100% <i class="fa fa-bolt"></i></div>
 							<small>Total Order Items</small>
 						</div>
