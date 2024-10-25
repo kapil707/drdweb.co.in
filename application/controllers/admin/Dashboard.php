@@ -45,53 +45,9 @@ class Dashboard extends CI_Controller {
 			$this->session->set_flashdata("message_type","warning");
 			$this->session->set_flashdata("full_message","Your Account Not Approved.");
 		}
-		/***********************************************/	
+		/***********************************************/		
+		$date = date("Y-m-d");	
 
-		$total_medicine = $total_acm = $total_staffdetail = $total_salesman = $today_total_sales = $today_master = 0;		
-		
-		$today_orders1 = $today_orders2 = $today_orders3 = $today_website_orders_items = $today_android_orders_items = $today_excel_orders_items = $today_invoice = 0;
-		$date = date("Y-m-d");
-		$result = $this->db->query("select DISTINCT order_id from tbl_order where date='$date'")->result();
-		foreach($result as $row)
-		{
-			$today_orders1++;
-		}
-		
-		$result = $this->db->query("select DISTINCT order_id from tbl_order where date='$date' and download_status='0'")->result();
-		foreach($result as $row)
-		{
-			$today_orders2++;
-		}
-		
-		$result = $this->db->query("select DISTINCT chemist_id from tbl_order where date='$date'")->result();
-		foreach($result as $row)
-		{
-			$today_orders3++;
-		}
-		
-		$result = $this->db->query("select DISTINCT order_id from tbl_order where date='$date' and order_type='pc_mobile'")->result();
-		foreach($result as $row)
-		{
-			$today_website_orders_items++;
-		}
-		
-		$result = $this->db->query("select DISTINCT order_id from tbl_order where date='$date' and order_type='excelFile'")->result();
-		foreach($result as $row)
-		{
-			$today_excel_orders_items++;
-		}
-		
-		$result = $this->db->query("select DISTINCT order_id from tbl_order where date='$date' and order_type='android'")->result();
-		foreach($result as $row)
-		{
-			$today_android_orders_items++;
-		}
-		
-		$date = date("Y-m-d");
-		
-		
-		/*********************************************/
-		
 		$top_sales_medicine = "";
 		$result = $this->db->query("SELECT DISTINCT tbl_medicine.item_name, COUNT(*) as ct FROM tbl_invoice_item LEFT JOIN tbl_medicine ON tbl_medicine.i_code = tbl_invoice_item.itemc WHERE tbl_invoice_item.date = '$date' GROUP BY tbl_medicine.item_name HAVING COUNT(*) > 1 ORDER BY ct DESC LIMIT 10")->result();
 		foreach($result as $row)
@@ -115,27 +71,6 @@ class Dashboard extends CI_Controller {
 			$top_search_medicine = substr($top_search_medicine, 0, -1);
 		}
 		/****************************************************/
-		
-		$today_orders_price = $today_orders_items = 0;
-		$date = date("Y-m-d");
-		$result = $this->db->query("select * from tbl_order where date='$date'")->result();
-		foreach($result as $row)
-		{
-			$today_orders_price = $today_orders_price + ($row->quantity * $row->sale_rate);
-			$today_orders_items++;
-		}
-		
-		//$data["today_total_sales"] 	= utf8_encode(money_format('%!.0n',$today_total_sales));
-		$data["top_sales_medicine"] = $top_sales_medicine;
-		$data["top_search_medicine"]= $top_search_medicine;
-		$data["today_orders"]		= $today_orders1."/".$today_orders2;
-		$data["today_orders3"]		= $today_orders3;
-		
-		$data["today_orders_price"]	= utf8_encode(money_format('%!.0n',$today_orders_price));
-		$data["today_orders_items"]	= $today_orders_items;
-		$data["today_website_orders_items"]	= $today_website_orders_items;
-		$data["today_android_orders_items"]	= $today_android_orders_items;
-		$data["today_excel_orders_items"]	= $today_excel_orders_items;
 
 		$this->load->view('admin/header_footer/header_dashbord',$data);
 		if($user_type=="Super_Admin" || $user_type=="Admin"){
