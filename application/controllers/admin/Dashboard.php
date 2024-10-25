@@ -55,11 +55,6 @@ class Dashboard extends CI_Controller {
 			$today_master++;
 		}
 
-		$result = $this->db->query("select id from tbl_chemist where slcd='CL'")->result();
-		foreach($result as $row)
-		{
-			$total_acm++;
-		}	
 
 		$result = $this->db->query("select id from tbl_corporate")->result();
 		foreach($result as $row)
@@ -150,7 +145,6 @@ class Dashboard extends CI_Controller {
 			$today_orders_items++;
 		}
 		
-		$data["total_acm"] 			= $total_acm;
 		$data["total_staffdetail"] 	= $total_staffdetail;
 		$data["total_salesman"] 	= $total_salesman;
 		$data["today_master"] 		= $today_master;

@@ -631,6 +631,21 @@ function fetchMedicine() {
 		}
 	});
 }
+function fetchChemist() {
+	$.ajax({
+		url: '<?php echo base_url(); ?>admin/manage_user_chemist/get_chemist_count',
+		type: 'GET',
+		dataType: 'json',
+		success: function(response) {
+			if (response.total_chemist !== undefined) {
+                $('#total_chemist').text(response.total_chemist);
+            }
+		},
+		error: function() {
+			console.error('Failed to fetch active user count');
+		}
+	});
+}
 function fetchInvoice() {
 	$.ajax({
 		url: '<?php echo base_url(); ?>admin/manage_invoice/get_invoice_data',
@@ -665,6 +680,7 @@ function fetchActiveUserCount() {
 }
 $(document).ready(function() {
 	fetchMedicine();
+	fetchChemist();
 	fetchInvoice();
 	fetchActiveUserCount();
 });
