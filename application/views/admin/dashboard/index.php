@@ -66,7 +66,8 @@
 						</div>
 						<div class="ibox-content">
 							<h1 class="no-margins">
-							<?php echo $total_staffdetail ?></h1>
+								N/a
+							</h1>
 							<div class="stat-percent font-bold text-success">100% <i class="fa fa-bolt"></i></div>
 							<small>Total Corporate</small>
 						</div>
@@ -81,7 +82,8 @@
 						</div>
 						<div class="ibox-content">
 							<h1 class="no-margins">
-							<?php echo $total_salesman ?></h1>
+								<span id="total_salesman"></span>
+							</h1>
 							<div class="stat-percent font-bold text-success">100% <i class="fa fa-bolt"></i></div>
 							<small>Total Salesman</small>
 						</div>
@@ -647,6 +649,21 @@ function fetchChemist() {
 		}
 	});
 }
+function fetchSalesman() {
+	$.ajax({
+		url: '<?php echo base_url(); ?>admin/manage_user_salesman/get_salesman_count',
+		type: 'GET',
+		dataType: 'json',
+		success: function(response) {
+			if (response.total_salesman !== undefined) {
+                $('#total_salesman').text(response.total_salesman);
+            }
+		},
+		error: function() {
+			console.error('Failed to fetch active user count');
+		}
+	});
+}
 function fetchInvoice() {
 	$.ajax({
 		url: '<?php echo base_url(); ?>admin/manage_invoice/get_invoice_data',
@@ -682,6 +699,7 @@ function fetchActiveUserCount() {
 $(document).ready(function() {
 	fetchMedicine();
 	fetchChemist();
+	fetchSalesman();
 	fetchInvoice();
 	fetchActiveUserCount();
 });

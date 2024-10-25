@@ -53,14 +53,7 @@ class Dashboard extends CI_Controller {
 		foreach($result as $row)
 		{
 			$today_master++;
-		}
-
-
-		$result = $this->db->query("select id from tbl_corporate")->result();
-		foreach($result as $row)
-		{
-			$total_staffdetail++;
-		}		
+		}	
 
 		$result = $this->db->query("select id from tbl_users")->result();
 		foreach($result as $row)
@@ -145,8 +138,6 @@ class Dashboard extends CI_Controller {
 			$today_orders_items++;
 		}
 		
-		$data["total_staffdetail"] 	= $total_staffdetail;
-		$data["total_salesman"] 	= $total_salesman;
 		$data["today_master"] 		= $today_master;
 		//$data["today_total_sales"] 	= utf8_encode(money_format('%!.0n',$today_total_sales));
 		$data["top_sales_medicine"] = $top_sales_medicine;
