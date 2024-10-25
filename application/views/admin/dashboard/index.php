@@ -642,7 +642,9 @@ function fetchDashboardData() {
 			$('#total_cart').text(response.total_cart);
 			$('#total_unique_order').text(response.total_unique_order);
 			$('#total_order').text(response.total_order);
+			$('#total_order_download').text(response.total_order_download);
 			$('#total_order_amount').text(response.total_order_amount);
+			$('#total_order_items').text(response.total_order_items);
 			$('#total_pc_mobile_order').text(response.total_pc_mobile_order);
 			$('#total_android_order').text(response.total_android_order);
 			$('#total_invoices').text(response.total_invoices);
