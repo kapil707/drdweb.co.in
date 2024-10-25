@@ -12,12 +12,7 @@ $(document).ready(function(){
 		ajax: {
 			url: '<?php echo base_url(); ?>admin/<?php echo $Page_name ?>/view_api',
 			type: 'POST',
-			data: function(d) {
-				return $.extend({}, d, {
-					from_date: from_date,
-					to_date: to_date
-				});
-			},
+			data: '',
 			dataSrc: 'items'
 		},
 		order: [[0, 'asc']],
