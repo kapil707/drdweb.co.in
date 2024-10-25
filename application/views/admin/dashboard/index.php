@@ -128,11 +128,12 @@
 					<div class="ibox float-e-margins">
 						<div class="ibox-title">
 							<span class="label label-success pull-right">Now</span>
-							<h5>Orders</h5>
+							<h5>Today Orders</h5>
 						</div>
 						<div class="ibox-content">
 							<h1 class="no-margins">
-								<span id="total_order"></span>
+								<span id="total_order"></span> / 
+								<span id="total_order_download"></span>
 							</h1>
 							<div class="stat-percent font-bold text-success">100% <i class="fa fa-bolt"></i></div>
 							<small>Total Orders</small>
