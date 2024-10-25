@@ -123,6 +123,24 @@
 						</div>
 					</div>
 				</div>
+
+
+				
+				<div class="col-lg-3">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">
+							<span class="label label-success pull-right">Now</span>
+							<h5>Download Order</h5>
+						</div>
+						<div class="ibox-content">
+							<h1 class="no-margins">
+								<span id="total_order_download"></span>
+							</h1>
+							<div class="stat-percent font-bold text-success">100% <i class="fa fa-bolt"></i></div>
+							<small>Total Download Order</small>
+						</div>
+					</div>
+				</div>
 				
 				<div class="col-lg-3">
 					<div class="ibox float-e-margins">
@@ -132,8 +150,7 @@
 						</div>
 						<div class="ibox-content">
 							<h1 class="no-margins">
-								<span id="total_order"></span> / 
-								<span id="total_order_download"></span>
+								<span id="total_order"></span>
 							</h1>
 							<div class="stat-percent font-bold text-success">100% <i class="fa fa-bolt"></i></div>
 							<small>Total Orders</small>
@@ -201,21 +218,6 @@
 							</h1>
 							<div class="stat-percent font-bold text-success">100% <i class="fa fa-bolt"></i></div>
 							<small>Total Android Order</small>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-lg-3">
-					<div class="ibox float-e-margins">
-						<div class="ibox-title">
-							<span class="label label-success pull-right">Now</span>
-							<h5>Excel Order</h5>
-						</div>
-						<div class="ibox-content">
-							<h1 class="no-margins">
-							<?php echo $today_excel_orders_items ?></h1>
-							<div class="stat-percent font-bold text-success">100% <i class="fa fa-bolt"></i></div>
-							<small>Total Excel Order</small>
 						</div>
 					</div>
 				</div>
