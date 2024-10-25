@@ -590,6 +590,13 @@ class Dashboard extends CI_Controller {
 		$query = $this->db->get();
 		$total_cart = $query->num_rows();
 		/****************************************** */
+		$this->db->distinct();
+		$this->db->select('chemist_id');
+		$this->db->from('tbl_cart_order');
+		$this->db->where('date', date('Y-m-d'));	
+		$query = $this->db->get();
+		$total_unique_order = $query->num_rows();
+		/****************************************** */
 		$this->db->select('COUNT(id) as total, SUM(amt) as total_amt');
 		$this->db->from('tbl_invoice');
 		$this->db->where('date', date('Y-m-d'));
@@ -608,7 +615,7 @@ class Dashboard extends CI_Controller {
 		$this->db->distinct();
 		$this->db->select('chemist_id');
 		$this->db->from('tbl_activity_logs');
-		$this->db->where('date =', date('Y-m-d'));	
+		$this->db->where('date', date('Y-m-d'));	
 		$query = $this->db->get();
 		$today_active_user_count = $query->num_rows();
 		/****************************************** */
@@ -620,6 +627,7 @@ class Dashboard extends CI_Controller {
 			'total_salesman' => $total_salesman,
 			'total_rider' => $total_rider,
 			'total_cart' => $total_cart,
+			'total_unique_order' => $total_unique_order,
 			'total_invoices' => $total_invoices,
 			'total_invoices_amount' => $total_invoices_amount,
 			'active_user_count' => $active_user_count,

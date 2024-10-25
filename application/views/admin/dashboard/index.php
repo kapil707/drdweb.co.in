@@ -116,7 +116,8 @@
 						</div>
 						<div class="ibox-content">
 							<h1 class="no-margins">
-							<?php echo $today_orders3 ?></h1>
+								<span id="total_unique_order"></span>
+							</h1>
 							<div class="stat-percent font-bold text-success">100% <i class="fa fa-bolt"></i></div>
 							<small>Total Unique Orders</small>
 						</div>
@@ -633,6 +634,7 @@ function fetchDashboardData() {
 			$('#total_salesman').text(response.total_salesman);
 			$('#total_rider').text(response.total_rider);
 			$('#total_cart').text(response.total_cart);
+			$('#total_unique_order').text(response.total_unique_order);			
 			$('#total_invoices').text(response.total_invoices);
 			$('#total_invoices_amount').text(response.total_invoices_amount);
 			$('#active_user_count').text(response.active_user_count);
