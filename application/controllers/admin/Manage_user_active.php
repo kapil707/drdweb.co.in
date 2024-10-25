@@ -44,50 +44,43 @@ class Manage_user_active extends CI_Controller {
 		
 		$i = 1;
 		$Page_tbl = $this->Page_tbl;
-		if(!empty($_REQUEST)){
-			$jsonArray = array();
+		$jsonArray = array();
 
-			$items = "";
+		$items = "";
 
-			$result = $this->db->query("SELECT chemist_id, salesman_id, date, MAX(time) AS time FROM tbl_activity_logs GROUP BY chemist_id, salesman_id, date ORDER BY MAX(timestamp) DESC");
-			$result = $result->result();
+		$result = $this->db->query("SELECT chemist_id, salesman_id, date, MAX(time) AS time FROM $Page_tbl GROUP BY chemist_id, salesman_id, date ORDER BY MAX(timestamp) DESC");
+		$result = $result->result();
 
-			foreach($result as $row){
+		foreach($result as $row){
 
-				$sr_no = $i++;
-				$id = $row->id;
-				$chemist_id = $row->chemist_id;
-				$salesman_id = $row->salesman_id;
-				if(empty($chemist_id)){
-					$chemist_id = "Guest User";
-				}
-				if(empty($salesman_id)){
-					$salesman_id = "N/a";
-				}
-				$datetime = date("d-M-y",strtotime($row->date)) . " @ " .$row->time;
-
-				$dt = array(
-					'sr_no' => $sr_no,
-					'id' => $id,
-					'chemist_id' => $chemist_id,
-					'salesman_id'=>$salesman_id,
-					'datetime'=>$datetime,
-				);
-				$jsonArray[] = $dt;
+			$sr_no = $i++;
+			$id = $row->id;
+			$chemist_id = $row->chemist_id;
+			$salesman_id = $row->salesman_id;
+			if(empty($chemist_id)){
+				$chemist_id = "Guest User";
 			}
+			if(empty($salesman_id)){
+				$salesman_id = "N/a";
+			}
+			$datetime = date("d-M-y",strtotime($row->date)) . " @ " .$row->time;
 
-			$items = $jsonArray;
-			$response = array(
-				'success' => "1",
-				'message' => 'Data load successfully',
-				'items' => $items,
+			$dt = array(
+				'sr_no' => $sr_no,
+				'id' => $id,
+				'chemist_id' => $chemist_id,
+				'salesman_id'=>$salesman_id,
+				'datetime'=>$datetime,
 			);
-		}else{
-			$response = array(
-				'success' => "0",
-				'message' => '502 error',
-			);
+			$jsonArray[] = $dt;
 		}
+
+		$items = $jsonArray;
+		$response = array(
+			'success' => "1",
+			'message' => 'Data load successfully',
+			'items' => $items,
+		);
 
         // Send JSON response
         header('Content-Type: application/json');
