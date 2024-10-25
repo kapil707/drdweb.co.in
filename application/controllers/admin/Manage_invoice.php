@@ -126,7 +126,7 @@ class Manage_invoice extends CI_Controller {
 
 		$this->db->select('COUNT(id) as total, SUM(amt) as total_amt');
 		$this->db->from('tbl_invoice');
-		$this->db->where('date', $date);
+		$this->db->where('date', date('Y-m-d'));
 		$query = $this->db->get();
 		$invoice_data = $query->row_array();
 		$active_user_count = $query->num_rows();
