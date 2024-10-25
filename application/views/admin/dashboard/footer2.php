@@ -10,7 +10,7 @@ $(document).ready(function(){
 	// Initialize DataTable
 	table = $('#view_api_table').DataTable({
 		ajax: {
-			url: '<?php echo base_url(); ?>admin/manage_user_active/view_api2',
+			url: '<?php echo base_url(); ?>admin/<?php echo $Page_name ?>/view_active_user_api',
 			type: 'POST',
 			data: '',
 			dataSrc: 'items'

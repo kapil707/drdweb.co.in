@@ -512,4 +512,114 @@ class Dashboard extends CI_Controller {
 		$this->db->query("update tbl_website_type1 set selected_theme='1' where id='$id'");
 		echo "ok";
 	}
+
+	public function view_active_user_api() {
+		
+		$i = 1;
+		$Page_tbl = $this->Page_tbl;
+		$jsonArray = array();
+
+		$items = "";
+
+		$result = $this->db->query("SELECT chemist_id, salesman_id, date, MAX(time) AS time FROM tbl_activity_logs WHERE timestamp >= (UNIX_TIMESTAMP() - 300) GROUP BY chemist_id, salesman_id, date ORDER BY MAX(timestamp) DESC LIMIT 0, 100");
+		$result = $result->result();
+
+		foreach($result as $row){
+
+			$sr_no = $i++;
+			$chemist_id = $row->chemist_id;
+			$salesman_id = $row->salesman_id;
+			if(empty($chemist_id)){
+				$chemist_id = "Guest User";
+			}
+			if(empty($salesman_id)){
+				$salesman_id = "N/a";
+			}
+			$datetime = date("d-M-y",strtotime($row->date)) . " @ " .$row->time;
+
+			$dt = array(
+				'sr_no' => $sr_no,
+				'chemist_id' => $chemist_id,
+				'salesman_id'=>$salesman_id,
+				'datetime'=>$datetime,
+			);
+			$jsonArray[] = $dt;
+		}
+
+		$items = $jsonArray;
+		$response = array(
+			'success' => "1",
+			'message' => 'Data load successfully',
+			'items' => $items,
+		);
+
+        // Send JSON response
+        header('Content-Type: application/json');
+        echo json_encode($response);
+	}
+
+	public function get_data() {
+
+		/****************************************** */
+		$this->db->select('id');
+		$this->db->from('tbl_medicine');	
+		$query = $this->db->get();
+		$total_medicine = $query->num_rows();
+		/****************************************** */
+		$this->db->select('id');
+		$this->db->from('tbl_chemist');
+		$this->db->where('slcd', 'CL');
+		$query = $this->db->get();
+		$total_chemist = $query->num_rows();
+		/****************************************** */
+		$this->db->select('id');
+		$this->db->from('tbl_users');
+		$query = $this->db->get();
+		$total_salesman = $query->num_rows();
+		/****************************************** */
+		$this->db->select('id');
+		$this->db->from('tbl_master');
+		$this->db->where('slcd', 'SM');
+		$this->db->where('altercode !=', '');
+		$query = $this->db->get();
+		$total_rider = $query->num_rows();
+		/****************************************** */
+		$this->db->select('COUNT(id) as total, SUM(amt) as total_amt');
+		$this->db->from('tbl_invoice');
+		$this->db->where('date', date('Y-m-d'));
+		$query = $this->db->get();
+		$invoice_data = $query->row_array();
+		$total_invoices = $invoice_data['total'];
+		$total_invoices_amount = utf8_encode(money_format('%!.0n',$invoice_data['total_amt']));
+		/****************************************** */
+		$this->db->distinct();
+		$this->db->select('chemist_id');
+		$this->db->from('tbl_activity_logs');
+		$this->db->where('timestamp >=', time() - 300); // Last 5 minutes	
+		$query = $this->db->get();
+		$active_user_count = $query->num_rows();
+		/***************************************** */
+		$this->db->distinct();
+		$this->db->select('chemist_id');
+		$this->db->from('tbl_activity_logs');
+		$this->db->where('date =', date('Y-m-d'));	
+		$query = $this->db->get();
+		$today_active_user_count = $query->num_rows();
+		/****************************************** */
+
+		// Combine both results into a single array
+		$result = array(
+			'total_medicine' => $total_medicine,
+			'total_chemist' => $total_chemist,
+			'total_salesman' => $total_salesman,
+			'total_rider' => $total_rider,
+			'total_invoices' => $total_invoices,
+			'total_invoices_amount' => $total_invoices_amount,
+			'active_user_count' => $active_user_count,
+			'today_active_user_count' => $today_active_user_count,
+		);
+
+		// Output the result as JSON
+		echo json_encode($result);
+	}
 }

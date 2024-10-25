@@ -53,21 +53,4 @@ class Manage_medicine extends CI_Controller {
 		$this->load->view("admin/header_footer/footer",$data);
 		$this->load->view("admin/$Page_view/footer2",$data);
 	}
-
-	public function get_medicine_count() {
-
-		$this->db->select('id');
-		$this->db->from('tbl_medicine');
-	
-		$query = $this->db->get();
-		$total_medicine = $query->num_rows();
-
-		// Combine both results into a single array
-		$result = array(
-			'total_medicine' => $total_medicine
-		);
-
-		// Output the result as JSON
-		echo json_encode($result);
-	}
 }

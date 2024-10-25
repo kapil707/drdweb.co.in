@@ -263,22 +263,4 @@ $items = substr($items, 0, -1);
 {"items":[<?= $items;?>]}
 <?php
 	}
-
-	public function get_chemist_count() {
-
-		$this->db->select('id');
-		$this->db->from('tbl_chemist');
-		$this->db->where('slcd', 'CL');
-
-		$query = $this->db->get();
-		$total_chemist = $query->num_rows();
-
-		// Combine both results into a single array
-		$result = array(
-			'total_chemist' => $total_chemist
-		);
-
-		// Output the result as JSON
-		echo json_encode($result);
-	}
 }

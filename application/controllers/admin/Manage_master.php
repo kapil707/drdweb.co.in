@@ -265,24 +265,4 @@ class Manage_master extends CI_Controller {
 		}
 		return implode($pass); //turn the array into a string
 	}
-
-	public function get_rider_count() {
-		$Page_tbl 	= $this->Page_tbl;
-
-		$this->db->select('id');
-		$this->db->from($Page_tbl);
-		$this->db->where('slcd', 'SM');
-		$this->db->where('altercode !=', '');
-
-		$query = $this->db->get();
-		$total_rider = $query->num_rows();
-
-		// Combine both results into a single array
-		$result = array(
-			'total_rider' => $total_rider
-		);
-
-		// Output the result as JSON
-		echo json_encode($result);
-	}
 }

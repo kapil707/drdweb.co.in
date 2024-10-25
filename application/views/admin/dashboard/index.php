@@ -620,92 +620,22 @@
 </script>
 
 <script>
-function fetchMedicine() {
+function fetchDashboardData() {
 	$.ajax({
-		url: '<?php echo base_url(); ?>admin/manage_medicine/get_medicine_count',
+		url: '<?php echo base_url(); ?>admin/<?php echo $Page_name ?>/get_data',
 		type: 'GET',
 		dataType: 'json',
 		success: function(response) {
-			if (response.total_medicine !== undefined) {
+			if (response.total_medicine !== undefined && response.today_active_user_count !== undefined) {
                 $('#total_medicine').text(response.total_medicine);
-            }
-		},
-		error: function() {
-			console.error('Failed to fetch active user count');
-		}
-	});
-}
-function fetchChemist() {
-	$.ajax({
-		url: '<?php echo base_url(); ?>admin/manage_user_chemist/get_chemist_count',
-		type: 'GET',
-		dataType: 'json',
-		success: function(response) {
-			if (response.total_chemist !== undefined) {
-                $('#total_chemist').text(response.total_chemist);
-            }
-		},
-		error: function() {
-			console.error('Failed to fetch active user count');
-		}
-	});
-}
-function fetchSalesman() {
-	$.ajax({
-		url: '<?php echo base_url(); ?>admin/manage_user_salesman/get_salesman_count',
-		type: 'GET',
-		dataType: 'json',
-		success: function(response) {
-			if (response.total_salesman !== undefined) {
-                $('#total_salesman').text(response.total_salesman);
-            }
-		},
-		error: function() {
-			console.error('Failed to fetch active user count');
-		}
-	});
-}
-function fetchRider() {
-	$.ajax({
-		url: '<?php echo base_url(); ?>admin/manage_master/get_rider_count',
-		type: 'GET',
-		dataType: 'json',
-		success: function(response) {
-			if (response.total_rider !== undefined) {
-                $('#total_rider').text(response.total_rider);
-            }
-		},
-		error: function() {
-			console.error('Failed to fetch active user count');
-		}
-	});
-}
-function fetchInvoice() {
-	$.ajax({
-		url: '<?php echo base_url(); ?>admin/manage_invoice/get_invoice_data',
-		type: 'GET',
-		dataType: 'json',
-		success: function(response) {
-			if (response.total_invoices !== undefined && response.total_invoices_amount !== undefined) {
-                $('#total_invoices').text(response.total_invoices);
-                $('#total_invoices_amount').text(response.total_invoices_amount);
-            }
-		},
-		error: function() {
-			console.error('Failed to fetch active user count');
-		}
-	});
-}
-function fetchActiveUserCount() {
-	$.ajax({
-		url: '<?php echo base_url(); ?>admin/manage_user_active/get_active_user_count',
-		type: 'GET',
-		dataType: 'json',
-		success: function(response) {
-			if (response.active_user_count !== undefined && response.today_active_user_count !== undefined) {
-				$('#active_user_count').text(response.active_user_count); 
+				$('#total_chemist').text(response.total_chemist);
+				$('#total_salesman').text(response.total_salesman);
+				$('#total_rider').text(response.total_rider);
+				$('#total_invoices').text(response.total_invoices);
+				$('#total_invoices_amount').text(response.total_invoices_amount);
+				$('#active_user_count').text(response.active_user_count);
 				$('#today_active_user_count').text(response.today_active_user_count);
-			}
+            }
 		},
 		error: function() {
 			console.error('Failed to fetch active user count');
@@ -714,12 +644,7 @@ function fetchActiveUserCount() {
 }
 function allcall(){
 
-	fetchMedicine();
-	fetchChemist();
-	fetchSalesman();
-	fetchRider();
-	fetchInvoice();
-	fetchActiveUserCount();
+	fetchDashboardData();
 
 	setInterval(function () {
 		allcall();

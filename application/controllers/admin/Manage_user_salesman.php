@@ -438,22 +438,4 @@ class Manage_user_salesman extends CI_Controller {
 		}
 		return $customer_code . $id;
 	}
-
-	public function get_salesman_count() {
-
-		$this->db->select('id');
-		$this->db->from('tbl_users');
-		//$this->db->where('slcd', 'CL');
-
-		$query = $this->db->get();
-		$total_salesman = $query->num_rows();
-
-		// Combine both results into a single array
-		$result = array(
-			'total_salesman' => $total_salesman
-		);
-
-		// Output the result as JSON
-		echo json_encode($result);
-	}
 }
