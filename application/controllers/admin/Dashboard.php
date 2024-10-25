@@ -123,16 +123,6 @@ class Dashboard extends CI_Controller {
 		
 		/*********************************************/
 		
-		
-		/*********************invoice part**************************/
-		$date = date("Y-m-d");
-		$row = $this->db->query("select count(id) as total,sum(amt) as total_amt from tbl_invoice where date='$date'")->row();
-		if(!empty($row))
-		{
-			$today_total_sales = round($row->total_amt);
-			$today_invoice = $row->total;
-		}
-		
 		$top_sales_medicine = "";
 		$result = $this->db->query("SELECT DISTINCT tbl_medicine.item_name, COUNT(*) as ct FROM tbl_invoice_item LEFT JOIN tbl_medicine ON tbl_medicine.i_code = tbl_invoice_item.itemc WHERE tbl_invoice_item.date = '$date' GROUP BY tbl_medicine.item_name HAVING COUNT(*) > 1 ORDER BY ct DESC LIMIT 10")->result();
 		foreach($result as $row)
@@ -171,12 +161,11 @@ class Dashboard extends CI_Controller {
 		$data["total_staffdetail"] 	= $total_staffdetail;
 		$data["total_salesman"] 	= $total_salesman;
 		$data["today_master"] 		= $today_master;
-		$data["today_total_sales"] 	= utf8_encode(money_format('%!.0n',$today_total_sales));
+		//$data["today_total_sales"] 	= utf8_encode(money_format('%!.0n',$today_total_sales));
 		$data["top_sales_medicine"] = $top_sales_medicine;
 		$data["top_search_medicine"]= $top_search_medicine;
 		$data["today_orders"]		= $today_orders1."/".$today_orders2;
 		$data["today_orders3"]		= $today_orders3;
-		$data["today_invoice"]		= $today_invoice;
 		
 		$data["today_orders_price"]	= utf8_encode(money_format('%!.0n',$today_orders_price));
 		$data["today_orders_items"]	= $today_orders_items;

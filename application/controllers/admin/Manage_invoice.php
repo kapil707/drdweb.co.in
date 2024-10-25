@@ -121,4 +121,22 @@ class Manage_invoice extends CI_Controller {
         header('Content-Type: application/json');
         echo json_encode($response);
 	}
+
+	public function get_invoice_data() {
+
+		$this->db->select('COUNT(id) as total, SUM(amt) as total_amt');
+		$this->db->from('tbl_invoice');
+		$this->db->where('date', $date);
+		$query = $this->db->get();
+		$invoice_data = $query->row_array();
+		$active_user_count = $query->num_rows();
+
+		// Combine both results into a single array
+		$result = array(
+			'total_invoices' => $invoice_data['total'],
+			'total_amount' => $invoice_data['total_amt']
+		);
+	
+		return $result; // Return the combined data
+	}
 }

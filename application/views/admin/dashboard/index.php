@@ -214,7 +214,8 @@
 						</div>
 						<div class="ibox-content">
 							<h1 class="no-margins">
-							<?php echo $today_invoice ?></h1>
+								<span id="today_invoice"></span>
+							</h1>
 							<div class="stat-percent font-bold text-success">100% <i class="fa fa-bolt"></i></div>
 							<small>Total Invoice</small>
 						</div>
@@ -229,7 +230,8 @@
 						</div>
 						<div class="ibox-content">
 							<h1 class="no-margins">
-							<?php echo $today_total_sales ?></h1>
+								<span id="today_total_sales"></span>
+							</h1>
 							<div class="stat-percent font-bold text-success">100% <i class="fa fa-bolt"></i></div>
 							<small>Total Sales</small>
 						</div>
@@ -244,7 +246,7 @@
 						</div>
 						<div class="ibox-content">
 							<h1 class="no-margins">
-								<span id="active-user-count"></span>
+								<span id="active_user_count"></span>
 							</h1>
 							<div class="stat-percent font-bold text-success">100% <i class="fa fa-bolt"></i></div>
 							<small>Active User Now</small>
@@ -260,7 +262,7 @@
 						</div>
 						<div class="ibox-content">
 							<h1 class="no-margins">
-								<span id="today-active-user-count"></span>
+								<span id="today_active_user_count"></span>
 							</h1>
 							<div class="stat-percent font-bold text-success">100% <i class="fa fa-bolt"></i></div>
 							<small>Total Today Active User</small>
@@ -613,14 +615,15 @@
 </script>
 
 <script>
-function fetchActiveUserCount() {
+function fetchInvoice() {
 	$.ajax({
-		url: '<?php echo base_url(); ?>admin/manage_user_active/get_active_user_count',
+		url: '<?php echo base_url(); ?>admin/manage_invoice/get_invoice_data',
 		type: 'GET',
 		dataType: 'json',
 		success: function(response) {
 			if (response.total !== undefined) {
-				$('#active-user-count').text(response.total); // Display the total count in the target div
+				$('#today_total_sales').text(response.total_amount); 
+				$('#today_invoice').text(response.today_invoice); 
 			}
 		},
 		error: function() {
@@ -628,14 +631,15 @@ function fetchActiveUserCount() {
 		}
 	});
 }
-function fetchTodayActiveUserCount() {
+function fetchActiveUserCount() {
 	$.ajax({
-		url: '<?php echo base_url(); ?>admin/manage_user_active/get_today_active_user_count',
+		url: '<?php echo base_url(); ?>admin/manage_user_active/get_active_user_count',
 		type: 'GET',
 		dataType: 'json',
 		success: function(response) {
 			if (response.total !== undefined) {
-				$('#today-active-user-count').text(response.total); // Display the total count in the target div
+				$('#active_user_count').text(response.active_user_count); 
+				$('#today_active_user_count').text(response.today_active_user_count);
 			}
 		},
 		error: function() {
@@ -644,7 +648,7 @@ function fetchTodayActiveUserCount() {
 	});
 }
 $(document).ready(function() {
+	fetchInvoice();
 	fetchActiveUserCount();
-	fetchTodayActiveUserCount();
 });
 </script>
