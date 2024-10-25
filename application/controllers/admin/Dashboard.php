@@ -47,7 +47,7 @@ class Dashboard extends CI_Controller {
 		}
 		/***********************************************/		
 		$date = date("Y-m-d");	
-
+				
 		$top_sales_medicine = "";
 		$result = $this->db->query("SELECT DISTINCT tbl_medicine.item_name, COUNT(*) as ct FROM tbl_invoice_item LEFT JOIN tbl_medicine ON tbl_medicine.i_code = tbl_invoice_item.itemc WHERE tbl_invoice_item.date = '$date' GROUP BY tbl_medicine.item_name HAVING COUNT(*) > 1 ORDER BY ct DESC LIMIT 10")->result();
 		foreach($result as $row)
@@ -71,6 +71,8 @@ class Dashboard extends CI_Controller {
 			$top_search_medicine = substr($top_search_medicine, 0, -1);
 		}
 		/****************************************************/
+		$data["top_sales_medicine"] = $top_sales_medicine;
+		$data["top_search_medicine"]= $top_search_medicine;
 
 		$this->load->view('admin/header_footer/header_dashbord',$data);
 		if($user_type=="Super_Admin" || $user_type=="Admin"){
