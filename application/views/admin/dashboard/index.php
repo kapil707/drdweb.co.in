@@ -62,22 +62,6 @@
 					<div class="ibox float-e-margins">
 						<div class="ibox-title">
 							<span class="label label-success pull-right">Now</span>
-							<h5>Corporate</h5>
-						</div>
-						<div class="ibox-content">
-							<h1 class="no-margins">
-								N/a
-							</h1>
-							<div class="stat-percent font-bold text-success">100% <i class="fa fa-bolt"></i></div>
-							<small>Total Corporate</small>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-lg-3">
-					<div class="ibox float-e-margins">
-						<div class="ibox-title">
-							<span class="label label-success pull-right">Now</span>
 							<h5>Salesman</h5>
 						</div>
 						<div class="ibox-content">
@@ -102,6 +86,24 @@
 							</h1>
 							<div class="stat-percent font-bold text-success">100% <i class="fa fa-bolt"></i></div>
 							<small>Total Rider</small>
+						</div>
+					</div>
+				</div>
+
+
+				
+				<div class="col-lg-3">
+					<div class="ibox float-e-margins">
+						<div class="ibox-title">
+							<span class="label label-success pull-right">Now</span>
+							<h5>UserCart</h5>
+						</div>
+						<div class="ibox-content">
+							<h1 class="no-margins">
+								<span id="total_cart"></span>
+							</h1>
+							<div class="stat-percent font-bold text-success">100% <i class="fa fa-bolt"></i></div>
+							<small>Total Cart</small>
 						</div>
 					</div>
 				</div>
@@ -626,16 +628,15 @@ function fetchDashboardData() {
 		type: 'GET',
 		dataType: 'json',
 		success: function(response) {
-			if (response.total_medicine !== undefined && response.today_active_user_count !== undefined) {
-                $('#total_medicine').text(response.total_medicine);
-				$('#total_chemist').text(response.total_chemist);
-				$('#total_salesman').text(response.total_salesman);
-				$('#total_rider').text(response.total_rider);
-				$('#total_invoices').text(response.total_invoices);
-				$('#total_invoices_amount').text(response.total_invoices_amount);
-				$('#active_user_count').text(response.active_user_count);
-				$('#today_active_user_count').text(response.today_active_user_count);
-            }
+			$('#total_medicine').text(response.total_medicine);
+			$('#total_chemist').text(response.total_chemist);
+			$('#total_salesman').text(response.total_salesman);
+			$('#total_rider').text(response.total_rider);
+			$('#total_cart').text(response.total_cart);
+			$('#total_invoices').text(response.total_invoices);
+			$('#total_invoices_amount').text(response.total_invoices_amount);
+			$('#active_user_count').text(response.active_user_count);
+			$('#today_active_user_count').text(response.today_active_user_count);
 		},
 		error: function() {
 			console.error('Failed to fetch active user count');

@@ -584,6 +584,12 @@ class Dashboard extends CI_Controller {
 		$query = $this->db->get();
 		$total_rider = $query->num_rows();
 		/****************************************** */
+		$this->db->select('id');
+		$this->db->from('tbl_cart');
+		$this->db->where('status', '0');
+		$query = $this->db->get();
+		$total_cart = $query->num_rows();
+		/****************************************** */
 		$this->db->select('COUNT(id) as total, SUM(amt) as total_amt');
 		$this->db->from('tbl_invoice');
 		$this->db->where('date', date('Y-m-d'));
