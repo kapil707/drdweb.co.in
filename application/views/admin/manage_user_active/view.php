@@ -17,7 +17,7 @@
 		<div class="row">
 			<div class="col-sm-12  pt-1 pb-5">
 				<div class="table-responsive">
-					<table class="table table-striped table-bordered table-hover" id="example-table">
+					<table class="table table-striped table-bordered table-hover" id="view_api_table">
 						<thead>
 						</thead>
 						<tbody>

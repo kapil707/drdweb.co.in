@@ -8,7 +8,7 @@ var table;
 $(document).ready(function(){
 
 	// Initialize DataTable
-	table = $('#example-table').DataTable({
+	table = $('#view_api_table').DataTable({
 		ajax: {
 			url: '<?php echo base_url(); ?>admin/<?php echo $Page_name ?>/view_api',
 			type: 'POST',
