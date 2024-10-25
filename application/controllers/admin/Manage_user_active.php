@@ -34,9 +34,6 @@ class Manage_user_active extends CI_Controller {
 		$this->breadcrumbs->push("$Page_title","admin/$page_controllers/");
 		$this->breadcrumbs->push("View","admin/$page_controllers/view");
 		
-		$tbl = $Page_tbl;	
-				
-  		$data["result"] = $result;
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/view",$data);
 		$this->load->view("admin/header_footer/footer",$data);
