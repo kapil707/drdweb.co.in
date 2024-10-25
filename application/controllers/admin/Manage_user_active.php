@@ -85,6 +85,51 @@ class Manage_user_active extends CI_Controller {
         echo json_encode($response);
 	}
 
+	public function view_api2() {
+		
+		$i = 1;
+		$Page_tbl = $this->Page_tbl;
+		$jsonArray = array();
+
+		$items = "";
+
+		$result = $this->db->query("SELECT chemist_id, salesman_id, date, MAX(time) AS time FROM tbl_activity_logs WHERE timestamp >= (UNIX_TIMESTAMP() - 300) GROUP BY chemist_id, salesman_id, date ORDER BY MAX(timestamp) DESC LIMIT 0, 100");
+		$result = $result->result();
+
+		foreach($result as $row){
+
+			$sr_no = $i++;
+			$chemist_id = $row->chemist_id;
+			$salesman_id = $row->salesman_id;
+			if(empty($chemist_id)){
+				$chemist_id = "Guest User";
+			}
+			if(empty($salesman_id)){
+				$salesman_id = "N/a";
+			}
+			$datetime = date("d-M-y",strtotime($row->date)) . " @ " .$row->time;
+
+			$dt = array(
+				'sr_no' => $sr_no,
+				'chemist_id' => $chemist_id,
+				'salesman_id'=>$salesman_id,
+				'datetime'=>$datetime,
+			);
+			$jsonArray[] = $dt;
+		}
+
+		$items = $jsonArray;
+		$response = array(
+			'success' => "1",
+			'message' => 'Data load successfully',
+			'items' => $items,
+		);
+
+        // Send JSON response
+        header('Content-Type: application/json');
+        echo json_encode($response);
+	}
+
 	public function get_active_user_count() {
 
 		$this->db->distinct();

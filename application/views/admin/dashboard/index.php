@@ -712,12 +712,20 @@ function fetchActiveUserCount() {
 		}
 	});
 }
-$(document).ready(function() {
+function allcall(){
+
 	fetchMedicine();
 	fetchChemist();
 	fetchSalesman();
 	fetchRider();
 	fetchInvoice();
 	fetchActiveUserCount();
+
+	setInterval(function () {
+		allcall();
+	}, 120000);
+}
+$(document).ready(function() {
+	allcall();
 });
 </script>
