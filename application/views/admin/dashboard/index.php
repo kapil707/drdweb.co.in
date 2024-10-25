@@ -626,4 +626,7 @@ function fetchActiveUserCount() {
 		}
 	});
 }
+$(document).ready(function() {
+	fetchActiveUserCount();
+});
 </script>
