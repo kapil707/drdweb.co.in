@@ -305,7 +305,7 @@
 								</thead>
 								<tbody>
 									<?php
-									$i = 0;
+									$i = 1;
 									foreach($get_online_users as $row){
 										$chemist_id = $row->chemist_id;
 										$salesman_id = $row->salesman_id;
@@ -320,7 +320,7 @@
 											<td><?php echo $i++ ?></td>
 											<td><?php echo $chemist_id ?></td>
 											<td><?php echo $salesman_id ?></td>
-											<td><?php echo $row->date ?> / <?php echo $row->time ?></td>
+											<td><?php echo date("d-M-y",strtotime($row->date)) ?> / <?php echo $row->time ?></td>
 										</tr>
 										<?php
 									}
