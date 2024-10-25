@@ -132,7 +132,8 @@
 						</div>
 						<div class="ibox-content">
 							<h1 class="no-margins">
-							<?php echo $today_orders ?></h1>
+								<span id="total_order"></span>
+							</h1>
 							<div class="stat-percent font-bold text-success">100% <i class="fa fa-bolt"></i></div>
 							<small>Total Orders</small>
 						</div>
@@ -147,7 +148,8 @@
 						</div>
 						<div class="ibox-content">
 							<h1 class="no-margins">
-							<?php echo $today_orders_price ?></h1>
+								<span id="total_order_amount"></span>
+							</h1>
 							<div class="stat-percent font-bold text-success">100% <i class="fa fa-bolt"></i></div>
 							<small>Total Order Price</small>
 						</div>
@@ -637,6 +639,8 @@ function fetchDashboardData() {
 			$('#total_rider').text(response.total_rider);
 			$('#total_cart').text(response.total_cart);
 			$('#total_unique_order').text(response.total_unique_order);
+			$('#total_order').text(response.total_order);
+			$('#total_order_amount').text(response.total_order_amount);
 			$('#total_pc_mobile_order').text(response.total_pc_mobile_order);
 			$('#total_android_order').text(response.total_android_order);
 			$('#total_invoices').text(response.total_invoices);

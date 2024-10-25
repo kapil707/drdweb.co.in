@@ -597,6 +597,14 @@ class Dashboard extends CI_Controller {
 		$query = $this->db->get();
 		$total_unique_order = $query->num_rows();
 		/****************************************** */
+		$this->db->select('COUNT(id) as total, SUM(total) as total_amt');
+		$this->db->from('tbl_cart_order');
+		$this->db->where('date', date('Y-m-d'));
+		$query = $this->db->get();
+		$order_data = $query->row_array();
+		$total_order = $order_data['total'];
+		$total_order_amount = utf8_encode(money_format('%!.0n',$order_data['total_amt']));
+		/****************************************** */
 		$this->db->select('id');
 		$this->db->from('tbl_cart_order');
 		$this->db->where('date', date('Y-m-d'));
@@ -642,6 +650,8 @@ class Dashboard extends CI_Controller {
 			'total_rider' => $total_rider,
 			'total_cart' => $total_cart,
 			'total_unique_order' => $total_unique_order,
+			'total_order' => $total_order,
+			'total_order_amount' => $total_order_amount,
 			'total_pc_mobile_order' => $total_pc_mobile_order,
 			'total_android_order' => $total_android_order,
 			'total_invoices' => $total_invoices,
