@@ -54,7 +54,6 @@ class Manage_user_active extends CI_Controller {
 		foreach($result as $row){
 
 			$sr_no = $i++;
-			$id = $row->id;
 			$chemist_id = $row->chemist_id;
 			$salesman_id = $row->salesman_id;
 			if(empty($chemist_id)){
@@ -67,7 +66,6 @@ class Manage_user_active extends CI_Controller {
 
 			$dt = array(
 				'sr_no' => $sr_no,
-				'id' => $id,
 				'chemist_id' => $chemist_id,
 				'salesman_id'=>$salesman_id,
 				'datetime'=>$datetime,
