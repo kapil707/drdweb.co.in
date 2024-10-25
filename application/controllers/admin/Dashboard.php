@@ -619,6 +619,7 @@ class Dashboard extends CI_Controller {
 			'total_chemist' => $total_chemist,
 			'total_salesman' => $total_salesman,
 			'total_rider' => $total_rider,
+			'total_cart' => $total_cart,
 			'total_invoices' => $total_invoices,
 			'total_invoices_amount' => $total_invoices_amount,
 			'active_user_count' => $active_user_count,
