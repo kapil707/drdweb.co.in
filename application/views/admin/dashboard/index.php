@@ -98,7 +98,8 @@
 						</div>
 						<div class="ibox-content">
 							<h1 class="no-margins">
-							<?php echo $today_master ?></h1>
+								<span id="total_rider"></span>
+							</h1>
 							<div class="stat-percent font-bold text-success">100% <i class="fa fa-bolt"></i></div>
 							<small>Total Rider</small>
 						</div>
@@ -664,6 +665,21 @@ function fetchSalesman() {
 		}
 	});
 }
+function fetchRider() {
+	$.ajax({
+		url: '<?php echo base_url(); ?>admin/manage_master/get_rider_count',
+		type: 'GET',
+		dataType: 'json',
+		success: function(response) {
+			if (response.total_rider !== undefined) {
+                $('#total_rider').text(response.total_rider);
+            }
+		},
+		error: function() {
+			console.error('Failed to fetch active user count');
+		}
+	});
+}
 function fetchInvoice() {
 	$.ajax({
 		url: '<?php echo base_url(); ?>admin/manage_invoice/get_invoice_data',
@@ -700,6 +716,7 @@ $(document).ready(function() {
 	fetchMedicine();
 	fetchChemist();
 	fetchSalesman();
+	fetchRider();
 	fetchInvoice();
 	fetchActiveUserCount();
 });

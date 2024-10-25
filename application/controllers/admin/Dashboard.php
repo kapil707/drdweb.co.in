@@ -47,20 +47,7 @@ class Dashboard extends CI_Controller {
 		}
 		/***********************************************/	
 
-		$total_medicine = $total_acm = $total_staffdetail = $total_salesman = $today_total_sales = $today_master = 0;
-		
-		$result = $this->db->query("select id from tbl_master where slcd='SM' and altercode!=''")->result();
-		foreach($result as $row)
-		{
-			$today_master++;
-		}	
-
-		$result = $this->db->query("select id from tbl_users")->result();
-		foreach($result as $row)
-		{
-			$total_salesman++;
-		}
-		
+		$total_medicine = $total_acm = $total_staffdetail = $total_salesman = $today_total_sales = $today_master = 0;		
 		
 		$today_orders1 = $today_orders2 = $today_orders3 = $today_website_orders_items = $today_android_orders_items = $today_excel_orders_items = $today_invoice = 0;
 		$date = date("Y-m-d");
@@ -138,7 +125,6 @@ class Dashboard extends CI_Controller {
 			$today_orders_items++;
 		}
 		
-		$data["today_master"] 		= $today_master;
 		//$data["today_total_sales"] 	= utf8_encode(money_format('%!.0n',$today_total_sales));
 		$data["top_sales_medicine"] = $top_sales_medicine;
 		$data["top_search_medicine"]= $top_search_medicine;
