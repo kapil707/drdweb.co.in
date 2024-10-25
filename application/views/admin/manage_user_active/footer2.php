@@ -8,9 +8,10 @@ asdfasf
 var table;
 $(document).ready(function(){
 
+	// Initialize DataTable
 	table = $('#example-table').DataTable({
 		ajax: {
-		url: '<?php echo base_url(); ?>admin/<?php echo $Page_name ?>/view_api',
+			url: '<?php echo base_url(); ?>admin/<?php echo $Page_name ?>/view_api',
 			type: 'POST',
 			data: function(d) {
 				return $.extend({}, d, {
@@ -26,14 +27,6 @@ $(document).ready(function(){
 			{ data: 'chemist_id', title: 'ChemistId' },
 			{ data: 'salesman_id', title: 'SalesmanId' },
 			{ data: 'datetime', title: 'DateTime' }
-			// {
-			// 	data: null,
-			// 	title: 'Action',
-			// 	orderable: false,
-			// 	render: function (data, type, row) {
-			// 		return `<a href="javascript:void(0)" onclick="delete_rec('${row.id}')" class="btn-white btn btn-xs">Delete</a>`;
-			// 	}
-			// }
 		],
 		pageLength: 25,
 		responsive: true,
@@ -54,12 +47,16 @@ $(document).ready(function(){
 			}
 		]
 	});
-})
-function reload_page(){
-	table.ajax.reload();
+
+	// Set the reload interval to refresh the table every 2 minutes (120000 milliseconds)
 	setInterval(function () {
 		reload_page();
 	}, 120000);
+});
+
+// Function to reload the DataTable
+function reload_page(){
+	table.ajax.reload();
 }
 </script>
 <script src="https://cdn.datatables.net/scroller/2.2.0/js/dataTables.scroller.min.js"></script>
