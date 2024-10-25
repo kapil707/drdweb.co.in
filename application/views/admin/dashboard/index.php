@@ -34,7 +34,8 @@
 						</div>
 						<div class="ibox-content">
 							<h1 class="no-margins">
-							<?php echo $total_medicine ?></h1>
+								<span id="total_medicine"></span>
+							</h1>
 							<div class="stat-percent font-bold text-success">100% <i class="fa fa-bolt"></i></div>
 							<small>Total Medicine</small>
 						</div>
@@ -615,6 +616,21 @@
 </script>
 
 <script>
+function fetchMedicine() {
+	$.ajax({
+		url: '<?php echo base_url(); ?>admin/manage_medicine/get_medicine_count',
+		type: 'GET',
+		dataType: 'json',
+		success: function(response) {
+			if (response.total_invoices !== undefined) {
+                $('#total_medicine').text(response.total_medicine);
+            }
+		},
+		error: function() {
+			console.error('Failed to fetch active user count');
+		}
+	});
+}
 function fetchInvoice() {
 	$.ajax({
 		url: '<?php echo base_url(); ?>admin/manage_invoice/get_invoice_data',
@@ -648,6 +664,7 @@ function fetchActiveUserCount() {
 	});
 }
 $(document).ready(function() {
+	fetchMedicine();
 	fetchInvoice();
 	fetchActiveUserCount();
 });

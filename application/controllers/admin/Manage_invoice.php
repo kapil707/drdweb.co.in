@@ -138,6 +138,5 @@ class Manage_invoice extends CI_Controller {
 
 		// Output the result as JSON
 		echo json_encode($result);
-
 	}
 }
