@@ -243,9 +243,7 @@
 							<h5>Active User Now</h5>
 						</div>
 						<div class="ibox-content">
-							<h1 class="no-margins">
-								<span id="active-user-count"></span>
-							<h1>
+							<h1 class="no-margins" id="active-user-count">0							<h1>
 							<div class="stat-percent font-bold text-success">100% <i class="fa fa-bolt"></i></div>
 							<small>Active User Now</small>
 						</div>
