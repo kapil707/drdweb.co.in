@@ -118,6 +118,7 @@
     font-weight: bold;
 }
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script>
 let currentFocus = -1; // Tracks the currently focused item
