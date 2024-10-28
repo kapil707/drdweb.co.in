@@ -86,7 +86,7 @@ class Manage_notification_whatsapp_group extends CI_Controller {
 					$id = $row->id;
 					$mobile = $row->mobile;
 					$message = $row->message;
-					$datetime = date("d-M-y",strtotime($row->date)) . " @ " .$row->time;
+					$datetime = date("d-M-y @ H:i:s", $row->timestamp);
 
 					$dt = array(
 						'sr_no' => $sr_no,

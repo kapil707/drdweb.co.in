@@ -213,7 +213,7 @@ class Manage_notification extends CI_Controller {
 					$title = $row->title;
 					$message = $row->message;
 					$insert_type = $row->insert_type;
-					$datetime = date("d-M-y",strtotime($row->date)) . " @ " .$row->time;
+					$datetime = date("d-M-y @ H:i:s", $row->timestamp);
 
 					$dt = array(
 						'sr_no' => $sr_no,

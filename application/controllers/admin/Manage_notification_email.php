@@ -174,7 +174,7 @@ class Manage_notification_email extends CI_Controller {
 					$message = $row->message;
 					$type = $row->server_email_name;
 					$title = $row->subject;
-					$datetime = date("d-M-y",strtotime($row->date)) . " @ " .$row->time;
+					$datetime = date("d-M-y @ H:i:s", $row->timestamp);
 
 					$dt = array(
 						'sr_no' => $sr_no,
