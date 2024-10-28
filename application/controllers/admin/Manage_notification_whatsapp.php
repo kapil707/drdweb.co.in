@@ -227,24 +227,44 @@ class Manage_notification_whatsapp extends CI_Controller {
         echo json_encode($response);
 	}
 
-	public function call_search_acm()
-	{		
-		error_reporting(0);
-		?><ul style="margin: 0px;padding: 0px;">
-		<li style="list-style: none;margin: 5px;"><a href="javascript:addacm('All','<?php echo base64_encode('All') ?>')">All</a></li>
-		<?php
-		$acm_name = $this->input->post('acm_name');
-		$result =  $this->db->query ("select * from tbl_chemist where name Like '$acm_name%' or name Like '%$acm_name' or altercode='$acm_name' limit 50")->result();
-		foreach($result as $row)
-		{
-			$id = $row->altercode;
-			$name = ($row->name);
-			$name1 = base64_encode($row->name);
-			$altercode = ($row->altercode);
-			?>
-			<li style="list-style: none;margin: 5px;"><a href="javascript:addacm('<?= $id ?>','<?= $name1 ?>')"><?= $name ?> (<?= $altercode ?>)</a></li>
-			<?php
+	public function find_chmiest()
+	{	
+		$jsonArray = array();
+		if(!empty($_REQUEST)){
+			
+			$chemist_name = $this->input->post('chemist_name');
+			$result =  $this->db->query ("select * from tbl_chemist where name Like '$chemist_name%' or name Like '%$chemist_name' or altercode='$chemist_name' limit 50")->result();
+			foreach($result as $row){
+
+				$sr_no = $i++;
+				$id = $row->id;
+				$chemist_id = $row->altercode;
+				$name = ($row->name);	
+
+				$dt = array(
+					'sr_no' => $sr_no,
+					'id' => $id,
+					'chemist_id' => $chemist_id,
+					'name'=>$name,
+				);
+				$jsonArray[] = $dt;
+			}
+			
+			$items = $jsonArray;
+			$response = array(
+				'success' => "1",
+				'message' => 'Data load successfully',
+				'items' => $items,
+			);
+		}else{
+			$response = array(
+				'success' => "0",
+				'message' => '502 error',
+			);
 		}
-		?></ul><?php
+
+		// Send JSON response
+        header('Content-Type: application/json');
+        echo json_encode($response);
 	}
 }

@@ -15,8 +15,11 @@
 						</label>
 					</div>
 					<div class="col-sm-8">
+
 						<input type="hidden" id="altercode" name="altercode"/>
+
 						<input type="text" class="form-control" id="acm_name" name="acm_name"tabindex="1" onkeydown="call_search_acm()" onkeyup="call_search_acm()" placeholder="Enter Name / Altercode" autocomplete="off" />
+
 						<div class="call_search_acm_result" style="position: absolute;z-index: 1;background: white;width: 300px;"></div>
 					</div>
 					<div class="help-inline col-sm-12 has-error">
@@ -81,28 +84,28 @@
     </div><!-- /.col -->
 </div><!-- /.row -->
 <script>
-function call_search_acm()
+function find_chmiest()
 {	
-	acm_name = $("#acm_name").val();
-	$(".call_search_acm_result").html("Loading....");
-	if(acm_name=="")
+	chemist_name = $("#chemist_name").val();
+	$(".find_chmiest_result").html("Loading....");
+	if(chemist_name=="")
 	{
-		$(".call_search_acm_result").html("");
+		$(".find_chmiest_result").html("");
 	}
 	else
 	{
 		$.ajax({
-		type       : "POST",
-		data       :  {acm_name:acm_name},
-		url        : "<?= base_url()?>admin/<?= $Page_name?>/call_search_acm",
-		cache	   : false,
-		success    : function(data){
-			$(".call_search_acm_result").html(data);
-			}
-		});
+            type       : "POST",
+            data       :  {chemist_name:chemist_name},
+            url        : "<?= base_url()?>admin/<?= $Page_name?>/find_chmiest",
+            cache	   : false,
+            success    : function(data){
+                $(".find_chmiest_result").html(data);
+                }
+            });
 	}
 }
-function addacm(id,name)
+function addchmiest(id,name)
 {
 	name = atob(name);
 	$("#altercode").val(id);
