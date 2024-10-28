@@ -31,7 +31,7 @@ class NotificationModel extends CI_Model
             'time' => date('H:i:s'),
             'timestamp' => time(),);
 		
-		$this->Scheme_Model->insert_fun("tbl_android_notification",$dt);
+		return $this->Scheme_Model->insert_fun("tbl_android_notification",$dt);
 	}
 
 	function send_android_notification()
