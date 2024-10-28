@@ -6,7 +6,7 @@ class BroadcastModel extends CI_Model
         parent::__construct();
     }
 
-	public function insert_broadcast($title,$message,$chemist_id,$user_type,$insert_type='')
+	public function insert_broadcast($title,$message,$chemist_id,$insert_type='')
 	{
 		$dt = array(
 			'title'=>$title,
