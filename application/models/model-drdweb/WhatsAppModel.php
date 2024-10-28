@@ -15,23 +15,19 @@ class WhatsAppModel extends CI_Model
 		}
 	}
 	
-	public function insert_whatsapp($mobile,$message,$chemist_id,$media='')
+	public function insert_whatsapp($mobile,$message,$chemist_id,$media='',$insert_type='')
 	{
-		$date = date('Y-m-d');
-		$time = date("H:i",time());
-		$time = date("H:i",time());
-		$timestamp = time();
-
 		$dt = array(
 			'mobile'=>$mobile,
 			'message'=>$message,
 			'chemist_id'=>$chemist_id,
 			'media'=>$media,
-			'date'=>$date,
-			'time'=>$time,
-			'timestamp'=>$timestamp,
+			'insert_type'=>$insert_type,
 			'status'=>0,
 			'respose'=>'',
+			'date' => date('Y-m-d'),
+            'time1' => date('H:i:s'),
+            'timestamp' => time(),
 		);
 		return $this->Scheme_Model->insert_fun("tbl_whatsapp_message",$dt);
 	}

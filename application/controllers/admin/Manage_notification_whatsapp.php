@@ -55,18 +55,24 @@ class Manage_notification_whatsapp extends CI_Controller {
 			$message = str_replace("\r\n","<br>",$message);
 
 			$result = "";
-			$where 	= "";
-			if($altercode=="")
+			if($find_chemist_id=="")
 			{ 
 				$message_db = "Select Acm";
 				$message = "Select Acm";
 				$this->session->set_flashdata("message_type","error");
 			} else {
-				if($altercode!="All")
-				{ 
-					$where = "and altercode='$altercode'";
+				if(!empty($find_chemist_id) && $find_chemist_id!="all" && $find_chemist_id!="all login")
+				{
+					$query1 = $this->db->query("select * from tbl_chemist where slcd='CL' and altercode='$find_chemist_id' order by name asc")->result();
 				}
-				$query1 = $this->db->query("select * from tbl_chemist where slcd='CL' $where order by name asc")->result();
+				if($find_chemist_id=="all")
+				{
+					$query1 = $this->db->query("select * from tbl_chemist where slcd='CL' order by name asc")->result();
+				}
+				if($find_chemist_id=="all login")
+				{
+					$query1 = $this->db->query("SELECT tbl_chemist.* FROM tbl_chemist_other INNER join `tbl_chemist` on tbl_chemist.code=tbl_chemist_other.code order by tbl_chemist.name asc")->result();
+				}
 				foreach($query1 as $row1)
 				{
 					$chemist_id1 	= $row1->altercode;
@@ -74,19 +80,10 @@ class Manage_notification_whatsapp extends CI_Controller {
 					$name		 	= $row1->name;
 					$message1 		= ("Hello $name ($chemist_id1),<br><br>$message");
 					
-					if($chemist_id1!="")
+					if(!empty($chemist_id1) && !empty($mobile))
 					{
-						if($mobile!="")
-						{
-							$mobile1 = "+91".$mobile;
-							$result = $this->WhatsAppModel->insert_whatsapp($mobile1,$message1,$chemist_id1,$media);
-						}
-						else
-						{
-							$err = "Number not Available";
-							$mobile = "xxxx";
-							//$this->Email_Model->tbl_whatsapp_email_fail($mobile,$err,$chemist_id1);
-						}
+						$mobile1 = "+91".$mobile;
+						$result = $this->WhatsAppModel->insert_whatsapp($mobile1,$message1,$chemist_id1,$media,'Admin');
 					}
 				}
 			
@@ -239,6 +236,20 @@ class Manage_notification_whatsapp extends CI_Controller {
 				$id = "0";
 				$chemist_id = "all";
 				$chemist_name = "All Users";	
+
+				$dt = array(
+					'sr_no' => $sr_no,
+					'id' => $id,
+					'chemist_id' => $chemist_id,
+					'chemist_name'=>$chemist_name,
+				);
+				$jsonArray[] = $dt;
+			}
+			if(strtolower($chemist_name)=="all login"){
+				$sr_no = $i++;
+				$id = "0";
+				$chemist_id = "all login";
+				$chemist_name = "All Login Users";	
 
 				$dt = array(
 					'sr_no' => $sr_no,

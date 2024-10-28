@@ -84,35 +84,35 @@
     </div><!-- /.col -->
 </div><!-- /.row -->
 <style>
-    .find_chemist_result{
-        position: absolute;
-        z-index: 1;
-        background: white;
-        height: 300px;
-        overflow: scroll;
-    }
-    /* Style the unordered list */
-    .find_chemist_result ul {
-        list-style-type: none; /* Remove bullet points */
-        padding: 0;
-        margin: 0;
-    }
-    
-    /* Style each list item */
-    .find_chemist_result ul li {
-        padding: 10px;
-        margin: 5px 0;
-        border: 1px solid #ddd; /* Light gray border */
-        border-radius: 5px; /* Rounded corners */
-        background-color: #f9f9f9; /* Light background */
-        cursor: pointer;
-        transition: background-color 0.3s; /* Smooth transition */
-    }
+.find_chemist_result{
+    position: absolute;
+    z-index: 1;
+    background: white;
+    height: 300px;
+    overflow: scroll;
+}
+/* Style the unordered list */
+.find_chemist_result ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;
+    margin: 0;
+}
 
-    /* Hover effect for list items */
-    .find_chemist_result ul li:hover {
-        background-color: #e6e6e6; /* Slightly darker on hover */
-    }
+/* Style each list item */
+.find_chemist_result ul li {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ddd; /* Light gray border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #f9f9f9; /* Light background */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+/* Hover effect for list items */
+.find_chemist_result ul li:hover {
+    background-color: #e6e6e6; /* Slightly darker on hover */
+}
 </style>
 <script>
 function find_chemist() {	
