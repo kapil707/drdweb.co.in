@@ -18,7 +18,7 @@
 
 						<input type="hidden" id="find_chemist_id" name="find_chemist_id"/>
 
-						<input type="text" class="form-control" id="chemist_name" name="chemist_name" tabindex="1" onkeyup="find_chemist()" placeholder="Enter Name / Altercode" autocomplete="off" />
+                        <input type="text" class="form-control" id="chemist_name" name="chemist_name" tabindex="1" onkeyup="find_chemist()" placeholder="Enter Name / Altercode" autocomplete="off" />
 
 						<div class="find_chemist_result"></div>
 					</div>
@@ -84,16 +84,18 @@
     </div><!-- /.col -->
 </div><!-- /.row -->
 <style>
-.find_chemist_result{
+.find_chemist_result {
     position: absolute;
     z-index: 1;
     background: white;
     max-height: 300px;
-    overflow: scroll;
+    overflow: auto;
+    width: 100%; /* Adjust to span the width of the input */
 }
+
 /* Style the unordered list */
 .find_chemist_result ul {
-    list-style-type: none; /* Remove bullet points */
+    list-style-type: none;
     padding: 0;
     margin: 0;
 }
@@ -102,59 +104,57 @@
 .find_chemist_result ul li {
     padding: 10px;
     margin: 5px 0;
-    border: 1px solid #ddd; /* Light gray border */
-    border-radius: 5px; /* Rounded corners */
-    background-color: #f9f9f9; /* Light background */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
     cursor: pointer;
-    transition: background-color 0.3s; /* Smooth transition */
+    transition: background-color 0.3s;
 }
 
-/* Hover effect for list items */
+/* Highlight active list item */
+.find_chemist_result ul li.active,
 .find_chemist_result ul li:hover {
-    background-color: #e6e6e6; /* Slightly darker on hover */
+    background-color: #e6e6e6;
+    font-weight: bold;
 }
 </style>
-<script>
-let currentFocus = -1; // Index to track the currently focused item
 
-function find_chemist() {	
+<script>
+let currentFocus = -1; // Tracks the currently focused item
+
+function find_chemist() {
     let chemist_name = $("#chemist_name").val();
     $(".find_chemist_result").html("Loading....");
-    
+
     if (chemist_name.length < 2) {
         $(".find_chemist_result").html(""); // Clear results if input is too short
-        return; // Exit the function if less than 2 characters
+        return; // Exit if fewer than 2 characters
     }
 
-    if(chemist_name === "") {
-        $(".find_chemist_result").html("");
-    } else {
-        $.ajax({
-            type: "POST",
-            data: {chemist_name: chemist_name},
-            url: "<?= base_url()?>admin/<?= $Page_name?>/find_chemist",
-            cache: false,
-            dataType: 'json',
-            success: function(response) {
-                if (response.success === "1") {
-                    let htmlContent = '<ul>';
-                    response.items.forEach(item => {
-                        htmlContent += `<li onclick="add_chemist('${item.chemist_id}', '${item.chemist_name}')">Name: ${item.chemist_name} - (Chemist ID: ${item.chemist_id})</li>`;
-                    });
-                    htmlContent += '</ul>';
-                    $('.find_chemist_result').html(htmlContent);
-
-                    currentFocus = -1;
-                } else {
-                    $('.find_chemist_result').text("Failed to load data.");
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error('AJAX Error:', error);
-                $('.find_chemist_result').text("Error loading data.");
+    $.ajax({
+        type: "POST",
+        data: {chemist_name: chemist_name},
+        url: "<?= base_url()?>admin/<?= $Page_name?>/find_chemist",
+        cache: false,
+        dataType: 'json',
+        success: function(response) {
+            if (response.success === "1") {
+                let htmlContent = '<ul>';
+                response.items.forEach(item => {
+                    htmlContent += `<li onclick="add_chemist('${item.chemist_id}', '${item.chemist_name}')">Name: ${item.chemist_name} - (Chemist ID: ${item.chemist_id})</li>`;
+                });
+                htmlContent += '</ul>';
+                $('.find_chemist_result').html(htmlContent);
+                currentFocus = -1; // Reset focus
+            } else {
+                $('.find_chemist_result').text("Failed to load data.");
             }
-        });
-    }
+        },
+        error: function(xhr, status, error) {
+            console.error('AJAX Error:', error);
+            $('.find_chemist_result').text("Error loading data.");
+        }
+    });
 }
 
 function add_chemist(chemist_id, chemist_name) {
@@ -168,17 +168,17 @@ $("#chemist_name").on("keydown", function(e) {
     let listItems = $(".find_chemist_result ul li");
 
     if (e.key === "ArrowDown") {
-        e.preventDefault(); // Prevent default scrolling
+        e.preventDefault();
         currentFocus++;
-        if (currentFocus >= listItems.length) currentFocus = 0; // Loop back to the top
+        if (currentFocus >= listItems.length) currentFocus = 0; // Loop back to top
         addActive(listItems);
     } else if (e.key === "ArrowUp") {
-        e.preventDefault(); // Prevent default scrolling
+        e.preventDefault();
         currentFocus--;
-        if (currentFocus < 0) currentFocus = listItems.length - 1; // Loop back to the bottom
+        if (currentFocus < 0) currentFocus = listItems.length - 1; // Loop back to bottom
         addActive(listItems);
     } else if (e.key === "Enter") {
-        e.preventDefault(); // Prevent form submission
+        e.preventDefault();
         if (currentFocus > -1) {
             listItems[currentFocus].click(); // Trigger click on the selected item
         }
@@ -186,7 +186,6 @@ $("#chemist_name").on("keydown", function(e) {
 });
 
 function addActive(listItems) {
-    // Remove active class from all items
     listItems.removeClass("active");
     if (currentFocus >= 0 && currentFocus < listItems.length) {
         listItems.eq(currentFocus).addClass("active");
