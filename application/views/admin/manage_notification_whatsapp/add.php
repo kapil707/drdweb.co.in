@@ -18,7 +18,7 @@
 
 						<input type="hidden" id="find_chemist_id" name="find_chemist_id"/>
 
-                        <input type="text" class="form-control" id="chemist_name" name="chemist_name" tabindex="1" onkeyup="find_chemist()" placeholder="Enter Name / Altercode" autocomplete="off" />
+                        <input type="text" class="form-control" id="chemist_name" name="chemist_name" tabindex="1" placeholder="Enter Name / Altercode" autocomplete="off" />
 
 						<div class="find_chemist_result"></div>
 					</div>
@@ -118,12 +118,11 @@
     font-weight: bold;
 }
 </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script>
 let currentFocus = -1; // Tracks the currently focused item
 
-function find_chemist() {
+$(".chemist_name").keyup(function(e){
     let chemist_name = $("#chemist_name").val();
     $(".find_chemist_result").html("Loading....");
 
@@ -135,7 +134,7 @@ function find_chemist() {
     $.ajax({
         type: "POST",
         data: {chemist_name: chemist_name},
-        url: "<?= base_url()?>admin/<?= $Page_name?>/find_chemist",
+        url: "<?= base_url()?>admin/manage_user_chemist/find_chemist",
         cache: false,
         dataType: 'json',
         success: function(response) {
@@ -156,7 +155,7 @@ function find_chemist() {
             $('.find_chemist_result').text("Error loading data.");
         }
     });
-}
+});
 
 function add_chemist(chemist_id, chemist_name) {
     $("#find_chemist_id").val(chemist_id);
