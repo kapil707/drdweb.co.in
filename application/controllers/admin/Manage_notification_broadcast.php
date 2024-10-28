@@ -80,10 +80,9 @@ class Manage_notification_broadcast extends CI_Controller {
 				}
 				foreach($query1 as $row1)
 				{
-					$user_type = "chemist";
 					$chemist_id = $row1->altercode;
 					
-					$result = $this->BroadcastModel->insert_broadcast($title,$message,$chemist_id,$user_type,'Admin');
+					$result = $this->BroadcastModel->insert_broadcast($title,$message,$chemist_id,'Admin');
 				}
 				if($result)
 				{
