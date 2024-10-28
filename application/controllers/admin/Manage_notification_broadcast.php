@@ -7,6 +7,10 @@ class Manage_notification_broadcast extends CI_Controller {
 	var $Page_menu  = "manage_notification_broadcast";
 	var $page_controllers = "manage_notification_broadcast";
 	var $Page_tbl   = "tbl_broadcast";
+	public function __construct(){
+		parent::__construct();
+		$this->load->model("model-drdweb/BroadcastModel");
+	}
 	public function index()
 	{
 		$page_controllers = $this->page_controllers;
