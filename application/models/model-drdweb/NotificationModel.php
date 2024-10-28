@@ -5,16 +5,13 @@ class NotificationModel extends CI_Model
 	public function __construct() {
         parent::__construct();
     }
-	public function insert_android_notification($funtype,$title,$message,$chemist_id,$user_type)
+	public function insert_android_notification($funtype,$title,$message,$chemist_id,$user_type,$itemid='0',$compid='0',$division='',$image='',$insert_type='')
 	{
-		$date = date('Y-m-d');
-		$time = date("H:i",time());
-		$timestamp = time();
 		
 		$device_id =  "default"; // yha sirf website or android me show ke liya use hota ha
 
-		$itemid = $compid = $status = $firebase_status = "0";
-		$division = $image = $respose = "";
+		$status = $firebase_status = "0";
+		$respose = "";
 		$dt = array(
 			'title'=>$title,
 			'message'=>$message,
@@ -26,12 +23,13 @@ class NotificationModel extends CI_Model
 			'compid'=>$compid,
 			'division'=>$division,
 			'image'=>$image,
-			'date'=>$date,
-			'time'=>$time,
-			'timestamp'=>$timestamp,
+			'insert_type'=>$insert_type,
 			'status'=>$status,
 			'firebase_status'=>$firebase_status,
-			'respose'=>$respose,);
+			'respose'=>$respose,
+			'date' => date('Y-m-d'),
+            'time' => date('H:i:s'),
+            'timestamp' => time(),);
 		
 		$this->Scheme_Model->insert_fun("tbl_android_notification",$dt);
 	}

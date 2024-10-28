@@ -7,6 +7,10 @@ class Manage_notification extends CI_Controller {
 	var $Page_menu  = "manage_notification";
 	var $page_controllers = "manage_notification";
 	var $Page_tbl   = "tbl_android_notification";
+	public function __construct(){
+		parent::__construct();
+		$this->load->model("model-drdweb/NotificationModel");
+	}
 	public function index()
 	{
 		$page_controllers = $this->page_controllers;
@@ -51,10 +55,6 @@ class Manage_notification extends CI_Controller {
 			$message = nl2br($message);
 			$message = str_replace("'","&#39;",$message);
 			$message = str_replace("\r\n","<br>",$message);
-			
-			$message_db = "";
-			$time = time();
-			$date = date("Y-m-d",$time);
 
 			if (!empty($_FILES["image"]["name"]))
 			{
@@ -73,31 +73,34 @@ class Manage_notification extends CI_Controller {
 			}			
 
 			$result = "";
-			if($altercode=="0" || $altercode=="")
+			if(!empty($find_chemist_id) && $find_chemist_id!="all" && $find_chemist_id!="all login")
+			{
+				$query1 = $this->db->query("select * from tbl_chemist where slcd='CL' and altercode='$find_chemist_id' order by name asc")->result();
+			}
+			if($find_chemist_id=="all")
 			{
 				$query1 = $this->db->query("select * from tbl_chemist where slcd='CL' order by name asc")->result();
 			}
-			else
+			if($find_chemist_id=="all login")
 			{
-				$query1 = $this->db->query("select * from tbl_chemist where slcd='CL' and altercode='$altercode' order by name asc")->result();
+				$query1 = $this->db->query("SELECT tbl_chemist.* FROM tbl_chemist_other INNER join `tbl_chemist` on tbl_chemist.code=tbl_chemist_other.code order by tbl_chemist.name asc")->result();
 			}
 			foreach($query1 as $row1)
-			{	
-				if($row1->altercode!="")
-				{
-					$altercode = $row1->altercode;
-					$result = $this->send_android_notification($title,$message,$altercode,"chemist",$funtype,$itemid,$compid,$division,$image);
-				}
+			{
+				$chemist_id = $row1->altercode;
+				$user_type = "chemist";
+
+				$result = $this->NotificationModel->insert_android_notification($funtype,$title,$message,$chemist_id,$user_type,$itemid,$compid,$division,$image,'Admin');
 			}
 			if($result)
 			{
-				$message_db = "($property_title) - Add Successfully.";
+				$message_db = "() - Add Successfully.";
 				$message = "Add Successfully.";
 				$this->session->set_flashdata("message_type","success");
 			}
 			else
 			{
-				$message_db = "($property_title) - Not Add.";
+				$message_db = "() - Not Add.";
 				$message = "Not Add.";
 				$this->session->set_flashdata("message_type","error");
 			}
@@ -113,7 +116,7 @@ class Manage_notification extends CI_Controller {
 					redirect(base_url()."admin/$page_controllers/view");
 				}
 			}
-		}		
+		}
 
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/add",$data);
@@ -232,71 +235,6 @@ class Manage_notification extends CI_Controller {
         // Send JSON response
         header('Content-Type: application/json');
         echo json_encode($response);
-	}
-	
-	public function send_android_notification($title,$message,$chemist_id,$user_type,$funtype,$itemid,$compid,$division,$image)
-	{
-		$date = date('Y-m-d');
-		$time = date("H:i",time());
-		
-		/*$result = $this->db->query("select * from tbl_android_device_id where chemist_id='$chemist_id'")->result();
-		foreach($result as $row)
-		{
-			$device_id =  $row->device_id;
-			
-			$dt = array(
-			'chemist_id'=>$chemist_id,
-			'user_type'=>$user_type,
-			'title'=>$title,
-			'message'=>$message,
-			'time'=>$time,
-			'date'=>$date,
-			'device_id'=>$device_id,
-			'funtype'=>$funtype,
-			'itemid'=>$itemid,
-			'compid'=>$compid,
-			'division'=>$division,);
-			
-			$this->Scheme_Model->insert_fun("tbl_android_notification",$dt);
-		}*/
-		
-		$device_id =  "default"; // yha sirf website or android me show ke liya use hota ha web page par show ki liya sirf
-			
-		$dt = array(
-		'chemist_id'=>$chemist_id,
-		'user_type'=>$user_type,
-		'title'=>$title,
-		'message'=>$message,
-		'date'=>$date,
-		'time'=>$time,
-		'device_id'=>$device_id,
-		'funtype'=>$funtype,
-		'itemid'=>$itemid,
-		'compid'=>$compid,
-		'division'=>$division,
-		'image'=>$image,);
-		
-		$this->Scheme_Model->insert_fun("tbl_android_notification",$dt);
-		return 1;
-	}
-	
-	public function call_search_acm()
-	{		
-		error_reporting(0);
-		?><ul style="margin: 0px;padding: 0px;"><?php
-		$acm_name = $this->input->post('acm_name');
-		$result =  $this->db->query ("select * from tbl_chemist where name Like '$acm_name%' or name Like '%$acm_name' or altercode='$acm_name' limit 50")->result();
-		foreach($result as $row)
-		{
-			$id = $row->altercode;
-			$name = ($row->name);
-			$name1 = base64_encode($row->name);
-			$altercode = ($row->altercode);
-			?>
-			<li style="list-style: none;margin: 5px;"><a href="javascript:addacm('<?= $id ?>','<?= $name1 ?>')"><?= $name ?> (<?= $altercode ?>)</a></li>
-			<?php
-		}
-		?></ul><?php
 	}
 	
 	public function call_search_item()

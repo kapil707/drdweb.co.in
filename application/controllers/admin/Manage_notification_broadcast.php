@@ -55,10 +55,6 @@ class Manage_notification_broadcast extends CI_Controller {
 
 			$message_db = "";
 			
-			$date = date('Y-m-d');
-			$time = date("H:i",time());
-			$timestamp = time();
-			
 			$result = "";
 			if(empty($find_chemist_id))
 			{ 
