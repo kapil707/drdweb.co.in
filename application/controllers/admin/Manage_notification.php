@@ -70,7 +70,9 @@ class Manage_notification extends CI_Controller {
 			else
 			{
 				$image = "";
-			}			
+			}
+			$message_db = "";
+			$result = "";	
 			if(empty($find_chemist_id))
 			{ 
 				$message_db = "Select Chemist";
