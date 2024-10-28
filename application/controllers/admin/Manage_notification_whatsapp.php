@@ -202,6 +202,8 @@ class Manage_notification_whatsapp extends CI_Controller {
 						'id' => $id,
 						'mobile' => $mobile,
 						'message'=>$message,
+						'respose'=>$respose,
+						'insert_type'=>$insert_type,
 						'datetime'=>$datetime,
 					);
 					$jsonArray[] = $dt;
