@@ -115,6 +115,8 @@
 }
 </style>
 <script>
+let currentFocus = -1; // Index to track the currently focused item
+
 function find_chemist() {	
     let chemist_name = $("#chemist_name").val();
     $(".find_chemist_result").html("Loading....");
@@ -141,6 +143,8 @@ function find_chemist() {
                     });
                     htmlContent += '</ul>';
                     $('.find_chemist_result').html(htmlContent);
+                    
+                    currentFocus = -1;
                 } else {
                     $('.find_chemist_result').text("Failed to load data.");
                 }
@@ -157,5 +161,35 @@ function add_chemist(chemist_id, chemist_name) {
     $("#find_chemist_id").val(chemist_id);
     $("#chemist_name").val(`Name: ${chemist_name} - (Chemist ID: ${chemist_id})`);
     $(".find_chemist_result").html("");
+}
+
+// Keyboard navigation function
+$("#chemist_name").on("keydown", function(e) {
+    let listItems = $(".find_chemist_result ul li");
+
+    if (e.key === "ArrowDown") {
+        e.preventDefault(); // Prevent default scrolling
+        currentFocus++;
+        if (currentFocus >= listItems.length) currentFocus = 0; // Loop back to the top
+        addActive(listItems);
+    } else if (e.key === "ArrowUp") {
+        e.preventDefault(); // Prevent default scrolling
+        currentFocus--;
+        if (currentFocus < 0) currentFocus = listItems.length - 1; // Loop back to the bottom
+        addActive(listItems);
+    } else if (e.key === "Enter") {
+        e.preventDefault(); // Prevent form submission
+        if (currentFocus > -1) {
+            listItems[currentFocus].click(); // Trigger click on the selected item
+        }
+    }
+});
+
+function addActive(listItems) {
+    // Remove active class from all items
+    listItems.removeClass("active");
+    if (currentFocus >= 0 && currentFocus < listItems.length) {
+        listItems.eq(currentFocus).addClass("active");
+    }
 }
 </script>
