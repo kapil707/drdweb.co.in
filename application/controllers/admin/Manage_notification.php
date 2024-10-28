@@ -71,49 +71,55 @@ class Manage_notification extends CI_Controller {
 			{
 				$image = "";
 			}			
-
-			$result = "";
-			if(!empty($find_chemist_id) && $find_chemist_id!="all" && $find_chemist_id!="all login")
-			{
-				$query1 = $this->db->query("select * from tbl_chemist where slcd='CL' and altercode='$find_chemist_id' order by name asc")->result();
-			}
-			if($find_chemist_id=="all")
-			{
-				$query1 = $this->db->query("select * from tbl_chemist where slcd='CL' order by name asc")->result();
-			}
-			if($find_chemist_id=="all login")
-			{
-				$query1 = $this->db->query("SELECT tbl_chemist.* FROM tbl_chemist_other INNER join `tbl_chemist` on tbl_chemist.code=tbl_chemist_other.code order by tbl_chemist.name asc")->result();
-			}
-			foreach($query1 as $row1)
-			{
-				$chemist_id = $row1->altercode;
-				$user_type = "chemist";
-
-				$result = $this->NotificationModel->insert_android_notification($funtype,$title,$message,$chemist_id,$user_type,$itemid,$compid,$division,$image,'Admin');
-			}
-			if($result)
-			{
-				$message_db = "() - Add Successfully.";
-				$message = "Add Successfully.";
-				$this->session->set_flashdata("message_type","success");
-			}
-			else
-			{
-				$message_db = "() - Not Add.";
-				$message = "Not Add.";
+			if(empty($find_chemist_id))
+			{ 
+				$message_db = "Select Chemist";
+				$message = "Select Chemist";
 				$this->session->set_flashdata("message_type","error");
-			}
-			if($message_db!="")
-			{
-				$message = $Page_title." - ".$message;
-				$message_db = $Page_title." - ".$message_db;
-				$this->session->set_flashdata("message_footer","yes");
-				$this->session->set_flashdata("full_message",$message);
-				$this->Admin_Model->Add_Activity_log($message_db);
+			} else {
+				$result = "";
+				if(!empty($find_chemist_id) && $find_chemist_id!="all" && $find_chemist_id!="all login")
+				{
+					$query1 = $this->db->query("select * from tbl_chemist where slcd='CL' and altercode='$find_chemist_id' order by name asc")->result();
+				}
+				if($find_chemist_id=="all")
+				{
+					$query1 = $this->db->query("select * from tbl_chemist where slcd='CL' order by name asc")->result();
+				}
+				if($find_chemist_id=="all login")
+				{
+					$query1 = $this->db->query("SELECT tbl_chemist.* FROM tbl_chemist_other INNER join `tbl_chemist` on tbl_chemist.code=tbl_chemist_other.code order by tbl_chemist.name asc")->result();
+				}
+				foreach($query1 as $row1)
+				{
+					$chemist_id = $row1->altercode;
+					$user_type = "chemist";
+
+					$result = $this->NotificationModel->insert_android_notification($funtype,$title,$message,$chemist_id,$user_type,$itemid,$compid,$division,$image,'Admin');
+				}
 				if($result)
 				{
-					redirect(base_url()."admin/$page_controllers/view");
+					$message_db = "() - Add Successfully.";
+					$message = "Add Successfully.";
+					$this->session->set_flashdata("message_type","success");
+				}
+				else
+				{
+					$message_db = "() - Not Add.";
+					$message = "Not Add.";
+					$this->session->set_flashdata("message_type","error");
+				}
+				if($message_db!="")
+				{
+					$message = $Page_title." - ".$message;
+					$message_db = $Page_title." - ".$message_db;
+					$this->session->set_flashdata("message_footer","yes");
+					$this->session->set_flashdata("full_message",$message);
+					$this->Admin_Model->Add_Activity_log($message_db);
+					if($result)
+					{
+						redirect(base_url()."admin/$page_controllers/view");
+					}
 				}
 			}
 		}
