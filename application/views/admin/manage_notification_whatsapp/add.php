@@ -84,31 +84,24 @@
     </div><!-- /.col -->
 </div><!-- /.row -->
 <script>
-function find_chemist()
-{	
-	chemist_name = $("#chemist_name").val();
-	$(".find_chemist_result").html("Loading....");
-	if(chemist_name=="")
-	{
-		$(".find_chemist_result").html("");
-	}
-	else
-	{
-		$.ajax({
-            type       : "POST",
-            data       : {chemist_name:chemist_name},
-            url        : "<?= base_url()?>admin/<?= $Page_name?>/find_chemist",
-            cache	   : false,
+function find_chemist() {	
+    let chemist_name = $("#chemist_name").val();
+    $(".find_chemist_result").html("Loading....");
+    
+    if(chemist_name === "") {
+        $(".find_chemist_result").html("");
+    } else {
+        $.ajax({
+            type: "POST",
+            data: {chemist_name: chemist_name},
+            url: "<?= base_url()?>admin/<?= $Page_name?>/find_chemist",
+            cache: false,
             dataType: 'json',
-            success    : function(response){
+            success: function(response) {
                 if (response.success === "1") {
-                    // Display success message
-                    //$('#message').text(response.message);
-
-                    // Display items in the data container
                     let htmlContent = '<ul>';
                     response.items.forEach(item => {
-                        htmlContent += `<li onlcick="add_chemist('${item.chemist_id}','${item.chemist_name}')">Name: ${item.chemist_name} - (Chemmist Id :${item.chemist_id})</li>`;
+                        htmlContent += `<li onclick="add_chemist('${item.chemist_id}', '${item.name}')">Name: ${item.name} - (Chemist ID: ${item.chemist_id})</li>`;
                     });
                     htmlContent += '</ul>';
                     $('.find_chemist_result').html(htmlContent);
@@ -121,12 +114,12 @@ function find_chemist()
                 $('.find_chemist_result').text("Error loading data.");
             }
         });
-	}
+    }
 }
-function add_chemist(chemist_id,chemist_name)
-{
-	$("#find_chemist_id").val(chemist_id);
-	$("#chemist_name").val(chemist_name);
-	$(".find_chemist_result").html("");
+
+function add_chemist(chemist_id, chemist_name) {
+    $("#find_chemist_id").val(chemist_id);
+    $("#chemist_name").val(chemist_name);
+    $(".find_chemist_result").html("");
 }
 </script>
