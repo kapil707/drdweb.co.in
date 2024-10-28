@@ -88,15 +88,12 @@
         position: absolute; 
         z-index: 1; 
         background: white; 
-        width: 100vw; 
-        left: 0; padding: 10px;
     }
     /* Style the unordered list */
     .find_chemist_result ul {
         list-style-type: none; /* Remove bullet points */
         padding: 0;
         margin: 0;
-        max-width: 300px;
     }
     
     /* Style each list item */
