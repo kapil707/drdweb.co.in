@@ -248,10 +248,9 @@ class Manage_notification_whatsapp extends CI_Controller {
 					'chemist_name'=>$chemist_name,
 				);
 				$jsonArray[] = $dt;
-			}
-			if(strtolower($chemist_name)=="all login"){
+				
 				$sr_no = $i++;
-				$id = "0";
+				$id = "1";
 				$chemist_id = "all login";
 				$chemist_name = "All Login Users";	
 
