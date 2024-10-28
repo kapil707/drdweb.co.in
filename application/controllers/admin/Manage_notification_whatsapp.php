@@ -55,10 +55,10 @@ class Manage_notification_whatsapp extends CI_Controller {
 			$message = str_replace("\r\n","<br>",$message);
 
 			$result = "";
-			if($find_chemist_id=="")
+			if(emtpy($find_chemist_id))
 			{ 
-				$message_db = "Select Acm";
-				$message = "Select Acm";
+				$message_db = "Select Chemist";
+				$message = "Select Chemist";
 				$this->session->set_flashdata("message_type","error");
 			} else {
 				if(!empty($find_chemist_id) && $find_chemist_id!="all" && $find_chemist_id!="all login")

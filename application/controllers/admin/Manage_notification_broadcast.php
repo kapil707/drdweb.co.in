@@ -58,32 +58,30 @@ class Manage_notification_broadcast extends CI_Controller {
 			
 			$result = "";
 			$where 	= "";
-			if($altercode=="")
+			if(emtpy($find_chemist_id))
 			{ 
-				$message_db = "Select Acm";
-				$message = "Select Acm";
+				$message_db = "Select Chemist";
+				$message = "Select Chemist";
 				$this->session->set_flashdata("message_type","error");
 			} else {
-				if($altercode!="All")
-				{ 
-					$where = "and altercode='$altercode'";
+				if(!empty($find_chemist_id) && $find_chemist_id!="all" && $find_chemist_id!="all login")
+				{
+					$query1 = $this->db->query("select * from tbl_chemist where slcd='CL' and altercode='$find_chemist_id' order by name asc")->result();
 				}
-				$query1 = $this->db->query("select * from tbl_chemist where slcd='CL' $where order by name asc")->result();
+				if($find_chemist_id=="all")
+				{
+					$query1 = $this->db->query("select * from tbl_chemist where slcd='CL' order by name asc")->result();
+				}
+				if($find_chemist_id=="all login")
+				{
+					$query1 = $this->db->query("SELECT tbl_chemist.* FROM tbl_chemist_other INNER join `tbl_chemist` on tbl_chemist.code=tbl_chemist_other.code order by tbl_chemist.name asc")->result();
+				}
 				foreach($query1 as $row1)
 				{
 					$user_type = "chemist";
 					$chemist_id = $row1->altercode;
-					
-					$dt = array(
-					'chemist_id'=>$chemist_id,
-					'user_type'=>$user_type,
-					'title'=>$title,
-					'message'=>$message,
-					'date'=>$date,
-					'time'=>$time,
-					'timestamp'=>$timestamp,);
-					
-					$result = $this->Scheme_Model->insert_fun("tbl_broadcast",$dt);
+
+					$result = $this->WhatsAppModel->insert_whatsapp($title,$message,$chemist_id,$user_type,'Admin');
 				}
 				if($result)
 				{
