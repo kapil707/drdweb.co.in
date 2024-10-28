@@ -101,7 +101,7 @@ function find_chemist() {
                 if (response.success === "1") {
                     let htmlContent = '<ul>';
                     response.items.forEach(item => {
-                        htmlContent += `<li onclick="add_chemist('${item.chemist_id}', '${item.name}')">Name: ${item.name} - (Chemist ID: ${item.chemist_id})</li>`;
+                        htmlContent += `<li onclick="add_chemist('${item.chemist_id}', '${item.name}')">Name: ${item.chemist_name} - (Chemist ID: ${item.chemist_id})</li>`;
                     });
                     htmlContent += '</ul>';
                     $('.find_chemist_result').html(htmlContent);
