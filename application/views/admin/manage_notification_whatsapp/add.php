@@ -124,41 +124,11 @@
 let currentFocus = -1; // Tracks the currently focused item
 $(document).ready(function() {
     $("#chemist_name").keyup(function(e){
-        let chemist_name = $("#chemist_name").val();
-        $(".find_chemist_result").html("Loading....");
-
-        if (chemist_name.length < 2) {
-            $(".find_chemist_result").html(""); // Clear results if input is too short
-            return; // Exit if fewer than 2 characters
+        // Only call find_chemist if the key is not an arrow key, Enter, or Tab
+        if (![37, 38, 39, 40, 13, 9].includes(e.keyCode)) { // Key codes for Left, Up, Right, Down, Enter, and Tab
+            find_chemist();
         }
-
-        $.ajax({
-            type: "POST",
-            data: {chemist_name: chemist_name},
-            url: "<?= base_url()?>admin/manage_user_chemist/find_chemist",
-            cache: false,
-            dataType: 'json',
-            success: function(response) {
-                if (response.success === "1") {
-                    let htmlContent = '<ul>';
-                    response.items.forEach(item => {
-                        htmlContent += `<li onclick="add_chemist('${item.chemist_id}', '${item.chemist_name}')">Name: ${item.chemist_name} - (Chemist ID: ${item.chemist_id})</li>`;
-                    });
-                    htmlContent += '</ul>';
-                    $('.find_chemist_result').html(htmlContent);
-                    currentFocus = -1; // Reset focus
-                } else {
-                    $('.find_chemist_result').text("Failed to load data.");
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error('AJAX Error:', error);
-                $('.find_chemist_result').text("Error loading data.");
-            }
-        });
     });
-
-
     // Keyboard navigation function
     $("#chemist_name").on("keydown", function(e) {
         let listItems = $(".find_chemist_result ul li");
@@ -181,6 +151,41 @@ $(document).ready(function() {
         }
     });
 });
+
+function find_chemist(){
+    let chemist_name = $("#chemist_name").val();
+    $(".find_chemist_result").html("Loading....");
+
+    if (chemist_name.length < 2) {
+        $(".find_chemist_result").html(""); // Clear results if input is too short
+        return; // Exit if fewer than 2 characters
+    }
+
+    $.ajax({
+        type: "POST",
+        data: {chemist_name: chemist_name},
+        url: "<?= base_url()?>admin/manage_user_chemist/find_chemist",
+        cache: false,
+        dataType: 'json',
+        success: function(response) {
+            if (response.success === "1") {
+                let htmlContent = '<ul>';
+                response.items.forEach(item => {
+                    htmlContent += `<li onclick="add_chemist('${item.chemist_id}', '${item.chemist_name}')">Name: ${item.chemist_name} - (Chemist ID: ${item.chemist_id})</li>`;
+                });
+                htmlContent += '</ul>';
+                $('.find_chemist_result').html(htmlContent);
+                currentFocus = -1; // Reset focus
+            } else {
+                $('.find_chemist_result').text("Failed to load data.");
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('AJAX Error:', error);
+            $('.find_chemist_result').text("Error loading data.");
+        }
+    });
+}
 function add_chemist(chemist_id, chemist_name) {
     $("#find_chemist_id").val(chemist_id);
     $("#chemist_name").val(`Name: ${chemist_name} - (Chemist ID: ${chemist_id})`);
