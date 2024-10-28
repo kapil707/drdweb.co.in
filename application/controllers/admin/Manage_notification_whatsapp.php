@@ -227,7 +227,7 @@ class Manage_notification_whatsapp extends CI_Controller {
         echo json_encode($response);
 	}
 
-	public function find_chmiest()
+	public function find_chemist()
 	{	
 		$i  = 0;
 		$jsonArray = array();
@@ -240,13 +240,13 @@ class Manage_notification_whatsapp extends CI_Controller {
 				$sr_no = $i++;
 				$id = $row->id;
 				$chemist_id = $row->altercode;
-				$name = ($row->name);	
+				$chemist_name = $row->name;	
 
 				$dt = array(
 					'sr_no' => $sr_no,
 					'id' => $id,
 					'chemist_id' => $chemist_id,
-					'name'=>$name,
+					'chemist_name'=>$chemist_name,
 				);
 				$jsonArray[] = $dt;
 			}

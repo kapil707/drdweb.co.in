@@ -16,11 +16,11 @@
 					</div>
 					<div class="col-sm-8">
 
-						<input type="hidden" id="altercode" name="altercode"/>
+						<input type="hidden" id="find_chemist_id" name="find_chemist_id"/>
 
-						<input type="text" class="form-control" id="chemist_name" name="chemist_name"tabindex="1" onkeydown="find_chmiest()" onkeyup="find_chmiest()" placeholder="Enter Name / Altercode" autocomplete="off" />
+						<input type="text" class="form-control" id="chemist_name" name="chemist_name"tabindex="1" onkeydown="find_chemist()" onkeyup="find_chemist()" placeholder="Enter Name / Altercode" autocomplete="off" />
 
-						<div class="find_chmiest_result" style="position: absolute;z-index: 1;background: white;width: 300px;"></div>
+						<div class="find_chemist_result" style="position: absolute;z-index: 1;background: white;width: 300px;"></div>
 					</div>
 					<div class="help-inline col-sm-12 has-error">
 						<span class="help-block reset middle">
@@ -84,20 +84,20 @@
     </div><!-- /.col -->
 </div><!-- /.row -->
 <script>
-function find_chmiest()
+function find_chemist()
 {	
 	chemist_name = $("#chemist_name").val();
-	$(".find_chmiest_result").html("Loading....");
+	$(".find_chemist_result").html("Loading....");
 	if(chemist_name=="")
 	{
-		$(".find_chmiest_result").html("");
+		$(".find_chemist_result").html("");
 	}
 	else
 	{
 		$.ajax({
             type       : "POST",
             data       : {chemist_name:chemist_name},
-            url        : "<?= base_url()?>admin/<?= $Page_name?>/find_chmiest",
+            url        : "<?= base_url()?>admin/<?= $Page_name?>/find_chemist",
             cache	   : false,
             dataType: 'json',
             success    : function(response){
@@ -108,26 +108,25 @@ function find_chmiest()
                     // Display items in the data container
                     let htmlContent = '<ul>';
                     response.items.forEach(item => {
-                        htmlContent += `<li>ID: ${item.id}, Chemist ID: ${item.chemist_id}, Name: ${item.name}</li>`;
+                        htmlContent += `<li onlcick="add_chemist('${item.chemist_id}','${item.chemist_name}')">Name: ${item.chemist_name} - (Chemmist Id :${item.chemist_id})</li>`;
                     });
                     htmlContent += '</ul>';
-                    $('.find_chmiest_result').html(htmlContent);
+                    $('.find_chemist_result').html(htmlContent);
                 } else {
-                    $('.find_chmiest_result').text("Failed to load data.");
+                    $('.find_chemist_result').text("Failed to load data.");
                 }
             },
             error: function(xhr, status, error) {
                 console.error('AJAX Error:', error);
-                $('#.find_chmiest_result').text("Error loading data.");
+                $('.find_chemist_result').text("Error loading data.");
             }
         });
 	}
 }
-function addchmiest(id,name)
+function add_chemist(chemist_id,chemist_name)
 {
-	name = atob(name);
-	$("#altercode").val(id);
-	$("#acm_name").val(name);
-	$(".call_search_acm_result").html("");
+	$("#find_chemist_id").val(chemist_id);
+	$("#find_chemist_name").val(chemist_name);
+	$(".find_chemist_result").html("");
 }
 </script>
