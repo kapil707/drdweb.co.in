@@ -122,7 +122,7 @@
 <script>
 let currentFocus = -1; // Tracks the currently focused item
 $(document).ready(function() {
-    $(".chemist_name").keyup(function(e){
+    $("#chemist_name").keyup(function(e){
         let chemist_name = $("#chemist_name").val();
         $(".find_chemist_result").html("Loading....");
 
