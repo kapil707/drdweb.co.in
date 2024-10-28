@@ -194,7 +194,6 @@ class Manage_notification_whatsapp extends CI_Controller {
 					$id = $row->id;
 					$mobile = $row->mobile;
 					$message = $row->message;
-					$respose = $row->respose;
 					$insert_type = $row->insert_type;
 					$datetime = date("d-M-y @ H:i:s", $row->timestamp);
 
@@ -203,7 +202,6 @@ class Manage_notification_whatsapp extends CI_Controller {
 						'id' => $id,
 						'mobile' => $mobile,
 						'message'=>$message,
-						'respose'=>$respose,
 						'insert_type'=>$insert_type,
 						'datetime'=>$datetime,
 					);
