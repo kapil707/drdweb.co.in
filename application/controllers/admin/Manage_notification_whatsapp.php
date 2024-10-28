@@ -234,7 +234,7 @@ class Manage_notification_whatsapp extends CI_Controller {
 		if(!empty($_REQUEST)){
 			
 			$chemist_name = $this->input->post('chemist_name');
-			if($chemist_name=="all"){
+			if(strtolower($chemist_name)=="all"){
 				$sr_no = $i++;
 				$id = $row->id;
 				$chemist_id = "all";
