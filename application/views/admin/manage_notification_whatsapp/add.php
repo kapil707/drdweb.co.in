@@ -96,13 +96,31 @@ function find_chmiest()
 	{
 		$.ajax({
             type       : "POST",
-            data       :  {chemist_name:chemist_name},
+            data       : {chemist_name:chemist_name},
             url        : "<?= base_url()?>admin/<?= $Page_name?>/find_chmiest",
             cache	   : false,
-            success    : function(data){
-                $(".find_chmiest_result").html(data);
+            dataType: 'json',
+            success    : function(response){
+                if (response.success === "1") {
+                    // Display success message
+                    //$('#message').text(response.message);
+
+                    // Display items in the data container
+                    let htmlContent = '<ul>';
+                    response.items.forEach(item => {
+                        htmlContent += `<li>ID: ${item.id}, Chemist ID: ${item.chemist_id}, Name: ${item.name}</li>`;
+                    });
+                    htmlContent += '</ul>';
+                    $('.find_chmiest_result').html(htmlContent);
+                } else {
+                    $('.find_chmiest_result').text("Failed to load data.");
                 }
-            });
+            },
+            error: function(xhr, status, error) {
+                console.error('AJAX Error:', error);
+                $('#.find_chmiest_result').text("Error loading data.");
+            }
+        });
 	}
 }
 function addchmiest(id,name)
