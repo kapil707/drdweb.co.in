@@ -88,7 +88,7 @@
     position: absolute;
     z-index: 1;
     background: white;
-    height: 300px;
+    min-height: 300px;
     overflow: scroll;
 }
 /* Style the unordered list */
