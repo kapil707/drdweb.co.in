@@ -18,7 +18,7 @@
 
 						<input type="hidden" id="find_chemist_id" name="find_chemist_id"/>
 
-						<input type="text" class="form-control" id="chemist_name" name="chemist_name" tabindex="1" onkeydown="find_chemist()" onkeyup="find_chemist()" placeholder="Enter Name / Altercode" autocomplete="off" />
+						<input type="text" class="form-control" id="chemist_name" name="chemist_name" tabindex="1" onkeyup="find_chemist()" placeholder="Enter Name / Altercode" autocomplete="off" />
 
 						<div class="find_chemist_result"></div>
 					</div>
@@ -143,7 +143,7 @@ function find_chemist() {
                     });
                     htmlContent += '</ul>';
                     $('.find_chemist_result').html(htmlContent);
-                    
+
                     currentFocus = -1;
                 } else {
                     $('.find_chemist_result').text("Failed to load data.");
