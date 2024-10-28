@@ -55,7 +55,7 @@ class Manage_notification_whatsapp extends CI_Controller {
 			$message = str_replace("\r\n","<br>",$message);
 
 			$result = "";
-			if(emtpy($find_chemist_id))
+			if(empty($find_chemist_id))
 			{ 
 				$message_db = "Select Chemist";
 				$message = "Select Chemist";
