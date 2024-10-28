@@ -119,7 +119,7 @@ function find_chemist() {
 
 function add_chemist(chemist_id, chemist_name) {
     $("#find_chemist_id").val(chemist_id);
-    $("#chemist_name").val(`Name: ${item.chemist_name} - (Chemist ID: ${item.chemist_id})`);
+    $("#chemist_name").val(`Name: ${chemist_name} - (Chemist ID: ${chemist_id})`);
     $(".find_chemist_result").html("");
 }
 </script>
