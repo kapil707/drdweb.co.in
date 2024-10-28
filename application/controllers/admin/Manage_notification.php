@@ -212,6 +212,7 @@ class Manage_notification extends CI_Controller {
 					$user = $row->user_type."(".$row->chemist_id.")";
 					$title = $row->title;
 					$message = $row->message;
+					$insert_type = $row->insert_type;
 					$datetime = date("d-M-y",strtotime($row->date)) . " @ " .$row->time;
 
 					$dt = array(
@@ -221,6 +222,7 @@ class Manage_notification extends CI_Controller {
 						'user'=>$user,
 						'title'=>$title,
 						'message'=>$message,
+						'insert_type'=>$insert_type,
 						'datetime'=>$datetime,
 					);
 					$jsonArray[] = $dt;
