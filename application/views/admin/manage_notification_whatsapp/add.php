@@ -85,9 +85,11 @@
 </div><!-- /.row -->
 <style>
     .find_chemist_result{
-        position: absolute; 
-        z-index: 1; 
-        background: white; 
+        position: absolute;
+        z-index: 1;
+        background: white;
+        height: 300px;
+        overflow: scroll;
     }
     /* Style the unordered list */
     .find_chemist_result ul {
