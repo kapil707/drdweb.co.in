@@ -18,7 +18,7 @@
 
 						<input type="hidden" id="find_chemist_id" name="find_chemist_id"/>
 
-						<input type="text" class="form-control" id="chemist_name" name="chemist_name"tabindex="1" onkeydown="find_chemist()" onkeyup="find_chemist()" placeholder="Enter Name / Altercode" autocomplete="off" />
+						<input type="text" class="form-control" id="chemist_name" name="chemist_name" tabindex="1" onkeydown="find_chemist()" onkeyup="find_chemist()" placeholder="Enter Name / Altercode" autocomplete="off" />
 
 						<div class="find_chemist_result" style="position: absolute;z-index: 1;background: white;width: 300px;"></div>
 					</div>
@@ -126,7 +126,7 @@ function find_chemist()
 function add_chemist(chemist_id,chemist_name)
 {
 	$("#find_chemist_id").val(chemist_id);
-	$("#find_chemist_name").val(chemist_name);
+	$("#chemist_name").val(chemist_name);
 	$(".find_chemist_result").html("");
 }
 </script>
