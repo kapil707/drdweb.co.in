@@ -229,6 +229,7 @@ class Manage_notification_whatsapp extends CI_Controller {
 
 	public function find_chmiest()
 	{	
+		$i  = 0;
 		$jsonArray = array();
 		if(!empty($_REQUEST)){
 			
