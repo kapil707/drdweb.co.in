@@ -42,6 +42,7 @@ $(document).ready(function(){
 			{ data: 'user', title: 'User' },
 			{ data: 'title', title: 'Title' },
 			{ data: 'message', title: 'Message' },
+			{ data: 'insert_type', title: 'InsertType' },
 			{ data: 'datetime', title: 'DateTime' },
 			{
 				data: null,
