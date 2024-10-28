@@ -26,7 +26,7 @@ class WhatsAppModel extends CI_Model
 			'status'=>0,
 			'respose'=>'',
 			'date' => date('Y-m-d'),
-            'time1' => date('H:i:s'),
+            'time' => date('H:i:s'),
             'timestamp' => time(),
 		);
 		return $this->Scheme_Model->insert_fun("tbl_whatsapp_message",$dt);
