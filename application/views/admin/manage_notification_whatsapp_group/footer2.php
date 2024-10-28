@@ -41,7 +41,6 @@ $(document).ready(function(){
 			{ data: 'sr_no', title: 'Id' },
 			{ data: 'mobile', title: 'Mobile' },
 			{ data: 'message', title: 'Message' },
-			{ data: 'insert_type', title: 'InsertType' },
 			{ data: 'datetime', title: 'DateTime' },
 			{
 				data: null,
