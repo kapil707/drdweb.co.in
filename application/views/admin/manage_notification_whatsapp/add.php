@@ -20,7 +20,7 @@
 
 						<input type="text" class="form-control" id="chemist_name" name="chemist_name" tabindex="1" onkeydown="find_chemist()" onkeyup="find_chemist()" placeholder="Enter Name / Altercode" autocomplete="off" />
 
-						<div class="find_chemist_result" style="position: absolute;z-index: 1;background: white;width: 300px;"></div>
+						<div class="find_chemist_result"></div>
 					</div>
 					<div class="help-inline col-sm-12 has-error">
 						<span class="help-block reset middle">
@@ -84,6 +84,13 @@
     </div><!-- /.col -->
 </div><!-- /.row -->
 <style>
+    .find_chemist_result{
+        position: absolute; 
+        z-index: 1; 
+        background: white; 
+        width: 100vw; 
+        left: 0; padding: 10px;
+    }
     /* Style the unordered list */
     .find_chemist_result ul {
         list-style-type: none; /* Remove bullet points */
