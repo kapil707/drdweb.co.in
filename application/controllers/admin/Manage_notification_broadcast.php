@@ -86,21 +86,21 @@ class Manage_notification_broadcast extends CI_Controller {
 				}
 				if($result)
 				{
-					$message_db = "($property_title) - Add Successfully.";
+					$message_db = "() - Add Successfully.";
 					$message = "Add Successfully.";
 					$this->session->set_flashdata("message_type","success");
 				}
 				else
 				{
-					$message_db = "($property_title) - Not Add.";
+					$message_db = "() - Not Add.";
 					$message = "Not Add.";
 					$this->session->set_flashdata("message_type","error");
 				}
 			}
 			if($message_db!="")
 			{
-				$message = " - ".$message;
-				$message_db = " - ".$message_db;
+				$message = $Page_title." - ".$message;
+				$message_db = $Page_title." - ".$message_db;
 				$this->session->set_flashdata("message_footer","yes");
 				$this->session->set_flashdata("full_message",$message);
 				$this->Admin_Model->Add_Activity_log($message_db);
@@ -356,7 +356,7 @@ class Manage_notification_broadcast extends CI_Controller {
         header('Content-Type: application/json');
         echo json_encode($response);
 	}
-
+	
 	public function delete_rec()
 	{
 		$id = $_POST["id"];
