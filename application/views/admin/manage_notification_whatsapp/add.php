@@ -117,6 +117,11 @@ function find_chemist() {
     let chemist_name = $("#chemist_name").val();
     $(".find_chemist_result").html("Loading....");
     
+    if (chemist_name.length < 2) {
+        $(".find_chemist_result").html(""); // Clear results if input is too short
+        return; // Exit the function if less than 2 characters
+    }
+
     if(chemist_name === "") {
         $(".find_chemist_result").html("");
     } else {
