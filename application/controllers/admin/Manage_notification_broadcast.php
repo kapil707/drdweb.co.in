@@ -80,8 +80,8 @@ class Manage_notification_broadcast extends CI_Controller {
 				{
 					$user_type = "chemist";
 					$chemist_id = $row1->altercode;
-
-					$result = $this->WhatsAppModel->insert_whatsapp($title,$message,$chemist_id,$user_type,'Admin');
+					
+					$result = $this->BroadcastModel->insert_broadcast($title,$message,$chemist_id,$user_type,'Admin');
 				}
 				if($result)
 				{
