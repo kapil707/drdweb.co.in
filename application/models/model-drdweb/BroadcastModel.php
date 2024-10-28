@@ -14,6 +14,7 @@ class BroadcastModel extends CI_Model
 			'chemist_id'=>$chemist_id,
 			'user_type'=>$user_type,
 			'status'=>0,
+			'insert_type'=>$insert_type,
 			'date' => date('Y-m-d'),
             'time' => date('H:i:s'),
             'timestamp' => time(),
