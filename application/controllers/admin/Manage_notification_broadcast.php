@@ -115,6 +115,7 @@ class Manage_notification_broadcast extends CI_Controller {
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/add",$data);
 		$this->load->view("admin/header_footer/footer",$data);
+		$this->load->view("admin/manage_user_chemist/find_chemist",$data);
 	}
 	public function view()
 	{

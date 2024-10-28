@@ -14,7 +14,6 @@ class Manage_notification extends CI_Controller {
 	}
 	public function add()
 	{
-		error_reporting(0);
 		/******************session***********************/
 		$user_id = $this->session->userdata("user_id");
 		$user_type = $this->session->userdata("user_type");
@@ -119,6 +118,7 @@ class Manage_notification extends CI_Controller {
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/add",$data);
 		$this->load->view("admin/header_footer/footer",$data);
+		$this->load->view("admin/manage_user_chemist/find_chemist",$data);
 	}
 	public function view()
 	{

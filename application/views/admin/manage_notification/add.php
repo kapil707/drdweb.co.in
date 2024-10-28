@@ -90,9 +90,11 @@
 						</label>
 					</div>
 					<div class="col-sm-8">
-						<input type="hidden" id="altercode" name="altercode"/>
-						<input type="text" class="form-control" id="acm_name" name="acm_name"tabindex="1" onkeydown="call_search_acm()" onkeyup="call_search_acm()" placeholder="Enter Name / Altercode" autocomplete="off" />
-						<div class="call_search_acm_result" style="position: absolute;z-index: 1;background: white;width: 300px;"></div>
+						<input type="hidden" id="find_chemist_id" name="find_chemist_id"/>
+
+						<input type="text" class="form-control" id="chemist_name" name="chemist_name" tabindex="1" placeholder="Enter Name / Altercode" autocomplete="off" />
+
+						<div class="find_chemist_result"></div>
 					</div>
 					<div class="help-inline col-sm-12 has-error">
 						<span class="help-block reset middle">
