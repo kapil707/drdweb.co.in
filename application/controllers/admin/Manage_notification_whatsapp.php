@@ -236,7 +236,7 @@ class Manage_notification_whatsapp extends CI_Controller {
 			$chemist_name = $this->input->post('chemist_name');
 			if(strtolower($chemist_name)=="all"){
 				$sr_no = $i++;
-				$id = $row->id;
+				$id = "0";
 				$chemist_id = "all";
 				$chemist_name = "All Users";	
 
@@ -248,7 +248,7 @@ class Manage_notification_whatsapp extends CI_Controller {
 				);
 				$jsonArray[] = $dt;
 			}
-			$result =  $this->db->query ("select * from tbl_chemist where name Like '$chemist_name%' or name Like '%$chemist_name' or altercode='$chemist_name' limit 50")->result();
+			$result =  $this->db->query ("select * from tbl_chemist where name Like '$chemist_name%' or name Like '%$chemist_name' or altercode='$chemist_name' and slcd='CL' limit 50")->result();
 			foreach($result as $row){
 
 				$sr_no = $i++;
