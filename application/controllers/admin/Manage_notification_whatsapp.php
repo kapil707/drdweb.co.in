@@ -71,7 +71,7 @@ class Manage_notification_whatsapp extends CI_Controller {
 				}
 				if($find_chemist_id=="all login")
 				{
-					$query1 = $this->db->query("SELECT tbl_chemist.* FROM tbl_chemist_other INNER join `tbl_chemist` on tbl_chemist.code=tbl_chemist_other.code order by tbl_chemist.name asc")->result();
+					$query1 = $this->db->query("SELECT tbl_chemist.* FROM tbl_chemist_other INNER join `tbl_chemist` on tbl_chemist.code=tbl_chemist_other.code where tbl_chemist.status!='*' and tbl_chemist_other.block=0 order by tbl_chemist.name asc")->result();
 				}
 				foreach($query1 as $row1)
 				{
