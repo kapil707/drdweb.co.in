@@ -8,7 +8,7 @@ class User_profile extends CI_Controller {
 	public function upload_user_profile_api()
 	{
         $user_image = "";
-		$upload_image = "user_profile";
+		$upload_image = "./user_profile";
 
 		ini_set('upload_max_filesize', '10M');
 		ini_set('post_max_size', '10M');
