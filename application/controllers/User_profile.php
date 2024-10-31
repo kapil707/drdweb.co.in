@@ -45,8 +45,8 @@ class User_profile extends CI_Controller {
 		}
 
         $response = array(
-            'success' => "1",
-            'message' => 'Data load successfully',
+            'success' =>$status,
+            'message' => $status_message,
             'user_image' => $user_image,
         );
 
