@@ -19,8 +19,7 @@ class User_profile extends CI_Controller {
 			$config['allowed_types'] = '*';  // You may want to restrict allowed file types.
 			$config['max_size'] = 0;  // Set to 0 to allow any size.
 
-			$new_name = time().$files["upload_image"]['name'];
-			$config['file_name'] = $new_name;
+			$config['file_name'] = time().$files["image"]['name'];
 	
 			$this->load->library('upload', $config);
 	
