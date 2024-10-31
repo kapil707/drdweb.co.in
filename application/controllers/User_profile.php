@@ -5,12 +5,10 @@ class User_profile extends CI_Controller {
 		parent::__construct();
 	}
 	
-	public function upload_user_profile_api($user_type,$user_altercode,$salesman_id,$files)
+	public function upload_user_profile_api()
 	{
-		$jsonArray = array();
-        
 		$upload_image = "user_profile";
-		if (isset($files['upload_image']) && $files['upload_image']['error'] === UPLOAD_ERR_OK) {
+		if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
 			ini_set('upload_max_filesize', '10M');
 			ini_set('post_max_size', '10M');
 			ini_set('max_input_time', 300);
