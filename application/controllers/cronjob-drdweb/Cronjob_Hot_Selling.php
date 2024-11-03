@@ -11,9 +11,15 @@ class Cronjob_Hot_Selling extends CI_Controller
 		$date = date("Y-m-d");
 		$this->db->query("delete from tbl_medicine_compare where compare_type='hot_selling'");
 
-		$this->db->query("TRUNCATE TABLE tbl_hot_selling");
-		$result = $this->db->query("SELECT `itemc`, COUNT(*) AS total_count FROM `tbl_invoice_item` WHERE `date` = '$date' GROUP BY `itemc` ORDER BY `total_count` DESC LIMIT 25")->result();
-		foreach($result as $row)
+		$this->db->select('itemc, COUNT(*) as total_count');
+        $this->db->from('tbl_invoice_item');
+        $this->db->where('date', $date);
+        $this->db->group_by('itemc');
+        $this->db->order_by('total_count', 'DESC');
+        $this->db->limit(25);
+
+        $query = $this->db->get()->result();
+		foreach($query as $row)
 		{
 			$i_code 	= $row->itemc;
 			$total 		= $row->total_count;
