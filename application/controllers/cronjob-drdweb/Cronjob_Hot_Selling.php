@@ -36,7 +36,6 @@ class Cronjob_Hot_Selling extends CI_Controller
 			$compare_type = "hot_selling";
 			$compare_now = 0;
 			$compare_before = 0;
-			$insert_time = date('Y-m-d,H:i');
 
 			$dt = array(
 				'i_code' => $i_code,
@@ -46,7 +45,6 @@ class Cronjob_Hot_Selling extends CI_Controller
 				'date' => date('Y-m-d'),
 				'time' => date('H:i:s'),
 				'timestamp' => time(),
-				'insert_time' => $insert_time,
 			);
 			$this->Scheme_Model->insert_fun("tbl_medicine_compare", $dt);
 		}
