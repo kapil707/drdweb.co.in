@@ -26,9 +26,9 @@ class Cronjob_must_buy extends CI_Controller
 			$total 		= $row->total_count;
 
 			/********************************************* */
-			$compare_type = "must_buy";
-			$compare_now = 0;
-			$compare_before = 0;
+			$compare_type 	= "must_buy";
+			$compare_now 	= $total;
+			$compare_before = $total;
 
 			$dt = array(
 				'i_code' => $i_code,
