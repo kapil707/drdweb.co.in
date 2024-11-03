@@ -41,6 +41,6 @@ class Cronjob_must_buy extends CI_Controller
 			);
 			$this->Scheme_Model->insert_fun("tbl_medicine_compare", $dt);
 		}
-		echo "Hot Selling Working";
+		echo "Must Buy Working";
 	}
 }
