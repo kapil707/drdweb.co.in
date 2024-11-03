@@ -189,15 +189,14 @@ class ExeMedicine extends CI_Controller
 				$compare_before = $record['compare_before'];
 				$date = $record['date'];
 
-				$insert_time = date('Y-m-d,H:i');
-
 				$dt = array(
 					'i_code' => $i_code,
 					'compare_type' => $compare_type,
 					'compare_now' => $compare_now,
 					'compare_before' => $compare_before,
-					'date' => $date,
-					'insert_time' => $insert_time,
+					'date' => date('Y-m-d'),
+					'time' => date('H:i:s'),
+					'timestamp' => time(),
 				);
 
 				if (!empty($i_code)) {
