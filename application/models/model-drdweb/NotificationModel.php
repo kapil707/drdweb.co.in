@@ -169,7 +169,7 @@ class NotificationModel extends CI_Model
 					'company_full_name'=>$company_full_name,
 					'image'=>$image,
 				);
-				print_r($data);
+				//print_r($data);
 					
 				$fields = array
 				(
@@ -177,6 +177,7 @@ class NotificationModel extends CI_Model
 					'data'=>$data,
 					"priority"=>"high",
 				);
+				print_r($data);
 				$headers = array
 				(
 					'Authorization: key=' . API_ACCESS_KEY,
