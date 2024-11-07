@@ -200,6 +200,7 @@ class NotificationModel extends CI_Model
 				$respose = curl_exec($ch);
 				//echo $respose;
 				curl_close($ch);
+				$respose = "";
 			
 				$this->db->query("update tbl_android_notification set firebase_status='1',respose='$respose' where firebase_status='0' and id='$id'");
 			}
