@@ -178,11 +178,16 @@ class NotificationModel extends CI_Model
 					"priority"=>"high",
 				);
 				print_r($fields);
-				$headers = array
+				/*$headers = array
 				(
 					'Authorization: key=' . API_ACCESS_KEY,
 					'Content-Type: application/json'
-				);
+				);*/
+				$accessToken = $this->getAccessToken();
+				$headers = [
+					'Authorization: Bearer ' . $accessToken,
+					'Content-Type: application/json',
+				];
 				#Send Reponse To FireBase Server	
 				$ch = curl_init();
 				curl_setopt($ch,CURLOPT_URL,'https://fcm.googleapis.com/v1/projects/drd-noti-fire-base/messages:send');
