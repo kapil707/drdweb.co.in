@@ -88,7 +88,7 @@ class NotificationModel extends CI_Model
 	function send_android_notification()
 	{
 		//error_reporting(0);
-		define('API_ACCESS_KEY', 'AAAAdZCD4YU:APA91bFjmo0O-bWCz2ESy0EuG9lz0gjqhAatkakhxJmxK1XdNGEusI5s_vy7v7wT5TeDsjcQH0ZVooDiDEtOU64oTLZpfXqA8EOmGoPBpOCgsZnIZkoOLVgErCQ68i5mGL9T6jnzF7lO');
+		//define('API_ACCESS_KEY', 'AAAAdZCD4YU:APA91bFjmo0O-bWCz2ESy0EuG9lz0gjqhAatkakhxJmxK1XdNGEusI5s_vy7v7wT5TeDsjcQH0ZVooDiDEtOU64oTLZpfXqA8EOmGoPBpOCgsZnIZkoOLVgErCQ68i5mGL9T6jnzF7lO');
 		
 		$time = time();
 		$date = date("Y-m-d",$time);
@@ -177,13 +177,15 @@ class NotificationModel extends CI_Model
 					'data'=>$data,
 					"priority"=>"high",
 				);
-				//print_r($fields);
+				print_r($fields);
+				die();
 				/*$headers = array
 				(
 					'Authorization: key=' . API_ACCESS_KEY,
 					'Content-Type: application/json'
 				);*/
-				echo $accessToken = $this->getAccessToken();
+				//$accessToken = $this->getAccessToken();
+				$accessToken = "ya29.c.c0ASRK0GYY-pgHabMuM2xnBysZ8CahWhqyBsmYHowKXeI-6z8JKUP4VQKZ7VDaKOzLEmJVNC6rhzWjUCmcPBq6NCy1RyHFSBzjdc8URUSxblvAgDhdTRbDpdrYdLCw0_Hhro8XQrNq1mN7vbBvSPZ4RiQc8l_y10BUt6f_XqC92JFlljVVjkUdnyHNYlVaqqYwvRnKD6ZyLNbnmrUcOaKy1gBV1gam2hxKI7FDlRzOA7aLR8geIbTnQ-Cnqau5WmHXkEBZJ_mEsxbPyazLytTq-GnFhr1_u3DGy4AdZrPqwvBl6Sdk_m89lKNPVNzavmsBgwD8KIpy12Tel2T_7Oj__d8lPCbxc3A5vPluy0q4pZh5pdKpeF8rWqB5T385Kp82ap74Z35xkz-fYQUf-pJiZr0In7ef1VebO6legnMpppim7jMo7YXtbBaJwWyZhB2BxiUq8WrrYWt7WXaZ9_2FZUxqQWM4tZM0yvlw0hF1J3wQWac27pWW1nFugvB5k75g1wdIng5MBWWxx602V87-wsF04QOVwdUb7pnVFom7dugqhq7R-kFeXv1BQ8exs_ju9esahyuFXidX_q60q-uXmsMJa4fcIFOdndYd7eFeB-qj__1bej06q0jvnz8SvzJ6UBov8Ra8oYuJaqInJ6-3524iOmbi0XjsXl5-3gbvWwQ12khZwiR1vuFdS3Br5VJU6wZgcvhWRx0iWu_52XR17Slby-rZ3sSph136Wa5YbcJXORcjia3Xi8Rx_nvtfa9mBF4mtio563qSOiy5UW-5yB7Xtkcfwfvlsc_FmfJOZjixqZ9V856kM3tgVkSMxhYdz4Z37a1WYccpjJYfeZSIB676QWY4i17h7IhmnwUQmi05iho6nflZsfW42XMoox4rOiz5ch4juk_9vwutmk1O7WvVI9VxtpRy7Jli3ZkdfuY7X4VXeoc59bSr-ix1JuxXB8zuQBeo-x3z_FJOudsp6QYe8U_9u8tcruiJzzn498QRX8369tx36_u";
 				$headers = [
 					'Authorization: Bearer ' . $accessToken,
 					'Content-Type: application/json',
