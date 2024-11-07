@@ -37,7 +37,7 @@ class NotificationModel extends CI_Model
 	
 	function getAccessToken()
 	{
-		$serviceAccount = json_decode(file_get_contents('firbase_token/google-services.json'), true);
+		$serviceAccount = json_decode(file_get_contents('firbase_token/my.json'), true);
 		
 		$header = [
 			"alg" => "RS256",
@@ -177,13 +177,13 @@ class NotificationModel extends CI_Model
 					'data'=>$data,
 					"priority"=>"high",
 				);
-				print_r($fields);
+				//print_r($fields);
 				/*$headers = array
 				(
 					'Authorization: key=' . API_ACCESS_KEY,
 					'Content-Type: application/json'
 				);*/
-				$accessToken = $this->getAccessToken();
+				echo $accessToken = $this->getAccessToken();
 				$headers = [
 					'Authorization: Bearer ' . $accessToken,
 					'Content-Type: application/json',
