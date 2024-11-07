@@ -157,28 +157,27 @@ class NotificationModel extends CI_Model
 			foreach($query1 as $row1)
 			{
 				$token = $row1->firebase_token;
-				$data = array
-				(
-					'id'=>$id,
-					'title'=>$title,
-					'message'=>$message,
-					'funtype'=>$funtype,
-					'item_id'=>$item_id,
-					'itemid'=>$itemid,
-					'division'=>$division,
-					'company_full_name'=>$company_full_name,
-					'image'=>$image,
-				);
-				//print_r($data);
-					
-				$fields = array
-				(
-					'to'=>$token,
-					'data'=>$data,
-					"priority"=>"high",
-				);
-				print_r($fields);
-				die();
+				$message = [
+					"message" => [
+						"token" => $token,
+						"data" => [
+							'id'=>$id,
+							'title'=>$title,
+							'message'=>$message,
+							'funtype'=>$funtype,
+							'item_id'=>$item_id,
+							'itemid'=>$itemid,
+							'division'=>$division,
+							'company_full_name'=>$company_full_name,
+							'image'=>$image,
+						],
+						"android" => [
+							"priority" => "HIGH"
+						]
+					]
+				];
+				//print_r($message);
+				//die();
 				/*$headers = array
 				(
 					'Authorization: key=' . API_ACCESS_KEY,
@@ -197,7 +196,7 @@ class NotificationModel extends CI_Model
 				curl_setopt($ch,CURLOPT_HTTPHEADER,$headers);
 				curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
 				curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,false);
-				curl_setopt($ch,CURLOPT_POSTFIELDS, json_encode($fields));
+				curl_setopt($ch,CURLOPT_POSTFIELDS, json_encode($message));
 				$respose = curl_exec($ch);
 				//echo $respose;
 				curl_close($ch);
