@@ -95,7 +95,7 @@ class NotificationModel extends CI_Model
 		$image= $company_full_name = "";
 		$where = array('firebase_status'=>'0','device_id'=>'default');
 		$this->db->where($where);
-		$this->db->order_by('id','desc');
+		$this->db->order_by('id','asc');
 		$query = $this->db->get("tbl_android_notification")->result();
 		foreach($query as $row)
 		{
