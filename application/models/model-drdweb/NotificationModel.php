@@ -87,7 +87,6 @@ class NotificationModel extends CI_Model
 
 	function send_android_notification()
 	{
-		$accessToken = $this->getAccessToken();
 		//error_reporting(0);
 		define('API_ACCESS_KEY', 'AAAAdZCD4YU:APA91bFjmo0O-bWCz2ESy0EuG9lz0gjqhAatkakhxJmxK1XdNGEusI5s_vy7v7wT5TeDsjcQH0ZVooDiDEtOU64oTLZpfXqA8EOmGoPBpOCgsZnIZkoOLVgErCQ68i5mGL9T6jnzF7lO');
 		
@@ -170,7 +169,7 @@ class NotificationModel extends CI_Model
 					'company_full_name'=>$company_full_name,
 					'image'=>$image,
 				);
-				//print_r($data);
+				print_r($data);
 					
 				$fields = array
 				(
@@ -178,15 +177,11 @@ class NotificationModel extends CI_Model
 					'data'=>$data,
 					"priority"=>"high",
 				);
-				/*$headers = array
+				$headers = array
 				(
 					'Authorization: key=' . API_ACCESS_KEY,
 					'Content-Type: application/json'
-				);*/
-				$headers = [
-					'Authorization: Bearer ' . $accessToken,
-					'Content-Type: application/json',
-				];
+				);
 				#Send Reponse To FireBase Server	
 				$ch = curl_init();
 				curl_setopt($ch,CURLOPT_URL,'https://fcm.googleapis.com/v1/projects/drd-noti-fire-base/messages:send');
