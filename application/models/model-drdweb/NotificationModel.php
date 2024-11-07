@@ -133,7 +133,7 @@ class NotificationModel extends CI_Model
 				);
 				#Send Reponse To FireBase Server	
 				$ch = curl_init();
-				curl_setopt($ch,CURLOPT_URL,'POST https://fcm.googleapis.com/v1/projects/drd-noti-fire-base/messages:send');
+				curl_setopt($ch,CURLOPT_URL,'https://fcm.googleapis.com/v1/projects/drd-noti-fire-base/messages:send');
 				curl_setopt($ch,CURLOPT_POST,true);
 				curl_setopt($ch,CURLOPT_HTTPHEADER,$headers);
 				curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
