@@ -177,7 +177,7 @@ class NotificationModel extends CI_Model
 					'data'=>$data,
 					"priority"=>"high",
 				);
-				print_r($data);
+				print_r($fields);
 				$headers = array
 				(
 					'Authorization: key=' . API_ACCESS_KEY,
