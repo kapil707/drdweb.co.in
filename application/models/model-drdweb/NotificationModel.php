@@ -34,8 +34,60 @@ class NotificationModel extends CI_Model
 		return $this->Scheme_Model->insert_fun("tbl_android_notification",$dt);
 	}
 
+	
+	function getAccessToken()
+	{
+		$serviceAccount = json_decode(file_get_contents('firbase_token/google-services.json'), true);
+		
+		$header = [
+			"alg" => "RS256",
+			"typ" => "JWT",
+		];
+
+		$iat = time();
+		$exp = $iat + 3600;
+
+		$payload = [
+			"iss" => $serviceAccount['client_email'],
+			"scope" => "https://www.googleapis.com/auth/firebase.messaging",
+			"aud" => "https://oauth2.googleapis.com/token",
+			"iat" => $iat,
+			"exp" => $exp,
+		];
+
+		$base64UrlHeader = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode(json_encode($header)));
+		$base64UrlPayload = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode(json_encode($payload)));
+
+		$signature = '';
+		openssl_sign($base64UrlHeader . "." . $base64UrlPayload, $signature, $serviceAccount['private_key'], "SHA256");
+		$base64UrlSignature = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($signature));
+
+		$jwt = $base64UrlHeader . "." . $base64UrlPayload . "." . $base64UrlSignature;
+
+		// Request access token
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, 'https://oauth2.googleapis.com/token');
+		curl_setopt($ch, CURLOPT_POST, true);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
+			'grant_type' => 'urn:ietf:params:oauth:grant-type:jwt-bearer',
+			'assertion' => $jwt,
+		]));
+
+		$response = json_decode(curl_exec($ch), true);
+		curl_close($ch);
+
+		if (!isset($response['access_token'])) {
+			die('Error getting access token');
+		}
+
+		return $response['access_token'];
+	}
+
+
 	function send_android_notification()
 	{
+		$accessToken = $this->getAccessToken();
 		//error_reporting(0);
 		define('API_ACCESS_KEY', 'AAAAdZCD4YU:APA91bFjmo0O-bWCz2ESy0EuG9lz0gjqhAatkakhxJmxK1XdNGEusI5s_vy7v7wT5TeDsjcQH0ZVooDiDEtOU64oTLZpfXqA8EOmGoPBpOCgsZnIZkoOLVgErCQ68i5mGL9T6jnzF7lO');
 		
@@ -126,11 +178,15 @@ class NotificationModel extends CI_Model
 					'data'=>$data,
 					"priority"=>"high",
 				);
-				$headers = array
+				/*$headers = array
 				(
 					'Authorization: key=' . API_ACCESS_KEY,
 					'Content-Type: application/json'
-				);
+				);*/
+				$headers = [
+					'Authorization: Bearer ' . $accessToken,
+					'Content-Type: application/json',
+				];
 				#Send Reponse To FireBase Server	
 				$ch = curl_init();
 				curl_setopt($ch,CURLOPT_URL,'https://fcm.googleapis.com/v1/projects/drd-noti-fire-base/messages:send');
