@@ -81,7 +81,7 @@ class NotificationModel extends CI_Model
 			die('Error getting access token');
 		}
 
-		echo $response['access_token'];
+		return $response['access_token'];
 	}
 
 
@@ -191,8 +191,7 @@ class NotificationModel extends CI_Model
 					'Authorization: key=' . API_ACCESS_KEY,
 					'Content-Type: application/json'
 				);*/
-				//$accessToken = $this->getAccessToken();
-				$accessToken = "ya29.c.c0ASRK0GYRn9rQ0E_eX_DFpLWTF4C7J0AwijhTZ7oeLctRkFlvaMMKHS6T9z7rpXPVPcKZIrchrg5-NGBCMlMhR4QuEl_JT_ID2Bu7A8T-pLp8GSz3jNUpJ-keULSBwcOnwApJkdiZuKMXD-pul6roRB41h-BuTzLZ5FNb8gnXBW21M-cCjbzObZevvI6ShAD1U2C1oUXlK8C9H3awsHAKOtvhuyLQlmhqyz5jencEaKQzn79pUgm3gHuNAoErS0ZBl_LNDzEeItzmqHUWpzxSfFEwtKOoWTa5KNyKY_UurI5Tdsb991v9yao3iuG3p5S1qSyxLWFJuzDI1bWgjiEzniblyjMWT5rX5D8e9viXlYeHP1bKhqTRX2RKG385KOhebIedxFwReeBVysIdcw2OfQt19rpR30chIOU8B6dp24R-lkrV9MgUzp9U0O-be-FzpB6mugRF4zdngfOx03zI9zIUSk2RWc64Jp_32Mpaz7O3hgMeQrB3pIbuYqa5j_jZglRuSr4eZ9wu-6c3cjJ6hpSgz5kvsRgFwcJ1M_o_zMBwemyF7OYUl7rhy6tm6JmiiR-RS3Zwqa1_Wxi4Shnoi-8nltucyIkMJ6wJvbBvbS4mhB50upWquXlw_c22fMccabrge2jU2BzZ5qIt3QZj97qq5mfjfVmeizz3o838s5YlVJvjxSqRZh1xfxnzniug7knaSW31xutqwh-c8Igkv6dyry594jnUFgUrbJ_0mxJUQ0vlMfWl-6eo1Qfq5jYaYWsfpl27-0wdlQbgfJ8twi6xfMz69uuJanWiWekc5O8Ze00M73524X9R-fY0xl3zQpqysVQ9FqR43p-Q597lB2wZpQdBZ0Z9dj7lXy0Okeu2nYaxY5qfaJhUrkSVztsZ2g5BVYZBzyokl-t37tO_FB-yu5hbp9eWR1t1yv76l90JJ-u18qinW-uu1juFF81y-e2vyQ0OVz0zn72_axiX4q97yw87WR5X-k7VnwtbUFrMF6M47fr5tvW";
+				$accessToken = $this->getAccessToken();
 				$headers = [
 					'Authorization: Bearer ' . $accessToken,
 					'Content-Type: application/json',
