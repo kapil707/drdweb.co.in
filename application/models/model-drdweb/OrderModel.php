@@ -65,7 +65,7 @@ class OrderModel extends CI_Model
             /****************notification***********************/
             $q_title 		= "New Order - $order_id";
             $q_message		= $notification_whatsapp_message;
-            $this->NotificationModel->insert_android_notification("4",$q_title,$q_message,$chemist_id,"chemist");
+            $this->NotificationModel->insert_notification("4",$q_title,$q_message,$chemist_id,"chemist");
             /*****************whatsapp*************************/
             if(!empty($acm_mobile))
             {
@@ -93,13 +93,13 @@ class OrderModel extends CI_Model
             $notification_whatsapp_message  = str_replace("Hello","",$notification_whatsapp_message);
             $group2_message 	= "New order recieved from ".$notification_whatsapp_message;
             $whatsapp_group2 = $this->Scheme_Model->get_website_data("whatsapp_group2");
-            $this->WhatsAppModel->insert_whatsapp_group_message($whatsapp_group2,$group2_message);
+            $this->WhatsAppModel->insert_whatsapp_group($whatsapp_group2,$group2_message);
             /*************************************************************/
             
             /******************group message******************************/
             $group1_message 	= "New Order Recieved from ".$notification_whatsapp_message."Please check in Easy Sol";
             $whatsapp_group1 = $this->Scheme_Model->get_website_data("whatsapp_group1");
-            $this->WhatsAppModel->insert_whatsapp_group_message($whatsapp_group1,$group1_message);
+            $this->WhatsAppModel->insert_whatsapp_group($whatsapp_group1,$group1_message);
             /**********************************************************/
             
             /**********************email************************/

@@ -7,23 +7,6 @@ class Cronjob_admin_report extends CI_Controller
 		parent::__construct();
 		// Load model
 		$this->load->model("model-drdweb/WhatsAppModel");
-		$this->load->model("model-drdweb/NotificationModel");
-	}
-	
-	public function insert_whatsapp_test_message()
-	{
-		$altercode = "v153";
-		$whatsapp_message = "hello test message";
-		$chemist_mobile = "+919530005050";
-		$this->WhatsAppModel->insert_whatsapp($chemist_mobile,$whatsapp_message,$altercode);
-	}
-	
-	public function all_message_send_by()
-	{
-		$this->WhatsAppModel->send_whatsapp_message();
-		$this->WhatsAppModel->send_whatsapp_group_message();
-		$this->NotificationModel->send_android_notification();
-		echo "All Message Send By Working";
 	}
 	
 	public function admin_report()
@@ -188,7 +171,7 @@ class Cronjob_admin_report extends CI_Controller
 		/***************only for group message***********************/
 		$group2_message 	= $massage.$massage1.$massage2.$massage3.$massage4;
 		$whatsapp_group2 = $this->Scheme_Model->get_website_data("whatsapp_group2");
-		$this->WhatsAppModel->insert_whatsapp_group_message($whatsapp_group2,$group2_message);
+		$this->WhatsAppModel->insert_whatsapp_group($whatsapp_group2,$group2_message);
 		/*************************************************************/
 		
 		echo "Admin Report Working";

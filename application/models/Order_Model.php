@@ -506,13 +506,13 @@ if ($items != '') {
 		$txt_msg1  = str_replace("Hello","",$txt_msg);
 		$group2_message 	= "New order recieved from ".$txt_msg1;
 		$whatsapp_group2 = $this->Scheme_Model->get_website_data("whatsapp_group2");
-		$this->Message_Model->insert_whatsapp_group_message($whatsapp_group2,$group2_message);
+		$this->Message_Model->insert_whatsapp_group($whatsapp_group2,$group2_message);
 		/*************************************************************/
 
 		/******************group message******************************/
 		$group1_message 	= "New Order Recieved from ".$txt_msg1."Please check in Easy Sol";
 		$whatsapp_group1 = $this->Scheme_Model->get_website_data("whatsapp_group1");
-		$this->Message_Model->insert_whatsapp_group_message($whatsapp_group1,$group1_message);
+		$this->Message_Model->insert_whatsapp_group($whatsapp_group1,$group1_message);
 		/**********************************************************/
 		
 		$subject = "DRD Order || ($order_id) || $acm_name ($acm_altercode)";

@@ -40,7 +40,7 @@ class Message_Model extends CI_Model
 	}
 	
 	
-	public function insert_whatsapp_group_message($mobile,$message)
+	public function insert_whatsapp_group($mobile,$message)
 	{
 		$date = date('Y-m-d');
 		$time = date("H:i",time());

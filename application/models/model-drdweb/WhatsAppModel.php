@@ -5,6 +5,7 @@ class WhatsAppModel extends CI_Model
 	public function __construct() {
         parent::__construct();
     }
+
 	public function tbl_whatsapp_email_fail($number,$message,$altercode)
 	{
 		$where = array('altercode'=>$altercode);
@@ -32,7 +33,7 @@ class WhatsAppModel extends CI_Model
 		return $this->Scheme_Model->insert_fun("tbl_whatsapp_message",$dt);
 	}
 	
-	public function send_whatsapp_message()
+	public function send_whatsapp()
 	{
 		$whatsapp_key = $this->Scheme_Model->get_website_data("whatsapp_key");
 		
@@ -82,7 +83,7 @@ class WhatsAppModel extends CI_Model
 		}
 	}
 	
-	public function insert_whatsapp_group_message($mobile,$message,$media='')
+	public function insert_whatsapp_group($mobile,$message,$media='')
 	{
 		$date = date('Y-m-d');
 		$time = date("H:i",time());
@@ -101,7 +102,7 @@ class WhatsAppModel extends CI_Model
 		$this->Scheme_Model->insert_fun("tbl_whatsapp_group_message",$dt);
 	}
 	
-	public function send_whatsapp_group_message()
+	public function send_whatsapp_group()
 	{
 		$whatsapp_key = $this->Scheme_Model->get_website_data("whatsapp_key");
 		

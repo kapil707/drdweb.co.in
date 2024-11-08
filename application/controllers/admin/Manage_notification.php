@@ -97,7 +97,7 @@ class Manage_notification extends CI_Controller {
 					$chemist_id = $row1->altercode;
 					$user_type = "chemist";
 
-					$result = $this->NotificationModel->insert_android_notification($funtype,$title,$message,$chemist_id,$user_type,$itemid,$compid,$division,$image,'Admin');
+					$result = $this->NotificationModel->insert_notification($funtype,$title,$message,$chemist_id,$user_type,$itemid,$compid,$division,$image,'Admin');
 				}
 				if($result)
 				{

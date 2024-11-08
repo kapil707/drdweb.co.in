@@ -5,9 +5,9 @@ class NotificationModel extends CI_Model
 	public function __construct() {
         parent::__construct();
     }
-	public function insert_android_notification($funtype,$title,$message,$chemist_id,$user_type,$itemid='0',$compid='0',$division='',$image='',$insert_type='')
-	{
-		
+
+	public function insert_notification($funtype,$title,$message,$chemist_id,$user_type,$itemid='0',$compid='0',$division='',$image='',$insert_type='')
+	{		
 		$device_id =  "default"; // yha sirf website or android me show ke liya use hota ha
 
 		$status = $firebase_status = "0";
@@ -85,7 +85,7 @@ class NotificationModel extends CI_Model
 	}
 
 
-	function send_android_notification()
+	function send_notification()
 	{
 		//error_reporting(0);
 		//define('API_ACCESS_KEY', 'AAAAdZCD4YU:APA91bFjmo0O-bWCz2ESy0EuG9lz0gjqhAatkakhxJmxK1XdNGEusI5s_vy7v7wT5TeDsjcQH0ZVooDiDEtOU64oTLZpfXqA8EOmGoPBpOCgsZnIZkoOLVgErCQ68i5mGL9T6jnzF7lO');

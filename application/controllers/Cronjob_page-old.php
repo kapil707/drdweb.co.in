@@ -375,7 +375,7 @@ class Cronjob_page extends CI_Controller
 		/***************only for group message***********************/
 		$group2_message 	= $massage.$massage1.$massage2.$massage3.$massage4;
 		$whatsapp_group2 = $this->Scheme_Model->get_website_data("whatsapp_group2");
-		$this->Message_Model->insert_whatsapp_group_message($whatsapp_group2,$group2_message);
+		$this->Message_Model->insert_whatsapp_group($whatsapp_group2,$group2_message);
 		/*************************************************************/
 	}
 
@@ -465,7 +465,7 @@ class Cronjob_page extends CI_Controller
 		/***************only for group message***********************/
 		$group2_message 	= $massage.$massage1;
 		$whatsapp_group2 = $this->Scheme_Model->get_website_data("whatsapp_group2");
-		$this->Message_Model->insert_whatsapp_group_message($whatsapp_group2,$group2_message);
+		$this->Message_Model->insert_whatsapp_group($whatsapp_group2,$group2_message);
 		/*************************************************************/
 	}
 

@@ -231,11 +231,11 @@ if ($items != ''){
 				/******************group message******************************/
 				$group1_message 	= "Request for New Account<br><br>Chemist Code : $chemist_code<br><br>Phone Number : $phone_number";
 				$whatsapp_group1 = $this->Scheme_Model->get_website_data("whatsapp_group1");
-				$this->Message_Model->insert_whatsapp_group_message($whatsapp_group1,$group1_message);
+				$this->Message_Model->insert_whatsapp_group($whatsapp_group1,$group1_message);
 
 				$group2_message 	= $group1_message;
 				$whatsapp_group2 = $this->Scheme_Model->get_website_data("whatsapp_group2");
-				$this->Message_Model->insert_whatsapp_group_message($whatsapp_group2,$group2_message);
+				$this->Message_Model->insert_whatsapp_group($whatsapp_group2,$group2_message);
 				/**********************************************************/
 			}
 			else{

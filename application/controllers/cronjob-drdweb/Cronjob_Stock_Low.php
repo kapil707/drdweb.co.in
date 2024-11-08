@@ -19,12 +19,12 @@ class Cronjob_Stock_Low extends CI_Controller
 		
 		/***************only for group message***********************/
 		$whatsapp_group2 = $this->Scheme_Model->get_website_data("whatsapp_group2");		
-		$this->WhatsAppModel->insert_whatsapp_group_message($whatsapp_group2,$message);
+		$this->WhatsAppModel->insert_whatsapp_group($whatsapp_group2,$message);
 		/*************************************************************/
 		
 		/***************only for group message************************/
 		$whatsapp_group3 = $this->Scheme_Model->get_website_data("whatsapp_group3");		
-		$this->WhatsAppModel->insert_whatsapp_group_message($whatsapp_group3,$message);		/*************************************************************/
+		$this->WhatsAppModel->insert_whatsapp_group($whatsapp_group3,$message);		/*************************************************************/
 		
 		echo "Send Report On Whatsapp Working";
 	}
@@ -38,12 +38,12 @@ class Cronjob_Stock_Low extends CI_Controller
 		
 		/***************only for group message***********************/
 		$whatsapp_group2 = $this->Scheme_Model->get_website_data("whatsapp_group2");		
-		$this->WhatsAppModel->insert_whatsapp_group_message($whatsapp_group2,$message);
+		$this->WhatsAppModel->insert_whatsapp_group($whatsapp_group2,$message);
 		/*************************************************************/
 		
 		/***************only for group message************************
 		$whatsapp_group3 = $this->Scheme_Model->get_website_data("whatsapp_group3");		
-		$this->WhatsAppModel->insert_whatsapp_group_message($whatsapp_group3,$message);		/*************************************************************/
+		$this->WhatsAppModel->insert_whatsapp_group($whatsapp_group3,$message);		/*************************************************************/
 		
 		echo "Stock Low Now Available Report Working";
 	}

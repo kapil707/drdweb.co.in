@@ -39,13 +39,13 @@ class Cronjob_medicine_report extends CI_Controller
 			/***************only for group message***********************/
 			$group2_message 	= $massage.$massage1;
 			$whatsapp_group2 = $this->Scheme_Model->get_website_data("whatsapp_group2");
-			$this->WhatsAppModel->insert_whatsapp_group_message($whatsapp_group2,$group2_message);
+			$this->WhatsAppModel->insert_whatsapp_group($whatsapp_group2,$group2_message);
 			/*************************************************************/
 			
 			/***************only for group message***********************/
 			$group3_message 	= $massage.$massage1;
 			$whatsapp_group3 = $this->Scheme_Model->get_website_data("whatsapp_group3");
-			$this->WhatsAppModel->insert_whatsapp_group_message($whatsapp_group3,$group3_message);
+			$this->WhatsAppModel->insert_whatsapp_group($whatsapp_group3,$group3_message);
 			/*************************************************************/
 		}
 		echo "Medicine Report Working";
