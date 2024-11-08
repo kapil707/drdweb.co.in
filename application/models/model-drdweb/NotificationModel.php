@@ -96,9 +96,12 @@ class NotificationModel extends CI_Model
 		$where = array('firebase_status'=>'0','device_id'=>'default');
 		$this->db->where($where);
 		$this->db->order_by('id','asc');
+		$this->db->limit(25);
 		$query = $this->db->get("tbl_android_notification")->result();
 		foreach($query as $row)
 		{
+			$this->db->query("update tbl_android_notification set firebase_status='1',respose='no' where firebase_status='1' and id='$row->id'");
+
 			$id 		= $row->id;
 			$user_type 	= $row->user_type;
 			$chemist_id = $row->chemist_id;
