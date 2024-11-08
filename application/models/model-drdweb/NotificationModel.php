@@ -163,6 +163,11 @@ class NotificationModel extends CI_Model
 				$message = [
 					"message" => [
 						"token" => $token,
+						"notification" => [
+							"title"=>$title,
+							"body"=>$message,
+							"image"=>$image,
+						],
 						"data" => [
 							'id'=>$id,
 							'title'=>$title,
@@ -203,9 +208,23 @@ class NotificationModel extends CI_Model
 				$respose = curl_exec($ch);
 				//echo $respose;
 				curl_close($ch);
-				$respose = "";
-			
-				$this->db->query("update tbl_android_notification set firebase_status='1',respose='$respose' where firebase_status='0' and id='$id'");
+
+				// Check for errors
+				if ($response === false) {
+					echo 'Curl error: ' . curl_error($ch);
+				} else {
+					// Decode the response
+					$responseData = json_decode($response, true);
+
+					// Check if 'name' exists in the response
+					if (isset($responseData['name'])) {
+						$name = $responseData['name'];
+
+						$this->db->query("update tbl_android_notification set firebase_status='1',respose='$name' where firebase_status='0' and id='$id'");
+					} else {
+						echo "Failed to send notification. Response: " . $response;
+					}
+				}
 			}
 		}
 	}
