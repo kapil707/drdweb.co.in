@@ -205,7 +205,7 @@ class NotificationModel extends CI_Model
 				curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
 				curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,false);
 				curl_setopt($ch,CURLOPT_POSTFIELDS, json_encode($message));
-				$respose = curl_exec($ch);
+				$response = curl_exec($ch);
 				//echo $respose;
 				curl_close($ch);
 
