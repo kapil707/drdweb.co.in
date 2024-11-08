@@ -227,7 +227,7 @@ class NotificationModel extends CI_Model
 					}
 				}
 			}
-			if(!empty($response)){
+			if(empty($response)){
 				$this->db->query("update tbl_android_notification set firebase_status='1',respose='no' where firebase_status='1' and id='$id'");
 			}
 		}
