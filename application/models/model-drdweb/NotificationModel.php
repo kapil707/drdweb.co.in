@@ -4,13 +4,30 @@ class NotificationModel extends CI_Model
 {
 	public function __construct() {
         parent::__construct();
-
 		// Load model
 		$this->load->model("model-drdweb/TokenModel");
     }
 
-	public function insert_notification($funtype,$title,$message,$chemist_id,$user_type,$itemid='0',$compid='0',$division='',$image='',$insert_type='')
-	{		
+	function insert_query($tbl,$dt) {
+
+		if($this->db->insert($tbl,$dt)) {
+			return $this->db->insert_id();
+		} else {
+			return false;
+		}
+	}
+
+	function update_query($tbl,$dt,$where) {
+
+		if($this->db->update($tbl,$dt,$where)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public function insert_notification($funtype,$title,$message,$chemist_id,$user_type,$itemid='0',$compid='0',$division='',$image='',$insert_type='')	{
+
 		$device_id =  "default"; // yha sirf website or android me show ke liya use hota ha
 
 		$status = $firebase_status = "0";
@@ -34,66 +51,11 @@ class NotificationModel extends CI_Model
             'time' => date('H:i:s'),
             'timestamp' => time(),);
 		
-		return $this->Scheme_Model->insert_fun("tbl_android_notification",$dt);
+		return $this->insert_query("tbl_android_notification",$dt);
 	}
 
-	
-	function getAccessToken()
-	{
-		$serviceAccount = json_decode(file_get_contents('firbase_token/my.json'), true);
-		
-		$header = [
-			"alg" => "RS256",
-			"typ" => "JWT",
-		];
+	function send_notification() {
 
-		$iat = time();
-		$exp = $iat + 3600;
-
-		$payload = [
-			"iss" => $serviceAccount['client_email'],
-			"scope" => "https://www.googleapis.com/auth/firebase.messaging",
-			"aud" => "https://oauth2.googleapis.com/token",
-			"iat" => $iat,
-			"exp" => $exp,
-		];
-
-		$base64UrlHeader = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode(json_encode($header)));
-		$base64UrlPayload = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode(json_encode($payload)));
-
-		$signature = '';
-		openssl_sign($base64UrlHeader . "." . $base64UrlPayload, $signature, $serviceAccount['private_key'], "SHA256");
-		$base64UrlSignature = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($signature));
-
-		$jwt = $base64UrlHeader . "." . $base64UrlPayload . "." . $base64UrlSignature;
-
-		// Request access token
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, 'https://oauth2.googleapis.com/token');
-		curl_setopt($ch, CURLOPT_POST, true);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
-			'grant_type' => 'urn:ietf:params:oauth:grant-type:jwt-bearer',
-			'assertion' => $jwt,
-		]));
-
-		$response = json_decode(curl_exec($ch), true);
-		curl_close($ch);
-
-		if (!isset($response['access_token'])) {
-			die('Error getting access token');
-		}
-
-		return $response['access_token'];
-	}
-
-	function send_notification()
-	{
-		//error_reporting(0);
-		//define('API_ACCESS_KEY', 'AAAAdZCD4YU:APA91bFjmo0O-bWCz2ESy0EuG9lz0gjqhAatkakhxJmxK1XdNGEusI5s_vy7v7wT5TeDsjcQH0ZVooDiDEtOU64oTLZpfXqA8EOmGoPBpOCgsZnIZkoOLVgErCQ68i5mGL9T6jnzF7lO');
-		
-		$time = time();
-		$date = date("Y-m-d",$time);
 		$image= $company_full_name = "";
 		$where = array('firebase_status'=>'0','device_id'=>'default');
 		$this->db->where($where);
@@ -244,5 +206,55 @@ class NotificationModel extends CI_Model
 				$this->db->query("update tbl_android_notification set firebase_status='1',respose='no' where id='$id'");
 			}
 		}
+	}
+
+	
+	
+	function getAccessToken() {
+		$serviceAccount = json_decode(file_get_contents('firbase_token/my.json'), true);
+		
+		$header = [
+			"alg" => "RS256",
+			"typ" => "JWT",
+		];
+
+		$iat = time();
+		$exp = $iat + 3600;
+
+		$payload = [
+			"iss" => $serviceAccount['client_email'],
+			"scope" => "https://www.googleapis.com/auth/firebase.messaging",
+			"aud" => "https://oauth2.googleapis.com/token",
+			"iat" => $iat,
+			"exp" => $exp,
+		];
+
+		$base64UrlHeader = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode(json_encode($header)));
+		$base64UrlPayload = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode(json_encode($payload)));
+
+		$signature = '';
+		openssl_sign($base64UrlHeader . "." . $base64UrlPayload, $signature, $serviceAccount['private_key'], "SHA256");
+		$base64UrlSignature = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($signature));
+
+		$jwt = $base64UrlHeader . "." . $base64UrlPayload . "." . $base64UrlSignature;
+
+		// Request access token
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, 'https://oauth2.googleapis.com/token');
+		curl_setopt($ch, CURLOPT_POST, true);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
+			'grant_type' => 'urn:ietf:params:oauth:grant-type:jwt-bearer',
+			'assertion' => $jwt,
+		]));
+
+		$response = json_decode(curl_exec($ch), true);
+		curl_close($ch);
+
+		if (!isset($response['access_token'])) {
+			die('Error getting access token');
+		}
+
+		return $response['access_token'];
 	}
 }
