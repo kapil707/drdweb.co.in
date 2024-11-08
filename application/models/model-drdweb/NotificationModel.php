@@ -158,81 +158,86 @@ class NotificationModel extends CI_Model
 			$query1 = $this->db->query("select firebase_token from tbl_android_device_id where chemist_id='$chemist_id' and user_type='$user_type'")->result();
 			foreach($query1 as $row1)
 			{
-				$token = $row1->firebase_token;
-				$notification_body = [
-					"message" => [
-						"token" => $token,
-						"notification" => [
-							"title"=>$title,
-							"body"=>$message,
-							"image"=>$image,
-						],
-						"data" => [
-							'id'=>$id,
-							'title'=>$title,
-							'message'=>$message,
-							'funtype'=>$funtype,
-							'item_id'=>$item_id,
-							'itemid'=>$itemid,
-							'division'=>$division,
-							'company_full_name'=>$company_full_name,
-							'image'=>$image,
-						],
-						"android" => [
-							"priority" => "HIGH"
+				if(!empty($row1->firebase_token)) {
+					$token = $row1->firebase_token;
+					$notification_body = [
+						"message" => [
+							"token" => $token,
+							"notification" => [
+								"title"=>$title,
+								"body"=>$message,
+								"image"=>$image,
+							],
+							"data" => [
+								'id'=>$id,
+								'title'=>$title,
+								'message'=>$message,
+								'funtype'=>$funtype,
+								'item_id'=>$item_id,
+								'itemid'=>$itemid,
+								'division'=>$division,
+								'company_full_name'=>$company_full_name,
+								'image'=>$image,
+							],
+							"android" => [
+								"priority" => "HIGH"
+							]
 						]
-					]
-				];
-				
-				$accessToken = $this->Scheme_Model->get_website_data("firebase_bearer_access_token");
-				$headers = [
-					'Authorization: Bearer ' . $accessToken,
-					'Content-Type: application/json',
-				];
-				#Send Reponse To FireBase Server	
-				$ch = curl_init();
-				curl_setopt($ch,CURLOPT_URL,'https://fcm.googleapis.com/v1/projects/drd-noti-fire-base/messages:send');
-				curl_setopt($ch,CURLOPT_POST,true);
-				curl_setopt($ch,CURLOPT_HTTPHEADER,$headers);
-				curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
-				curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,false);
-				curl_setopt($ch,CURLOPT_POSTFIELDS, json_encode($notification_body));
-				$response = curl_exec($ch);
-				//echo $respose;
-				curl_close($ch);
+					];
+					
+					$accessToken = $this->Scheme_Model->get_website_data("firebase_bearer_access_token");
+					$headers = [
+						'Authorization: Bearer ' . $accessToken,
+						'Content-Type: application/json',
+					];
+					#Send Reponse To FireBase Server	
+					$ch = curl_init();
+					curl_setopt($ch,CURLOPT_URL,'https://fcm.googleapis.com/v1/projects/drd-noti-fire-base/messages:send');
+					curl_setopt($ch,CURLOPT_POST,true);
+					curl_setopt($ch,CURLOPT_HTTPHEADER,$headers);
+					curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+					curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,false);
+					curl_setopt($ch,CURLOPT_POSTFIELDS, json_encode($notification_body));
+					$response = curl_exec($ch);
+					//echo $respose;
+					curl_close($ch);
 
-				// Check for errors
-				if ($response === false) {
-					echo 'Curl error: ' . curl_error($ch);
-				} else {
-					// Decode the response
-					$responseData = json_decode($response, true);
-
-					// Check if 'name' exists in the response
-					if (isset($responseData['name'])) {
-						$name = $responseData['name'];
-
-						$this->db->query("update tbl_android_notification set firebase_status='1',respose='$name' where firebase_status='0' and id='$id'");
+					// Check for errors
+					if ($response === false) {
+						echo 'Curl error: ' . curl_error($ch);
 					} else {
-						if (isset($responseData['error']['details'][0]['errorCode']) && $responseData['error']['details'][0]['errorCode'] === "UNREGISTERED") {
-							// Code to remove the token from your database
-							// Example: removeTokenFromDatabase($token);
-							$res = "Token is unregistered and should be removed.";
+						// Decode the response
+						$responseData = json_decode($response, true);
 
-							$this->db->query("update tbl_android_notification set firebase_status='1',respose='$res' where id='$id'");
-						}else{
-							echo "Failed to send notification. Response: " . $response;
-							
-							/******************************************************** */
-							$mydata = base64_encode($this->getAccessToken());
-							$dt = array('mydata'=>$mydata,);
-							$where = array('page_type'=>"firebase_bearer_access_token");
-							$result = $this->Scheme_Model->edit_fun("tbl_website",$dt,$where);
-							/******************************************************** */
+						// Check if 'name' exists in the response
+						if (isset($responseData['name'])) {
+							$name = $responseData['name'];
 
-							die();
+							$this->db->query("update tbl_android_notification set firebase_status='1',respose='$name' where firebase_status='0' and id='$id'");
+						} else {
+							if (isset($responseData['error']['details'][0]['errorCode']) && $responseData['error']['details'][0]['errorCode'] === "UNREGISTERED") {
+								// Code to remove the token from your database
+								// Example: removeTokenFromDatabase($token);
+								$res = "Token is unregistered and should be removed.";
+
+								$this->db->query("update tbl_android_notification set firebase_status='1',respose='$res' where id='$id'");
+							}else{
+								echo "Failed to send notification. Response: " . $response;
+								
+								/******************************************************** */
+								$mydata = base64_encode($this->getAccessToken());
+								$dt = array('mydata'=>$mydata,);
+								$where = array('page_type'=>"firebase_bearer_access_token");
+								$result = $this->Scheme_Model->edit_fun("tbl_website",$dt,$where);
+								/******************************************************** */
+
+								die();
+							}
 						}
 					}
+				}else{
+					$$response = "token not found";
+					$this->db->query("update tbl_android_notification set firebase_status='1',respose='$response' where id='$id'");
 				}
 			}
 			if(empty($response)){
