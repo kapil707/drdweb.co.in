@@ -100,8 +100,7 @@ class NotificationModel extends CI_Model
 		$query = $this->db->get("tbl_android_notification")->result();
 		foreach($query as $row)
 		{
-			$this->db->query("update tbl_android_notification set firebase_status='1',respose='no' where firebase_status='1' and id='$row->id'");
-
+			$response   = ""; 
 			$id 		= $row->id;
 			$user_type 	= $row->user_type;
 			$chemist_id = $row->chemist_id;
@@ -184,14 +183,8 @@ class NotificationModel extends CI_Model
 						]
 					]
 				];
-				//print_r($message);
-				//die();
-				/*$headers = array
-				(
-					'Authorization: key=' . API_ACCESS_KEY,
-					'Content-Type: application/json'
-				);*/
-				$accessToken = $this->getAccessToken();
+				
+				$accessToken = "";//$this->getAccessToken();
 				$headers = [
 					'Authorization: Bearer ' . $accessToken,
 					'Content-Type: application/json',
@@ -222,8 +215,12 @@ class NotificationModel extends CI_Model
 						$this->db->query("update tbl_android_notification set firebase_status='1',respose='$name' where firebase_status='0' and id='$id'");
 					} else {
 						echo "Failed to send notification. Response: " . $response;
+						die();
 					}
 				}
+			}
+			if(!empty($response)){
+				$this->db->query("update tbl_android_notification set firebase_status='1',respose='no' where firebase_status='1' and id='$id'");
 			}
 		}
 	}
