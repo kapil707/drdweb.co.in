@@ -236,7 +236,7 @@ class NotificationModel extends CI_Model
 						}
 					}
 				}else{
-					$$response = "token not found";
+					echo $response = "token not found";
 					$this->db->query("update tbl_android_notification set firebase_status='1',respose='$response' where id='$id'");
 				}
 			}
