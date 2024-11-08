@@ -153,7 +153,7 @@ class InvoiceModel extends CI_Model
 				$mail_server = "";
 				$file_name1 = $file_name2 = $file_name3 = "";
 				$file_name_1 = $file_name_2 = $file_name_3 = "";
-				$this->EmailModel->insert_email_message($user_email_id,$subject,$message,$file_name1,$file_name2,$file_name3,$file_name_1,$file_name_2,$file_name_3,$mail_server,$email_function,$email_other_bcc);
+				$this->EmailModel->insert_email($user_email_id,$subject,$message,$file_name1,$file_name2,$file_name3,$file_name_1,$file_name_2,$file_name_3,$mail_server,$email_function,$email_other_bcc);
 				
 				/************************************************/
 				//$chemist_mobile = "+919530005050"; 

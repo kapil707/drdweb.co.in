@@ -6,11 +6,17 @@ class EmailModel extends CI_Model
 		parent::__construct();
 	}
 
-	public function insert_email_message($user_email_id='',$subject='',$message='',$file_name1='',$file_name2='',$file_name3='',$file_name_1='',$file_name_2='',$file_name_3='',$mail_server='',$email_function='',$email_other_bcc='')
-	{
-		$date = date('Y-m-d');
-		$time = date("H:i",time());
-		$timestamp = time();
+	function insert_query($tbl,$dt) {
+
+		if($this->db->insert($tbl,$dt)) {
+			return $this->db->insert_id();
+		} else {
+			return false;
+		}
+	}
+
+	public function insert_email($user_email_id='',$subject='',$message='',$file_name1='',$file_name2='',$file_name3='',$file_name_1='',$file_name_2='',$file_name_3='',$mail_server='',$email_function='',$email_other_bcc='') {
+
 		$update_at = time();
 
 		$dt = array(
@@ -26,13 +32,13 @@ class EmailModel extends CI_Model
 			'mail_server'=>$mail_server,
 			'email_function'=>$email_function,
 			'email_other_bcc'=>$email_other_bcc,
-			'date'=>$date,
-			'time'=>$time,
-			'timestamp'=>$timestamp,
 			'update_at'=>$update_at,
 			'status'=>0,
+			'date' => date('Y-m-d'),
+            'time' => date('H:i:s'),
+            'timestamp' => time(),
 		);
-		$this->Scheme_Model->insert_fun("tbl_email_send",$dt);
+		$this->insert_query("tbl_email_send",$dt);
 	}
 	
 	public function tbl_whatsapp_email_fail($number,$message,$altercode)
@@ -57,8 +63,7 @@ class EmailModel extends CI_Model
 		return $email_cc;
 	}
 	
-	public function send_email_message()
-	{
+	public function send_email() {
 	    $time  = time();
 		$mytime_min 	= date("i",$time);
 		$mytime_ganta 	= date("H",$time);

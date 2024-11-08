@@ -9,7 +9,7 @@ class Cronjob_email extends CI_Controller
 	}
 	
 	public function send_email() {
-		//$this->EmailModel->send_email_message();
-		echo "Send Email Working";
+		$this->EmailModel->send_email();
+		echo "send email";
 	}
 }
