@@ -160,7 +160,7 @@ class NotificationModel extends CI_Model
 			foreach($query1 as $row1)
 			{
 				$token = $row1->firebase_token;
-				$message = [
+				$notification_body = [
 					"message" => [
 						"token" => $token,
 						"notification" => [
@@ -203,7 +203,7 @@ class NotificationModel extends CI_Model
 				curl_setopt($ch,CURLOPT_HTTPHEADER,$headers);
 				curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
 				curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,false);
-				curl_setopt($ch,CURLOPT_POSTFIELDS, json_encode($message));
+				curl_setopt($ch,CURLOPT_POSTFIELDS, json_encode($notification_body));
 				$response = curl_exec($ch);
 				//echo $respose;
 				curl_close($ch);
