@@ -215,6 +215,7 @@ class NotificationModel extends CI_Model
 						$this->db->query("update tbl_android_notification set firebase_status='1',respose='$name' where firebase_status='0' and id='$id'");
 					} else {
 						echo "Failed to send notification. Response: " . $response;
+						
 						die();
 					}
 				}
