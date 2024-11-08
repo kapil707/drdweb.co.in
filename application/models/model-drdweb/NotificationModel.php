@@ -163,11 +163,6 @@ class NotificationModel extends CI_Model
 				$message = [
 					"message" => [
 						"token" => $token,
-						"notification" => [
-							"title"=>$title,
-							"body"=>$message,
-							"image"=>$image,
-						],
 						"data" => [
 							'id'=>$id,
 							'title'=>$title,
