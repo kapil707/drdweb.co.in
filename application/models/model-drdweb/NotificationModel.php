@@ -219,7 +219,7 @@ class NotificationModel extends CI_Model
 							// Example: removeTokenFromDatabase($token);
 							$res = "Token is unregistered and should be removed.";
 
-							$this->db->query("update tbl_android_notification set firebase_status='1',respose='$res' where firebase_status='1' and id='$id'");
+							$this->db->query("update tbl_android_notification set firebase_status='1',respose='$res' where id='$id'");
 						}else{
 							echo "Failed to send notification. Response: " . $response;
 							
@@ -236,7 +236,7 @@ class NotificationModel extends CI_Model
 				}
 			}
 			if(empty($response)){
-				$this->db->query("update tbl_android_notification set firebase_status='1',respose='no' where firebase_status='1' and id='$id'");
+				$this->db->query("update tbl_android_notification set firebase_status='1',respose='no' where id='$id'");
 			}
 		}
 	}
