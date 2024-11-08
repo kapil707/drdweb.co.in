@@ -214,16 +214,22 @@ class NotificationModel extends CI_Model
 
 						$this->db->query("update tbl_android_notification set firebase_status='1',respose='$name' where firebase_status='0' and id='$id'");
 					} else {
-						echo "Failed to send notification. Response: " . $response;
-						
-						/******************************************************** */
-						$mydata = base64_encode($this->getAccessToken());
-						$dt = array('mydata'=>$mydata,);
-						$where = array('page_type'=>"firebase_bearer_access_token");
-						$result = $this->Scheme_Model->edit_fun("tbl_website",$dt,$where);
-						/******************************************************** */
+						if (isset($responseData['error']['details'][0]['errorCode']) && $responseData['error']['details'][0]['errorCode'] === "UNREGISTERED") {
+							// Code to remove the token from your database
+							// Example: removeTokenFromDatabase($token);
+							echo "Token is unregistered and should be removed.";
+						}else{
+							echo "Failed to send notification. Response: " . $response;
+							
+							/******************************************************** */
+							$mydata = base64_encode($this->getAccessToken());
+							$dt = array('mydata'=>$mydata,);
+							$where = array('page_type'=>"firebase_bearer_access_token");
+							$result = $this->Scheme_Model->edit_fun("tbl_website",$dt,$where);
+							/******************************************************** */
 
-						die();
+							die();
+						}
 					}
 				}
 			}
