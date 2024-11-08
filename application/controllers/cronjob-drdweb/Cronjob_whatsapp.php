@@ -13,6 +13,6 @@ class Cronjob_whatsapp extends CI_Controller
 	{
 		$this->WhatsAppModel->send_whatsapp();
 		$this->WhatsAppModel->send_whatsapp_group();
-		echo "send Whatsapp message";
+		echo "send Whatsapp";
 	}
 }

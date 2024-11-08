@@ -11,5 +11,6 @@ class Cronjob_notification extends CI_Controller
 	public function send_notification()
 	{
 		$this->NotificationModel->send_notification();
+		echo "send notification";
 	}
 }
