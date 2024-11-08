@@ -184,7 +184,7 @@ class NotificationModel extends CI_Model
 					]
 				];
 				
-				$accessToken = "";//$this->getAccessToken();
+				$accessToken = $this->Scheme_Model->get_website_data("firebase_bearer_access_token");
 				$headers = [
 					'Authorization: Bearer ' . $accessToken,
 					'Content-Type: application/json',
@@ -216,6 +216,13 @@ class NotificationModel extends CI_Model
 					} else {
 						echo "Failed to send notification. Response: " . $response;
 						
+						/******************************************************** */
+						$mydata = base64_encode($this->getAccessToken());
+						$dt = array('mydata'=>$mydata,);
+						$where = array('page_type'=>"firebase_bearer_access_token");
+						$result = $this->Scheme_Model->edit_fun("tbl_website",$dt,$where);
+						/******************************************************** */
+
 						die();
 					}
 				}
