@@ -81,7 +81,7 @@ class NotificationModel extends CI_Model
 			die('Error getting access token');
 		}
 
-		return $response['access_token'];
+		echo $response['access_token'];
 	}
 
 
