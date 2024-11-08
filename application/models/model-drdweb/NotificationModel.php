@@ -4,6 +4,9 @@ class NotificationModel extends CI_Model
 {
 	public function __construct() {
         parent::__construct();
+
+		// Load model
+		$this->load->model("model-drdweb/TokenModel");
     }
 
 	public function insert_notification($funtype,$title,$message,$chemist_id,$user_type,$itemid='0',$compid='0',$division='',$image='',$insert_type='')
@@ -83,7 +86,6 @@ class NotificationModel extends CI_Model
 
 		return $response['access_token'];
 	}
-
 
 	function send_notification()
 	{
@@ -185,7 +187,7 @@ class NotificationModel extends CI_Model
 						]
 					];
 					
-					$accessToken = $this->Scheme_Model->get_website_data("firebase_bearer_access_token");
+					$accessToken = $this->TokenModel->get_token("firebase_bearer_access_token");
 					$headers = [
 						'Authorization: Bearer ' . $accessToken,
 						'Content-Type: application/json',
@@ -225,10 +227,8 @@ class NotificationModel extends CI_Model
 								echo "Failed to send notification. Response: " . $response;
 								
 								/******************************************************** */
-								$mydata = base64_encode($this->getAccessToken());
-								$dt = array('mydata'=>$mydata,);
-								$where = array('page_type'=>"firebase_bearer_access_token");
-								$result = $this->Scheme_Model->edit_fun("tbl_website",$dt,$where);
+								$token_value = $this->getAccessToken();
+								$this->TokenModel->update_token("firebase_bearer_access_token",$token_value);
 								/******************************************************** */
 
 								die();
