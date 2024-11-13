@@ -199,6 +199,9 @@ class ExeInvoice extends CI_Controller
 				);
 				
 				if (!empty($srlno)) {
+					// Agar record exist nahi karta hai to insert karo
+					$this->Scheme_Model->insert_fun("tbl_invoice_item", $dt);
+					/*
 					// Check karo agar record already exist karta hai
 					$existing_record = $this->Scheme_Model->select_row("tbl_invoice_item", array('srlno' => $srlno,'vno' => $vno));
 			
@@ -209,7 +212,7 @@ class ExeInvoice extends CI_Controller
 					} else {
 						// Agar record exist nahi karta hai to insert karo
 						$this->Scheme_Model->insert_fun("tbl_invoice_item", $dt);
-					}
+					}*/
 				}
 			}
 			$commaSeparatedString = $id; //yha exe say he comaspred value aa rahi ha
