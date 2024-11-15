@@ -6,7 +6,7 @@ class Manage_notification extends CI_Controller {
 	var $Page_view  = "manage_notification";
 	var $Page_menu  = "manage_notification";
 	var $page_controllers = "manage_notification";
-	var $Page_tbl   = "tbl_android_notification";
+	var $Page_tbl   = "tbl_notification";
 	public function __construct(){
 		parent::__construct();
 		$this->load->model("model-drdweb/NotificationModel");

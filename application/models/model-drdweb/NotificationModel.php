@@ -51,7 +51,7 @@ class NotificationModel extends CI_Model
             'time' => date('H:i:s'),
             'timestamp' => time(),);
 		
-		return $this->insert_query("tbl_android_notification",$dt);
+		return $this->insert_query("tbl_notification",$dt);
 	}
 
 	function send_notification() {
@@ -61,7 +61,7 @@ class NotificationModel extends CI_Model
 		$this->db->where($where);
 		$this->db->order_by('id','asc');
 		$this->db->limit(25);
-		$query = $this->db->get("tbl_android_notification")->result();
+		$query = $this->db->get("tbl_notification")->result();
 		foreach($query as $row)
 		{
 			$response   = ""; 
@@ -177,14 +177,14 @@ class NotificationModel extends CI_Model
 						if (isset($responseData['name'])) {
 							$name = $responseData['name'];
 
-							$this->db->query("update tbl_android_notification set firebase_status='1',respose='$name' where firebase_status='0' and id='$id'");
+							$this->db->query("update tbl_notification set firebase_status='1',respose='$name' where firebase_status='0' and id='$id'");
 						} else {
 							if (isset($responseData['error']['details'][0]['errorCode']) && $responseData['error']['details'][0]['errorCode'] === "UNREGISTERED") {
 								// Code to remove the token from your database
 								// Example: removeTokenFromDatabase($token);
 								$res = "Token is unregistered and should be removed.";
 
-								$this->db->query("update tbl_android_notification set firebase_status='1',respose='$res' where id='$id'");
+								$this->db->query("update tbl_notification set firebase_status='1',respose='$res' where id='$id'");
 							}else{
 								echo "Failed to send notification. Response: " . $response;
 								
@@ -199,11 +199,11 @@ class NotificationModel extends CI_Model
 					}
 				}else{
 					echo $response = "token not found";
-					$this->db->query("update tbl_android_notification set firebase_status='1',respose='$response' where id='$id'");
+					$this->db->query("update tbl_notification set firebase_status='1',respose='$response' where id='$id'");
 				}
 			}
 			if(empty($response)){
-				$this->db->query("update tbl_android_notification set firebase_status='1',respose='no' where id='$id'");
+				$this->db->query("update tbl_notification set firebase_status='1',respose='no' where id='$id'");
 			}
 		}
 	}	
