@@ -71,7 +71,7 @@ class NotificationModel extends CI_Model
 			$title 		= ($row->title);
 			$message    = ($row->message);
 			
-			$message 		= str_replace("<br>","\\n",$message);
+			$message 		= str_replace("<br>","<br />",$message);
 			$message 		= str_replace("<b>","*",$message);
 			$message 		= str_replace("</b>","*",$message);
 			
