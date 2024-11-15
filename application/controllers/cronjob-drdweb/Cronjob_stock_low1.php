@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Cronjob_Stock_Low extends CI_Controller 
+class Cronjob_stock_low extends CI_Controller 
 {
 	public function __construct(){
 
