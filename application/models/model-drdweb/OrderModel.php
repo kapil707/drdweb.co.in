@@ -56,11 +56,11 @@ class OrderModel extends CI_Model
             $whatsapp_footer_text = $this->Scheme_Model->get_website_data("whatsapp_footer_text");
 
             /*****************notification_whatsapp_message**************************/
-            $notification_whatsapp_message = "Hello $acm_name ($chemist_id)<br><br>".$default_place_order_text."<br><br>Order No. : $order_id<br>Total Rs. : $total_rs/- $remarks <br> $how_to_use_for_whatsapp <br><b>You can check your order by clicking on </b><br>View : https://www.drdistributor.com/view_order/".$chemist_id."/".$order_id." <br>Download : https://www.drdistributor.com/order_download/".$chemist_id."/".$order_id." ".$whatsapp_footer_text;
+            $notification_whatsapp_message = "Hello $acm_name ($chemist_id)<br><br>".$default_place_order_text."<br><br>Order No. : $order_id<br>Total Rs. : $total_rs/- $remarks <br> $how_to_use_for_whatsapp <br><b>You can check your order by clicking on </b><br>View : https://www.drdistributor.com/ov/".$chemist_id."/".$order_id." <br>Download : https://www.drdistributor.com/od/".$chemist_id."/".$order_id." ".$whatsapp_footer_text;
 
             /****************email_message******************************************/
             $email_footer_text = $this->Scheme_Model->get_website_data("email_footer_text");
-            $email_message = "Hello $acm_name ($chemist_id)<br><br>".$default_place_order_text."<br><br>Order No. : $order_id<br>Total Rs. : $total_rs/- $remarks <br> $how_to_use_for_table <br><b>You can check your order by clicking on </b><br>View : https://www.drdistributor.com/view_order/".$chemist_id."/".$order_id." <br>Download : https://www.drdistributor.com/order_download/".$chemist_id."/".$order_id." ".$email_footer_text."<br><br>".$how_to_use_for_html;
+            $email_message = "Hello $acm_name ($chemist_id)<br><br>".$default_place_order_text."<br><br>Order No. : $order_id<br>Total Rs. : $total_rs/- $remarks <br> $how_to_use_for_table <br><b>You can check your order by clicking on </b><br>View : https://www.drdistributor.com/ov/".$chemist_id."/".$order_id." <br>Download : https://www.drdistributor.com/od/".$chemist_id."/".$order_id." ".$email_footer_text."<br><br>".$how_to_use_for_html;
             
             /****************notification***********************/
             $q_title 		= "New Order - $order_id";
