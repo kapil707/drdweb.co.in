@@ -70,7 +70,7 @@ class NotificationModel extends CI_Model
 			$chemist_id = $row->chemist_id;
 			$title 		= ($row->title);
 			$message    = ($row->message);
-			//$message    = htmlentities(str_replace("\n","<br>",$message));
+			$message    = htmlentities(str_replace("\n","<br>",$message));
 			$funtype 	= $row->funtype;
 			$item_id 	= $row->id;
 			$itemid 	= $row->itemid;
