@@ -119,7 +119,7 @@ class NotificationModel extends CI_Model
 				$division = "not";
 			}
 						
-			$query1 = $this->db->query("select firebase_token from tbl_android_device_id where chemist_id='$chemist_id' and user_type='$user_type'")->result();
+			$query1 = $this->db->query("select firebase_token from tbl_user_device where chemist_id='$chemist_id' and user_type='$user_type'")->result();
 			foreach($query1 as $row1)
 			{
 				if(!empty($row1->firebase_token)) {
@@ -206,9 +206,7 @@ class NotificationModel extends CI_Model
 				$this->db->query("update tbl_android_notification set firebase_status='1',respose='no' where id='$id'");
 			}
 		}
-	}
-
-	
+	}	
 	
 	function getAccessToken() {
 		$serviceAccount = json_decode(file_get_contents('firbase_token/my.json'), true);
