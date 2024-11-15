@@ -65,7 +65,7 @@ $(document).ready(function(){
 				title: 'Download',
 				orderable: false,
 				render: function (data, type, row) {
-					return `<a href="https://www.drdistributor.com/invoice_download/${row.chemist_id}/${row.gstvno}" class="btn-white btn btn-xs">Download</a>`;
+					return `<a href="https://www.drdistributor.com/id/${row.chemist_id}/${row.gstvno}" class="btn-white btn btn-xs">Download</a>`;
 				}
 			}
 		],

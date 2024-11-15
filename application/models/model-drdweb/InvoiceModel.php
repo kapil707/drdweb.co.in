@@ -130,8 +130,8 @@ class InvoiceModel extends CI_Model
 			}
 			/*******************************************************/
 			
-			$link = "https://www.drdistributor.com/invoice/$chemist_id/$gstvno";
-			$download_link = "https://www.drdistributor.com/invoice_download/$chemist_id/$gstvno";
+			$link = "https://www.drdistributor.com/iv/$chemist_id/$gstvno";
+			$download_link = "https://www.drdistributor.com/id/$chemist_id/$gstvno";
 			$android_link = "https://play.google.com/store/apps/details?id=com.drdistributor.dr";
 			$website_link = "https://www.drdistributor.com";
 			$android_img  = "https://www.drdistributor.com/img_v50/google_play.png";
