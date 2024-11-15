@@ -23,15 +23,8 @@ class Cronjob_hot_selling extends CI_Controller
 			$i_code 	= $row->itemc;
 			$total 		= $row->total_count;
 			$datetime 	= date("d-M-Y h:i a");
-			
-			$dt = array(
-				'i_code'=>$i_code,
-				'total'=>$total,
-				'datetime'=>$datetime,
-			);
-			$this->Scheme_Model->insert_fun("tbl_hot_selling", $dt);
 
-			/********************************************* */
+			
 			$compare_type 	= "hot_selling";
 			$compare_now 	= $total;
 			$compare_before = $total;
