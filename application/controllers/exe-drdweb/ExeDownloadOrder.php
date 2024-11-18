@@ -170,7 +170,7 @@ class ExeDownloadOrder extends CI_Controller
 		$total_line = 0;
 		$date = date("Y-m-d");
 		$download_time = date("YmdHi");
-		$result = $this->db->query("SELECT tbl_cart_order.*,tbl_chemist.code,tbl_chemist.slcd FROM tbl_cart_order LEFT JOIN tbl_chemist ON tbl_cart_order.chemist_id = tbl_chemist.altercode WHERE tbl_cart_order.id='$order_id' and download_time<='$download_time'")->result();
+		$result = $this->db->query("SELECT tbl_cart_order.*,tbl_chemist.code,tbl_chemist.slcd FROM tbl_cart_order LEFT JOIN tbl_chemistxxx ON tbl_cart_order.chemist_id = tbl_chemist.altercode WHERE tbl_cart_order.id='$order_id' and download_time<='$download_time'")->result();
 		// Process each row from the result set
 		foreach ($result as $row) {
 
