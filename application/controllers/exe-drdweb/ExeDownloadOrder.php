@@ -243,9 +243,8 @@ class ExeDownloadOrder extends CI_Controller
 	{
 		if(!empty($order_id) && !empty($gstvno))
 		{
-			$row = $this->db->query("SELECT count(id) as total1 FROM `tbl_order` WHERE `order_id`='$order_id'")->row();
-			$total = $row->total1;
-			$this->db->query("update tbl_order set gstvno='$gstvno',download_status=1,download_line='$insert_total_line' where order_id='$order_id'");
+			$row = $this->db->query("SELECT items_total FROM `tbl_cart_order` WHERE `id`='$order_id'")->row();
+			$total = $row->items_total;
 
 			$this->db->query("update tbl_cart_order set gstvno='$gstvno',download_status=1,download_line='$insert_total_line' where id='$order_id'");
 			/***************only for group message***********************/
@@ -267,8 +266,8 @@ class ExeDownloadOrder extends CI_Controller
 	{
 		if(!empty($order_id) && !empty($gstvno))
 		{
-			$row = $this->db->query("SELECT count(id) as total1 FROM `tbl_order` WHERE `order_id`='$order_id'")->row();
-			$total = $row->total1;
+			$row = $this->db->query("SELECT items_total FROM `tbl_cart_order` WHERE `id`='$order_id'")->row();
+			$total = $row->items_total;
 
 			$group1_message = $group2_message = "Problem Order No. $order_id (Total:$total/Download:$download_total_line/Insert:$insert_total_line) - at : ".date("d-M-y H:i");
 
