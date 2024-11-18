@@ -124,7 +124,7 @@ class WhatsAppModel extends CI_Model
 		
 		$this->db->limit(25);
 		$this->db->where('status',0);
-		$query = $this->db->get("tbl_whatsapp_group_message")->result();
+		$query = $this->db->get("tbl_whatsapp_group_messagexxxx")->result();
 		foreach($query as $row) {
 			
 			$id 			= $row->id;
