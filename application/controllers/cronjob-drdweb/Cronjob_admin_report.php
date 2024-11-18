@@ -80,14 +80,14 @@ class Cronjob_admin_report extends CI_Controller
 		
 		/***************************************************/
 		
-		$result = $this->db->query("select count(DISTINCT order_id) as total from tbl_order where date='$date'")->row();
+		$result = $this->db->query("select count(id) as total from tbl_cart_order where date='$date'")->row();
 		$today_orders1 = $result->total;
 		
-		$result = $this->db->query("select count(DISTINCT order_id) as total from tbl_order where download_status='0'")->row();
+		$result = $this->db->query("select count(id) as total from tbl_cart_order where download_status='0'")->row();
 		$today_orders2 = $result->total;
 
-		$result = $this->db->query("select sum(quantity*sale_rate) as total from tbl_order where download_status='0'")->row();
-		$today_orders2_val = $result->total;
+		$result = $this->db->query("select sum(total) as total1 from tbl_cart_order where download_status='0'")->row();
+		$today_orders2_val = $result->total1;
 
 		setlocale(LC_MONETARY, 'en_IN');
 		$today_orders2_val = money_format('%!i', $today_orders2_val);
@@ -106,21 +106,21 @@ class Cronjob_admin_report extends CI_Controller
 		$this->insert_meta_data("pending_order_order",$today_orders1);
 		/*****************************************************/
 		
-		$result = $this->db->query("select count(DISTINCT chemist_id) as total from tbl_order where date='$date' ")->row();
+		$result = $this->db->query("select count(id) as total from tbl_cart_order where date='$date' ")->row();
 		$massage3.= "<br>Unique Orders :- ".$result->total;
 		
 		/*****************************************************/
 		$this->insert_meta_data("unique_orders",$result->total);
 		/*****************************************************/
 		
-		$result = $this->db->query("select count(DISTINCT order_id) as total from tbl_order where date='$date' and order_type='pc_mobile'")->row();
+		$result = $this->db->query("select count(id) as total from tbl_cart_order where date='$date' and order_type='pc_mobile'")->row();
 		$massage3.= "<br>Total Website Orders :- ".$result->total;
 		
 		/*****************************************************/
 		$this->insert_meta_data("total_website_orders",$result->total);
 		/*****************************************************/
 		
-		$result = $this->db->query("select count(DISTINCT order_id) as total from tbl_order where date='$date' and order_type='android'")->row();
+		$result = $this->db->query("select count(id) as total from tbl_cart_order where date='$date' and order_type='android'")->row();
 		$massage3.= "<br>Total Android Orders :- ".$result->total;
 		
 		/*****************************************************/
@@ -146,16 +146,10 @@ class Cronjob_admin_report extends CI_Controller
 			/*****************************************************/
 		}
 
+		$result = $this->db->query("select sum(total) as total1,count(id) as total2 from tbl_cart_order where date='$date' and order_type='android'")->row();
+		$today_orders_price = $result->total1;
+		$today_orders_items = $result->total2;
 		
-		$this->db->select('quantity,sale_rate');
-		$this->db->where('date',$date);
-		$query = $this->db->get("tbl_order")->result();
-		$today_orders_items = $today_orders_price = 0;
-		foreach($query as $row)
-		{
-			$today_orders_price = $today_orders_price + ($row->quantity * $row->sale_rate);
-			$today_orders_items++;
-		}
 		setlocale(LC_MONETARY, 'en_IN');
 		$today_orders_price = money_format('%!i', $today_orders_price);
 		$today_orders_price = substr($today_orders_price, 0, -3);
