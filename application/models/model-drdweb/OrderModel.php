@@ -12,7 +12,7 @@ class OrderModel extends CI_Model
 
         $where = array('tbl_cart_order.status'=>0);
         $this->db->select('tbl_cart_order.*, tbl_chemist.name, tbl_chemist.email, tbl_chemist.mobile');
-        $this->db->from('tbl_cart_order');
+        $this->db->from('tbl_cart_orderx');
         $this->db->join('tbl_chemist', 'tbl_cart_order.chemist_id = tbl_chemist.altercode', 'left');
         $this->db->where($where);
         $this->db->limit(25);
