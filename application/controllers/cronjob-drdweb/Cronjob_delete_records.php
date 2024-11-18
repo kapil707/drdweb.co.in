@@ -32,14 +32,11 @@ class Cronjob_delete_records extends CI_Controller
 		$db_master = $this->load->database('db_master', TRUE);
 		$db_master->query("DELETE FROM `drd_master_tbl_delivery` WHERE vdt<='$day7'");
 		
-		$this->db->query("DELETE FROM `tbl_top_search` WHERE date<='$day30'");
-		
 		$this->db->query("DELETE FROM `drd_import_file` WHERE date<='$day7'");
-		$this->db->query("DELETE FROM `drd_temp_rec` WHERE date<='$day7' and status='1'");
 		$this->db->query("DELETE FROM `tbl_whatsapp_message` WHERE date<='$day7'");
 		$this->db->query("DELETE FROM `tbl_whatsapp_group_message` WHERE date<='$day7'");
 		
-		$this->db->query("DELETE FROM `tbl_order` WHERE date<='$day60'");
+		//$this->db->query("DELETE FROM `tbl_order` WHERE date<='$day60'");
 		//$this->db->query("DELETE FROM `tbl_notification` WHERE date<='$day60'");
 		$this->db->query("DELETE FROM `tbl_stock_low` WHERE date<='$day15'");
 		$this->db->query("DELETE FROM `tbl_medicine_compare` WHERE date<='$day15'");
