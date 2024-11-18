@@ -13,7 +13,7 @@ class Cronjob_chemist extends CI_Controller
 	{
 		$this->db->query("update tbl_chemist_other set block='0'");
 
-		$result = $this->db->query("SELECT tbl_chemist.code,tbl_chemist.altercode FROM `tbl_chemist` join tbl_chemist_other on tbl_chemist
+		$result = $this->db->query("SELECT tbl_chemist.code,tbl_chemist.altercode FROM `tbl_chemist` join tbl_chemist_other on tbl_chemistxxx
 		.code=tbl_chemist_other.code WHERE tbl_chemist.STATUS='*'")->result();
 		foreach($result as $row){
 			echo $row->code. " :-> " .$row->altercode;
