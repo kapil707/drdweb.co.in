@@ -61,7 +61,7 @@ class NotificationModel extends CI_Model
 		$this->db->where($where);
 		$this->db->order_by('id','asc');
 		$this->db->limit(25);
-		$query = $this->db->get("tbl_notification")->result();
+		$query = $this->db->get("tbl_notificationxxx")->result();
 		foreach($query as $row)
 		{
 			$response   = ""; 

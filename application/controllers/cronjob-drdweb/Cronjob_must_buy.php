@@ -11,7 +11,7 @@ class Cronjob_must_buy extends CI_Controller
 		$this->db->query("delete from tbl_medicine_compare where compare_type='must_buy'");
 
 		$this->db->select('i_code, COUNT(*) as total_count');
-        $this->db->from('tbl_cartxxx');
+        $this->db->from('tbl_cart');
         $this->db->where('date', date("Y-m-d"));
 		$this->db->where('status', 1);
         $this->db->group_by('i_code');
