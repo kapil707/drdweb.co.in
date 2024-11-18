@@ -72,7 +72,7 @@ class EmailModel extends CI_Model
 		$this->db->limit(1);
 		$this->db->where('status','0');		
 		$this->db->order_by('id','desc');
-		$query = $this->db->get("tbl_email_send")->result();
+		$query = $this->db->get("tbl_email_sendxxx")->result();
 		
 		$this->load->library('phpmailer_lib');
 		$email = $this->phpmailer_lib->load();
