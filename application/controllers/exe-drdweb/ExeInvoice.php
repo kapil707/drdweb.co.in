@@ -84,8 +84,8 @@ class ExeInvoice extends CI_Controller
 				
 				if (!empty($gstvno)) {
 					// Check karo agar record already exist karta hai
-					$existing_record = $this->Scheme_Model->select_row("tbl_invoice", array('gstvno' => $gstvno));
-			
+					$existing_record = $this->Scheme_Model->select_row("tbl_invoicexxx", array('gstvno' => $gstvno));
+					die();
 					if ($existing_record) {
 						// Agar record exist karta hai to update karo
 						$where = array('gstvno' => $gstvno);
