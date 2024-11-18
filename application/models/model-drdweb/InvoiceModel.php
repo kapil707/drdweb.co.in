@@ -25,7 +25,7 @@ class InvoiceModel extends CI_Model
 		$where = array('date'=>$date,'deliverby!='=>'','tbl_invoice.status'=>0);
 
 		$this->db->select('tbl_invoice.*, tbl_chemist.name as chemist_name, tbl_chemist.email as chemist_email, tbl_chemist.mobile as chemist_mobile');
-        $this->db->from('tbl_invoicexxx');
+        $this->db->from('tbl_invoice');
         $this->db->join('tbl_chemist', 'tbl_chemist.altercode = tbl_invoice.chemist_id', 'left');
         $this->db->where($where);
 		$this->db->limit(25);
