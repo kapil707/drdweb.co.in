@@ -61,7 +61,7 @@ class Dashboard extends CI_Controller {
 		/****************************************************/
 		$top_search_medicine = "";
 		$date = date("Y-m-d");
-		$result = $this->db->query("SELECT DISTINCT item_code, COUNT(*) as ct FROM `tbl_search_logs` where date='$date' GROUP BY item_code HAVING COUNT(*) > 1 order by ct desc limit 10")->result();
+		$result = $this->db->query("SELECT DISTINCT item_code, COUNT(*) as ct FROM `tbl_search_logs` where date='$date' and item_code!='' GROUP BY item_code HAVING COUNT(*) > 1 order by ct desc limit 10")->result();
 		foreach($result as $row)
 		{
 			$row1 = $this->db->query("SELECT item_name from tbl_medicine where i_code='$row->item_code'")->row();
