@@ -40,7 +40,7 @@ class Cronjob_delete_records extends CI_Controller
 		//$this->db->query("DELETE FROM `tbl_notification` WHERE date<='$day60'");
 		$this->db->query("DELETE FROM `tbl_stock_low` WHERE date<='$day15'");
 		$this->db->query("DELETE FROM `tbl_medicine_compare` WHERE date<='$day15'");
-		$this->db->query("DELETE FROM `tbl_delete_import` WHERE date<='$day60'");
+		//$this->db->query("DELETE FROM `tbl_delete_import` WHERE date<='$day60'");
 		$this->db->query("DELETE FROM `tbl_android_device_id` WHERE date<='$day60'");
 		
 		$result = $this->db->query("SELECT * FROM `tbl_email_send`  WHERE `date`<'$day60'")->result();
