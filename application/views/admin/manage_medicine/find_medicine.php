@@ -75,7 +75,7 @@ function find_medicine(){
     let medicine_name = $("#medicine_name").val();
     $(".find_medicine_result").html("Loading....");
 
-    if (chemist_name.length < 2) {
+    if (medicine_name.length < 2) {
         $(".find_medicine_result").html(""); // Clear results if input is too short
         return; // Exit if fewer than 2 characters
     }
