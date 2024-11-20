@@ -101,8 +101,8 @@ function find_medicine(){
         }
     });
 }
-function add_chemist(item_code, item_name) {
-    $("#find_chemist_id").val(chemist_id);
+function add_medicine(item_code, item_name) {
+    $("#find_medicine_id").val(item_code);
     $("#medicine_name").val(`Name: ${chemist_name}`);
     $(".find_medicine_result").html("");
 }
