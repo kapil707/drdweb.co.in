@@ -6,7 +6,7 @@ class Manage_slider extends CI_Controller {
 	var $Page_view  = "manage_slider";
 	var $Page_menu  = "manage_slider";
 	var $page_controllers = "manage_slider";
-	var $Page_tbl   = "tbl_slider_test";
+	var $Page_tbl   = "tbl_slider1";
 	public function index()
 	{
 		$page_controllers = $this->page_controllers;
@@ -211,7 +211,7 @@ class Manage_slider extends CI_Controller {
 				'time' => date('H:i:s'),
 				'timestamp' => time(),
 			);
-			$where = array('id'=>$id);
+			$where  = array('id'=>$id);
 			$result = $this->Scheme_Model->edit_fun($tbl,$dt,$where);
 			if($result)
 			{
