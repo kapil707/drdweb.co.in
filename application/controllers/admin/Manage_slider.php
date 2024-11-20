@@ -275,32 +275,17 @@ class Manage_slider extends CI_Controller {
 			'division'=>$division,						'slider_type'=>$slider_type,
 			);
 			$result = $this->Scheme_Model->edit_fun($tbl,$dt,$where);
-			$change_text = $title." - ($change_text)";	
-
 			if($result)
 			{
-				$message_db = "$change_text - Edit Successfully.";
 				$message = "Edit Successfully.";
 				$this->session->set_flashdata("message_type","success");
+				redirect(current_url());
 			}
 			else
 			{
-				$message_db = "$change_text - Not Add.";
 				$message = "Not Add.";
 				$this->session->set_flashdata("message_type","error");
-			}
-			if($message_db!="")
-			{
-				$message = $Page_title." - ".$message;
-				$message_db = $Page_title." - ".$message_db;
-				$this->session->set_flashdata("message_footer","yes");
-				$this->session->set_flashdata("full_message",$message);
-				$this->Admin_Model->Add_Activity_log($message_db);
-				if($result)
-				{
-					redirect(current_url());
-					//redirect(base_url()."admin/$page_controllers/view");
-				}
+				redirect(current_url());
 			}
 		}		
 
