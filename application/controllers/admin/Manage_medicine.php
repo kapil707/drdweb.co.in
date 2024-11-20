@@ -103,12 +103,12 @@ class Manage_medicine extends CI_Controller {
 			
 			$medicine_company_name = $this->input->post('medicine_company_name');
 
-			$result =  $this->db->query ("select comp_altercode,company_full_name from tbl_medicine where company_full_name Like '$medicine_company_name%' or company_full_name Like '%$medicine_company_name' or company_full_name='$medicine_company_name' or
+			$result =  $this->db->query ("select DISTINCT compcode,company_full_name from tbl_medicine where company_full_name Like '$medicine_company_name%' or company_full_name Like '%$medicine_company_name' or company_full_name='$medicine_company_name' or
 			company_name Like '$medicine_company_name%' or company_name Like '%$medicine_company_name' or company_name='$medicine_company_name' limit 50")->result();
 			foreach($result as $row){
 
 				$sr_no = $i++;
-				$item_code = $row->comp_altercode;
+				$item_code = $row->compcode;
 				$item_name = $row->company_full_name;	
 
 				$dt = array(
