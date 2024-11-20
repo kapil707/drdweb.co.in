@@ -131,7 +131,7 @@ class Manage_notification extends CI_Controller {
 		$this->load->view("admin/header_footer/footer",$data);
 		$this->load->view("admin/manage_user_chemist/find_chemist",$data);
 		$this->load->view("admin/manage_medicine/find_medicine",$data);
-		//$this->load->view("admin/manage_medicine/find_medicine_company",$data);
+		$this->load->view("admin/manage_medicine/find_medicine_company",$data);
 	}
 	public function view()
 	{
