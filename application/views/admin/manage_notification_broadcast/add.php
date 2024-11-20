@@ -80,33 +80,3 @@
         <!-- PAGE CONTENT ENDS -->
     </div><!-- /.col -->
 </div><!-- /.row -->
-<script>
-function call_search_acm()
-{	
-	acm_name = $("#acm_name").val();
-	$(".call_search_acm_result").html("Loading....");
-	if(acm_name=="")
-	{
-		$(".call_search_acm_result").html("");
-	}
-	else
-	{
-		$.ajax({
-		type       : "POST",
-		data       :  {acm_name:acm_name},
-		url        : "<?= base_url()?>admin/<?= $Page_name?>/call_search_acm",
-		cache	   : false,
-		success    : function(data){
-			$(".call_search_acm_result").html(data);
-			}
-		});
-	}
-}
-function addacm(id,name)
-{
-	name = atob(name);
-	$("#altercode").val(id);
-	$("#acm_name").val(name);
-	$(".call_search_acm_result").html("");
-}
-</script>

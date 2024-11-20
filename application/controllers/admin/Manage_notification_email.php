@@ -206,27 +206,6 @@ class Manage_notification_email extends CI_Controller {
         header('Content-Type: application/json');
         echo json_encode($response);
 	}
-
-	public function call_search_acm()
-	{		
-		error_reporting(0);
-		?><ul style="margin: 0px;padding: 0px;">
-		<li style="list-style: none;margin: 5px;"><a href="javascript:addacm('All','<?php echo base64_encode('All') ?>')">All</a></li>
-		<?php
-		$acm_name = $this->input->post('acm_name');
-		$result =  $this->db->query ("select * from tbl_chemist where name Like '$acm_name%' or name Like '%$acm_name' or altercode='$acm_name' limit 50")->result();
-		foreach($result as $row)
-		{
-			$id = $row->altercode;
-			$name = ($row->name);
-			$name1 = base64_encode($row->name);
-			$altercode = ($row->altercode);
-			?>
-			<li style="list-style: none;margin: 5px;"><a href="javascript:addacm('<?= $id ?>','<?= $name1 ?>')"><?= $name ?> (<?= $altercode ?>)</a></li>
-			<?php
-		}
-		?></ul><?php
-	}
 	
 	public function delete_rec()
 	{

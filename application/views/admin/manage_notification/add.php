@@ -30,7 +30,7 @@
                         </label>
                     </div>
                     <div class="col-sm-8">
-                        <select name="funtype" id="funtype" class="form-control">
+                        <select name="funtype" id="funtype" class="form-control" onChange="funtype()">
 							<option value="0">
 								Not Need
 							</option>
@@ -103,10 +103,10 @@
 					</div>
 				</div>
 				
-				<div class="col-sm-6">
+				<div class="col-sm-6 div_medicine" style="display:none">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
-                            Select Item
+                            Select Medicine
                         </label>
                     </div>
                     <div class="col-sm-8">
@@ -125,7 +125,7 @@
 			</div>
 			
 			
-			<div class="form-group">				
+			<div class="form-group div_company" style="display:none">
 				<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
@@ -185,33 +185,10 @@
     </div><!-- /.col -->
 </div><!-- /.row -->
 <script>
-function call_search_acm()
+function funtype()
 {	
-	acm_name = $("#acm_name").val();
-	$(".call_search_acm_result").html("Loading....");
-	if(acm_name=="")
-	{
-		$(".call_search_acm_result").html("");
-	}
-	else
-	{
-		$.ajax({
-		type       : "POST",
-		data       :  {acm_name:acm_name},
-		url        : "<?= base_url()?>admin/<?= $Page_name?>/call_search_acm",
-		cache	   : false,
-		success    : function(data){
-			$(".call_search_acm_result").html(data);
-			}
-		});
-	}
-}
-function addacm(id,name)
-{
-	name = atob(name);
-	$("#altercode").val(id);
-	$("#acm_name").val(name);
-	$(".call_search_acm_result").html("");
+	funtype = $("#funtype").val();
+	alert(funtype)
 }
 </script>
 
