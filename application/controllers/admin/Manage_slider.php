@@ -134,7 +134,7 @@ class Manage_slider extends CI_Controller {
 		$upload_resize 		= "./uploads/$page_controllers/photo/resize/";	
 
 		
-		$query = $this->db->query("select * from $tbl order by short_order asc");
+		$query = $this->db->query("select * from $tbl order by timestamp desc");
 		$data["result"] = $query->result();
 		
 		$this->load->view("admin/header_footer/header",$data);
