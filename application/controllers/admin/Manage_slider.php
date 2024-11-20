@@ -211,11 +211,12 @@ class Manage_slider extends CI_Controller {
 		$upload_path 		= "./uploads/$page_controllers/photo/main/";
 		$upload_resize 		= "./uploads/$page_controllers/photo/resize/";
 
+		$find_medicine_id = $find_medicine_company_id = $find_medicine_company_division = "";
 		$system_ip = $this->input->ip_address();
 		extract($_POST);
 		if(isset($Submit))
 		{
-			$itemid = $i_code;
+			$itemid = $find_medicine_id;
 			$message_db = "";
 			
 			$time = time();
@@ -335,65 +336,5 @@ class Manage_slider extends CI_Controller {
 		$message = $Page_title." - ".$message;
 		$this->Admin_Model->Add_Activity_log($message);
 		echo "ok";
-	}
-	
-	public function call_search_item()
-	{		
-		error_reporting(0);
-		?><ul style="margin: 0px;padding: 0px;"><?php
-		$item_name = $this->input->post('item_name');
-		$result =  $this->db->query ("select id,i_code,item_name,item_code from tbl_medicine where item_name Like '$item_name%' or item_name Like '%$item_name' limit 50")->result();
-		foreach($result as $row)
-		{
-			$i_code 	= $row->i_code;
-			$item_name 	= ($row->item_name);
-			$item_code 	= ($row->item_code);
-			$item_name1 = base64_encode("$row->item_name ($item_code)");
-			?>
-			<li style="list-style: none;margin: 5px;"><a href="javascript:additem(<?= $i_code ?>,'<?= $item_name1 ?>')"><?= $item_name ?> (<?= $item_code ?>)</a></li>
-			<?php
-		}
-		?></ul><?php
-	}
-	
-	public function call_search_company()
-	{		
-		error_reporting(0);
-		?><ul style="margin: 0px;padding: 0px;"><?php
-		$company_full_name = $this->input->post('company_name');
-		$result =  $this->db->query ("select DISTINCT company_full_name,compcode from tbl_medicine where company_full_name Like '$company_full_name%' or company_name Like '%$company_full_name' limit 50")->result();
-		foreach($result as $row)
-		{
-			$id = $row->compcode;
-			$company_full_name = ($row->company_full_name);
-			$company_full_name1 = base64_encode($row->company_full_name);
-			$compcode = ($row->compcode);
-			?>
-			<li style="list-style: none;margin: 5px;"><a href="javascript:addcompany(<?= $id ?>,'<?= $company_full_name1 ?>')"><?= $company_full_name ?> (<?= $compcode ?>)</a></li>
-			<?php
-		}
-		?></ul><?php
-	}
-	
-	public function get_company_division()
-	{		
-		error_reporting(0);
-		$compid = $this->input->post('compid');
-		?><select name="division" id="division" class="form-control">
-			<option value="">
-				Select Company Division
-			</option>
-			<?php
-			$result =  $this->db->query ("select DISTINCT division from tbl_medicine where compcode='$compid' order by division asc")->result();
-			foreach($result as $row)
-			{
-				$division = $row->division;
-				?>
-				<option value="<?= $division ?>">
-					<?= $division ?>
-				</option>
-				<?php
-			}
-		?></select><?php
 	}
 }

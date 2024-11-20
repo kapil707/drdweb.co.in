@@ -79,6 +79,7 @@
                     </div>
                     <div class="col-sm-8">
 						<input type="text" id="find_medicine_id" name="find_medicine_id" value="<?= $row->itemid?>" />
+
 						<?php $row1 =  $this->db->query ("select item_name,i_code from tbl_medicine where i_code='$row->itemid'")->row();
 						?>
 
@@ -94,7 +95,7 @@
                 </div>
 			</div>
 			
-			<div class="form-group funtype_all funtype_2" <?php if($row->funtype==2) { ?> style="display:block;" <?php } ?>>
+			<div class="form-group div_company" <?php if($row->funtype==2) { ?> style="display:block;" <?php } ?>>
 				<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
@@ -102,16 +103,20 @@
                         </label>
                     </div>
                     <div class="col-sm-8">
-						<input type="hidden" id="compid" name="compid" value="<?= $compid = $row->compid?>" />
+						<input type="text" id="find_medicine_company_id" name="find_medicine_company_id" value="<?= $row->compid ?>"/>
+
 						<?php 
-						$row1 =  $this->db->query ("select company_full_name from tbl_medicine where compcode='$compid'")->row();
+						$row1 =  $this->db->query ("select company_full_name from tbl_medicine where compcode='$row->compid'")->row();
 						?>
-						<input type="text" class="form-control" id="company_name" name="company_name" tabindex="1" onkeydown="call_search_company()" onkeyup="call_search_company()" placeholder="Select Company" autocomplete="off"value="<?= $row1->company_full_name?>" />
-						<div class="call_search_company_result" style="position: absolute;z-index: 1;background: white;width: 300px;"></div>
+
+						<input type="text" class="form-control" id="medicine_company_name" name="medicine_company_name" tabindex="1" placeholder="Enter Company" autocomplete="off" value="<?= $row1->company_full_name?>" />
+
+						<div class="find_medicine_company_result"></div>
+
                     </div>
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">
-                            <?= form_error('compid'); ?>
+                            <?= form_error('find_medicine_company_id'); ?>
                         </span>
                     </div>
                 </div>
@@ -121,13 +126,13 @@
                             Select Company Division
                         </label>
                     </div>
-                    <div class="col-sm-8 division_div">                        
-						<select name="division" id="division" class="form-control">
+                    <div class="col-sm-8">                        
+						<select name="find_medicine_company_division" id="find_medicine_company_division" class="form-control">
 							<option value="">
 								Select Company Division
 							</option>
 							<?php
-							$result1 =  $this->db->query ("select DISTINCT division from tbl_medicine where compcode='$compid' order by division asc")->result();
+							$result1 =  $this->db->query ("select DISTINCT division from tbl_medicine where compcode='$row->compid' order by division asc")->result();
 							foreach($result1 as $row1)
 							{
 								$division = $row1->division;

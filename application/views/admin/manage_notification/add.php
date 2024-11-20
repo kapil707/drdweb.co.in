@@ -122,8 +122,7 @@
                         </span>
                     </div>
                 </div>
-			</div>
-			
+			</div>			
 			
 			<div class="form-group div_company" style="display:none">
 				<div class="col-sm-6">
