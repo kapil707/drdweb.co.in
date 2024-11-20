@@ -56,7 +56,7 @@
 						<td>
 							<?if($row->funtype=="1"){ ?>
 								<?php 
-								$row1 =  $this->db->query ("select item_name,i_code from tbl_medicine where i_code='$item_code'")->row();?>	
+								$row1 =  $this->db->query ("select item_name,i_code from tbl_medicine where i_code='$row->item_code'")->row();?>	
 								<?= ($row1->item_name); ?> (<?= ($row1->i_code); ?>)
 							<?php } ?>
 							<?if($row->funtype=="2"){ ?>
