@@ -34,10 +34,10 @@
 							<option value="0">
 								Not Need
 							</option>
-							<option value="1" <?php if($row->funtype=="1"){ ?> selected <?php } ?>>
+							<option value="1">
 								Select Item
 							</option>							
-							<option value="2" <?php if($row->funtype=="2"){ ?> selected <?php } ?>>
+							<option value="2">
 								Select Company
 							</option>
 						</select>
