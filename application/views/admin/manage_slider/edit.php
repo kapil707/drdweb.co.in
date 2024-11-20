@@ -112,7 +112,7 @@
 
 						<?php 
 						$medicine_company_name = "";
-						$row1 =  $this->db->query ("select company_full_name from tbl_medicine where compcode='$row->compid'")->row();
+						$row1 =  $this->db->query ("select company_full_name from tbl_medicine where compcode='$row->comp_code'")->row();
 						if(!empty($row1)){
 							$medicine_company_name = $row1->company_full_name;
 						}
