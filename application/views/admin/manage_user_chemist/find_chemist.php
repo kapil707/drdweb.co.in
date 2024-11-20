@@ -51,12 +51,12 @@ $(document).ready(function() {
             e.preventDefault();
             currentFocusChemist++;
             if (currentFocusChemist >= listItems.length) currentFocusChemist = 0; // Loop back to top
-            addActive(listItems);
+            addActiveChemist(listItems);
         } else if (e.key === "ArrowUp") {
             e.preventDefault();
             currentFocusChemist--;
             if (currentFocusChemist < 0) currentFocusChemist = listItems.length - 1; // Loop back to bottom
-            addActive(listItems);
+            addActiveChemist(listItems);
         } else if (e.key === "Enter") {
             e.preventDefault();
             if (currentFocusChemist > -1) {
@@ -105,7 +105,7 @@ function add_chemist(chemist_id, chemist_name) {
     $("#chemist_name").val(`Name: ${chemist_name} - (Chemist ID: ${chemist_id})`);
     $(".find_chemist_result").html("");
 }
-function addActive(listItems) {
+function addActiveChemist(listItems) {
     listItems.removeClass("active");
     if (currentFocusChemist >= 0 && currentFocusChemist < listItems.length) {
         listItems.eq(currentFocusChemist).addClass("active");

@@ -56,12 +56,12 @@ $(document).ready(function() {
             e.preventDefault();
             currentFocusMedicine++;
             if (currentFocusMedicine >= listItems.length) currentFocusMedicine = 0; // Loop back to top
-            addActive(listItems);
+            addActiveMedicine(listItems);
         } else if (e.key === "ArrowUp") {
             e.preventDefault();
             currentFocusMedicine--;
             if (currentFocusMedicine < 0) currentFocusMedicine = listItems.length - 1; // Loop back to bottom
-            addActive(listItems);
+            addActiveMedicine(listItems);
         } else if (e.key === "Enter") {
             e.preventDefault();
             if (currentFocusMedicine > -1) {
@@ -110,7 +110,7 @@ function add_medicine(item_code, item_name) {
     $("#medicine_name").val(`Name: ${item_name}`);
     $(".find_medicine_result").html("");
 }
-function addActive(listItems) {
+function addActiveMedicine(listItems) {
     listItems.removeClass("active");
     if (currentFocusMedicine >= 0 && currentFocusMedicine < listItems.length) {
         listItems.eq(currentFocusMedicine).addClass("active");
