@@ -135,7 +135,7 @@
                     <div class="col-sm-8">
 						<input type="hidden" id="find_medicine_company_id" name="find_medicine_company_id"/>
 
-						<input type="text" class="form-control" id="company_name" name="company_name" tabindex="1" placeholder="Enter Company" autocomplete="off" />
+						<input type="text" class="form-control" id="medicine_company_name" name="medicine_company_name" tabindex="1" placeholder="Enter Company" autocomplete="off" />
 
 						<div class="find_medicine_company_result"></div>
                     </div>
