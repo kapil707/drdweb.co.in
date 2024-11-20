@@ -35,7 +35,7 @@
 </style>
 
 <script>
-let currentFocusMedicine = -1; // Tracks the currently focused item
+let currentFocusMedicineCompany = -1; // Tracks the currently focused item
 $(document).ready(function() {
     $("#medicine_company_name").keyup(function(e){
         // Only call find_chemist if the key is not an arrow key, Enter, or Tab
@@ -49,18 +49,18 @@ $(document).ready(function() {
 
         if (e.key === "ArrowDown") {
             e.preventDefault();
-            currentFocusMedicine++;
-            if (currentFocusMedicine >= listItems.length) currentFocusMedicine = 0; // Loop back to top
+            currentFocusMedicineCompany++;
+            if (currentFocusMedicineCompany >= listItems.length) currentFocusMedicineCompany = 0; // Loop back to top
             addActiveMedicineCompany(listItems);
         } else if (e.key === "ArrowUp") {
             e.preventDefault();
-            currentFocusMedicine--;
-            if (currentFocusMedicine < 0) currentFocusMedicine = listItems.length - 1; // Loop back to bottom
+            currentFocusMedicineCompany--;
+            if (currentFocusMedicineCompany < 0) currentFocusMedicineCompany = listItems.length - 1; // Loop back to bottom
             addActiveMedicineCompany(listItems);
         } else if (e.key === "Enter") {
             e.preventDefault();
-            if (currentFocusMedicine > -1) {
-                listItems[currentFocusMedicine].click(); // Trigger click on the selected item
+            if (currentFocusMedicineCompany > -1) {
+                listItems[currentFocusMedicineCompany].click(); // Trigger click on the selected item
             }
         }
     });
@@ -89,7 +89,7 @@ function find_medicine_company(){
                 });
                 htmlContent += '</ul>';
                 $('.find_medicine_company_result').html(htmlContent);
-                currentFocusMedicine = -1; // Reset focus
+                currentFocusMedicineCompany = -1; // Reset focus
             } else {
                 $('.find_chemist_find_medicine_company_resultresult').text("Failed to load data.");
             }
@@ -107,8 +107,8 @@ function add_medicine_company(item_code, item_name) {
 }
 function addActiveMedicineCompany(listItems) {
     listItems.removeClass("active");
-    if (currentFocusMedicine >= 0 && currentFocusMedicine < listItems.length) {
-        listItems.eq(currentFocusMedicine).addClass("active");
+    if (currentFocusMedicineCompany >= 0 && currentFocusMedicineCompany < listItems.length) {
+        listItems.eq(currentFocusMedicineCompany).addClass("active");
     }
 }
 </script>
