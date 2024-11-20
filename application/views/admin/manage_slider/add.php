@@ -98,7 +98,7 @@
                     <div class="col-sm-8">
 						<input type="text" id="find_medicine_company_id" name="find_medicine_company_id" value=""/>
 
-						<input type="text" class="form-control" id="medicine_company_name" name="medicine_company_name" tabindex="1" placeholder="Enter Company" autocomplete="off" value="<?= $medicine_company_name?>" />
+						<input type="text" class="form-control" id="medicine_company_name" name="medicine_company_name" tabindex="1" placeholder="Enter Company" autocomplete="off" value="" />
 
 						<div class="find_medicine_company_result"></div>
 
@@ -141,10 +141,7 @@
                         <input type="file" class="form-control" id="form-field-1" placeholder="Image" name="image" />
                     </div>
                     <div class="col-sm-2" id="imgchange">
-                    	<img src="<?= $url_path ?><?= $row->image; ?>" class="img-responsive" />
-                    	<?php if($row->image!="default.jpg") { ?>
-                    	<Br /><a href="javascript:void(0)" onclick="delete_photo('<?= $row->id; ?>')"><i class="fa fa-remove"></i>Delete</a>
-                        <?php } ?>
+                    	
                     </div>
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">  
