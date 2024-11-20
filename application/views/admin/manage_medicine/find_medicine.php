@@ -33,10 +33,9 @@
     font-weight: bold;
 }
 </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script>
-let currentFocus = -1; // Tracks the currently focused item
+let currentFocusMedicine = -1; // Tracks the currently focused item
 $(document).ready(function() {
     $("#medicine_name").keyup(function(e){
         // Only call find_chemist if the key is not an arrow key, Enter, or Tab
@@ -50,18 +49,18 @@ $(document).ready(function() {
 
         if (e.key === "ArrowDown") {
             e.preventDefault();
-            currentFocus++;
-            if (currentFocus >= listItems.length) currentFocus = 0; // Loop back to top
+            currentFocusMedicine++;
+            if (currentFocusMedicine >= listItems.length) currentFocusMedicine = 0; // Loop back to top
             addActive(listItems);
         } else if (e.key === "ArrowUp") {
             e.preventDefault();
-            currentFocus--;
-            if (currentFocus < 0) currentFocus = listItems.length - 1; // Loop back to bottom
+            currentFocusMedicine--;
+            if (currentFocusMedicine < 0) currentFocusMedicine = listItems.length - 1; // Loop back to bottom
             addActive(listItems);
         } else if (e.key === "Enter") {
             e.preventDefault();
-            if (currentFocus > -1) {
-                listItems[currentFocus].click(); // Trigger click on the selected item
+            if (currentFocusMedicine > -1) {
+                listItems[currentFocusMedicine].click(); // Trigger click on the selected item
             }
         }
     });
@@ -90,7 +89,7 @@ function find_medicine(){
                 });
                 htmlContent += '</ul>';
                 $('.find_medicine_result').html(htmlContent);
-                currentFocus = -1; // Reset focus
+                currentFocusMedicine = -1; // Reset focus
             } else {
                 $('.find_chemist_find_medicine_resultresult').text("Failed to load data.");
             }
@@ -108,8 +107,8 @@ function add_medicine(item_code, item_name) {
 }
 function addActive(listItems) {
     listItems.removeClass("active");
-    if (currentFocus >= 0 && currentFocus < listItems.length) {
-        listItems.eq(currentFocus).addClass("active");
+    if (currentFocusMedicine >= 0 && currentFocusMedicine < listItems.length) {
+        listItems.eq(currentFocusMedicine).addClass("active");
     }
 }
 </script>
