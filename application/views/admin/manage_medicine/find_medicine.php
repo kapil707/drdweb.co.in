@@ -78,7 +78,7 @@ function find_medicine(){
 
     $.ajax({
         type: "POST",
-        data: {chemist_name: chemist_name},
+        data: {medicine_name: medicine_name},
         url: "<?= base_url()?>admin/manage_medicine/find_medicine",
         cache: false,
         dataType: 'json',

@@ -62,7 +62,7 @@ class Manage_medicine extends CI_Controller {
 			
 			$medicine_name = $this->input->post('medicine_name');
 
-			$result =  $this->db->query ("select * from tbl_medicine where item_name Like '$chemist_name%' or item_name Like '%$chemist_name' or item_name='$chemist_name' limit 50")->result();
+			$result =  $this->db->query ("select * from tbl_medicine where item_name Like '$medicine_name%' or item_name Like '%$medicine_name' or item_name='$medicine_name' limit 50")->result();
 			foreach($result as $row){
 
 				$sr_no = $i++;
