@@ -48,7 +48,6 @@ class Manage_notification extends CI_Controller {
 
 		$system_ip = $this->input->ip_address();
 		$find_medicine_id = 0;
-		$med_item_id = "";
 		extract($_POST);
 		if(isset($Submit))
 		{
@@ -97,7 +96,7 @@ class Manage_notification extends CI_Controller {
 					$chemist_id = $row1->altercode;
 					$user_type = "chemist";
 
-					$result = $this->NotificationModel->insert_notification($funtype,$title,$message,$chemist_id,$user_type,$find_medicine_id,$compid,$division,$image,'Admin');
+					$result = $this->NotificationModel->insert_notification($funtype,$title,$message,$chemist_id,$user_type,$find_medicine_id,$find_medicine_company_id,$find_medicine_company_division,$image,'Admin');
 				}
 				if($result)
 				{
