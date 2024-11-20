@@ -187,7 +187,7 @@
 <script>
 function funtype()
 {	
-	let selectedValue = $("#funtype").val(); // वैरिएबल नाम बदलें
+	let selectedValue = $("#funtype").val();
     alert("You selected: " + selectedValue);
 }
 </script>
