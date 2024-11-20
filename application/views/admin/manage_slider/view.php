@@ -57,14 +57,14 @@
 							<?if($row->funtype=="1"){ ?>
 								<?php 
 								$i_code = $row->itemid;
-								$row1 =  $this->db->query ("select item_name,i_code from tbl_medicine where i_code='$i_code'")->row();?>	
+								$row1 =  $this->db->query ("select item_name,i_code from tbl_medicine where i_code='$item_code'")->row();?>	
 								<?= ($row1->item_name); ?> (<?= ($row1->i_code); ?>)
 							<?php } ?>
 							<?if($row->funtype=="2"){ ?>
-								<?php $compid = $row->compid; ?>
+								<?php $compid = $row->comp_code; ?>
 								<?php 
 								$row1 =  $this->db->query ("select company_name from tbl_medicine where compcode='$compid'")->row();?>
-								<?= $row1->company_name?> / <?= $row->division; ?>
+								<?= $row1->company_name?> / <?= $row->comp_division; ?>
 							<?php } ?>
                         </td>
 						<td>
