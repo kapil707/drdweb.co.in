@@ -83,20 +83,18 @@ class Cronjob_admin_report extends CI_Controller
 		$result = $this->db->query("select count(id) as total from tbl_cart_order where date='$date'")->row();
 		$today_orders1 = $result->total;
 		
-		$result = $this->db->query("select count(id) as total from tbl_cart_order where download_status='0'")->row();
-		$today_orders2 = $result->total;
-
-		$result = $this->db->query("select sum(total) as total1 from tbl_cart_order where download_status='0'")->row();
-		$today_orders2_val = $result->total1;
+		$result = $this->db->query("select count(id) as pending_order,sum(total) as pending_order_value from tbl_cart_order where download_status='0'")->row();
+		$pending_order = $result->pending_order;
+		$pending_order_value = $result->pending_order_value;
 
 		setlocale(LC_MONETARY, 'en_IN');
-		$today_orders2_val = money_format('%!i', $today_orders2_val);
-		$today_orders2_val = substr($today_orders2_val, 0, -3);
+		$pending_order_value = money_format('%!i', $pending_order_value);
+		$pending_order_value = substr($pending_order_value, 0, -3);
 		
 		$massage3 = "<br>";
 		$massage3.= "<br> **************Order part**************";
-		$massage3.= "<br>Pending Order :- ".$today_orders2;	
-		$massage3.= "<br>Pending Order Value :- ".$today_orders2_val;
+		$massage3.= "<br>Pending Order :- ".$pending_order;	
+		$massage3.= "<br>Pending Order Value :- ".$pending_order_value;
 		$massage3.= "<br>";	
 		$massage3.= "<br>Today Total Order :- ".$today_orders1;
 		
