@@ -60,9 +60,8 @@
 								<?= ($row1->item_name); ?> (<?= ($row1->i_code); ?>)
 							<?php } ?>
 							<?if($row->funtype=="2"){ ?>
-								<?php $compid = $row->comp_code; ?>
 								<?php 
-								$row1 =  $this->db->query ("select company_name from tbl_medicine where compcode='$compid'")->row();?>
+								$row1 =  $this->db->query ("select company_name from tbl_medicine where compcode='$row->comp_code'")->row();?>
 								<?= $row1->company_name?> / <?= $row->comp_division; ?>
 							<?php } ?>
                         </td>
