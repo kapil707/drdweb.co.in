@@ -71,7 +71,7 @@
                         </span>
                     </div>
                 </div>
-				<div class="col-sm-6 div_medicine" <?php if($row->funtype!=1) { ?>style="display:block;" <?php } ?>>
+				<div class="col-sm-6 div_medicine" <?php if($row->funtype!=1) { ?>style="display:none;" <?php } ?>>
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
                             Select Medicine
@@ -100,7 +100,7 @@
                 </div>
 			</div>
 			
-			<div class="form-group div_company" <?php if($row->funtype!=2) { ?> style="display:block;" <?php } ?>>
+			<div class="form-group div_company" <?php if($row->funtype!=2) { ?> style="display:none;" <?php } ?>>
 				<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
