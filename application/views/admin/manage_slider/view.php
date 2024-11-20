@@ -61,7 +61,7 @@
 							<?php } ?>
 							<?if($row->funtype=="2"){ ?>
 								<?php 
-								$row1 =  $this->db->query ("select company_name from tbl_medicine where compcode='$row->comp_code'")->row();?>
+								$row1 = $this->db->query("select company_name from tbl_medicine where compcode='$row->comp_code'")->row();?>
 								<?= $row1->company_name?> / <?= $row->comp_division; ?>
 							<?php } ?>
                         </td>
