@@ -40,8 +40,8 @@ $(document).ready(function() {
     $("#medicine_name").keyup(function(e){
         // Only call find_chemist if the key is not an arrow key, Enter, or Tab
         if (![37, 38, 39, 40, 13, 9].includes(e.keyCode)) { // Key codes for Left, Up, Right, Down, Enter, and Tab
-            let medicine_name = $("#medicine_name").val();
-            if(medicine_name>=2){
+            medicine_name = $("#medicine_name").val();
+            if(medicine_name.length<3) {
                 find_medicine();
             }else{
                 $(".find_medicine_result").html("");
