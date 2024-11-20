@@ -92,7 +92,7 @@
 					<div class="col-sm-8">
 						<input type="hidden" id="find_chemist_id" name="find_chemist_id"/>
 
-						<input type="text" class="form-control" id="chemist_name" name="chemist_name" tabindex="1" placeholder="Enter Name / Altercode" autocomplete="off" />
+						<input type="text" class="form-control" id="chemist_name" name="chemist_name" tabindex="1" placeholder="Enter Name / Altercode" autocomplete="off" required />
 
 						<div class="find_chemist_result"></div>
 					</div>
