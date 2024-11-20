@@ -110,13 +110,15 @@
                         </label>
                     </div>
                     <div class="col-sm-8">
-                        <input type="hidden" id="itemid" name="itemid" value="0"/>
-						<input type="text" class="form-control" id="item_name" name="item_name"tabindex="1" onkeydown="call_search_item()" onkeyup="call_search_item()" placeholder="Select Item" autocomplete="off" />
-						<div class="call_search_item_result" style="position: absolute;z-index: 1;background: white;width: 300px;"></div>
+						<input type="hidden" id="find_item_code" name="find_item_code"/>
+
+						<input type="text" class="form-control" id="medicine_name" name="medicine_name" tabindex="1" placeholder="Enter Medicine" autocomplete="off" />
+
+						<div class="find_medicine_result"></div>
                     </div>
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">
-                            <?= form_error('itemid'); ?>
+                            <?= form_error('find_item_code'); ?>
                         </span>
                     </div>
                 </div>

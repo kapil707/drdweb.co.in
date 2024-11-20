@@ -53,4 +53,47 @@ class Manage_medicine extends CI_Controller {
 		$this->load->view("admin/header_footer/footer",$data);
 		$this->load->view("admin/$Page_view/footer2",$data);
 	}
+
+	public function find_medicine()
+	{	
+		$i  = 0;
+		$jsonArray = array();
+		if(!empty($_REQUEST)){
+			
+			$medicine_name = $this->input->post('medicine_name');
+
+			$result =  $this->db->query ("select * from tbl_medicine where item_name Like '$chemist_name%' or item_name Like '%$chemist_name' or item_name='$chemist_name' limit 50")->result();
+			foreach($result as $row){
+
+				$sr_no = $i++;
+				$id = $row->id;
+				$item_code = $row->i_code;
+				$item_name = $row->item_name;	
+
+				$dt = array(
+					'sr_no' => $sr_no,
+					'id' => $id,
+					'item_code' => $item_code,
+					'item_name'=>$item_name,
+				);
+				$jsonArray[] = $dt;
+			}
+			
+			$items = $jsonArray;
+			$response = array(
+				'success' => "1",
+				'message' => 'Data load successfully',
+				'items' => $items,
+			);
+		}else{
+			$response = array(
+				'success' => "0",
+				'message' => '502 error',
+			);
+		}
+
+		// Send JSON response
+        header('Content-Type: application/json');
+        echo json_encode($response);
+	}
 }

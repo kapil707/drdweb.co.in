@@ -96,7 +96,7 @@ class Cronjob_admin_report extends CI_Controller
 			$massage4.= "<br>Total ".$server_email_name." :- ".$row1->total."/".$row2->total;
 		}
 
-		$result = $this->db->query("select sum(total) as today_orders_price,count(items_total) as today_orders_items from tbl_cart_order where date='$date'")->row();
+		$result = $this->db->query("select sum(total) as today_orders_price,sum(items_total) as today_orders_items from tbl_cart_order where date='$date'")->row();
 		$today_orders_price = $result->today_orders_price;
 		$today_orders_items = $result->today_orders_items;
 		
