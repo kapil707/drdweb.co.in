@@ -116,6 +116,7 @@ function addActiveMedicineCompany(listItems) {
 function find_medicine_company_division()
 {	
 	find_medicine_company_id = $("#find_medicine_company_id").val();
+    medicine_company_name = $("#medicine_company_name").val();
 	$.ajax({
         type: "POST",
         data: { find_medicine_company_id: find_medicine_company_id },
@@ -128,7 +129,7 @@ function find_medicine_company_division()
                 $('#find_medicine_company_division').empty();
 
                 // Default option add karen
-                $('#find_medicine_company_division').append('<option value="">Select Company Division</option>');
+                $('#find_medicine_company_division').append(`<option value="">Select ${medicine_company_name} Division</option>`);
 
                 // Items loop kar ke options add karen
                 response.items.forEach(function(item) {
