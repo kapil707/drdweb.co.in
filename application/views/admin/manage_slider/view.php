@@ -73,7 +73,7 @@
 						<td>
 							<?php
 							$date = ($row->update_time);
-							echo date('d M,Y', $date);								?> 
+							echo date('d M,Y', $date);?> 
 							at 
 							<?php 
 							$time = ($row->update_time);
@@ -84,9 +84,7 @@
                         	<div class="btn-group">
 								<a href="edit/<?= $row->id; ?>" class="btn-white btn btn-xs">Edit
 								</a>
-								<?php if($count==0 && $count1==0) { ?>
 								<a href="javascript:void(0)" onclick="delete_rec('<?= $row->id; ?>')" class="btn-white btn btn-xs">Delete</i> </a>
-								<?php } ?>
 							</div>
                         </td> 
                     </tr>
