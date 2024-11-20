@@ -107,7 +107,7 @@ function find_medicine(){
 }
 function add_medicine(item_code, item_name) {
     $("#find_medicine_id").val(item_code);
-    $("#medicine_name").val(`Name: ${chemist_name}`);
+    $("#medicine_name").val(`Name: ${item_name}`);
     $(".find_medicine_result").html("");
 }
 function addActive(listItems) {
