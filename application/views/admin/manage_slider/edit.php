@@ -80,10 +80,15 @@
                     <div class="col-sm-8">
 						<input type="text" id="find_medicine_id" name="find_medicine_id" value="<?= $row->itemid?>" />
 
-						<?php $row1 =  $this->db->query ("select item_name,i_code from tbl_medicine where i_code='$row->itemid'")->row();
+						<?php 
+						$medicine_name = "";
+						$row1 = $this->db->query ("select item_name,i_code from tbl_medicine where i_code='$row->itemid'")->row();
+						if(!empty($row1)){
+							$medicine_name = $row1->item_name."($row1->i_code)";
+						}
 						?>
 
-						<input type="text" class="form-control" id="medicine_name" name="medicine_name" tabindex="1" placeholder="Enter Medicine" autocomplete="off" value="<?= $row1->item_name?> (<?= $row1->i_code?>)" />
+						<input type="text" class="form-control" id="medicine_name" name="medicine_name" tabindex="1" placeholder="Enter Medicine" autocomplete="off" value="<?= $medicine_name?>)" />
 
 						<div class="find_medicine_result"></div>
                     </div>
@@ -106,10 +111,14 @@
 						<input type="text" id="find_medicine_company_id" name="find_medicine_company_id" value="<?= $row->compid ?>"/>
 
 						<?php 
+						$medicine_company_name = "";
 						$row1 =  $this->db->query ("select company_full_name from tbl_medicine where compcode='$row->compid'")->row();
+						if(!empty($row1)){
+							$medicine_company_name = $row1->company_full_name;
+						}
 						?>
 
-						<input type="text" class="form-control" id="medicine_company_name" name="medicine_company_name" tabindex="1" placeholder="Enter Company" autocomplete="off" value="<?= $row1->company_full_name?>" />
+						<input type="text" class="form-control" id="medicine_company_name" name="medicine_company_name" tabindex="1" placeholder="Enter Company" autocomplete="off" value="<?= $medicine_company_name?>" />
 
 						<div class="find_medicine_company_result"></div>
 
