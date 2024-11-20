@@ -15,12 +15,8 @@
 						<label class="control-label" for="form-field-1">Slider Type</label></div>
 						<div class="col-sm-8">
 							<select name="slider_type" id="slider_type" class="form-control">
-								<option value="1" <?php if($row->slider_type==1) { ?> selected <?php } ?>>
-									Slider 1
-								<option>
-								<option value="2" <?php if($row->slider_type==2) { ?> selected <?php } ?>>
-								Slider 2
-							</option>
+								<option value="1" <?php if($row->slider_type==1) { ?> selected <?php } ?>>Slider 1</option>
+								<option value="2" <?php if($row->slider_type==2) { ?> selected <?php } ?>>Slider 2</option>
 						</select>
 					</div>
 					<div class="help-inline col-sm-12 has-error">
