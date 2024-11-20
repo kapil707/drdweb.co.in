@@ -248,25 +248,6 @@ class Manage_notification extends CI_Controller {
         echo json_encode($response);
 	}
 	
-	public function call_search_item()
-	{		
-		error_reporting(0);
-		?><ul style="margin: 0px;padding: 0px;"><?php
-		$item_name = $this->input->post('item_name');
-		$result =  $this->db->query ("select id,i_code,item_name,item_code from tbl_medicine where item_name Like '$item_name%' or item_name Like '%$item_name' limit 50")->result();
-		foreach($result as $row)
-		{
-			$id = $row->i_code;
-			$item_name = ($row->item_name);
-			$item_name1 = base64_encode($row->item_name);
-			$item_code = ($row->item_code);
-			?>
-			<li style="list-style: none;margin: 5px;"><a href="javascript:additem(<?= $id ?>,'<?= $item_name1 ?>')"><?= $item_name ?> (<?= $item_code ?>)</a></li>
-			<?php
-		}
-		?></ul><?php
-	}
-	
 	public function call_search_company()
 	{		
 		error_reporting(0);

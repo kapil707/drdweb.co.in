@@ -187,6 +187,7 @@
 <script>
 function onchange_funtype()
 {	
+	$("#find_medicine_id").val('');
 	$(".div_medicine").hide();
 	$(".div_company").hide();
 	let selectedValue = $("#funtype").val();
