@@ -248,47 +248,6 @@ class Manage_notification extends CI_Controller {
         header('Content-Type: application/json');
         echo json_encode($response);
 	}
-	
-	public function call_search_company()
-	{		
-		error_reporting(0);
-		?><ul style="margin: 0px;padding: 0px;"><?php
-		$company_full_name = $this->input->post('company_name');
-		$result =  $this->db->query ("select DISTINCT company_full_name,compcode from tbl_medicine where company_full_name Like '$company_full_name%' or company_name Like '%$company_full_name' limit 50")->result();
-		foreach($result as $row)
-		{
-			$id = $row->compcode;
-			$company_full_name = ($row->company_full_name);
-			$company_full_name1 = base64_encode($row->company_full_name);
-			$compcode = ($row->compcode);
-			?>
-			<li style="list-style: none;margin: 5px;"><a href="javascript:addcompany(<?= $id ?>,'<?= $company_full_name1 ?>')"><?= $company_full_name ?> (<?= $compcode ?>)</a></li>
-			<?php
-		}
-		?></ul><?php
-	}
-	
-	public function get_company_division()
-	{		
-		error_reporting(0);
-		$compid = $this->input->post('compid');
-		?><select name="division" id="division" class="form-control">
-			<option value="">
-				Select Company Division
-			</option>
-			<?php
-			$result =  $this->db->query ("select DISTINCT division from tbl_medicine where compcode='$compid' order by division asc")->result();
-			foreach($result as $row)
-			{
-				$division = $row->division;
-				?>
-				<option value="<?= $division ?>">
-					<?= $division ?>
-				</option>
-				<?php
-			}
-		?></select><?php
-	}
 
 	public function delete_rec()
 	{

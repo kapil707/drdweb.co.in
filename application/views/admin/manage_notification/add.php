@@ -189,61 +189,29 @@
 <script>
 function onchange_funtype()
 {	
-	$("#find_medicine_id").val('');
+	/*********************************************** */
+	$('#medicine_name').removeAttr('required');
+	$("#find_medicine_id").val('');	
 	$(".div_medicine").hide();
+	/*********************************************** */
+
+	/*********************************************** */
+	$('#medicine_company_name').removeAttr('required');
+	$("#find_medicine_company_id").val('');
 	$(".div_company").hide();
+
+	$('#find_medicine_company_division').removeAttr('required');
+	/*********************************************** */
+	
 	let selectedValue = $("#funtype").val();
 	if(selectedValue==1){
 		$(".div_medicine").show();
+		$('#medicine_name').attr('required', true);
 	}
 	if(selectedValue==2){
 		$(".div_company").show();
+		$('#medicine_company_name').attr('required', true);
+		$('#find_medicine_company_division').attr('required', true);
 	}
-}
-</script>
-
-<script>
-function call_search_company()
-{	
-	company_name = $("#company_name").val();
-	$(".call_search_company_result").html("Loading....");
-	if(company_name=="")
-	{
-		$(".call_search_company_result").html("");
-	}
-	else
-	{
-		$.ajax({
-		type       : "POST",
-		data       :  {company_name:company_name},
-		url        : "<?= base_url()?>admin/<?= $Page_name?>/call_search_company",
-		cache	   : false,
-		success    : function(data){
-			$(".call_search_company_result").html(data);
-			}
-		});
-	}
-}
-function addcompany(id,name)
-{
-	name = atob(name);
-	$("#compid").val(id);
-	$("#company_name").val(name);
-	$(".call_search_company_result").html("");
-	get_company_division();
-}
-function get_company_division()
-{	
-	compid = $("#compid").val();
-	$(".division_div").html("Loading....");
-	$.ajax({
-	type       : "POST",
-	data       :  {compid:compid},
-	url        : "<?= base_url()?>admin/<?= $Page_name?>/get_company_division",
-	cache	   : false,
-	success    : function(data){
-		$(".division_div").html(data);
-		}
-	});
 }
 </script>
