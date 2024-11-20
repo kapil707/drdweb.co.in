@@ -47,7 +47,7 @@ class Manage_notification extends CI_Controller {
 		$upload_resize 		= "./uploads/$page_controllers/photo/resize/";
 
 		$system_ip = $this->input->ip_address();
-		$find_medicine_id = 0;
+		$find_medicine_id = $find_medicine_company_id = $find_medicine_company_division = '';
 		extract($_POST);
 		if(isset($Submit))
 		{
