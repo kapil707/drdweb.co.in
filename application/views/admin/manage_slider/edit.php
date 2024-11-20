@@ -1,4 +1,4 @@
-<style>.funtype_all{	display:none;}</style><div class="row">
+<div class="row">
 	<div class="col-xs-12">
 		<button type="button" class="btn btn-w-m btn-info" onclick="goBack();"><< Back</button>
 	</div>
