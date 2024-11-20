@@ -187,8 +187,15 @@
 <script>
 function onchange_funtype()
 {	
+	$(".div_medicine").hide();
+	$(".div_company").hide();
 	let selectedValue = $("#funtype").val();
-    alert("You selected: " + selectedValue);
+	if(selectedValue==1){
+		$(".div_medicine").show();
+	}
+	if(selectedValue==2){
+		$(".div_company").show();
+	}
 }
 </script>
 
