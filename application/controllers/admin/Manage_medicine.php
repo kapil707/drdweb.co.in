@@ -143,9 +143,9 @@ class Manage_medicine extends CI_Controller {
 		$jsonArray = array();
 		if(!empty($_REQUEST)){
 			
-			$item_code = $this->input->post('item_code');
+			$find_medicine_company_id = $this->input->post('find_medicine_company_id');
 
-			$result =  $this->db->query ("select DISTINCT division from tbl_medicine where compcode='$item_code' order by division asc")->result();
+			$result =  $this->db->query ("select DISTINCT division from tbl_medicine where compcode='$find_medicine_company_id' order by division asc")->result();
 			foreach($result as $row){
 
 				$sr_no = $i++;

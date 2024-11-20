@@ -112,4 +112,19 @@ function addActiveMedicineCompany(listItems) {
         listItems.eq(currentFocusMedicineCompany).addClass("active");
     }
 }
+/*************************************************** */
+function find_medicine_company_division()
+{	
+	var find_medicine_company_id = $("#find_medicine_company_id").val();
+	$(".division_div").html("Loading....");
+	$.ajax({
+        type       : "POST",
+        data       :  {find_medicine_company_id:find_medicine_company_id},
+        url        : "<?= base_url()?>admin/manage_medicine/find_medicine_company_division",
+        cache	   : false,
+        success    : function(data){
+                $(".division_div").html(data);
+            }
+        });
+}
 </script>
