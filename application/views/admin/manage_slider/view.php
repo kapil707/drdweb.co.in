@@ -71,14 +71,7 @@
 						    <img src="<?= $url_path ?><?= $row->image; ?>" width="100px" />
 						</td>
 						<td>
-							<?php
-							$date = ($row->update_time);
-							echo date('d M,Y', $date);?> 
-							at 
-							<?php 
-							$time = ($row->update_time);
-							echo date('H:i', $time);
-							?>
+							<?= date('d-M-Y @ H:i:s', $row->timestamp); ?> 
 						</td>
                         <td>
                         	<div class="btn-group">
