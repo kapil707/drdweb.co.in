@@ -55,7 +55,7 @@
                     <div class="col-sm-8">
                         <select name="funtype" id="funtype" class="form-control" onchange="onchange_funtype()">
 							<option value="0" <?php if($row->funtype=="0"){ ?> selected <?php } ?>>
-								Select function type
+								Not Need
 							</option>
 							<option value="1" <?php if($row->funtype=="1"){ ?> selected <?php } ?>>
 								Select Medicine

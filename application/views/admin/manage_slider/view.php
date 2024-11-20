@@ -50,15 +50,15 @@
 						</td>
 						<td>
                         	<?if($row->funtype=="0"){ ?>Not Need<?php } ?>
-							<?if($row->funtype=="1"){ ?>Item (<?= $row->itemid; ?>)<?php } ?>
+							<?if($row->funtype=="1"){ ?>Medicine (<?= $row->itemid; ?>)<?php } ?>
 							<?if($row->funtype=="2"){ ?>Company (<?= $row->compid; ?>)<?php } ?>
                         </td>
 						<td>
 							<?if($row->funtype=="1"){ ?>
 								<?php 
 								$i_code = $row->itemid;
-								$row1 =  $this->db->query ("select item_name,item_code from tbl_medicine where i_code='$i_code'")->row();?>	
-								<?= ($row1->item_name); ?> (<?= ($row1->item_code); ?>)
+								$row1 =  $this->db->query ("select item_name,i_code from tbl_medicine where i_code='$i_code'")->row();?>	
+								<?= ($row1->item_name); ?> (<?= ($row1->i_code); ?>)
 							<?php } ?>
 							<?if($row->funtype=="2"){ ?>
 								<?php $compid = $row->compid; ?>
