@@ -79,7 +79,7 @@
                     </div>
                     <div class="col-sm-8">
 						<input type="text" id="find_medicine_id" name="find_medicine_id" value="<?= $row->itemid?>" />
-						<?php $row1 =  $this->db->query ("select item_name,item_code from tbl_medicine where i_code='$row->itemid'")->row();
+						<?php $row1 =  $this->db->query ("select item_name,i_code from tbl_medicine where i_code='$row->itemid'")->row();
 						?>
 
 						<input type="text" class="form-control" id="medicine_name" name="medicine_name" tabindex="1" placeholder="Enter Medicine" autocomplete="off" value="<?= $row1->item_name?> (<?= $row1->i_code?>)" />
