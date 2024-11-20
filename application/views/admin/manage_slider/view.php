@@ -50,8 +50,8 @@
 						</td>
 						<td>
                         	<?if($row->funtype=="0"){ ?>Not Need<?php } ?>
-							<?if($row->funtype=="1"){ ?>Medicine (<?= $row->itemid; ?>)<?php } ?>
-							<?if($row->funtype=="2"){ ?>Company (<?= $row->compid; ?>)<?php } ?>
+							<?if($row->funtype=="1"){ ?>Medicine (<?= $row->item_code; ?>)<?php } ?>
+							<?if($row->funtype=="2"){ ?>Company (<?= $row->comp_code; ?>)<?php } ?>
                         </td>
 						<td>
 							<?if($row->funtype=="1"){ ?>
