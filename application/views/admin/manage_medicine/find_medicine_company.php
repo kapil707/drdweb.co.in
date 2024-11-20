@@ -115,16 +115,34 @@ function addActiveMedicineCompany(listItems) {
 /*************************************************** */
 function find_medicine_company_division()
 {	
-	var find_medicine_company_id = $("#find_medicine_company_id").val();
-	$(".division_div").html("Loading....");
+	find_medicine_company_id = $("#find_medicine_company_id").val();
 	$.ajax({
-        type       : "POST",
-        data       :  {find_medicine_company_id:find_medicine_company_id},
-        url        : "<?= base_url()?>admin/manage_medicine/find_medicine_company_division",
-        cache	   : false,
-        success    : function(data){
-                $(".division_div").html(data);
+        type: "POST",
+        data: { find_medicine_company_id: find_medicine_company_id },
+        url: "<?= base_url()?>admin/manage_medicine/find_medicine_company_division",
+        cache: false,
+        dataType: 'json',
+        success: function(response) {
+            if (response.success === "1") {
+                // Dropdown ko clear karen
+                $('#find_medicine_company_division').empty();
+
+                // Default option add karen
+                $('#find_medicine_company_division').append('<option value="">Select Company Division</option>');
+
+                // Items loop kar ke options add karen
+                response.items.forEach(function(item) {
+                    $('#find_medicine_company_division').append(
+                        `<option value="${item.item_name}">${item.item_name}</option>`
+                    );
+                });
+            } else {
+                console.error('Error:', response.message);
             }
-        });
+        },
+        error: function(xhr, status, error) {
+            console.error('AJAX Error:', error);
+        }
+    });
 }
 </script>

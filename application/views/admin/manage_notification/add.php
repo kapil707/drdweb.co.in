@@ -152,7 +152,7 @@
                         </label>
                     </div>
                     <div class="col-sm-8 division_div">                        
-						<select name="division" id="division" class="form-control">
+						<select name="find_medicine_company_division" id="find_medicine_company_division" class="form-control">
 							<option value="">
 								Select Company Division
 							</option>
