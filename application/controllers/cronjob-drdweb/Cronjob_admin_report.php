@@ -19,37 +19,17 @@ class Cronjob_admin_report extends CI_Controller
 		$result = $this->db->query("select count(id) as total from tbl_medicine")->row();
 		$massage1.= "<br>Total Medicine :- ".$result->total;
 		
-		/*****************************************************/
-		$this->insert_meta_data("total_medicine",$result->total);
-		/*****************************************************/
-		
 		$result = $this->db->query("select count(id) as total from tbl_chemist where slcd='CL'")->row();
 		$massage1.= "<br>Total Chemist :- ".$result->total;
-		
-		/*****************************************************/
-		$this->insert_meta_data("total_chemist",$result->total);
-		/*****************************************************/
 		
 		$result = $this->db->query("select count(id) as total from tbl_users")->row();
 		$massage1.= "<br>Total Salesman :- ".$result->total;
 		
-		/*****************************************************/
-		$this->insert_meta_data("total_salesman",$result->total);
-		/*****************************************************/
-		
 		$result = $this->db->query("select count(id) as total from tbl_corporate")->row();
 		$massage1.= "<br>Total Corporate :- ".$result->total;
 		
-		/*****************************************************/
-		$this->insert_meta_data("total_corporate",$result->total);
-		/*****************************************************/
-		
 		$result = $this->db->query("select count(id) as total from tbl_master where slcd='SM' and altercode!=''")->row();
 		$massage1.= "<br>Total master :- ".$result->total;
-		
-		/*****************************************************/
-		$this->insert_meta_data("total_master",$result->total);
-		/*****************************************************/
 		
 		/************************************************/
 		
@@ -73,11 +53,6 @@ class Cronjob_admin_report extends CI_Controller
 		$massage2.= "<br>Total Invoice :- ".$today_invoice;
 		$massage2.= "<br>Total Sale :- ".$today_total_sales;
 		
-		/*****************************************************/
-		$this->insert_meta_data("total_invoice",$today_invoice);
-		$this->insert_meta_data("total_sale",$today_total_sales);
-		/*****************************************************/
-		
 		/***************************************************/
 		
 		$result = $this->db->query("select count(id) as total from tbl_cart_order where date='$date'")->row();
@@ -98,33 +73,14 @@ class Cronjob_admin_report extends CI_Controller
 		$massage3.= "<br>";	
 		$massage3.= "<br>Today Total Order :- ".$today_orders1;
 		
-		/*****************************************************/
-		$this->insert_meta_data("pending_order",$today_orders2);
-		$this->insert_meta_data("pending_order_value",$today_orders2_val);
-		$this->insert_meta_data("pending_order_order",$today_orders1);
-		/*****************************************************/
-		
 		$result = $this->db->query("select count(id) as total from tbl_cart_order where date='$date' ")->row();
 		$massage3.= "<br>Unique Orders :- ".$result->total;
-		
-		/*****************************************************/
-		$this->insert_meta_data("unique_orders",$result->total);
-		/*****************************************************/
 		
 		$result = $this->db->query("select count(id) as total from tbl_cart_order where date='$date' and order_type='pc_mobile'")->row();
 		$massage3.= "<br>Total Website Orders :- ".$result->total;
 		
-		/*****************************************************/
-		$this->insert_meta_data("total_website_orders",$result->total);
-		/*****************************************************/
-		
 		$result = $this->db->query("select count(id) as total from tbl_cart_order where date='$date' and order_type='android'")->row();
 		$massage3.= "<br>Total Android Orders :- ".$result->total;
-		
-		/*****************************************************/
-		$this->insert_meta_data("total_android_orders",$result->total);
-		/*****************************************************/
-
 
 		$massage4 = "<br>";
 		$massage4.= "<br> **************Email part**************";
@@ -138,15 +94,11 @@ class Cronjob_admin_report extends CI_Controller
 			$row2 = $this->db->query("select count(id) as total from tbl_email_send where date='$date' and email_function='$email_function' and status=1")->row();
 
 			$massage4.= "<br>Total ".$server_email_name." :- ".$row1->total."/".$row2->total;
-			
-			/*****************************************************/
-			$this->insert_meta_data($email_function,$row1->total."/".$row2->total);
-			/*****************************************************/
 		}
 
-		$result = $this->db->query("select sum(total) as total1,count(id) as total2 from tbl_cart_order where date='$date' and order_type='android'")->row();
-		$today_orders_price = $result->total1;
-		$today_orders_items = $result->total2;
+		$result = $this->db->query("select sum(total) as today_orders_price,count(items_total) as today_orders_items from tbl_cart_order where date='$date'")->row();
+		$today_orders_price = $result->today_orders_price;
+		$today_orders_items = $result->today_orders_items;
 		
 		setlocale(LC_MONETARY, 'en_IN');
 		$today_orders_price = money_format('%!i', $today_orders_price);
@@ -154,11 +106,6 @@ class Cronjob_admin_report extends CI_Controller
 		
 		$massage3.= "<br>Total Order Value :- ".$today_orders_price;
 		$massage3.= "<br>Total Order Item :- ".$today_orders_items;
-		
-		/*****************************************************/
-		$this->insert_meta_data("total_order_value",$today_orders_price);
-		$this->insert_meta_data("total_order_item",$today_orders_items);
-		/*****************************************************/
 
 		/***************only for group message***********************/
 		$group2_message 	= $massage.$massage1.$massage2.$massage3.$massage4;
@@ -167,13 +114,5 @@ class Cronjob_admin_report extends CI_Controller
 		/*************************************************************/
 		
 		echo "Admin Report Working";
-	}
-	
-	public function insert_meta_data($meta_type="",$meta_data=""){
-		$datatime  = time();
-		$date  = date("Y-m-d",$datatime);
-		$time  = date("H:i",$datatime);
-		$dt = array('meta_type'=>$meta_type,'meta_data'=>$meta_data,'date'=>$date,'time'=>$time,'datatime'=>$datatime,);
-		$this->Scheme_Model->insert_fun("tbl_meta_data",$dt);
 	}
 }
