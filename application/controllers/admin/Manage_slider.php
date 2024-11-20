@@ -211,6 +211,7 @@ class Manage_slider extends CI_Controller {
 				'time' => date('H:i:s'),
 				'timestamp' => time(),
 			);
+			$where = array('id'=>$id);
 			$result = $this->Scheme_Model->edit_fun($tbl,$dt,$where);
 			if($result)
 			{
