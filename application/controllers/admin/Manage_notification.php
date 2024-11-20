@@ -47,7 +47,7 @@ class Manage_notification extends CI_Controller {
 		$upload_resize 		= "./uploads/$page_controllers/photo/resize/";
 
 		$system_ip = $this->input->ip_address();
-		$itemid = 0;
+		$find_medicine_id = 0;
 		$med_item_id = "";
 		extract($_POST);
 		if(isset($Submit))
@@ -97,7 +97,7 @@ class Manage_notification extends CI_Controller {
 					$chemist_id = $row1->altercode;
 					$user_type = "chemist";
 
-					$result = $this->NotificationModel->insert_notification($funtype,$title,$message,$chemist_id,$user_type,$itemid,$compid,$division,$image,'Admin');
+					$result = $this->NotificationModel->insert_notification($funtype,$title,$message,$chemist_id,$user_type,$find_medicine_id,$compid,$division,$image,'Admin');
 				}
 				if($result)
 				{
@@ -131,6 +131,7 @@ class Manage_notification extends CI_Controller {
 		$this->load->view("admin/header_footer/footer",$data);
 		$this->load->view("admin/manage_user_chemist/find_chemist",$data);
 		$this->load->view("admin/manage_medicine/find_medicine",$data);
+		$this->load->view("admin/manage_medicine/find_medicine_company",$data);
 	}
 	public function view()
 	{

@@ -110,7 +110,7 @@
                         </label>
                     </div>
                     <div class="col-sm-8">
-						<input type="hidden" id="find_medicine_id" name="find_medicine_id"/>
+						<input type="text" id="find_medicine_id" name="find_medicine_id"/>
 
 						<input type="text" class="form-control" id="medicine_name" name="medicine_name" tabindex="1" placeholder="Enter Medicine" autocomplete="off" />
 
@@ -118,7 +118,7 @@
                     </div>
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">
-                            <?= form_error('find_item_code'); ?>
+                            <?= form_error('find_medicine_id'); ?>
                         </span>
                     </div>
                 </div>
@@ -133,13 +133,15 @@
                         </label>
                     </div>
                     <div class="col-sm-8">
-						<input type="hidden" id="compid" name="compid" value="0"/>
-						<input type="text" class="form-control" id="company_name" name="company_name" tabindex="1" onkeydown="call_search_company()" onkeyup="call_search_company()" placeholder="Select Company" autocomplete="off" />
-						<div class="call_search_company_result" style="position: absolute;z-index: 1;background: white;width: 300px;"></div>
+						<input type="hidden" id="find_medicine_company_id" name="find_medicine_company_id"/>
+
+						<input type="text" class="form-control" id="company_name" name="company_name" tabindex="1" placeholder="Enter Company" autocomplete="off" />
+
+						<div class="find_medicine_company_result"></div>
                     </div>
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">
-                            <?= form_error('compid'); ?>
+                            <?= form_error('find_medicine_company_id'); ?>
                         </span>
                     </div>
                 </div>
@@ -201,35 +203,6 @@ function onchange_funtype()
 </script>
 
 <script>
-function call_search_item()
-{	
-	item_name = $("#item_name").val();
-	$(".call_search_item_result").html("Loading....");
-	if(item_name=="")
-	{
-		$(".call_search_item_result").html("");
-	}
-	else
-	{
-		$.ajax({
-		type       : "POST",
-		data       :  {item_name:item_name},
-		url        : "<?= base_url()?>admin/<?= $Page_name?>/call_search_item",
-		cache	   : false,
-		success    : function(data){
-			$(".call_search_item_result").html(data);
-			}
-		});
-	}
-}
-function additem(id,name)
-{
-	name = atob(name);
-	$("#itemid").val(id);
-	$("#item_name").val(name);
-	$(".call_search_item_result").html("");
-}
-
 function call_search_company()
 {	
 	company_name = $("#company_name").val();

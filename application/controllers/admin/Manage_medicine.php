@@ -62,13 +62,57 @@ class Manage_medicine extends CI_Controller {
 			
 			$medicine_name = $this->input->post('medicine_name');
 
-			$result =  $this->db->query ("select * from tbl_medicine where item_name Like '$medicine_name%' or item_name Like '%$medicine_name' or item_name='$medicine_name' limit 50")->result();
+			$result =  $this->db->query ("select i_code,item_name from tbl_medicine where item_name Like '$medicine_name%' or item_name Like '%$medicine_name' or item_name='$medicine_name' limit 50")->result();
 			foreach($result as $row){
 
 				$sr_no = $i++;
 				$id = $row->id;
 				$item_code = $row->i_code;
 				$item_name = $row->item_name;	
+
+				$dt = array(
+					'sr_no' => $sr_no,
+					'id' => $id,
+					'item_code' => $item_code,
+					'item_name'=>$item_name,
+				);
+				$jsonArray[] = $dt;
+			}
+			
+			$items = $jsonArray;
+			$response = array(
+				'success' => "1",
+				'message' => 'Data load successfully',
+				'items' => $items,
+			);
+		}else{
+			$response = array(
+				'success' => "0",
+				'message' => '502 error',
+			);
+		}
+
+		// Send JSON response
+        header('Content-Type: application/json');
+        echo json_encode($response);
+	}
+
+	public function find_medicine_company()
+	{	
+		$i  = 0;
+		$jsonArray = array();
+		if(!empty($_REQUEST)){
+			
+			$medicine_company_name = $this->input->post('medicine_company_name');
+
+			$result =  $this->db->query ("select comp_altercode,company_full_name from tbl_medicine where company_full_name Like '$medicine_company_name%' or company_full_name Like '%$medicine_company_name' or company_full_name='$medicine_company_name' or
+			company_name Like '$medicine_company_name%' or company_name Like '%$medicine_company_name' or company_name='$medicine_company_name' limit 50")->result();
+			foreach($result as $row){
+
+				$sr_no = $i++;
+				$id = $row->id;
+				$item_code = $row->comp_altercode;
+				$item_name = $row->company_full_name;	
 
 				$dt = array(
 					'sr_no' => $sr_no,
