@@ -30,7 +30,7 @@
                         </label>
                     </div>
                     <div class="col-sm-8">
-                        <select name="funtype" id="funtype" class="form-control" onChange="funtype()">
+                        <select name="funtype" id="funtype" class="form-control" onchange="funtype()">
 							<option value="0">
 								Not Need
 							</option>
