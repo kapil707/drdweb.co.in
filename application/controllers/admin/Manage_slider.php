@@ -103,7 +103,8 @@ class Manage_slider extends CI_Controller {
 			'funtype'=>$funtype,
 			'itemid'=>$itemid,
 			'compid'=>$compid,
-			'division'=>$division,			'slider_type'=>$slider_type,
+			'division'=>$division,
+			'slider_type'=>$slider_type,
 			);
 			$result = $this->Scheme_Model->insert_fun($tbl,$dt);
 			$name = base64_decode($name);
@@ -136,11 +137,12 @@ class Manage_slider extends CI_Controller {
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/add",$data);
 		$this->load->view("admin/header_footer/footer",$data);
+		$this->load->view("admin/manage_medicine/find_medicine",$data);
+		$this->load->view("admin/manage_medicine/find_medicine_company",$data);
 	}
 
 	public function view()
 	{
-		error_reporting(0);
 		/******************session***********************/
 		$user_id = $this->session->userdata("user_id");
 		$user_type = $this->session->userdata("user_type");
@@ -180,7 +182,6 @@ class Manage_slider extends CI_Controller {
 	}
 	public function edit($id)
 	{
-		error_reporting(0);
 		/******************session***********************/
 		$user_id = $this->session->userdata("user_id");
 		$user_type = $this->session->userdata("user_type");
@@ -308,6 +309,8 @@ class Manage_slider extends CI_Controller {
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/edit",$data);
 		$this->load->view("admin/header_footer/footer",$data);
+		$this->load->view("admin/manage_medicine/find_medicine",$data);
+		$this->load->view("admin/manage_medicine/find_medicine_company",$data);
 	}
 
 	public function delete_rec()

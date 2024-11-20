@@ -9,7 +9,42 @@
         foreach ($result as $row)
         { ?>
             <input type="hidden" name="old_image" value="<?= $row->image; ?>" />
-						<div class="form-group">					<div class="col-sm-6">                    <div class="col-sm-4 text-right">                        <label class="control-label" for="form-field-1">                            Slider Type                        </label>                    </div>                    <div class="col-sm-8">                        <select name="slider_type" id="slider_type" class="form-control">							<option value="1" <?php if($row->slider_type==1) { ?> selected <?php } ?>>								Slider 1							</option>							<option value="2" <?php if($row->slider_type==2) { ?> selected <?php } ?>>								Slider 2							</option>						</select>                    </div>                    <div class="help-inline col-sm-12 has-error">                        <span class="help-block reset middle">                              <?= form_error('slider_type'); ?>                        </span>                    </div>                </div>								<div class="col-sm-6">                    <div class="col-sm-4 text-right">                        <label class="control-label" for="form-field-1">							Short Order                        </label>                    </div>                    <div class="col-sm-8">						<input type="number" class="form-control" id="short_order" name="short_order" placeholder="Short Order" value="<?= $row->short_order;?>" />                    </div>                    <div class="help-inline col-sm-12 has-error">                        <span class="help-block reset middle">                            <?= form_error('short_order'); ?>                        </span>                    </div>                </div>			</div>
+			<div class="form-group">
+				<div class="col-sm-6">
+					<div class="col-sm-4 text-right">
+						<label class="control-label" for="form-field-1">Slider Type</label></div>
+						<div class="col-sm-8">
+							<select name="slider_type" id="slider_type" class="form-control">
+								<option value="1" <?php if($row->slider_type==1) { ?> selected <?php } ?>>
+									Slider 1
+								<option>
+								<option value="2" <?php if($row->slider_type==2) { ?> selected <?php } ?>>
+								Slider 2
+							</option>
+						</select>
+					</div>
+					<div class="help-inline col-sm-12 has-error">
+						<span class="help-block reset middle"> 
+						<?= form_error('slider_type'); ?>
+						</span>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="col-sm-4 text-right">
+						<label class="control-label" for="form-field-1">
+							Short Order
+						</label>
+					</div>
+					<div class="col-sm-8">
+						<input type="number" class="form-control" id="short_order" name="short_order" placeholder="Short Order" value="<?= $row->short_order;?>" />
+					</div>
+					<div class="help-inline col-sm-12 has-error">
+						<span class="help-block reset middle">
+							<?= form_error('short_order'); ?>
+						</span>
+					</div>
+				</div>
+			</div>
 			<div class="form-group">	
 				<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
@@ -18,15 +53,15 @@
                         </label>
                     </div>
                     <div class="col-sm-8">
-                        <select name="funtype" id="funtype" class="form-control" onchange="change_funtype()">
+                        <select name="funtype" id="funtype" class="form-control" onchange="onchange_funtype()">
 							<option value="0" <?php if($row->funtype=="0"){ ?> selected <?php } ?>>
 								Select function type
 							</option>
 							<option value="1" <?php if($row->funtype=="1"){ ?> selected <?php } ?>>
-								Item
+								Select Medicine
 							</option>							
 							<option value="2" <?php if($row->funtype=="2"){ ?> selected <?php } ?>>
-								Company
+								Select Company
 							</option>
 						</select>
                     </div>
@@ -36,23 +71,24 @@
                         </span>
                     </div>
                 </div>
-				<div class="col-sm-6 funtype_all funtype_1" <?php if($row->funtype==1) { ?>style="display:block;" <?php } ?>>
+				<div class="col-sm-6 div_medicine" <?php if($row->funtype==1) { ?>style="display:block;" <?php } ?>>
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
-                            Select Item
+                            Select Medicine
                         </label>
                     </div>
                     <div class="col-sm-8">
-                        <input type="hidden" id="i_code" name="i_code" value="<?= $i_code = $row->itemid?>"/>
-						<?php 
-						$row1 =  $this->db->query ("select item_name,item_code from tbl_medicine where i_code='$i_code'")->row();
+						<input type="text" id="find_medicine_id" name="find_medicine_id" value="<?= $row->itemid?>" />
+						<?php $row1 =  $this->db->query ("select item_name,item_code from tbl_medicine where i_code='$row->itemid'")->row();
 						?>
-						<input type="text" class="form-control" id="item_name" name="item_name"tabindex="1" onkeydown="call_search_item()" onkeyup="call_search_item()" placeholder="Select Item" autocomplete="off" value="<?= $row1->item_name?> (<?= $row1->item_code?>)" />
-						<div class="call_search_item_result" style="position: absolute;z-index: 1;background: white;width: 300px;"></div>
+
+						<input type="text" class="form-control" id="medicine_name" name="medicine_name" tabindex="1" placeholder="Enter Medicine" autocomplete="off" value="<?= $row1->item_name?> (<?= $row1->i_code?>)" />
+
+						<div class="find_medicine_result"></div>
                     </div>
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">
-                            <?= form_error('itemid'); ?>
+                            <?= form_error('find_medicine_id'); ?>
                         </span>
                     </div>
                 </div>
@@ -179,77 +215,32 @@
         <!-- PAGE CONTENT ENDS -->
     </div><!-- /.col -->
 </div><!-- /.row -->
-<script>function change_funtype(){	$(".funtype_all").hide();	funtype = $("#funtype").val();	if(funtype=="1"){		$(".funtype_1").show();	}	if(funtype=="2"){		$(".funtype_2").show();		}}
-function call_search_item()
+<script>
+function onchange_funtype()
 {	
-	item_name = $("#item_name").val();
-	$(".call_search_item_result").html("Loading....");
-	if(item_name=="")
-	{
-		$(".call_search_item_result").html("");
-	}
-	else
-	{
-		$.ajax({
-		type       : "POST",
-		data       :  {item_name:item_name},
-		url        : "<?= base_url()?>admin/<?= $Page_name?>/call_search_item",
-		cache	   : false,
-		success    : function(data){
-			$(".call_search_item_result").html(data);
-			}
-		});
-	}
-}
-function additem(i_code,name)
-{
-	name = atob(name);
-	$("#i_code").val(i_code);
-	$("#item_name").val(name);
-	$(".call_search_item_result").html("");
-}
+	/*********************************************** */
+	$('#medicine_name').removeAttr('required');
+	$("#find_medicine_id").val('');	
+	$(".div_medicine").hide();
+	/*********************************************** */
 
-function call_search_company()
-{	
-	company_name = $("#company_name").val();
-	$(".call_search_company_result").html("Loading....");
-	if(company_name=="")
-	{
-		$(".call_search_company_result").html("");
+	/*********************************************** */
+	$('#medicine_company_name').removeAttr('required');
+	$("#find_medicine_company_id").val('');
+	$(".div_company").hide();
+
+	$('#find_medicine_company_division').removeAttr('required');
+	/*********************************************** */
+	
+	let selectedValue = $("#funtype").val();
+	if(selectedValue==1){
+		$(".div_medicine").show();
+		$('#medicine_name').attr('required', true);
 	}
-	else
-	{
-		$.ajax({
-		type       : "POST",
-		data       :  {company_name:company_name},
-		url        : "<?= base_url()?>admin/<?= $Page_name?>/call_search_company",
-		cache	   : false,
-		success    : function(data){
-			$(".call_search_company_result").html(data);
-			}
-		});
+	if(selectedValue==2){
+		$(".div_company").show();
+		$('#medicine_company_name').attr('required', true);
+		$('#find_medicine_company_division').attr('required', true);
 	}
-}
-function addcompany(id,name)
-{
-	name = atob(name);
-	$("#compid").val(id);
-	$("#company_name").val(name);
-	$(".call_search_company_result").html("");
-	get_company_division();
-}
-function get_company_division()
-{	
-	compid = $("#compid").val();
-	$(".division_div").html("Loading....");
-	$.ajax({
-	type       : "POST",
-	data       :  {compid:compid},
-	url        : "<?= base_url()?>admin/<?= $Page_name?>/get_company_division",
-	cache	   : false,
-	success    : function(data){
-		$(".division_div").html(data);
-		}
-	});
 }
 </script>
