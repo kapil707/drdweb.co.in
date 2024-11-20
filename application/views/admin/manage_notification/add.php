@@ -35,7 +35,7 @@
 								Not Need
 							</option>
 							<option value="1">
-								Select Item
+								Select Medicine
 							</option>							
 							<option value="2">
 								Select Company
