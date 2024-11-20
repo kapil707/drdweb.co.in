@@ -76,7 +76,7 @@ function find_medicine_company(){
         $('#find_medicine_company_division').empty();
 
         // Default option add karen
-        $('#find_medicine_company_division').append(`<option value="0">Select ${medicine_company_name} Division</option>`);
+        $('#find_medicine_company_division').append(`<option value="">Select ${medicine_company_name} Division</option>`);
         return; // Exit if fewer than 2 characters
     }
 
