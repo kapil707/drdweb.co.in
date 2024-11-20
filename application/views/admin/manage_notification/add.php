@@ -30,7 +30,7 @@
                         </label>
                     </div>
                     <div class="col-sm-8">
-						<select name="funtype" id="funtype" class="form-control" onchange="funtype()">
+						<select name="funtype" id="funtype" class="form-control" onchange="onchange_funtype()">
 							<option value="0">
 								Not Need
 							</option>
@@ -185,7 +185,7 @@
     </div><!-- /.col -->
 </div><!-- /.row -->
 <script>
-function funtype()
+function onchange_funtype()
 {	
 	let selectedValue = $("#funtype").val();
     alert("You selected: " + selectedValue);
