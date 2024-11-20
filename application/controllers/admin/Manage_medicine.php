@@ -66,13 +66,11 @@ class Manage_medicine extends CI_Controller {
 			foreach($result as $row){
 
 				$sr_no = $i++;
-				$id = $row->id;
 				$item_code = $row->i_code;
 				$item_name = $row->item_name;	
 
 				$dt = array(
 					'sr_no' => $sr_no,
-					'id' => $id,
 					'item_code' => $item_code,
 					'item_name'=>$item_name,
 				);
@@ -110,13 +108,11 @@ class Manage_medicine extends CI_Controller {
 			foreach($result as $row){
 
 				$sr_no = $i++;
-				$id = $row->id;
 				$item_code = $row->comp_altercode;
 				$item_name = $row->company_full_name;	
 
 				$dt = array(
 					'sr_no' => $sr_no,
-					'id' => $id,
 					'item_code' => $item_code,
 					'item_name'=>$item_name,
 				);
