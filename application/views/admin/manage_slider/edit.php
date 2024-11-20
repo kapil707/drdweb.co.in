@@ -78,11 +78,11 @@
                         </label>
                     </div>
                     <div class="col-sm-8">
-						<input type="text" id="find_medicine_id" name="find_medicine_id" value="<?= $row->itemid?>" />
+						<input type="text" id="find_medicine_id" name="find_medicine_id" value="<?= $row->item_code?>" />
 
 						<?php 
 						$medicine_name = "";
-						$row1 = $this->db->query ("select item_name,i_code from tbl_medicine where i_code='$row->itemid'")->row();
+						$row1 = $this->db->query ("select item_name,i_code from tbl_medicine where i_code='$row->item_code'")->row();
 						if(!empty($row1)){
 							$medicine_name = $row1->item_name."($row1->i_code)";
 						}
@@ -108,7 +108,7 @@
                         </label>
                     </div>
                     <div class="col-sm-8">
-						<input type="text" id="find_medicine_company_id" name="find_medicine_company_id" value="<?= $row->compid ?>"/>
+						<input type="text" id="find_medicine_company_id" name="find_medicine_company_id" value="<?= $row->comp_code ?>"/>
 
 						<?php 
 						$medicine_company_name = "";
@@ -141,10 +141,10 @@
 								Select Company Division
 							</option>
 							<?php
-							$result1 =  $this->db->query ("select DISTINCT division from tbl_medicine where compcode='$row->compid' order by division asc")->result();
+							$result1 =  $this->db->query("select DISTINCT division from tbl_medicine where compcode='$row->comp_code' order by division asc")->result();
 							foreach($result1 as $row1)
 							{
-								$division = $row1->division;
+								$division = $row1->comp_division;
 								?>
 								<option value="<?= $division ?>" <?php if($division==$row->division) { ?>selected <?php } ?>>
 									<?= $division ?>
