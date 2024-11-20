@@ -72,6 +72,11 @@ function find_medicine_company(){
 
     if (medicine_company_name.length < 2) {
         $(".find_medicine_company_result").html(""); // Clear results if input is too short
+        // Dropdown ko clear karen
+        $('#find_medicine_company_division').empty();
+
+        // Default option add karen
+        $('#find_medicine_company_division').append(`<option value="0">Select ${medicine_company_name} Division</option>`);
         return; // Exit if fewer than 2 characters
     }
 
