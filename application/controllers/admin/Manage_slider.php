@@ -6,7 +6,7 @@ class Manage_slider extends CI_Controller {
 	var $Page_view  = "manage_slider";
 	var $Page_menu  = "manage_slider";
 	var $page_controllers = "manage_slider";
-	var $Page_tbl   = "tbl_slider";
+	var $Page_tbl   = "tbl_slider_test";
 	public function index()
 	{
 		$page_controllers = $this->page_controllers;
@@ -15,7 +15,6 @@ class Manage_slider extends CI_Controller {
 	
 	public function add()
 	{
-		error_reporting(0);
 		/******************session***********************/
 		$user_id = $this->session->userdata("user_id");
 		$user_type = $this->session->userdata("user_type");
@@ -44,16 +43,13 @@ class Manage_slider extends CI_Controller {
 		$upload_path 		= "./uploads/$page_controllers/photo/main/";
 		$upload_resize 		= "./uploads/$page_controllers/photo/resize/";	
 
-		$system_ip = $this->input->ip_address();
-		$user_type = $status = "";
+		$find_medicine_id = $find_medicine_company_id = $find_medicine_company_division = "";
 		extract($_POST);
 		if(isset($Submit))
 		{
-			$itemid = $i_code;
-			$message_db = "";
-			
-			$time = time();
-			$date = date("Y-m-d",$time);			
+			$item_code = $find_medicine_id;
+			$comp_code = $find_medicine_company_id;
+			$comp_division = $find_medicine_company_division;
 
 			if (!empty($_FILES["image"]["name"]))
 			{
@@ -70,67 +66,32 @@ class Manage_slider extends CI_Controller {
 			{
 				$image = "";
 			}
-			
-			if($funtype=="2")
-			{
-				$itemid = "";
-			}
-			
-			if($funtype=="1")
-			{
-				$compid = "";
-				$division = "";
-			}
-			
-			if($funtype=="0")
-			{
-				$itemid = "";
-				$compid = "";
-				$division = "";
-			}
-			
-			$result = "";
+
 			$dt = array(
-			'short_order'=>$short_order,
-			'user_id'=>$user_id,
-			'image'=>$image,
-			'status'=>$status,
-			'date'=>$date,
-			'time'=>$time,
-			'update_date'=>$date,
-			'update_time'=>$time,
-			'system_ip'=>$system_ip,
-			'funtype'=>$funtype,
-			'itemid'=>$itemid,
-			'compid'=>$compid,
-			'division'=>$division,
-			'slider_type'=>$slider_type,
+				'slider_type'=>$slider_type,
+				'short_order'=>$short_order,
+				'funtype'=>$funtype,
+				'item_code'=>$item_code,
+				'comp_code'=>$comp_code,
+				'comp_division'=>$comp_division,
+				'image'=>$image,
+				'status'=>$status,
+				'user_id'=>$user_id,
+				'date' => date('Y-m-d'),
+				'time' => date('H:i:s'),
+				'timestamp' => time(),
 			);
 			$result = $this->Scheme_Model->insert_fun($tbl,$dt);
-			$name = base64_decode($name);
 			if($result)
 			{
-				$message_db = "($name) -  Add Successfully.";
 				$message = "Add Successfully.";
 				$this->session->set_flashdata("message_type","success");
+				redirect(base_url()."admin/$page_controllers/view");
 			}
 			else
 			{
-				$message_db = "($property_title) - Not Add.";
 				$message = "Not Add.";
 				$this->session->set_flashdata("message_type","error");
-			}
-			if($message_db!="")
-			{
-				$message = $Page_title." - ".$message;
-				$message_db = $Page_title." - ".$message_db;
-				$this->session->set_flashdata("message_footer","yes");
-				$this->session->set_flashdata("full_message",$message);
-				$this->Admin_Model->Add_Activity_log($message_db);
-				if($result)
-				{
-					redirect(base_url()."admin/$page_controllers/view");
-				}
 			}
 		}		
 
@@ -212,17 +173,14 @@ class Manage_slider extends CI_Controller {
 		$upload_resize 		= "./uploads/$page_controllers/photo/resize/";
 
 		$find_medicine_id = $find_medicine_company_id = $find_medicine_company_division = "";
-		$system_ip = $this->input->ip_address();
+		
 		extract($_POST);
 		if(isset($Submit))
 		{
-			$itemid = $find_medicine_id;
-			$message_db = "";
-			
-			$time = time();
-			$date = date("Y-m-d",$time);
-			$where = array('id'=>$id);
-			
+			$item_code = $find_medicine_id;
+			$comp_code = $find_medicine_company_id;
+			$comp_division = $find_medicine_company_division;
+	
 			if (!empty($_FILES["image"]["name"]))
 			{
 				$this->Image_Model->uploadTo = $upload_path;
@@ -237,42 +195,21 @@ class Manage_slider extends CI_Controller {
 			else
 			{
 				$image = $old_image;
-			}
+			}			
 			
-			
-			if($funtype=="2")
-			{
-				$itemid = "";
-			}
-			
-			if($funtype=="1")
-			{
-				$compid = "";
-				$division = "";
-			}
-			
-			if($funtype=="0")
-			{
-				$itemid = "";
-				$compid = "";
-				$division = "";
-			}
-			
-			$result = "";
 			$dt = array(
-			'short_order'=>$short_order,
-			'user_id'=>$user_id,
-			'image'=>$image,
-			'status'=>$status,
-			'date'=>$date,
-			'time'=>$time,
-			'update_date'=>$date,
-			'update_time'=>$time,
-			'system_ip'=>$system_ip,
-			'funtype'=>$funtype,
-			'itemid'=>$itemid,
-			'compid'=>$compid,
-			'division'=>$division,						'slider_type'=>$slider_type,
+				'slider_type'=>$slider_type,
+				'short_order'=>$short_order,
+				'funtype'=>$funtype,
+				'item_code'=>$item_code,
+				'comp_code'=>$comp_code,
+				'comp_division'=>$comp_division,
+				'image'=>$image,
+				'status'=>$status,
+				'user_id'=>$user_id,
+				'date' => date('Y-m-d'),
+				'time' => date('H:i:s'),
+				'timestamp' => time(),
 			);
 			$result = $this->Scheme_Model->edit_fun($tbl,$dt,$where);
 			if($result)
