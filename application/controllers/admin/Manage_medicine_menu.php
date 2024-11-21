@@ -263,7 +263,56 @@ class Manage_medicine_menu extends CI_Controller {
 		$this->load->view("admin/header_footer/footer",$data);
 		$this->load->view("admin/manage_medicine/find_medicine_company",$data);
 	}
-	
+
+	public function view_api() {		
+
+		$jsonArray = array();
+		$items = "";
+		$i = 1;
+		$Page_tbl = $this->Page_tbl;
+		if(!empty($_REQUEST)){
+
+			$result = $this->db->query("SELECT * FROM $Page_tbl order by id desc");
+			$result = $result->result();
+			foreach($result as $row) {
+
+				$sr_no = $i++;
+				$id = $row->id;
+
+				$menu = $row->menu;
+				$comp_code = $row->comp_code;
+				$image = $row->image;
+				$datetime = date("d-M-y @ H:i:s", $row->timestamp);
+
+				$dt = array(
+					'sr_no' => $sr_no,
+					'id' => $id,
+					'menu' => $menu,
+					'comp_code'=>$comp_code,
+					'image'=>$image,
+					'datetime'=>$datetime,
+				);
+				$jsonArray[] = $dt;
+			}
+		
+			if(!empty($items)){
+				$items = $jsonArray;
+				$response = array(
+					'success' => "1",
+					'message' => 'Data load successfully',
+					'items' => $items,
+				);
+			}else{
+				$response = array(
+					'success' => "0",
+					'message' => '502 error',
+				);
+			}
+		}
+        // Send JSON response
+        header('Content-Type: application/json');
+        echo json_encode($response);
+	}
 	
 	public function delete_rec()
 	{
