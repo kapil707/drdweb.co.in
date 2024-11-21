@@ -51,7 +51,7 @@
 				<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
-                        Company Name
+                            Company Name
                         </label>
                     </div>
                     <div class="col-sm-8">
@@ -60,21 +60,6 @@
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">
                             <?= form_error('menu'); ?>
-                        </span>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="col-sm-4 text-right">
-                        <label class="control-label" for="form-field-1">
-							Sort Order
-                        </label>
-                    </div>
-                    <div class="col-sm-8">
-						<input type="number" class="form-control" id="short_order" name="short_order" placeholder="Sort Order" />
-                    </div>
-                    <div class="help-inline col-sm-12 has-error">
-                        <span class="help-block reset middle">
-                            <?= form_error('short_order'); ?>
                         </span>
                     </div>
                 </div>
@@ -96,6 +81,21 @@
                         </span>
                     </div>
               	</div>
+                  <div class="col-sm-6">
+                    <div class="col-sm-4 text-right">
+                        <label class="control-label" for="form-field-1">
+							Sort Order
+                        </label>
+                    </div>
+                    <div class="col-sm-8">
+						<input type="number" class="form-control" id="short_order" name="short_order" placeholder="Sort Order" />
+                    </div>
+                    <div class="help-inline col-sm-12 has-error">
+                        <span class="help-block reset middle">
+                            <?= form_error('short_order'); ?>
+                        </span>
+                    </div>
+                </div>
 			</div>
 			
 			<div class="form-group">				

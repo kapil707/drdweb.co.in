@@ -238,7 +238,7 @@ class Manage_medicine_menu extends CI_Controller {
 			$sr_no = $i++;
 			$id = $row->id;
 
-			$menu = $row->menu;
+			$company_full_name = $row->company_full_name;
 			$comp_code = $row->comp_code;
 			$image = $row->image;
 			$datetime = date("d-M-y @ H:i:s", $row->timestamp);
