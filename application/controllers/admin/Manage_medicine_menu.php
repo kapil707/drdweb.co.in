@@ -40,9 +40,9 @@ class Manage_medicine_menu extends CI_Controller {
 		
 		$tbl = $Page_tbl;
 		
-		$data['url_path'] 	= base_url()."uploads/$page_controllers/photo/resize/";
-		$upload_path 		= "./uploads/$page_controllers/photo/main/";
-		$upload_resize 		= "./uploads/$page_controllers/photo/resize/";
+		$data['url_path'] 	= base_url()."uploads/company_division_wise/photo/resize/";
+		$upload_path 		= "./uploads/company_division_wise/photo/main/";
+		$upload_resize 		= "./uploads/company_division_wise/photo/resize/";
 		
 		extract($_POST);
 		if(isset($Submit))
@@ -69,7 +69,7 @@ class Manage_medicine_menu extends CI_Controller {
 				'company_name'=>$company_name,
 				'company_code'=>$find_medicine_company_id,
 				'company_division'=>$find_medicine_company_division,
-				'image'=>$image,				
+				'image'=>$image,
 				'short_order'=>$short_order,
 				'status'=>$status,
 				'date' => date('Y-m-d'),
@@ -167,9 +167,9 @@ class Manage_medicine_menu extends CI_Controller {
 		
 		$tbl = $Page_tbl;
 		
-		$data['url_path'] 	= base_url()."uploads/$page_controllers/photo/resize/";
-		$upload_path 		= "./uploads/$page_controllers/photo/main/";
-		$upload_resize 		= "./uploads/$page_controllers/photo/resize/";
+		$data['url_path'] 	= base_url()."uploads/company_division_wise/photo/resize/";
+		$upload_path 		= "./uploads/company_division_wise/photo/main/";
+		$upload_resize 		= "./uploads/company_division_wise/photo/resize/";
 		
 		extract($_POST);
 		if(isset($Submit))
@@ -192,9 +192,11 @@ class Manage_medicine_menu extends CI_Controller {
 			
 			$result = "";
 			$dt = array(
-				'menu'=>$menu,
-				'comp_code'=>$find_medicine_company_id,
-				'image'=>$image,				
+				'company_type'=>'menu',
+				'company_name'=>$company_name,
+				'company_code'=>$find_medicine_company_id,
+				'company_division'=>$find_medicine_company_division,
+				'image'=>$image,
 				'short_order'=>$short_order,
 				'status'=>$status,
 				'date' => date('Y-m-d'),
@@ -246,6 +248,7 @@ class Manage_medicine_menu extends CI_Controller {
 			$image = $row->image;
 			$datetime = date("d-M-y @ H:i:s", $row->timestamp);
 
+			$image = base_url()."uploads/company_division_wise/photo/resize/".$image;
 			$dt = array(
 				'sr_no' => $sr_no,
 				'id' => $id,
