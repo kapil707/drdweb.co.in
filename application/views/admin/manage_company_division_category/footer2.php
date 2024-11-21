@@ -15,20 +15,7 @@ $(document).ready(function(){
 		order: [[0, 'asc']],
 		columns: [
 			{ data: 'sr_no', title: 'Id' },
-			{ data: 'company_name', title: 'Company Name' },
-			{ data: 'company_code', title: 'Company Code' },
-			{ data: 'company_division', title: 'Company division' },
-			{
-				data: 'image',
-				title: 'Image',
-				render: function (data, type, row) {
-					if (data) {
-						return `<img src="${data}" alt="Image" style="width: 70px; ">`;
-					} else {
-						return 'No Image';
-					}
-				}
-			},
+			{ data: 'title', title: 'Title' },
 			{ data: 'datetime', title: 'DateTime' },
 			{
 				data: null,
