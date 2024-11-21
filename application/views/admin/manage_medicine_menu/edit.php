@@ -18,17 +18,19 @@
                         </label>
                     </div>
                     <div class="col-sm-8">
-						<select name="medicine_category" id="medicine_category" class="form-control" onchange="onchange_medicine_category()" required>
-							<option value="0">
-								Select Medicine Category
-							</option>
-							<?php
-							$query = $this->db->query("SELECT * FROM `tbl_master` WHERE `slcd`='ic' order by name asc")->result();
-							foreach($query as $row1){
-							?>
-							<option value="<?= $row1->code; ?>" <?php if($row->code==$row1->code) { ?> selected <?php } ?>><?= $row1->name; ?></option>
-							<?php } ?>
-						</select>
+                        <input type="text" id="find_medicine_company_id" name="find_medicine_company_id" value="<?= $row->comp_code ?>"/>
+
+                        <?php 
+                        $medicine_company_name = "";
+                        $row1 =  $this->db->query ("select company_full_name from tbl_medicine where compcode='$row->comp_code'")->row();
+                        if(!empty($row1)){
+                            $medicine_company_name = $row1->company_full_name;
+                        }
+                        ?>
+
+                        <input type="text" class="form-control" id="medicine_company_name" name="medicine_company_name" tabindex="1" placeholder="Enter Company" autocomplete="off" value="<?= $medicine_company_name?>" />
+
+                        <div class="find_medicine_company_result"></div>
                     </div>
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">

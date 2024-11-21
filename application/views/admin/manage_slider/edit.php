@@ -117,7 +117,6 @@
 						<input type="text" class="form-control" id="medicine_company_name" name="medicine_company_name" tabindex="1" placeholder="Enter Company" autocomplete="off" value="<?= $medicine_company_name?>" />
 
 						<div class="find_medicine_company_result"></div>
-
                     </div>
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">
