@@ -65,13 +65,14 @@ class Manage_medicine_menu extends CI_Controller {
 			
 			$result = "";
 			$dt = array(
-				'code'=>$medicine_category,
 				'menu'=>$menu,
-				'image'=>$image,
+				'comp_code'=>$medicine_category,
+				'image'=>$image,				
 				'short_order'=>$short_order,
 				'status'=>$status,
-				'date'=>$date,
-				'time'=>$time,
+				'date' => date('Y-m-d'),
+				'time' => date('H:i:s'),
+				'timestamp' => time(),
 			);
 			$result = $this->Scheme_Model->insert_fun($tbl,$dt);
 			if($result)
@@ -228,13 +229,14 @@ class Manage_medicine_menu extends CI_Controller {
 			
 			$result = "";
 			$dt = array(
-				'code'=>$medicine_category,
 				'menu'=>$menu,
+				'comp_code'=>$medicine_category,
 				'image'=>$image,				
 				'short_order'=>$short_order,
 				'status'=>$status,
-				'date'=>$date,
-				'time'=>$time,
+				'date' => date('Y-m-d'),
+				'time' => date('H:i:s'),
+				'timestamp' => time(),
 			);
 			$where = array('id'=>$id);
 			$result = $this->Scheme_Model->edit_fun($tbl,$dt,$where);		
