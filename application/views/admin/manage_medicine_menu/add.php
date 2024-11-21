@@ -9,7 +9,7 @@
 				<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
-                            Select Category
+                            Select Company
                         </label>
                     </div>
                     <div class="col-sm-8">
@@ -25,11 +25,33 @@
                         </span>
                     </div>
                 </div>
-				
+
+                <div class="col-sm-6">
+                    <div class="col-sm-4 text-right">
+                        <label class="control-label" for="form-field-1">
+                            Select Company Division
+                        </label>
+                    </div>
+                    <div class="col-sm-8">                        
+						<select name="find_medicine_company_division" id="find_medicine_company_division" class="form-control">
+							<option value="">
+								Select Company Division
+							</option>							
+						</select>
+                    </div>
+                    <div class="help-inline col-sm-12 has-error">
+                        <span class="help-block reset middle">
+                            <?= form_error('division'); ?>
+                        </span>
+                    </div>
+                </div>
+			</div>
+
+			<div class="form-group">	
 				<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
-                            Category Name
+                        Company Name
                         </label>
                     </div>
                     <div class="col-sm-8">
@@ -38,6 +60,21 @@
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">
                             <?= form_error('menu'); ?>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="col-sm-4 text-right">
+                        <label class="control-label" for="form-field-1">
+							Sort Order
+                        </label>
+                    </div>
+                    <div class="col-sm-8">
+						<input type="number" class="form-control" id="short_order" name="short_order" placeholder="Sort Order" />
+                    </div>
+                    <div class="help-inline col-sm-12 has-error">
+                        <span class="help-block reset middle">
+                            <?= form_error('short_order'); ?>
                         </span>
                     </div>
                 </div>
@@ -84,21 +121,7 @@
                         </span>
                     </div>
                 </div>
-				<div class="col-sm-6">
-                    <div class="col-sm-4 text-right">
-                        <label class="control-label" for="form-field-1">
-							Sort Order
-                        </label>
-                    </div>
-                    <div class="col-sm-8">
-						<input type="number" class="form-control" id="short_order" name="short_order" placeholder="Sort Order" />
-                    </div>
-                    <div class="help-inline col-sm-12 has-error">
-                        <span class="help-block reset middle">
-                            <?= form_error('short_order'); ?>
-                        </span>
-                    </div>
-                </div>
+				
 			</div>
              
             <div class="space-4"></div>
