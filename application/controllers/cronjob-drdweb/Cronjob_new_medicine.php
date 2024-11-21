@@ -10,7 +10,7 @@ class Cronjob_new_medicine extends CI_Controller
 	{
 		//$this->db->query("delete from tbl_medicine_compare where compare_type='hot_selling'");
 
-		$date = date("Y-m-d", strtotime("-30 days", $time));
+		$date = date("Y-m-d", strtotime("-30 days", time()));
 
 		$this->db->select('i_code');
         $this->db->from('tbl_medicine');
