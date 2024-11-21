@@ -8,8 +8,7 @@ class Cronjob_new_medicine extends CI_Controller
 
 	public function run_job()
 	{
-		//$this->db->query("delete from tbl_medicine_compare where compare_type='hot_selling'");
-
+		$this->db->query("delete from tbl_medicine_compare where compare_type='new_medicine'");
 		$date = date("Y-m-d", strtotime("-30 days", time()));
 
 		$this->db->select('i_code');
