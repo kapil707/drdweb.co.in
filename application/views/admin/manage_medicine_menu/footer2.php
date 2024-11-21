@@ -35,7 +35,7 @@ $(document).ready(function(){
 				title: 'Action',
 				orderable: false,
 				render: function (data, type, row) {
-					return `<a href="javascript:void(0)" onclick="delete_rec('${row.id}')" class="btn-white btn btn-xs">Delete</a>`;
+					return `<a href="<?php echo base_url(); ?>admin/<?php echo $Page_name ?>/edit/${row.id}" class="btn-white btn btn-xs">Edit</a><a href="javascript:void(0)" onclick="delete_rec('${row.id}')" class="btn-white btn btn-xs">Delete</a>`;
 				}
 			}
 		],
