@@ -9,7 +9,7 @@
 				<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
-                            Select Company
+                            Select Medicine Category
                         </label>
                     </div>
                     <div class="col-sm-8">
@@ -59,13 +59,10 @@
                     </div>
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">
-                            <?= form_error('company_name'); ?>
+                            
                         </span>
                     </div>
-                </div>
-			</div>
-			
-			<div class="form-group">	
+                </div>	
                 <div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
@@ -81,7 +78,10 @@
                         </span>
                     </div>
               	</div>
-                  <div class="col-sm-6">
+			</div>
+			
+			<div class="form-group">
+                <div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
 							Sort Order
@@ -96,9 +96,7 @@
                         </span>
                     </div>
                 </div>
-			</div>
-			
-			<div class="form-group">				
+
 				<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
@@ -144,10 +142,3 @@
         <!-- PAGE CONTENT ENDS -->
     </div><!-- /.col -->
 </div><!-- /.row -->
-<script>
-function onchange_medicine_category()
-{	
-	menu = $("#medicine_category").find("option:selected").text();
-	$("#menu").val(menu);
-}
-</script>
