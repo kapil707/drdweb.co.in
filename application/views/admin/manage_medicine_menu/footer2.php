@@ -6,7 +6,6 @@
 <script>
 var table;
 $(document).ready(function(){
-
 	table = $('#example-table').DataTable({
 		ajax: {
 		url: '<?php echo base_url(); ?>admin/<?php echo $Page_name ?>/view_api',
@@ -19,7 +18,17 @@ $(document).ready(function(){
 			{ data: 'company_name', title: 'Company Name' },
 			{ data: 'company_code', title: 'Company Code' },
 			{ data: 'company_division', title: 'Company division' },
-			{ data: 'image', title: 'image' },
+			{
+				data: 'image',
+				title: 'Image',
+				render: function (data, type, row) {
+					if (data) {
+						return `<img src="${data}" alt="Image" style="width: 50px; height: 50px; object-fit: cover;">`;
+					} else {
+						return 'No Image';
+					}
+				}
+			},
 			{ data: 'datetime', title: 'DateTime' },
 			{
 				data: null,
@@ -61,19 +70,6 @@ $(document).ready(function(){
 			monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 		}
 	});
-
-	$('#date-range').on('apply.daterangepicker', function(ev, picker) {
-		
-        var selectedDates = $('#date-range').val().split(' to ');
-		if (selectedDates.length === 2) {
-			from_date = selectedDates[0].trim();
-			to_date = selectedDates[1].trim();
-
-			from_date 	= data_formet_change(from_date);
-			to_date 	= data_formet_change(to_date);
-		}
-		table.ajax.reload();
-    });
 
 	function data_formet_change(dateValue){
 		var dateParts = dateValue.split('-');
