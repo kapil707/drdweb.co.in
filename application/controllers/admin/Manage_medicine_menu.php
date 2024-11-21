@@ -40,9 +40,9 @@ class Manage_medicine_menu extends CI_Controller {
 		
 		$tbl = $Page_tbl;
 		
-		$data['url_path'] 	= base_url()."uploads/company_division_wise/photo/resize/";
-		$upload_path 		= "./uploads/company_division_wise/photo/main/";
-		$upload_resize 		= "./uploads/company_division_wise/photo/resize/";
+		$data['url_path'] 	= base_url()."uploads/manage_company_division_wise/photo/resize/";
+		$upload_path 		= "./uploads/manage_company_division_wise/photo/main/";
+		$upload_resize 		= "./uploads/manage_company_division_wise/photo/resize/";
 		
 		extract($_POST);
 		if(isset($Submit))
@@ -167,9 +167,9 @@ class Manage_medicine_menu extends CI_Controller {
 		
 		$tbl = $Page_tbl;
 		
-		$data['url_path'] 	= base_url()."uploads/company_division_wise/photo/resize/";
-		$upload_path 		= "./uploads/company_division_wise/photo/main/";
-		$upload_resize 		= "./uploads/company_division_wise/photo/resize/";
+		$data['url_path'] 	= base_url()."uploads/manage_company_division_wise/photo/resize/";
+		$upload_path 		= "./uploads/manage_company_division_wise/photo/main/";
+		$upload_resize 		= "./uploads/manage_company_division_wise/photo/resize/";
 		
 		extract($_POST);
 		if(isset($Submit))
@@ -249,7 +249,7 @@ class Manage_medicine_menu extends CI_Controller {
 			$datetime = date("d-M-y @ H:i:s", $row->timestamp);
 
 			if(!empty($image)) {
-				$image = base_url()."uploads/company_division_wise/photo/resize/".$image;
+				$image = base_url()."uploads/manage_company_division_wise/photo/resize/".$image;
 			}
 			$dt = array(
 				'sr_no' => $sr_no,
