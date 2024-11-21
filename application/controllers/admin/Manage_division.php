@@ -3,12 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Manage_division extends CI_Controller {
 
-	var $Page_title = "Manage Division";
-	var $Page_name  = "manage_division";
-	var $Page_view  = "manage_division";
-	var $Page_menu  = "manage_division";
-	var $page_controllers = "manage_division";
-	var $Page_tbl   = "tbl_division_wise";
+	var $Page_title = "Manage company Division";
+	var $Page_name  = "manage_company_division";
+	var $Page_view  = "manage_company_division";
+	var $Page_menu  = "manage_company_division";
+	var $page_controllers = "manage_company_division";
+	var $Page_tbl   = "tbl_company_division_wise";
 	public function index()
 	{
 		$page_controllers = $this->page_controllers;
@@ -16,7 +16,6 @@ class Manage_division extends CI_Controller {
 	}	
 	public function add()
 	{
-		error_reporting(0);
 		/******************session***********************/
 		$user_id = $this->session->userdata("user_id");
 		$user_type = $this->session->userdata("user_type");
