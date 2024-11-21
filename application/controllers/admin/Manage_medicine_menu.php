@@ -254,21 +254,21 @@ class Manage_medicine_menu extends CI_Controller {
 				);
 				$jsonArray[] = $dt;
 			}
-		
-			if(!empty($items)){
-				$items = $jsonArray;
-				$response = array(
-					'success' => "1",
-					'message' => 'Data load successfully',
-					'items' => $items,
-				);
-			}else{
-				$response = array(
-					'success' => "0",
-					'message' => '502 error',
-				);
-			}
 		}
+		if(!empty($items)){
+			$items = $jsonArray;
+			$response = array(
+				'success' => "1",
+				'message' => 'Data load successfully',
+				'items' => $items,
+			);
+		}else{
+			$response = array(
+				'success' => "0",
+				'message' => '502 error',
+			);
+		}
+		
         // Send JSON response
         header('Content-Type: application/json');
         echo json_encode($response);
