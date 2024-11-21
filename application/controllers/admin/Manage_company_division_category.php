@@ -80,9 +80,6 @@ class Manage_company_division_category extends CI_Controller {
 		$user_type = $this->session->userdata("user_type");
 		/******************session***********************/
 		
-		$_SESSION["latitude"] = 
-		$_SESSION["longitude"] = "";
-		
 		$Page_title = $this->Page_title;
 		$Page_name 	= $this->Page_name;
 		$Page_view 	= $this->Page_view;
@@ -109,7 +106,7 @@ class Manage_company_division_category extends CI_Controller {
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/view",$data);
 		$this->load->view("admin/header_footer/footer",$data);
-		$this->load->view("admin/manage_medicine/find_medicine_company",$data);
+		$this->load->view("admin/$Page_view/footer2",$data);
 	}
 
 	public function edit($id)
