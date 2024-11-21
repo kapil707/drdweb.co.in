@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Manage_company_division extends CI_Controller {
 
-	var $Page_title = "Manage company Division";
+	var $Page_title = "Manage Company Division";
 	var $Page_name  = "manage_company_division";
 	var $Page_view  = "manage_company_division";
 	var $Page_menu  = "manage_company_division";
@@ -133,7 +133,6 @@ class Manage_company_division extends CI_Controller {
 
 	public function edit($id)
 	{
-		error_reporting(0);
 		/******************session***********************/
 		$user_id = $this->session->userdata("user_id");
 		$user_type = $this->session->userdata("user_type");
@@ -234,7 +233,7 @@ class Manage_company_division extends CI_Controller {
 			$message = "Not Delete.";
 		}
 		$message = $Page_title." - ".$message;
-		$this->Admin_Model->Add_Activity_log($message);
+		//$this->Admin_Model->Add_Activity_log($message);
 		echo "ok";
 	}
 	
@@ -266,7 +265,7 @@ class Manage_company_division extends CI_Controller {
 			$message = "Photo Not Update.";
 		}
 		$message = $Page_title." - ".$message;
-		$this->Admin_Model->Add_Activity_log($message);
+		//$this->Admin_Model->Add_Activity_log($message);
 		echo "ok";
 	}
 

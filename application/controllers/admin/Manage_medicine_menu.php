@@ -234,7 +234,39 @@ class Manage_medicine_menu extends CI_Controller {
 			$message = "Not Delete.";
 		}
 		$message = $Page_title." - ".$message;
-		$this->Admin_Model->Add_Activity_log($message);
+		//$this->Admin_Model->Add_Activity_log($message);
+		echo "ok";
+	}
+
+	public function delete_photo()
+	{
+		$path = $_POST["path"];
+		$type_me = $_POST["type_me"];
+		
+		$Page_title = $this->Page_title;
+		$Page_name 	= $this->Page_name;
+		$Page_view 	= $this->Page_view;
+		$Page_menu 	= $this->Page_menu;
+		$Page_tbl 	= $this->Page_tbl;
+		$page_controllers 	= $this->page_controllers;
+				
+		$upload_path = "./uploads/$page_controllers/photo/";
+		$result = $this->db->query("update $Page_tbl set $type_me='' where $type_me='$path'");
+		if($result!="")
+		{
+			$filename = $upload_path.$path;
+			$message = "Delete Photo Successfully.";
+			if (file_exists($filename)) 
+			{
+    			unlink($filename);
+			}
+		}
+		else
+		{
+			$message = "Photo Not Update.";
+		}
+		$message = $Page_title." - ".$message;
+		//$this->Admin_Model->Add_Activity_log($message);
 		echo "ok";
 	}
 
