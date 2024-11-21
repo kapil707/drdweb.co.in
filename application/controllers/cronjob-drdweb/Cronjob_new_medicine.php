@@ -11,7 +11,7 @@ class Cronjob_new_medicine extends CI_Controller
 		$this->db->query("delete from tbl_medicine_compare where compare_type='new_medicine'");
 		$date = date("Y-m-d", strtotime("-30 days", time()));
 
-		$this->db->select('i_code');
+		$this->db->select('i_code,item_date');
         $this->db->from('tbl_medicine');
         $this->db->where('item_date>=',$date);
 
@@ -19,7 +19,7 @@ class Cronjob_new_medicine extends CI_Controller
 		foreach($query as $row)
 		{
 			$i_code 	= $row->i_code;
-			$total 		= 1;
+			$total 		= $row->item_date;
 			
 			$compare_type 	= "new_medicine";
 			$compare_now 	= $total;
