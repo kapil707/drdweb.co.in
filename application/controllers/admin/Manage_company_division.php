@@ -291,7 +291,7 @@ class Manage_company_division extends CI_Controller {
 			$datetime = date("d-M-y @ H:i:s", $row->timestamp);
 
 			if(!empty($image)) {
-				$image = base_url()."uploads/manage_company_division_wise/photo/resize/".$image;
+				$image = base_url()."uploads/$this->page_controllers/photo/resize/".$image;
 			}
 			$dt = array(
 				'sr_no' => $sr_no,
