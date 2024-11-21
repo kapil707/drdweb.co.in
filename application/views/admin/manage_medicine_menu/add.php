@@ -55,11 +55,11 @@
                         </label>
                     </div>
                     <div class="col-sm-8">
-						<input type="text" class="form-control" id="menu" name="menu" tabindex="1" placeholder="Category Name" required />
+						<input type="text" class="form-control" id="company_name" name="company_name" tabindex="1" placeholder="Company Name" required />
                     </div>
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">
-                            <?= form_error('menu'); ?>
+                            <?= form_error('company_name'); ?>
                         </span>
                     </div>
                 </div>

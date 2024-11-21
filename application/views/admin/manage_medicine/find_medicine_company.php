@@ -110,6 +110,7 @@ function add_medicine_company(item_code, item_name) {
     $("#medicine_company_name").val(`${item_name}`);
     $(".find_medicine_company_result").html("");
     find_medicine_company_division();
+    $("#company_name").val(`${item_name}`);
 }
 function addActiveMedicineCompany(listItems) {
     listItems.removeClass("active");
