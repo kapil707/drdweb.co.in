@@ -238,7 +238,7 @@ class Manage_medicine_menu extends CI_Controller {
 			$sr_no = $i++;
 			$id = $row->id;
 
-			$company_full_name = $row->company_full_name;
+			$company_name = $row->company_name;
 			$company_code = $row->company_code;
 			$company_division = $row->company_division;
 			$image = $row->image;
@@ -247,7 +247,7 @@ class Manage_medicine_menu extends CI_Controller {
 			$dt = array(
 				'sr_no' => $sr_no,
 				'id' => $id,
-				'company_full_name' => $company_full_name,
+				'company_name' => $company_name,
 				'company_code'=>$company_code,
 				'company_division'=>$company_division,
 				'image'=>$image,
