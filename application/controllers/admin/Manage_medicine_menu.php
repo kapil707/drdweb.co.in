@@ -95,6 +95,7 @@ class Manage_medicine_menu extends CI_Controller {
 		$this->load->view("admin/header_footer/footer",$data);
 		$this->load->view("admin/manage_medicine/find_medicine_company",$data);
 	}
+
 	public function view()
 	{
 		/******************session***********************/
@@ -124,23 +125,13 @@ class Manage_medicine_menu extends CI_Controller {
 		$data['url_path'] 	= base_url()."uploads/$page_controllers/photo/resize/";
 		$upload_path 		= "./uploads/$page_controllers/photo/main/";
 		$upload_resize 		= "./uploads/$page_controllers/photo/resize/";
-		
-		extract($_POST);
-		if(isset($Delete))
-		{	
-			$where = array('id'=>$delete_id,'status'=>"5",'school_id'=>$school_id);
-			$this->Scheme_Model->delete_fun($tbl,$where);
-			
-			$where = array('id'=>$delete_id,'school_id'=>$school_id);					
-			$dt = array('status'=>"5");
-			$this->Scheme_Model->edit_fun($tbl,$dt,$where);			
-		}
 				
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/view",$data);
 		$this->load->view("admin/header_footer/footer",$data);
 		$this->load->view("admin/$Page_view/footer2",$data);
 	}
+
 	public function edit($id)
 	{
 		/******************session***********************/
@@ -227,6 +218,25 @@ class Manage_medicine_menu extends CI_Controller {
 		$this->load->view("admin/header_footer/footer",$data);
 		$this->load->view("admin/manage_medicine/find_medicine_company",$data);
 	}
+	
+	public function delete_rec()
+	{
+		$id = $_POST["id"];
+		$Page_title = $this->Page_title;
+		$Page_tbl = $this->Page_tbl;
+		$result = $this->db->query("delete from $Page_tbl where id='$id'");
+		if($result)
+		{
+			$message = "Delete Successfully.";
+		}
+		else
+		{
+			$message = "Not Delete.";
+		}
+		$message = $Page_title." - ".$message;
+		$this->Admin_Model->Add_Activity_log($message);
+		echo "ok";
+	}
 
 	public function view_api() {		
 
@@ -279,24 +289,5 @@ class Manage_medicine_menu extends CI_Controller {
         // Send JSON response
         header('Content-Type: application/json');
         echo json_encode($response);
-	}
-	
-	public function delete_rec()
-	{
-		$id = $_POST["id"];
-		$Page_title = $this->Page_title;
-		$Page_tbl = $this->Page_tbl;
-		$result = $this->db->query("delete from $Page_tbl where id='$id'");
-		if($result)
-		{
-			$message = "Delete Successfully.";
-		}
-		else
-		{
-			$message = "Not Delete.";
-		}
-		$message = $Page_title." - ".$message;
-		$this->Admin_Model->Add_Activity_log($message);
-		echo "ok";
 	}
 }
