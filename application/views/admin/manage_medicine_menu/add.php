@@ -13,17 +13,11 @@
                         </label>
                     </div>
                     <div class="col-sm-8">
-						<select name="medicine_category" id="medicine_category" class="form-control" onchange="onchange_medicine_category()" required>
-							<option value="0">
-								Select Category
-							</option>
-							<?php
-							$query = $this->db->query("SELECT * FROM `tbl_master` WHERE `slcd`='ic' order by name asc")->result();
-							foreach($query as $row1){
-							?>
-							<option value="<?= $row1->code; ?>"><?= $row1->name; ?></option>
-							<?php } ?>
-						</select>
+                        <input type="text" id="find_medicine_company_id" name="find_medicine_company_id" value=""/>
+
+                        <input type="text" class="form-control" id="medicine_company_name" name="medicine_company_name" tabindex="1" placeholder="Enter Company" autocomplete="off" value="" />
+
+                        <div class="find_medicine_company_result"></div>
                     </div>
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">

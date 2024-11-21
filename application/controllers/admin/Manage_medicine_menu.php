@@ -66,7 +66,7 @@ class Manage_medicine_menu extends CI_Controller {
 			$result = "";
 			$dt = array(
 				'menu'=>$menu,
-				'comp_code'=>$medicine_category,
+				'comp_code'=>$find_medicine_company_id,
 				'image'=>$image,				
 				'short_order'=>$short_order,
 				'status'=>$status,
@@ -91,6 +91,7 @@ class Manage_medicine_menu extends CI_Controller {
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/add",$data);
 		$this->load->view("admin/header_footer/footer",$data);
+		$this->load->view("admin/manage_medicine/find_medicine_company",$data);
 	}
 	public function view()
 	{
@@ -230,7 +231,7 @@ class Manage_medicine_menu extends CI_Controller {
 			$result = "";
 			$dt = array(
 				'menu'=>$menu,
-				'comp_code'=>$medicine_category,
+				'comp_code'=>$find_medicine_company_id,
 				'image'=>$image,				
 				'short_order'=>$short_order,
 				'status'=>$status,
@@ -260,6 +261,7 @@ class Manage_medicine_menu extends CI_Controller {
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/edit",$data);
 		$this->load->view("admin/header_footer/footer",$data);
+		$this->load->view("admin/manage_medicine/find_medicine_company",$data);
 	}
 	
 	
