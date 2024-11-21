@@ -230,30 +230,28 @@ class Manage_medicine_menu extends CI_Controller {
 		$items = "";
 		$i = 1;
 		$Page_tbl = $this->Page_tbl;
-		if(!empty($_REQUEST)){
 
-			$result = $this->db->query("SELECT * FROM $Page_tbl order by id desc");
-			$result = $result->result();
-			foreach($result as $row) {
+		$result = $this->db->query("SELECT * FROM $Page_tbl order by id desc");
+		$result = $result->result();
+		foreach($result as $row) {
 
-				$sr_no = $i++;
-				$id = $row->id;
+			$sr_no = $i++;
+			$id = $row->id;
 
-				$menu = $row->menu;
-				$comp_code = $row->comp_code;
-				$image = $row->image;
-				$datetime = date("d-M-y @ H:i:s", $row->timestamp);
+			$menu = $row->menu;
+			$comp_code = $row->comp_code;
+			$image = $row->image;
+			$datetime = date("d-M-y @ H:i:s", $row->timestamp);
 
-				$dt = array(
-					'sr_no' => $sr_no,
-					'id' => $id,
-					'menu' => $menu,
-					'comp_code'=>$comp_code,
-					'image'=>$image,
-					'datetime'=>$datetime,
-				);
-				$jsonArray[] = $dt;
-			}
+			$dt = array(
+				'sr_no' => $sr_no,
+				'id' => $id,
+				'menu' => $menu,
+				'comp_code'=>$comp_code,
+				'image'=>$image,
+				'datetime'=>$datetime,
+			);
+			$jsonArray[] = $dt;
 		}
 		if(!empty($items)){
 			$items = $jsonArray;
