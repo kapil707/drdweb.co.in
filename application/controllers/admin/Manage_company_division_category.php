@@ -143,7 +143,7 @@ class Manage_company_division_category extends CI_Controller {
 		if(isset($Submit))
 		{
 			$dt = array(
-				'name'=>$name,
+				'title'=>$title,
 				'status'=>$status,
 				'date' => date('Y-m-d'),
 				'time' => date('H:i:s'),
