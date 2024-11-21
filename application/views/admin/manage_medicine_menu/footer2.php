@@ -23,7 +23,7 @@ $(document).ready(function(){
 				title: 'Image',
 				render: function (data, type, row) {
 					if (data) {
-						return `<img src="${data}" alt="Image" style="width: 50px; height: 50px; ">`;
+						return `<img src="${data}" alt="Image" style="width: 70px; ">`;
 					} else {
 						return 'No Image';
 					}
