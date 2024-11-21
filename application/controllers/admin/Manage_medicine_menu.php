@@ -8,7 +8,7 @@ class Manage_medicine_menu extends CI_Controller {
 	var $Page_view  = "manage_medicine_menu";
 	var $Page_menu  = "manage_medicine_menu";
 	var $page_controllers = "manage_medicine_menu";
-	var $Page_tbl   = "tbl_medicine_menu";
+	var $Page_tbl   = "tbl_medicine_menu_nnn";
 	public function index()
 	{
 		$page_controllers = $this->page_controllers;
@@ -16,7 +16,6 @@ class Manage_medicine_menu extends CI_Controller {
 	}	
 	public function add()
 	{
-		error_reporting(0);
 		/******************session***********************/
 		$user_id = $this->session->userdata("user_id");
 		$user_type = $this->session->userdata("user_type");
@@ -45,14 +44,9 @@ class Manage_medicine_menu extends CI_Controller {
 		$upload_path 		= "./uploads/$page_controllers/photo/main/";
 		$upload_resize 		= "./uploads/$page_controllers/photo/resize/";
 		
-		$system_ip = $this->input->ip_address();
 		extract($_POST);
 		if(isset($Submit))
-		{
-			$message_db = "";
-			$time = time();
-			$date = date("Y-m-d",$time);
-			
+		{			
 			if (!empty($_FILES["image"]["name"]))
 			{
 				$this->Image_Model->uploadTo = $upload_path;
@@ -80,30 +74,16 @@ class Manage_medicine_menu extends CI_Controller {
 				'time'=>$time,
 			);
 			$result = $this->Scheme_Model->insert_fun($tbl,$dt);
-			$property_title = base64_decode($property_title);
 			if($result)
 			{
-				$message_db = "($property_title) -  Add Successfully.";
 				$message = "Add Successfully.";
 				$this->session->set_flashdata("message_type","success");
+				redirect(base_url()."admin/$page_controllers/view");
 			}
 			else
 			{
-				$message_db = "($property_title) - Not Add.";
 				$message = "Not Add.";
 				$this->session->set_flashdata("message_type","error");
-			}
-			if($message_db!="")
-			{
-				$message = $Page_title." - ".$message;
-				$message_db = $Page_title." - ".$message_db;
-				$this->session->set_flashdata("message_footer","yes");
-				$this->session->set_flashdata("full_message",$message);
-				$this->Admin_Model->Add_Activity_log($message_db);
-				if($result)
-				{
-					redirect(base_url()."admin/$page_controllers/view");
-				}
 			}
 		}
 		
@@ -113,7 +93,6 @@ class Manage_medicine_menu extends CI_Controller {
 	}
 	public function view()
 	{
-		error_reporting(0);
 		/******************session***********************/
 		$user_id = $this->session->userdata("user_id");
 		$user_type = $this->session->userdata("user_type");
@@ -200,7 +179,6 @@ class Manage_medicine_menu extends CI_Controller {
 	}
 	public function edit($id)
 	{
-		error_reporting(0);
 		/******************session***********************/
 		$user_id = $this->session->userdata("user_id");
 		$user_type = $this->session->userdata("user_type");
@@ -229,15 +207,9 @@ class Manage_medicine_menu extends CI_Controller {
 		$upload_path 		= "./uploads/$page_controllers/photo/main/";
 		$upload_resize 		= "./uploads/$page_controllers/photo/resize/";
 		
-		$system_ip = $this->input->ip_address();
 		extract($_POST);
 		if(isset($Submit))
-		{
-			$message_db = "";
-			$time = time();
-			$date = date("Y-m-d",$time);
-			$where = array('id'=>$id);
-			
+		{			
 			if (!empty($_FILES["image"]["name"]))
 			{
 				$this->Image_Model->uploadTo = $upload_path;
@@ -264,32 +236,18 @@ class Manage_medicine_menu extends CI_Controller {
 				'date'=>$date,
 				'time'=>$time,
 			);
-			$result = $this->Scheme_Model->edit_fun($tbl,$dt,$where);
-			$change_text = $old_property_title." - ($change_text)";				
+			$where = array('id'=>$id);
+			$result = $this->Scheme_Model->edit_fun($tbl,$dt,$where);		
 			if($result)
 			{
-				$message_db = "$change_text - Edit Successfully.";
 				$message = "Edit Successfully.";
 				$this->session->set_flashdata("message_type","success");
+				redirect(current_url());
 			}
 			else
 			{
-				$message_db = "$change_text - Not Add.";
 				$message = "Not Add.";
 				$this->session->set_flashdata("message_type","error");
-			}
-			if($message_db!="")
-			{
-				$message = $Page_title." - ".$message;
-				$message_db = $Page_title." - ".$message_db;
-				$this->session->set_flashdata("message_footer","yes");
-				$this->session->set_flashdata("full_message",$message);
-				$this->Admin_Model->Add_Activity_log($message_db);
-				if($result)
-				{
-					redirect(current_url());
-					//redirect(base_url()."admin/$page_controllers/view");
-				}
 			}
 		}
 		
