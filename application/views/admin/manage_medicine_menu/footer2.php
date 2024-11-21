@@ -16,8 +16,9 @@ $(document).ready(function(){
 		order: [[0, 'asc']],
 		columns: [
 			{ data: 'sr_no', title: 'Id' },
-			{ data: 'menu', title: 'Menu' },
-			{ data: 'comp_code', title: 'Comp Code' },
+			{ data: 'company_full_name', title: 'Company Name' },
+			{ data: 'comp_code', title: 'Company Code' },
+			{ data: 'comp_division', title: 'Company division' },
 			{ data: 'image', title: 'image' },
 			{ data: 'datetime', title: 'DateTime' },
 			{

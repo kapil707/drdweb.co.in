@@ -239,15 +239,17 @@ class Manage_medicine_menu extends CI_Controller {
 			$id = $row->id;
 
 			$company_full_name = $row->company_full_name;
-			$comp_code = $row->comp_code;
+			$company_code = $row->company_code;
+			$company_division = $row->company_division;
 			$image = $row->image;
 			$datetime = date("d-M-y @ H:i:s", $row->timestamp);
 
 			$dt = array(
 				'sr_no' => $sr_no,
 				'id' => $id,
-				'menu' => $menu,
-				'comp_code'=>$comp_code,
+				'company_full_name' => $company_full_name,
+				'company_code'=>$company_code,
+				'company_division'=>$company_division,
 				'image'=>$image,
 				'datetime'=>$datetime,
 			);
