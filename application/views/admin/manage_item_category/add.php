@@ -9,15 +9,15 @@
 				<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
-                            Name
+                            Title
                         </label>
                     </div>
                     <div class="col-sm-8">
-						<input type="text" class="form-control" id="name" name="name">
+						<input type="text" class="form-control" id="title" name="title">
                     </div>
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">
-                            <?= form_error('name'); ?>
+                            
                         </span>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                     </div>
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">  
-                            <?= form_error('status'); ?>
+                            
                         </span>
                     </div>
                 </div>

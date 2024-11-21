@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-xs-12">
-	    <a href="<?php echo base_url(); ?>admin/<?= $Page_name ?>/view?pg=<?= $_GET["pg"]; ?>#row_<?=$id ?>">
+	    <a href="<?php echo base_url(); ?>admin/<?= $Page_name ?>/view">
 		<button type="button" class="btn btn-w-m btn-info"><< Back</button>
 		</a>
 	</div>
@@ -10,20 +10,19 @@
         <?php
         foreach ($result as $row)
         { ?>
-            <input type="hidden" class="old_image" name="old_image" value="<?= $row->image; ?>" />
             <div class="form-group">
            		<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
-                           	Name
+                            Title
                         </label>
                     </div>
                     <div class="col-sm-8">
-						<input type="text" class="form-control" id="name" name="name" value="<?= $row->name?>">
+						<input type="text" class="form-control" id="title" name="title" value="<?= $row->title?>">
                     </div>
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">
-                            <?= form_error('name'); ?>
+                            
                         </span>
                     </div>
                 </div>
@@ -48,7 +47,7 @@
                     </div>
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">  
-                            <?= form_error('status'); ?>
+                            
                         </span>
                     </div>
                 </div>
