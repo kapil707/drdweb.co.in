@@ -10,6 +10,7 @@
         <?php
         foreach ($result as $row)
         { ?>
+            <input type="text" id="old_image" name="old_image" value="<?= $row->image ?>"/>
 			<div class="form-group">
 				<div class="col-sm-6">
 					<div class="col-sm-4 text-right">
