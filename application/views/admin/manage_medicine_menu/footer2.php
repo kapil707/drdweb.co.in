@@ -17,8 +17,8 @@ $(document).ready(function(){
 		columns: [
 			{ data: 'sr_no', title: 'Id' },
 			{ data: 'company_full_name', title: 'Company Name' },
-			{ data: 'comp_code', title: 'Company Code' },
-			{ data: 'comp_division', title: 'Company division' },
+			{ data: 'company_code', title: 'Company Code' },
+			{ data: 'company_division', title: 'Company division' },
 			{ data: 'image', title: 'image' },
 			{ data: 'datetime', title: 'DateTime' },
 			{
