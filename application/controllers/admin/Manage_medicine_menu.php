@@ -248,7 +248,9 @@ class Manage_medicine_menu extends CI_Controller {
 			$image = $row->image;
 			$datetime = date("d-M-y @ H:i:s", $row->timestamp);
 
-			$image = base_url()."uploads/company_division_wise/photo/resize/".$image;
+			if(!empty($image)) {
+				$image = base_url()."uploads/company_division_wise/photo/resize/".$image;
+			}
 			$dt = array(
 				'sr_no' => $sr_no,
 				'id' => $id,
