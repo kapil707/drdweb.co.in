@@ -88,7 +88,7 @@
                         </label>
                     </div>
                     <div class="col-sm-8">
-						<input type="number" class="form-control" id="short_order" name="short_order" placeholder="Sort Order" />
+						<input type="number" class="form-control" id="short_order" name="short_order" placeholder="Sort Order" value='0' />
                     </div>
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">
