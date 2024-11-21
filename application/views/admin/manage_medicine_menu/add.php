@@ -21,7 +21,7 @@
                     </div>
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">
-                            <?= form_error('compid'); ?>
+                            
                         </span>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                     </div>
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">
-                            <?= form_error('division'); ?>
+                            
                         </span>
                     </div>
                 </div>
@@ -77,7 +77,7 @@
                     </div>
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">  
-                            <?= form_error('image'); ?>
+                           
                         </span>
                     </div>
               	</div>
@@ -92,7 +92,7 @@
                     </div>
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">
-                            <?= form_error('short_order'); ?>
+                            
                         </span>
                     </div>
                 </div>
@@ -117,7 +117,7 @@
                     </div>
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">  
-                            <?= form_error('status'); ?>
+                            
                         </span>
                     </div>
                 </div>

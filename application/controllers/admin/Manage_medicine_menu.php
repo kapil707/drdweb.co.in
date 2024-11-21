@@ -65,8 +65,10 @@ class Manage_medicine_menu extends CI_Controller {
 			
 			$result = "";
 			$dt = array(
-				'menu'=>$menu,
-				'comp_code'=>$find_medicine_company_id,
+				'company_type'=>'menu',
+				'company_name'=>$company_name,
+				'company_code'=>$find_medicine_company_id,
+				'company_division'=>$find_medicine_company_division,
 				'image'=>$image,				
 				'short_order'=>$short_order,
 				'status'=>$status,
