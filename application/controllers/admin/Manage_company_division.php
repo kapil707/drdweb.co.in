@@ -8,7 +8,7 @@ class Manage_company_division extends CI_Controller {
 	var $Page_view  = "manage_company_division";
 	var $Page_menu  = "manage_company_division";
 	var $page_controllers = "manage_company_division";
-	var $Page_tbl   = "tbl_company_division_wise";
+	var $Page_tbl   = "tbl_company_division";
 	public function index()
 	{
 		$page_controllers = $this->page_controllers;
