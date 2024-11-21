@@ -253,7 +253,7 @@ class Manage_medicine_menu extends CI_Controller {
 			);
 			$jsonArray[] = $dt;
 		}
-		if(!empty($items)){
+		if(!empty($jsonArray)){
 			$items = $jsonArray;
 			$response = array(
 				'success' => "1",
