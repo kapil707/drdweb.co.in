@@ -19,7 +19,7 @@
                         </label>
                     </div>
                     <div class="col-sm-8">
-                        <input type="text" id="find_medicine_company_id" name="find_medicine_company_id" value="<?= $row->company_code ?>"/>
+                        <input type="hidden" id="find_medicine_company_id" name="find_medicine_company_id" value="<?= $row->company_code ?>"/>
 
                         <?php 
                         $medicine_company_name = "";
