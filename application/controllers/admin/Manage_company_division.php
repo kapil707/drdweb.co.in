@@ -286,7 +286,7 @@ class Manage_company_division extends CI_Controller {
 			$new_title = str_replace(" ","-",strtolower($company_name));
 			$url = "https://www.drdistributor.com/c/$new_title";
 			if(!empty($company_division)){
-				$url.= "/".$company_division;
+				$url.= "/".strtolower($company_division);
 			}
 			$company_name = "<a href='".$url."' target='_blank'>$company_name</a>";
 
