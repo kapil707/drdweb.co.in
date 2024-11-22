@@ -279,7 +279,7 @@ class Manage_home extends CI_Controller {
 				if($type=="notification" || $type=="invoice" || $type=="menu"){
 					$category_id = "Main";
 				}
-				$category_name = ucfirst($type)."($category_id)";
+				$category_name = ucfirst($type)." ($category_id)";
 			}
 			if($category_id!=1){
 				$category_type = $category_id;
