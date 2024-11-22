@@ -281,7 +281,13 @@ class Manage_slider extends CI_Controller {
 				$title = "<a href='".$url."' target='_blank'>$row1->item_name</a>";
 			}
 			if($row->function_type=="2"){ 
-				$function_type = "Company ($row->comp_code)"; 
+				$company_division = $row->company_division;
+				if(!empty($company_division)){
+					$company_division = "N/a";
+				}
+				$function_type = "Company ($row->comp_code) / Division ($company_division)"; 
+
+				$row1 = $this->db->query("select company_name from tbl_medicine where compcode='$row->comp_code'")->row();
 
 				$title = "N/a";
 			}
