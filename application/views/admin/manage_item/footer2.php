@@ -16,6 +16,7 @@ $(document).ready(function(){
 		columns: [
 			{ data: 'sr_no', title: 'Id' },
 			{ data: 'item_name', title: 'Item Name' },
+			{ data: 'item_code', title: 'Item Code' },
 			{
 				data: 'image',
 				title: 'Image',
