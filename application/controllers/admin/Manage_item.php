@@ -200,20 +200,24 @@ class Manage_item extends CI_Controller {
 		$i = 1;
 		$Page_tbl = $this->Page_tbl;
 
-		$result = $this->db->query("SELECT * FROM $Page_tbl order by id desc");
+		$result = $this->db->query("SELECT tbl_item.id,tbl_item.timestamp,tbl_item_category_nnn.title,tbl_medicine.item_name,tbl_medicine.image1 FROM `tbl_item` left join tbl_item_category_nnn on tbl_item.category_id=tbl_item_category_nnn.id left join tbl_medicine on tbl_item.i_code=tbl_medicine.i_code order by tbl_item.id desc");
 		$result = $result->result();
 		foreach($result as $row) {
 
 			$sr_no = $i++;
 			$id = $row->id;
 
-			$title = $row->title;
+			$item_name = $row->title;
+			$item_image = $row->image;
+			$item_category = $row->category;
 			$datetime = date("d-M-y @ H:i:s", $row->timestamp);
 
 			$dt = array(
 				'sr_no' => $sr_no,
 				'id' => $id,
-				'title' => $title,
+				'item_name' => $item_name,
+				'item_image' => $item_image,
+				'item_category' => $item_category,
 				'datetime'=>$datetime,
 			);
 			$jsonArray[] = $dt;
