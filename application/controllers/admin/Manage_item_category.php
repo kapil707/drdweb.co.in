@@ -194,7 +194,9 @@ class Manage_item_category extends CI_Controller {
 			$sr_no = $i++;
 			$id = $row->id;
 
-			$title = $row->title;
+			$new_title = str_replace(" ","-",strtolower($row->title));
+			$url = "https://www.drdistributor.com/c/$new_title";
+			$title = "<a href='".$url."' target='_blank'>$row->title</a>";
 			$isdefault = $row->isdefault;
 			$datetime = date("d-M-y @ H:i:s", $row->timestamp);
 
