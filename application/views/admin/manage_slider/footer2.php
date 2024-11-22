@@ -15,9 +15,20 @@ $(document).ready(function(){
 		order: [[0, 'asc']],
 		columns: [
 			{ data: 'sr_no', title: 'Id' },
-			{ data: 'seq_id', title: 'Seq Id' },
-			{ data: 'category_type', title: 'Category Type' },
-			{ data: 'category_name', title: 'Category Name' },
+			{ data: 'slider_type', title: 'Slider Type' },
+			{ data: 'function_type', title: 'Function Type' },
+			{
+				data: 'image',
+				title: 'Image',
+				render: function (data, type, row) {
+					if (data) {
+						return `<img src="${data}" alt="Image" style="width: 70px; ">`;
+					} else {
+						return 'No Image';
+					}
+				}
+			},
+			{ data: 'item_category', title: 'Item Category' },
 			{ data: 'datetime', title: 'DateTime' },
 			{
 				data: null,
@@ -25,8 +36,7 @@ $(document).ready(function(){
 				orderable: false,
 				render: function (data, type, row) {
 					return `
-						${row.isdefault == 0 ? `<a href="<?php echo base_url(); ?>admin/<?php echo $Page_name ?>/edit/${row.id}" class="btn-white btn btn-xs">Edit</a><a href="javascript:void(0)" onclick="delete_rec('${row.id}')" class="btn-white btn btn-xs">Delete</a>` : ''}
-					`;
+						<a href="<?php echo base_url(); ?>admin/<?php echo $Page_name ?>/edit/${row.id}" class="btn-white btn btn-xs">Edit</a><a href="javascript:void(0)" onclick="delete_rec('${row.id}')" class="btn-white btn btn-xs">Delete</a>`;
 				}
 			}
 		],

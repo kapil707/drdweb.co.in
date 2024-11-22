@@ -266,13 +266,17 @@ class Manage_slider extends CI_Controller {
 			$sr_no = $i++;
 			$id = $row->id;
 
-			$title = $row->title;
+			$short_order = $row->short_order;
+			$slider_type = $row->slider_type;
+			$function_type = $row->function_type;
 			$datetime = date("d-M-y @ H:i:s", $row->timestamp);
 
 			$dt = array(
 				'sr_no' => $sr_no,
 				'id' => $id,
-				'title' => $title,
+				'short_order' => $short_order,
+				'slider_type' => $slider_type,
+				'function_type' => $function_type,
 				'datetime'=>$datetime,
 			);
 			$jsonArray[] = $dt;

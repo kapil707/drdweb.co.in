@@ -58,27 +58,6 @@ $(document).ready(function(){
 			}
 		]
 	});
-
-	$('#date-range').daterangepicker({
-		opens: 'left', // Date picker position
-		locale: {
-			format: 'DD-MM-YYYY', // Date format
-			separator: ' to ',
-			applyLabel: 'Apply',
-			cancelLabel: 'Cancel',
-			daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr','Sa'],
-			monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-		}
-	});
-
-	function data_formet_change(dateValue){
-		var dateParts = dateValue.split('-');
-		if (dateParts.length === 3) {
-			var formattedDate = dateParts[2] + '-' + dateParts[1] + '-' + dateParts[0];
-			return formattedDate;
-		}
-	}
-	//reload_page();
 })
 function reload_page(){
 
