@@ -287,6 +287,11 @@ class Manage_medicine_menu extends CI_Controller {
 			$company_name = $row->company_name;
 			$company_code = $row->company_code;
 			$company_division = $row->company_division;
+
+			$new_title = str_replace(" ","-",strtolower($company_name));
+			$url = "https://www.drdistributor.com/c/$new_title";
+			$company_name = "<a href='".$url."' target='_blank'>$company_name</a>";
+
 			$image = $row->image;
 			$datetime = date("d-M-y @ H:i:s", $row->timestamp);
 
