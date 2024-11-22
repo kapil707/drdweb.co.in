@@ -17,6 +17,7 @@ $(document).ready(function(){
 			{ data: 'sr_no', title: 'Id' },
 			{ data: 'slider_type', title: 'Slider Type' },
 			{ data: 'function_type', title: 'Function Type' },
+			{ data: 'title', title: 'Title' },
 			{
 				data: 'image',
 				title: 'Image',

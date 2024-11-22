@@ -269,13 +269,19 @@ class Manage_slider extends CI_Controller {
 			$short_order = $row->short_order;
 			$slider_type = "Slider ($row->slider_type)";
 			if($row->function_type=="0"){
-				$function_type = "Not Need"; 
+				$function_type = "Not Need";
+				$title = "N/a";
 			}
 			if($row->function_type=="1"){ 
-				$function_type = "Medicine ($row->item_code)"; 
+				$function_type = "Medicine ($row->item_code)";
+				
+				$row1 =  $this->db->query ("select item_name,i_code from tbl_medicine where i_code='$row->item_code'")->row();
+				$title = $row1->item_name;
 			}
 			if($row->function_type=="2"){ 
 				$function_type = "Company ($row->comp_code)"; 
+
+				$title = "N/a";
 			}
 			$image = $row->image;
 			if(!empty($image)) {
@@ -289,6 +295,7 @@ class Manage_slider extends CI_Controller {
 				'short_order' => $short_order,
 				'slider_type' => $slider_type,
 				'function_type' => $function_type,
+				'title' => $title,
 				'image' => $image,
 				'datetime'=>$datetime,
 			);
