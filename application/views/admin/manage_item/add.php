@@ -13,7 +13,7 @@
                         </label>
                     </div>
                     <div class="col-sm-8">
-						<input type="text" id="find_medicine_id" name="find_medicine_id" value="" />
+						<input type="hidden" id="find_medicine_id" name="find_medicine_id" value="" />
 
 						<input type="text" class="form-control" id="medicine_name" name="medicine_name" tabindex="1" placeholder="Enter Medicine" autocomplete="off" value="" />
 
