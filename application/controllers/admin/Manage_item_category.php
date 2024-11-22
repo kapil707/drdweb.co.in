@@ -207,12 +207,14 @@ class Manage_item_category extends CI_Controller {
 			$id = $row->id;
 
 			$title = $row->title;
+			$isdefault = $row->isdefault;
 			$datetime = date("d-M-y @ H:i:s", $row->timestamp);
 
 			$dt = array(
 				'sr_no' => $sr_no,
 				'id' => $id,
 				'title' => $title,
+				'isdefault' => $isdefault,
 				'datetime'=>$datetime,
 			);
 			$jsonArray[] = $dt;
