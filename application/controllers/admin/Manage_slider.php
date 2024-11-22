@@ -290,6 +290,10 @@ class Manage_slider extends CI_Controller {
 				$row1 = $this->db->query("select company_full_name from tbl_medicine where compcode='$row->company_code'")->row();
 
 				$new_title = str_replace(" ","-",$row1->company_full_name);
+				if(!empty($row->company_division)){
+					$new_title.= "/".$row->company_division;
+				}
+
 				$url = "https://www.drdistributor.com/c/$new_title";
 				$title = "<a href='".$url."' target='_blank'>$row1->company_full_name</a>";
 			}
