@@ -200,7 +200,7 @@ class Manage_item extends CI_Controller {
 		$i = 1;
 		$Page_tbl = $this->Page_tbl;
 
-		$result = $this->db->query("SELECT tbl_item.id,tbl_item.timestamp,tbl_item_category_nnn.title as category,tbl_medicine.item_name,tbl_medicine.image1 FROM `tbl_item` left join tbl_item_category_nnn on tbl_item.category_id=tbl_item_category_nnn.id left join tbl_medicine on tbl_item.i_code=tbl_medicine.i_code order by tbl_item.id desc");
+		$result = $this->db->query("SELECT tbl_item.id,tbl_item.timestamp,tbl_item_category_nnn.title as category,tbl_medicine.item_name,tbl_medicine.image1 FROM `tbl_item` left join tbl_item_category_nnn on tbl_item.category_id=tbl_item_category_nnn.id left join tbl_medicine on tbl_item.item_code=tbl_medicine.i_code order by tbl_item.id desc");
 		$result = $result->result();
 		foreach($result as $row) {
 
