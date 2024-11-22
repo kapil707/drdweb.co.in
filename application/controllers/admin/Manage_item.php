@@ -208,7 +208,7 @@ class Manage_item extends CI_Controller {
 			$id = $row->id;
 
 			$item_name = $row->title;
-			$item_image = $row->image;
+			$item_image = $row->image1;
 			$item_category = $row->category;
 			$datetime = date("d-M-y @ H:i:s", $row->timestamp);
 
