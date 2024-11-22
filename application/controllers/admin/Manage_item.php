@@ -208,7 +208,7 @@ class Manage_item extends CI_Controller {
 			$id = $row->id;
 
 			$item_name = $row->item_name;
-			$item_image = $row->image1;
+			$image = base_url().$row->image1;
 			$item_category = $row->category;
 			$datetime = date("d-M-y @ H:i:s", $row->timestamp);
 
@@ -216,7 +216,7 @@ class Manage_item extends CI_Controller {
 				'sr_no' => $sr_no,
 				'id' => $id,
 				'item_name' => $item_name,
-				'item_image' => $item_image,
+				'image' => $image,
 				'item_category' => $item_category,
 				'datetime'=>$datetime,
 			);

@@ -16,7 +16,17 @@ $(document).ready(function(){
 		columns: [
 			{ data: 'sr_no', title: 'Id' },
 			{ data: 'item_name', title: 'Item Name' },
-			{ data: 'item_image', title: 'Item Image' },
+			{
+				data: 'image',
+				title: 'Image',
+				render: function (data, type, row) {
+					if (data) {
+						return `<img src="${data}" alt="Image" style="width: 70px; ">`;
+					} else {
+						return 'No Image';
+					}
+				}
+			},
 			{ data: 'item_category', title: 'Item Category' },
 			{ data: 'datetime', title: 'DateTime' },
 			{
