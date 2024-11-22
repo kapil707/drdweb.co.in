@@ -282,10 +282,9 @@ class Manage_home extends CI_Controller {
 					$category_name = ucfirst($type)." (Main)";
 					$isdefault = 1;
 				}
-			}
-			if($category_id!=1){
+			}else{
 				$category_type = ucfirst($type);
-				$category_name = $category_id;
+				$category_name = ucfirst($type)." ($category_id)";
 			}
 			$datetime = date("d-M-y @ H:i:s", $row->timestamp);
 
