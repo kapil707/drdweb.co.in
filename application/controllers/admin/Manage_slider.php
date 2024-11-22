@@ -282,7 +282,7 @@ class Manage_slider extends CI_Controller {
 			}
 			if($row->function_type=="2"){ 
 				$company_division = $row->company_division;
-				if(!empty($company_division)){
+				if(empty($company_division)){
 					$company_division = "N/a";
 				}
 				$function_type = "Company ($row->company_code) / Division ($company_division)"; 
