@@ -286,7 +286,7 @@ class Manage_home extends CI_Controller {
 				$category_type = ucfirst($type);
 
 				if($type=="divisioncategory"){
-					$row1 = $this->db->query("SELECT * FROM tbl_company_division_category where id='$category_id' xxx")->row();
+					$row1 = $this->db->query("SELECT * FROM tbl_company_division_category where id='$category_id'")->row();
 					if(!empty($row1)){
 						$category_name = ucfirst($type)." ($row1->title)";
 					}
