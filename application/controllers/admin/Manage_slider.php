@@ -267,8 +267,16 @@ class Manage_slider extends CI_Controller {
 			$id = $row->id;
 
 			$short_order = $row->short_order;
-			$slider_type = $row->slider_type;
-			$function_type = $row->function_type;
+			$slider_type = "Slider ($row->slider_type)";
+			if($row->function_type=="0"){
+				$function_type = "Not Need"; 
+			}
+			if($row->function_type=="1"){ 
+				$function_type = "Medicine ($row->item_code)"; 
+			}
+			if($row->function_type=="2"){ 
+				$function_type = "Company ($row->comp_code)"; 
+			}
 			$datetime = date("d-M-y @ H:i:s", $row->timestamp);
 
 			$dt = array(
