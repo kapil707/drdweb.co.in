@@ -285,11 +285,11 @@ class Manage_slider extends CI_Controller {
 				if(!empty($company_division)){
 					$company_division = "N/a";
 				}
-				$function_type = "Company ($row->comp_code) / Division ($company_division)"; 
+				$function_type = "Company ($row->company_code) / Division ($company_division)"; 
 
-				$row1 = $this->db->query("select company_name from tbl_medicine where compcode='$row->comp_code'")->row();
+				$row1 = $this->db->query("select company_full_name from tbl_medicine where compcode='$row->company_code'")->row();
 
-				$title = "N/a";
+				$title = $row1->company_full_name;
 			}
 			$image = $row->image;
 			if(!empty($image)) {
