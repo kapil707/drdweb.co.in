@@ -203,6 +203,11 @@ class Manage_item extends CI_Controller {
 
 			$image = base_url().$row->image1;
 			$item_category = $row->category;
+
+			$new_title = str_replace(" ","-",strtolower($item_category));
+			$url = "https://www.drdistributor.com/c/$new_title";
+			$item_category = "<a href='".$url."' target='_blank'>$item_category</a>";
+			
 			$datetime = date("d-M-y @ H:i:s", $row->timestamp);
 
 			$dt = array(
