@@ -277,6 +277,10 @@ class Manage_slider extends CI_Controller {
 			if($row->function_type=="2"){ 
 				$function_type = "Company ($row->comp_code)"; 
 			}
+			$image = $row->image;
+			if(!empty($image)) {
+				$image = base_url()."uploads/$this->page_controllers/photo/resize/".$image;
+			}
 			$datetime = date("d-M-y @ H:i:s", $row->timestamp);
 
 			$dt = array(
@@ -285,6 +289,7 @@ class Manage_slider extends CI_Controller {
 				'short_order' => $short_order,
 				'slider_type' => $slider_type,
 				'function_type' => $function_type,
+				'image' => $image,
 				'datetime'=>$datetime,
 			);
 			$jsonArray[] = $dt;
