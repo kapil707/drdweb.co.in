@@ -288,14 +288,14 @@ class Manage_home extends CI_Controller {
 				if($type=="divisioncategory"){
 					$row1 = $this->db->query("SELECT * FROM tbl_company_division_category where id='$category_id'")->row();
 					if(!empty($row1)){
-						$category_name = ucfirst($type)." ($row1->title)";
+						$category_name = $row1->title;
 					}
 				}
 
 				if($type=="itemcategory"){
 					$row1 = $this->db->query("SELECT * FROM tbl_item_category_nnn where id='$category_id'")->row();
 					if(!empty($row1)){
-						$category_name = ucfirst($type)." ($row1->title)";
+						$category_name = $row1->title;
 					}
 				}
 			}
