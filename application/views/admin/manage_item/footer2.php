@@ -15,7 +15,9 @@ $(document).ready(function(){
 		order: [[0, 'asc']],
 		columns: [
 			{ data: 'sr_no', title: 'Id' },
-			{ data: 'title', title: 'Title' },
+			{ data: 'item_name', title: 'Item Name' },
+			{ data: 'item_image', title: 'Item Image' },
+			{ data: 'item_category', title: 'Item Category' },
 			{ data: 'datetime', title: 'DateTime' },
 			{
 				data: null,
@@ -23,9 +25,7 @@ $(document).ready(function(){
 				orderable: false,
 				render: function (data, type, row) {
 					return `
-						<a href="<?php echo base_url(); ?>admin/<?php echo $Page_name ?>/edit/${row.id}" class="btn-white btn btn-xs">Edit</a>
-						${row.isdefault == 0 ? `<a href="javascript:void(0)" onclick="delete_rec('${row.id}')" class="btn-white btn btn-xs">Delete</a>` : ''}
-					`;
+						<a href="<?php echo base_url(); ?>admin/<?php echo $Page_name ?>/edit/${row.id}" class="btn-white btn btn-xs">Edit</a><a href="javascript:void(0)" onclick="delete_rec('${row.id}')" class="btn-white btn btn-xs">Delete</a>`;
 				}
 			}
 		],
