@@ -40,10 +40,6 @@ class Manage_company_division_category extends CI_Controller {
 		
 		$tbl = $Page_tbl;
 		
-		$data['url_path'] 	= base_url()."uploads/$page_controllers/photo/resize/";
-		$upload_path 		= "./uploads/$page_controllers/photo/main/";
-		$upload_resize 		= "./uploads/$page_controllers/photo/resize/";
-		
 		extract($_POST);
 		if(isset($Submit))
 		{
@@ -97,11 +93,7 @@ class Manage_company_division_category extends CI_Controller {
 		$this->breadcrumbs->push("$Page_title","admin/$page_controllers/");
 		$this->breadcrumbs->push("View","admin/$page_controllers/view");
 		
-		$tbl = $Page_tbl;
-		
-		$data['url_path'] 	= base_url()."uploads/$page_controllers/photo/resize/";
-		$upload_path 		= "./uploads/$page_controllers/photo/main/";
-		$upload_resize 		= "./uploads/$page_controllers/photo/resize/";		
+		$tbl = $Page_tbl;		
 
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/view",$data);
@@ -134,10 +126,6 @@ class Manage_company_division_category extends CI_Controller {
 		$this->breadcrumbs->push("Edit","admin/$page_controllers/edit");
 		
 		$tbl = $Page_tbl;
-		
-		$data['url_path'] 	= base_url()."uploads/$page_controllers/photo/resize/";
-		$upload_path 		= "./uploads/$page_controllers/photo/main/";
-		$upload_resize 		= "./uploads/$page_controllers/photo/resize/";
 		
 		extract($_POST);
 		if(isset($Submit))

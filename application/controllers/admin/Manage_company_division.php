@@ -121,10 +121,6 @@ class Manage_company_division extends CI_Controller {
 		
 		$tbl = $Page_tbl;
 		
-		$data['url_path'] 	= base_url()."uploads/$page_controllers/photo/resize/";
-		$upload_path 		= "./uploads/$page_controllers/photo/main/";
-		$upload_resize 		= "./uploads/$page_controllers/photo/resize/";
-		
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/view",$data);
 		$this->load->view("admin/header_footer/footer",$data);
