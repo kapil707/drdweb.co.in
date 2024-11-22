@@ -276,7 +276,9 @@ class Manage_slider extends CI_Controller {
 				$function_type = "Medicine ($row->item_code)";
 				
 				$row1 =  $this->db->query ("select item_name,i_code from tbl_medicine where i_code='$row->item_code'")->row();
-				$title = $row1->item_name;
+
+				$url = "https://www.drdistributor.com/md/$row->item_code";
+				$title = "<a href='".$url."' target='_blank'>$row1->item_name</a>";
 			}
 			if($row->function_type=="2"){ 
 				$function_type = "Company ($row->comp_code)"; 
