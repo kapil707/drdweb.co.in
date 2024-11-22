@@ -291,7 +291,7 @@ class Manage_slider extends CI_Controller {
 
 				$new_title = str_replace(" ","-",strtolower($row1->company_full_name));
 				if(!empty($row->company_division)){
-					$new_title.= "/".$row->company_division;
+					$new_title.= "/".strtolower($row->company_division);
 				}
 
 				$url = "https://www.drdistributor.com/c/$new_title";
