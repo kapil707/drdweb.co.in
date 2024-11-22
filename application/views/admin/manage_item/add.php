@@ -9,17 +9,19 @@
 				<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
-                            Select Item
+                            Select Medicine
                         </label>
                     </div>
                     <div class="col-sm-8">
-						<input type="hidden" id="i_code" name="i_code" value=""/>
-						<input type="text" class="form-control" id="item_name" name="item_name"tabindex="1" onkeydown="call_search_item()" onkeyup="call_search_item()" placeholder="Select Item" autocomplete="off" />
-						<div class="call_search_item_result" style="position: absolute;z-index: 1;background: white;width: 300px;"></div>
+						<input type="text" id="find_medicine_id" name="find_medicine_id" value="" />
+
+						<input type="text" class="form-control" id="medicine_name" name="medicine_name" tabindex="1" placeholder="Enter Medicine" autocomplete="off" value="" />
+
+						<div class="find_medicine_result"></div>
                     </div>
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">
-                            <?= form_error('itemid'); ?>
+                            
                         </span>
                     </div>
                 </div>
@@ -35,7 +37,7 @@
                                 Select Category
 							</option>
                             <?php 
-                            $result1 =  $this->db->query ("select * from tbl_item_category where status=1")->result(); 
+                            $result1 =  $this->db->query ("select * from tbl_item_category_nnn where status=1")->result(); 
                             foreach($result1 as $row1) {?>
                             <option value="<?php echo $row1->id;?>" <?php if(set_value('category_id')==$row1->id) { ?> selected <?php } ?>>
                                 <?php echo $row1->name;?>
@@ -45,7 +47,7 @@
                     </div>
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">
-                            <?= form_error('category_id'); ?>
+                            
                         </span>
                     </div>
                 </div>
@@ -96,26 +98,3 @@
         <!-- PAGE CONTENT ENDS -->
     </div><!-- /.col -->
 </div><!-- /.row -->
-<script>
-function call_search_item()
-{	
-	item_name = $("#item_name").val();
-	$(".call_search_item_result").html("Loading....");
-	$.ajax({
-	type       : "POST",
-	data       :  {item_name:item_name},
-	url        : "<?= base_url()?>admin/<?= $Page_name?>/call_search_item",
-	cache	   : false,
-	success    : function(data){
-		$(".call_search_item_result").html(data);
-		}
-	});
-}
-function additem(i_code,name)
-{
-	name = atob(name);
-	$("#i_code").val(i_code);
-	$("#item_name").val(name);
-	$(".call_search_item_result").html("");
-}
-</script>
