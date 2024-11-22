@@ -198,7 +198,7 @@ class Manage_item extends CI_Controller {
 			$id = $row->id;
 
 			$item_code = $row->i_code;
-			$url = "https://www.drdistributor.com/md/$row->item_code";
+			$url = "https://www.drdistributor.com/md/$item_code";
 			$item_name = "<a href='".$url."' target='_blank'>$row->item_name</a>";
 
 			$image = base_url().$row->image1;
