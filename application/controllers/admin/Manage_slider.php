@@ -248,7 +248,7 @@ class Manage_slider extends CI_Controller {
 			$message = "$name Not Delete.";
 		}
 		$message = $Page_title." - ".$message;
-		$this->Admin_Model->Add_Activity_log($message);
+		//$this->Admin_Model->Add_Activity_log($message);
 		echo "ok";
 	}
 
