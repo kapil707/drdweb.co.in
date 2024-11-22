@@ -275,9 +275,11 @@ class Manage_home extends CI_Controller {
 			$type = $row->type;
 			$category_id = $row->category_id;
 			if($category_id==1){
-				$category_name = $type;
+				$category_type = ucfirst($type);
+				$category_name = ucfirst($type)." ".$category_id;
 			}
 			if($category_id!=1){
+				$category_type = $category_id;
 				$category_name = $category_id;
 			}
 			$datetime = date("d-M-y @ H:i:s", $row->timestamp);
@@ -286,6 +288,7 @@ class Manage_home extends CI_Controller {
 				'sr_no' => $sr_no,
 				'id' => $id,
 				'seq_id' => $seq_id,
+				'category_type' => $category_type,
 				'category_name' => $category_name,
 				'datetime'=>$datetime,
 			);

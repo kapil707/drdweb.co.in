@@ -16,6 +16,7 @@ $(document).ready(function(){
 		columns: [
 			{ data: 'sr_no', title: 'Id' },
 			{ data: 'seq_id', title: 'Seq Id' },
+			{ data: 'category_type', title: 'Category Type' },
 			{ data: 'category_name', title: 'Category Name' },
 			{ data: 'datetime', title: 'DateTime' },
 			{
