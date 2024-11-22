@@ -48,7 +48,8 @@ class Manage_item extends CI_Controller {
 		if(isset($Submit))
 		{
 			$dt = array(
-				'title'=>$title,
+				'category_id'=>$category_id,
+				'item_code'=>$find_medicine_id,
 				'status'=>$status,
 				'date' => date('Y-m-d'),
 				'time' => date('H:i:s'),
@@ -144,7 +145,8 @@ class Manage_item extends CI_Controller {
 		if(isset($Submit))
 		{
 			$dt = array(
-				'title'=>$title,
+				'category_id'=>$category_id,
+				'item_code'=>$find_medicine_id,
 				'status'=>$status,
 				'date' => date('Y-m-d'),
 				'time' => date('H:i:s'),
