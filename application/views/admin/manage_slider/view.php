@@ -37,7 +37,7 @@
 
                 <tbody>
                 <?php
-				$i=1;
+				/*$i=1;
                 foreach ($result as $row)
                 {
 					?>
@@ -80,39 +80,10 @@
                         </td> 
                     </tr>
                     <?php
-                    }
+                    }*/
                     ?>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-<script>
-var delete_rec1 = 0;
-function delete_rec(id)
-{
-	if (confirm('Are you sure Delete?')) { 
-	if(delete_rec1==0)
-	{
-		delete_rec1 = 1;
-		$.ajax({
-			type       : "POST",
-			data       :  { id : id ,} ,
-			url        : "<?= base_url()?>admin/<?= $Page_name; ?>/delete_rec",
-			success    : function(data){
-					if(data!="")
-					{
-						java_alert_function("success","Delete Successfully");
-						$("#row_"+id).hide("500");
-					}					
-					else
-					{
-						java_alert_function("error","Something Wrong")
-					}
-					delete_rec1 = 0;
-				}
-			});
-		}
-	}
-}
-</script>
