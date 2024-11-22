@@ -40,10 +40,6 @@ class Manage_item_category extends CI_Controller {
 		
 		$tbl = $Page_tbl;
 		
-		$data['url_path'] 	= base_url()."uploads/$page_controllers/photo/resize/";
-		$upload_path 		= "./uploads/$page_controllers/photo/main/";
-		$upload_resize 		= "./uploads/$page_controllers/photo/resize/";
-		
 		extract($_POST);
 		if(isset($Submit))
 		{
@@ -98,10 +94,6 @@ class Manage_item_category extends CI_Controller {
 		$this->breadcrumbs->push("View","admin/$page_controllers/view");
 		
 		$tbl = $Page_tbl;
-		
-		$data['url_path'] 	= base_url()."uploads/$page_controllers/photo/resize/";
-		$upload_path 		= "./uploads/$page_controllers/photo/main/";
-		$upload_resize 		= "./uploads/$page_controllers/photo/resize/";		
 
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/view",$data);
@@ -134,10 +126,6 @@ class Manage_item_category extends CI_Controller {
 		$this->breadcrumbs->push("Edit","admin/$page_controllers/edit");
 		
 		$tbl = $Page_tbl;
-		
-		$data['url_path'] 	= base_url()."uploads/$page_controllers/photo/resize/";
-		$upload_path 		= "./uploads/$page_controllers/photo/main/";
-		$upload_resize 		= "./uploads/$page_controllers/photo/resize/";
 		
 		extract($_POST);
 		if(isset($Submit))

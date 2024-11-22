@@ -76,7 +76,6 @@ class Manage_slider extends CI_Controller {
 				'comp_division'=>$comp_division,
 				'image'=>$image,
 				'status'=>$status,
-				'user_id'=>$user_id,
 				'date' => date('Y-m-d'),
 				'time' => date('H:i:s'),
 				'timestamp' => time(),
@@ -127,20 +126,14 @@ class Manage_slider extends CI_Controller {
 		$this->breadcrumbs->push("$Page_title","admin/$page_controllers/");
 		$this->breadcrumbs->push("View","admin/$page_controllers/view");		
 
-		$tbl = $Page_tbl;	
-
-		$data['url_path'] 	= base_url()."uploads/$page_controllers/photo/resize/";
-		$upload_path 		= "./uploads/$page_controllers/photo/main/";
-		$upload_resize 		= "./uploads/$page_controllers/photo/resize/";	
-
-		
-		$query = $this->db->query("select * from $tbl order by timestamp desc");
-		$data["result"] = $query->result();
+		$tbl = $Page_tbl;
 		
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/view",$data);
 		$this->load->view("admin/header_footer/footer",$data);
+		$this->load->view("admin/$Page_view/footer2",$data);
 	}
+	
 	public function edit($id)
 	{
 		/******************session***********************/
@@ -206,7 +199,6 @@ class Manage_slider extends CI_Controller {
 				'comp_division'=>$comp_division,
 				'image'=>$image,
 				'status'=>$status,
-				'user_id'=>$user_id,
 				'date' => date('Y-m-d'),
 				'time' => date('H:i:s'),
 				'timestamp' => time(),
@@ -223,7 +215,6 @@ class Manage_slider extends CI_Controller {
 			{
 				$message = "Not Add.";
 				$this->session->set_flashdata("message_type","error");
-				redirect(current_url());
 			}
 		}		
 
@@ -259,5 +250,49 @@ class Manage_slider extends CI_Controller {
 		$message = $Page_title." - ".$message;
 		$this->Admin_Model->Add_Activity_log($message);
 		echo "ok";
+	}
+
+	public function view_api() {		
+
+		$jsonArray = array();
+		$items = "";
+		$i = 1;
+		$Page_tbl = $this->Page_tbl;
+
+		$result = $this->db->query("SELECT * FROM $Page_tbl order by id desc");
+		$result = $result->result();
+		foreach($result as $row) {
+
+			$sr_no = $i++;
+			$id = $row->id;
+
+			$title = $row->title;
+			$datetime = date("d-M-y @ H:i:s", $row->timestamp);
+
+			$dt = array(
+				'sr_no' => $sr_no,
+				'id' => $id,
+				'title' => $title,
+				'datetime'=>$datetime,
+			);
+			$jsonArray[] = $dt;
+		}
+		if(!empty($jsonArray)){
+			$items = $jsonArray;
+			$response = array(
+				'success' => "1",
+				'message' => 'Data load successfully',
+				'items' => $items,
+			);
+		}else{
+			$response = array(
+				'success' => "0",
+				'message' => '502 error',
+			);
+		}
+		
+        // Send JSON response
+        header('Content-Type: application/json');
+        echo json_encode($response);
 	}
 }
