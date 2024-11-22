@@ -28,7 +28,6 @@ $(document).ready(function(){
 					}
 				}
 			},
-			{ data: 'item_category', title: 'Item Category' },
 			{ data: 'datetime', title: 'DateTime' },
 			{
 				data: null,
