@@ -274,11 +274,13 @@ class Manage_home extends CI_Controller {
 			$seq_id = $row->seq_id;
 			$type = $row->type;
 			$category_id = $row->category_id;
+			$isdefault = 0;
 			if($category_id==1){
 				$category_type = ucfirst($type);
 				$category_name = ucfirst($type)." ($category_id)";
 				if($type=="notification" || $type=="invoice" || $type=="menu"){
 					$category_name = ucfirst($type)." (Main)";
+					$isdefault = 1;
 				}
 			}
 			if($category_id!=1){
@@ -293,6 +295,7 @@ class Manage_home extends CI_Controller {
 				'seq_id' => $seq_id,
 				'category_type' => $category_type,
 				'category_name' => $category_name,
+				'isdefault' => $isdefault,
 				'datetime'=>$datetime,
 			);
 			$jsonArray[] = $dt;
