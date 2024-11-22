@@ -290,6 +290,9 @@ class Manage_medicine_menu extends CI_Controller {
 
 			$new_title = str_replace(" ","-",strtolower($company_name));
 			$url = "https://www.drdistributor.com/c/$new_title";
+			if(!empty($company_division)){
+				$url.= "/".$company_division;
+			}
 			$company_name = "<a href='".$url."' target='_blank'>$company_name</a>";
 
 			$image = $row->image;
