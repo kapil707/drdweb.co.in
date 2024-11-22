@@ -284,7 +284,7 @@ class Manage_home extends CI_Controller {
 				}
 			}
 			if($category_id!=1){
-				$category_type = $category_id;
+				$category_type = ucfirst($type);
 				$category_name = $category_id;
 			}
 			$datetime = date("d-M-y @ H:i:s", $row->timestamp);
