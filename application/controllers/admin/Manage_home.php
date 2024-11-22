@@ -6,15 +6,15 @@ class Manage_home extends CI_Controller {
 	var $Page_view  = "manage_home";
 	var $Page_menu  = "manage_home";
 	var $page_controllers = "manage_home";
-	var $Page_tbl   = "tbl_home";
+	var $Page_tbl   = "tbl_home_nnn";
 	public function index()
 	{
 		$page_controllers = $this->page_controllers;
 		redirect("admin/$page_controllers/view");
 	}
+
 	public function add()
 	{
-		error_reporting(0);
 		/******************session***********************/
 		$user_id = $this->session->userdata("user_id");
 		$user_type = $this->session->userdata("user_type");
@@ -39,19 +39,10 @@ class Manage_home extends CI_Controller {
 		$this->breadcrumbs->push("Add","admin/$page_controllers/add");		
 
 		$tbl = $Page_tbl;
-		$data['url_path'] = base_url()."uploads/$page_controllers/photo/";
-		$upload_path = "./uploads/$page_controllers/photo/";	
 
-		$system_ip = $this->input->ip_address();
 		extract($_POST);
 		if(isset($Submit))
-		{	
-			$result = $message_db = "";
-			
-			$date = date('Y-m-d');
-			$time = date("H:i",time());
-			$datetime = time();
-
+		{
 			$category 		= explode ("_", $category_id);
 			$type 			= $category["0"];
 			$category_id 	= $category["1"];
@@ -60,11 +51,11 @@ class Manage_home extends CI_Controller {
 				'seq_id'=>$seq_id,
 				'type'=>$type,
 				'category_id'=>$category_id,
-				'date'=>$date,
-				'time'=>$time,
-				'datetime'=>$datetime,
-				'status'=>$status,);
-				
+				'status'=>$status,
+				'date' => date('Y-m-d'),
+				'time' => date('H:i:s'),
+				'timestamp' => time(),
+			);				
 			$result = $this->Scheme_Model->insert_fun($tbl,$dt);
 			if($result)
 			{
@@ -96,9 +87,9 @@ class Manage_home extends CI_Controller {
 		$this->load->view("admin/$Page_view/add",$data);
 		$this->load->view("admin/header_footer/footer",$data);
 	}
+
 	public function view()
 	{
-		error_reporting(0);
 		/******************session***********************/
 		$user_id = $this->session->userdata("user_id");
 		$user_type = $this->session->userdata("user_type");
@@ -122,61 +113,7 @@ class Manage_home extends CI_Controller {
 		$this->breadcrumbs->push("$Page_title","admin/$page_controllers/");
 		$this->breadcrumbs->push("View","admin/$page_controllers/view");	
 
-		$tbl = $Page_tbl;	
-
-		$data['url_path'] = base_url()."uploads/$page_controllers/photo/";
-		$upload_path = "./uploads/$page_controllers/photo/";			
-
-		/*$where = array('status'=>"0");
-		$data["result"] = $this->Admin_Model->select_result("tbl_broadcast",$where,"id","asc");*/
-
-		$vdt = date("Y-m-d");
-		if($_GET["submit"])
-		{
-			$vdt = $_GET["vdt"];
-			$vdt = date("Y-m-d",strtotime($vdt));
-		}
-		$data["vdt1"] = $vdt;
-
-		$this->load->library('pagination');
-
-		$result = $this->db->query("select * from $tbl order by seq_id asc")->result();
-		
-		$config['total_rows'] = count($result);
-		$data["count_records"] = count($result);
-        $config['per_page'] = 100;
-
-        if($num!=""){
-           $config['per_page'] = $num;
-        }
-        $config['full_tag_open']="<ul class='pagination'>";
-        $config['full_tag_close']="</ul>";
-        $config['first_tag_open']='<li>';
-        $config['first_tag_close']='</li>';
-        $config['last_tag_open']='<li>';
-        $config['last_tag_close']='</li>';
-        $config['next_tag_open']='<li>';
-        $config['next_tag_close']='</li>';
-        $config['prev_tag_open']='<li>';
-        $config['prev_tag_close']='</li>';
-        $config['num_tag_open']='<li>';
-        $config['num_tag_close']='</li>';
-        $config['cur_tag_open']="<li class='active'><a>";
-        $config['cur_tag_close']='</a></li>';
-        $config['num_links'] = 100;    
-        $config['page_query_string'] = TRUE;
-		$per_page=$_GET["pg"];
-		if($per_page=="")
-		{
-			$per_page = 0;
-		}
-
-		$data['per_page']=$per_page;
-		
-		$data['user_id'] = $user_id;
-
-		$query = $this->db->query("select * from $tbl order by seq_id asc LIMIT $per_page,100");
-  		$data["result"] = $query->result();
+		$tbl = $Page_tbl;
 
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/view",$data);
@@ -184,7 +121,6 @@ class Manage_home extends CI_Controller {
 	}
 	public function edit($id)
 	{
-		error_reporting(0);
 		/******************session***********************/
 		$user_id = $this->session->userdata("user_id");
 		$user_type = $this->session->userdata("user_type");
@@ -208,61 +144,35 @@ class Manage_home extends CI_Controller {
 		$this->breadcrumbs->push("Edit","admin/$page_controllers/edit");
 		
 		$tbl = $Page_tbl;
-		
-		$data['url_path'] 	= base_url()."uploads/$page_controllers/photo/resize/";
-		$upload_path 		= "./uploads/$page_controllers/photo/main/";
-		$upload_resize 		= "./uploads/$page_controllers/photo/resize/";
-		
-		$system_ip = $this->input->ip_address();
+
 		extract($_POST);
 		if(isset($Submit))
 		{
-			$message_db = "";
-			$datetime = time();
-			$date = date("Y-m-d",$datetime);
-			$time = date("H:i",$datetime);
-			$where = array('id'=>$id);
-			
 			$category 		= explode ("_", $category_id);
 			$type 			= $category["0"];
 			$category_id 	= $category["1"];
 			
-			$result = "";
 			$dt = array(
 				'seq_id'=>$seq_id,
 				'type'=>$type,
 				'category_id'=>$category_id,
-				'date'=>$date,
-				'time'=>$time,
-				'datetime'=>$datetime,
-				'status'=>$status,);
-
-			$result = $this->Scheme_Model->edit_fun($tbl,$dt,$where);
-			$change_text = $old_property_title." - ($change_text)";				
+				'status'=>$status,
+				'date' => date('Y-m-d'),
+				'time' => date('H:i:s'),
+				'timestamp' => time(),
+			);
+			$where = array('id'=>$id);
+			$result = $this->Scheme_Model->edit_fun($tbl,$dt,$where);		
 			if($result)
 			{
-				$message_db = "$change_text - Edit Successfully.";
 				$message = "Edit Successfully.";
 				$this->session->set_flashdata("message_type","success");
+				redirect(current_url());
 			}
 			else
 			{
-				$message_db = "$change_text - Not Add.";
 				$message = "Not Add.";
 				$this->session->set_flashdata("message_type","error");
-			}
-		}
-		if($message_db!="")
-		{
-			$message = $Page_title." - ".$message;
-			$message_db = $Page_title." - ".$message_db;
-			$this->session->set_flashdata("message_footer","yes");
-			$this->session->set_flashdata("full_message",$message);
-			$this->Admin_Model->Add_Activity_log($message_db);
-			if($result)
-			{
-				redirect(current_url());
-				//redirect(base_url()."admin/$page_controllers/view");
 			}
 		}
 		
@@ -291,7 +201,7 @@ class Manage_home extends CI_Controller {
 			$message = "Not Delete.";
 		}
 		$message = $Page_title." - ".$message;
-		$this->Admin_Model->Add_Activity_log($message);
+		//$this->Admin_Model->Add_Activity_log($message);
 		echo "ok";
 	}
 	
@@ -344,5 +254,58 @@ class Manage_home extends CI_Controller {
 		{
 			return TRUE;
 		}
+	}
+
+	public function view_api() {		
+
+		$jsonArray = array();
+		$items = "";
+		$i = 1;
+		$Page_tbl = $this->Page_tbl;
+
+		$result = $this->db->query("SELECT * FROM $Page_tbl order by id desc");
+		$result = $result->result();
+		foreach($result as $row) {
+
+			$sr_no = $i++;
+			$id = $row->id;
+
+			$seq_id = $row->seq_id;
+			$type = $row->type;
+			$category = $row->category;
+			if($category==1){
+				$category_name = $type;
+			}
+			if($category!=1){
+				$category_name = $category;
+			}
+			$datetime = date("d-M-y @ H:i:s", $row->timestamp);
+
+			$dt = array(
+				'sr_no' => $sr_no,
+				'id' => $id,
+				'seq_id' => $seq_id,
+				'category_name' => $category_name,
+				'datetime'=>$datetime,
+			);
+			$jsonArray[] = $dt;
+		}
+		if(!empty($jsonArray)){
+			$items = $jsonArray;
+			$response = array(
+				'success' => "1",
+				'message' => 'Data load successfully',
+				'items' => $items,
+			);
+		}else{
+			$response = array(
+				'success' => "0",
+				'message' => '502 error',
+			);
+		}
+		
+        // Send JSON response
+        header('Content-Type: application/json');
+        echo json_encode($response);
 	}
 }

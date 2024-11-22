@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-xs-12">
-	    <a href="<?php echo base_url(); ?>admin/<?= $Page_name ?>/view?pg=<?= $_GET["pg"]; ?>#row_<?=$id ?>">
+	    <a href="<?php echo base_url(); ?>admin/<?= $Page_name ?>/view">
 		<button type="button" class="btn btn-w-m btn-info"><< Back</button>
 		</a>
 	</div>
