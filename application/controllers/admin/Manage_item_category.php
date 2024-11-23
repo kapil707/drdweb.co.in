@@ -8,7 +8,7 @@ class Manage_item_category extends CI_Controller {
 	var $Page_view  = "manage_item_category";
 	var $Page_menu  = "manage_item_category";
 	var $page_controllers = "manage_item_category";
-	var $Page_tbl   = "tbl_item_category_nnn";
+	var $Page_tbl   = "tbl_item_category";
 	public function index()
 	{
 		$page_controllers = $this->page_controllers;

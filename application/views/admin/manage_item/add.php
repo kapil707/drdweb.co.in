@@ -37,7 +37,7 @@
                                 Select Category
 							</option>
                             <?php 
-                            $result1 =  $this->db->query ("select * from tbl_item_category_nnn where status=1 and isdefault=0")->result(); 
+                            $result1 =  $this->db->query ("select * from tbl_item_category where status=1 and isdefault=0")->result(); 
                             foreach($result1 as $row1) {?>
                             <option value="<?php echo $row1->id;?>" <?php if(set_value('category_id')==$row1->id) { ?> selected <?php } ?>>
                                 <?php echo $row1->title;?>
