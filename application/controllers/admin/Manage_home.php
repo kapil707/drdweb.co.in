@@ -293,7 +293,7 @@ class Manage_home extends CI_Controller {
 				}
 
 				if($type=="itemcategory"){
-					$row1 = $this->db->query("SELECT * FROM tbl_item_category_nnn where id='$category_id'")->row();
+					$row1 = $this->db->query("SELECT * FROM tbl_item_category where id='$category_id'")->row();
 					if(!empty($row1)){
 						$new_title = str_replace(" ","-",strtolower($row1->title));
 						$category_name = "<a href='https://www.drdistributor.com/c/ic/".$new_title."' target='_blank'>".$row1->title."</a>";
