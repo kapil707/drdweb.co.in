@@ -6,7 +6,7 @@ class Manage_home extends CI_Controller {
 	var $Page_view  = "manage_home";
 	var $Page_menu  = "manage_home";
 	var $page_controllers = "manage_home";
-	var $Page_tbl   = "tbl_home_nnn";
+	var $Page_tbl   = "tbl_home";
 	public function index()
 	{
 		$page_controllers = $this->page_controllers;
