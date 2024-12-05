@@ -238,7 +238,7 @@ class Manage_user_chemist extends CI_Controller {
 	public function user_logout_new($altercode)
 	{
 		$this->db->query("update tbl_android_device_id set logout='1' where chemist_id='$altercode'");
-		$this->db->query("delete from drd_login_time where user_altercode='$altercode'");
+		//$this->db->query("delete from drd_login_time where user_altercode='$altercode'");
 	}
 	public function user_logout()
 	{
@@ -250,7 +250,7 @@ class Manage_user_chemist extends CI_Controller {
 		if($altercode!="")
 		{
 			$this->db->query("update tbl_android_device_id set logout='1' where chemist_id='$altercode'");
-			$this->db->query("delete from drd_login_time where user_altercode='$altercode'");
+			//$this->db->query("delete from drd_login_time where user_altercode='$altercode'");
 			$response = 1;
 		}
 $items.= <<<EOD

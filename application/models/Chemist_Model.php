@@ -454,7 +454,7 @@ if ($items != '') {
 		
 		$login_time = time();
 		$update_time = date("YmdHi", strtotime("+15 minutes", $login_time));
-		$row = $this->db->query("select * from drd_login_time where user_altercode='$user_altercode' and user_type='$user_type'")->row();
+		/*$row = $this->db->query("select * from drd_login_time where user_altercode='$user_altercode' and user_type='$user_type'")->row();
 		if($row->id=="")
 		{
 			$this->db->query("insert into drd_login_time set user_altercode='$user_altercode',user_type='$user_type',login_time='$login_time',update_time='$update_time'");
@@ -462,7 +462,7 @@ if ($items != '') {
 		else
 		{
 			$this->db->query("update drd_login_time set login_time='$login_time',update_time='$update_time' where user_altercode='$user_altercode' and user_type='$user_type'");
-		}
+		}*/
 		
 		return "1";
 	}
