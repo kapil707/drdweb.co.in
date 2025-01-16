@@ -19,6 +19,7 @@ class Cronjob_delete_records extends CI_Controller
 		$time  = time();
 		$vdt   = date("Y-m-d",$time);
 		$day1  = date("Y-m-d", strtotime("-1 days", $time));
+		$day3  = date("Y-m-d", strtotime("-3 days", $time));
 		$day7  = date("Y-m-d", strtotime("-7 days", $time));
 		$day15  = date("Y-m-d", strtotime("-15 days", $time));
 		$day30 = date("Y-m-d", strtotime("-30 days", $time));
@@ -27,7 +28,8 @@ class Cronjob_delete_records extends CI_Controller
 		$day365 = date("Y-m-d", strtotime("-365 days", $time));
 
 		$db2 = $this->load->database('default2', TRUE);
-		$db2->query("DELETE FROM `tbl_medicine_compare_final` WHERE date<='$day30'");
+		//$db2->query("DELETE FROM `tbl_medicine_compare_final` WHERE date<='$day30'");
+		$this->db->query("DELETE FROM `tbl_medicine_compare` WHERE date<='$day3'");
 		
 		$db_master = $this->load->database('db_master', TRUE);
 		$db_master->query("DELETE FROM `drd_master_tbl_delivery` WHERE vdt<='$day7'");
