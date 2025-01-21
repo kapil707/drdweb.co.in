@@ -17,8 +17,7 @@ class Cronjob_netrate extends CI_Controller
 		$query = $this->db->get()->result();
 		foreach($query as $row)
 		{
-			echo $i_code 	= $row->i_code;
-			die();
+			$i_code 	= $row->i_code;
 			$total 		= "#";
 			
 			$compare_type 	= "netrate";
