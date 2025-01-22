@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Cronjob_netrate extends CI_Controller
+class Cronjob_net_rate extends CI_Controller
 {
 	public function __construct(){
 		parent::__construct();
@@ -8,7 +8,7 @@ class Cronjob_netrate extends CI_Controller
 
 	public function run_job()
 	{
-		$this->db->query("delete from tbl_medicine_compare where compare_type='netrate'");
+		$this->db->query("delete from tbl_medicine_compare where compare_type='net_rate'");
 		//$date = date("Y-m-d", strtotime("-30 days", time()));
 
 		$this->db->select('i_code');
@@ -20,7 +20,7 @@ class Cronjob_netrate extends CI_Controller
 			$i_code 	= $row->i_code;
 			$total 		= "#";
 			
-			$compare_type 	= "netrate";
+			$compare_type 	= "net_rate";
 			$compare_now 	= $total;
 			$compare_before = $total;
 
