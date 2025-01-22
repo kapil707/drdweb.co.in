@@ -9,7 +9,7 @@ class Cronjob_netrate extends CI_Controller
 	public function run_job()
 	{
 		$this->db->query("delete from tbl_medicine_compare where compare_type='netrate'");
-		$date = date("Y-m-d", strtotime("-30 days", time()));
+		//$date = date("Y-m-d", strtotime("-30 days", time()));
 
 		$this->db->select('i_code');
 		$this->db->from('tbl_medicine');
