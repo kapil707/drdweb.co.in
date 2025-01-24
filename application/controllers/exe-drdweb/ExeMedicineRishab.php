@@ -17,9 +17,11 @@ class ExeMedicineRishab extends CI_Controller
 	}
 	public function download_medicines_id($id)
 	{
-		$where = array('id' => $id);
-		$query = $this->db->where($where)->get('tbl_medicine_xxx');
-		$data = $query->result_array();
+		$default2 = $this->load->database('default2', TRUE);
+
+		$where 	= array('id' => $id);
+		$query 	= $default2->where($where)->get('tbl_medicine_xxx');
+		$data 	= $query->result_array();
 		echo json_encode($data);
 	}
 }
