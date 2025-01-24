@@ -20,7 +20,7 @@ class ExeMedicineRishab extends CI_Controller
 		$default2 = $this->load->database('default2', TRUE);
 
 		$where 	= array('id' => $id);
-		$query 	= $default2->where($where)->get('tbl_medicine_xxx');
+		$query 	= $default2->where($where)->get('tbl_medicine');
 		$data 	= $query->result_array();
 		echo json_encode($data);
 	}
