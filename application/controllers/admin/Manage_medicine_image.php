@@ -54,11 +54,11 @@ class Manage_medicine_image extends CI_Controller {
 			
 			if (!empty($_FILES["image"]["name"]))
 			{
-				$this->Image_Model->uploadTo = $upload_path."/".$itemid;
+				$this->Image_Model->uploadTo = $upload_path."/".$itemid."/";
 				$image = $this->Image_Model->upload($_FILES['image']);
 				$image = str_replace($upload_path,"",$image);
 				
-				$this->Image_Model->newPath = $upload_resize."/".$itemid;
+				$this->Image_Model->newPath = $upload_resize."/".$itemid."/";
 				$this->Image_Model->newWidth = 512;
 				$this->Image_Model->newHeight = 512;
 				$this->Image_Model->resize();
