@@ -224,6 +224,8 @@ class ExeMedicine extends CI_Controller
 
 	public function upload_test()
 	{
+		//OPTIMIZE TABLE tbl_medicine;
+
 		// Data ko read karna (input stream se)
 		$inputData = file_get_contents("php://input");
 
