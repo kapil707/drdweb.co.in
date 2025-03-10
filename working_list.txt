@@ -15,6 +15,12 @@ git commit -m "add"
 git branch -M backup-25-03-10
 git push -u origin backup-25-03-10
 
+git add "-A"
+git commit -m "add"
+
+git branch -M v01
+git push -u origin v01
+
 /*******************/
 tbl_slider1 -> tbl_slider
 tbl_medicine_menu_nnn -> tbl_medicine_menu - no need
