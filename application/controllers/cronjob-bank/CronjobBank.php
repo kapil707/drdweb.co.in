@@ -433,23 +433,25 @@ class CronjobBank extends CI_Controller
 			$text = preg_replace('/SB2.*?-UPI/', ' UPI', $text);
 			echo "<br>".$text;
 
-			preg_match("/FROM\s+(.+?)\s+CITI/", $text, $matches);
+			
+
+			preg_match("/FROM\s+(.+?)\s+REF/", $text, $matches);
 			if (!empty($matches) && empty($received_from)){
 				$received_from = trim($matches[1]);
 				//$from_value = "<b>find2: ".$received_from."</b>"; UPI CREDIT REFERENCE 956425755787 FROM APMAURYA6@I BL ARJUN PRASAD MAURYA PAYMENT FROM PHONEPE
 				$statment_type = 1;
 				echo "<br>1</br>";
 			}
-			
-			preg_match("/FROM\s+(.+?)\s*+PAYMENT/", $text, $matches);
+
+			preg_match("/FROM\s+(.+?)\s+CITI/", $text, $matches);
 			if (!empty($matches) && empty($received_from)){
 				$received_from = trim($matches[1]);
 				//$from_value = "<b>find2: ".$received_from."</b>"; UPI CREDIT REFERENCE 956425755787 FROM APMAURYA6@I BL ARJUN PRASAD MAURYA PAYMENT FROM PHONEPE
 				$statment_type = 2;
 				echo "<br>2</br>";
 			}
-
-			preg_match("/FROM\s+(.+?)\s+SENT/", $text, $matches);
+			
+			preg_match("/FROM\s+(.+?)\s*+PAYMENT/", $text, $matches);
 			if (!empty($matches) && empty($received_from)){
 				$received_from = trim($matches[1]);
 				//$from_value = "<b>find2: ".$received_from."</b>"; UPI CREDIT REFERENCE 956425755787 FROM APMAURYA6@I BL ARJUN PRASAD MAURYA PAYMENT FROM PHONEPE
@@ -457,7 +459,7 @@ class CronjobBank extends CI_Controller
 				echo "<br>3</br>";
 			}
 
-			preg_match("/FROM\s+(.+?)\s+UPI/", $text, $matches);
+			preg_match("/FROM\s+(.+?)\s+SENT/", $text, $matches);
 			if (!empty($matches) && empty($received_from)){
 				$received_from = trim($matches[1]);
 				//$from_value = "<b>find2: ".$received_from."</b>"; UPI CREDIT REFERENCE 956425755787 FROM APMAURYA6@I BL ARJUN PRASAD MAURYA PAYMENT FROM PHONEPE
@@ -465,7 +467,7 @@ class CronjobBank extends CI_Controller
 				echo "<br>4</br>";
 			}
 
-			preg_match("/FROM\s+(.+?)\s+REF/", $text, $matches);
+			preg_match("/FROM\s+(.+?)\s+UPI/", $text, $matches);
 			if (!empty($matches) && empty($received_from)){
 				$received_from = trim($matches[1]);
 				//$from_value = "<b>find2: ".$received_from."</b>"; UPI CREDIT REFERENCE 956425755787 FROM APMAURYA6@I BL ARJUN PRASAD MAURYA PAYMENT FROM PHONEPE
