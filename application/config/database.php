@@ -138,7 +138,7 @@ $db['db_master'] = array(
 	'save_queries' => TRUE
 );
 
-$db['db_bank'] = array(
+$db['bank_db'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 	'username' => 'drdistributor_bank_user',
