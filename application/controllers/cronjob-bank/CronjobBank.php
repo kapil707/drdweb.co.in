@@ -603,7 +603,7 @@ class CronjobBank extends CI_Controller
 						'statment_id'=>$statment_id,
 						'from_statment'=>1,
 						'statment_type'=>$statment_type,
-						'statment_text'=>$statment_text,						
+						'statment_text'=>$text,						
 					);
 					$this->BankModel->insert_fun("tbl_bank_processing", $dt);
 				}else{
