@@ -10,7 +10,7 @@ class Manage_bank_statment extends CI_Controller {
 	public function __construct()
     {
         parent::__construct();
-		$this->load->model("model-drdweb/BankModel");
+		$this->load->model("model-drdcorp/BankModel");
     }
 	public function index()
 	{
@@ -156,7 +156,7 @@ class Manage_bank_statment extends CI_Controller {
 						}
 					}
 				}
-				redirect(base_url()."admin/$page_controllers/view2");
+				redirect(base_url()."admin/$page_controllers/view1");
 			}
 			
 			if($formet==2){				
@@ -281,7 +281,8 @@ class Manage_bank_statment extends CI_Controller {
 							$narrative1 = $worksheet->getCell($narrative.$row)->getValue(); //m
 							$payment_details1 = $worksheet->getCell($payment_details.$row)->getValue(); //n
 
-							$date1 = DateTime::createFromFormat('d/m/Y', $date1)->format('Y-m-d');
+							//$date1 = DateTime::createFromFormat('d/m/Y', $date1)->format('Y-m-d');
+							$date1 = DateTime::createFromFormat('d M Y', $date1)->format('Y-m-d');
 							//$date1 = date('Y-m-d', strtotime($date1));
 							//die();
 							//change only for this
@@ -361,8 +362,12 @@ class Manage_bank_statment extends CI_Controller {
 			// Start date aur end date ko extract karen
 			$start_date = $date_parts[0];
 			$end_date 	= $date_parts[1];
+		}else{
+			$date_range	= date('d-m-Y')."+to+".date('d-m-Y');
 		}
-
+		
+		$data["date_range"] = $date_range;
+		
 		$start_date = DateTime::createFromFormat('d-m-Y', $start_date);
 		$end_date 	= DateTime::createFromFormat('d-m-Y', $end_date);
 	
@@ -396,7 +401,7 @@ class Manage_bank_statment extends CI_Controller {
 			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 		}
 
-		$query = $this->BankModel->select_query("SELECT s.* from tbl_statment as s where s.date BETWEEN '$start_date' AND '$end_date'");
+		$query = $this->BankModel->select_query("SELECT s.*,p.final_chemist as chemist_id,p.final_invoice as done_invoice,p.final_find_by as done_find_by,p.status as done_status,p.download_easysol as download_easysol,p.checkbox_done_status as checkbox_done_status,p.id as pid from tbl_statment as s left JOIN tbl_bank_processing as p on p.upi_no=s.customer_reference where s.date BETWEEN '$start_date' AND '$end_date'");
 		$data["result"] = $query->result();
 
 		$this->load->view("admin/header_footer/header",$data);
@@ -444,7 +449,11 @@ class Manage_bank_statment extends CI_Controller {
 			// Start date aur end date ko extract karen
 			$start_date = $date_parts[0];
 			$end_date 	= $date_parts[1];
+		}else{
+			$date_range	= date('d-m-Y')."+to+".date('d-m-Y');
 		}
+		
+		$data["date_range"] = $date_range;
 
 		$start_date = DateTime::createFromFormat('d-m-Y', $start_date);
 		$end_date 	= DateTime::createFromFormat('d-m-Y', $end_date);
@@ -527,7 +536,11 @@ class Manage_bank_statment extends CI_Controller {
 			// Start date aur end date ko extract karen
 			$start_date = $date_parts[0];
 			$end_date 	= $date_parts[1];
+		}else{
+			$date_range	= date('d-m-Y')."+to+".date('d-m-Y');
 		}
+		
+		$data["date_range"] = $date_range;
 
 		$start_date = DateTime::createFromFormat('d-m-Y', $start_date);
 		$end_date 	= DateTime::createFromFormat('d-m-Y', $end_date);
@@ -613,7 +626,11 @@ class Manage_bank_statment extends CI_Controller {
 			// Start date aur end date ko extract karen
 			$start_date = $date_parts[0];
 			$end_date 	= $date_parts[1];
+		}else{
+			$date_range	= date('d-m-Y')."+to+".date('d-m-Y');
 		}
+		
+		$data["date_range"] = $date_range;
 
 		$start_date = DateTime::createFromFormat('d-m-Y', $start_date);
 		$end_date 	= DateTime::createFromFormat('d-m-Y', $end_date);
