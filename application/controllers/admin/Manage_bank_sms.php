@@ -10,7 +10,7 @@ class Manage_bank_sms extends CI_Controller {
 	public function __construct()
     {
         parent::__construct();
-		$this->load->model("model-drdcorp/BankModel");
+		$this->load->model("model-bank/BankModel");
     }
 	public function index()
 	{
