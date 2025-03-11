@@ -58,7 +58,8 @@ class CronjobBank extends CI_Controller
 
 		if (isset($data1['messages'])) {
 			foreach ($data1['messages'] as $message) {
-				$message_id = isset($message['message_id']) ? $message['message_id'] : "Body not found";
+				echo $message_id = isset($message['message_id']) ? $message['message_id'] : "Body not found";
+				echo "<br>";
 
 				echo $body = isset($message['body']) ? $message['body'] : "Body not found";
 
@@ -84,7 +85,7 @@ class CronjobBank extends CI_Controller
 					'body' => $body,
 				);
 
-				if (!empty($code)) {
+				if (!empty($message_id)) {
 					// Check karo agar record already exist karta hai
 					$existing_record = $this->BankModel->select_row("tbl_whatsapp_message", array('message_id' => $message_id));
 			
