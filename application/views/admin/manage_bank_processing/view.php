@@ -292,74 +292,82 @@
 							<?php echo $i++; ?>
 						</td>
 						<td>
-							Statment : <?= $entry->statment_text; ?>
-							<div class="td_div">
-								<?= $row_upi_no1; ?> <b>(<?= $row_type; ?>)</b>
-							</div>
-							<div class="td_div">
-								<?= $row_orderid; ?>
-							</div>
-							<div class="td_div">
-								<?= $row_amount; ?>
-							</div>
-							<div class="td_div1">
-								<?= $row_date; ?>
-							</div>
-							<?php /************* */ ?>
-							<div class="td_div">
-								<?= ($row_from_text); ?>
-								<input type="hidden" value="<?php echo $from_text ?>" class="text_from_text_<?= ($row_id); ?>">
-								<input type="text" value="<?php echo $chemist; ?>" class="form-control myinput1 text_from_text_chemist_id_<?= ($row_id); ?> pg_text_box" style="display:none;">
-								<i class="fa fa-check add_from_text_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="add_from_text_chemist_id('<?= ($row_id); ?>')" style="display:none"></i>
-								<i class="fa fa-times cancel_from_text_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="cancel_from_text_chemist_id('<?= ($row_id); ?>')" style="display:none"></i>
-								<i class="fa fa-pencil edit_from_text_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_from_text_chemist_id('<?= ($row_id); ?>')"></i>
-							</div>
-							<div class="td_div">
-								<b>Find : </b>
-								<?= ($row_from_text_find); ?> <?= $row_from_text_logic; ?>
-							</div>
-							<div class="td_div">
-								<b>Find by : </b> 
-								<?= $row_find_by; ?>
-							</div>
-							<div class="td_div1">
-								<?= $row_status; ?>
-							</div>
-						<?php /************* */ ?>
-							<div class="td_div0">
-								<b>Invoice : </b>
-								<?= ($row_find_invoice_all); ?>
-							</div>
-							<div class="td_div01">
-								<b onclick="get_whats_message('<?= ($row_id); ?>','<?= ($row_whatsapp_id); ?>','<?= $row_upi_no; ?>')" data-toggle="modal" data-target="#myModal">WhatsApp : </b>
-								<?= ($row_whatsapp); ?>
-							</div>
-						<?php /************* */ ?>
-							<div class="td_div">
-								<i class="fa fa-refresh row_refresh_id_<?= ($row_id); ?>" aria-hidden="true" onclick="row_refresh('<?= ($row_id); ?>')"></i> Refresh
-								<?php if($entry->recommended){ echo " || <b>Recommended : $entry->recommended</b>"; }?>
-							</div>
-							<div class="td_div">
-								<b>Chemist : </b>
-								<?= $row_chemist_id;?>
-							</div>
-							<div class="td_div">
-								<b>Invoice : </b>
-								<?= $row_invoice_chemist ?>
-							</div>
-							<div class="td_div">
-								<b onclick="get_whats_message('<?= ($row_id); ?>','<?= ($row_whatsapp_id); ?>','<?= $row_upi_no; ?>')" data-toggle="modal" data-target="#myModal">WhatsApp : </b>
-								<?= $row_whatsapp_chemist; ?>
-							</div>
-							<div class="td_div1">
-								<b style="float: left; margin-right:5px;">Final Chemist : </b>
-								<?php if(empty($textbox_final_chemist) && $row_chemist_id != "N/a"){
-									$textbox_final_chemist = $row_chemist_id;
-								}?>
-								<input type="text" value="<?php echo $textbox_final_chemist ?>" class="form-control text_final_chemist_id_<?= ($row_id); ?> pg_text_box" style="<?php if(!empty($entry->final_chemist)) { ?>display:none;<?php } ?>float: left !important;" placeholder="Chemist Id">
-								<i class="fa fa-check add_final_chemist_<?= ($row_id); ?>" aria-hidden="true" onclick="add_final_chemist('<?= ($row_id); ?>')" style="<?php if(!empty($entry->final_chemist)) { ?>display:none;<?php } ?> float: left;font-size: 20px;"></i>
-								<span class="span_final_chemist_<?= ($row_id); ?>" <?php if(empty($entry->final_chemist)) { ?>style="display:none" <?php } ?>><?php echo $final_chemist ?></span>
-								<i class="fa fa-pencil edit_final_chemist_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_final_chemist('<?= ($row_id); ?>')" <?php if(empty($entry->final_chemist)) { ?>style="display:none" <?php } ?>></i>
+							<div class="row">
+								<div class="col-sm-12">
+									Statment : <?= $entry->statment_text; ?>
+								</div>
+								<div class="col-sm-3">
+									<div class="td_div">
+										<?= $row_upi_no1; ?> <b>(<?= $row_type; ?>)</b>
+									</div>
+									<div class="td_div">
+										<?= $row_orderid; ?>
+									</div>
+									<div class="td_div">
+										<?= $row_amount; ?>
+									</div>
+									<div class="td_div1">
+										<?= $row_date; ?>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="td_div">
+										<?= ($row_from_text); ?>
+										<input type="hidden" value="<?php echo $from_text ?>" class="text_from_text_<?= ($row_id); ?>">
+										<input type="text" value="<?php echo $chemist; ?>" class="form-control myinput1 text_from_text_chemist_id_<?= ($row_id); ?> pg_text_box" style="display:none;">
+										<i class="fa fa-check add_from_text_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="add_from_text_chemist_id('<?= ($row_id); ?>')" style="display:none"></i>
+										<i class="fa fa-times cancel_from_text_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="cancel_from_text_chemist_id('<?= ($row_id); ?>')" style="display:none"></i>
+										<i class="fa fa-pencil edit_from_text_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_from_text_chemist_id('<?= ($row_id); ?>')"></i>
+									</div>
+									<div class="td_div">
+										<b>Find : </b>
+										<?= ($row_from_text_find); ?> <?= $row_from_text_logic; ?>
+									</div>
+									<div class="td_div">
+										<b>Find by : </b> 
+										<?= $row_find_by; ?>
+									</div>
+									<div class="td_div1">
+										<?= $row_status; ?>
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="td_div0">
+										<b>Invoice : </b>
+										<?= ($row_find_invoice_all); ?>
+									</div>
+									<div class="td_div01">
+										<b onclick="get_whats_message('<?= ($row_id); ?>','<?= ($row_whatsapp_id); ?>','<?= $row_upi_no; ?>')" data-toggle="modal" data-target="#myModal">WhatsApp : </b>
+										<?= ($row_whatsapp); ?>
+									</div>
+								<?php /************* */ ?>
+									<div class="td_div">
+										<i class="fa fa-refresh row_refresh_id_<?= ($row_id); ?>" aria-hidden="true" onclick="row_refresh('<?= ($row_id); ?>')"></i> Refresh
+										<?php if($entry->recommended){ echo " || <b>Recommended : $entry->recommended</b>"; }?>
+									</div>
+									<div class="td_div">
+										<b>Chemist : </b>
+										<?= $row_chemist_id;?>
+									</div>
+									<div class="td_div">
+										<b>Invoice : </b>
+										<?= $row_invoice_chemist ?>
+									</div>
+									<div class="td_div">
+										<b onclick="get_whats_message('<?= ($row_id); ?>','<?= ($row_whatsapp_id); ?>','<?= $row_upi_no; ?>')" data-toggle="modal" data-target="#myModal">WhatsApp : </b>
+										<?= $row_whatsapp_chemist; ?>
+									</div>
+									<div class="td_div1">
+										<b style="float: left; margin-right:5px;">Final Chemist : </b>
+										<?php if(empty($textbox_final_chemist) && $row_chemist_id != "N/a"){
+											$textbox_final_chemist = $row_chemist_id;
+										}?>
+										<input type="text" value="<?php echo $textbox_final_chemist ?>" class="form-control text_final_chemist_id_<?= ($row_id); ?> pg_text_box" style="<?php if(!empty($entry->final_chemist)) { ?>display:none;<?php } ?>float: left !important;" placeholder="Chemist Id">
+										<i class="fa fa-check add_final_chemist_<?= ($row_id); ?>" aria-hidden="true" onclick="add_final_chemist('<?= ($row_id); ?>')" style="<?php if(!empty($entry->final_chemist)) { ?>display:none;<?php } ?> float: left;font-size: 20px;"></i>
+										<span class="span_final_chemist_<?= ($row_id); ?>" <?php if(empty($entry->final_chemist)) { ?>style="display:none" <?php } ?>><?php echo $final_chemist ?></span>
+										<i class="fa fa-pencil edit_final_chemist_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_final_chemist('<?= ($row_id); ?>')" <?php if(empty($entry->final_chemist)) { ?>style="display:none" <?php } ?>></i>
+									</div>
+								</div>
 							</div>
 						</td>
 					</tr>
