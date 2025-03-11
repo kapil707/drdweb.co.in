@@ -307,9 +307,12 @@
 						</td>
 						<td>
 							<div class="row">
-								<div class="col-sm-12">
-									Statment : <?= $entry->statment_text; ?> || 
-									
+								<div class="col-sm-10">
+									SMS : <?= $entry->sms_text; ?> <br> 
+									Statment : <?= $entry->statment_text; ?>
+								</div>
+
+								<div class="col-sm-2 text-right">	
 									<i class="fa fa-refresh row_refresh_id_<?= ($row_id); ?>" aria-hidden="true" onclick="row_refresh('<?= ($row_id); ?>')"></i> Refresh
 									<?php if($entry->recommended){ echo " || <b>Recommended : $entry->recommended</b>"; }?>
 								</div>
