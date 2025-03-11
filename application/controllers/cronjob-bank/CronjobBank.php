@@ -386,9 +386,7 @@ class CronjobBank extends CI_Controller
 			$row_new = $row_new->row();
 			
 			if(empty($row_new->id) && $received_from!="Remitter" && $received_from != "Received from information not found"){
-				$type = "SMS";
 				$dt = array(
-					'type'=>$type,
 					'status'=>1,
 					'amount'=>$amount,
 					'date'=>$getdate,
@@ -659,9 +657,7 @@ class CronjobBank extends CI_Controller
 				$row_new = $row_new->row();
 				
 				if(empty($row_new->id)){
-					$type = "Statment";
 					$dt = array(
-						'type'=>$type,
 						'status'=>2,
 						'amount'=>$amount1,
 						'date'=>$date,
@@ -677,17 +673,16 @@ class CronjobBank extends CI_Controller
 				}else{
 					$where = array('upi_no'=>$upi_no);
 					$status = 2;
-					$type = $row_new->type;
+					/*$type = $row_new->type;
 					if($type=="SMS")
 					{
 						$type = "SMS/Statment";
-					}
+					}*/
 					// if(strtolower($row_new->received_from)==strtolower($received_from)){
 					// 	$status = $row_new->status;
 					// }
 					$dt = array(
-						'type'=>$type,
-						'status'=>$status,
+						'status'=>2,
 						'received_from'=>$received_from,
 						'orderid'=>$orderid,
 						'statment_id'=>$statment_id,
