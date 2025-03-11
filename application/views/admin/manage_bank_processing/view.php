@@ -284,18 +284,18 @@
 					}
 					if($entry->status==4){
 						$tr_style = "background-color: #e8ffe2;";					
-					}					
-					?>
+					}/*	
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
 						<td>
 							<?php echo $i++; ?> 
 						</td>
 						<td>Statment : <?= $entry->statment_text; ?></td>
 						<td></td><td></td><td></td><td></td>
-					</tr>
+					</tr>	*/			
+					?>
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
 						<td>
-							
+							<?php echo $i++; ?> 
 						</td>
 						<td>
 							<div class="td_div">
