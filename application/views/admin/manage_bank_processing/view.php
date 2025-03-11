@@ -167,7 +167,7 @@
 					if(empty($from_value)){
 						$row_from_text_find = "N/a";
 					}
-					/********************************************** */
+					/********************************************** *
 					$row_from_text_logic = $entry->final_find_by;
 					if(!empty($row_from_text_logic)){
 						$row_from_text_logic = " || (<b>$row_from_text_logic</b>)";
@@ -364,7 +364,7 @@
 										<i class="fa fa-pencil edit_from_text_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_from_text_chemist_id('<?= ($row_id); ?>')"></i>
 									</div>
 									<div class="td_div">
-										<b>Find  : </b> <?= ($row_from_text_find); ?> <?= $row_from_text_logic; ?>
+										<b>Find  : </b> <?= ($row_from_text_find); ?>
 									</div>
 									<div class="td_div">
 										<b>Find by : </b> 
