@@ -12,7 +12,7 @@ class CronjobBank extends CI_Controller
 		$text = "UPI CREDIT REFERENCE 506067805978 FROM 9999041975@ YESCRED M S SWAMIJI MEDICOS PAID VIA CRED";
 		preg_match("/FROM\s+(\w+)\d+@\s*(\w+)/", $text, $matches);
 		if (!empty($matches) && empty($received_from)){
-			echo $received_from = $$matches;// trim($matches[1])."@".trim($matches[2]);
+			echo $received_from = $$matches[0];// trim($matches[1])."@".trim($matches[2]);
 			$received_from = str_replace("'", "", $received_from);
 			$received_from = str_replace(" ", "", $received_from);
 			$received_from = str_replace("\n", "", $received_from);
