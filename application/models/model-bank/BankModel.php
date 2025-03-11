@@ -15,7 +15,7 @@ class BankModel extends CI_Model
 		{
 			$db_bank->where($where);
 		}
-		return $db_bank->get($tbl);	
+		return $db_bank->get($tbl)->row();
 	}
 
 	public function insert_statment($table, $data) {
