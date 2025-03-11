@@ -287,6 +287,9 @@
 					}					
 					?>
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
+						From : <?= $entry->statment_text; ?>
+					</tr>
+					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
 						<td>
 							<?php echo $i++; ?>
 						</td>
