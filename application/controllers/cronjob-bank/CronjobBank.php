@@ -80,6 +80,8 @@ class CronjobBank extends CI_Controller
 				$extracted_text = str_replace("\n", "<br>", $extracted_text);
 				$vision_text = str_replace("\n", "<br>", $vision_text);
 
+				$date = date('Y-m-d H:i:s', strtotime($date));
+				
 				$dt = array(
 					'message_id' => $message_id,
 					'body' => $body,
