@@ -287,12 +287,12 @@
 					}					
 					?>
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
-						<td>From : <?= $entry->statment_text; ?></td>
-					</tr>
-					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
-						<td>
+						<td rowspan="2">
 							<?php echo $i++; ?>
 						</td>
+						<td colspan="3">From : <?= $entry->statment_text; ?></td>
+					</tr>
+					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
 						<td>
 							<div class="td_div">
 								<?= $row_upi_no1; ?> <b>(<?= $row_type; ?>)</b>
