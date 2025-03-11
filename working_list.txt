@@ -30,5 +30,6 @@ tbl_division_wise_nnn -> tbl_division_wise
 tbl_item_category_nnn -> tbl_item_category
 tbl_item -> tbl_item_wise
 
-update tbl_statment set status=0;
-delete from tbl_bank_processing;
+update tbl_sms set status=0 where date='2025-03-01';
+update tbl_statment set status=0 where date='2025-03-01';
+delete from tbl_bank_processing where date='2025-03-01';

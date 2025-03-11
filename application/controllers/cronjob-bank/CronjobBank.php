@@ -325,7 +325,7 @@ class CronjobBank extends CI_Controller
 		$result = $this->BankModel->select_query("select * from tbl_sms where status='0' limit 50");
 		$result = $result->result();
 		foreach($result as $row){
-			echo $message_body = $row->message_body;
+			echo $sms_text = $message_body = $row->message_body;
 			$message_body = str_replace(",","",$row->message_body);
 			
 			$pattern = '/INR (\w+)/';
@@ -391,6 +391,7 @@ class CronjobBank extends CI_Controller
 					'orderid'=>$orderid,
 					'statment_id'=>$statment_id,
 					'from_sms'=>1,
+					'sms_text'=>$sms_text,
 				);
 				$this->BankModel->insert_fun("tbl_bank_processing", $dt);
 			}
