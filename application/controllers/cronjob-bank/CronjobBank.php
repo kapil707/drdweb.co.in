@@ -59,31 +59,22 @@ class CronjobBank extends CI_Controller
 		if (isset($data1['messages'])) {
 			foreach ($data1['messages'] as $message) {
 				$message_id = isset($message['message_id']) ? $message['message_id'] : "Body not found";
-				echo "<br>";
-
 				$body = isset($message['body']) ? $message['body'] : "Body not found";
-
 				$date = isset($message['date']) ? $message['date'] : "Date not found";
-
 				$extracted_text = isset($message['extracted_text']) ? $message['extracted_text'] : "extracted_text not found";
-				
-				$vision_text = isset($message['vision_text']) ? $message['vision_text'] : "vision_text not found";
-
 				$from_number = isset($message['from_number']) ? $message['from_number'] : "Date not found";
-				
-				$id = isset($message['id']) ? $message['id'] : "id not found";
-
+				$ist_timestamp = isset($message['ist_timestamp']) ? $message['ist_timestamp'] : "timestamp not found";
 				$screenshot_image = isset($message['screenshot_image']) ? $message['screenshot_image'] : "screenshot_image not found";
-
+				$sender_name_place = isset($message['sender_name_place']) ? $message['sender_name_place'] : "sender_name_place not found";
 				$timestamp = isset($message['timestamp']) ? $message['timestamp'] : "timestamp not found";
+				$vision_text = isset($message['vision_text']) ? $message['vision_text'] : "vision_text not found";				
 
-				$extracted_text = str_replace("\n", "<br>", $extracted_text);
-				$vision_text = str_replace("\n", "<br>", $vision_text);
+				//$extracted_text = str_replace("\n", "<br>", $extracted_text);
+				//$vision_text = str_replace("\n", "<br>", $vision_text);
 
 				//$date = date('Y-m-d H:i:s', strtotime($date));
 				// Convert date
 				$date = new DateTime($date);
-
 				// Format as "YYYY-MM-DD"
 				$date = $date->format("Y-m-d");
 
@@ -91,6 +82,13 @@ class CronjobBank extends CI_Controller
 					'message_id' => $message_id,
 					'body' => $body,
 					'date' => $date,
+					'extracted_text' => $extracted_text,
+					'from_number' => $from_number,
+					'ist_timestamp' => $ist_timestamp,
+					'screenshot_image' => $screenshot_image,
+					'sender_name_place' => $sender_name_place,
+					'timestamp' => $timestamp,
+					'vision_text' => $vision_text,
 				);
 
 				print_r($dt);
@@ -98,18 +96,14 @@ class CronjobBank extends CI_Controller
 				if (!empty($message_id)) {
 					// Check karo agar record already exist karta hai
 					$existing_record = $this->BankModel->select_row("tbl_whatsapp_message", array('message_id' => $message_id));
-					echo "1111";
-					echo $existing_record->message_id;
+			
 					if ($existing_record) {
-						echo "444444";
 						// Agar record exist karta hai to update karo
 						$where = array('message_id' => $message_id);
 						$this->BankModel->edit_fun("tbl_whatsapp_message", $dt, $where);
 					} else {
-						echo "2222";
 						// Agar record exist nahi karta hai to insert karo
-						echo $this->BankModel->insert_fun("tbl_whatsapp_message", $dt);
-						echo "3333";
+						$this->BankModel->insert_fun("tbl_whatsapp_message", $dt);
 					}
 				}
 			}
