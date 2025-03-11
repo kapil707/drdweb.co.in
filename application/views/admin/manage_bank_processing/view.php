@@ -308,7 +308,9 @@
 						<td>
 							<div class="row">
 								<div class="col-sm-10">
-									SMS : <?= $entry->sms_text; ?> <br> 
+									<?php if(empty(entry->statment_text)) { ?>
+										SMS : <?= $entry->sms_text; ?> 
+									<?php } ?>
 									Statment : <?= $entry->statment_text; ?>
 								</div>
 
