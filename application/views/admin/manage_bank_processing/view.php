@@ -310,10 +310,9 @@
 								<div class="col-sm-12">
 									Statment : <?= $entry->statment_text; ?> || 
 
-									<div class="td_div">
-										<i class="fa fa-refresh row_refresh_id_<?= ($row_id); ?>" aria-hidden="true" onclick="row_refresh('<?= ($row_id); ?>')"></i> Refresh
-										<?php if($entry->recommended){ echo " || <b>Recommended : $entry->recommended</b>"; }?>
-									</div>
+									
+									<i class="fa fa-refresh row_refresh_id_<?= ($row_id); ?>" aria-hidden="true" onclick="row_refresh('<?= ($row_id); ?>')"></i> Refresh
+									<?php if($entry->recommended){ echo " || <b>Recommended : $entry->recommended</b>"; }?>
 								</div>
 								
 								<div class="col-sm-3 myborder">
