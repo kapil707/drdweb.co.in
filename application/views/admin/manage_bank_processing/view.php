@@ -240,7 +240,7 @@
 					}
 					if(empty($row_chemist_id) && empty($row_invoice_chemist) && empty($row_whatsapp_chemist)){
 						$row_find_by = "N/a";
-						$tr_style = "background-color: salmon";
+						$tr_style = "background-color: #b1b1b1";
 					}
 					if($row_find_i==1){
 						$tr_style = "background-color: khaki";
