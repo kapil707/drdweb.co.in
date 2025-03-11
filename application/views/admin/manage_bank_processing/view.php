@@ -375,15 +375,21 @@
 										<i class="fa fa-pencil edit_final_chemist_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_final_chemist('<?= ($row_id); ?>')" <?php if(empty($entry->final_chemist)) { ?>style="display:none" <?php } ?>></i>
 									</div>
 								</div>
-
+								
+								<?php if($row_find_invoice_all!="N/a") { ?>
 								<div class="col-sm-12">
 									<b>Invoice : </b>
 									<?= ($row_find_invoice_all); ?>
 								</div>
+								<?php } ?>
+
+								<?php if($row_whatsapp!="N/a") { ?>
 								<div class="col-sm-12">
 									<b onclick="get_whats_message('<?= ($row_id); ?>','<?= ($row_whatsapp_id); ?>','<?= $row_upi_no; ?>')" data-toggle="modal" data-target="#myModal">WhatsApp : </b>
 									<?= ($row_whatsapp); ?>
 								</div>
+								<?php } ?>
+								
 							</div>
 						</td>
 					</tr>
