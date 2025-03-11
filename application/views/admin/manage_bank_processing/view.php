@@ -314,7 +314,7 @@
 									<?php if($entry->recommended){ echo " || <b>Recommended : $entry->recommended</b>"; }?>
 								</div>
 								
-								<div class="col-sm-3 myborder">
+								<div class="col-sm-4 myborder">
 									<div class="td_div">
 										<?= $row_upi_no1; ?> <b>(<?= $row_type; ?>)</b>
 									</div>
@@ -328,7 +328,8 @@
 										<?= $row_date; ?>
 									</div>
 								</div>
-								<div class="col-sm-3 myborder1">
+
+								<div class="col-sm-4 myborder1">
 									<div class="td_div">
 										<?= ($row_from_text); ?>
 										<input type="hidden" value="<?php echo $from_text ?>" class="text_from_text_<?= ($row_id); ?>">
@@ -349,7 +350,8 @@
 										<?= $row_status; ?>
 									</div>
 								</div>
-								<div class="col-sm-3 myborder1">
+
+								<div class="col-sm-4 myborder1">
 									<div class="td_div">
 										<b>Chemist : </b>
 										<?= $row_chemist_id;?>
