@@ -58,6 +58,8 @@ class CronjobBank extends CI_Controller
 
 		if (isset($data1['messages'])) {
 			foreach ($data1['messages'] as $message) {
+				$message_id = isset($message['message_id']) ? $message['message_id'] : "Body not found";
+
 				echo $body = isset($message['body']) ? $message['body'] : "Body not found";
 
 				$date = isset($message['date']) ? $message['date'] : "Date not found";
@@ -76,22 +78,27 @@ class CronjobBank extends CI_Controller
 
 				$extracted_text = str_replace("\n", "<br>", $extracted_text);
 				$vision_text = str_replace("\n", "<br>", $vision_text);
-			}
-		}
 
-		/*if (!empty($code)) {
+				$dt = array(
+					'message_id' => $message_id,
+					'body' => $body,
+				);
+
+				if (!empty($code)) {
 					// Check karo agar record already exist karta hai
-					$existing_record = $this->Scheme_Model->select_row("tbl_chemist_test", array('code' => $code,'slcd' => $slcd));
+					$existing_record = $this->BankModel->select_row("tbl_whatsapp_message", array('message_id' => $message_id));
 			
 					if ($existing_record) {
 						// Agar record exist karta hai to update karo
-						$where = array('code' => $code);
-						$this->Scheme_Model->edit_fun("tbl_chemist_test", $dt, $where);
+						$where = array('message_id' => $message_id);
+						$this->BankModel->edit_fun("tbl_whatsapp_message", $dt, $where);
 					} else {
 						// Agar record exist nahi karta hai to insert karo
-						$this->Scheme_Model->insert_fun("tbl_chemist_test", $dt);
+						$this->BankModel->insert_fun("tbl_whatsapp_message", $dt);
 					}
-				}*/
+				}
+			}
+		}
 	}
 	
 	public function bank_processing(){
