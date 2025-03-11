@@ -307,7 +307,12 @@
 					}
 					if($entry->status==4){
 						$tr_style = "background-color: #e8ffe2;";					
-					}					
+					}
+					
+					//new25
+					if($entry->process_status==1 && empty($entry->find_chemist)){
+						$tr_style = "background-color:rgb(221, 67, 131)";
+					}
 					?>
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
 						<td>
