@@ -585,7 +585,8 @@ class CronjobBank extends CI_Controller
 				echo "<br>8</br>";
 			}
 
-			preg_match("/FROM\s+(\w+)\d+@\s*(\w+)/", $text, $matches);
+			//preg_match("/FROM\s+(\w+)\d+@\s*(\w+)/", $text, $matches);
+			preg_match("/FROM\s+([\d]+)@\s*([\w]+)/", $text, $matches);
 			if (!empty($matches) && empty($received_from)){
 				$received_from = trim($matches[1])."@".trim($matches[2]);
 				$received_from = str_replace("'", "", $received_from);
