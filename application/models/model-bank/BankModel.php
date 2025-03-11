@@ -8,7 +8,7 @@ class BankModel extends CI_Model
 		return $db_bank->query($query);	
 	}
 
-	function select_fun($tbl,$where)
+	function select_row($tbl,$where)
 	{
 		$db_bank = $this->load->database('bank_db', TRUE);
 		if($where!="")
