@@ -99,7 +99,7 @@ class CronjobBank extends CI_Controller
 					// Check karo agar record already exist karta hai
 					$existing_record = $this->BankModel->select_row("tbl_whatsapp_message", array('message_id' => $message_id));
 					echo "1111";
-					print_r($existing_record->message_id);
+					echo $existing_record->message_id;
 					if ($existing_record) {
 						echo "444444";
 						// Agar record exist karta hai to update karo
