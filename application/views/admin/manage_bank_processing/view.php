@@ -13,15 +13,14 @@
 	border-radius: 10px;
 }
 .myborder{
-	margin: 0px;
-    padding: 0px;
-    margin-left: 15px;
+	margin: 0px !important;
+    padding: 0px !important;
+    margin-left: 15px !important;
     border: 1px solid #676a6c !important;
 }
 .myborder1{
-	margin: 0px;
-    padding: 0px;
-    margin-left: 15px;
+	margin: 0px !important;
+    padding: 0px !important;
     border: 1px solid #676a6c !important;
 }
 .dataTables-example21 td{
