@@ -88,8 +88,6 @@ class CronjobBank extends CI_Controller
 					'vision_text' => $vision_text,
 				);
 
-				print_r($dt);
-
 				if (!empty($message_id)) {
 					// Check karo agar record already exist karta hai
 					$existing_record = $this->BankModel->select_row("tbl_whatsapp_message", array('message_id' => $message_id));
