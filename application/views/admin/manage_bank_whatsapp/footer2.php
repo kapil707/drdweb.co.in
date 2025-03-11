@@ -1,7 +1,7 @@
 <script>
 	$(document).ready(function(){
 		$('.dataTables-example21').DataTable({
-			"order": [[1, "desc"]],
+			"order": [[0, "desc"]],
 			pageLength: 25,
 			responsive: true,
 			dom: '<"html5buttons"B>lTfgitp',
