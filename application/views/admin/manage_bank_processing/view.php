@@ -290,7 +290,7 @@
 							<?php echo $i++; ?> 
 						</td>
 						<td>Statment : <?= $entry->statment_text; ?></td>
-						<td></td><td></td><td></td><td></td>
+						<td></td><td></td><td></td>
 					</tr>
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
 						<td>
