@@ -105,7 +105,7 @@ class CronjobBank extends CI_Controller
 						$this->BankModel->edit_fun("tbl_whatsapp_message", $dt, $where);
 					} else {
 						// Agar record exist nahi karta hai to insert karo
-						$this->BankModel->insert_fun("tbl_whatsapp_message", $dt);
+						echo $this->BankModel->insert_fun("tbl_whatsapp_message", $dt);
 					}
 				}
 			}
