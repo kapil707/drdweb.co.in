@@ -8,13 +8,20 @@ class CronjobBank extends CI_Controller
 		$this->load->model("model-bank/BankModel");
 	}
 
-	/*public function bank_processing(){
+	public function bank_main(){
 		//$this->get_invoice();
-		$this->get_sms();
-		$this->get_statment();
-		$this->get_whatsapp();
-		$this->get_main();
-	}*/
+		$check_sms = $this->BankModel->select_row("tbl_sms", array('status' => 0));
+		if (!empty($check_sms)) {
+			$this->get_sms();
+		}else{
+			$check_statment = $this->BankModel->select_row("tbl_statment", array('status' => 0));
+			if (!empty($check_statment)) {
+				$this->get_statment();
+			}else{
+				$this->get_whatsapp();
+			}
+		}
+	}
 
 	public function insert_whatsapp(){
 		echo "insert_whatsapp";
