@@ -329,7 +329,7 @@ class CronjobBank extends CI_Controller
 		//echo " get_sms";
 		$date = date('Y-m-d');
 
-		$result = $this->BankModel->select_query("select * from tbl_sms where status='0' limit 50");
+		$result = $this->BankModel->select_query("select * from tbl_sms where status='0' limit 25");
 		$result = $result->result();
 		foreach($result as $row){
 			echo $sms_text = $message_body = $row->message_body;
@@ -418,7 +418,7 @@ class CronjobBank extends CI_Controller
 	public function get_statment(){
 
 		//echo " get_statment";
-		$result = $this->BankModel->select_query("select * from tbl_statment where status='0' limit 100");
+		$result = $this->BankModel->select_query("select * from tbl_statment where status='0' limit 25");
 		$result = $result->result();
 		foreach($result as $row){
 		
@@ -662,7 +662,7 @@ class CronjobBank extends CI_Controller
 					$type = "Statment";
 					$dt = array(
 						'type'=>$type,
-						'status'=>1,
+						'status'=>2,
 						'amount'=>$amount1,
 						'date'=>$date,
 						'received_from'=>$received_from,
@@ -676,21 +676,24 @@ class CronjobBank extends CI_Controller
 					$this->BankModel->insert_fun("tbl_bank_processing", $dt);
 				}else{
 					$where = array('upi_no'=>$upi_no);
-					$status = 0;
+					$status = 2;
 					$type = $row_new->type;
 					if($type=="SMS")
 					{
-						$type = "SMS or Update With Statment";
+						$type = "SMS/Statment";
 					}
-					if(strtolower($row_new->received_from)==strtolower($received_from)){
-						$status = $row_new->status;
-					}
+					// if(strtolower($row_new->received_from)==strtolower($received_from)){
+					// 	$status = $row_new->status;
+					// }
 					$dt = array(
 						'type'=>$type,
 						'status'=>$status,
 						'received_from'=>$received_from,
 						'orderid'=>$orderid,
 						'statment_id'=>$statment_id,
+						'from_statment'=>1,
+						'statment_type'=>$statment_type,
+						'statment_text'=>$text,
 					);
 					$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 				}
