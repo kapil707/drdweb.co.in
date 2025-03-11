@@ -13,7 +13,16 @@
 	border-radius: 10px;
 }
 .myborder{
-	border: 1px solid #676a6c !important;
+	margin: 0px;
+    padding: 0px;
+    margin-left: 15px;
+    border: 1px solid #676a6c !important;
+}
+.myborder1{
+	margin: 0px;
+    padding: 0px;
+    margin-left: 15px;
+    border: 1px solid #676a6c !important;
 }
 .dataTables-example21 td{
 	padding: 3px !important;
@@ -313,7 +322,7 @@
 										<?= $row_date; ?>
 									</div>
 								</div>
-								<div class="col-sm-3 myborder">
+								<div class="col-sm-3 myborder1">
 									<div class="td_div">
 										<?= ($row_from_text); ?>
 										<input type="hidden" value="<?php echo $from_text ?>" class="text_from_text_<?= ($row_id); ?>">
@@ -334,7 +343,7 @@
 										<?= $row_status; ?>
 									</div>
 								</div>
-								<div class="col-sm-3 myborder">
+								<div class="col-sm-3 myborder1">
 									<div class="td_div0">
 										<b>Invoice : </b>
 										<?= ($row_find_invoice_all); ?>
@@ -344,7 +353,7 @@
 										<?= ($row_whatsapp); ?>
 									</div>
 								</div>
-								<div class="col-sm-3 myborder">
+								<div class="col-sm-3 myborder1">
 									<div class="td_div">
 										<i class="fa fa-refresh row_refresh_id_<?= ($row_id); ?>" aria-hidden="true" onclick="row_refresh('<?= ($row_id); ?>')"></i> Refresh
 										<?php if($entry->recommended){ echo " || <b>Recommended : $entry->recommended</b>"; }?>
