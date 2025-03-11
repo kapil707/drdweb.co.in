@@ -58,10 +58,10 @@ class CronjobBank extends CI_Controller
 
 		if (isset($data1['messages'])) {
 			foreach ($data1['messages'] as $message) {
-				echo $message_id = isset($message['message_id']) ? $message['message_id'] : "Body not found";
+				$message_id = isset($message['message_id']) ? $message['message_id'] : "Body not found";
 				echo "<br>";
 
-				echo $body = isset($message['body']) ? $message['body'] : "Body not found";
+				$body = isset($message['body']) ? $message['body'] : "Body not found";
 
 				$date = isset($message['date']) ? $message['date'] : "Date not found";
 
@@ -81,12 +81,14 @@ class CronjobBank extends CI_Controller
 				$vision_text = str_replace("\n", "<br>", $vision_text);
 
 				$date = date('Y-m-d H:i:s', strtotime($date));
-				
+
 				$dt = array(
 					'message_id' => $message_id,
 					'body' => $body,
 					'date' => $date,
 				);
+
+				print_r($dt);
 
 				if (!empty($message_id)) {
 					// Check karo agar record already exist karta hai
