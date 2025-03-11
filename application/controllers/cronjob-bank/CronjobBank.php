@@ -8,7 +8,7 @@ class CronjobBank extends CI_Controller
 		$this->load->model("model-bank/BankModel");
 	}
 
-	public function test(){
+	public function testing(){
 		$text = "UPI CREDIT REFERENCE 506067805978 FROM 9999041975@ YESCRED M S SWAMIJI MEDICOS PAID VIA CRED";
 		preg_match("/FROM\s+(\w+)\d+@\s*(\w+)/", $text, $matches);
 		if (!empty($matches) && empty($received_from)){
