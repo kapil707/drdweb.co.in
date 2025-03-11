@@ -27,21 +27,33 @@ class CronjobBank extends CI_Controller
 		//Created a GET API
 		echo $url = "http://192.46.214.43:5000/get_messages_by_status?start_date=$start_date&end_date=$end_date&group=$sender_name_place&status=true";
 
-		// HTTP headers (Authorization)
-		$options = [
-			"http" => [
-				"method" => "GET",
-				"header" => "Authorization: Bearer THIRTEENWOLVESWENTHUNTINGBUT10CAMEBACK\r\n".
-							"Content-Type: application/json\r\n"
-			]
-		];
+		$parmiter = '';
+		$curl = curl_init();
+		
+		curl_setopt_array(
+			$curl,
+			array(
+				CURLOPT_URL =>$url,
+				CURLOPT_RETURNTRANSFER => true,
+				CURLOPT_ENCODING => '',
+				CURLOPT_MAXREDIRS => 0,
+				CURLOPT_TIMEOUT => 300,
+				CURLOPT_FOLLOWLOCATION => true,
+				CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+				CURLOPT_CUSTOMREQUEST => 'GET',
+				CURLOPT_POSTFIELDS => $parmiter,
+				CURLOPT_HTTPHEADER => array(
+					'Content-Type: application/json',
+					'Authorization: Bearer THIRTEENWOLVESWENTHUNTINGBUT10CAMEBACK'
+				),
+			)
+		);
 
-		$context = stream_context_create($options);
-		$response = file_get_contents($url, false, $context);
+		$response = curl_exec($curl);
+		//print_r($response);
+		curl_close($curl);
 
-		if ($response === FALSE) {
-			die("API call failed.");
-		}
+		$data1 = json_decode($response, true);
 
 		echo $response;
 	}
