@@ -84,59 +84,6 @@
 			</button>
 		</div>
 	</form>
-	<?php 
-
-	$start_date = $end_date = date('d-m-Y');
-	if(isset($_GET["date-range"])){
-		$date_range = $_GET["date-range"];
-
-		// `to` ke aas paas se string ko tukdon mein vibhajit karen
-		$date_parts = explode(" to ", $date_range);
-
-		// Start date aur end date ko extract karen
-		$start_date = $date_parts[0];
-		$end_date 	= $date_parts[1];
-	}
-
-	$start_date = DateTime::createFromFormat('d-m-Y', $start_date);
-	$end_date 	= DateTime::createFromFormat('d-m-Y', $end_date);
-
-	$start_date = $start_date->format('d/m/Y');
-	$end_date 	= $end_date->format('d/m/Y');
-
-	$sender_name_place = "Online%20Details";
-
-	//Created a GET API
-	//http://97.74.82.55:5000/messages?from=07/04/2024&to=07/04/2024
-	//http://172.105.50.148:5000/messages?from=07/04/2024&to=07/04/2024
-	/*$parmiter = '';
-	$curl = curl_init();
-		
-		curl_setopt_array(
-			$curl,
-			array(
-				CURLOPT_URL =>"http://172.105.50.148:5000/messages?from=$start_date&to=$end_date&sender_name_place=$sender_name_place",
-				CURLOPT_RETURNTRANSFER => true,
-				CURLOPT_ENCODING => '',
-				CURLOPT_MAXREDIRS => 0,
-				CURLOPT_TIMEOUT => 300,
-				CURLOPT_FOLLOWLOCATION => true,
-				CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-				CURLOPT_CUSTOMREQUEST => 'GET',
-				CURLOPT_POSTFIELDS => $parmiter,
-				CURLOPT_HTTPHEADER => array(
-					'Content-Type: application/json',
-					'Authorization: Bearer THIRTEENWOLVESWENTHUNTINGBUT10CAMEBACK'
-				),
-			)
-		);
-
-		$response = curl_exec($curl);
-		//print_r($response);
-		curl_close($curl);
-
-		$data1 = json_decode($response, true); // Convert JSON string to associative array */
-		?>
 	<div class="col-xs-12">
         <div class="table-responsive">
 			<table class="table table-striped table-bordered table-hover dataTables-example21">
@@ -174,6 +121,9 @@
 							$body = $message->body ? $message->body : "Body not found";
 
 							$date = $message->date ? $message->date : "Date not found";
+
+							$date = new DateTime($date);
+							$date = $date->format('d-M-y \a\t h:i:s A');
 
 							$extracted_text = $message->extracted_text ? $message->extracted_text : "extracted_text not found";
 							
