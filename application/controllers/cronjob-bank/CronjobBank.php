@@ -119,7 +119,7 @@ class CronjobBank extends CI_Controller
 		$result = $result->result();
 		foreach($result as $row){
 
-			$received_from 	= $row->received_from;
+			echo $received_from 	= $row->received_from;
 
 			$find_by = "";
 			$find_chemist_id = "";
