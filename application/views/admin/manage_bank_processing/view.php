@@ -12,6 +12,9 @@
 .myinput1{
 	border-radius: 10px;
 }
+.myborder{
+	border: 1px solid #676a6c !important;
+}
 .dataTables-example21 td{
 	padding: 3px !important;
 	border: none !important;
@@ -296,7 +299,7 @@
 								<div class="col-sm-12">
 									Statment : <?= $entry->statment_text; ?>
 								</div>
-								<div class="col-sm-3 border">
+								<div class="col-sm-3 myborder">
 									<div class="td_div">
 										<?= $row_upi_no1; ?> <b>(<?= $row_type; ?>)</b>
 									</div>
@@ -310,7 +313,7 @@
 										<?= $row_date; ?>
 									</div>
 								</div>
-								<div class="col-sm-3 border">
+								<div class="col-sm-3 myborder">
 									<div class="td_div">
 										<?= ($row_from_text); ?>
 										<input type="hidden" value="<?php echo $from_text ?>" class="text_from_text_<?= ($row_id); ?>">
@@ -331,7 +334,7 @@
 										<?= $row_status; ?>
 									</div>
 								</div>
-								<div class="col-sm-3 border">
+								<div class="col-sm-3 myborder">
 									<div class="td_div0">
 										<b>Invoice : </b>
 										<?= ($row_find_invoice_all); ?>
@@ -341,7 +344,7 @@
 										<?= ($row_whatsapp); ?>
 									</div>
 								</div>
-								<div class="col-sm-3 border">
+								<div class="col-sm-3 myborder">
 									<div class="td_div">
 										<i class="fa fa-refresh row_refresh_id_<?= ($row_id); ?>" aria-hidden="true" onclick="row_refresh('<?= ($row_id); ?>')"></i> Refresh
 										<?php if($entry->recommended){ echo " || <b>Recommended : $entry->recommended</b>"; }?>
