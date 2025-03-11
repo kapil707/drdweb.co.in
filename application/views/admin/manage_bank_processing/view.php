@@ -310,8 +310,9 @@
 								<div class="col-sm-10">
 									<?php if(empty($entry->statment_text)) { ?>
 										SMS : <?= $entry->sms_text; ?> 
-									<?php } ?>
+									<?php } else { ?>
 									Statment : <?= $entry->statment_text; ?>
+									<?php } ?>
 								</div>
 
 								<div class="col-sm-2 text-right">	
