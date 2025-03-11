@@ -122,9 +122,6 @@
 
 							$date = $message->date ? $message->date : "Date not found";
 
-							$date = new DateTime($date);
-							$date = $date->format('d-M-y \a\t h:i:s A');
-
 							$extracted_text = $message->extracted_text ? $message->extracted_text : "extracted_text not found";
 							
 							$vision_text = $message->vision_text ? $message->vision_text : "vision_text not found";
@@ -151,7 +148,7 @@
 									<?php echo $id; ?>
 								</td>
 								<td>
-									<?php echo date('Y-m-d H:i:s', $timestamp); ?>
+									<?php echo date('d-M-y \a\t h:i:s A', $timestamp); ?>
 								</td>
 								<td>
 									<?php echo $from_number; ?>
