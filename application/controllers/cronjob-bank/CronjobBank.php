@@ -115,7 +115,7 @@ class CronjobBank extends CI_Controller
 	
 	public function get_main(){
 		
-		$result = $this->BankModel->select_query("select * from tbl_bank_processing where status='0' limit 1");
+		$result = $this->BankModel->select_query("select * from tbl_bank_processing where process_status='0' limit 1");
 		$result = $result->result();
 		foreach($result as $row){
 
@@ -271,7 +271,7 @@ class CronjobBank extends CI_Controller
 			$id = $row->id;
 			$where = array('id'=>$id);
 			$dt = array(
-				'status'=>1,				
+				'process_status'=>1,				
 				'from_value'=>$process_value,
 				'from_value_find'=>$process_name,
 				'chemist'=>$find_chemist_id,
