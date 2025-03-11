@@ -8,6 +8,14 @@ class CronjobBank extends CI_Controller
 		$this->load->model("model-bank/BankModel");
 	}
 
+	public function bank_processing(){
+		//$this->get_invoice();
+		$this->get_sms();
+		$this->get_statment();
+		$this->get_whatsapp();
+		$this->get_main();
+	}
+
 	public function insert_whatsapp(){
 		echo "insert_whatsapp";
 
@@ -105,21 +113,13 @@ class CronjobBank extends CI_Controller
 		}
 	}
 	
-	public function bank_processing(){
-		//$this->get_invoice();
-		$this->get_sms();
-		$this->get_statment();
-		$this->get_whatsapp();
-		$this->get_main();
-	}
-	
 	public function get_main(){
 		
 		$result = $this->BankModel->select_query("select * from tbl_bank_processing where status='0' limit 1");
 		$result = $result->result();
 		foreach($result as $row){
 
-			$received_from 	= $row->from_text;
+			$received_from 	= $row->received_from;
 
 			$find_by = "";
 			$find_chemist_id = "";
