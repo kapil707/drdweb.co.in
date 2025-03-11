@@ -308,8 +308,14 @@
 						<td>
 							<div class="row">
 								<div class="col-sm-12">
-									Statment : <?= $entry->statment_text; ?>
+									Statment : <?= $entry->statment_text; ?> || 
+
+									<div class="td_div">
+										<i class="fa fa-refresh row_refresh_id_<?= ($row_id); ?>" aria-hidden="true" onclick="row_refresh('<?= ($row_id); ?>')"></i> Refresh
+										<?php if($entry->recommended){ echo " || <b>Recommended : $entry->recommended</b>"; }?>
+									</div>
 								</div>
+								
 								<div class="col-sm-3 myborder">
 									<div class="td_div">
 										<?= $row_upi_no1; ?> <b>(<?= $row_type; ?>)</b>
@@ -356,10 +362,6 @@
 									</div>
 								</div>
 								<div class="col-sm-3 myborder1">
-									<div class="td_div">
-										<i class="fa fa-refresh row_refresh_id_<?= ($row_id); ?>" aria-hidden="true" onclick="row_refresh('<?= ($row_id); ?>')"></i> Refresh
-										<?php if($entry->recommended){ echo " || <b>Recommended : $entry->recommended</b>"; }?>
-									</div>
 									<div class="td_div">
 										<b>Chemist : </b>
 										<?= $row_chemist_id;?>
