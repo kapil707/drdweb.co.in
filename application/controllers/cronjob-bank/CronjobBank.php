@@ -8,14 +8,11 @@ class CronjobBank extends CI_Controller
 		$this->load->model("model-bank/BankModel");
 	}
 
-	public function phpinfo(){
-		phpinfo();
-	}
-
 	public function insert_whatsapp(){
 		echo "insert_whatsapp";
 
-		$start_date = $end_date = date('d-m-Y');
+		$start_date = date('d-m-Y', strtotime('-1 day'));
+		$end_date = date('d-m-Y');
 
 		$start_date = DateTime::createFromFormat('d-m-Y', $start_date);
 		$end_date 	= DateTime::createFromFormat('d-m-Y', $end_date);
