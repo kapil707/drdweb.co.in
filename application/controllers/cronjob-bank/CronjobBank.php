@@ -8,6 +8,20 @@ class CronjobBank extends CI_Controller
 		$this->load->model("model-bank/BankModel");
 	}
 
+	public function test(){
+		$text = "UPI CREDIT REFERENCE 506067805978 FROM 9999041975@ YESCRED M S SWAMIJI MEDICOS PAID VIA CRED";
+		preg_match("/FROM\s+(\w+)\d+@\s*(\w+)/", $text, $matches);
+		if (!empty($matches) && empty($received_from)){
+			$received_from = trim($matches[1])."@".trim($matches[2]);
+			$received_from = str_replace("'", "", $received_from);
+			$received_from = str_replace(" ", "", $received_from);
+			echo $received_from = str_replace("\n", "", $received_from);
+			//$from_value = "<b>find3: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
+			$statment_type = 9;
+			echo "<br>9</br>";
+		}
+	}
+
 	public function bank_main(){
 		//$this->get_invoice();
 		$check_sms = $this->BankModel->select_row("tbl_sms", array('status' => 0));
@@ -653,7 +667,7 @@ class CronjobBank extends CI_Controller
 
 			$statment_id = $row->id;
 			if(!empty($received_from)){
-				$row_new = $this->BankModel->select_query("select id,type,status,received_from from tbl_bank_processing where upi_no='$upi_no'");
+				$row_new = $this->BankModel->select_query("select id,status,received_from from tbl_bank_processing where upi_no='$upi_no'");
 				$row_new = $row_new->row();
 				
 				if(empty($row_new->id)){
