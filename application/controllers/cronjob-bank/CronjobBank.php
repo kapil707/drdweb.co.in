@@ -83,6 +83,7 @@ class CronjobBank extends CI_Controller
 				$dt = array(
 					'message_id' => $message_id,
 					'body' => $body,
+					'date' => $date,
 				);
 
 				if (!empty($message_id)) {
