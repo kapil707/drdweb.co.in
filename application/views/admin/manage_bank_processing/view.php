@@ -309,7 +309,6 @@
 							<div class="row">
 								<div class="col-sm-12">
 									Statment : <?= $entry->statment_text; ?> || 
-
 									
 									<i class="fa fa-refresh row_refresh_id_<?= ($row_id); ?>" aria-hidden="true" onclick="row_refresh('<?= ($row_id); ?>')"></i> Refresh
 									<?php if($entry->recommended){ echo " || <b>Recommended : $entry->recommended</b>"; }?>
@@ -351,16 +350,6 @@
 									</div>
 								</div>
 								<div class="col-sm-3 myborder1">
-									<div class="td_div0">
-										<b>Invoice : </b>
-										<?= ($row_find_invoice_all); ?>
-									</div>
-									<div class="td_div01">
-										<b onclick="get_whats_message('<?= ($row_id); ?>','<?= ($row_whatsapp_id); ?>','<?= $row_upi_no; ?>')" data-toggle="modal" data-target="#myModal">WhatsApp : </b>
-										<?= ($row_whatsapp); ?>
-									</div>
-								</div>
-								<div class="col-sm-3 myborder1">
 									<div class="td_div">
 										<b>Chemist : </b>
 										<?= $row_chemist_id;?>
@@ -383,6 +372,15 @@
 										<span class="span_final_chemist_<?= ($row_id); ?>" <?php if(empty($entry->final_chemist)) { ?>style="display:none" <?php } ?>><?php echo $final_chemist ?></span>
 										<i class="fa fa-pencil edit_final_chemist_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_final_chemist('<?= ($row_id); ?>')" <?php if(empty($entry->final_chemist)) { ?>style="display:none" <?php } ?>></i>
 									</div>
+								</div>
+
+								<div class="col-sm-12">
+									<b>Invoice : </b>
+									<?= ($row_find_invoice_all); ?>
+								</div>
+								<div class="col-sm-12">
+									<b onclick="get_whats_message('<?= ($row_id); ?>','<?= ($row_whatsapp_id); ?>','<?= $row_upi_no; ?>')" data-toggle="modal" data-target="#myModal">WhatsApp : </b>
+									<?= ($row_whatsapp); ?>
 								</div>
 							</div>
 						</td>
