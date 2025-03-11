@@ -177,7 +177,7 @@
 					}
 					// chemist find karta ha yha logic
 					/********************************************** */
-					$chemist = $entry->chemist;
+					$chemist = $entry->find_chemist;
 					$chemist_array = explode("||", $chemist);
 					$chemist_array = array_unique($chemist_array);
 					// if(count($chemist_array)==1){
