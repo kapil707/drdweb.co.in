@@ -13,7 +13,8 @@ class CronjobBank extends CI_Controller
 	}
 
 	public function insert_whatsapp(){
-		echo "work";
+		echo "insert_whatsapp";
+
 		$start_date = $end_date = date('d-m-Y');
 
 		$start_date = DateTime::createFromFormat('d-m-Y', $start_date);
@@ -55,7 +56,42 @@ class CronjobBank extends CI_Controller
 
 		$data1 = json_decode($response, true);
 
-		echo $response;
+		if (isset($data1['messages'])) {
+			foreach ($data1['messages'] as $message) {
+				echo $body = isset($message['body']) ? $message['body'] : "Body not found";
+
+				$date = isset($message['date']) ? $message['date'] : "Date not found";
+
+				$extracted_text = isset($message['extracted_text']) ? $message['extracted_text'] : "extracted_text not found";
+				
+				$vision_text = isset($message['vision_text']) ? $message['vision_text'] : "vision_text not found";
+
+				$from_number = isset($message['from_number']) ? $message['from_number'] : "Date not found";
+				
+				$id = isset($message['id']) ? $message['id'] : "id not found";
+
+				$screenshot_image = isset($message['screenshot_image']) ? $message['screenshot_image'] : "screenshot_image not found";
+
+				$timestamp = isset($message['timestamp']) ? $message['timestamp'] : "timestamp not found";
+
+				$extracted_text = str_replace("\n", "<br>", $extracted_text);
+				$vision_text = str_replace("\n", "<br>", $vision_text);
+			}
+		}
+
+		/*if (!empty($code)) {
+					// Check karo agar record already exist karta hai
+					$existing_record = $this->Scheme_Model->select_row("tbl_chemist_test", array('code' => $code,'slcd' => $slcd));
+			
+					if ($existing_record) {
+						// Agar record exist karta hai to update karo
+						$where = array('code' => $code);
+						$this->Scheme_Model->edit_fun("tbl_chemist_test", $dt, $where);
+					} else {
+						// Agar record exist nahi karta hai to insert karo
+						$this->Scheme_Model->insert_fun("tbl_chemist_test", $dt);
+					}
+				}*/
 	}
 	
 	public function bank_processing(){
