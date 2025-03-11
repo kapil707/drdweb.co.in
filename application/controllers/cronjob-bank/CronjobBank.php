@@ -32,7 +32,10 @@ class CronjobBank extends CI_Controller
 			if (!empty($check_statment)) {
 				$this->get_statment();
 			}else{
-				$this->get_whatsapp();
+				$check_processing = $this->BankModel->select_row("tbl_bank_processing", array('process_status' => 0));
+				if (!empty($check_processing)) {
+					$this->bank_processing();
+				}
 			}
 		}
 	}
