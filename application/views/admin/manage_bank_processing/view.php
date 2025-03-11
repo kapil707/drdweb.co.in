@@ -340,7 +340,8 @@
 										<b onclick="get_whats_message('<?= ($row_id); ?>','<?= ($row_whatsapp_id); ?>','<?= $row_upi_no; ?>')" data-toggle="modal" data-target="#myModal">WhatsApp : </b>
 										<?= ($row_whatsapp); ?>
 									</div>
-								<?php /************* */ ?>
+								</div>
+								<div class="col-sm-3">
 									<div class="td_div">
 										<i class="fa fa-refresh row_refresh_id_<?= ($row_id); ?>" aria-hidden="true" onclick="row_refresh('<?= ($row_id); ?>')"></i> Refresh
 										<?php if($entry->recommended){ echo " || <b>Recommended : $entry->recommended</b>"; }?>
