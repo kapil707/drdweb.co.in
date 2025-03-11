@@ -287,12 +287,15 @@
 					}					
 					?>
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
-						<td rowspan="2">
+						<td>
 							<?php echo $i++; ?>
 						</td>
 						<td colspan="4">Statment : <?= $entry->statment_text; ?></td>
 					</tr>
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
+						<td>
+							
+						</td>
 						<td>
 							<div class="td_div">
 								<?= $row_upi_no1; ?> <b>(<?= $row_type; ?>)</b>
