@@ -138,7 +138,15 @@
 					/****************************************************** */
 					$row_date = "<b>Date : </b>".date("d-M-Y",strtotime($entry->date));
 					/****************************************************** */
-					$row_type = $entry->type;
+					if($entry->from_sms==1){
+						$row_type = "SMS";
+					}
+					if($entry->from_statment==1){
+						$row_type = "Statment";
+					}
+					if($entry->from_sms==1 && $entry->from_statment==1){
+						$row_type = "SMS/Statment";
+					}
 					/****************************************************** */
 					$row_upi_no = $entry->upi_no;
 					$row_upi_no1 = "<b>Upi No : </b>".$entry->upi_no;
