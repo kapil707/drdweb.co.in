@@ -88,10 +88,11 @@
                 <thead>
                     <tr>
 						<th width="20px">Id</th>
-						<th width="250px">Upi No || Orderid || Amount|| Date</th>
+						<th></th>
+						<!-- <th width="250px">Upi No || Orderid || Amount|| Date</th>
 						<th width="250px">From || Find || Find by || Status</th>
 						<th width="">Invoice || WhatsApp</th>
-						<th width="250px">Chemist || Invoice || WhatsApp</th>
+						<th width="250px">Chemist || Invoice || WhatsApp</th> -->
                     </tr>
                 </thead>
 				<tbody>
@@ -287,14 +288,11 @@
 					}					
 					?>
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
-						
-						<td colspan="5">Statment : <?= $entry->statment_text; ?></td>
-					</tr>
-					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
 						<td>
 							<?php echo $i++; ?>
 						</td>
 						<td>
+							Statment : <?= $entry->statment_text; ?>
 							<div class="td_div">
 								<?= $row_upi_no1; ?> <b>(<?= $row_type; ?>)</b>
 							</div>
@@ -307,8 +305,7 @@
 							<div class="td_div1">
 								<?= $row_date; ?>
 							</div>
-						</td>
-						<td>
+							<?php /************* */ ?>
 							<div class="td_div">
 								<?= ($row_from_text); ?>
 								<input type="hidden" value="<?php echo $from_text ?>" class="text_from_text_<?= ($row_id); ?>">
@@ -328,8 +325,7 @@
 							<div class="td_div1">
 								<?= $row_status; ?>
 							</div>
-						</td>
-						<td>
+						<?php /************* */ ?>
 							<div class="td_div0">
 								<b>Invoice : </b>
 								<?= ($row_find_invoice_all); ?>
@@ -338,8 +334,7 @@
 								<b onclick="get_whats_message('<?= ($row_id); ?>','<?= ($row_whatsapp_id); ?>','<?= $row_upi_no; ?>')" data-toggle="modal" data-target="#myModal">WhatsApp : </b>
 								<?= ($row_whatsapp); ?>
 							</div>
-						</td>
-						<td>
+						<?php /************* */ ?>
 							<div class="td_div">
 								<i class="fa fa-refresh row_refresh_id_<?= ($row_id); ?>" aria-hidden="true" onclick="row_refresh('<?= ($row_id); ?>')"></i> Refresh
 								<?php if($entry->recommended){ echo " || <b>Recommended : $entry->recommended</b>"; }?>
