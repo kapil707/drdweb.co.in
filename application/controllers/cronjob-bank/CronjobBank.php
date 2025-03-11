@@ -8,13 +8,13 @@ class CronjobBank extends CI_Controller
 		$this->load->model("model-bank/BankModel");
 	}
 
-	public function bank_processing(){
+	/*public function bank_processing(){
 		//$this->get_invoice();
 		$this->get_sms();
 		$this->get_statment();
 		$this->get_whatsapp();
 		$this->get_main();
-	}
+	}*/
 
 	public function insert_whatsapp(){
 		echo "insert_whatsapp";
@@ -113,7 +113,7 @@ class CronjobBank extends CI_Controller
 		}
 	}
 	
-	public function get_main(){
+	public function bank_processing(){
 		
 		$result = $this->BankModel->select_query("select * from tbl_bank_processing where process_status='0' limit 25");
 		$result = $result->result();
