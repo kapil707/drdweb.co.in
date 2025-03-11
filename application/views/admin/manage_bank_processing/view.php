@@ -287,7 +287,7 @@
 					}					
 					?>
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
-						<td>
+						<td rowspan="2">
 							<?php echo $i++; ?>
 						</td>
 						<td colspan="3">Statment : <?= $entry->statment_text; ?></td>
