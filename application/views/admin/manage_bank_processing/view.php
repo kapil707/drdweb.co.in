@@ -308,10 +308,14 @@
 						<td>
 							<div class="row">
 								<div class="col-sm-10">
-									<?php if(empty($entry->statment_text)) { ?>
+									<?php if(!empty($entry->sms_text)) { ?>
 										SMS : <?= $entry->sms_text; ?> 
-									<?php } else { ?>
-									Statment : <?= $entry->statment_text; ?>
+									<?php } ?>
+									
+									<?php if(!empty($entry->sms_text) && !empty($entry->statment_text)) { echo "<br>"; ?>
+
+									<?php if(!empty($entry->statment_text)) { ?>
+										Statment : <?= $entry->statment_text; ?>
 									<?php } ?>
 								</div>
 
