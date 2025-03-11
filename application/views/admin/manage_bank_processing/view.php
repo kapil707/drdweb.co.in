@@ -287,7 +287,7 @@
 					}					
 					?>
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
-						From : <?= $entry->statment_text; ?>
+						<td>From : <?= $entry->statment_text; ?></td>
 					</tr>
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
 						<td>
