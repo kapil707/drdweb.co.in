@@ -310,8 +310,9 @@
 					}
 					
 					//new25
+					// jab processing ho jaya or chemist id na milay to
 					if($entry->process_status==1 && empty($entry->find_chemist)){
-						$tr_style = "background-color:rgb(221, 67, 131)";
+						$tr_style = "background-color:rgb(255 130 130);";
 					}
 					?>
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
