@@ -21,6 +21,7 @@
 .myborder1{
 	margin: 0px !important;
     padding: 0px !important;
+	margin-right: -10px !important;
     border: 1px solid #676a6c !important;
 }
 .dataTables-example21 td{
