@@ -24,14 +24,14 @@
 .td_div {
 	word-break: break-all;
     word-wrap: break-word;
-    width: 280px;
+    /*width: 280px;*/
     padding: 3px;
     border-bottom: solid 1px #676a6c;
 }
 .td_div1 {
 	word-break: break-all;
     word-wrap: break-word;
-    width: 280px;
+    /*width: 280px;*/
     padding: 3px;
 }
 .td_div0 {
