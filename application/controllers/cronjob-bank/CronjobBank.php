@@ -806,7 +806,7 @@ class CronjobBank extends CI_Controller
 
 	public function find_upi(){
 
-		$result = $this->BankModel->select_query("SELECT * FROM `tbl_whatsapp_message` where upi_no='' ORDER BY RAND() limit 25");
+		$result = $this->BankModel->select_query("SELECT id,vision_text FROM `tbl_whatsapp_message` where upi_no='' ORDER BY RAND() limit 25");
 		$result = $result->result();
 		foreach($result as $row) {
 
