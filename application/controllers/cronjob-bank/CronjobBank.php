@@ -804,7 +804,7 @@ class CronjobBank extends CI_Controller
 		}
 	}
 
-	public function get_whatsapp_new(){
+	public function find_upi(){
 		$text = "Transfer Details
 
 		* Reference No. (UTR No./RRN): KKBKH25070930804
