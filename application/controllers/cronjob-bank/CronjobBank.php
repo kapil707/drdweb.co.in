@@ -729,9 +729,9 @@ class CronjobBank extends CI_Controller
 		echo " get_whatsapp ";
 		//$result = $this->BankModel->select_query("SELECT tbl_whatsapp_message.id,tbl_whatsapp_message.vision_text,tbl_bank_processing.upi_no,tbl_bank_processing.id as myid FROM tbl_bank_processing, tbl_whatsapp_message WHERE tbl_whatsapp_message.vision_text LIKE CONCAT('%', tbl_bank_processing.upi_no, '%') and tbl_bank_processing.status=1");
 
-		$result = $this->BankModel->select_query("SELECT id,upi_no,amount,orderid from tbl_bank_processing where status=2 limit 1");
+		$result = $this->BankModel->select_query("SELECT id,upi_no,amount,orderid from tbl_bank_processing where process_status=1 limit 25");
 		$result = $result->result();
-		foreach($result as $row){
+		foreach($result as $row) {
 
 			$upi_no = trim($row->upi_no);
 			$orderid= trim($row->orderid);
