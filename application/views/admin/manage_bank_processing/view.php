@@ -409,7 +409,7 @@
 
 								<?php if($row_whatsapp!="N/a") { ?>
 								<div class="col-sm-12">
-									<b onclick="get_whats_message('<?= ($row_id); ?>','<?= ($row_whatsapp_id); ?>','<?= $row_upi_no; ?>')" data-toggle="modal" data-target="#myModal">WhatsApp : </b>
+									<b onclick="get_whats_message('<?= ($row_id); ?>','<?= ($row_whatsapp_id); ?>','<?= $row_upi_no; ?>')" data-toggle="modal" data-target="#myModal">WhatsApp Text : </b>
 									<?= ($row_whatsapp); ?>
 								</div>
 								<?php } ?>
