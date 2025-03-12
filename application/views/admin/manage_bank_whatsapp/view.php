@@ -158,7 +158,7 @@
 								</td>
 								<td><?php echo $body; ?></td>
 								<td><?php echo $vision_text; ?></td>
-								<td><?php echo $upi_no; ?></td>
+								<td><?php echo $message->upi_no; ?></td>
 								<td>
 									<?php if(!empty($screenshot_image)) { ?>
 									<b data-toggle="modal" data-target="#myModal" onclick="get_full_image('https://api.wassi.chat<?php echo $screenshot_image; ?>?token=531fe5caf0e132bdb6000bf01ed66d8cfb75b53606cc8f6eed32509d99d74752f47f288db155557e')">	<img src="https://api.wassi.chat<?php echo $screenshot_image; ?>?token=531fe5caf0e132bdb6000bf01ed66d8cfb75b53606cc8f6eed32509d99d74752f47f288db155557e" width="100px">
