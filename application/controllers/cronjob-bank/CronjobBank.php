@@ -901,14 +901,14 @@ class CronjobBank extends CI_Controller
 			}
 
 			if(empty($upi_no)){
-				preg_match('/**UPI Ref\. No:**\s*([\d\s]+)/', $text, $matches);
+				// Regex se UPI Reference Number extract karna
+				preg_match('/\*\*UPI Ref\. No:\*\*\s*([\d\s]+)/', $text, $matches);
 
 				if (!empty($matches[1])) {
 					$upi_no = preg_replace('/\s+/', '', $matches[1]); // Space remove karna
-					echo "UPI Ref. No: " . $upi_no;
+					echo "UTR Number: " . $upi_no;
 				} else {
 					echo "UPI Ref. No not found";
-					$upi_no = "";
 				}
 			}
 
