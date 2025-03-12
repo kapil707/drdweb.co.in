@@ -30,9 +30,19 @@ tbl_division_wise_nnn -> tbl_division_wise
 tbl_item_category_nnn -> tbl_item_category
 tbl_item -> tbl_item_wise
 
-update tbl_sms set status=0 where date='2025-03-10';
-update tbl_statment set status=0 where date='2025-03-10';
-delete from tbl_bank_processing where date='2025-03-10';
+update tbl_sms set status=0 where date='2025-03-12';
+update tbl_statment set status=0 where date='2025-03-12';
+delete from tbl_bank_processing where date='2025-03-12';
+UPDATE tbl_whatsapp_message set status=0 where date='2025-03-12';
+
 
 add color a9c5f9
+
+indexing 
+ALTER TABLE tbl_whatsapp_message ADD FULLTEXT(vision_text);
+
+ALTER TABLE tbl_whatsapp_message ADD INDEX idx_vision_text(vision_text(255));
+ALTER TABLE tbl_bank_processing ADD INDEX idx_date(date);
+ALTER TABLE tbl_bank_processing ADD INDEX idx_upi_no(upi_no);
+ALTER TABLE tbl_bank_processing ADD INDEX idx_orderid(orderid);
 
