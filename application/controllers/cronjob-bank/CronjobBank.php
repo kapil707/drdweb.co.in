@@ -508,6 +508,8 @@ class CronjobBank extends CI_Controller
 			$text = preg_replace('/CNRBH.*?REF NO/', ' REF NO', $text);
 			$text = preg_replace('/N 06.*?REF NO/', ' REF NO', $text);
 			$text = preg_replace('/N06.*?REF NO/', ' REF NO', $text);
+			$text = preg_replace('/SBIN.*?REF NO/', ' REF NO', $text);
+			$text = preg_replace('/BKIDN.*?REF NO/', ' REF NO', $text);
 
 			$text = preg_replace('/HDFCH.*?REF NO/', ' REF NO', $text);
 			$text = preg_replace('/H DFCH.*?REF NO/', ' REF NO', $text);
@@ -735,7 +737,7 @@ class CronjobBank extends CI_Controller
 			$orderid= trim($row->orderid);
 			$amount = $row->amount;
 
-echo "SELECT * FROM `tbl_whatsapp_message` WHERE REPLACE(`vision_text`, ' ', '') LIKE '%$upi_no%' or REPLACE(`vision_text`, ' ', '') LIKE '%$orderid%'";
+			echo "SELECT * FROM `tbl_whatsapp_message` WHERE REPLACE(`vision_text`, ' ', '') LIKE '%$upi_no%' or REPLACE(`vision_text`, ' ', '') LIKE '%$orderid%'";
 
 			$row1 = $this->BankModel->select_query("SELECT * FROM `tbl_whatsapp_message` WHERE REPLACE(`vision_text`, ' ', '') LIKE '%$upi_no%' or REPLACE(`vision_text`, ' ', '') LIKE '%$orderid%'");
 			$row1 = $row1->row();
@@ -804,7 +806,6 @@ echo "SELECT * FROM `tbl_whatsapp_message` WHERE REPLACE(`vision_text`, ' ', '')
 			$dt = array(
 				'status'=>3,
 				'whatsapp_message_id'=>$whatsapp_id,
-				'whatsapp'=>$whatsapp_body2,
 			);
 			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 		}
