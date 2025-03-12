@@ -1037,7 +1037,7 @@ class CronjobBank extends CI_Controller
 		$result = $result->result();
 		foreach($result as $row) {
 
-			$id = $row->id;
+			echo $id = $row->id;
 			$whatsapp_message_id = trim($row->message_id);
 
 			$where = array(
