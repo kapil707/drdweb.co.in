@@ -805,20 +805,30 @@ class CronjobBank extends CI_Controller
 	}
 
 	public function find_upi(){
-		$text = "**Payment Successful**
 
-		**Transfer Details**
-		Reference No. (UTR No./RRN): KKBKH25070618891
-		Date & Time: 11 Mar 2025-02:04 pm";
+		$result = $this->BankModel->select_query("SELECT * FROM `tbl_whatsapp_message` where upi_no='' limit 25");
+		$result = $result->result();
+		foreach($result as $row) {
 
-		// Regular Expression to extract UTR No.
-		preg_match('/Reference No\. \(UTR No\.\/RRN\): (\S+)/', $text, $matches);
+			$text = $row->vision_text;
 
-		// Check if match is found
-		if (!empty($matches[1])) {
-			echo "UTR Number: " . $matches[1]; // Output: KKBKH25070930804
-		} else {
-			echo "UTR Number not found!";
+			// Regular Expression to extract UTR No.
+			preg_match('/Reference No\. \(UTR No\.\/RRN\): (\S+)/', $text, $matches);
+			// Check if match is found
+			if (!empty($matches[1])) {
+				echo "UTR Number: " . $matches[1]; // Output: KKBKH25070930804
+			} else {
+				echo "UTR Number not found!";
+			}
+
+
+			$where = array(
+				'id' => $row->id,
+			);
+			$dt = array(
+				'upi_no'=>$upi_no,
+			);
+			$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
 		}
 	}
 	public function get_whatsapp_new(){
