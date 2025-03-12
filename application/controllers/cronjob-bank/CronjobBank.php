@@ -1033,7 +1033,7 @@ class CronjobBank extends CI_Controller
 	public function get_whatsapp_new(){
 		echo " get_whatsapp ";
 
-		$result = $this->BankModel->select_query("SELECT p.upi_no, wm.id as whatsapp_message_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON (REPLACE(TRIM(wm.vision_text), ' ', '') LIKE CONCAT('%', TRIM(p.upi_no), '%') and REPLACE(TRIM(wm.amount), '.00', '') LIKE CONCAT('%', REPLACE(TRIM(p.amount),'.00', ''), '%')) WHERE p.date='2025-03-11' and p.whatsapp_message_id='' limit 25");
+		$result = $this->BankModel->select_query("SELECT p.upi_no, wm.message_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.upi_no=wm.upi_no where p.whatsapp_message_id='' limit 25");
 		$result = $result->result();
 		foreach($result as $row) {
 
