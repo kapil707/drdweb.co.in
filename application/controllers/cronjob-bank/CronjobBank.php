@@ -805,10 +805,11 @@ class CronjobBank extends CI_Controller
 	}
 
 	public function find_upi(){
-		$text = "Transfer Details
+		$text = "**Payment Successful**
 
-		* Reference No. (UTR No./RRN): KKBKH25070930804
-		* Date & Time: 11 Mar 2025-09:39 am";
+		**Transfer Details**
+		Reference No. (UTR No./RRN): KKBKH25070618891
+		Date & Time: 11 Mar 2025-02:04 pm";
 
 		// Regular Expression to extract UTR No.
 		preg_match('/Reference No\. \(UTR No\.\/RRN\): (\S+)/', $text, $matches);
