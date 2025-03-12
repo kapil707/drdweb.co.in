@@ -727,7 +727,6 @@ class CronjobBank extends CI_Controller
 
 	public function get_whatsapp(){
 		echo " get_whatsapp ";
-		//$result = $this->BankModel->select_query("SELECT tbl_whatsapp_message.id,tbl_whatsapp_message.vision_text,tbl_bank_processing.upi_no,tbl_bank_processing.id as myid FROM tbl_bank_processing, tbl_whatsapp_message WHERE tbl_whatsapp_message.vision_text LIKE CONCAT('%', tbl_bank_processing.upi_no, '%') and tbl_bank_processing.status=1");
 
 		$result = $this->BankModel->select_query("SELECT id,upi_no,amount,orderid from tbl_bank_processing where process_status=1 limit 25");
 		$result = $result->result();
@@ -737,11 +736,8 @@ class CronjobBank extends CI_Controller
 			$orderid= trim($row->orderid);
 			$amount = $row->amount;
 
-			echo "SELECT * FROM `tbl_whatsapp_message` WHERE REPLACE(`vision_text`, ' ', '') LIKE '%$upi_no%' or REPLACE(`vision_text`, ' ', '') LIKE '%$orderid%'";
-
 			$row1 = $this->BankModel->select_query("SELECT * FROM `tbl_whatsapp_message` WHERE REPLACE(`vision_text`, ' ', '') LIKE '%$upi_no%' or REPLACE(`vision_text`, ' ', '') LIKE '%$orderid%'");
 			$row1 = $row1->row();
-
 			if(empty($row1)){
 				$row1 = $this->BankModel->select_query("SELECT * FROM `tbl_whatsapp_message` WHERE `vision_text` LIKE '%$upi_no%' or `vision_text` LIKE '%$orderid%'");
 				$row1 = $row1->row();
@@ -766,13 +762,10 @@ class CronjobBank extends CI_Controller
 
 				if(empty($whatsapp_body)){
 					$row2 = $this->BankModel->select_query("SELECT body FROM `tbl_whatsapp_message` WHERE from_number='$from_number' AND FROM_UNIXTIME(timestamp) BETWEEN DATE_SUB('$timestamp', INTERVAL 7 MINUTE) AND DATE_ADD('$timestamp', INTERVAL 7 MINUTE) and body!='' LIMIT 0, 25");
-					//echo "SELECT body FROM `tbl_whatsapp_message` WHERE from_number='$from_number' AND FROM_UNIXTIME(timestamp) BETWEEN DATE_SUB('$timestamp', INTERVAL 7 MINUTE) AND DATE_ADD('$timestamp', INTERVAL 7 MINUTE) and body!='' LIMIT 0, 25";
 					$row2 = $row2->row();
 					$whatsapp_body = $row2->body;
 				}
 			}
-
-
 
 			if(empty($row1)){
 				$row2 = $this->BankModel->select_query("SELECT * FROM `tbl_whatsapp_message` WHERE REPLACE(`body`, ' ', '') LIKE '%$upi_no%'");
@@ -789,7 +782,6 @@ class CronjobBank extends CI_Controller
 
 					if(empty($whatsapp_body)){
 						$row2 = $this->BankModel->select_query("SELECT body FROM `tbl_whatsapp_message` WHERE from_number='$from_number' AND FROM_UNIXTIME(timestamp) BETWEEN DATE_SUB('$timestamp', INTERVAL 7 MINUTE) AND DATE_ADD('$timestamp', INTERVAL 7 MINUTE) and body!='' and id!='$whatsapp_id' LIMIT 0, 25");
-						//echo "SELECT body FROM `tbl_whatsapp_message` WHERE from_number='$from_number' AND FROM_UNIXTIME(timestamp) BETWEEN DATE_SUB('$timestamp', INTERVAL 7 MINUTE) AND DATE_ADD('$timestamp', INTERVAL 7 MINUTE) and body!='' LIMIT 0, 25";
 						$row2 = $row2->row();
 						$whatsapp_body = $row2->body;
 					}
@@ -806,15 +798,32 @@ class CronjobBank extends CI_Controller
 			$dt = array(
 				'process_status'=>2,
 				'whatsapp_message_id'=>$whatsapp_id,
+				'find_whatsapp_chemist'=>$whatsapp_id,
 			);
 			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 		}
 	}
 
 	public function get_whatsapp_new(){
+		$text = "Transfer Details
+
+		* Reference No. (UTR No./RRN): KKBKH25070930804
+		* Date & Time: 11 Mar 2025-09:39 am";
+
+		// Regular Expression to extract UTR No.
+		preg_match('/Reference No\. \(UTR No\.\/RRN\): (\S+)/', $text, $matches);
+
+		// Check if match is found
+		if (!empty($matches[1])) {
+			echo "UTR Number: " . $matches[1]; // Output: KKBKH25070930804
+		} else {
+			echo "UTR Number not found!";
+		}
+	}
+	public function get_whatsapp_new(){
 		echo " get_whatsapp ";
 
-		$result = $this->BankModel->select_query("SELECT p.upi_no, wm.id as whatsapp_message_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON (REPLACE(TRIM(wm.vision_text), ' ', '') LIKE CONCAT('%', TRIM(p.upi_no), '%') and REPLACE(TRIM(wm.amount), '.00', '') LIKE CONCAT('%', REPLACE(TRIM(p.amount),'.00', ''), '%')) WHERE p.date='2025-03-11' and p.whatsapp_message_id='' limit 10");
+		$result = $this->BankModel->select_query("SELECT p.upi_no, wm.id as whatsapp_message_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON (REPLACE(TRIM(wm.vision_text), ' ', '') LIKE CONCAT('%', TRIM(p.upi_no), '%') and REPLACE(TRIM(wm.amount), '.00', '') LIKE CONCAT('%', REPLACE(TRIM(p.amount),'.00', ''), '%')) WHERE p.date='2025-03-11' and p.whatsapp_message_id='' limit 25");
 		$result = $result->result();
 		foreach($result as $row) {
 
