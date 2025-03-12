@@ -804,7 +804,7 @@ class CronjobBank extends CI_Controller
 				'id' => $row->id,
 			);
 			$dt = array(
-				'status'=>3,
+				'process_status'=>2,
 				'whatsapp_message_id'=>$whatsapp_id,
 			);
 			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
