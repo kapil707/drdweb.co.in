@@ -30,10 +30,10 @@ tbl_division_wise_nnn -> tbl_division_wise
 tbl_item_category_nnn -> tbl_item_category
 tbl_item -> tbl_item_wise
 
-update tbl_sms set status=0 where date='2025-03-12';
-update tbl_statment set status=0 where date='2025-03-12';
-delete from tbl_bank_processing where date='2025-03-12';
-UPDATE tbl_whatsapp_message set status=0 where date='2025-03-12';
+update tbl_sms set status=0 where date='2025-03-11';
+update tbl_statment set status=0 where date='2025-03-11';
+delete from tbl_bank_processing where date='2025-03-11';
+UPDATE tbl_whatsapp_message set status=0 where date='2025-03-11';
 
 
 add color a9c5f9
@@ -45,4 +45,15 @@ ALTER TABLE tbl_whatsapp_message ADD INDEX idx_vision_text(vision_text(255));
 ALTER TABLE tbl_bank_processing ADD INDEX idx_date(date);
 ALTER TABLE tbl_bank_processing ADD INDEX idx_upi_no(upi_no);
 ALTER TABLE tbl_bank_processing ADD INDEX idx_orderid(orderid);
+ALTER TABLE tbl_bank_processing ADD INDEX idx_amount (amount);
 
+
+
+SELECT p.upi_no, wm.message_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON REPLACE(TRIM(wm.vision_text), ' ', '') LIKE CONCAT('%', TRIM(p.upi_no), '%') WHERE p.date='2025-03-12';
+
+SELECT p.upi_no, wm.message_id, wm.vision_text 
+FROM tbl_bank_processing AS p 
+JOIN tbl_whatsapp_message wm 
+ON (REPLACE(TRIM(wm.vision_text), ' ', '') LIKE CONCAT('%', TRIM(p.upi_no), '%')
+    and REPLACE(TRIM(wm.amount), '.00', '') LIKE CONCAT('%', REPLACE(TRIM(p.amount),'.00', ''), '%'))
+WHERE p.upi_no='101331229085';
