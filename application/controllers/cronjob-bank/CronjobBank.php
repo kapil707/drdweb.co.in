@@ -822,7 +822,7 @@ class CronjobBank extends CI_Controller
 			$whatsapp_message_id = trim($row->whatsapp_message_id);
 
 			$where = array(
-				'id' => $row->id,
+				'upi_no' => $upi_no,
 			);
 			$dt = array(
 				'process_status'=>2,
