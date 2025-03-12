@@ -148,7 +148,7 @@
 									<?php echo $id; ?>
 								</td>
 								<td>
-									<?php echo date('d-M-y \a\t h:i:s A', $timestamp); ?>
+									<?php echo date('d-M-y \a\t H:i:s', $timestamp); ?>
 								</td>
 								<td>
 									<?php echo $from_number; ?>
