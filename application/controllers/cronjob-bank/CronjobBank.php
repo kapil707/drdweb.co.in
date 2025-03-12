@@ -298,7 +298,7 @@ class CronjobBank extends CI_Controller
 				'process_status'=>1,				
 				'from_value'=>$process_value,
 				'from_value_find'=>$process_name,
-				'chemist'=>$find_chemist_id,
+				'find_chemist'=>$find_chemist_id,
 			);
 			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 			/************************************************* */
