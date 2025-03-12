@@ -846,6 +846,17 @@ class CronjobBank extends CI_Controller
 			}
 
 			if(empty($upi_no)){
+				preg_match('/Transaction ID:\s*(\d+)/', $text, $matches);
+				if (!empty($matches[1])) {
+					$upi_no = $matches[1];
+					echo "UTR Number: " . $matches[1];
+				} else {
+					echo "UTR Number not found";
+					$upi_no = "";
+				}
+			}
+
+			if(empty($upi_no)){
 				preg_match('/UPI Ref\. No:\s*([\d\s]+)/', $text, $matches);
 				if (!empty($matches[1])) {
 					$upi_no = $matches[1];
