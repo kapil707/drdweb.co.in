@@ -816,9 +816,11 @@ class CronjobBank extends CI_Controller
 			preg_match('/Reference No\. \(UTR No\.\/RRN\): (\S+)/', $text, $matches);
 			// Check if match is found
 			if (!empty($matches[1])) {
+				$upi_no = $matches[1];
 				echo "UTR Number: " . $matches[1]; // Output: KKBKH25070930804
 			} else {
 				echo "UTR Number not found!";
+				$upi_no = "";
 			}
 
 
