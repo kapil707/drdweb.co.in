@@ -1019,10 +1019,20 @@ class CronjobBank extends CI_Controller
 
 			if(empty($upi_no)){
 				// Regex se Transaction ID extract karna
-				preg_match('/UTR:\s*([\w\d]+)/', $text, $matches);
+				preg_match('/Reference Number\s([A-Z0-9]+)/', $text, $matches);
 				if (!empty($matches[1])) {
 					$upi_no = $matches[1];
 					$type = 17;
+					//echo "UTR Number: " . $upi_no;
+				}
+			}
+
+			if(empty($upi_no)){
+				// Regex se Transaction ID extract karna
+				preg_match('/UTR:\s*([\w\d]+)/', $text, $matches);
+				if (!empty($matches[1])) {
+					$upi_no = $matches[1];
+					$type = 18;
 					//echo "UTR Number: " . $upi_no;
 				} 
 			}
@@ -1032,7 +1042,7 @@ class CronjobBank extends CI_Controller
 				preg_match('/Reference Number:\s*([\w\d]+)/', $text, $matches);
 				if (!empty($matches[1])) {
 					$upi_no = $matches[1];
-					$type = 18;
+					$type = 19;
 					//echo "UTR Number: " . $upi_no;
 				} 
 			}
