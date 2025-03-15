@@ -812,6 +812,7 @@ class CronjobBank extends CI_Controller
 
 			$text = trim($row->vision_text);
 
+			$upi_no = "";
 			$amount = "0.0";
 			//********amount********** */
 			// Regular Expression to extract amount.
