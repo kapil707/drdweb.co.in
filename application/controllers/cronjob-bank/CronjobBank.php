@@ -1071,7 +1071,7 @@ class CronjobBank extends CI_Controller
 	public function whatsapp_insert_in_process(){
 		echo " get_whatsapp ";
 
-		$result = $this->BankModel->select_query("SELECT p.id, wm.id as whatsapp_id,wm.body as body, wm.vision_text,wm.timestamp FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.upi_no=wm.upi_no where p.whatsapp_id='' ORDER BY RAND() limit 25");
+		$result = $this->BankModel->select_query("SELECT p.id, wm.id as whatsapp_id,wm.body as body, wm.vision_text,wm.timestamp,wm.from_number,p.final_chemist FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.upi_no=wm.upi_no where p.whatsapp_id='' ORDER BY RAND() limit 25");
 		$result = $result->result();
 		foreach($result as $row) {
 
@@ -1079,6 +1079,15 @@ class CronjobBank extends CI_Controller
 			$whatsapp_id = trim($row->whatsapp_id);
 			$whatsapp_body = ($row->body);
 			$whatsapp_chemist = trim($whatsapp_body);
+			$from_number = $row->from_number;
+			$final_chemist = $row->final_chemist;
+			if(empty($whatsapp_body)){
+				$row1 = $this->BankModel->select_query("SELECT body FROM `tbl_whatsapp_message` WHERE from_number='$from_number' and body='$final_chemist' LIMIT 0, 25");
+				$row1 = $row1->row();
+				if(!empty($row1)){
+					$whatsapp_chemist = trim($row1->body);
+				}
+			}
 			if(empty($whatsapp_body)){
 				$timestamp = date('Y-m-d H:i:s', $row->timestamp);
 
