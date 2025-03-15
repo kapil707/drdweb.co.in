@@ -401,6 +401,8 @@ class CronjobBank extends CI_Controller
 			
 			$row_new = $this->BankModel->select_query("select id from tbl_bank_processing where upi_no='$upi_no'");
 			$row_new = $row_new->row();
+
+			$amount = str_replace([",", ".00"], "", $amount);
 			
 			if(empty($row_new->id) && $received_from!="Remitter" && $received_from != "Received from information not found"){
 				$dt = array(
@@ -438,7 +440,7 @@ class CronjobBank extends CI_Controller
 		foreach($result as $row){
 		
 			echo $row->id."----<br>";
-			$amount1 = $row->amount;
+			$amount = $row->amount;
 			$date = $row->date;
 			echo $text = $row->narrative;
 			$text = str_replace(array("\r", "\n"), '', $text);
@@ -673,6 +675,8 @@ class CronjobBank extends CI_Controller
 			echo $received_from."<br>";
 			//die();
 
+			$amount = str_replace([",", ".00"], "", $amount);
+
 			$statment_id = $row->id;
 			if(!empty($received_from)){
 				$row_new = $this->BankModel->select_query("select id,status,received_from from tbl_bank_processing where upi_no='$upi_no'");
@@ -681,7 +685,7 @@ class CronjobBank extends CI_Controller
 				if(empty($row_new->id)){
 					$dt = array(
 						'status'=>2,
-						'amount'=>$amount1,
+						'amount'=>$amount,
 						'date'=>$date,
 						'received_from'=>$received_from,
 						'upi_no'=>$upi_no,
@@ -1070,6 +1074,26 @@ class CronjobBank extends CI_Controller
 		}
 	}
 
+	public function whatsapp_find_upi_to_process2(){
+		SELECT p.upi_no, wm.message_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount and p.upi_no=507050353549 WHERE p.date = '2025-03-11';
+
+		$result = $this->BankModel->select_query("SELECT p.id, wm.id as message_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.upi_no=wm.upi_no where p.whatsapp_message_id='' ORDER BY RAND() limit 25");
+		$result = $result->result();
+		foreach($result as $row) {
+
+			echo $id = $row->id;
+			$whatsapp_message_id = trim($row->message_id);
+
+			$where = array(
+				'id' => $id,
+			);
+			$dt = array(
+				'process_status'=>2,
+				'whatsapp_message_id'=>$whatsapp_message_id,
+			);
+			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
+		}
+	}
 	/***************************************************************************************************/
 	function find_by_full_name($received_from){
 
