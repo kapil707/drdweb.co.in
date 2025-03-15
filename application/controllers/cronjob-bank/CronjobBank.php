@@ -291,7 +291,7 @@ class CronjobBank extends CI_Controller
 					$process_name = $result["process_name"];
 				}
 			}
-			echo $find_chemist_id;
+			echo $find_by;
 
 			/************************************************* */
 			$id = $row->id;
