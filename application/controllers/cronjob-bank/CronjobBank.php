@@ -291,6 +291,8 @@ class CronjobBank extends CI_Controller
 					$process_name = $result["process_name"];
 				}
 			}
+			echo $process_value;
+			
 			/************************************************* */
 			$id = $row->id;
 			$where = array('id'=>$id);
