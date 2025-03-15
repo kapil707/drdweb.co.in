@@ -1022,8 +1022,8 @@ class CronjobBank extends CI_Controller
 
 			$amount = str_replace([",", ".00"], "", $amount);
 			$upi_no = trim($upi_no);
-			//echo $row->id."-".$amount."-";
-			//echo "<br>";
+			echo $row->id."-".$amount."-".$upi_no;
+			echo "<br>";
 
 			$where = array(
 				'id' => $row->id,
