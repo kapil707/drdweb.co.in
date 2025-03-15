@@ -1079,7 +1079,7 @@ class CronjobBank extends CI_Controller
 			$whatsapp_id = trim($row->whatsapp_id);
 			$whatsapp_body = ($row->body);
 			$whatsapp_chemist = $whatsapp_body;
-			if(emtpy($whatsapp_body)){
+			if(empty($whatsapp_body)){
 
 			}
 
