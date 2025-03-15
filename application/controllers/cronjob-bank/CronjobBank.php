@@ -836,6 +836,13 @@ class CronjobBank extends CI_Controller
 				}
 			}
 			if($amount == "0.0"){
+				preg_match('/\*\*Transfer Amount:\*\* ([\d,]+\.\d{2})/', $text, $matches);
+				// Check if match is found
+				if (!empty($matches[1])) {
+					$amount = $matches[1];
+				}
+			}
+			if($amount == "0.0"){
 				preg_match_all('/\?[\s]*([\d,.]+)/', $text, $matches);
 
 				if (!empty($matches[1])) {
