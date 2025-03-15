@@ -829,7 +829,7 @@ class CronjobBank extends CI_Controller
 				}
 			}
 			if($amount == "0.0"){
-				preg_match('/[₹\?]?\s?([\d,]+(?:\.\d{1,2})?)/', $text, $matches);
+				preg_match('/Amount:\s*([\d,]+)/', $text, $matches);
 				// Check if match is found
 				if (!empty($matches[1])) {
 					$amount = $matches[1];
