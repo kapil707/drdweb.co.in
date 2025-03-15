@@ -1083,10 +1083,10 @@ class CronjobBank extends CI_Controller
 		foreach($result as $row) {
 
 			$upi_no = trim($row->upi_no);
-			$whatsapp_message_id = trim($row->message_id);
+			$message_id = trim($row->message_id);
 
 			$where = array(
-				'id' => $whatsapp_message_id,
+				'id' => $message_id,
 			);
 			$dt = array(
 				'upi_no'=>$upi_no,
