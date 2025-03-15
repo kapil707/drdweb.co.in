@@ -1044,16 +1044,10 @@ class CronjobBank extends CI_Controller
 			$where = array(
 				'id' => $row->id,
 			);
-			if(empty($upi_no)){
-				$dt = array(
-					'amount'=>$amount,
-				);
-			}else{
-				$dt = array(
-					'upi_no'=>$upi_no,
-					'amount'=>$amount,
-				);
-			}
+			$dt = array(
+				'upi_no'=>$upi_no,
+				'amount'=>$amount,
+			);
 			$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
 			/*********************************************************** */
 		}
