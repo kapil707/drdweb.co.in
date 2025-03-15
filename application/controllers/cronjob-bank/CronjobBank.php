@@ -403,6 +403,7 @@ class CronjobBank extends CI_Controller
 			$row_new = $row_new->row();
 
 			$amount = str_replace([",", ".00"], "", $amount);
+			$amount = trim($amount);
 			
 			if(empty($row_new->id) && $received_from!="Remitter" && $received_from != "Received from information not found"){
 				$dt = array(
@@ -676,6 +677,7 @@ class CronjobBank extends CI_Controller
 			//die();
 
 			$amount = str_replace([",", ".00"], "", $amount);
+			$amount = trim($amount);
 
 			$statment_id = $row->id;
 			if(!empty($received_from)){
@@ -1037,6 +1039,8 @@ class CronjobBank extends CI_Controller
 			}
 
 			$amount = str_replace([",", ".00"], "", $amount);
+			$amount = trim($amount);
+
 			$upi_no = trim($upi_no);
 			echo $row->id."-".$amount."-".$upi_no."-".$type;
 			echo "<br>";
