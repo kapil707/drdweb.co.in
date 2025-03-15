@@ -814,8 +814,8 @@ class CronjobBank extends CI_Controller
 
 			$amount = "0.0";
 			//********amount********** */
-			// Regular Expression to extract UTR No.
-			preg_match('\?\d{1,3}(,\d{3})*', $text, $matches);
+			// Regular Expression to extract amount.
+			preg_match('/[₹\?]([\d,]+)/', $text, $matches);
 			// Check if match is found
 			if (!empty($matches[1])) {
 				$amount = $matches[1];
