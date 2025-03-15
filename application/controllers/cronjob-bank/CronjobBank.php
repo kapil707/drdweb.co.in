@@ -1265,7 +1265,7 @@ class CronjobBank extends CI_Controller
 
 		$received_from = str_replace(' ', '', $received_from);
 		
-		$rr = $this->BankModel->select_query("SELECT * FROM `tbl_bank_chemist` WHERE `title` LIKE '%$received_from%'");
+		/*$rr = $this->BankModel->select_query("SELECT * FROM `tbl_bank_chemist` WHERE `title` LIKE '%$received_from%'");
 		$rr = $rr->result();
 		foreach($rr as $tt){
 			$jsonArray[] = $tt->chemist_id;
@@ -1275,6 +1275,13 @@ class CronjobBank extends CI_Controller
 
 		if(!empty($jsonArray)){
 			$find_chemist_id = implode('||', $jsonArray);
+		}*/
+
+		$rr = $this->BankModel->select_query("SELECT * FROM `tbl_bank_chemist` WHERE `title` LIKE '%$received_from%'");
+		$rr = $rr->result();
+		foreach($rr as $tt){
+			$find_chemist_id = trim($tt->chemist_id);
+			$process_value = $tt->string_value;
 		}
 
 		$return["find_chemist_id"] = $find_chemist_id;
