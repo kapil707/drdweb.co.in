@@ -962,7 +962,7 @@ class CronjobBank extends CI_Controller
 				}
 			}
 
-			if(empty($upi_no)){
+			/*if(empty($upi_no)){
 				// Regex se UPI Reference Number extract karna
 				preg_match('/\b[\w.-]+@[\w.-]+\b/', $text, $matches);
 				if (!empty($matches[0])) {
@@ -970,7 +970,7 @@ class CronjobBank extends CI_Controller
 					$type = 12;
 					//echo "UTR Number: " . $upi_no;
 				}
-			}
+			}*/
 
 			if(empty($upi_no)){
 				// Regex se Transaction ID extract karna
