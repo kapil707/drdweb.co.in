@@ -712,7 +712,6 @@ class CronjobBank extends CI_Controller
 					$dt = array(
 						'status'=>2,
 						'received_from'=>$received_from,
-						'orderid'=>$orderid,
 						'statment_id'=>$statment_id,
 						'from_statment'=>1,
 						'statment_type'=>$statment_type,
