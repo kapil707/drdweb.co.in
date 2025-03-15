@@ -1071,7 +1071,7 @@ class CronjobBank extends CI_Controller
 	public function whatsapp_insert_in_process(){
 		echo " get_whatsapp ";
 
-		$result = $this->BankModel->select_query("SELECT p.id, wm.id as whatsapp_id,wm.body as body, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.upi_no=wm.upi_no where p.whatsapp_message_id='' ORDER BY RAND() limit 25");
+		$result = $this->BankModel->select_query("SELECT p.id, wm.id as whatsapp_id,wm.body as body, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.upi_no=wm.upi_no where p.whatsapp_id='' ORDER BY RAND() limit 25");
 		$result = $result->result();
 		foreach($result as $row) {
 
@@ -1099,15 +1099,15 @@ class CronjobBank extends CI_Controller
 		
 		//SELECT p.upi_no, wm.message_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount and p.upi_no=507050353549 WHERE p.date = '2025-03-11';
 
-		$result = $this->BankModel->select_query("SELECT p.upi_no, wm.id as message_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount and REPLACE(TRIM(wm.vision_text), ' ', '') LIKE CONCAT('%', TRIM(p.upi_no), '%') where p.whatsapp_message_id=''");
+		$result = $this->BankModel->select_query("SELECT p.upi_no, wm.id as whatsapp_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount and REPLACE(TRIM(wm.vision_text), ' ', '') LIKE CONCAT('%', TRIM(p.upi_no), '%') where p.whatsapp_id=''");
 		$result = $result->result();
 		foreach($result as $row) {
 
 			$upi_no = trim($row->upi_no);
-			$message_id = trim($row->message_id);
+			$whatsapp_id = trim($row->whatsapp_id);
 
 			$where = array(
-				'id' => $message_id,
+				'id' => $whatsapp_id,
 			);
 			$dt = array(
 				'upi_no'=>$upi_no,
@@ -1116,15 +1116,15 @@ class CronjobBank extends CI_Controller
 		}
 
 		//other xx 1234
-		$result = $this->BankModel->select_query("SELECT p.upi_no, wm.id AS message_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount AND REPLACE(TRIM(wm.vision_text), ' ', '') LIKE CONCAT('%xx', RIGHT(TRIM(p.upi_no), 4), '%') WHERE p.whatsapp_message_id = ''");
+		$result = $this->BankModel->select_query("SELECT p.upi_no, wm.id AS whatsapp_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount AND REPLACE(TRIM(wm.vision_text), ' ', '') LIKE CONCAT('%xx', RIGHT(TRIM(p.upi_no), 4), '%') WHERE p.whatsapp_id = ''");
 		$result = $result->result();
 		foreach($result as $row) {
 
 			$upi_no = trim($row->upi_no);
-			$message_id = trim($row->message_id);
+			$whatsapp_id = trim($row->whatsapp_id);
 
 			$where = array(
-				'id' => $message_id,
+				'id' => $whatsapp_id,
 			);
 			$dt = array(
 				'upi_no'=>$upi_no,
@@ -1133,15 +1133,15 @@ class CronjobBank extends CI_Controller
 		}
 
 		//amount or body say upi no find karna
-		$result = $this->BankModel->select_query("SELECT p.upi_no, wm.id as message_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount and TRIM(wm.body) = TRIM(p.find_chemist) and p.whatsapp_message_id='0'");
+		$result = $this->BankModel->select_query("SELECT p.upi_no, wm.id as whatsapp_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount and TRIM(wm.body) = TRIM(p.find_chemist) and p.whatsapp_id=''");
 		$result = $result->result();
 		foreach($result as $row) {
 
 			$upi_no = trim($row->upi_no);
-			$message_id = trim($row->message_id);
+			$whatsapp_id = trim($row->whatsapp_id);
 
 			$where = array(
-				'id' => $message_id,
+				'id' => $whatsapp_id,
 			);
 			$dt = array(
 				'upi_no'=>$upi_no,
@@ -1150,12 +1150,12 @@ class CronjobBank extends CI_Controller
 		}
 
 		//ager body me say kuch get ho skta ha
-		$result = $this->BankModel->select_query("SELECT p.upi_no, wm.id as message_id, wm.body FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON REPLACE(TRIM(wm.body), '.00', '') LIKE CONCAT('%', TRIM(p.amount), '%') and REPLACE(TRIM(wm.body), ' ', '') LIKE CONCAT('%', TRIM(p.upi_no), '%') where p.whatsapp_message_id=''");
+		$result = $this->BankModel->select_query("SELECT p.upi_no, wm.id as whatsapp_id, wm.body FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON REPLACE(TRIM(wm.body), '.00', '') LIKE CONCAT('%', TRIM(p.amount), '%') and REPLACE(TRIM(wm.body), ' ', '') LIKE CONCAT('%', TRIM(p.upi_no), '%') where p.whatsapp_id=''");
 		$result = $result->result();
 		foreach($result as $row) {
 
 			$upi_no = trim($row->upi_no);
-			$message_id = trim($row->message_id);
+			$whatsapp_id = trim($row->whatsapp_id);
 
 			$text = trim($row->body);
 
@@ -1168,7 +1168,7 @@ class CronjobBank extends CI_Controller
 
 			$amount = str_replace([",", ".00"], "", $amount);
 			$where = array(
-				'id' => $message_id,
+				'id' => $whatsapp_id,
 			);
 			$dt = array(
 				'upi_no'=>$upi_no,
@@ -1178,15 +1178,15 @@ class CronjobBank extends CI_Controller
 		}
 
 		//chemist id or rs say whatsapp find karti ha yha
-		$result = $this->BankModel->select_query("SELECT p.upi_no, wm.id as message_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount and REPLACE(TRIM(wm.body), ' ', '') LIKE CONCAT('%', TRIM(p.find_chemist), '%') where p.whatsapp_message_id=''");
+		$result = $this->BankModel->select_query("SELECT p.upi_no, wm.id as whatsapp_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount and REPLACE(TRIM(wm.body), ' ', '') LIKE CONCAT('%', TRIM(p.find_chemist), '%') where p.whatsapp_id=''");
 		$result = $result->result();
 		foreach($result as $row) {
 
 			$upi_no = trim($row->upi_no);
-			$message_id = trim($row->message_id);
+			$whatsapp_id = trim($row->whatsapp_id);
 			
 			$where = array(
-				'id' => $message_id,
+				'id' => $whatsapp_id,
 			);
 			$dt = array(
 				'upi_no'=>$upi_no,
