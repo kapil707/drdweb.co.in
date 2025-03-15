@@ -831,7 +831,7 @@ class CronjobBank extends CI_Controller
 			echo $row->id.":".$amount;
 			echo "<br>";
 
-			/*
+			/************************************************** */
 			// Regular Expression to extract UTR No.
 			preg_match('/Reference No\. \(UTR No\.\/RRN\): (\S+)/', $text, $matches);
 			// Check if match is found
