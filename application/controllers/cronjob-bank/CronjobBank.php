@@ -828,7 +828,7 @@ class CronjobBank extends CI_Controller
 				}
 			}
 
-			echo $amount;
+			echo $row->id.":".$amount;
 			echo "<br>";
 
 			/*
