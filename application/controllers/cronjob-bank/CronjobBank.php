@@ -1068,22 +1068,28 @@ class CronjobBank extends CI_Controller
 		}
 	}
 
-	public function whatsapp_find_upi_to_process(){
+	public function whatsapp_insert_in_process(){
 		echo " get_whatsapp ";
 
-		$result = $this->BankModel->select_query("SELECT p.id, wm.id as message_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.upi_no=wm.upi_no where p.whatsapp_message_id='' ORDER BY RAND() limit 25");
+		$result = $this->BankModel->select_query("SELECT p.id, wm.id as whatsapp_id,wm.body as body, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.upi_no=wm.upi_no where p.whatsapp_message_id='' ORDER BY RAND() limit 25");
 		$result = $result->result();
 		foreach($result as $row) {
 
 			echo $id = $row->id;
-			$whatsapp_message_id = trim($row->message_id);
+			$whatsapp_id = trim($row->whatsapp_id);
+			$whatsapp_body = ($row->body);
+			$whatsapp_chemist = $whatsapp_body;
+			if(emtpy($whatsapp_body)){
+
+			}
 
 			$where = array(
 				'id' => $id,
 			);
 			$dt = array(
 				'process_status'=>2,
-				'whatsapp_message_id'=>$whatsapp_message_id,
+				'whatsapp_id'=>$whatsapp_id,
+				'whatsapp_chemist'=>$whatsapp_chemist,
 			);
 			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 		}
