@@ -804,13 +804,22 @@ class CronjobBank extends CI_Controller
 		}
 	}
 
-	public function find_upi(){
+	public function whatsapp_find_upi_amount(){
 
 		$result = $this->BankModel->select_query("SELECT id,vision_text FROM `tbl_whatsapp_message` where upi_no='' ORDER BY RAND() limit 25");
 		$result = $result->result();
 		foreach($result as $row) {
 
 			$text = trim($row->vision_text);
+
+			$amount = "0.0";
+			//********amount********** */
+			// Regular Expression to extract UTR No.
+			preg_match('\?\d{1,3}(,\d{3})*', $text, $matches);
+			// Check if match is found
+			if (!empty($matches[1])) {
+				$amount = $matches[1];
+			}
 
 			// Regular Expression to extract UTR No.
 			preg_match('/Reference No\. \(UTR No\.\/RRN\): (\S+)/', $text, $matches);
@@ -1026,6 +1035,7 @@ class CronjobBank extends CI_Controller
 			);
 			$dt = array(
 				'upi_no'=>$upi_no,
+				'amount'=>$amount,
 			);
 			$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
 		}
