@@ -828,6 +828,10 @@ class CronjobBank extends CI_Controller
 				}
 			}
 
+			echo $amount;
+			echo "<br>";
+
+			/*
 			// Regular Expression to extract UTR No.
 			preg_match('/Reference No\. \(UTR No\.\/RRN\): (\S+)/', $text, $matches);
 			// Check if match is found
@@ -1051,6 +1055,7 @@ class CronjobBank extends CI_Controller
 				);
 			}
 			$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
+			/*********************************************************** */
 		}
 	}
 	public function get_whatsapp_new(){
