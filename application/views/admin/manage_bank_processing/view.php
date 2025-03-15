@@ -232,7 +232,7 @@
 						$row_find_invoice_all = "N/a";
 					}
 					/********************************************** */
-					$row_whatsapp_id = $entry->whatsapp_message_id;
+					$row_whatsapp_id = $entry->whatsapp_id;
 					/********************************************** */
 					$row_whatsapp_chemist = $entry->whatsapp_chemist;
 					/********************************************** */
