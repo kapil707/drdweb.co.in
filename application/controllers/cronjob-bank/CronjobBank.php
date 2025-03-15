@@ -843,6 +843,13 @@ class CronjobBank extends CI_Controller
 				}
 			}
 			if($amount == "0.0"){
+				preg_match('/\*\*Transfer Amount:\*\* ([\d,]+\.\d{2})/', $text, $matches);
+				// Check if match is found
+				if (!empty($matches[1])) {
+					$amount = $matches[1];
+				}
+			}
+			if($amount == "0.0"){
 				preg_match_all('/\?[\s]*([\d,.]+)/', $text, $matches);
 
 				if (!empty($matches[1])) {
@@ -1028,7 +1035,8 @@ class CronjobBank extends CI_Controller
 			/*********************************************************** */
 		}
 	}
-	public function get_whatsapp_new(){
+
+	public function whatsapp_find_upi_to_process(){
 		echo " get_whatsapp ";
 
 		$result = $this->BankModel->select_query("SELECT p.id, wm.id as message_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.upi_no=wm.upi_no where p.whatsapp_message_id='' ORDER BY RAND() limit 25");
