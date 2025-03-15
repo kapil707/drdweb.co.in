@@ -445,7 +445,7 @@ class CronjobBank extends CI_Controller
 			echo $row->id."----<br>";
 			$amount = $row->amount;
 			$date = $row->date;
-			echo $text = $row->narrative;
+			echo $text = $statment_text = $row->narrative;
 			$text = str_replace(array("\r", "\n"), '', $text);
 			$upi_no = $orderid = $row->customer_reference;
 			$received_from = "";
@@ -697,7 +697,7 @@ class CronjobBank extends CI_Controller
 						'statment_id'=>$statment_id,
 						'from_statment'=>1,
 						'statment_type'=>$statment_type,
-						'statment_text'=>$text,						
+						'statment_text'=>$statment_text,						
 					);
 					$this->BankModel->insert_fun("tbl_bank_processing", $dt);
 				}else{
