@@ -59,3 +59,6 @@ JOIN tbl_whatsapp_message wm
 ON (REPLACE(TRIM(wm.vision_text), ' ', '') LIKE CONCAT('%', TRIM(p.upi_no), '%')
     and REPLACE(TRIM(wm.amount), '.00', '') LIKE CONCAT('%', REPLACE(TRIM(p.amount),'.00', ''), '%'))
 WHERE p.upi_no='101331229085';
+
+
+543629405278
