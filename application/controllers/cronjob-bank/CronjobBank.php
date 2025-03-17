@@ -1253,7 +1253,7 @@ class CronjobBank extends CI_Controller
 			$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
 		}
 
-		$result = $this->BankModel->select_query("SELECT p.upi_no,wm.upi_no, wm.id as whatsapp_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount and REPLACE(TRIM(wm.vision_text), ' ', '') LIKE CONCAT('%', TRIM(p.upi_no), '%') where p.whatsapp_id=''");
+		$result = $this->BankModel->select_query("SELECT p.upi_no, wm.id as whatsapp_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount and REPLACE(TRIM(wm.vision_text), ' ', '') LIKE CONCAT('%', TRIM(p.upi_no), '%') where p.whatsapp_id=''");
 		$result = $result->result();
 		foreach($result as $row) {
 
