@@ -1116,33 +1116,33 @@ class CronjobBank extends CI_Controller
 			$whatsapp_body = trim($row->body);
 			$whatsapp_chemist = trim($row->body);
 			$from_number = $row->from_number;
-
-			$find_chemist = trim($row->find_chemist);
+			$find_chemist = $row->find_chemist;
 			$timestamp = date('Y-m-d H:i:s', $row->timestamp);
 			//agar body m chemist id nahi aa rahi ha to next say find karta ha yha
-			if (strpos($whatsapp_chemist, $find_chemist) !== false) {
-				echo $whatsapp_chemist = $find_chemist;
+			if($whatsapp_chemist!=$find_chemist){
+				$whatsapp_chemist = "";
+				$type = 0;
+			}
+			if(empty($whatsapp_chemist)){
+				$row1 = $this->BankModel->select_query("SELECT body FROM `tbl_whatsapp_message` WHERE from_number='$from_number' AND FROM_UNIXTIME(timestamp) BETWEEN DATE_SUB('$timestamp', INTERVAL 7 MINUTE) AND DATE_ADD('$timestamp', INTERVAL 7 MINUTE) and body='$find_chemist' LIMIT 0, 25");
+				$row1 = $row1->row();
+				$type = 1;
+				if(!empty($row1)){
+					$whatsapp_chemist = trim($row1->body);
+				}
+			}
+			if(empty($whatsapp_chemist)){
+				$row1 = $this->BankModel->select_query("SELECT body FROM `tbl_whatsapp_message` WHERE from_number='$from_number' AND FROM_UNIXTIME(timestamp) BETWEEN DATE_SUB('$timestamp', INTERVAL 7 MINUTE) AND DATE_ADD('$timestamp', INTERVAL 7 MINUTE) and body!='' LIMIT 0, 25");
+				$row1 = $row1->row();
+				$whatsapp_chemist = trim($row1->body);
+				$type = 2;
+				//agar pura naam milay to he next prcess karta ha
+				if (strpos($whatsapp_chemist, $find_chemist) !== false) {
+					$whatsapp_chemist = $find_chemist;
+				} 
 			}
 
-			// if(empty($whatsapp_chemist)){
-			// 	$row1 = $this->BankModel->select_query("SELECT body FROM `tbl_whatsapp_message` WHERE from_number='$from_number' AND FROM_UNIXTIME(timestamp) BETWEEN DATE_SUB('$timestamp', INTERVAL 7 MINUTE) AND DATE_ADD('$timestamp', INTERVAL 7 MINUTE) and body='$find_chemist' LIMIT 0, 25");
-			// 	$row1 = $row1->row();
-			// 	$type = 1;
-			// 	if(!empty($row1)){
-			// 		$whatsapp_chemist = trim($row1->body);
-			// 	}
-			// }
-			// if(empty($whatsapp_chemist)){
-			// 	$row1 = $this->BankModel->select_query("SELECT body FROM `tbl_whatsapp_message` WHERE from_number='$from_number' AND FROM_UNIXTIME(timestamp) BETWEEN DATE_SUB('$timestamp', INTERVAL 7 MINUTE) AND DATE_ADD('$timestamp', INTERVAL 7 MINUTE) and body!='' LIMIT 0, 25");
-			// 	$row1 = $row1->row();
-			// 	$whatsapp_chemist = trim($row1->body);
-			// 	$type = 2;
-			// 	//agar pura naam milay to he next prcess karta ha
-			// 	if (strpos($whatsapp_chemist, $find_chemist) !== false) {
-			// 		$whatsapp_chemist = $find_chemist;
-			// 	} 
-			// }
-
+			echo $type;
 			$where = array(
 				'id' => $id,
 			);
