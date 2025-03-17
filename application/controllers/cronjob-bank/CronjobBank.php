@@ -1113,7 +1113,7 @@ class CronjobBank extends CI_Controller
 
 			$id = $row->id;
 			$whatsapp_id = trim($row->whatsapp_id);
-			$whatsapp_chemist = trim($row->body);
+			echo $whatsapp_chemist = trim($row->body);
 			$from_number = $row->from_number;
 			$find_chemist = $row->find_chemist;
 			$timestamp = date('Y-m-d H:i:s', $row->timestamp);
