@@ -1117,6 +1117,7 @@ class CronjobBank extends CI_Controller
 			$whatsapp_chemist = trim($whatsapp_body);
 			$from_number = $row->from_number;
 			$find_chemist = $row->find_chemist;
+			$timestamp = date('Y-m-d H:i:s', $row->timestamp);
 			//agar body m chemist id nahi aa rahi ha to next say find karta ha yha
 			if($whatsapp_body!=$find_chemist){
 				$whatsapp_body = "";
@@ -1129,7 +1130,6 @@ class CronjobBank extends CI_Controller
 				}
 			}
 			if(empty($whatsapp_body)){
-				$timestamp = date('Y-m-d H:i:s', $row->timestamp);
 
 				$row1 = $this->BankModel->select_query("SELECT body FROM `tbl_whatsapp_message` WHERE from_number='$from_number' AND FROM_UNIXTIME(timestamp) BETWEEN DATE_SUB('$timestamp', INTERVAL 7 MINUTE) AND DATE_ADD('$timestamp', INTERVAL 7 MINUTE) and body!='' LIMIT 0, 25");
 				$row1 = $row1->row();
