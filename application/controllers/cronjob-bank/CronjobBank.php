@@ -1119,6 +1119,7 @@ class CronjobBank extends CI_Controller
 			$find_chemist = $row->find_chemist;
 			$timestamp = date('Y-m-d H:i:s', $row->timestamp);
 
+			$find_chemist = str_replace("||","/",$find_chemist);
 			$parts = explode("||", $find_chemist);
 			foreach($parts as $find_chemist_new) {
 				if(!empty($whatsapp_chemist)  && !empty($find_chemist_new)){
