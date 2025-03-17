@@ -1128,6 +1128,7 @@ class CronjobBank extends CI_Controller
 				$row1 = $row1->row();
 				if(!empty($row1)){
 					$whatsapp_chemist = trim($row1->body);
+					$type = 1;
 				}
 			}
 			if(empty($whatsapp_chemist)){
@@ -1137,9 +1138,11 @@ class CronjobBank extends CI_Controller
 				//agar pura naam milay to he next prcess karta ha
 				if (strpos($whatsapp_chemist, $find_chemist) !== false) {
 					$whatsapp_chemist = $find_chemist;
+					$type = 2;
 				} 
 			}
 
+			echo $type;
 			$where = array(
 				'id' => $id,
 			);
