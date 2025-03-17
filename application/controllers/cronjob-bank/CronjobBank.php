@@ -1307,7 +1307,7 @@ class CronjobBank extends CI_Controller
 		}
 
 		// jab amount or body me chmeist name match karay to
-		$result = $this->BankModel->select_query("SELECT p.upi_no,wm.upi_no,wm.amount, wm.id as whatsapp_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount and wm.date BETWEEN DATE_SUB(p.date, INTERVAL 1 DAY) AND DATE_ADD(p.date, INTERVAL 1 DAY) and REPLACE(TRIM(wm.body), ' ', '')=REPLACE(TRIM(p.find_chemist), ' ', '') and p.whatsapp_id=''");
+		$result = $this->BankModel->select_query("SELECT p.upi_no,wm.amount, wm.id as whatsapp_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount and wm.date BETWEEN DATE_SUB(p.date, INTERVAL 1 DAY) AND DATE_ADD(p.date, INTERVAL 1 DAY) and REPLACE(TRIM(wm.body), ' ', '')=REPLACE(TRIM(p.find_chemist), ' ', '') and p.whatsapp_id=''");
 		$result = $result->result();
 		foreach($result as $row) {
 
