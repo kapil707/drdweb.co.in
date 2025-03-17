@@ -1160,13 +1160,13 @@ class CronjobBank extends CI_Controller
 				}
 			}
 
-			// gar chemist he find nahi hua ho to 
-			if(empty($find_chemist)){
-				$whatsapp_chemist = $whatsapp_body;
-			}
 
 			$whatsapp_remanded = "";
 			if(empty($whatsapp_chemist)){
+				$whatsapp_remanded = $whatsapp_body;
+			}
+			// gar chemist he find nahi hua ho to 
+			if(empty($find_chemist)){
 				$whatsapp_remanded = $whatsapp_body;
 			}
 
