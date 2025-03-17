@@ -1120,9 +1120,7 @@ class CronjobBank extends CI_Controller
 			$timestamp = date('Y-m-d H:i:s', $row->timestamp);
 			//agar body m chemist id nahi aa rahi ha to next say find karta ha yha
 			if (strpos($whatsapp_chemist, $find_chemist) !== false) {
-				$whatsapp_chemist = $find_chemist;
-			}else{
-				$whatsapp_chemist = "";
+				echo $whatsapp_chemist = $find_chemist;
 			}
 
 			if(empty($whatsapp_chemist)){
