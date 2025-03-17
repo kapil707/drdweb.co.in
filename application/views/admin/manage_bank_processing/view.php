@@ -389,8 +389,8 @@
 										<b onclick="get_whats_message('<?= ($row_id); ?>','<?= ($row_whatsapp_id); ?>','<?= $row_upi_no; ?>')" data-toggle="modal" data-target="#myModal">WhatsApp : </b>
 										<?= $row_whatsapp_chemist; ?>
 
-										<?php if($row_whatsapp_remanded) { 
-											echo " || Remanded : ".$row_whatsapp_remanded;
+										<?php if($row_whatsapp_chemist=="N/a" &&$row_whatsapp_remanded) { 
+											echo " || <b>Remanded : $row_whatsapp_remanded </b>";
 										} ?>
 									</div>
 									<div class="td_div1">
