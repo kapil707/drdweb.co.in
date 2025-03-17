@@ -1123,11 +1123,12 @@ class CronjobBank extends CI_Controller
 				if($whatsapp_chemist!=$find_chemist){
 					$whatsapp_chemist = "";
 				}
-
-				//agar pura naam milay to he next prcess karta ha
-				if (strpos($whatsapp_chemist, $find_chemist) !== false) {
-					$whatsapp_chemist = $find_chemist;
-				} 
+				if(empty($whatsapp_chemist)){
+					//agar pura naam milay to he next prcess karta ha
+					if (strpos($whatsapp_body, $find_chemist) !== false) {
+						$whatsapp_chemist = $find_chemist;
+					} 
+				}
 			}
 
 			if(empty($whatsapp_chemist)){
