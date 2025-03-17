@@ -71,3 +71,6 @@ KKBKH25070697280 = 507095669962
 507065569626
 
 na = 507060730347
+
+SELECT p.upi_no, wm.amount, wm.id AS whatsapp_id, wm.vision_text, (SELECT body FROM tbl_whatsapp_message WHERE body = p.find_chemist and date=wm.date LIMIT 1) AS ppt FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount AND wm.date BETWEEN DATE_SUB(p.date, INTERVAL 1 DAY) AND DATE_ADD(p.date, INTERVAL 1 DAY) WHERE p.whatsapp_id = '' AND p.find_chemist != '' ORDER BY wm.date DESC LIMIT 25;
+
