@@ -1166,7 +1166,7 @@ class CronjobBank extends CI_Controller
 		}
 	}
 
-	public function whatsapp_find_upi_to_process2(){
+	public function whatsapp_not_found_upi(){
 		
 		//SELECT p.upi_no, wm.message_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount and p.upi_no=507050353549 WHERE p.date = '2025-03-11';
 
