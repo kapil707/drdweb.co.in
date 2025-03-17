@@ -1116,7 +1116,8 @@ class CronjobBank extends CI_Controller
 			$whatsapp_body = trim($row->body);
 			$whatsapp_chemist = trim($row->body);
 			$from_number = $row->from_number;
-			$find_chemist = $row->find_chemist;
+			
+			$find_chemist = trim($row->find_chemist);
 			$timestamp = date('Y-m-d H:i:s', $row->timestamp);
 			//agar body m chemist id nahi aa rahi ha to next say find karta ha yha
 			if (strpos($whatsapp_chemist, $find_chemist) !== false) {
@@ -1142,7 +1143,6 @@ class CronjobBank extends CI_Controller
 				} 
 			}
 
-			echo $type;
 			$where = array(
 				'id' => $id,
 			);
