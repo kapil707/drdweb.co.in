@@ -1122,11 +1122,13 @@ class CronjobBank extends CI_Controller
 				//agar body m chemist id nahi aa rahi ha to next say find karta ha yha
 				if($whatsapp_chemist!=$find_chemist){
 					$whatsapp_chemist = "";
+					echo "xx1";
 				}
 				if(empty($whatsapp_chemist)){
 					//agar pura naam milay to he next prcess karta ha
 					if (strpos($whatsapp_body, $find_chemist) !== false) {
 						echo $whatsapp_chemist = $find_chemist;
+						echo "xx2";
 					} 
 				}
 			}
@@ -1136,6 +1138,7 @@ class CronjobBank extends CI_Controller
 				$row1 = $row1->row();
 				if(!empty($row1)){
 					$whatsapp_chemist = trim($row1->body);
+					echo "xx3";
 				}
 			}
 
@@ -1145,6 +1148,7 @@ class CronjobBank extends CI_Controller
 				if(!empty($row1)){
 					$whatsapp_chemist = trim($row1->body);
 					$whatsapp_chemist = str_replace(" ","",$whatsapp_chemist);
+					echo "xx4";
 				}
 			}
 			
@@ -1156,6 +1160,7 @@ class CronjobBank extends CI_Controller
 					//agar pura naam milay to he next prcess karta ha
 					if (strpos($text, $find_chemist) !== false) {
 						$whatsapp_chemist = $find_chemist;
+						echo "xx5";
 					} 
 				}
 			}
