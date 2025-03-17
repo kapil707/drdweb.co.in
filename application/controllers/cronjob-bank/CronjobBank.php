@@ -1118,9 +1118,13 @@ class CronjobBank extends CI_Controller
 			$from_number = $row->from_number;
 			$find_chemist = $row->find_chemist;
 			$timestamp = date('Y-m-d H:i:s', $row->timestamp);
+
+			$parts = explode("||", $find_chemist);
+			$find_chemist = $parts[0];
+
 			if(!empty($whatsapp_chemist)  && !empty($find_chemist)){
 				//agar body m chemist id nahi aa rahi ha to next say find karta ha yha
-				if($whatsapp_chemist!=trim($find_chemist)){
+				if($whatsapp_chemist!=$find_chemist){
 					$whatsapp_chemist = "";
 					echo "xx1";
 				}
