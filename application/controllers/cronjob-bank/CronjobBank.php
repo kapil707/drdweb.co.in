@@ -971,22 +971,12 @@ class CronjobBank extends CI_Controller
 				}
 			}
 
-			/*if(empty($upi_no)){
-				// Regex se UPI Reference Number extract karna
-				preg_match('/\b[\w.-]+@[\w.-]+\b/', $text, $matches);
-				if (!empty($matches[0])) {
-					$upi_no = $matches[0];
-					$type = 12;
-					//echo "UTR Number: " . $upi_no;
-				}
-			}*/
-
 			if(empty($upi_no)){
 				// Regex se Transaction ID extract karna
 				preg_match('/\b\d{12}\b/', $text, $matches);
 				if (!empty($matches[0])) {
 					$upi_no = $matches[0];
-					$type = 13;
+					$type = 12;
 					//echo "UTR Number: " . $upi_no;
 				}
 			}
@@ -996,7 +986,7 @@ class CronjobBank extends CI_Controller
 				preg_match('/\*\*Transaction ID:\*\*\s*(\d+)/', $text, $matches);
 				if (!empty($matches[1])) {
 					$upi_no = $matches[1];
-					$type = 14;
+					$type = 13;
 					//echo "UTR Number: " . $upi_no;
 				} 
 			}
@@ -1006,7 +996,7 @@ class CronjobBank extends CI_Controller
 				preg_match('/Transaction ID\s*\n*([\w\d]+)/', $text, $matches);
 				if (!empty($matches[1])) {
 					$upi_no = $matches[1];
-					$type = 15;
+					$type = 14;
 					//echo "UTR Number: " . $upi_no;
 				} 
 			}
@@ -1016,7 +1006,7 @@ class CronjobBank extends CI_Controller
 				preg_match('/\*\*Reference Number:\*\*\s*([\w\d]+)/', $text, $matches);
 				if (!empty($matches[1])) {
 					$upi_no = $matches[1];
-					$type = 16;
+					$type = 15;
 					//echo "UTR Number: " . $upi_no;
 				}
 			}
@@ -1026,7 +1016,7 @@ class CronjobBank extends CI_Controller
 				preg_match('/Reference\s*Number\s*([A-Z0-9]+)/i', $text, $matches);
 				if (!empty($matches[1])) {
 					$upi_no = $matches[1];
-					$type = 17;
+					$type = 16;
 					//echo "UTR Number: " . $upi_no;
 				}
 			}
@@ -1036,7 +1026,7 @@ class CronjobBank extends CI_Controller
 				preg_match('/UTR:\s*([\w\d]+)/', $text, $matches);
 				if (!empty($matches[1])) {
 					$upi_no = $matches[1];
-					$type = 18;
+					$type = 17;
 					//echo "UTR Number: " . $upi_no;
 				} 
 			}
@@ -1044,6 +1034,16 @@ class CronjobBank extends CI_Controller
 			if(empty($upi_no)){
 				// Regex se Transaction ID extract karna
 				preg_match('/Reference Number:\s*([\w\d]+)/', $text, $matches);
+				if (!empty($matches[1])) {
+					$upi_no = $matches[1];
+					$type = 18;
+					//echo "UTR Number: " . $upi_no;
+				} 
+			}
+
+			if(empty($upi_no)){
+				// Regex se Transaction ID extract karna
+				preg_match('/\*\*Transaction ID\*\*\s*(\S+)/', $text, $matches);
 				if (!empty($matches[1])) {
 					$upi_no = $matches[1];
 					$type = 19;
