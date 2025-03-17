@@ -1165,6 +1165,7 @@ class CronjobBank extends CI_Controller
 				$whatsapp_chemist = $whatsapp_body;
 			}
 
+			$whatsapp_remanded = "";
 			if(empty($whatsapp_chemist)){
 				$whatsapp_remanded = $whatsapp_body;
 			}
