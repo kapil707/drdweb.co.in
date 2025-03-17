@@ -813,8 +813,10 @@ class CronjobBank extends CI_Controller
 
 	public function whatsapp_find_upi_amount(){
 
-		$result = $this->BankModel->select_query("SELECT id,vision_text FROM `tbl_whatsapp_message` where id='31452'");
-		//$result = $this->BankModel->select_query("SELECT id,vision_text FROM `tbl_whatsapp_message` where upi_no='' and vision_text!='' ORDER BY RAND() limit 100");
+		//$result = $this->BankModel->select_query("SELECT id,vision_text FROM `tbl_whatsapp_message` where id='31452'");
+		$start_date = "2025-03-10";
+		$end_date   = "2025-03-10";
+		$result = $this->BankModel->select_query("SELECT id,vision_text FROM `tbl_whatsapp_message` where upi_no='' and vision_text!='' and date BETWEEN '$start_date' and '$end_date' ORDER BY RAND()");
 		$result = $result->result();
 		foreach($result as $row) {
 
