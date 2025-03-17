@@ -1135,6 +1135,7 @@ class CronjobBank extends CI_Controller
 				$row1 = $row1->row();
 				if(!empty($row1)){
 					$whatsapp_chemist = trim($row1->body);
+					$whatsapp_chemist = str_replace(" ","",$whatsapp_chemist);
 				}
 			}
 			
