@@ -235,6 +235,7 @@
 					$row_whatsapp_id = $entry->whatsapp_id;
 					/********************************************** */
 					$row_whatsapp_chemist = $entry->whatsapp_chemist;
+					$row_whatsapp_remanded = $entry->whatsapp_remanded;
 					/********************************************** */
 					//$row_whatsapp = $entry->whatsapp;//$entry->whatsapp_body2;
 					$row_whatsapp = $entry->vision_text;//$entry->whatsapp_body2;
@@ -387,14 +388,20 @@
 									<div class="td_div">
 										<b onclick="get_whats_message('<?= ($row_id); ?>','<?= ($row_whatsapp_id); ?>','<?= $row_upi_no; ?>')" data-toggle="modal" data-target="#myModal">WhatsApp : </b>
 										<?= $row_whatsapp_chemist; ?>
+
+										<?php if($row_whatsapp_remanded) { 
+											echo " || Remanded : ".$row_whatsapp_remanded;
+										} ?>
 									</div>
 									<div class="td_div1">
 										<b style="float: left; margin-right:5px;">Final Chemist : </b>
 										<?php if(empty($textbox_final_chemist) && $row_chemist_id != "N/a"){
 											$textbox_final_chemist = $row_chemist_id;
 										}?>
+
 										<input type="text" value="<?php echo $textbox_final_chemist ?>" class="form-control text_final_chemist_id_<?= ($row_id); ?> pg_text_box" style="<?php if(!empty($entry->final_chemist)) { ?>display:none;<?php } ?>float: left !important;" placeholder="Chemist Id">
 										<i class="fa fa-check add_final_chemist_<?= ($row_id); ?>" aria-hidden="true" onclick="add_final_chemist('<?= ($row_id); ?>')" style="<?php if(!empty($entry->final_chemist)) { ?>display:none;<?php } ?> float: left;font-size: 20px;"></i>
+
 										<span class="span_final_chemist_<?= ($row_id); ?>" <?php if(empty($entry->final_chemist)) { ?>style="display:none" <?php } ?>><?php echo $final_chemist ?></span>
 										<i class="fa fa-pencil edit_final_chemist_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_final_chemist('<?= ($row_id); ?>')" <?php if(empty($entry->final_chemist)) { ?>style="display:none" <?php } ?>></i>
 									</div>
