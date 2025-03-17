@@ -1234,7 +1234,7 @@ class CronjobBank extends CI_Controller
 		}
 
 		//amount or body say upi no find karna
-		$result = $this->BankModel->select_query("SELECT p.upi_no, wm.id as whatsapp_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount and TRIM(wm.body) = TRIM(p.find_chemist) and p.whatsapp_id=''");
+		$result = $this->BankModel->select_query("SELECT p.upi_no,wm.upi_no, wm.id as whatsapp_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount and TRIM(wm.body) = TRIM(p.find_chemist) and p.whatsapp_id='' and wm.upi_no=''");
 		$result = $result->result();
 		foreach($result as $row) {
 
