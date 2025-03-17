@@ -1231,6 +1231,7 @@ class CronjobBank extends CI_Controller
 			$dt = array(
 				'upi_no'=>$upi_no,
 			);
+			print_r($dt);
 			$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
 		}
 		
@@ -1248,6 +1249,7 @@ class CronjobBank extends CI_Controller
 			$dt = array(
 				'upi_no'=>$upi_no,
 			);
+			print_r($dt);
 			$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
 		}
 		die();
