@@ -1122,7 +1122,6 @@ class CronjobBank extends CI_Controller
 				//agar body m chemist id nahi aa rahi ha to next say find karta ha yha
 				if($whatsapp_chemist!=$find_chemist){
 					$whatsapp_chemist = "";
-					echo "xx";
 				}
 				if(empty($whatsapp_chemist)){
 					//agar pura naam milay to he next prcess karta ha
@@ -1166,6 +1165,10 @@ class CronjobBank extends CI_Controller
 				$whatsapp_chemist = $whatsapp_body;
 			}
 
+			if(empty($whatsapp_chemist)){
+				$whatsapp_remanded = $whatsapp_body;
+			}
+
 			$where = array(
 				'id' => $id,
 			);
@@ -1173,6 +1176,7 @@ class CronjobBank extends CI_Controller
 				'process_status'=>2,
 				'whatsapp_id'=>$whatsapp_id,
 				'whatsapp_chemist'=>$whatsapp_chemist,
+				'whatsapp_remanded'=>$whatsapp_remanded,
 			);
 			print_r($dt);
 			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
