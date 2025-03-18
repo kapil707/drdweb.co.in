@@ -1175,6 +1175,20 @@ class CronjobBank extends CI_Controller
 						}
 					}
 				}
+
+				if(empty($whatsapp_chemist)){
+					
+					$whatsapp_id_next = $whatsapp_id + 1;
+					$row1 = $this->BankModel->select_query("SELECT body FROM `tbl_whatsapp_message` WHERE id='$whatsapp_id_next'");
+					$row1 = $row1->row();
+					if(!empty($row1->body))
+					{
+						$body = trim($row1->body);
+						if($find_chemist==$body){
+							$whatsapp_chemist = $body;
+						}
+					}
+				}
 			}
 
 			$whatsapp_remanded = "";
@@ -1219,7 +1233,7 @@ class CronjobBank extends CI_Controller
 				$whatsapp_chemist = "";
 				$upi_no = trim($row->upi_no);
 				$find_chemist = trim($row->find_chemist);
-				$whatsapp_id = trim($row->whatsapp_id) + 1;
+				$whatsapp_id = trim($row->whatsapp_id);
 				$from_number = $row->from_number;
 
 				$timestamp = date('Y-m-d H:i:s', $row->timestamp);
@@ -1228,13 +1242,15 @@ class CronjobBank extends CI_Controller
 				$parts = explode("||", $find_chemist);
 				foreach($parts as $find_chemist_new) {
 				
-					$row1 = $this->BankModel->select_query("SELECT body FROM `tbl_whatsapp_message` WHERE id='$whatsapp_id'");
+					$whatsapp_id_next = $whatsapp_id + 1;
+					$row1 = $this->BankModel->select_query("SELECT body,id as whatsapp_id FROM `tbl_whatsapp_message` WHERE id='$whatsapp_id_next'");
 					$row1 = $row1->row();
 					if(!empty($row1->body))
 					{
 						$body = trim($row1->body);
 						if($find_chemist==$body){
 							$whatsapp_chemist = $body;
+							$whatsapp_id = trim($row->whatsapp_id);
 						}
 					}
 
