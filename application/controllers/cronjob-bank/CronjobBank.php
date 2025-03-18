@@ -1333,7 +1333,7 @@ class CronjobBank extends CI_Controller
 				$this->whatsapp_insert_in_process();
 			}
 		}
-		die();
+		//die();
 		if($working==0){
 			//jab amount or vision text or body sab kuch sahi say match kary to
 			//amount or vision or body text me say upi no find karna
@@ -1353,6 +1353,9 @@ class CronjobBank extends CI_Controller
 				);
 				print_r($dt);
 				$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
+			}
+			if($working==1){
+				$this->whatsapp_insert_in_process();
 			}
 		}
 		die();
