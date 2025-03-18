@@ -1175,22 +1175,6 @@ class CronjobBank extends CI_Controller
 						}
 					}
 				}
-
-				if(empty($whatsapp_chemist)){
-					echo "xx6";
-					$whatsapp_id_next = $whatsapp_id + 1;
-					echo "SELECT body,id as whatsapp_id FROM `tbl_whatsapp_message` WHERE id='$whatsapp_id_next'";
-					$row1 = $this->BankModel->select_query("SELECT body,id as whatsapp_id FROM `tbl_whatsapp_message` WHERE id='$whatsapp_id_next'");
-					$row1 = $row1->row();
-					if(!empty($row1->body))
-					{
-						$body = trim($row1->body);
-						if($find_chemist_new==$body){
-							$whatsapp_chemist = $body;
-							$whatsapp_id = trim($row1->whatsapp_id);
-						}
-					}
-				}
 			}
 
 			$whatsapp_remanded = "";
