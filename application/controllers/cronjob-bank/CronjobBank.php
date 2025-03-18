@@ -1282,7 +1282,7 @@ class CronjobBank extends CI_Controller
 		
 		//SELECT p.upi_no, wm.message_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount and p.upi_no=507050353549 WHERE p.date = '2025-03-11';
 
-		//**UPI Ref. No:** 5070336 94491 agar iss ke pichay date add ho kar aa rahi ha to wo oss ko delete kar ke upi no sahi karta ha
+		//**UPI Ref. No:** 5070336 94491 = 50703369449111 (11)date h =>507033694491 agar iss ke pichay date add ho kar aa rahi ha to wo oss ko delete kar ke upi no sahi karta ha
 		$result = $this->BankModel->select_query("SELECT p.upi_no,wm.id as whatsapp_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount and REPLACE(TRIM(wm.vision_text), ' ', '') LIKE CONCAT('%', TRIM(p.upi_no), '%') and REPLACE(TRIM(wm.body), ' ', '')=REPLACE(TRIM(p.find_chemist), ' ', '') where p.whatsapp_id='' and wm.upi_no!=''");
 		$result = $result->result();
 		foreach($result as $row) {
