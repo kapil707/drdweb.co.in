@@ -1211,14 +1211,14 @@ class CronjobBank extends CI_Controller
 			$body = trim($row1->body);
 			if($find_chemist==$body){
 
-				$whatsapp_remanded = $body;
+				$whatsapp_chemist = $body;
 				$where = array(
 					'upi_no' => $upi_no,
 				);
 				$dt = array(
 					'process_status'=>2,
 					'whatsapp_id'=>$whatsapp_id,
-					'whatsapp_remanded'=>$whatsapp_remanded,
+					'whatsapp_chemist'=>$whatsapp_chemist,
 				);
 				print_r($dt);
 				$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
