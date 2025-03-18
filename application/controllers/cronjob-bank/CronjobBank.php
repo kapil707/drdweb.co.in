@@ -1211,6 +1211,7 @@ class CronjobBank extends CI_Controller
 			$body = trim($row1->body);
 			if($find_chemist==$body){
 				echo $upi_no;
+				echo "<br>";
 			}
 		}
 	}
