@@ -1196,6 +1196,16 @@ class CronjobBank extends CI_Controller
 			);
 			print_r($dt);
 			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
+
+			/********************************************************** */
+			$where = array(
+				'id' => $whatsapp_id,
+			);
+			$dt = array(
+				'set_chemist'=>$whatsapp_chemist,
+			);
+			print_r($dt);
+			$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
 		}
 
 		//jab chmist id or amout say user ko match karya jata ha tab
@@ -1250,6 +1260,16 @@ class CronjobBank extends CI_Controller
 				);
 				print_r($dt);
 				$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
+
+				/********************************************************** */
+				$where = array(
+					'id' => $whatsapp_id,
+				);
+				$dt = array(
+					'set_chemist'=>$whatsapp_chemist,
+				);
+				print_r($dt);
+				$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
 			}
 		}
 	}
