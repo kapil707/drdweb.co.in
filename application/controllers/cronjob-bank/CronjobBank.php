@@ -1211,6 +1211,7 @@ class CronjobBank extends CI_Controller
 				'whatsapp_chemist'=>$whatsapp_chemist,
 				'whatsapp_remanded'=>$whatsapp_remanded,
 			);
+			echo "my01";
 			print_r($dt);
 			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 
@@ -1278,6 +1279,7 @@ class CronjobBank extends CI_Controller
 						'whatsapp_id'=>$whatsapp_id,
 						'whatsapp_chemist'=>$whatsapp_chemist,
 					);
+					echo "my02";
 					print_r($dt);
 					$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 
