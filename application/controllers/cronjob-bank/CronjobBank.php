@@ -1305,7 +1305,7 @@ class CronjobBank extends CI_Controller
 				$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
 			}
 		}
-		die();
+		//die();
 		if($working==0){
 			// **UPI Ref. No:** 5070336 94491 = 50703369449111 (11)date h =>507033694491 agar iss ke pichay date add ho kar aa rahi ha to wo oss ko delete kar ke upi no sahi karta ha
 			//amount or vision text say karta ha search
