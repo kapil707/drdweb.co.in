@@ -1184,7 +1184,7 @@ class CronjobBank extends CI_Controller
 					if(!empty($row1->body))
 					{
 						$body = trim($row1->body);
-						if($find_chemist==$body){
+						if($find_chemist_new==$body){
 							$whatsapp_chemist = $body;
 							$whatsapp_id = trim($row->whatsapp_id);
 						}
@@ -1250,7 +1250,7 @@ class CronjobBank extends CI_Controller
 					if(!empty($row1->body))
 					{
 						$body = trim($row1->body);
-						if($find_chemist==$body){
+						if($find_chemist_new==$body){
 							$whatsapp_chemist = $body;
 							$whatsapp_id = trim($row->whatsapp_id);
 						}
@@ -1262,7 +1262,7 @@ class CronjobBank extends CI_Controller
 						if(!empty($row1->body))
 						{
 							$body = trim($row1->body);
-							if($find_chemist==$body){
+							if($find_chemist_new==$body){
 								$whatsapp_chemist = $body;
 								$whatsapp_id = trim($row->whatsapp_id);
 							}
