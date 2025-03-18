@@ -1203,16 +1203,28 @@ class CronjobBank extends CI_Controller
 		$result = $result->result();
 		foreach($result as $row) {
 
-			echo $upi_no = trim($row->upi_no);
-			echo "--".$find_chemist = trim($row->find_chemist);
-			echo "--".$whatsapp_id = trim($row->whatsapp_id) + 1;
-			echo "<br>";
+			$whatsapp_chemist = "";
+			$upi_no = trim($row->upi_no);
+			$find_chemist = trim($row->find_chemist);
+			$whatsapp_id = trim($row->whatsapp_id) + 1;
+			
 			$row1 = $this->BankModel->select_query("SELECT body FROM `tbl_whatsapp_message` WHERE id='$whatsapp_id'");
 			$row1 = $row1->row();
 			$body = trim($row1->body);
 			if($find_chemist==$body){
-
 				$whatsapp_chemist = $body;
+			}
+
+			if(empty($whatsapp_chemist)){
+				$row1 = $this->BankModel->select_query("SELECT body FROM `tbl_whatsapp_message` WHERE from_number='$from_number' AND FROM_UNIXTIME(timestamp) BETWEEN DATE_SUB('$timestamp', INTERVAL 7 MINUTE) AND DATE_ADD('$timestamp', INTERVAL 7 MINUTE) and body='$find_chemist_new' LIMIT 0, 25");
+				$row1 = $row1->row();
+				$body = trim($row1->body);
+				if($find_chemist==$body){
+					$whatsapp_chemist = $body;
+				}
+			}
+
+			if(!empty($whatsapp_chemist)){
 				$where = array(
 					'upi_no' => $upi_no,
 				);
