@@ -1360,28 +1360,6 @@ class CronjobBank extends CI_Controller
 		}
 		//die();
 
-		/*if($working==0){
-			//amount or vision text me say upi no find karna
-			$result = $this->BankModel->select_query("SELECT p.upi_no,wm.id as whatsapp_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount and wm.date BETWEEN DATE_SUB(p.date, INTERVAL 1 DAY) AND DATE_ADD(p.date, INTERVAL 1 DAY) and (REPLACE(TRIM(wm.vision_text), ' ', '') LIKE CONCAT('%', TRIM(p.upi_no), '%') or REPLACE(TRIM(wm.vision_text), ' ', '') LIKE CONCAT('%', TRIM(p.orderid), '%')) where p.whatsapp_id='' and wm.upi_no=''");
-			$result = $result->result();
-			foreach($result as $row) {
-				$working = 1;
-
-				$upi_no = trim($row->upi_no);
-				$whatsapp_id = trim($row->whatsapp_id);
-
-				$where = array(
-					'id' => $whatsapp_id,
-				);
-				$dt = array(
-					'upi_no'=>$upi_no,
-				);
-				print_r($dt);
-				$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
-			}
-		}
-		die();*/
-
 		if($working==0){
 			//other upi no xx 1234 amout say amount
 			//amount or vision or body text me say upi no find karna
@@ -1508,6 +1486,29 @@ class CronjobBank extends CI_Controller
 			}
 		}
 		
+
+		/*if($working==0){
+			//amount or vision text me say upi no find karna
+			$result = $this->BankModel->select_query("SELECT p.upi_no,wm.id as whatsapp_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount and wm.date BETWEEN DATE_SUB(p.date, INTERVAL 1 DAY) AND DATE_ADD(p.date, INTERVAL 1 DAY) and (REPLACE(TRIM(wm.vision_text), ' ', '') LIKE CONCAT('%', TRIM(p.upi_no), '%') or REPLACE(TRIM(wm.vision_text), ' ', '') LIKE CONCAT('%', TRIM(p.orderid), '%')) where p.whatsapp_id='' and wm.upi_no=''");
+			$result = $result->result();
+			foreach($result as $row) {
+				$working = 1;
+
+				$upi_no = trim($row->upi_no);
+				$whatsapp_id = trim($row->whatsapp_id);
+
+				$where = array(
+					'id' => $whatsapp_id,
+				);
+				$dt = array(
+					'upi_no'=>$upi_no,
+				);
+				print_r($dt);
+				$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
+			}
+		}
+		die();*/
+
 		/*// jab amount or body me chmeist name match karay to
 		$result = $this->BankModel->select_query("SELECT p.upi_no,wm.amount, wm.id as whatsapp_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount and wm.date BETWEEN DATE_SUB(p.date, INTERVAL 1 DAY) AND DATE_ADD(p.date, INTERVAL 1 DAY) and REPLACE(TRIM(wm.body), ' ', '')=REPLACE(TRIM(p.find_chemist), ' ', '') and p.whatsapp_id=''");
 		$result = $result->result();
