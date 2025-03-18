@@ -1401,6 +1401,9 @@ class CronjobBank extends CI_Controller
 				print_r($dt);
 				$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
 			}
+			if($working==1){
+				$this->whatsapp_insert_in_process();
+			}
 		}
 		die();
 
