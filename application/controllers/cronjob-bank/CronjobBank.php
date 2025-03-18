@@ -1432,7 +1432,7 @@ class CronjobBank extends CI_Controller
 				$this->whatsapp_insert_in_process();
 			}
 		}
-		die();
+		//die();
 
 		if($working==0){
 			//jab chemist id or amont match kar jaya to upi id set hoti ha
@@ -1458,23 +1458,29 @@ class CronjobBank extends CI_Controller
 				$this->whatsapp_insert_in_process();
 			}
 		}
-		die();
-		
-		//jab galt upi ha to upi change kar dayta ha yha
-		$result = $this->BankModel->select_query("SELECT p.upi_no, wm.id as whatsapp_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount and wm.date BETWEEN DATE_SUB(p.date, INTERVAL 1 DAY) AND DATE_ADD(p.date, INTERVAL 1 DAY) and REPLACE(TRIM(wm.vision_text), ' ', '') LIKE CONCAT('%', TRIM(p.from_value_find), '%') and p.whatsapp_id=''");
-		$result = $result->result();
-		foreach($result as $row) {
+		//die();
 
-			$upi_no = trim($row->upi_no);
-			$whatsapp_id = trim($row->whatsapp_id);
+		if($working==0){
+			//amount or upi id say find karta ha "CARTMEDICSHEALTHCAREPRIVATELIMITED.9873069729.IBZ@ICICI"
+			$result = $this->BankModel->select_query("SELECT p.upi_no, wm.id as whatsapp_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount and wm.date BETWEEN DATE_SUB(p.date, INTERVAL 1 DAY) AND DATE_ADD(p.date, INTERVAL 1 DAY) and REPLACE(TRIM(wm.vision_text), ' ', '') LIKE CONCAT('%', TRIM(p.from_value_find), '%') and p.whatsapp_id=''");
+			$result = $result->result();
+			foreach($result as $row) {
+				$working = 1;
 			
-			$where = array(
-				'id' => $whatsapp_id,
-			);
-			$dt = array(
-				'upi_no'=>$upi_no,
-			);
-			$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
+				$upi_no = trim($row->upi_no);
+				$whatsapp_id = trim($row->whatsapp_id);
+				
+				$where = array(
+					'id' => $whatsapp_id,
+				);
+				$dt = array(
+					'upi_no'=>$upi_no,
+				);
+				$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
+			}
+			if($working==1){
+				$this->whatsapp_insert_in_process();
+			}
 		}
 
 		die();
