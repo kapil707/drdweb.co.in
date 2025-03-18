@@ -1204,8 +1204,8 @@ class CronjobBank extends CI_Controller
 		foreach($result as $row) {
 
 			echo $upi_no = trim($row->upi_no);
+			echo "--".$find_chemist = trim($row->find_chemist);
 			echo "<br>";
-			$find_chemist = trim($row->find_chemist);
 			$whatsapp_id = trim($row->whatsapp_id) + 1;
 			$row1 = $this->BankModel->select_query("SELECT body FROM `tbl_whatsapp_message` WHERE id='$whatsapp_id'");
 			$row1 = $row1->row();
