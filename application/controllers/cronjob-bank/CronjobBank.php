@@ -1391,7 +1391,7 @@ class CronjobBank extends CI_Controller
 				$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
 			}
 		}
-		die();
+		
 		if($working==0){
 			//jab chemist id body me ho or amount hoya to
 			//amount or body text me say upi no find karna
