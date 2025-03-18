@@ -1303,7 +1303,7 @@ class CronjobBank extends CI_Controller
 			$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
 		}
 		
-		die();
+		
 		//other xx 1234
 		$result = $this->BankModel->select_query("SELECT p.upi_no,wm.id AS whatsapp_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount and wm.date BETWEEN DATE_SUB(p.date, INTERVAL 1 DAY) AND DATE_ADD(p.date, INTERVAL 1 DAY) AND REPLACE(TRIM(wm.vision_text), ' ', '') LIKE CONCAT('%xx', RIGHT(TRIM(p.upi_no), 4), '%') and REPLACE(TRIM(wm.body), ' ', '')=REPLACE(TRIM(p.find_chemist), ' ', '') WHERE p.whatsapp_id = ''");
 		$result = $result->result();
@@ -1321,6 +1321,7 @@ class CronjobBank extends CI_Controller
 			print_r($dt);
 			$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
 		}
+		die();
 		//amount or body say upi no find karna
 		$result = $this->BankModel->select_query("SELECT p.upi_no, wm.id as whatsapp_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount and wm.date BETWEEN DATE_SUB(p.date, INTERVAL 1 DAY) AND DATE_ADD(p.date, INTERVAL 1 DAY) and TRIM(wm.body) = TRIM(p.find_chemist) and p.whatsapp_id='' and wm.upi_no=''");
 		$result = $result->result();
