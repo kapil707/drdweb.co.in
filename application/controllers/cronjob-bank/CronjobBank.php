@@ -1199,14 +1199,19 @@ class CronjobBank extends CI_Controller
 		}
 
 		//jab chmist id or amout say user ko match karya jata ha tab
-		$result = $this->BankModel->select_query("SELECT p.find_chemist,wm.id as whatsapp_id FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount AND wm.date BETWEEN DATE_SUB(p.date, INTERVAL 1 DAY) AND DATE_ADD(p.date, INTERVAL 1 DAY) WHERE p.whatsapp_id = '' AND p.find_chemist != '' ORDER BY wm.date DESC");
+		$result = $this->BankModel->select_query("SELECT p.upi_no,p.find_chemist,wm.id as whatsapp_id FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount AND wm.date BETWEEN DATE_SUB(p.date, INTERVAL 1 DAY) AND DATE_ADD(p.date, INTERVAL 1 DAY) WHERE p.whatsapp_id = '' AND p.find_chemist != '' ORDER BY wm.date DESC");
 		$result = $result->result();
 		foreach($result as $row) {
 
+			$upi_no = trim($row->upi_no);
+			$find_chemist = trim($row->find_chemist);
 			$whatsapp_id = trim($row->whatsapp_id) + 1;
 			$row1 = $this->BankModel->select_query("SELECT body FROM `tbl_whatsapp_message` WHERE id='$whatsapp_id'");
 			$row1 = $row1->row();
-			echo $body = trim($row1->body);
+			$body = trim($row1->body);
+			if($find_chemist==$body){
+				echo $upi_no;
+			}
 		}
 	}
 
