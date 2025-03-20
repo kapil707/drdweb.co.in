@@ -126,7 +126,7 @@ $(document).ready(function(){
 			{ data: 'item_code', title: 'Item Code' },
 			{ data: 'item_name', title: 'Item Name' },
 			{ data: 'item_total', title: 'Item Total' },
-			{ data: 'time', title: 'Time' },
+			{ data: 'datetime', title: 'Date / Time' },
 		],
 		pageLength: 25,
 		responsive: true,
