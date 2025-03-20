@@ -67,7 +67,7 @@ class Manage_bank_whatsapp extends CI_Controller {
 		//$end_date = date('Y-m-d', strtotime($end_date . ' +1 day'));
 		
 		//echo "select * from tbl_whatsapp_message where date BETWEEN '$start_date' AND '$end_date'";
-		$result = $this->BankModel->select_query("select tbl_whatsapp_message.*,tbl_bank_processing.final_chemist from tbl_whatsapp_message left join tbl_bank_processing on tbl_bank_processing.whatsapp_id=tbl_whatsapp_message.id where tbl_whatsapp_message.date BETWEEN '$start_date' AND '$end_date'");
+		$result = $this->BankModel->select_query("SELECT rply.body AS rply_body, wm.*, bp.final_chemist FROM tbl_whatsapp_message AS wm LEFT JOIN tbl_bank_processing AS bp ON bp.whatsapp_id = wm.id LEFT JOIN tbl_whatsapp_message AS rply ON rply.rply_id = wm.message_id WHERE wm.date BETWEEN '$start_date' AND '$end_date'");
 		$data["result"] = $result->result();
 
 		$this->load->view("admin/header_footer/header",$data);
