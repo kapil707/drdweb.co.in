@@ -64,7 +64,7 @@
 <link href="<?= base_url()?>/assets/css/plugins/dataTables/datatables.min.css" rel="stylesheet">
 <div class="container-fluid p-5">
 	<div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3" style="display:none">
 			<label for="date-range">Select Date Range:</label>
     		<input type="text" id="date-range" class="form-control">
         </div>
