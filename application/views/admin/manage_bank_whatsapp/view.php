@@ -122,6 +122,8 @@
 					<?php
 						foreach ($result as $message) {
 							$body = $message->body ? $message->body : "Body not found";
+							
+							$rply_body = $message->rply_body ? $message->rply_body : "";
 
 							$date = $message->date ? $message->date : "Date not found";
 
@@ -156,7 +158,8 @@
 								<td>
 									<?php echo $from_number; ?>
 								</td>
-								<td><?php echo $body; ?></td>
+								<td><?php echo $body; ?><br><?php echo $rply_body ;?>
+								</td>
 								<td><?php echo $vision_text; ?></td>
 								<td><?php echo $message->upi_no; ?></td>
 								<td>
