@@ -69,7 +69,7 @@ class BankWhatsAppModel extends CI_Model
 				// Decode "quoted_text" JSON
 				$quoted = json_decode($message["quoted_text"], true);
 				// Extract "wid"
-				$rply_id = isset($quoted['wid']) ? $quoted['wid'] : "vision_text not found";
+				$rply_id = isset($quoted['wid']) ? $quoted['wid'] : "0";
 
 				//$extracted_text = str_replace("\n", "<br>", $extracted_text);
 				//$vision_text = str_replace("\n", "<br>", $vision_text);
