@@ -35,7 +35,7 @@
 									<?php echo $row->item_name; ?>
 								</td>
 								<td>
-									<?php echo $row->item_code; ?>
+									<?php echo $row->itemc; ?>
 								</td>
 								<td>
 									<?php echo $row->ct; ?>
