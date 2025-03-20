@@ -21,9 +21,6 @@ class Manage_allbiker_map extends CI_Controller {
 		$user_type = $this->session->userdata("user_type");
 		/******************session***********************/
 
-		$_SESSION["latitude"] = 
-		$_SESSION["longitude"] = "";	
-
 		$Page_title = $this->Page_title;
 		$Page_name 	= $this->Page_name;
 		$Page_view 	= $this->Page_view;
@@ -162,9 +159,6 @@ class Manage_allbiker_map extends CI_Controller {
 		$user_id = $this->session->userdata("user_id");
 		$user_type = $this->session->userdata("user_type");
 		/******************session***********************/
-
-		$_SESSION["latitude"] = 
-		$_SESSION["longitude"] = "";	
 
 		$Page_title = $this->Page_title;
 		$Page_name 	= $this->Page_name;
