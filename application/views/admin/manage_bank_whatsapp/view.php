@@ -122,8 +122,12 @@
 					<?php
 						foreach ($result as $message) {
 							$body = $message->body ? $message->body : "Body not found";
-							
+
 							$rply_body = $message->rply_body ? $message->rply_body : "";
+							if($rply_body)
+							{
+								$rply_body = "Reply Body : " .$rply_body;
+							}
 
 							$date = $message->date ? $message->date : "Date not found";
 
