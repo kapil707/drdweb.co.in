@@ -79,3 +79,5 @@ SELECT p.upi_no, wm.amount, wm.id AS whatsapp_id, wm.vision_text, (SELECT body F
 
 //457144294413 == 31723
 
+//507111215194 == iss me user id galt set ha dhko ek bari 
+
