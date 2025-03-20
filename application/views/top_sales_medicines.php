@@ -73,26 +73,6 @@
 		<div class="col-sm-12  pt-1 pb-5">
 			<table class="table table-striped table-bordered table-hover dataTables-example" id="example-table">
 				<thead>
-					<tr>
-						<th>
-							Sno.
-						</th>
-						<th>
-							Sender
-						</th>
-						<th>
-							Message
-						</th>
-						<th>
-							Date
-						</th>
-						<th>
-							Time
-						</th>
-						<th>
-							ChemistID
-						</th>
-					</tr>
 				</thead>
 				<tbody>
 				
@@ -130,7 +110,7 @@ $(document).ready(function(){
 
 	table = $('#example-table').DataTable({
 		ajax: {
-		url: 'https://www.drdweb.co.in/upload_sms/api01/get_upload_sms',
+		url: 'https://www.drdweb.co.in/top_sales_medicines/view_api',
 			type: 'POST',
 			data: function(d) {
 				return $.extend({}, d, {
@@ -142,12 +122,11 @@ $(document).ready(function(){
 		},
 		order: [[4, 'desc']],
 		columns: [
-			{ data: 'id', title: 'ID' },
-			{ data: 'sender', title: 'Sender' },
-			{ data: 'message_body', title: 'Message Body' },
-			{ data: 'date', title: 'Date' },
+			{ data: 'sr_no', title: 'SrNo' },
+			{ data: 'item_code', title: 'Item Code' },
+			{ data: 'item_name', title: 'Item Name' },
+			{ data: 'item_total', title: 'Item Total' },
 			{ data: 'time', title: 'Time' },
-			{ data: 'chemist_id', title: 'ChemistID' }
 		],
 		pageLength: 25,
 		responsive: true,
