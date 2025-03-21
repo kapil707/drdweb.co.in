@@ -846,10 +846,22 @@ class BankWhatsAppModel extends CI_Model
 
 	public function whatsapp_update_reply_message(){
 		
-		$result = $this->BankModel->select_query("SELECT rply.body AS rply_body, wm.*, bp.final_chemist FROM tbl_whatsapp_message AS wm LEFT JOIN tbl_bank_processing AS bp ON bp.whatsapp_id = wm.id LEFT JOIN tbl_whatsapp_message AS rply ON rply.rply_id = wm.message_id WHERE wm.rply_status=0 and rply.body!=''");
+		$result = $this->BankModel->select_query("SELECT rply.body AS rply_body, wm.id as whatsapp_id FROM tbl_whatsapp_message AS wm LEFT JOIN tbl_bank_processing AS bp ON bp.whatsapp_id = wm.id LEFT JOIN tbl_whatsapp_message AS rply ON rply.rply_id = wm.message_id WHERE wm.rply_status=0 and rply.body!=''");
 		$result = $result->result();
 		foreach($result as $row) {
-			
+			if($row->reply_body){
+
+				$whatsapp_id = ($row->whatsapp_id);
+
+				$where = array(
+					'id' => $whatsapp_id,
+				);
+				$dt = array(
+					'rply_body'=>$rply_body,
+					'rply_status'=>1,
+				);
+				$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
+			}
 		}
 	}
 }	
