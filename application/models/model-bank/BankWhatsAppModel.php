@@ -783,6 +783,29 @@ class BankWhatsAppModel extends CI_Model
 				$this->whatsapp_insert_in_process();
 			}
 		}
+
+		if($working==0){
+			//jab amount or vision text me chemist id mil kaya to 
+			$result = $this->BankModel->select_query("SELECT p.upi_no,wm.amount, wm.id as whatsapp_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount and wm.date BETWEEN DATE_SUB(p.date, INTERVAL 1 DAY) AND DATE_ADD(p.date, INTERVAL 1 DAY) and REPLACE(TRIM(wm.vision_text), ' ', '') LIKE CONCAT('%', TRIM(p.find_chemist), '%') and p.whatsapp_id='' and p.find_chemist!=''");
+			$result = $result->result();
+			foreach($result as $row) {
+				$working = 1;
+
+				$upi_no = trim($row->upi_no);
+				$whatsapp_id = trim($row->whatsapp_id);
+				
+				$where = array(
+					'id' => $whatsapp_id,
+				);
+				$dt = array(
+					'upi_no'=>$upi_no,
+				);
+				$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
+			}
+			if($working==1){
+				$this->whatsapp_insert_in_process();
+			}
+		}
 		
 
 		/*if($working==0){
