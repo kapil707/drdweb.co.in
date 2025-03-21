@@ -162,7 +162,7 @@
 								<td>
 									<?php echo $from_number; ?>
 								</td>
-								<td><?php echo $body; ?><br><?php echo $rply_body ;?>
+								<td><?php echo $body; ?><br><?php echo $reply_body ;?>
 								</td>
 								<td><?php echo $vision_text; ?></td>
 								<td><?php echo $message->upi_no; ?></td>
