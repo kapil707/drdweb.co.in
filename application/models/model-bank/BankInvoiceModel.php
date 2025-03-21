@@ -9,7 +9,7 @@ class BankInvoiceModel extends CI_Model
 	}
 
 	public function get_invoice_find_user(){
-		$result = $this->BankModel->select_query("select find_chemist,amount from tbl_bank_processing where invoice_id='' ORDER BY RAND() limit 100");
+		$result = $this->BankModel->select_query("select find_chemist,amount from tbl_bank_processing where invoice_id='' and find_chemist!='' ORDER BY RAND() limit 100");
 		$result = $result->result();
 		foreach($result as $row){
 			$chemist_id = $row->find_chemist;
