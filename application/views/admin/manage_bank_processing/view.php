@@ -200,6 +200,8 @@
 						$row_chemist_id = "";
 					}
 					$row_invoice_chemist = $entry->invoice_chemist ? $entry->invoice_chemist : "N/a";
+
+					$row_invoice_remanded = $entry->invoice_remanded;
 					// invoice say chemist find karta ha yha logic
 					/********************************************** *
 					$find_invoice_chemist_id = $entry->invoice;
@@ -385,6 +387,10 @@
 									<div class="td_div">
 										<b>Invoice : </b>
 										<?= $row_invoice_chemist ?>
+
+										<?php if($row_invoice_chemist=="N/a" &&$row_invoice_remanded) { 
+											echo " || <b>Remanded : $row_invoice_remanded </b>";
+										} ?>
 									</div>
 									<div class="td_div">
 										<b onclick="get_whats_message('<?= ($row_id); ?>','<?= ($row_whatsapp_id); ?>','<?= $row_upi_no; ?>')" data-toggle="modal" data-target="#myModal">WhatsApp : </b>
