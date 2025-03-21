@@ -199,7 +199,7 @@
 					if(empty($chemist_array[0])){
 						$row_chemist_id = "";
 					}
-					$row_invoice_chemist = $entry->invoice_chemist;
+					$row_invoice_chemist = $entry->invoice_chemist ? $entry->invoice_chemist : "N/a";
 					// invoice say chemist find karta ha yha logic
 					/********************************************** *
 					$find_invoice_chemist_id = $entry->invoice;
