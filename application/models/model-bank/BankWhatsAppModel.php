@@ -508,7 +508,7 @@ class BankWhatsAppModel extends CI_Model
 			$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
 		}
 		die();
-		if($working==0){
+		/*if($working==0){
 			//jab chmist id or amout say user ko match karya jata ha tab
 			$result = $this->BankModel->select_query("SELECT p.upi_no,p.find_chemist,wm.id as whatsapp_id,wm.timestamp,wm.from_number FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount AND wm.date BETWEEN DATE_SUB(p.date, INTERVAL 1 DAY) AND DATE_ADD(p.date, INTERVAL 1 DAY) WHERE p.whatsapp_id = '' and p.whatsapp_remanded = '' AND p.find_chemist != '' ORDER BY wm.date DESC");
 			$result = $result->result();
@@ -565,7 +565,7 @@ class BankWhatsAppModel extends CI_Model
 					print_r($dt);
 					$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 
-					/********************************************************** */
+					/********************************************************** *
 					$where = array(
 						'id' => $whatsapp_id,
 					);
@@ -576,7 +576,7 @@ class BankWhatsAppModel extends CI_Model
 					$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
 				}
 			}
-		}
+		}*/
 	}
 
 	public function whatsapp_update_upi(){

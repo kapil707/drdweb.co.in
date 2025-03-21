@@ -7,6 +7,7 @@ class CronjobBank extends CI_Controller
 		parent::__construct();
 		$this->load->model("model-bank/BankModel");
 		$this->load->model("model-bank/BankWhatsAppModel");
+		$this->load->model("model-bank/BankInvoiceModel");
 	}
 
 	public function get_whatsapp_or_insert(){
@@ -32,6 +33,11 @@ class CronjobBank extends CI_Controller
 	public function whatsapp_update_reply_message(){
 		echo "whatsapp_update_reply_message";
 		$this->BankWhatsAppModel->whatsapp_update_reply_message();
+	}
+
+	public function get_invoice_find_user(){
+		echo "get_invoice_find_user";
+		$this->BankInvoiceModel->get_invoice_find_user();
 	}
 
 	public function testing(){
