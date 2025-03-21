@@ -29,6 +29,11 @@ class CronjobBank extends CI_Controller
 		$this->BankWhatsAppModel->whatsapp_update_upi();
 	}
 
+	public function whatsapp_update_reply_message(){
+		echo "whatsapp_update_reply_message";
+		$this->BankWhatsAppModel->whatsapp_update_reply_message();
+	}
+
 	public function testing(){
 		$text = "UPI CREDIT REFERENCE 506067805978 FROM 9999041975@ YESCRED M S SWAMIJI MEDICOS PAID VIA CRED";
 		preg_match("/FROM\s+([\d]+)@\s*([\w]+)/", $text, $matches);
