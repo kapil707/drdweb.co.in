@@ -123,10 +123,10 @@
 						foreach ($result as $message) {
 							$body = $message->body ? $message->body : "Body not found";
 
-							$rply_body = $message->rply_body ? $message->rply_body : "";
-							if($rply_body)
+							$reply_body = $message->reply_body ? $message->reply_body : "";
+							if($reply_body)
 							{
-								$rply_body = "Reply Body : " .$rply_body;
+								$reply_body = "Reply Body : " .$reply_body;
 							}
 
 							$date = $message->date ? $message->date : "Date not found";
