@@ -27,6 +27,15 @@ class BankInvoiceModel extends CI_Model
 			$amount 	= $row->amount;
 			$this->remanded_invoice_find($id,$chemist_id,$amount);
 		}
+
+		$result = $this->BankModel->select_query("select id,whatsapp_remanded,amount from tbl_bank_processing where invoice_id='' and whatsapp_remanded!='' ORDER BY RAND() limit 100");
+		$result = $result->result();
+		foreach($result as $row){
+			$id 		= $row->id;
+			$chemist_id = $row->whatsapp_remanded;
+			$amount 	= $row->amount;
+			$this->remanded_invoice_find($id,$chemist_id,$amount);
+		}
 	}
 
 	public function invoice_find($id,$chemist_id,$amount){
