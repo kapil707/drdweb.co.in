@@ -49,7 +49,7 @@ class BankInvoiceModel extends CI_Model
 					'invoice_id'=>$invoice_id,
 					'invoice_chemist'=>$invoice_chemist,
 				);
-				if($type=="remanded")
+				if($type=="remanded"){
 					$dt = array(
 						'process_status'=>3,
 						'invoice_id'=>$invoice_id,
