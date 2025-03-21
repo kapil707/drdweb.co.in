@@ -9,7 +9,6 @@ class BankWhatsAppModel extends CI_Model
 	}
 
 	public function get_whatsapp_or_insert(){
-		echo "insert_whatsapp";
 
 		$start_date = date('d-m-Y', strtotime('-1 day'));
 		$end_date = date('d-m-Y');
@@ -371,8 +370,7 @@ class BankWhatsAppModel extends CI_Model
 	}
 
 	public function whatsapp_insert_in_process(){
-		echo " get_whatsapp ";
-
+		
 		/* $result = $this->BankModel->select_query("SELECT p.id, wm.id as whatsapp_id,wm.body as body, wm.vision_text,wm.timestamp,wm.from_number,p.find_chemist FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.upi_no=wm.upi_no and wm.body=p.find_chemist where p.whatsapp_id='' ORDER BY RAND() limit 25");
 		$result = $result->result();
 		foreach($result as $row) {
