@@ -24,12 +24,23 @@ class BankInvoiceModel extends CI_Model
 		$start_date = date('Y-m-d', strtotime('-3 day'));
 		$end_date = date('Y-m-d');
 
-		$result = $this->BankModel->select_query("SELECT id FROM `tbl_invoice-bk` WHERE `chemist_id` LIKE '$chemist_id' and  REPLACE(TRIM(amt), '.00', '')='$amount' and date BETWEEN '$start_date' and '$end_date' ORDER BY RAND() limit 100");
+		$result = $this->BankModel->select_query("SELECT id FROM `tbl_invoice-bk` WHERE `chemist_id` LIKE '$chemist_id' and  REPLACE(TRIM(amt), '.00', '')='$amount' and date BETWEEN '$start_date' and '$end_date'");
 		$result = $result->result();
 		foreach($result as $row) {
 			if($row->id){
-				echo $row->id;
-				echo "<br>";
+				$invoice_id = $row->id;
+				$invoice_chemist = $chemist_id;
+
+				$where = array(
+					'id' => $id,
+				);
+				$dt = array(
+					'process_status'=>3,
+					'invoice_id'=>$invoice_id,
+					'invoice_chemist'=>$invoice_chemist,
+				);
+				print_r($dt);
+				$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 			}
 		}
 	}
