@@ -851,8 +851,8 @@ class BankWhatsAppModel extends CI_Model
 		foreach($result as $row) {
 			if($row->reply_body){
 
-				$whatsapp_id = $row->whatsapp_id;
-				$whatsapp_id = trim($row->reply_body);
+				$whatsapp_id 	= $row->whatsapp_id;
+				$reply_body 	= trim($row->reply_body);
 
 				$where = array(
 					'id' => $whatsapp_id,
