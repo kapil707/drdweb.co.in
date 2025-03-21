@@ -843,4 +843,13 @@ class BankWhatsAppModel extends CI_Model
 
 		die();*/
 	}
+
+	public function whatsapp_update_reply_message(){
+		
+		$result = $this->BankModel->select_query("SELECT rply.body AS rply_body, wm.*, bp.final_chemist FROM tbl_whatsapp_message AS wm LEFT JOIN tbl_bank_processing AS bp ON bp.whatsapp_id = wm.id LEFT JOIN tbl_whatsapp_message AS rply ON rply.rply_id = wm.message_id WHERE wm.rply_status=0 and rply.body!=''");
+		$result = $result->result();
+		foreach($result as $row) {
+			
+		}
+	}
 }	
