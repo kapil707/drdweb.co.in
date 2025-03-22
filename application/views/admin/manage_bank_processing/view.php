@@ -190,7 +190,7 @@
 					}
 
 					/********************************************** */
-					$row_invoice_chemist = $entry->invoice_chemist ? $entry->invoice_chemist : "N/a";
+					$row_invoice_chemist = $entry->invoice_chemist;
 					$row_invoice_text = $entry->invoice_text;
 					$row_invoice_remanded = $entry->invoice_remanded;
 					/********************************************** */
