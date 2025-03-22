@@ -124,7 +124,7 @@ class BankInvoiceModel extends CI_Model
 		if(!empty($json_invoice_id)){
 			$invoice_id = implode(',', $json_invoice_id);
 			$invoice_text = implode('||', $json_invoice_text);
-			$invoice_chemist = $invoice_chemist;
+			$invoice_chemist = $chemist_id;
 
 			$where = array(
 				'id' => $id,
