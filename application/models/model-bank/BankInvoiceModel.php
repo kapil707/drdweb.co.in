@@ -14,11 +14,10 @@ class BankInvoiceModel extends CI_Model
 			$result = $this->BankModel->select_query("select id,find_chemist,amount from tbl_bank_processing where invoice_id='' and find_chemist!='' ORDER BY RAND() limit 100");
 			$result = $result->result();
 			foreach($result as $row){
-				$working = 1;
 				$id 		= $row->id;
 				$chemist_id = $row->find_chemist;
 				$amount 	= $row->amount;
-				$this->invoice_find($id,$chemist_id,$amount);
+				$working = $this->invoice_find($id,$chemist_id,$amount);
 			}
 		}
 
@@ -26,11 +25,10 @@ class BankInvoiceModel extends CI_Model
 			$result = $this->BankModel->select_query("select id,find_chemist,amount from tbl_bank_processing where invoice_id='' and find_chemist!='' ORDER BY RAND() limit 100");
 			$result = $result->result();
 			foreach($result as $row){
-				$working = 1;
 				$id 		= $row->id;
 				$chemist_id = $row->find_chemist;
 				$amount 	= $row->amount;
-				$this->invoice_find_in_total($id,$chemist_id,$amount);
+				$working = $this->invoice_find_in_total($id,$chemist_id,$amount);
 			}
 		}
 
@@ -38,11 +36,10 @@ class BankInvoiceModel extends CI_Model
 			$result = $this->BankModel->select_query("select id,whatsapp_remanded,amount from tbl_bank_processing where invoice_id='' and find_chemist!='' and whatsapp_remanded!='' ORDER BY RAND() limit 100");
 			$result = $result->result();
 			foreach($result as $row){
-				$working = 1;
 				$id 		= $row->id;
 				$chemist_id = $row->whatsapp_remanded;
 				$amount 	= $row->amount;
-				$this->remanded_invoice_find($id,$chemist_id,$amount);
+				$working 	= $this->remanded_invoice_find($id,$chemist_id,$amount);
 			}
 		}
 
@@ -50,17 +47,17 @@ class BankInvoiceModel extends CI_Model
 			$result = $this->BankModel->select_query("select id,whatsapp_remanded,amount from tbl_bank_processing where invoice_id='' and whatsapp_remanded!='' ORDER BY RAND() limit 100");
 			$result = $result->result();
 			foreach($result as $row){
-				$working = 1;
 				$id 		= $row->id;
 				$chemist_id = $row->whatsapp_remanded;
 				$amount 	= $row->amount;
-				$this->remanded_invoice_find($id,$chemist_id,$amount);
+				$working 	= $this->remanded_invoice_find($id,$chemist_id,$amount);
 			}
 		}
 	}
 
 	public function invoice_find($id,$chemist_id,$amount){
 
+		$status = 0;
 		$start_date = date('Y-m-d', strtotime('-3 day'));
 		$end_date = date('Y-m-d');
 
@@ -68,6 +65,7 @@ class BankInvoiceModel extends CI_Model
 		$result = $result->result();
 		foreach($result as $row) {
 			if($row->id){
+				$status = 1;
 				$amount = str_replace(".00", "", $row->amt);
 
 				$invoice_id = $row->id;
@@ -87,10 +85,13 @@ class BankInvoiceModel extends CI_Model
 				$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 			}
 		}
+
+		return $status;
 	}
 
 	public function invoice_find_in_total($id,$chemist_id,$amount){
-
+		
+		$status = 0;
 		$start_date = date('Y-m-d', strtotime('-3 day'));
 		$end_date = date('Y-m-d');
 
@@ -132,6 +133,8 @@ class BankInvoiceModel extends CI_Model
 		}
 
 		if(!empty($json_invoice_id)){
+
+			$status = 1;
 			$invoice_id = implode(',', $json_invoice_id);
 			$invoice_text = implode('||', $json_invoice_text);
 			$invoice_chemist = $chemist_id;
@@ -148,9 +151,13 @@ class BankInvoiceModel extends CI_Model
 			print_r($dt);
 			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 		}
+
+		return $status;
 	}
 
 	public function remanded_invoice_find($id,$chemist_id,$amount){
+		
+		$status = 0;
 
 		$start_date = date('Y-m-d', strtotime('-3 day'));
 		$end_date = date('Y-m-d');
@@ -159,6 +166,8 @@ class BankInvoiceModel extends CI_Model
 		$result = $result->result();
 		foreach($result as $row) {
 			if($row->id){
+				$status = 1;
+
 				$invoice_id = $row->id;
 				$invoice_remanded = $chemist_id;
 
@@ -174,5 +183,6 @@ class BankInvoiceModel extends CI_Model
 				$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 			}
 		}
+		return $status;
 	}
 }	
