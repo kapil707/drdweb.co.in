@@ -90,6 +90,7 @@ class BankInvoiceModel extends CI_Model
 		$result = $result->result();
 		foreach($result as $row) {
 			$resultArray[] = [
+				'id' => $row->id,
 				'chemist_id' => $row->chemist_id,
 				'gstvno' => $row->gstvno,
 				'amount' => $row->amt
@@ -110,17 +111,31 @@ class BankInvoiceModel extends CI_Model
 			}
 		}
 
+		$json_invoice_id = $json_invoice_text = "";
 		if ($found) {
 			for ($i = 0; $i < count($selectedValues[0]); $i++) {
 				$rt = $selectedValues[0][$i];
-				$jsonArray[] = $rt['gstvno']." Amount.".$rt['amount'];
+				$json_invoice_id[] = $rt['id'];
+				$json_invoice_text[] = $rt['gstvno']." Amount.".$rt['amount'];
 			}
 		}
-		echo $find_invoice_chemist_id = implode('||', $jsonArray);
+		if(!empty($json_result)){
+			echo $invoice_id = implode(',', $json_invoice_id);
+			/*$invoice_text = implode('||', $json_invoice_text);
+			$invoice_chemist = $invoice_chemist;
 
-		$return["find_invoice_chemist_id"] = $find_invoice_chemist_id;
-
-		return $return;
+			$where = array(
+				'id' => $id,
+			);
+			$dt = array(
+				'process_status'=>3,
+				'invoice_id'=>$invoice_id,
+				'invoice_chemist'=>$invoice_chemist,
+				'invoice_text'=>$invoice_text,
+			);
+			print_r($dt);
+			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);*/
+		}
 	}
 
 	public function remanded_invoice_find($id,$chemist_id,$amount){
