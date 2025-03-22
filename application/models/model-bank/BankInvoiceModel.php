@@ -119,6 +119,7 @@ class BankInvoiceModel extends CI_Model
 				$json_invoice_text[] = $rt['gstvno']." Amount.".$rt['amount'];
 			}
 		}
+		
 		if(!empty($json_invoice_id)){
 			echo $invoice_id = implode(',', $json_invoice_id);
 			/*$invoice_text = implode('||', $json_invoice_text);
