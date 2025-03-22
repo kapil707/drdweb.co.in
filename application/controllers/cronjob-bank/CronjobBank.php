@@ -378,7 +378,7 @@ class CronjobBank extends CI_Controller
 			$amount = $row->amount;
 			$date = $row->date;
 			echo $text = $statment_text = $row->narrative;
-			$text = str_replace(array("\r", "\n"), '', $text);
+			$text = str_replace(array("\r", "\n"), ' ', $text);
 			$upi_no = $orderid = $row->customer_reference;
 			$received_from = "";
 
