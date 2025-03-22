@@ -111,6 +111,8 @@ class BankInvoiceModel extends CI_Model
 			}
 		}
 
+		$json_invoice_id = [];
+		$json_invoice_text = [];
 		if ($found) {
 			for ($i = 0; $i < count($selectedValues[0]); $i++) {
 				$rt = $selectedValues[0][$i];
