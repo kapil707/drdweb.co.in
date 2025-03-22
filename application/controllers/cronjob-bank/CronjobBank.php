@@ -41,16 +41,13 @@ class CronjobBank extends CI_Controller
 	}
 
 	public function testing(){
-		$text = "UPI CREDIT REFERENCE 506067805978 FROM 9999041975@ YESCRED M S SWAMIJI MEDICOS PAID VIA CRED";
-		preg_match("/FROM\s+([\d]+)@\s*([\w]+)/", $text, $matches);
+		$text = "+91-9899762072 507920298106 FROM MEHAK MEDICOS AND DEPARTMENTAL STORE 9300966180 CITI0000 9052 TRANS FER TO DR KARB0000547";
+		preg_match("/FROM\s+(.+?)\s+CITI/", $text, $matches);
 		if (!empty($matches) && empty($received_from)){
-			echo $received_from = trim($matches[1])."@".trim($matches[2]);
-			$received_from = str_replace("'", "", $received_from);
-			$received_from = str_replace(" ", "", $received_from);
-			$received_from = str_replace("\n", "", $received_from);
-			//$from_value = "<b>find3: ".$received_from."</b>"; // Output: 97926121865@PAYTM SAMEER S O KALLU NA
-			$statment_type = 9;
-			echo "<br>9</br>";
+			echo $received_from = trim($matches[1]);
+			//$from_value = "<b>find2: ".$received_from."</b>"; UPI CREDIT REFERENCE 956425755787 FROM APMAURYA6@I BL ARJUN PRASAD MAURYA PAYMENT FROM PHONEPE
+			$statment_type = 2;
+			echo "<br>2</br>";
 		}
 	}
 
