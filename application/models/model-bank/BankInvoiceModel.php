@@ -52,12 +52,15 @@ class BankInvoiceModel extends CI_Model
 		$start_date = date('Y-m-d', strtotime('-3 day'));
 		$end_date = date('Y-m-d');
 
-		$result = $this->BankModel->select_query("SELECT id FROM `tbl_invoice` WHERE `chemist_id` LIKE '$chemist_id' and REPLACE(TRIM(amt), '.00', '')='$amount' and date BETWEEN '$start_date' and '$end_date'");
+		$result = $this->BankModel->select_query("SELECT id,gstvno,amt FROM `tbl_invoice` WHERE `chemist_id` LIKE '$chemist_id' and REPLACE(TRIM(amt), '.00', '')='$amount' and date BETWEEN '$start_date' and '$end_date'");
 		$result = $result->result();
 		foreach($result as $row) {
 			if($row->id){
+				$amount = str_replace(".00", "", $row->amt);
+
 				$invoice_id = $row->id;
 				$invoice_chemist = $chemist_id;
+				$invoice_text = $row->gstvno." Amount.".$amount;
 
 				$where = array(
 					'id' => $id,
@@ -66,6 +69,7 @@ class BankInvoiceModel extends CI_Model
 					'process_status'=>3,
 					'invoice_id'=>$invoice_id,
 					'invoice_chemist'=>$invoice_chemist,
+					'invoice_text'=>$invoice_text,
 				);
 				print_r($dt);
 				$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
@@ -78,19 +82,16 @@ class BankInvoiceModel extends CI_Model
 		$start_date = date('Y-m-d', strtotime('-3 day'));
 		$end_date = date('Y-m-d');
 
-		$start_date = "2025-03-18";
-		$end_date = "2025-03-22";
-
-
 		$resultArray = [];
 		$result = $this->BankModel->select_query("SELECT * FROM `tbl_invoice` WHERE `chemist_id`='$chemist_id' and date BETWEEN '$start_date' and '$end_date'");
 		$result = $result->result();
 		foreach($result as $row) {
+			$amount = str_replace(".00", "", $row->amt);
 			$resultArray[] = [
 				'id' => $row->id,
 				'chemist_id' => $row->chemist_id,
 				'gstvno' => $row->gstvno,
-				'amount' => $row->amt
+				'amount' => $amount
 			];		
 		}
 
