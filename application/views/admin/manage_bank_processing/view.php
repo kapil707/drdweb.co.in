@@ -215,10 +215,10 @@
 						$row_find_by.= "Whatsapp,";
 						$row_find_i++;
 					}
-					/*if(!empty($row_find_by_invoice_chemist_id)){
+					if(!empty($row_invoice_chemist)){
 						$row_find_by.= "Invoice,";
 						$row_find_i++;
-					}*/
+					}
 					if(!empty($row_find_by)){
 						$row_find_by = substr($row_find_by, 0, -1);
 					}
