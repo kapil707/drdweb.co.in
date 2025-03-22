@@ -84,3 +84,5 @@ SELECT p.upi_no, wm.amount, wm.id AS whatsapp_id, wm.vision_text, (SELECT body F
 
 // mobile 7042237131 -- important
 
+// check karo -- INDBH20036265474
+
