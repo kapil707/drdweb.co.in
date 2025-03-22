@@ -404,6 +404,7 @@ class CronjobBank extends CI_Controller
 			$text = preg_replace("/93009661\s*80/", '', $text);
 			$text = preg_replace("/930096618\s*0/", '', $text);
 
+			$text = preg_replace("/N\s*0/", '', $text);
 			$text = preg_replace("/N2632432758889/", '', $text);
 			$text = preg_replace("/N\s*2632432758889/", '', $text);
 			$text = preg_replace("/N2\s*632432758889/", '', $text);
@@ -451,7 +452,7 @@ class CronjobBank extends CI_Controller
 			$text = preg_replace('/SBIN.*?REF NO/', ' REF NO', $text);
 			$text = preg_replace('/BKIDN.*?REF NO/', ' REF NO', $text);
 			$text = preg_replace('/BINH.*?REF NO/', ' REF NO', $text);
-			$text = preg_replace('/C BINH.*?REF NO/', ' REF NO', $text);
+			$text = preg_replace('/C\s*BINH.*?REF NO/', ' REF NO', $text);
 
 			$text = preg_replace('/HDFCH.*?REF NO/', ' REF NO', $text);
 			$text = preg_replace('/H DFCH.*?REF NO/', ' REF NO', $text);
