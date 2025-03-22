@@ -200,9 +200,7 @@
 					$row_whatsapp_text = $entry->whatsapp_text;
 					$row_whatsapp_remanded = $entry->whatsapp_remanded;
 					/********************************************** */
-					//$row_whatsapp = $entry->whatsapp;//$entry->whatsapp_body2;
-					$row_whatsapp = $entry->vision_text;//$entry->whatsapp_body2;
-					/********************************************** */
+					
 					/********************************************** */
 					$final_chemist = $entry->final_chemist;
 					$row_find_by_invoice_chemist_id = $entry->invoice;

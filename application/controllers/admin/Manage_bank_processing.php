@@ -203,7 +203,7 @@ class Manage_bank_processing extends CI_Controller {
 		$end_date 	= $end_date->format('Y-m-d');
 		
 		//$query = $this->BankModel->select_query("SELECT * FROM `tbl_bank_processing` where date BETWEEN '$start_date' AND '$end_date' order by statment_id asc");
-		$query = $this->BankModel->select_query("SELECT tbl_whatsapp_message.whatsapp_text,tbl_bank_processing.* FROM `tbl_bank_processing` left JOIN tbl_whatsapp_message ON tbl_whatsapp_message.id = tbl_bank_processing.whatsapp_id WHERE tbl_bank_processing.date BETWEEN '$start_date' AND '$end_date' order by tbl_bank_processing.statment_id asc");
+		$query = $this->BankModel->select_query("SELECT tbl_whatsapp_message.vision_text as whatsapp_text,tbl_bank_processing.* FROM `tbl_bank_processing` left JOIN tbl_whatsapp_message ON tbl_whatsapp_message.id = tbl_bank_processing.whatsapp_id WHERE tbl_bank_processing.date BETWEEN '$start_date' AND '$end_date' order by tbl_bank_processing.statment_id asc");
 		$data["result"] = $query->result();
 
 		$this->load->view("admin/header_footer/header",$data);
