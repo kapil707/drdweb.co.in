@@ -82,6 +82,10 @@ class BankInvoiceModel extends CI_Model
 		$start_date = date('Y-m-d', strtotime('-3 day'));
 		$end_date = date('Y-m-d');
 
+		$start_date = "2025-03-18";
+		$end_date = "2025-03-22";
+
+
 		$result = $this->BankModel->select_query("SELECT * FROM `tbl_invoice` WHERE `chemist_id`='$chemist_id' and date BETWEEN '$start_date' and '$end_date'");
 		$result = $result->result();
 		foreach($result as $row) {
