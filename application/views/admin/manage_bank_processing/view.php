@@ -200,10 +200,9 @@
 					$row_whatsapp_text = $entry->whatsapp_text;
 					$row_whatsapp_remanded = $entry->whatsapp_remanded;
 					/********************************************** */
-					
+
 					/********************************************** */
 					$final_chemist = $entry->final_chemist;
-					$row_find_by_invoice_chemist_id = $entry->invoice;
 					/********************************************** */	
 					$textbox_final_chemist = "";
 					$row_find_by = "";
@@ -216,10 +215,10 @@
 						$row_find_by.= "Whatsapp,";
 						$row_find_i++;
 					}
-					if(!empty($row_find_by_invoice_chemist_id)){
+					/*if(!empty($row_find_by_invoice_chemist_id)){
 						$row_find_by.= "Invoice,";
 						$row_find_i++;
-					}
+					}*/
 					if(!empty($row_find_by)){
 						$row_find_by = substr($row_find_by, 0, -1);
 					}
@@ -248,9 +247,6 @@
 					}
 					// jab koi be invoice say chemist find na ho to
 					/********************************************** */
-					if(empty($row_find_by_invoice_chemist_id)){
-						$row_find_by_invoice_chemist_id = "N/a";
-					}
 					// jab koi be whatapp say chemist find na ho to
 					/********************************************** */
 					if(empty($row_whatsapp_chemist)){
