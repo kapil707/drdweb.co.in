@@ -122,8 +122,8 @@ class BankInvoiceModel extends CI_Model
 		}
 
 		if(!empty($json_invoice_id)){
-			echo $invoice_id = implode(',', $json_invoice_id);
-			/*$invoice_text = implode('||', $json_invoice_text);
+			$invoice_id = implode(',', $json_invoice_id);
+			$invoice_text = implode('||', $json_invoice_text);
 			$invoice_chemist = $invoice_chemist;
 
 			$where = array(
@@ -136,7 +136,7 @@ class BankInvoiceModel extends CI_Model
 				'invoice_text'=>$invoice_text,
 			);
 			print_r($dt);
-			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);*/
+			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 		}
 	}
 
