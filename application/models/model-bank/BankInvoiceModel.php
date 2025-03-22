@@ -113,7 +113,7 @@ class BankInvoiceModel extends CI_Model
 		if ($found) {
 			for ($i = 0; $i < count($selectedValues[0]); $i++) {
 				$rt = $selectedValues[0][$i];
-				$jsonArray[] = $rt['chemist_id'].":-".$rt['gstvno']." Amt-x.".$rt['amount'];
+				$jsonArray[] = $rt['gstvno']." Amount.".$rt['amount'];
 			}
 		}
 		echo $find_invoice_chemist_id = implode('||', $jsonArray);
