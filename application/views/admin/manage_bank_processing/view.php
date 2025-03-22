@@ -247,6 +247,9 @@
 					}
 					// jab koi be invoice say chemist find na ho to
 					/********************************************** */
+					if(empty($row_invoice_chemist)){
+						$row_invoice_chemist = "N/a";
+					}
 					// jab koi be whatapp say chemist find na ho to
 					/********************************************** */
 					if(empty($row_whatsapp_chemist)){
