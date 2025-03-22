@@ -199,9 +199,11 @@
 					if(empty($chemist_array[0])){
 						$row_chemist_id = "";
 					}
-					$row_invoice_chemist = $entry->invoice_chemist ? $entry->invoice_chemist : "N/a";
 
+					$row_invoice_chemist = $entry->invoice_chemist ? $entry->invoice_chemist : "N/a";
+					$row_invoice_text = $entry->invoice_text;
 					$row_invoice_remanded = $entry->invoice_remanded;
+					
 					// invoice say chemist find karta ha yha logic
 					/********************************************** *
 					$find_invoice_chemist_id = $entry->invoice;
@@ -414,10 +416,10 @@
 									</div>
 								</div>
 								
-								<?php if($row_find_invoice_all!="N/a") { ?>
+								<?php if($row_invoice_text!="") { ?>
 								<div class="col-sm-12">
-									<b>Invoice : </b>
-									<?= ($row_find_invoice_all); ?>
+									<b>Invoice Text : </b>
+									<?= ($row_invoice_text); ?>
 								</div>
 								<?php } ?>
 
