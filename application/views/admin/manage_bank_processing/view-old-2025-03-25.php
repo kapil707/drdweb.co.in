@@ -167,11 +167,22 @@
 					if(empty($from_value)){
 						$row_from_text_find = "N/a";
 					}
+					/********************************************** *
+					$row_from_text_logic = $entry->final_find_by;
+					if(!empty($row_from_text_logic)){
+						$row_from_text_logic = " || (<b>$row_from_text_logic</b>)";
+					}
+					if(empty($from_value)){
+						$row_from_text_logic = ""; //yha jab work karta ha jab chemist find nahi hua or find me kuch aa raha ha to wo empty ho jaya
+					}
+					// chemist find karta ha yha logic
 					/********************************************** */
 					$chemist = $entry->find_chemist;
 					$chemist_array = explode("||", $chemist);
 					$chemist_array = array_unique($chemist_array);
-					
+					// if(count($chemist_array)==1){
+					// 	$singal_chemist_id = $chemist_array[0];
+					// }
 					$row_chemist_id = "";
 					if(!empty($chemist_array)){
 						foreach($chemist_array as $rows){
@@ -189,15 +200,46 @@
 						$row_chemist_id = "";
 					}
 
-					/********************************************** */
 					$row_invoice_chemist = $entry->invoice_chemist ? $entry->invoice_chemist : "N/a";
 					$row_invoice_text = $entry->invoice_text;
 					$row_invoice_remanded = $entry->invoice_remanded;
-					/********************************************** */
 					
+					// invoice say chemist find karta ha yha logic
+					/********************************************** *
+					$find_invoice_chemist_id = $entry->invoice;
+					$find_invoice_chemist_id_array = explode("||", $find_invoice_chemist_id);
+					$row_find_invoice_all = $row_invoice_chemist = "";
+					foreach($find_invoice_chemist_id_array as $rows){
+						$rows = str_replace('Amt.', 'Rs.', $rows);
+						$rows1 = str_replace('Amt-x.', 'Rs.', $rows);
+						$row_find_invoice_all.= $rows1."/-<br>";
+						$arr = explode(":-",$rows);
+						$row_invoice_chemist.= $arr[0]." || ";
+					}
+					$row_invoice_chemist = explode(" || ", $row_invoice_chemist);
+					$row_invoice_chemist = array_unique($row_invoice_chemist);
+					$row_invoice_chemist = implode(' || ', $row_invoice_chemist);
+					if(!empty($row_invoice_chemist)){
+						$row_invoice_chemist = substr($row_invoice_chemist, 0, -4);
+					}
+					if(!empty($entry->final_invoice_chemist)) {
+						$find_invoice_chemist_id = $entry->final_invoice;
+						$row_find_invoice_all = $row_invoice_chemist = "";
+						$find_invoice_chemist_id_array = explode(",", $find_invoice_chemist_id);
+						foreach($find_invoice_chemist_id_array as $rows){
+							$rows = str_replace('Amt.', 'Rs.', $rows);
+							$row_find_invoice_all.= $rows."/-<br>";
+						}
+						$row_invoice_chemist = $entry->final_invoice_chemist;
+					}
+					/*************************************************/
+					if(empty($find_invoice_chemist_id)){
+						$row_find_invoice_all = "N/a";
+					}
+					/********************************************** */
 					$row_whatsapp_id = $entry->whatsapp_id;
+					/********************************************** */
 					$row_whatsapp_chemist = $entry->whatsapp_chemist;
-					$row_whatsapp_text = $entry->whatsapp_text;
 					$row_whatsapp_remanded = $entry->whatsapp_remanded;
 					/********************************************** */
 					//$row_whatsapp = $entry->whatsapp;//$entry->whatsapp_body2;
@@ -381,10 +423,10 @@
 								</div>
 								<?php } ?>
 
-								<?php if($row_whatsapp_text!="") { ?>
+								<?php if($row_whatsapp!="N/a") { ?>
 								<div class="col-sm-12">
 									<b onclick="get_whats_message('<?= ($row_id); ?>','<?= ($row_whatsapp_id); ?>','<?= $row_upi_no; ?>')" data-toggle="modal" data-target="#myModal">WhatsApp Text : </b>
-									<?= ($row_whatsapp_text); ?>
+									<?= ($row_whatsapp); ?>
 								</div>
 								<?php } ?>
 								
