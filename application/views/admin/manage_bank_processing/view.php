@@ -220,16 +220,16 @@
 					if(!empty($row_find_by)){
 						$row_find_by = substr($row_find_by, 0, -1);
 					}
-					if(empty($row_chemist_id) && empty($row_invoice_chemist) && empty($row_whatsapp_chemist)){
-						$row_find_by = "N/a";
-						$tr_style = "background-color: #f9f9f9";
-					}
-					if($row_find_i==1){
-						$tr_style = "background-color: khaki";
-					}
-					if($row_find_i==2){
-						$tr_style = "background-color: #99ff99";
-					}
+					// if(empty($row_chemist_id) && empty($row_invoice_chemist) && empty($row_whatsapp_chemist)){
+					// 	$row_find_by = "N/a";
+					// 	$tr_style = "background-color: #f9f9f9";
+					// }
+					// if($row_find_i==1){
+					// 	$tr_style = "background-color: khaki";
+					// }
+					// if($row_find_i==2){
+					// 	$tr_style = "background-color: #99ff99";
+					// }
 					/********************************************** */
 					$row_whatsapp_chemist1 = 
 					$row_whatsapp_chemist1 = str_replace(' ', '', $row_whatsapp_chemist);
@@ -238,40 +238,32 @@
 						$tr_style = "background-color: #1ab394;";
 						$textbox_final_chemist = $row_chemist_id;
 					}
-					// jab koi be chemist find na ho to
-					/********************************************** */
+					
 					if(empty($row_chemist_id)){
 						$row_chemist_id = "N/a";
 					}
-					// jab koi be invoice say chemist find na ho to
-					/********************************************** */
 					if(empty($row_invoice_chemist)){
 						$row_invoice_chemist = "N/a";
 					}
-					// jab koi be whatapp say chemist find na ho to
-					/********************************************** */
 					if(empty($row_whatsapp_chemist)){
 						$row_whatsapp_chemist = "N/a";
 					}
-					// jab koi be whatapp say chemist find na ho to
-					/********************************************** */
 					if(empty($row_whatsapp)){
 						$row_whatsapp = "N/a";
-					}
-					// jab user done kar dayta ha to color change hota ha iss say
-					/********************************************** */
-					$done_status = $entry->status;
-					if($entry->status==3){
-						$tr_style = "background-color: #a9c5f9";
-					}
-					if($entry->status==4){
-						$tr_style = "background-color: #e8ffe2;";					
 					}
 					
 					//new25
 					// jab processing ho jaya or chemist id na milay to
-					if($entry->process_status==1 && empty($entry->find_chemist)){
-						$tr_style = "background-color:rgb(255 130 130);";
+					// if($entry->process_status==1 && empty($entry->find_chemist)){
+					// 	$tr_style = "background-color:rgb(255 130 130);";
+					// }
+
+					if(empty($row_from_text_find_chemist)){
+						$tr_style = "background-color: rgb(255 130 130);";
+					}
+
+					if(!empty($row_from_text_find_chemist)){
+						$tr_style = "background-color: khaki;";
 					}
 					?>
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
