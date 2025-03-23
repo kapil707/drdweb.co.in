@@ -171,7 +171,7 @@ class BankProcessingModel extends CI_Model
 				'process_status'=>1,				
 				'from_text_find'=>$process_value,
 				'from_text_find_match'=>$process_name,
-				'find_chemist'=>$find_chemist_id,
+				'from_text_find_chemist'=>$find_chemist_id,
 			);
 			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 			/************************************************* */
