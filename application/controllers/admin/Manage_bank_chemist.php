@@ -57,16 +57,17 @@ class Manage_bank_chemist extends CI_Controller {
 
 	public function edit($id)
 	{
-		error_reporting(0);
 		/******************session***********************/
 		$user_id = $this->session->userdata("user_id");
 		$user_type = $this->session->userdata("user_type");
 		/******************session***********************/
+
 		$Page_title = $this->Page_title;
 		$Page_name 	= $this->Page_name;
 		$Page_view 	= $this->Page_view;
 		$Page_menu 	= $this->Page_menu;
 		$Page_tbl 	= $this->Page_tbl;
+
 		$page_controllers 	= $this->page_controllers;
 		$this->Admin_Model->permissions_check_or_set($Page_title,$Page_name,$user_type);
 		$data['title1'] = $Page_title." || Edit";
@@ -76,112 +77,45 @@ class Manage_bank_chemist extends CI_Controller {
 		$this->breadcrumbs->push("Edit","admin/");
 		$this->breadcrumbs->push("$Page_title","admin/$page_controllers/");
 		$this->breadcrumbs->push("Edit","admin/$page_controllers/edit");
+		
 		$tbl = $Page_tbl;
-		$data['url_path'] = base_url()."uploads/$page_controllers/photo/";
-		$upload_path = "./uploads/$page_controllers/photo/";
-		$upload_thumbs_path = "./uploads/$page_controllers/photo/thumbs/";
-		$system_ip = $this->input->ip_address();
+
+		// $data['url_path'] = base_url()."uploads/$page_controllers/photo/";
+		// $upload_path = "./uploads/$page_controllers/photo/";
+		// $upload_thumbs_path = "./uploads/$page_controllers/photo/thumbs/";
+		// $system_ip = $this->input->ip_address();
+
 		extract($_POST);
 		if(isset($Submit))
 		{
 			$message_db = "";
-			$this->form_validation->set_rules('name','Name',"required");
-			if ($this->form_validation->run() == FALSE)
+			$result = "";
+			$dt = array(
+				'string_value'=>$string_value,
+				'chemist_id'=>$chemist_id,
+				'date' => date('Y-m-d'),
+				'time' => date('H:i:s'),
+				'timestamp' => time(),
+			);
+			$where = array('id'=>$id);
+			$result = $this->Scheme_Model->edit_fun($tbl,$dt,$where);		
+			if($result)
 			{
-				$message = "Check Validation.";
-				$this->session->set_flashdata("message_type","warning");
+				$message = "Edit Successfully.";
+				$this->session->set_flashdata("message_type","success");
+				redirect(current_url());
 			}
 			else
 			{
-				$time = time();
-				$date = date("Y-m-d",$time);
-				$where = array('id'=>$id);
-				if (!empty($_FILES["image"]["name"]))
-				{
-					$img = "image";			
-					$url_path = "./uploads/$page_controllers/photo/";
-					$query = $this->db->query("select * from $tbl where id='$id'");
-					$row11 = $query->row();
-					$filename = $url_path."p".$row11->$img;
-					unlink($filename);
-					
-					$this->Image_Model->uploadTo = $upload_path;
-					$image = $this->Image_Model->upload($_FILES['image']);
-					$image = str_replace($upload_path,"",$image);
-					
-					$this->Image_Model->newPath = $upload_resize;
-					$this->Image_Model->newWidth = 1024;
-					$this->Image_Model->newHeight = 250;
-					$this->Image_Model->resize();
-				}		
-				else
-				{
-					$image = $old_image;
-				}
-				if($password!="")
-				{
-					$password = md5($password);
-					$password = sha1($password);
-					$password = md5($password);
-				}
-				else
-				{
-					$password = $old_password;
-				}
-				$result = "";
-				$dt = array(
-				'user_id'=>$user_id,
-				'name'=>$name,
-				'email'=>$email,
-				'user_type'=>$user_type,
-				'password'=>$password,
-				'image'=>$image,
-				'status'=>$status,
-				'date'=>$date,
-				'time'=>$time,
-				'update_date'=>$date,
-				'update_time'=>$time,
-				'system_ip'=>$system_ip,
-				);
-				$result = $this->Scheme_Model->edit_fun($tbl,$dt,$where);
-				$change_text = $title." - ($change_text)";
-				if($result)
-				{
-					$message_db = "$change_text - Edit Successfully.";
-					$message = "Edit Successfully.";
-					$this->session->set_flashdata("message_type","success");
-				}
-				else
-				{
-					$message_db = "$change_text - Not Add.";
-					$message = "Not Add.";
-					$this->session->set_flashdata("message_type","error");
-				}
-			}
-			if($message_db!="")
-			{
-				$message = $Page_title." - ".$message;
-				$message_db = $Page_title." - ".$message_db;
-				$this->session->set_flashdata("message_footer","yes");
-				$this->session->set_flashdata("full_message",$message);
-				$this->Admin_Model->Add_Activity_log($message_db);
-				if($result)
-				{
-					redirect(current_url());
-					//redirect(base_url()."admin/$page_controllers/view");
-				}
+				$message = "Not Add.";
+				$this->session->set_flashdata("message_type","error");
 			}
 		}
-		if($user_type=="Super_Admin")
-		{
-			$query = $this->db->query("select * from $tbl where id='$id' order by id desc");
-			$data["result"] = $query->result();
-		}
-		else
-		{
-			$query = $this->db->query("select * from $tbl where user_type!='Super_Admin' and id='$id' order by id desc");
-			$data["result"] = $query->result();
-		}
+
+		$query = $this->BankModel->select_query("select * from $tbl where id='$id'");
+  		$data["result"] = $query->result();
+		$data["id"] = $id;
+
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/edit",$data);
 		$this->load->view("admin/header_footer/footer",$data);

@@ -19,7 +19,7 @@
                         </label>
                     </div>
                     <div class="col-sm-12">
-						<input type="text" class="form-control" value="<?php echo $row->string_value;?>" name="string_value">
+						<input type="text" class="form-control" value="<?php echo $row->string_value;?>" name="string_value" required>
                     </div>
                 </div>
 
@@ -30,7 +30,7 @@
                         </label>
                     </div>
                     <div class="col-sm-12">
-                        <input type="text" class="form-control" value="<?php echo $row->chemist_id;?>" name="chemist_id">
+                        <input type="text" class="form-control" value="<?php echo $row->chemist_id;?>" name="chemist_id" required>
                     </div>
                 </div>
             </div>
