@@ -161,6 +161,9 @@ class Manage_bank_chemist extends CI_Controller {
 			$chemist_id = $row->chemist_id;
 			
 			$time = $row->timestamp;
+			if(empty($time)){
+				$time = time();
+			}
 			$datetime = date("d-M-y @ H:i:s", $time);
 
 			$dt = array(
