@@ -167,9 +167,9 @@
 					if(empty($row_from_text_find)){
 						$row_from_text_find = "N/a";
 					}
+
 					/********************************************** */
-					$chemist = $entry->find_chemist;
-					$chemist_array = explode("||", $chemist);
+					$chemist_array = explode("||", $row_from_text_find_chemist);
 					$chemist_array = array_unique($chemist_array);
 					
 					$row_chemist_id = "";
