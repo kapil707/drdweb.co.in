@@ -246,15 +246,15 @@
 					// }
 
 					if(empty($row_from_text_find_chemist)){
-						$tr_style = "background-color: rgb(255 130 130);";
+						$tr_style = "background-color: #ff9494;";
 					}
 
 					if(!empty($row_from_text_find_chemist)){
-						$tr_style = "background-color: #f8ac59;";
+						$tr_style = "background-color: #f3cb9f;";
 					}
 
 					if(!empty($row_whatsapp_chemist)){
-						$tr_style = "background-color: khaki;";
+						$tr_style = "background-color: #f0e68c";
 					}
 
 					if(!empty($row_invoice_chemist)){
