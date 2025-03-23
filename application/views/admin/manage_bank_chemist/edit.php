@@ -15,13 +15,27 @@
            		<div class="col-sm-4">
 					<div class="col-sm-12">
                         <label class="control-label" for="form-field-1">
-                            New Password
+                            String Value
                         </label>
                     </div>
                     <div class="col-sm-12">
-						<input type="text" class="form-control" value="" name="new_password">
+						<input type="text" class="form-control" value="<?php echo $row->string_value;?>" name="string_value">
                     </div>
                 </div>
+
+                <div class="col-sm-4">
+					<div class="col-sm-12">
+                        <label class="control-label" for="form-field-1">
+                            Chemist Id
+                        </label>
+                    </div>
+                    <div class="col-sm-12">
+                        <input type="text" class="form-control" value="<?php echo $row->chemist_id;?>" name="chemist_id">
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="form-group" id="data_5">
 				<div class="col-sm-4">
                     <div class="col-sm-12">
                         <label class="control-label" for="form-field-1">
@@ -44,165 +58,7 @@
                         </span>
                     </div>
                 </div>
-				<div class="col-sm-4">
-                    <div class="col-sm-12">
-                        <label class="control-label" for="form-field-1">
-                            Whatsapp Message
-                        </label>
-                    </div>
-                    <div class="col-sm-12">
-                        <select name="whatsapp_message" id="whatsapp_message" data-placeholder="Select Whatsapp Message" class="chosen-select">
-							<option value="1" <?php if($row->whatsapp_message==1) { ?> selected <?php } ?>>
-								Active
-							</option>
-							<option value="0" <?php if($row->whatsapp_message==0) { ?> selected <?php } ?>>
-								Inactive
-							</option>
-						</select>
-                    </div>
-                    <div class="help-inline col-sm-12 has-error">
-                        <span class="help-block reset middle"> 
-                            <?= form_error('whatsapp_message'); ?>
-                        </span>
-                    </div>
-                </div>
-          	</div>
-			<div class="form-group">
-				<div class="col-sm-4">
-                    <div class="col-sm-12">
-                        <label class="control-label" for="form-field-1">
-                            Stock And Sales Analysis Daily Email
-                        </label>
-                    </div>
-                    <div class="col-sm-12">
-                        <select name="stock_and_sales_analysis_daily_email" id="stock_and_sales_analysis_daily_email" data-placeholder="Select Stock And Sales Analysis Daily Email" class="chosen-select">
-							<option value="1" <?php if($row->stock_and_sales_analysis_daily_email==1) { ?> selected <?php } ?>>
-								Active
-							</option>
-							<option value="0" <?php if($row->stock_and_sales_analysis_daily_email==0) { ?> selected <?php } ?>>
-								Inactive
-							</option>
-						</select>
-                    </div>
-                    <div class="help-inline col-sm-12 has-error">
-                        <span class="help-block reset middle">  
-                            <?= form_error('stock_and_sales_analysis_daily_email'); ?>
-                        </span>
-                    </div>
-                </div>
-				<div class="col-sm-4">
-                    <div class="col-sm-12">
-                        <label class="control-label" for="form-field-1">
-                            Item Wise Report Daily Email
-                        </label>
-                    </div>
-                    <div class="col-sm-12">
-                        <select name="item_wise_report_daily_email" id="item_wise_report_daily_email" data-placeholder="Select Item Wise Report Daily Email" class="chosen-select">
-							<option value="1" <?php if($row->item_wise_report_daily_email==1) { ?> selected <?php } ?>>
-								Active
-							</option>
-							<option value="0" <?php if($row->item_wise_report_daily_email==0) { ?> selected <?php } ?>>
-								Inactive
-							</option>
-						</select>
-                    </div>
-                    <div class="help-inline col-sm-12 has-error">
-                        <span class="help-block reset middle">  
-                            <?= form_error('item_wise_report_daily_email'); ?>
-                        </span>
-                    </div>
-                </div>				
-				<div class="col-sm-4">
-                    <div class="col-sm-12">
-                        <label class="control-label" for="form-field-1">
-                            Chemist Wise Report Daily Email
-                        </label>
-                    </div>
-                    <div class="col-sm-12">
-                        <select name="chemist_wise_report_daily_email" id="chemist_wise_report_daily_email" data-placeholder="Select Chemist Wise Report Daily Email" class="chosen-select">
-							<option value="1" <?php if($row->chemist_wise_report_daily_email==1) { ?> selected <?php } ?>>
-								Active
-							</option>
-							<option value="0" <?php if($row->chemist_wise_report_daily_email==0) { ?> selected <?php } ?>>
-								Inactive
-							</option>
-						</select>
-                    </div>
-                    <div class="help-inline col-sm-12 has-error">
-                        <span class="help-block reset middle">  
-                            <?= form_error('chemist_wise_report_daily_email'); ?>
-                        </span>
-                    </div>
-                </div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-4">
-                    <div class="col-sm-12">
-                        <label class="control-label" for="form-field-1">
-                            Stock And Sales Analysis Monthly Email
-                        </label>
-                    </div>
-                    <div class="col-sm-12">
-                        <select name="stock_and_sales_analysis_monthly_email" id="stock_and_sales_analysis_monthly_email" data-placeholder="Select Stock And Sales Analysis Monthly Email" class="chosen-select">
-							<option value="1" <?php if($row->stock_and_sales_analysis_monthly_email==1) { ?> selected <?php } ?>>
-								Active
-							</option>
-							<option value="0" <?php if($row->stock_and_sales_analysis_monthly_email==0) { ?> selected <?php } ?>>
-								Inactive
-							</option>
-						</select>
-                    </div>
-                    <div class="help-inline col-sm-12 has-error">
-                        <span class="help-block reset middle">  
-                            <?= form_error('stock_and_sales_analysis_monthly_email'); ?>
-                        </span>
-                    </div>
-                </div>
-				<div class="col-sm-4">
-                    <div class="col-sm-12">
-                        <label class="control-label" for="form-field-1">
-                            Item Wise Report Monthly Email
-                        </label>
-                    </div>
-                    <div class="col-sm-12">
-                        <select name="item_wise_report_monthly_email" id="item_wise_report_monthly_email" data-placeholder="Select Item Wise Report Monthly Email" class="chosen-select">
-							<option value="1" <?php if($row->item_wise_report_monthly_email==1) { ?> selected <?php } ?>>
-								Active
-							</option>
-							<option value="0" <?php if($row->item_wise_report_monthly_email==0) { ?> selected <?php } ?>>
-								Inactive
-							</option>
-						</select>
-                    </div>
-                    <div class="help-inline col-sm-12 has-error">
-                        <span class="help-block reset middle">  
-                            <?= form_error('item_wise_report_monthly_email'); ?>
-                        </span>
-                    </div>
-                </div>				
-				<div class="col-sm-4">
-                    <div class="col-sm-12">
-                        <label class="control-label" for="form-field-1">
-                            Chemist Wise Report Monthly Email
-                        </label>
-                    </div>
-                    <div class="col-sm-12">
-                        <select name="chemist_wise_report_monthly_email" id="chemist_wise_report_monthly_email" data-placeholder="Select Chemist Wise Report Monthly Email" class="chosen-select">
-							<option value="1" <?php if($row->chemist_wise_report_monthly_email==1) { ?> selected <?php } ?>>
-								Active
-							</option>
-							<option value="0" <?php if($row->chemist_wise_report_monthly_email==0) { ?> selected <?php } ?>>
-								Inactive
-							</option>
-						</select>
-                    </div>
-                    <div class="help-inline col-sm-12 has-error">
-                        <span class="help-block reset middle">  
-                            <?= form_error('chemist_wise_report_monthly_email'); ?>
-                        </span>
-                    </div>
-                </div>				
-			</div>
+			</div> -->
             <div class="space-4"></div>
             <br /><br />
             <div class="clearfix form-actions">
