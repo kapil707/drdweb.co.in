@@ -321,7 +321,7 @@
 									<div class="td_div">
 										<b>From :</b> <?= ($row_from_text); ?>
 
-										<input type="hidden" value="<?php echo $from_text ?>" class="text_from_text_<?= ($row_id); ?>">
+										<input type="text" value="<?php echo $row_from_text ?>" class="text_from_text_<?= ($row_id); ?>">
 										<input type="text" value="<?php echo $chemist; ?>" class="form-control myinput1 text_from_text_chemist_id_<?= ($row_id); ?> pg_text_box" style="display:none;">
 										<i class="fa fa-check add_from_text_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="add_from_text_chemist_id('<?= ($row_id); ?>')" style="display:none"></i>
 										<i class="fa fa-times cancel_from_text_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="cancel_from_text_chemist_id('<?= ($row_id); ?>')" style="display:none"></i>
