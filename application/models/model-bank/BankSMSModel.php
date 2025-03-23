@@ -78,7 +78,7 @@ class BankSMSModel extends CI_Model
 					'amount'=>$amount,
 					'date'=>$getdate,
 					'time'=>$gettime,
-					'received_from'=>$from_text,
+					'from_text'=>$from_text,
 					'upi_no'=>$upi_no,
 					'orderid'=>$orderid,
 					'statment_id'=>$statment_id,
