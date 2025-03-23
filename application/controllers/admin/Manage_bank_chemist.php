@@ -96,6 +96,7 @@ class Manage_bank_chemist extends CI_Controller {
 				'date' => date('Y-m-d'),
 				'time' => date('H:i:s'),
 				'timestamp' => time(),
+				'user_id'=>$user_id
 			);
 			$where = array('id'=>$id);
 			$result = $this->BankModel->edit_fun($tbl,$dt,$where);		
