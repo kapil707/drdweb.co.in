@@ -161,12 +161,10 @@
 					$row_from_text_find_chemist = $entry->from_text_find_chemist;
 					$row_chemist_final 			= $entry->chemist_final;
 
-					$from_value_find = $entry->from_value_find;
-					$from_value = $entry->from_value;
 					/********************************************** */
-					$from_value_find = preg_quote($from_value_find, '/');
-					$row_from_text_find = preg_replace('/(' . $from_value_find . ')/i', '<span style="background-color: yellow;">$1</span>', $from_value);
-					if(empty($from_value)){
+					$row_from_text_find_match = preg_quote($row_from_text_find_match, '/');
+					$row_from_text_find_match = preg_replace('/(' . $row_from_text_find_match . ')/i', '<span style="background-color: yellow;">$1</span>', $row_from_text_find);
+					if(empty($row_from_text_find)){
 						$row_from_text_find = "N/a";
 					}
 					/********************************************** */
