@@ -45,9 +45,9 @@ class BankSMSModel extends CI_Model
 
 			$pattern = '/received from (\S+)/';
 			if (preg_match($pattern, $message_body, $matches)) {
-				$received_from = $matches[1];
+				$from_text = $matches[1];
 			} else {
-				$received_from = "Received from information not found";
+				$from_text = "Received from information not found";
 			}
 
 			$pattern = '/UPI Ref No\. (\w+)/';
@@ -63,7 +63,7 @@ class BankSMSModel extends CI_Model
 			} else {
 				$orderid = "orderid not found";
 			}
-			echo "<br>".$received_from."<br>";
+			echo "<br>".$from_text."<br>";
 			$statment_id = $row->id;
 			
 			$row_new = $this->BankModel->select_query("select id from tbl_bank_processing where upi_no='$upi_no'");
@@ -72,13 +72,13 @@ class BankSMSModel extends CI_Model
 			$amount = str_replace([",", ".00"], "", $amount);
 			$amount = trim($amount);
 			
-			if(empty($row_new->id) && $received_from!="Remitter" && $received_from != "Received from information not found"){
+			if(empty($row_new->id) && $from_text!="Remitter" && $from_text != "Received from information not found"){
 				$dt = array(
 					'status'=>1,
 					'amount'=>$amount,
 					'date'=>$getdate,
 					'time'=>$gettime,
-					'received_from'=>$received_from,
+					'received_from'=>$from_text,
 					'upi_no'=>$upi_no,
 					'orderid'=>$orderid,
 					'statment_id'=>$statment_id,
