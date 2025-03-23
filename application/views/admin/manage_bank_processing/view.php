@@ -317,7 +317,7 @@
 									<div class="td_div">
 										<b>From :</b> <?= ($row_from_text); ?>
 
-										<input type="text" value="<?php echo $row_from_text ?>" class="text_from_text_<?= ($row_id); ?>">
+										<input type="hidden" value="<?php echo $row_from_text ?>" class="text_from_text_<?= ($row_id); ?>">
 										
 										<input type="text" value="<?php echo $row_from_text_find_chemist; ?>" class="form-control myinput1 text_from_text_chemist_id_<?= ($row_id); ?> pg_text_box" style="display:none;">
 
