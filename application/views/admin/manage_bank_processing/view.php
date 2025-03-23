@@ -200,9 +200,7 @@
 					$row_whatsapp_text = $entry->whatsapp_text;
 					$row_whatsapp_remanded = $entry->whatsapp_remanded;
 					/********************************************** */
-
-					/********************************************** */
-					$final_chemist = $entry->final_chemist;
+					
 					/********************************************** */	
 					$textbox_final_chemist = "";
 					$row_find_by = "";
@@ -366,7 +364,7 @@
 										<input type="text" value="<?php echo $textbox_final_chemist ?>" class="form-control text_final_chemist_id_<?= ($row_id); ?> pg_text_box" style="<?php if(!empty($entry->final_chemist)) { ?>display:none;<?php } ?>float: left !important;" placeholder="Chemist Id">
 										<i class="fa fa-check add_final_chemist_<?= ($row_id); ?>" aria-hidden="true" onclick="add_final_chemist('<?= ($row_id); ?>')" style="<?php if(!empty($entry->final_chemist)) { ?>display:none;<?php } ?> float: left;font-size: 20px;"></i>
 
-										<span class="span_final_chemist_<?= ($row_id); ?>" <?php if(empty($entry->final_chemist)) { ?>style="display:none" <?php } ?>><?php echo $final_chemist ?></span>
+										<span class="span_final_chemist_<?= ($row_id); ?>" <?php if(empty($entry->final_chemist)) { ?>style="display:none" <?php } ?>><?php echo $row_chemist_final ?></span>
 										<i class="fa fa-pencil edit_final_chemist_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_final_chemist('<?= ($row_id); ?>')" <?php if(empty($entry->final_chemist)) { ?>style="display:none" <?php } ?>></i>
 									</div>
 								</div>
