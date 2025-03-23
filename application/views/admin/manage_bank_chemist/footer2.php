@@ -29,7 +29,7 @@ $(document).ready(function(){
 				}
 			},*/
 			{ data: 'datetime', title: 'DateTime' },
-			/*{
+			{
 				data: null,
 				title: 'Action',
 				orderable: false,
@@ -37,7 +37,7 @@ $(document).ready(function(){
 					return `
 						<a href="<?php echo base_url(); ?>admin/<?php echo $Page_name ?>/edit/${row.id}" class="btn-white btn btn-xs">Edit</a><a href="javascript:void(0)" onclick="delete_rec('${row.id}')" class="btn-white btn btn-xs">Delete</a>`;
 				}
-			}*/
+			}
 		],
 		pageLength: 25,
 		responsive: true,
