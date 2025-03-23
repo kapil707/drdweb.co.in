@@ -250,7 +250,7 @@
 					}
 
 					if(!empty($row_from_text_find_chemist)){
-						$tr_style = "background-color: #f3cb9f;";
+						$tr_style = "background-color: #fcf7ca;";
 					}
 
 					if(!empty($row_whatsapp_chemist)){
@@ -258,7 +258,7 @@
 					}
 
 					if(!empty($row_invoice_chemist)){
-						$tr_style = "background-color: #59eaf8;";
+						$tr_style = "background-color: #43ffff;";
 					}
 					
 					
