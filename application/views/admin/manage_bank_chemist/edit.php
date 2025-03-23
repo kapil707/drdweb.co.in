@@ -10,7 +10,7 @@
 		<?php
         foreach ($result as $row)
         { ?>
-        	<input type="hidden" name="old_password" value="<?= $row->password; ?>" />
+        	<!-- <input type="hidden" name="old_password" value="<?= $row->password; ?>" /> -->
             <div class="form-group" id="data_5">
            		<div class="col-sm-4">
 					<div class="col-sm-12">
