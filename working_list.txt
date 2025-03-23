@@ -86,3 +86,12 @@ SELECT p.upi_no, wm.amount, wm.id AS whatsapp_id, wm.vision_text, (SELECT body F
 
 // check karo -- 620149091734
 
+received_from = from_text
+
+from_value = from_text_find
+
+from_value_find = from_text_find_match
+
+find_chemist = from_text_find_chemist
+
+final_chemist = chemist_final
