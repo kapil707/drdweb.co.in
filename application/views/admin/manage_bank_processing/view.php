@@ -161,7 +161,6 @@
 					$row_from_text_find_chemist = $entry->from_text_find_chemist;
 					$row_chemist_final 			= $entry->chemist_final;
 
-					$from_text = $entry->received_from;
 					$from_value_find = $entry->from_value_find;
 					$from_value = $entry->from_value;
 					/********************************************** */
