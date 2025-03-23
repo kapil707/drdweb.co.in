@@ -169,8 +169,8 @@ class BankProcessingModel extends CI_Model
 			$where = array('id'=>$id);
 			$dt = array(
 				'process_status'=>1,				
-				'from_value'=>$process_value,
-				'from_value_find'=>$process_name,
+				'from_text_find'=>$process_value,
+				'from_text_find_match'=>$process_name,
 				'find_chemist'=>$find_chemist_id,
 			);
 			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
