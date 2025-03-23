@@ -263,9 +263,8 @@ class BankStatmentModel extends CI_Model
 
 			$statment_id = $row->id;
 			if(!empty($from_text)){
-				$row_new = $this->BankModel->select_query("select id,status,received_from from tbl_bank_processing where upi_no='$upi_no'");
-				$row_new = $row_new->row();
-				
+				$row_new = $this->BankModel->select_query("select id,status,from_text from tbl_bank_processing where upi_no='$upi_no'");
+				$row_new = $row_new->row();				
 				if(empty($row_new->id)){
 					$dt = array(
 						'status'=>2,
