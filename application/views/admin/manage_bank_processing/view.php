@@ -239,19 +239,6 @@
 						$textbox_final_chemist = $row_chemist_id;
 					}
 					
-					if(empty($row_chemist_id)){
-						$row_chemist_id = "N/a";
-					}
-					if(empty($row_invoice_chemist)){
-						$row_invoice_chemist = "N/a";
-					}
-					if(empty($row_whatsapp_chemist)){
-						$row_whatsapp_chemist = "N/a";
-					}
-					if(empty($row_whatsapp)){
-						$row_whatsapp = "N/a";
-					}
-					
 					//new25
 					// jab processing ho jaya or chemist id na milay to
 					// if($entry->process_status==1 && empty($entry->find_chemist)){
@@ -264,6 +251,23 @@
 
 					if(!empty($row_from_text_find_chemist)){
 						$tr_style = "background-color: khaki;";
+					}
+
+					if(!empty($row_whatsapp_chemist)){
+						$tr_style = "background-color: #59eaf8;";
+					}
+					
+					if(empty($row_chemist_id)){
+						$row_chemist_id = "N/a";
+					}
+					if(empty($row_invoice_chemist)){
+						$row_invoice_chemist = "N/a";
+					}
+					if(empty($row_whatsapp_chemist)){
+						$row_whatsapp_chemist = "N/a";
+					}
+					if(empty($row_whatsapp)){
+						$row_whatsapp = "N/a";
 					}
 					?>
 					<tr class="tr_css_<?php echo $row_id; ?>" style="<?php echo $tr_style ?>">
