@@ -160,7 +160,7 @@ class Manage_bank_chemist extends CI_Controller {
 			$string_value = $row->string_value;
 			$chemist_id = $row->chemist_id;
 			
-			$time = $row->time;
+			$time = $row->timestamp;
 			$datetime = date("d-M-y @ H:i:s", $time);
 
 			$dt = array(
