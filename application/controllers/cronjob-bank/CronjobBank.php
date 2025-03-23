@@ -23,11 +23,6 @@ class CronjobBank extends CI_Controller
 		$this->BankWhatsAppModel->whatsapp_find_upi_amount();
 	}
 
-	public function whatsapp_insert_in_process(){
-		echo "whatsapp_insert_in_process";
-		$this->BankWhatsAppModel->whatsapp_insert_in_process();
-	}
-
 	public function whatsapp_update_upi(){
 		echo "whatsapp_update_upi";
 		$this->BankWhatsAppModel->whatsapp_update_upi();
@@ -67,6 +62,8 @@ class CronjobBank extends CI_Controller
 				$check_processing = $this->BankModel->select_row("tbl_bank_processing", array('process_status'=>0));
 				if (!empty($check_processing)) {
 					$this->BankProcessingModel->get_processing();
+				}else{
+					$this->BankWhatsAppModel->whatsapp_insert_in_process();
 				}
 			}
 		}
