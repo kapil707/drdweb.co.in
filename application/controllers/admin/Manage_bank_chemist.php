@@ -98,7 +98,7 @@ class Manage_bank_chemist extends CI_Controller {
 				'timestamp' => time(),
 			);
 			$where = array('id'=>$id);
-			$result = $this->Scheme_Model->edit_fun($tbl,$dt,$where);		
+			$result = $this->BankModel->edit_fun($tbl,$dt,$where);		
 			if($result)
 			{
 				$message = "Edit Successfully.";
