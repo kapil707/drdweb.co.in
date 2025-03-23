@@ -126,20 +126,19 @@ class Manage_bank_chemist extends CI_Controller {
 		$id = $_POST["id"];
 		$Page_title = $this->Page_title;
 		$Page_tbl = $this->Page_tbl;
-		$query = $this->db->query("select * from $Page_tbl where id='$id'");
-		$row1 = $query->row();
-		$name = ucfirst($row1->name);
-		$result = $this->db->query("delete from $Page_tbl where id='$id'");
+		
+		$where = array('id'=>$id);
+		$result = $this->BankModel->delete_fun("$Page_tbl",$where);
 		if($result)
 		{
-			$message = "$name Delete Successfully.";
+			$message = "Delete Successfully.";
 		}
 		else
 		{
-			$message = "$name Not Delete.";
+			$message = "Not Delete.";
 		}
-		$message = $Page_title." - ".$message;
-		$this->Admin_Model->Add_Activity_log($message);
+		// $message = $Page_title." - ".$message;
+		// $this->Admin_Model->Add_Activity_log($message);
 		echo "ok";
 	}
 	
