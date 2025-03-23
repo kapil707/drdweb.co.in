@@ -251,7 +251,6 @@
 
 					if(!empty($row_from_text_find_chemist)){
 						$tr_style = "background-color: #f8ac59;";
-						$tr_style = "";
 					}
 
 					if(!empty($row_whatsapp_chemist)){
