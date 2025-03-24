@@ -46,7 +46,7 @@ class CronjobBank extends CI_Controller
 			$find_chemist_id.= ucfirst($myrow)." || ";
 		}
 		$find_chemist_id = substr($find_chemist_id, 0, -4);
-		echo $chemist_id;
+		echo $find_chemist_id;
 		/*$text = "+91-9899762072 507920298106 FROM MEHAK MEDICOS AND DEPARTMENTAL STORE 9300966180 CITI0000 9052 TRANS FER TO DR KARB0000547";
 		preg_match("/FROM\s+(.+?)\s+CITI/", $text, $matches);
 		if (!empty($matches) && empty($received_from)){
