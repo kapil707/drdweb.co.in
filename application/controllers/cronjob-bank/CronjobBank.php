@@ -37,7 +37,16 @@ class CronjobBank extends CI_Controller
 		
 		$find_chemist_id = "H178 || h178 ||";
 		$array = explode("||", $find_chemist_id);
+		// Step 2: Trim spaces from each value
+		$array = array_map('trim', $array);
+		// Step 3: Convert to lowercase (optional if case-insensitive check needed)
+		$array = array_map('strtolower', $array);
+		// Step 4: Remove duplicate values
+		$array = array_unique($array);
 		print_r($array);
+		// foreach($array as $myrow){
+
+		// }
 		/*$text = "+91-9899762072 507920298106 FROM MEHAK MEDICOS AND DEPARTMENTAL STORE 9300966180 CITI0000 9052 TRANS FER TO DR KARB0000547";
 		preg_match("/FROM\s+(.+?)\s+CITI/", $text, $matches);
 		if (!empty($matches) && empty($received_from)){
