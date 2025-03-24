@@ -164,6 +164,7 @@ class BankProcessingModel extends CI_Model
 			}
 			echo $find_by;
 			if(!empty($find_chemist_id)){
+				$find_chemist_id = str_replace("/", " || ", $find_chemist_id);
 				$array = explode("||", $find_chemist_id);
 				$array = array_map('trim', $array);
 				$array = array_map('strtolower', $array);
