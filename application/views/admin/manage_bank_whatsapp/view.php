@@ -145,9 +145,9 @@
 
 							$timestamp = $message->timestamp ? $message->timestamp : "timestamp not found";
 							
-							//$final_chemist = $message->final_chemist ? $message->final_chemist : "N/a";
-							$final_chemist = $message->final_chemist ? $message->final_chemist : $message->set_chemist;
-							$final_chemist = $final_chemist ? $final_chemist : "N/a";
+							//$chemist_final = $message->chemist_final ? $message->chemist_final : "N/a";
+							$chemist_final = $message->chemist_final ? $message->chemist_final : $message->set_chemist;
+							$chemist_final = $chemist_final ? $chemist_final : "N/a";
 
 							$extracted_text = str_replace("\n", "<br>", $extracted_text);
 							$vision_text = str_replace("\n", "<br>", $vision_text);
@@ -175,21 +175,21 @@
 									<?php } ?>
 								</td>
 								<td width="160">
-								<?php if(!empty($message->final_chemist)){ ?>
+								<?php if(!empty($message->chemist_final)){ ?>
 								<span style="float: left;">Final Chemist : </span>
 								<?php } ?>
 								<?php if(!empty($message->set_chemist)){ ?>
 								<span style="float: left;">Set Chemist : </span>
 								<?php } ?>
 								<span class="span_chemist_<?= ($row_id); ?>" style="float: left;">
-									<?php echo $final_chemist; ?>
+									<?php echo $chemist_final; ?>
 								</span>
 								<?php
-									if(empty($message->final_chemist)){
+									if(empty($message->chemist_final)){
 										?>
 										<i class="fa fa-pencil edit_chemist_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_chemist('<?= ($row_id); ?>')" style="float: left;font-size: 13px;margin-left:10px;"></i>
 										
-										<input type="text" value="<?php echo $final_chemist; ?>" class="text_chemist_<?= ($row_id); ?> pg_text_box" style="float: left !important;display:none;" placeholder="chemist">
+										<input type="text" value="<?php echo $chemist_final; ?>" class="text_chemist_<?= ($row_id); ?> pg_text_box" style="float: left !important;display:none;" placeholder="chemist">
 									
 										<i class="fa fa-check add_chemist_<?= ($row_id); ?>" aria-hidden="true" onclick="add_chemist('<?= ($row_id); ?>')" style="float: left;font-size: 18px;display:none;"></i>
 										<?php
