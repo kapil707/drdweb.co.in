@@ -11,29 +11,29 @@ class BankInvoiceModel extends CI_Model
 	public function get_invoice_find_user(){
 		$working = 0;
 		if($working == 0){
-			$result = $this->BankModel->select_query("select id,find_chemist,amount from tbl_bank_processing where invoice_id='' and find_chemist!='' ORDER BY RAND() limit 100");
+			$result = $this->BankModel->select_query("select id,from_text_find_chemist,amount from tbl_bank_processing where invoice_id='' and from_text_find_chemist!='' ORDER BY RAND() limit 100");
 			$result = $result->result();
 			foreach($result as $row){
 				$id 		= $row->id;
-				$chemist_id = $row->find_chemist;
+				$chemist_id = $row->from_text_find_chemist;
 				$amount 	= $row->amount;
 				$working = $this->invoice_find($id,$chemist_id,$amount);
 			}
 		}
 
 		if($working == 0){
-			$result = $this->BankModel->select_query("select id,find_chemist,amount from tbl_bank_processing where invoice_id='' and find_chemist!='' ORDER BY RAND() limit 100");
+			$result = $this->BankModel->select_query("select id,from_text_find_chemist,amount from tbl_bank_processing where invoice_id='' and from_text_find_chemist!='' ORDER BY RAND() limit 100");
 			$result = $result->result();
 			foreach($result as $row){
 				$id 		= $row->id;
-				$chemist_id = $row->find_chemist;
+				$chemist_id = $row->from_text_find_chemist;
 				$amount 	= $row->amount;
 				$working = $this->invoice_find_in_total($id,$chemist_id,$amount);
 			}
 		}
 
 		if($working == 0){
-			$result = $this->BankModel->select_query("select id,whatsapp_remanded,amount from tbl_bank_processing where invoice_id='' and find_chemist!='' and whatsapp_remanded!='' ORDER BY RAND() limit 100");
+			$result = $this->BankModel->select_query("select id,whatsapp_remanded,amount from tbl_bank_processing where invoice_id='' and from_text_find_chemist!='' and whatsapp_remanded!='' ORDER BY RAND() limit 100");
 			$result = $result->result();
 			foreach($result as $row){
 				$id 		= $row->id;
