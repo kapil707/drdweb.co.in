@@ -118,7 +118,7 @@ class BankWhatsAppModel extends CI_Model
 		$end_date = date('Y-m-d');
 
 		$start_date = "2025-03-10";
-		$end_date   = "2025-03-20";
+		$end_date   = "2025-03-25";
 
 		$result = $this->BankModel->select_query("SELECT id,vision_text FROM `tbl_whatsapp_message` where status='0' and date BETWEEN '$start_date' and '$end_date' limit 100");
 		$result = $result->result();
