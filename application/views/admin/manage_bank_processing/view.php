@@ -68,10 +68,21 @@
 .text_find_match {
 	padding: 2px;
 	color: white;
-	background-color: #9f0032;
+	background-color: #0c9f00;
 	border-radius: 5px;
 }
 .duble_tick{
+	width: 16px;
+    fill: #0c9f00;
+    margin-bottom: -6px;
+}
+.text_find_match_not {
+	padding: 2px;
+	color: white;
+	background-color: #9f0032;
+	border-radius: 5px;
+}
+.duble_tick_not{
 	width: 16px;
     fill: #9f0032;
     margin-bottom: -6px;
@@ -371,7 +382,7 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 								<?php if($row_whatsapp_text!="") { ?>
 								<div class="col-sm-12">
 									<b onclick="get_whats_message('<?= ($row_id); ?>','<?= ($row_whatsapp_id); ?>','<?= $row_upi_no; ?>')" data-toggle="modal" data-target="#myModal">
-									<span class='<?php if((strtolower($row_whatsapp_chemist)==strtolower($row_chemist_id)) && $row_whatsapp_chemist!="N/a"){ echo "text_find_match"; } ?>'>WhatsApp Text :</span></b>
+									<span class='<?php if((strtolower($row_whatsapp_chemist)==strtolower($row_chemist_id)) && $row_whatsapp_chemist!="N/a"){ echo "text_find_match_not"; } ?>'>WhatsApp Text :</span></b>
 									<?= ($row_whatsapp_text); ?>
 								</div>
 								<?php } ?>
