@@ -301,6 +301,9 @@ class Manage_bank_processing extends CI_Controller {
 			// agar kisi from user ko chmist say add kartay ha to jitnay be from user ha sab ka status 0 ho jaya or wo re-process hota ha 
 			$where = array(				
 				'from_text'=>$from_text,
+			);
+			$dt = array(
+				'process_status' => '0',
 				'whatsapp_id'=>0,
 				'whatsapp_chemist'=>'',
 				'whatsapp_remanded'=>'',
@@ -308,9 +311,6 @@ class Manage_bank_processing extends CI_Controller {
 				'invoice_chemist'=>'',
 				'invoice_remanded'=>'',
 				'invoice_text'=>'',
-			);
-			$dt = array(
-				'process_status' => '0',
 			);
 			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 		}
