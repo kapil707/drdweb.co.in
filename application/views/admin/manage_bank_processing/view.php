@@ -167,28 +167,7 @@
 					if(empty($row_from_text)){
 						$row_from_text_find_match = "N/a";
 					}
-
-					/********************************************** */
-					$chemist_array = explode("||", $row_from_text_find_chemist);
-					$chemist_array = array_unique($chemist_array);
 					
-					$row_chemist_id = "";
-					if(!empty($chemist_array)){
-						foreach($chemist_array as $rows){
-							$row_chemist_id.= $rows;
-							if(!empty($chemist_fafa[$rows])){
-								$row_chemist_id.= $chemist_fafa[$rows];
-							}
-							$row_chemist_id.= " || ";
-						}
-					}
-					if(!empty($row_chemist_id)){
-						$row_chemist_id = substr($row_chemist_id, 0, -4);
-					}
-					if(empty($chemist_array[0])){
-						$row_chemist_id = "";
-					}
-
 					/********************************************** */
 					$row_invoice_chemist = $entry->invoice_chemist;
 					$row_invoice_text = $entry->invoice_text;
@@ -220,16 +199,6 @@
 					if(!empty($row_find_by)){
 						$row_find_by = substr($row_find_by, 0, -1);
 					}
-					// if(empty($row_chemist_id) && empty($row_invoice_chemist) && empty($row_whatsapp_chemist)){
-					// 	$row_find_by = "N/a";
-					// 	$tr_style = "background-color: #f9f9f9";
-					// }
-					// if($row_find_i==1){
-					// 	$tr_style = "background-color: khaki";
-					// }
-					// if($row_find_i==2){
-					// 	$tr_style = "background-color: #99ff99";
-					// }
 					/********************************************** */
 					$row_whatsapp_chemist1 = 
 					$row_whatsapp_chemist1 = str_replace(' ', '', $row_whatsapp_chemist);
@@ -238,12 +207,6 @@
 						$tr_style = "background-color: #1ab394;";
 						$textbox_final_chemist = $row_chemist_id;
 					}
-					
-					//new25
-					// jab processing ho jaya or chemist id na milay to
-					// if($entry->process_status==1 && empty($entry->find_chemist)){
-					// 	$tr_style = "background-color:rgb(255 130 130);";
-					// }
 
 					if(empty($row_from_text_find_chemist)){
 						$tr_style = "background-color: #ff9494;";
