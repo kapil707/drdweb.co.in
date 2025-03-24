@@ -163,7 +163,7 @@
 
 					/********************************************** */
 					$row_from_text_find_match = preg_quote($row_from_text_find_match, '/');
-					$row_from_text_find_match = preg_replace('/(' . $row_from_text_find_match . ')/i', '<span style="background-color: yellow;">$1</span>', $row_from_text);
+					$row_from_text_find_match = preg_replace('/(' . $row_from_text_find_match . ')/i', '<span style="background-color: blue;">$1</span>', $row_from_text);
 					if(empty($row_from_text)){
 						$row_from_text_find_match = "N/a";
 					}
