@@ -35,16 +35,17 @@ class CronjobBank extends CI_Controller
 
 	public function testing(){
 		
-		$find_chemist_id = "S401 || S139";
+		$find_chemist_id = "G196/a633 || A633";
+		$find_chemist_id = str_replace("/", " || ", $find_chemist_id);
 		$array = explode("||", $find_chemist_id);
 		$array = array_map('trim', $array);
 		$array = array_map('strtolower', $array);
 		$array = array_unique($array);
-		$chemist_id = "";
+		$find_chemist_id = "";
 		foreach($array as $myrow){
-			$chemist_id.= ucfirst($myrow)." || ";
+			$find_chemist_id.= ucfirst($myrow)." || ";
 		}
-		$chemist_id = substr($chemist_id, 0, -4);
+		$find_chemist_id = substr($find_chemist_id, 0, -4);
 		echo $chemist_id;
 		/*$text = "+91-9899762072 507920298106 FROM MEHAK MEDICOS AND DEPARTMENTAL STORE 9300966180 CITI0000 9052 TRANS FER TO DR KARB0000547";
 		preg_match("/FROM\s+(.+?)\s+CITI/", $text, $matches);
