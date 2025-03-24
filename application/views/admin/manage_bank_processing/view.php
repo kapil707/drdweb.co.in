@@ -329,7 +329,7 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" sty
 										<b onclick="get_whats_message('<?= ($row_id); ?>','<?= ($row_whatsapp_id); ?>','<?= $row_upi_no; ?>')" data-toggle="modal" data-target="#myModal">WhatsApp : </b>
 										<?= $row_whatsapp_chemist; ?>
 										<?php
-										if(strtolower($row_whatsapp_chemist)==strtolower($row_chemist_id)){
+										if((strtolower($row_whatsapp_chemist)==strtolower($row_chemist_id)) && $row_whatsapp_chemist!="N/a"){
 											echo $duble_tick;
 										}
 										?>
