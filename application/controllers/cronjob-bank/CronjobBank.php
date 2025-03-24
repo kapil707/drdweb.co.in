@@ -34,14 +34,18 @@ class CronjobBank extends CI_Controller
 	}
 
 	public function testing(){
-		$text = "+91-9899762072 507920298106 FROM MEHAK MEDICOS AND DEPARTMENTAL STORE 9300966180 CITI0000 9052 TRANS FER TO DR KARB0000547";
+		
+		$find_chemist_id = "H178 || h178 ||";
+		$array = explode("||", $find_chemist_id);
+		print_r($array);
+		/*$text = "+91-9899762072 507920298106 FROM MEHAK MEDICOS AND DEPARTMENTAL STORE 9300966180 CITI0000 9052 TRANS FER TO DR KARB0000547";
 		preg_match("/FROM\s+(.+?)\s+CITI/", $text, $matches);
 		if (!empty($matches) && empty($received_from)){
 			echo $received_from = trim($matches[1]);
 			//$from_value = "<b>find2: ".$received_from."</b>"; UPI CREDIT REFERENCE 956425755787 FROM APMAURYA6@I BL ARJUN PRASAD MAURYA PAYMENT FROM PHONEPE
 			$statment_type = 2;
 			echo "<br>2</br>";
-		}
+		}*/
 	}
 
 	public function bank_main(){

@@ -164,6 +164,8 @@ class BankProcessingModel extends CI_Model
 			}
 			echo $find_by;
 
+			
+
 			/************************************************* */
 			$id = $row->id;
 			$where = array('id'=>$id);
