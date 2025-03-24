@@ -154,13 +154,12 @@
 					$row_orderid = "<b>Orderid : </b>".$entry->orderid;
 					/****************************************************** */
 					$row_amount = "<b>Amount : </b>Rs.".$entry->amount."/-";
-					/****************************************************** */
+					/************************************************ */
 					$row_from_text 				= $entry->from_text;
 					$row_from_text_find 		= $entry->from_text_find;
 					$row_from_text_find_match 	= $entry->from_text_find_match;
 					$row_from_text_find_chemist = $entry->from_text_find_chemist;
 					$row_chemist_final 			= $entry->chemist_final;
-
 					/********************************************** */
 					$row_from_text_find_match = preg_quote($row_from_text_find_match, '/');
 					$row_from_text_find_match = preg_replace('/(' . $row_from_text_find_match . ')/i', '<span style="background-color: blue;">$1</span>', $row_from_text);
@@ -293,7 +292,7 @@
 										<i class="fa fa-pencil edit_from_text_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_from_text_chemist_id('<?= ($row_id); ?>')"></i>
 									</div>
 									<div class="td_div">
-										<b>Find  : </b> <?= ($row_from_text_find); ?>
+										<b>Find  : </b> <?= ($row_from_text_find_match); ?>
 									</div>
 									<div class="td_div">
 										<b>Find by : </b> 
