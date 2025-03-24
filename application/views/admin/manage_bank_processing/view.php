@@ -72,6 +72,9 @@
 	border-radius: 5px;
 }
 </style>
+<?php 
+$duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M342.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 178.7l-57.4-57.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l80 80c12.5 12.5 32.8 12.5 45.3 0l160-160zm96 128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 402.7 54.6 297.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l256-256z"/></svg>';
+?>
 <div class="row">
     <div class="col-xs-12" style="margin-bottom:5px;">
     	<!-- <a href="add">
@@ -327,7 +330,7 @@
 										<?= $row_whatsapp_chemist; ?>
 										<?php
 										if(strtolower($row_whatsapp_chemist)==strtolower($row_chemist_id)){
-											echo '<i class="fa-solid fa-check-double"></i>';
+											echo $duble_tick;
 										}
 										?>
 										<?php if($row_whatsapp_chemist=="N/a" &&$row_whatsapp_remanded) { 
