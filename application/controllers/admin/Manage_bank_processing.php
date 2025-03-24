@@ -303,7 +303,7 @@ class Manage_bank_processing extends CI_Controller {
 				'from_text'=>$from_text,
 			);
 			$dt = array(
-				'status' => '0',
+				'process_status' => '0',
 			);
 			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 		}
