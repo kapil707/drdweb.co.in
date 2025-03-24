@@ -68,7 +68,7 @@
 .text_find_match {
 	padding: 2px;
 	color: white;
-	background-color: #59b8f8;
+	background-color: #9f0032;
 	border-radius: 5px;
 }
 </style>
@@ -325,7 +325,11 @@
 									<div class="td_div">
 										<b onclick="get_whats_message('<?= ($row_id); ?>','<?= ($row_whatsapp_id); ?>','<?= $row_upi_no; ?>')" data-toggle="modal" data-target="#myModal">WhatsApp : </b>
 										<?= $row_whatsapp_chemist; ?>
-
+										<?php
+										if(strtolower($row_whatsapp_chemist)==strtolower($row_chemist_id)){
+											echo '<i class="fa-solid fa-check-double"></i>';
+										}
+										?>
 										<?php if($row_whatsapp_chemist=="N/a" &&$row_whatsapp_remanded) { 
 											echo " || <b>Remanded : $row_whatsapp_remanded </b>";
 										} ?>
