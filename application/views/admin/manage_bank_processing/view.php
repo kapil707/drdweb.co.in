@@ -65,6 +65,12 @@
 	overflow: auto;
     overflow-x: auto;
 }
+.text_find_match {
+	padding: 2px;
+	color: white;
+	background-color: #59b8f8;
+	border-radius: 5px;
+}
 </style>
 <div class="row">
     <div class="col-xs-12" style="margin-bottom:5px;">
@@ -162,7 +168,7 @@
 					$row_chemist_final 			= $entry->chemist_final;
 					/********************************************** */
 					$row_from_text_find_match = preg_quote($row_from_text_find_match, '/');
-					$row_from_text_find_match = preg_replace('/(' . $row_from_text_find_match . ')/i', '<span style="padding: 2px;   color: white;background-color: #59b8f8;border-radius: 5px;">$1</span>', $row_from_text);
+					$row_from_text_find_match = preg_replace('/(' . $row_from_text_find_match . ')/i', '<span class="text_find_match">$1</span>', $row_from_text);
 					if(empty($row_from_text)){
 						$row_from_text_find_match = "N/a";
 					}
