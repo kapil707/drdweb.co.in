@@ -35,7 +35,7 @@ class CronjobBank extends CI_Controller
 
 	public function testing(){
 		
-		$find_chemist_id = "H178 || h178 ||";
+		$find_chemist_id = "S401 || S139";
 		$array = explode("||", $find_chemist_id);
 		// Step 2: Trim spaces from each value
 		$array = array_map('trim', $array);
