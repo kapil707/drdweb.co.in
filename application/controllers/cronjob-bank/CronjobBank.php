@@ -37,11 +37,8 @@ class CronjobBank extends CI_Controller
 		
 		$find_chemist_id = "S401 || S139";
 		$array = explode("||", $find_chemist_id);
-		// Step 2: Trim spaces from each value
 		$array = array_map('trim', $array);
-		// Step 3: Convert to lowercase (optional if case-insensitive check needed)
 		$array = array_map('strtolower', $array);
-		// Step 4: Remove duplicate values
 		$array = array_unique($array);
 		$chemist_id = "";
 		foreach($array as $myrow){

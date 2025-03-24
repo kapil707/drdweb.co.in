@@ -163,8 +163,17 @@ class BankProcessingModel extends CI_Model
 				}
 			}
 			echo $find_by;
-
-			
+			if(!empty($find_chemist_id)){
+				$array = explode("||", $find_chemist_id);
+				$array = array_map('trim', $array);
+				$array = array_map('strtolower', $array);
+				$array = array_unique($array);
+				$find_chemist_id = "";
+				foreach($array as $myrow){
+					$find_chemist_id.= ucfirst($myrow)." || ";
+				}
+				$find_chemist_id = substr($find_chemist_id, 0, -4);
+			}
 
 			/************************************************* */
 			$id = $row->id;
