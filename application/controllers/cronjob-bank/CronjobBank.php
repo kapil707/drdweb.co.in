@@ -45,7 +45,7 @@ class CronjobBank extends CI_Controller
 		$array = array_unique($array);
 		$chemist_id = "";
 		foreach($array as $myrow){
-			$chemist_id.= $myrow." || ";
+			$chemist_id.= ucfirst($myrow)." || ";
 		}
 		$chemist_id = substr($chemist_id, 0, -4);
 		echo $chemist_id;
