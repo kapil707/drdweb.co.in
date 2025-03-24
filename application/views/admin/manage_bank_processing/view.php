@@ -165,7 +165,7 @@
 					$row_from_text_find_match = preg_quote($row_from_text_find_match, '/');
 					$row_from_text_find_match = preg_replace('/(' . $row_from_text_find_match . ')/i', '<span style="background-color: yellow;">$1</span>', $row_from_text_find);
 					if(empty($row_from_text_find)){
-						$row_from_text_find = "N/a";
+						$row_from_text_find_match = "N/a";
 					}
 
 					/********************************************** */
