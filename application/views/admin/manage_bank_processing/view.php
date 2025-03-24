@@ -167,20 +167,18 @@
 					if(empty($row_from_text)){
 						$row_from_text_find_match = "N/a";
 					}
-					
+					/********************************************** */
+					$row_chemist_id = $row_from_text_find_chemist;
 					/********************************************** */
 					$row_invoice_chemist = $entry->invoice_chemist;
 					$row_invoice_text = $entry->invoice_text;
 					$row_invoice_remanded = $entry->invoice_remanded;
 					/********************************************** */
-					
 					$row_whatsapp_id = $entry->whatsapp_id;
 					$row_whatsapp_chemist = $entry->whatsapp_chemist;
 					$row_whatsapp_text = $entry->whatsapp_text;
 					$row_whatsapp_remanded = $entry->whatsapp_remanded;
 					/********************************************** */
-					
-					/********************************************** */	
 					$textbox_final_chemist = "";
 					$row_find_by = "";
 					$row_find_i = 0;
@@ -207,6 +205,12 @@
 						$tr_style = "background-color: #1ab394;";
 						$textbox_final_chemist = $row_chemist_id;
 					}
+					
+					//new25
+					// jab processing ho jaya or chemist id na milay to
+					// if($entry->process_status==1 && empty($entry->find_chemist)){
+					// 	$tr_style = "background-color:rgb(255 130 130);";
+					// }
 
 					if(empty($row_from_text_find_chemist)){
 						$tr_style = "background-color: #ff9494;";
