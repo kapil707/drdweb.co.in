@@ -73,7 +73,7 @@
 }
 .duble_tick{
 	width: 16px;
-    fill: #920a58;
+    fill: #9f0032;
     margin-bottom: -6px;
 }
 </style>
