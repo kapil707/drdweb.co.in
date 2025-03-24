@@ -301,6 +301,13 @@ class Manage_bank_processing extends CI_Controller {
 			// agar kisi from user ko chmist say add kartay ha to jitnay be from user ha sab ka status 0 ho jaya or wo re-process hota ha 
 			$where = array(				
 				'from_text'=>$from_text,
+				'whatsapp_id'=>0,
+				'whatsapp_chemist'=>'',
+				'whatsapp_remanded'=>'',
+				'invoice_id'=>'',
+				'invoice_chemist'=>'',
+				'invoice_remanded'=>'',
+				'invoice_text'=>'',
 			);
 			$dt = array(
 				'process_status' => '0',
