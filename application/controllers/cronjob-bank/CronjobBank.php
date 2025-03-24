@@ -63,7 +63,9 @@ class CronjobBank extends CI_Controller
 				if (!empty($check_processing)) {
 					$this->BankProcessingModel->get_processing();
 				}else{
-					$this->BankWhatsAppModel->whatsapp_insert_in_process();
+					//$this->BankWhatsAppModel->whatsapp_find_upi_amount();
+					//yha whatsapp message ko insert karwata ha processing me
+					$this->BankWhatsAppModel->whatsapp_insert_in_processing();
 				}
 			}
 		}

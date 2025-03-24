@@ -113,9 +113,14 @@ class BankWhatsAppModel extends CI_Model
 	public function whatsapp_find_upi_amount(){
 
 		//$result = $this->BankModel->select_query("SELECT id,vision_text FROM `tbl_whatsapp_message` where id='31435'");
+		//SELECT id,vision_text FROM `tbl_whatsapp_message` where upi_no='' and vision_text!='' and date BETWEEN '$start_date' and '$end_date' ORDER BY RAND() limit 100
+		$start_date = date('Y-m-d', strtotime('-3 day'));
+		$end_date = date('Y-m-d');
+
 		$start_date = "2025-03-10";
 		$end_date   = "2025-03-20";
-		$result = $this->BankModel->select_query("SELECT id,vision_text FROM `tbl_whatsapp_message` where upi_no='' and vision_text!='' and date BETWEEN '$start_date' and '$end_date' ORDER BY RAND() limit 100");
+
+		$result = $this->BankModel->select_query("SELECT id,vision_text FROM `tbl_whatsapp_message` where status='0' and date BETWEEN '$start_date' and '$end_date' ORDER BY RAND() limit 100");
 		$result = $result->result();
 		foreach($result as $row) {
 
@@ -363,13 +368,14 @@ class BankWhatsAppModel extends CI_Model
 			$dt = array(
 				'upi_no'=>$upi_no,
 				'amount'=>$amount,
+				'status'=>1
 			);
 			$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
 			/*********************************************************** */
 		}
 	}
 
-	public function whatsapp_insert_in_process(){
+	public function whatsapp_insert_in_processing(){
 		
 		/* $result = $this->BankModel->select_query("SELECT p.id, wm.id as whatsapp_id,wm.body as body, wm.vision_text,wm.timestamp,wm.from_number,p.from_text_find_chemist FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.upi_no=wm.upi_no and wm.body=p.from_text_find_chemist where p.whatsapp_id='' ORDER BY RAND() limit 25");
 		$result = $result->result();
