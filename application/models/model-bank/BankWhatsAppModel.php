@@ -609,7 +609,7 @@ class BankWhatsAppModel extends CI_Model
 				$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
 			}
 			if($working==1){
-				$this->whatsapp_insert_in_process();
+				$this->whatsapp_insert_in_processing();
 			}
 		}
 		//die();
@@ -634,7 +634,7 @@ class BankWhatsAppModel extends CI_Model
 				$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
 			}
 			if($working==1){
-				$this->whatsapp_insert_in_process();
+				$this->whatsapp_insert_in_processing();
 			}
 		}
 		//die();
@@ -659,7 +659,7 @@ class BankWhatsAppModel extends CI_Model
 				$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
 			}
 			if($working==1){
-				$this->whatsapp_insert_in_process();
+				$this->whatsapp_insert_in_processing();
 			}
 		}
 		//die();
@@ -685,7 +685,7 @@ class BankWhatsAppModel extends CI_Model
 				$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
 			}
 			if($working==1){
-				$this->whatsapp_insert_in_process();
+				$this->whatsapp_insert_in_processing();
 			}
 		}
 		//die();
@@ -711,7 +711,7 @@ class BankWhatsAppModel extends CI_Model
 				$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
 			}
 			if($working==1){
-				$this->whatsapp_insert_in_process();
+				$this->whatsapp_insert_in_processing();
 			}
 		}
 		//die();
@@ -737,7 +737,7 @@ class BankWhatsAppModel extends CI_Model
 				$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
 			}
 			if($working==1){
-				$this->whatsapp_insert_in_process();
+				$this->whatsapp_insert_in_processing();
 			}
 		}
 		//die();
@@ -761,7 +761,7 @@ class BankWhatsAppModel extends CI_Model
 				$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
 			}
 			if($working==1){
-				$this->whatsapp_insert_in_process();
+				$this->whatsapp_insert_in_processing();
 			}
 		}
 		//die();
@@ -786,7 +786,7 @@ class BankWhatsAppModel extends CI_Model
 				$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
 			}
 			if($working==1){
-				$this->whatsapp_insert_in_process();
+				$this->whatsapp_insert_in_processing();
 			}
 		}
 
@@ -809,7 +809,7 @@ class BankWhatsAppModel extends CI_Model
 				$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
 			}
 			if($working==1){
-				$this->whatsapp_insert_in_process();
+				$this->whatsapp_insert_in_processing();
 			}
 		}
 		
