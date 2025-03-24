@@ -18,11 +18,6 @@ class CronjobBank extends CI_Controller
 		$this->BankWhatsAppModel->get_whatsapp_or_insert();
 	}
 
-	public function whatsapp_find_upi_amount(){
-		echo "whatsapp_find_upi_amount";
-		$this->BankWhatsAppModel->whatsapp_find_upi_amount();
-	}
-
 	public function whatsapp_update_upi(){
 		echo "whatsapp_update_upi";
 		$this->BankWhatsAppModel->whatsapp_update_upi();
@@ -63,126 +58,15 @@ class CronjobBank extends CI_Controller
 				if (!empty($check_processing)) {
 					$this->BankProcessingModel->get_processing();
 				}else{
-					//$this->BankWhatsAppModel->whatsapp_find_upi_amount();
-					//yha whatsapp message ko insert karwata ha processing me
-					$this->BankWhatsAppModel->whatsapp_insert_in_processing();
-				}
-			}
-		}
-	}	
-	
-	public function get_invoice(){
-		$result = $this->BankModel->select_query("select * from tbl_bank_processing where status='1' limit 1");
-		$result = $result->result();
-		foreach($result as $row){
-			
-			$amount 		= $row->amount;
-			$date 			= $row->date;
-
-			$start_date = date('Y-m-d', strtotime($date . ' -2 day'));
-			$end_date = date('Y-m-d', strtotime($date));
-			
-			$chemist = str_replace("/",",",$row->chemist);
-
-			/************************************************* */
-			$result = $this->find_by_invoice($amount,$start_date,$end_date,$chemist);
-			$invoice = $result["find_invoice_chemist_id"];
-		
-			if(!empty($chemist)){
-				if(empty($invoice)){
-					$result = $this->find_by_invoice_amount($amount,$start_date,$end_date,$chemist);
-					$invoice = $result["find_invoice_chemist_id"];
-				}
-			}
-
-			/************************************************* */
-			$id = $row->id;
-			$where = array('id'=>$id);
-			$dt = array(
-				'status'=>2,				
-				'invoice'=>$invoice,
-			);
-			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
-			/************************************************* */
-		}
-	}
-	
-	public function get_whatsapp(){
-		echo " get_whatsapp ";
-
-		$result = $this->BankModel->select_query("SELECT id,upi_no,amount,orderid from tbl_bank_processing where process_status=1 limit 25");
-		$result = $result->result();
-		foreach($result as $row) {
-
-			$upi_no = trim($row->upi_no);
-			$orderid= trim($row->orderid);
-			$amount = $row->amount;
-
-			$row1 = $this->BankModel->select_query("SELECT * FROM `tbl_whatsapp_message` WHERE REPLACE(`vision_text`, ' ', '') LIKE '%$upi_no%' or REPLACE(`vision_text`, ' ', '') LIKE '%$orderid%'");
-			$row1 = $row1->row();
-			if(empty($row1)){
-				$row1 = $this->BankModel->select_query("SELECT * FROM `tbl_whatsapp_message` WHERE `vision_text` LIKE '%$upi_no%' or `vision_text` LIKE '%$orderid%'");
-				$row1 = $row1->row();
-			}
-
-			if(empty($row1)){
-				$last_four_digits = substr($upi_no, -4);
-				$row1 = $this->BankModel->select_query("SELECT * FROM `tbl_whatsapp_message` WHERE (REPLACE(`vision_text`, ' ', '') LIKE '%XX$last_four_digits%' and REPLACE(`vision_text`, ',', '') LIKE '%$amount%')");
-				$row1 = $row1->row();
-			}
-			
-			$whatsapp_id = 0;
-			$whatsapp_body = $whatsapp_image = $whatsapp_body2 = "";
-			if(!empty($row1)){
-				$whatsapp_id = $row1->id;
-				$whatsapp_body = $row1->body;
-				$whatsapp_image = $row1->screenshot_image;
-				$whatsapp_body2 = $row1->vision_text;
-
-				$from_number = $row1->from_number;
-				$timestamp = date('Y-m-d H:i:s', $row1->timestamp);
-
-				if(empty($whatsapp_body)){
-					$row2 = $this->BankModel->select_query("SELECT body FROM `tbl_whatsapp_message` WHERE from_number='$from_number' AND FROM_UNIXTIME(timestamp) BETWEEN DATE_SUB('$timestamp', INTERVAL 7 MINUTE) AND DATE_ADD('$timestamp', INTERVAL 7 MINUTE) and body!='' LIMIT 0, 25");
-					$row2 = $row2->row();
-					$whatsapp_body = $row2->body;
-				}
-			}
-
-			if(empty($row1)){
-				$row2 = $this->BankModel->select_query("SELECT * FROM `tbl_whatsapp_message` WHERE REPLACE(`body`, ' ', '') LIKE '%$upi_no%'");
-				$row2 = $row2->row();
-
-				if(!empty($row2)){
-					$whatsapp_id = $row2->id;
-					$whatsapp_body = "";
-					$whatsapp_image = $row2->screenshot_image;
-					$whatsapp_body2 = $row2->body;
-
-					$from_number = $row2->from_number;
-					$timestamp = date('Y-m-d H:i:s', $row2->timestamp);
-
-					if(empty($whatsapp_body)){
-						$row2 = $this->BankModel->select_query("SELECT body FROM `tbl_whatsapp_message` WHERE from_number='$from_number' AND FROM_UNIXTIME(timestamp) BETWEEN DATE_SUB('$timestamp', INTERVAL 7 MINUTE) AND DATE_ADD('$timestamp', INTERVAL 7 MINUTE) and body!='' and id!='$whatsapp_id' LIMIT 0, 25");
-						$row2 = $row2->row();
-						$whatsapp_body = $row2->body;
+					$check_whatsapp_status = $this->BankModel->select_row("tbl_whatsapp_message", array('status'=>0));
+					if (!empty($check_whatsapp_status)) {
+						$this->BankWhatsAppModel->whatsapp_find_upi_amount();
+					}else{
+						//yha whatsapp message ko insert karwata ha processing me
+						$this->BankWhatsAppModel->whatsapp_insert_in_processing();
 					}
 				}
 			}
-
-			$whatsapp_body  = str_replace(',', '', $whatsapp_body);
-			$whatsapp_body2 = str_replace(',', '', $whatsapp_body2);
-			echo "<br>";
-
-			$where = array(
-				'id' => $row->id,
-			);
-			$dt = array(
-				'process_status'=>2,
-				'whatsapp_message_id'=>$whatsapp_id,
-				'find_whatsapp_chemist'=>$whatsapp_id,
-			);
-			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 		}
 	}
 
