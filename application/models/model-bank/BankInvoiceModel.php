@@ -58,7 +58,7 @@ class BankInvoiceModel extends CI_Model
 	public function invoice_find($id,$chemist_id,$amount){
 
 		$status = 0;
-		$start_date = date('Y-m-d', strtotime('-3 day'));
+		$start_date = date('Y-m-d', strtotime('-10 day'));
 		$end_date = date('Y-m-d');
 
 		$result = $this->BankModel->select_query("SELECT id,gstvno,amt FROM `tbl_invoice` WHERE `chemist_id` LIKE '$chemist_id' and REPLACE(TRIM(amt), '.00', '')='$amount' and date BETWEEN '$start_date' and '$end_date'");
@@ -92,7 +92,7 @@ class BankInvoiceModel extends CI_Model
 	public function invoice_find_in_total($id,$chemist_id,$amount){
 		
 		$status = 0;
-		$start_date = date('Y-m-d', strtotime('-3 day'));
+		$start_date = date('Y-m-d', strtotime('-10 day'));
 		$end_date = date('Y-m-d');
 
 		$resultArray = [];
@@ -159,7 +159,7 @@ class BankInvoiceModel extends CI_Model
 		
 		$status = 0;
 
-		$start_date = date('Y-m-d', strtotime('-3 day'));
+		$start_date = date('Y-m-d', strtotime('-10 day'));
 		$end_date = date('Y-m-d');
 
 		$result = $this->BankModel->select_query("SELECT id FROM `tbl_invoice` WHERE `chemist_id` LIKE '$chemist_id' and REPLACE(TRIM(amt), '.00', '')='$amount' and date BETWEEN '$start_date' and '$end_date'");
