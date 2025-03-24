@@ -187,7 +187,7 @@ class BankProcessingModel extends CI_Model
 		$process_name = $received_from;
 		$process_value = "";
 		
-		/*$rr = $this->BankModel->select_query("SELECT * FROM `tbl_bank_chemist` WHERE `string_value` = '$received_from'");
+		$rr = $this->BankModel->select_query("SELECT * FROM `tbl_bank_chemist` WHERE `string_value` = '$received_from'");
 		$rr = $rr->result();
 		foreach($rr as $tt){
 			$jsonArray[] = $tt->chemist_id;
@@ -196,14 +196,14 @@ class BankProcessingModel extends CI_Model
 
 		if(!empty($jsonArray)){
 			$find_chemist_id = implode('||', $jsonArray);
-		}*/
+		}
 
-		$rr = $this->BankModel->select_query("SELECT * FROM `tbl_bank_chemist` WHERE `string_value` = '$received_from'");
+		/*$rr = $this->BankModel->select_query("SELECT * FROM `tbl_bank_chemist` WHERE `string_value` = '$received_from'");
 		$rr = $rr->result();
 		foreach($rr as $tt){
 			$find_chemist_id = trim($tt->chemist_id);
 			$process_value = $tt->string_value;
-		}
+		}*/
 
 		$return["find_chemist_id"] = $find_chemist_id;
 		$return["process_name"] = $process_name;
@@ -220,7 +220,7 @@ class BankProcessingModel extends CI_Model
 		$process_name = $received_from;
 		$process_value = "";
 
-		/*$rr = $this->BankModel->select_query("SELECT * FROM `tbl_bank_chemist` WHERE `string_value` LIKE '%$received_from%'");
+		$rr = $this->BankModel->select_query("SELECT * FROM `tbl_bank_chemist` WHERE `string_value` LIKE '%$received_from%'");
 		$rr = $rr->result();
 		foreach($rr as $tt){
 			$jsonArray[] = $tt->chemist_id;
@@ -229,14 +229,14 @@ class BankProcessingModel extends CI_Model
 
 		if(!empty($jsonArray)){
 			$find_chemist_id = implode('||', $jsonArray);
-		}*/
+		}
 
-		$rr = $this->BankModel->select_query("SELECT * FROM `tbl_bank_chemist` WHERE `string_value` LIKE '%$received_from%'");
+		/*$rr = $this->BankModel->select_query("SELECT * FROM `tbl_bank_chemist` WHERE `string_value` LIKE '%$received_from%'");
 		$rr = $rr->result();
 		foreach($rr as $tt){
 			$find_chemist_id = trim($tt->chemist_id);
 			$process_value = $tt->string_value;
-		}
+		}*/
 
 		$return["find_chemist_id"] = $find_chemist_id;
 		$return["process_name"] = $process_name;
@@ -255,7 +255,7 @@ class BankProcessingModel extends CI_Model
 
 		$received_from = str_replace(' ', '', $received_from);
 		
-		/*$rr = $this->BankModel->select_query("SELECT * FROM `tbl_bank_chemist` WHERE `title` LIKE '%$received_from%'");
+		$rr = $this->BankModel->select_query("SELECT * FROM `tbl_bank_chemist` WHERE `title` LIKE '%$received_from%'");
 		$rr = $rr->result();
 		foreach($rr as $tt){
 			$jsonArray[] = $tt->chemist_id;
@@ -265,14 +265,14 @@ class BankProcessingModel extends CI_Model
 
 		if(!empty($jsonArray)){
 			$find_chemist_id = implode('||', $jsonArray);
-		}*/
+		}
 
-		$rr = $this->BankModel->select_query("SELECT * FROM `tbl_bank_chemist` WHERE `title` LIKE '%$received_from%'");
+		/*$rr = $this->BankModel->select_query("SELECT * FROM `tbl_bank_chemist` WHERE `title` LIKE '%$received_from%'");
 		$rr = $rr->result();
 		foreach($rr as $tt){
 			$find_chemist_id = trim($tt->chemist_id);
 			$process_value = $tt->string_value;
-		}
+		}*/
 
 		$return["find_chemist_id"] = $find_chemist_id;
 		$return["process_name"] = $process_name;
