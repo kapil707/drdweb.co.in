@@ -331,7 +331,6 @@ class Manage_bank_processing extends CI_Controller {
 				);
 				$dt = array(
 					'process_status'=>0,
-					'from_text'=>'',
 					'from_text_find'=>'',
 					'from_text_find_match'=>'',
 					'from_text_find_chemist'=>'',
