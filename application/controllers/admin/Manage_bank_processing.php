@@ -317,7 +317,7 @@ class Manage_bank_processing extends CI_Controller {
 	}
 
 	public function row_refresh(){
-		$id 			= $_POST["id"];
+		$id = $_POST["id"];
 		if(!empty($id)){
 
 			$query = $this->BankModel->select_query("SELECT * FROM `tbl_bank_processing` where id='$id'");
@@ -330,13 +330,19 @@ class Manage_bank_processing extends CI_Controller {
 					'upi_no' => $upi_no,
 				);
 				$dt = array(
-					'status'=>0,
-					'from_value'=>"",
-					'from_value_find'=>"",
-					'final_chemist'=>"",
-					'final_invoice'=>"",
-					'final_invoice_chemist'=>"",
-					'final_find_by'=>"",
+					'process_status'=>0,
+					'from_text'=>'',
+					'from_text_find'=>'',
+					'from_text_find_match'=>'',
+					'from_text_find_chemist'=>'',
+					'chemist_final'=>'',
+					'whatsapp_id'=>0,
+					'whatsapp_chemist'=>'',
+					'whatsapp_remanded'=>'',
+					'invoice_id'=>'',
+					'invoice_chemist'=>'',
+					'invoice_remanded'=>'',
+					'invoice_text'=>'',
 				);
 				$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 			}
