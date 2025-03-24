@@ -15,6 +15,7 @@ class BankProcessingModel extends CI_Model
 		foreach($result as $row){
 
 			echo $from_text = $row->from_text;
+			$from_text = str_replace("'", "", $from_text);
 
 			$find_by = "";
 			$find_chemist_id = "";
