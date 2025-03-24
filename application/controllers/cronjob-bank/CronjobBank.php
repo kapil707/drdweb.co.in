@@ -35,6 +35,16 @@ class CronjobBank extends CI_Controller
 
 	public function testing(){
 		
+		$row_from_text = "9911644379@PTYES";
+		$row_from_text_find_match = "9911644379";
+
+		$row_from_text_find_match = preg_quote($row_from_text_find_match, '/');
+		$row_from_text_find_match = preg_replace('/(' . $row_from_text_find_match . ')/i', '<span style="background-color: blue;">$1</span>', $row_from_text);
+		if(empty($row_from_text)){
+			$row_from_text_find_match = "N/a";
+		}
+		echo $row_from_text_find_match;
+		/*
 		$find_chemist_id = "G196/a633 || A633";
 		$find_chemist_id = str_replace("/", " || ", $find_chemist_id);
 		$array = explode("||", $find_chemist_id);
