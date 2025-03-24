@@ -301,9 +301,8 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" sty
 										<i class="fa fa-pencil edit_from_text_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_from_text_chemist_id('<?= ($row_id); ?>')"></i>
 									</div>
 									<div class="td_div">
-										<b>Find  : </b> <?= ($row_from_text_find_match); ?> ---
+										<b>Find  : </b> <?= ($row_from_text_find_match); ?>
 										<?php 
-										echo $row_from_text_find;
 										if(strtolower($row_from_text)==strtolower($row_from_text_find)){
 											echo $duble_tick;
 										}
