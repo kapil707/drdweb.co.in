@@ -43,10 +43,10 @@ class CronjobBank extends CI_Controller
 		$array = array_map('strtolower', $array);
 		// Step 4: Remove duplicate values
 		$array = array_unique($array);
-		print_r($array);
-		// foreach($array as $myrow){
-
-		// }
+		$chemist_id = "";
+		foreach($array as $myrow){
+			$chemist_id.= $myrow;
+		}
 		/*$text = "+91-9899762072 507920298106 FROM MEHAK MEDICOS AND DEPARTMENTAL STORE 9300966180 CITI0000 9052 TRANS FER TO DR KARB0000547";
 		preg_match("/FROM\s+(.+?)\s+CITI/", $text, $matches);
 		if (!empty($matches) && empty($received_from)){
