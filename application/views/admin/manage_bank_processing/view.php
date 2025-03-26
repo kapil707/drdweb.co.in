@@ -89,7 +89,7 @@
 }
 .blink_me {
 	color:#9f0032;
-  	animation: blinker 1s linear infinite;
+  	animation: blinker 2s linear infinite;
 }
 
 @keyframes blinker {
