@@ -191,6 +191,15 @@ class BankProcessingModel extends CI_Model
 		}
 	}
 
+	public function remanded_to_find(){
+		$result = $this->BankModel->select_query("SELECT id,invoice_remanded FROM `tbl_bank_processing` WHERE `invoice_remanded`=`whatsapp_remanded` and invoice_remanded!='' and whatsapp_remanded!=''");
+		$result = $result->result();
+		foreach($result as $row){
+			if(!empty($row->id)){
+				
+			}
+		}
+	}
 	/*****************************************************************************/
 	function find_by_full_name($received_from){
 
