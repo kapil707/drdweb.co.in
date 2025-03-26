@@ -224,28 +224,26 @@ class BankProcessingModel extends CI_Model
 						'recommended'=>$chemist_id,
 						'whatsapp_id'=>0,
 						'whatsapp_chemist'=>'',
-						'whatsapp_recommended'=>'',
 						'invoice_id'=>'',
 						'invoice_chemist'=>'',
-						'invoice_recommended'=>'',
 						'invoice_text'=>'',
 					);
 					$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 
 				}else{
 
-					$find_chemist = "";
+					$chemist_id = "";
 					$array = explode(" || ", $from_text_find_chemist);
 					foreach($array as $myid){
 						if(strtolower($myid)==strtolower($recommended))
 						{
-							$find_chemist = $recommended;
+							$chemist_id = $recommended;
 						}
 					}
 
-					if(!empty($find_chemist)){
+					if(!empty($chemist_id)){
 					
-						echo $chemist_id = $find_chemist;
+						echo $chemist_id;
 						echo "<br>";
 
 						$where = array('id'=>$id);
@@ -256,7 +254,7 @@ class BankProcessingModel extends CI_Model
 							'whatsapp_recommended'=>'',
 							'invoice_recommended'=>'',
 						);
-						$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
+						//$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 					}
 				}
 			}
