@@ -88,7 +88,8 @@
     margin-bottom: -6px;
 }
 .blink_me {
-  animation: blinker 1s linear infinite;
+	color:#9f0032;
+  	animation: blinker 1s linear infinite;
 }
 
 @keyframes blinker {
