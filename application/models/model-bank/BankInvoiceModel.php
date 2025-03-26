@@ -117,7 +117,7 @@ class BankInvoiceModel extends CI_Model
 		}
 
 		$targetValue = $amount;
-		$found = [];
+		$found = false;
 		$selectedValues = [];
 
 		// Check all combinations of 2 or 3 invoices
@@ -126,12 +126,14 @@ class BankInvoiceModel extends CI_Model
 				// Check sum of 2 invoices
 				if ($resultArray[$i]['amount'] + $resultArray[$j]['amount'] == $targetValue) {
 					$selectedValues[] = [$resultArray[$i]['id'], $resultArray[$j]['id']];
+					$found = true;
 				}
 
 				for ($k = $j + 1; $k < count($resultArray); $k++) {
 					// Check sum of 3 invoices
 					if ($resultArray[$i]['amount'] + $resultArray[$j]['amount'] + $resultArray[$k]['amount'] == $targetValue) {
 						$selectedValues[] = [$resultArray[$i]['id'], $resultArray[$j]['id'], $resultArray[$k]['id']];
+						$found = true;
 					}
 				}
 			}
