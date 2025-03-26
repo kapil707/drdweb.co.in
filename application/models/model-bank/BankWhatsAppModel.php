@@ -477,14 +477,14 @@ class BankWhatsAppModel extends CI_Model
 				}
 			}
 
-			$whatsapp_remanded = "";
+			$whatsapp_recommended = "";
 			if(empty($whatsapp_chemist)){
-				$whatsapp_remanded = $whatsapp_body;
+				$whatsapp_recommended = $whatsapp_body;
 			}
 			// gar chemist he find nahi hua ho to 
 			if(empty($from_text_find_chemist)){
 				$whatsapp_chemist = "";
-				$whatsapp_remanded = $whatsapp_body;
+				$whatsapp_recommended = $whatsapp_body;
 			}
 
 			$where = array(
@@ -494,7 +494,7 @@ class BankWhatsAppModel extends CI_Model
 				'process_status'=>2,
 				'whatsapp_id'=>$whatsapp_id,
 				'whatsapp_chemist'=>$whatsapp_chemist,
-				'whatsapp_remanded'=>$whatsapp_remanded,
+				'whatsapp_recommended'=>$whatsapp_recommended,
 			);
 			echo "my01";
 			print_r($dt);
@@ -513,7 +513,7 @@ class BankWhatsAppModel extends CI_Model
 		die();
 		/*if($working==0){
 			//jab chmist id or amout say user ko match karya jata ha tab
-			$result = $this->BankModel->select_query("SELECT p.upi_no,p.from_text_find_chemist,wm.id as whatsapp_id,wm.timestamp,wm.from_number FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount AND wm.date BETWEEN DATE_SUB(p.date, INTERVAL 1 DAY) AND DATE_ADD(p.date, INTERVAL 1 DAY) WHERE p.whatsapp_id = '' and p.whatsapp_remanded = '' AND p.from_text_find_chemist != '' ORDER BY wm.date DESC");
+			$result = $this->BankModel->select_query("SELECT p.upi_no,p.from_text_find_chemist,wm.id as whatsapp_id,wm.timestamp,wm.from_number FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount AND wm.date BETWEEN DATE_SUB(p.date, INTERVAL 1 DAY) AND DATE_ADD(p.date, INTERVAL 1 DAY) WHERE p.whatsapp_id = '' and p.whatsapp_recommended = '' AND p.from_text_find_chemist != '' ORDER BY wm.date DESC");
 			$result = $result->result();
 			foreach($result as $row) {
 

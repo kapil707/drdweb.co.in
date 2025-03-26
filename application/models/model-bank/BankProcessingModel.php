@@ -192,7 +192,7 @@ class BankProcessingModel extends CI_Model
 	}
 
 	public function remanded_to_find(){
-		$result = $this->BankModel->select_query("SELECT id,invoice_recommended FROM `tbl_bank_processing` WHERE `invoice_recommended`=`whatsapp_remanded` and invoice_recommended!='' and whatsapp_remanded!='' and recommended=''");
+		$result = $this->BankModel->select_query("SELECT id,invoice_recommended FROM `tbl_bank_processing` WHERE `invoice_recommended`=`whatsapp_recommended` and invoice_recommended!='' and whatsapp_recommended!='' and recommended=''");
 		$result = $result->result();
 		foreach($result as $row){
 			if(!empty($row->id)){

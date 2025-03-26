@@ -201,7 +201,7 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 					$row_whatsapp_id = $entry->whatsapp_id;
 					$row_whatsapp_chemist = $entry->whatsapp_chemist;
 					$row_whatsapp_text = $entry->whatsapp_text;
-					$row_whatsapp_remanded = $entry->whatsapp_remanded;
+					$row_whatsapp_recommended = $entry->whatsapp_recommended;
 					/********************************************** */
 					$textbox_final_chemist = "";
 					$row_find_by = "";
@@ -362,8 +362,8 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 											echo $duble_tick;
 										}
 										?>
-										<?php if($row_whatsapp_chemist=="N/a" &&$row_whatsapp_remanded) { 
-											echo " || <b>Remanded : $row_whatsapp_remanded </b>";
+										<?php if($row_whatsapp_chemist=="N/a" &&$row_whatsapp_recommended) { 
+											echo " || <b>Remanded : $row_whatsapp_recommended </b>";
 										} ?>
 									</div>
 									<div class="td_div1">
