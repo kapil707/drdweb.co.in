@@ -35,7 +35,7 @@ class CronjobBank extends CI_Controller
 
 	public function recommended_to_find(){
 		echo "recommended_to_find";
-		$this->BankInvoiceModel->recommended_to_find();
+		$this->BankProcessingModel->recommended_to_find();
 	}
 
 	public function testing(){
