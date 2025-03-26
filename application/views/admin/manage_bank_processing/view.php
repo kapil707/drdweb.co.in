@@ -400,7 +400,7 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 								
 								<?php if($row_invoice_text!="") { ?>
 								<div class="col-sm-12">
-									<b>Invoice Text : </b>
+									<b>Invoice-Text : </b>
 									<?= ($row_invoice_text); ?>
 								</div>
 								<?php } ?>
@@ -408,7 +408,7 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 								<?php if($row_whatsapp_text!="") { ?>
 								<div class="col-sm-12">
 									<b onclick="get_whats_message('<?= ($row_id); ?>','<?= ($row_whatsapp_id); ?>','<?= $row_upi_no; ?>')" data-toggle="modal" data-target="#myModal">
-									<span class='<?php if((strtolower($row_whatsapp_chemist)==strtolower($row_chemist_id)) && $row_whatsapp_chemist!="N/a"){ echo "text_find_match"; } if(strtolower($row_whatsapp_chemist)!=strtolower($row_chemist_id)) { echo "text_find_match_not blink_me_white"; }?>'>WhatsApp Text :</span></b>
+									<span class='<?php if((strtolower($row_whatsapp_chemist)==strtolower($row_chemist_id)) && $row_whatsapp_chemist!="N/a"){ echo "text_find_match"; } if(strtolower($row_whatsapp_chemist)!=strtolower($row_chemist_id)) { echo "text_find_match_not blink_me_white"; }?>'>WhatsApp-Text :</span></b>
 									<?= ($row_whatsapp_text); ?>
 								</div>
 								<?php } ?>
