@@ -102,51 +102,47 @@ class BankInvoiceModel extends CI_Model
 		$status = 0;
 		$start_date = date('Y-m-d', strtotime('-2 day'));
 		$end_date = date('Y-m-d');
-	
+
 		$resultArray = [];
 		$result = $this->BankModel->select_query("SELECT * FROM `tbl_invoice` WHERE `chemist_id`='$chemist_id' and date BETWEEN '$start_date' and '$end_date'");
 		$result = $result->result();
-	
-		foreach ($result as $row) {
-			$resultArray[] = [
+		foreach($result as $row) {
+			$amount = str_replace(".00", "", $row->amt);
+			$invoices[] = [
 				'id' => $row->id,
 				'chemist_id' => $row->chemist_id,
 				'gstvno' => $row->gstvno,
-				'amount' => floatval($row->amt) // Convert to float
-			];
+				'amount' => $amount
+			];		
 		}
-	
-		$found = false;
-		$selectedValues = [];
-	
+
+		$targetValue = $amount;
+		$found = [];
+		print_r($invoices);
+
+		echo "<br>";
+
+		$invoices = [
+			["id" => 2896, "chemist_id" => "T102", "gstvno" => "SB-24-749781", "amount" => 2122],
+			["id" => 2897, "chemist_id" => "T102", "gstvno" => "SB-24-749782", "amount" => 541],
+			["id" => 2898, "chemist_id" => "T102", "gstvno" => "SB-24-749783", "amount" => 500], // Extra invoice (for testing)
+		];
+
+		print_r($invoices);
+
+		$invoice_count = count($invoices);		
 		// Check all combinations of 2 or 3 invoices
-		for ($i = 0; $i < count($resultArray); $i++) {
-			for ($j = $i + 1; $j < count($resultArray); $j++) {
+		for ($i = 0; $i < $invoice_count; $i++) {
+			for ($j = $i + 1; $j < $invoice_count; $j++) {
 				// Check sum of 2 invoices
-				if ($resultArray[$i]['amount'] + $resultArray[$j]['amount'] == $targetAmount) {
-					$selectedValues[] = [$resultArray[$i]['id'], $resultArray[$j]['id']];
-					$found = true;
+				if ($invoices[$i]['amount'] + $invoices[$j]['amount'] == $targetValue) {
+					$found[] = [$invoices[$i]['id'], $invoices[$j]['id']];
 				}
-	
-				for ($k = $j + 1; $k < count($resultArray); $k++) {
+		
+				for ($k = $j + 1; $k < $invoice_count; $k++) {
 					// Check sum of 3 invoices
-					if ($resultArray[$i]['amount'] + $resultArray[$j]['amount'] + $resultArray[$k]['amount'] == $targetAmount) {
-						$selectedValues[] = [$resultArray[$i]['id'], $resultArray[$j]['id'], $resultArray[$k]['id']];
-						$found = true;
-					}
-				}
-			}
-		}
-	
-		// Invoice IDs aur details collect karo
-		$json_invoice_id = [];
-		$json_invoice_text = [];
-		if ($found) {
-			foreach ($selectedValues[0] as $invoice_id) {
-				foreach ($resultArray as $invoice) {
-					if ($invoice['id'] == $invoice_id) {
-						$json_invoice_id[] = $invoice['id'];
-						$json_invoice_text[] = $invoice['gstvno'] . " Amount." . $invoice['amount'];
+					if ($invoices[$i]['amount'] + $invoices[$j]['amount'] + $invoices[$k]['amount'] == $targetValue) {
+						$found[] = [$invoices[$i]['id'], $invoices[$j]['id'], $invoices[$k]['id']];
 					}
 				}
 			}
@@ -158,7 +154,17 @@ class BankInvoiceModel extends CI_Model
 				echo implode(", ", $set) . "\n";
 			}
 		}
-		
+
+		$json_invoice_id = [];
+		$json_invoice_text = [];
+		/*if ($found) {
+			for ($i = 0; $i < count($selectedValues[0]); $i++) {
+				$rt = $selectedValues[0][$i];
+				$json_invoice_id[] = $rt['id'];
+				$json_invoice_text[] = $rt['gstvno']." Amount.".$rt['amount'];
+			}
+		}*/
+
 		if(!empty($json_invoice_id)){
 
 			$status = 1;
