@@ -124,18 +124,30 @@ class BankInvoiceModel extends CI_Model
 		for ($i = 0; $i < count($resultArray); $i++) {
 			for ($j = $i + 1; $j < count($resultArray); $j++) {
 				// Check sum of 2 invoices
-				if ($invoices[$i]['amount'] + $invoices[$j]['amount'] == $target) {
-					$selectedValues[] = [$invoices[$i]['id'], $invoices[$j]['id']];
+				if ($resultArray[$i]['amount'] + $resultArray[$j]['amount'] == $target) {
+					$selectedValues[] = [$resultArray[$i]['id'], $resultArray[$j]['id']];
 				}
 
 				for ($k = $j + 1; $k < count($resultArray); $k++) {
 					// Check sum of 3 invoices
-					if ($invoices[$i]['amount'] + $invoices[$j]['amount'] + $invoices[$k]['amount'] == $target) {
-						$selectedValues[] = [$invoices[$i]['id'], $invoices[$j]['id'], $invoices[$k]['id']];
+					if ($resultArray[$i]['amount'] + $resultArray[$j]['amount'] + $resultArray[$k]['amount'] == $target) {
+						$selectedValues[] = [$resultArray[$i]['id'], $resultArray[$j]['id'], $resultArray[$k]['id']];
 					}
 				}
 			}
 		}
+
+		print_r($resultArray);
+		
+		/*for ($i = 0; $i < count($resultArray); $i++) {
+			for ($j = $i + 1; $j < count($resultArray); $j++) {
+				if ($resultArray[$i]['amount'] + $resultArray[$j]['amount'] == $targetValue) {
+					$selectedValues[] = [$resultArray[$i], $resultArray[$j]];
+					$found = true;
+					break 2; // Exit both loops
+				}
+			}
+		}*/
 
 		$json_invoice_id = [];
 		$json_invoice_text = [];
@@ -146,8 +158,6 @@ class BankInvoiceModel extends CI_Model
 				$json_invoice_text[] = $rt['gstvno']." Amount.".$rt['amount'];
 			}
 		}
-
-		print($json_invoice_text);die();
 
 		if(!empty($json_invoice_id)){
 
