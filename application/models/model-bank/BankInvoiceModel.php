@@ -118,7 +118,7 @@ class BankInvoiceModel extends CI_Model
 
 		$targetValue = $amount;
 		$found = [];
-		print_r($invoices);
+		/*print_r($invoices);
 
 		echo "<br>";
 
@@ -128,7 +128,7 @@ class BankInvoiceModel extends CI_Model
 			["id" => 2898, "chemist_id" => "T102", "gstvno" => "SB-24-749783", "amount" => 500], // Extra invoice (for testing)
 		];
 
-		print_r($invoices);
+		print_r($invoices);*/
 
 		$invoice_count = count($invoices);		
 		// Check all combinations of 2 or 3 invoices
