@@ -242,7 +242,7 @@ class BankProcessingModel extends CI_Model
 							$find_chemist = $recommended;
 						}
 					}
-					echo $find_chemist;
+					echo $from_text_find_chemist;
 					echo "<br>";
 					/*$where = array('id'=>$id);
 					$dt = array(
