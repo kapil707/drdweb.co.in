@@ -204,7 +204,8 @@ class BankProcessingModel extends CI_Model
 				if(empty($from_text_find_chemist)){
 					// agar recommended user match ho jaya or chemist id find na hoya to
 
-					$chemist_id = $recommended;
+					echo $chemist_id = $recommended;
+					echo "<br>";
 					$dt = array(
 						'chemist_id' => $chemist_id,
 						'string_value' => $from_text,
