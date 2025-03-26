@@ -10,8 +10,8 @@ class BankInvoiceModel extends CI_Model
 
 	public function get_invoice_find_user(){
 
-		// $this->invoice_find_in_total('0','T102','2663');
-		// die();
+		$this->invoice_find_in_total('0','T102','2663');
+		die();
 
 		$start_date = date('Y-m-d', strtotime('-2 day'));
 		$end_date = date('Y-m-d');
@@ -139,7 +139,7 @@ class BankInvoiceModel extends CI_Model
 			}
 		}
 
-		//print_r($resultArray);
+		print_r($selectedValues);
 		
 		/*for ($i = 0; $i < count($resultArray); $i++) {
 			for ($j = $i + 1; $j < count($resultArray); $j++) {
