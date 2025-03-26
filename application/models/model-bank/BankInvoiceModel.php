@@ -125,7 +125,7 @@ class BankInvoiceModel extends CI_Model
 			$found[] = [$invoices[0]['id'], $invoices[1]['id']];
 		}
 		
-		if(emtpy($found)){
+		if(empty($found)){
 			$invoice_count = count($invoices);	
 			// Check all combinations of 2 or 3 invoices
 			for ($i = 0; $i < $invoice_count; $i++) {
