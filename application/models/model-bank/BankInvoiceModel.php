@@ -124,13 +124,13 @@ class BankInvoiceModel extends CI_Model
 		for ($i = 0; $i < count($resultArray); $i++) {
 			for ($j = $i + 1; $j < count($resultArray); $j++) {
 				// Check sum of 2 invoices
-				if ($resultArray[$i]['amount'] + $resultArray[$j]['amount'] == $target) {
+				if ($resultArray[$i]['amount'] + $resultArray[$j]['amount'] == $targetValue) {
 					$selectedValues[] = [$resultArray[$i]['id'], $resultArray[$j]['id']];
 				}
 
 				for ($k = $j + 1; $k < count($resultArray); $k++) {
 					// Check sum of 3 invoices
-					if ($resultArray[$i]['amount'] + $resultArray[$j]['amount'] + $resultArray[$k]['amount'] == $target) {
+					if ($resultArray[$i]['amount'] + $resultArray[$j]['amount'] + $resultArray[$k]['amount'] == $targetValue) {
 						$selectedValues[] = [$resultArray[$i]['id'], $resultArray[$j]['id'], $resultArray[$k]['id']];
 					}
 				}
