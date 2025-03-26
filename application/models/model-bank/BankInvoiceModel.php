@@ -10,9 +10,6 @@ class BankInvoiceModel extends CI_Model
 
 	public function get_invoice_find_user(){
 
-		$this->invoice_find_in_total("0",'T102','2663');
-		die();
-
 		$start_date = date('Y-m-d', strtotime('-2 day'));
 		$end_date = date('Y-m-d');
 
@@ -116,18 +113,23 @@ class BankInvoiceModel extends CI_Model
 			];		
 		}
 
-		print_r($resultArray);
-
 		$targetValue = $amount;
-		$found = false;
+		$found = [];
 		$selectedValues = [];
 
+		// Check all combinations of 2 or 3 invoices
 		for ($i = 0; $i < count($resultArray); $i++) {
 			for ($j = $i + 1; $j < count($resultArray); $j++) {
-				if ($resultArray[$i]['amount'] + $resultArray[$j]['amount'] == $targetValue) {
-					$selectedValues[] = [$resultArray[$i], $resultArray[$j]];
-					$found = true;
-					break 2; // Exit both loops
+				// Check sum of 2 invoices
+				if ($invoices[$i]['amount'] + $invoices[$j]['amount'] == $target) {
+					$selectedValues[] = [$invoices[$i]['id'], $invoices[$j]['id']];
+				}
+
+				for ($k = $j + 1; $k < count($resultArray); $k++) {
+					// Check sum of 3 invoices
+					if ($invoices[$i]['amount'] + $invoices[$j]['amount'] + $invoices[$k]['amount'] == $target) {
+						$selectedValues[] = [$invoices[$i]['id'], $invoices[$j]['id'], $invoices[$k]['id']];
+					}
 				}
 			}
 		}
@@ -141,6 +143,8 @@ class BankInvoiceModel extends CI_Model
 				$json_invoice_text[] = $rt['gstvno']." Amount.".$rt['amount'];
 			}
 		}
+
+		print($json_invoice_text);die();
 
 		if(!empty($json_invoice_id)){
 
