@@ -235,7 +235,7 @@ class BankProcessingModel extends CI_Model
 				}else{
 
 					$find_chemist = "";
-					$array = explode("||", $from_text_find_chemist);
+					$array = explode(" || ", $from_text_find_chemist);
 					foreach($array as $myid){
 						if(strtolower($myid)==strtolower($recommended))
 						{
