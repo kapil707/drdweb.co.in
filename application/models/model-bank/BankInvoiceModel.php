@@ -103,66 +103,51 @@ class BankInvoiceModel extends CI_Model
 		$start_date = date('Y-m-d', strtotime('-2 day'));
 		$end_date = date('Y-m-d');
 
-		$resultArray = [];
-		$result = $this->BankModel->select_query("SELECT * FROM `tbl_invoice` WHERE `chemist_id`='$chemist_id' and date BETWEEN '$start_date' and '$end_date'");
-		$result = $result->result();
-		foreach($result as $row) {
-			$amount = str_replace(".00", "", $row->amt);
-			$invoices[] = [
-				'id' => $row->id,
-				'chemist_id' => $row->chemist_id,
-				'gstvno' => $row->gstvno,
-				'amount' => $amount
-			];		
-		}
+		$json_invoice_id = [];
+		$json_invoice_text = [];
 
 		$targetValue = $amount;
-		$found = [];
-		print_r($invoices);
-		echo "<br>";
-		
-		$invoice_count = count($invoices);
-		// Check all combinations of 2 or 3 invoices
-		for ($i = 0; $i < $invoice_count; $i++) {
+		$found = false;
+		$selectedValues = [];
 
-			for ($o = $i; $o < $invoice_count; $o++) {
-				// Check sum of 2 invoices
-				if ($invoices[$i]['amount'] + $invoices[$o]['amount'] == $targetValue) {
-					$found[] = [$invoices[$i]['id'], $invoices[$o]['id']];
-				}
+		$result = $this->BankModel->select_query("SELECT GROUP_CONCAT(id) AS invoice_id, SUM(amt) AS total_invoice_amount FROM tbl_invoice WHERE chemist_id = '$chemist_id' and date BETWEEN '$start_date' and '$end_date' HAVING total_invoice_amount = '$amount'");
+		$row = $result->row();
+		if(!empty($row)){
+			$invoice_id = $row->invoice_id;
+			$array_invoice_id = explode(',', $invoice_id);
+			print_r($array_invoice_id);
+		} else {
+			$resultArray = [];
+			$result = $this->BankModel->select_query("SELECT * FROM `tbl_invoice` WHERE `chemist_id`='$chemist_id' and date BETWEEN '$start_date' and '$end_date'");
+			$result = $result->result();
+			foreach($result as $row) {
+				$amount = str_replace(".00", "", $row->amt);
+				$resultArray[] = [
+					'id' => $row->id,
+					'chemist_id' => $row->chemist_id,
+					'gstvno' => $row->gstvno,
+					'amount' => $amount
+				];		
 			}
 
-			for ($j = $i + 1; $j < $invoice_count; $j++) {
-				// Check sum of 2 invoices
-				if ($invoices[$i]['amount'] + $invoices[$j]['amount'] == $targetValue) {
-					$found[] = [$invoices[$i]['id'], $invoices[$j]['id']];
-				}
-		
-				for ($k = $j + 1; $k < $invoice_count; $k++) {
-					// Check sum of 3 invoices
-					if ($invoices[$i]['amount'] + $invoices[$j]['amount'] + $invoices[$k]['amount'] == $targetValue) {
-						$found[] = [$invoices[$i]['id'], $invoices[$j]['id'], $invoices[$k]['id']];
+			for ($i = 0; $i < count($resultArray); $i++) {
+				for ($j = $i + 1; $j < count($resultArray); $j++) {
+					if ($resultArray[$i]['amount'] + $resultArray[$j]['amount'] == $targetValue) {
+						$selectedValues[] = [$resultArray[$i], $resultArray[$j]];
+						$found = true;
+						break 2; // Exit both loops
 					}
 				}
 			}
-		}
 
-		if (!empty($found)) {
-			echo "Matching Invoices: \n";
-			foreach ($found as $set) {
-				echo implode(", ", $set) . "\n";
+			if ($found) {
+				for ($i = 0; $i < count($selectedValues[0]); $i++) {
+					$rt = $selectedValues[0][$i];
+					$json_invoice_id[] = $rt['id'];
+					$json_invoice_text[] = $rt['gstvno']." Amount.".$rt['amount'];
+				}
 			}
 		}
-
-		$json_invoice_id = [];
-		$json_invoice_text = [];
-		/*if ($found) {
-			for ($i = 0; $i < count($selectedValues[0]); $i++) {
-				$rt = $selectedValues[0][$i];
-				$json_invoice_id[] = $rt['id'];
-				$json_invoice_text[] = $rt['gstvno']." Amount.".$rt['amount'];
-			}
-		}*/
 
 		if(!empty($json_invoice_id)){
 
