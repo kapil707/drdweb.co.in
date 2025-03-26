@@ -351,7 +351,7 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 										?>
 
 										<?php if($row_invoice_chemist=="N/a" &&$row_invoice_recommended) { 
-											echo " || <b>Remanded : $row_invoice_recommended </b>";
+											echo " || <b>Recommended : $row_invoice_recommended </b>";
 										} ?>
 									</div>
 									<div class="td_div">
@@ -363,7 +363,7 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 										}
 										?>
 										<?php if($row_whatsapp_chemist=="N/a" &&$row_whatsapp_recommended) { 
-											echo " || <b>Remanded : $row_whatsapp_recommended </b>";
+											echo " || <b>Recommended : $row_whatsapp_recommended </b>";
 										} ?>
 									</div>
 									<div class="td_div1">

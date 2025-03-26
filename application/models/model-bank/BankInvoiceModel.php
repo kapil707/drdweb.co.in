@@ -39,7 +39,7 @@ class BankInvoiceModel extends CI_Model
 				$id 		= $row->id;
 				$chemist_id = $row->whatsapp_recommended;
 				$amount 	= $row->amount;
-				$working 	= $this->remanded_invoice_find($id,$chemist_id,$amount);
+				$working 	= $this->recommended_invoice_find($id,$chemist_id,$amount);
 			}
 		}
 
@@ -50,7 +50,7 @@ class BankInvoiceModel extends CI_Model
 				$id 		= $row->id;
 				$chemist_id = $row->whatsapp_recommended;
 				$amount 	= $row->amount;
-				$working 	= $this->remanded_invoice_find($id,$chemist_id,$amount);
+				$working 	= $this->recommended_invoice_find($id,$chemist_id,$amount);
 			}
 		}
 	}
@@ -155,7 +155,7 @@ class BankInvoiceModel extends CI_Model
 		return $status;
 	}
 
-	public function remanded_invoice_find($id,$chemist_id,$amount){
+	public function recommended_invoice_find($id,$chemist_id,$amount){
 		
 		$status = 0;
 

@@ -192,18 +192,47 @@ class BankProcessingModel extends CI_Model
 	}
 
 	public function recommended_to_find(){
-		$result = $this->BankModel->select_query("SELECT id,invoice_recommended FROM `tbl_bank_processing` WHERE `invoice_recommended`=`whatsapp_recommended` and invoice_recommended!='' and whatsapp_recommended!='' and recommended=''");
+		$result = $this->BankModel->select_query("SELECT id,from_text,from_text_find_chemist,invoice_recommended FROM `tbl_bank_processing` WHERE `invoice_recommended`=`whatsapp_recommended` and invoice_recommended!='' and whatsapp_recommended!='' and recommended=''");
 		$result = $result->result();
 		foreach($result as $row){
 			if(!empty($row->id)){
 				$id = $row->id;
+				$from_text = $row->from_text;
+				$from_text_find_chemist = $row->from_text_find_chemist;
 				$recommended = $row->invoice_recommended;
+				
+				if(empty($from_text_find_chemist)){
+					// agar recommended user match ho jaya or chemist id find na hoya to
 
-				$where = array('id'=>$id);
-				$dt = array(
-					'recommended'=>$recommended,
-				);
-				$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
+					$chemist_id = $recommended;
+					$dt = array(
+						'chemist_id' => $chemist_id,
+						'string_value' => $from_text,
+						'date'=>date('Y-m-d'),
+						'time'=>date('H:i'),
+						'timestamp'=>time(),
+						'user_id'=>$this->session->userdata("user_id"),
+						'recommended'=>'1'
+					);
+					$this->BankModel->insert_fun("tbl_bank_chemist", $dt);
+
+					/******************************* */
+					$where = array('id'=>$id);
+					$dt = array(
+						'recommended'=>$recommended,
+						'process_status'=>0,
+					);
+					$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
+
+				}else{
+
+					/*$where = array('id'=>$id);
+					$dt = array(
+						'recommended'=>$recommended,
+						'process_status'=>0,
+					);
+					$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);*/
+				}
 			}
 		}
 	}

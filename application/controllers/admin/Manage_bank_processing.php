@@ -291,7 +291,8 @@ class Manage_bank_processing extends CI_Controller {
 					'chemist_id' => $chemist_id,
 					'string_value' => $from_text,
 					'date'=>date('Y-m-d'),
-					'time'=>time(),
+					'time'=>date('H:i'),
+					'timestamp'=>time(),
 					'user_id'=>$this->session->userdata("user_id")
 				);
 				$this->BankModel->insert_fun("tbl_bank_chemist", $dt);
