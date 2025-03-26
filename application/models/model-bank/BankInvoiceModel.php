@@ -78,7 +78,7 @@ class BankInvoiceModel extends CI_Model
 
 				$invoice_id = $row->id;
 				$invoice_chemist = $chemist_id;
-				$invoice_text = $row->gstvno." Amount.".$amount;
+				$invoice_text = "GstvNo:".$row->gstvno." Amount:".$amount."/-";
 
 				$where = array(
 					'id' => $id,
@@ -120,7 +120,7 @@ class BankInvoiceModel extends CI_Model
 			foreach($result as $row) {
 				$amount = str_replace(".00", "", $row->amt);
 				$json_invoice_id[]   = $row->id;
-				$json_invoice_text[] = $row->gstvno." Amount.".$amount;
+				$json_invoice_text[] = "GstvNo:".$row->gstvno." Amount:".$amount."/-";
 			}
 
 		} else {
@@ -151,7 +151,7 @@ class BankInvoiceModel extends CI_Model
 				for ($i = 0; $i < count($selectedValues[0]); $i++) {
 					$rt = $selectedValues[0][$i];
 					$json_invoice_id[] = $rt['id'];
-					$json_invoice_text[] = $rt['gstvno']." Amount.".$rt['amount'];
+					$json_invoice_text[] = "GstvNo:".$rt['gstvno']." Amount:".$rt['amount']."/-";
 				}
 			}
 		}
