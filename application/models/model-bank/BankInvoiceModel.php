@@ -111,11 +111,18 @@ class BankInvoiceModel extends CI_Model
 		$selectedValues = [];
 
 		$result = $this->BankModel->select_query("SELECT GROUP_CONCAT(id) AS invoice_id, SUM(amt) AS total_invoice_amount FROM tbl_invoice WHERE chemist_id = '$chemist_id' and date BETWEEN '$start_date' and '$end_date' HAVING total_invoice_amount = '$amount'");
-		$row = $result->row();
-		if(!empty($row)){
-			$invoice_id = $row->invoice_id;
-			$array_invoice_id = explode(',', $invoice_id);
-			print_r($array_invoice_id);
+		$myrow = $result->row();
+		if(!empty($romyroww)){
+			
+			$invoice_id = $myrow->invoice_id;
+			$result = $this->BankModel->select_query("SELECT id,gstvno,amt FROM `tbl_invoice` WHERE id in($invoice_id)");
+			$result = $result->result();
+			foreach($result as $row) {
+				$amount = str_replace(".00", "", $row->amt);
+				$json_invoice_id[]   = $row->id;
+				$json_invoice_text[] = $row->gstvno." Amount.".$amount;
+			}
+
 		} else {
 			$resultArray = [];
 			$result = $this->BankModel->select_query("SELECT * FROM `tbl_invoice` WHERE `chemist_id`='$chemist_id' and date BETWEEN '$start_date' and '$end_date'");
