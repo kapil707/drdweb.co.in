@@ -221,6 +221,13 @@ class BankProcessingModel extends CI_Model
 					$dt = array(
 						'recommended'=>$recommended,
 						'process_status'=>0,
+						'whatsapp_id'=>0,
+						'whatsapp_chemist'=>'',
+						'whatsapp_recommended'=>'',
+						'invoice_id'=>'',
+						'invoice_chemist'=>'',
+						'invoice_recommended'=>'',
+						'invoice_text'=>'',
 					);
 					$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 
