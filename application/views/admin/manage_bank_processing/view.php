@@ -249,9 +249,12 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 					}
 
 					if(!empty($row_invoice_chemist)){
-						$tr_style = "background-color: #43ffff;";
+						$tr_style = "background-color: #f0e68c;";
 					}
 					
+					if(!empty($row_from_text_find_chemist) && !empty($row_whatsapp_chemist) && !empty($row_invoice_chemist)){
+						$tr_style = "background-color: #4bff97;";
+					}
 					
 					if(empty($row_chemist_id)){
 						$row_chemist_id = "N/a";
@@ -341,6 +344,12 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 									<div class="td_div">
 										<b>Invoice : </b>
 										<?= $row_invoice_chemist ?>
+
+										<?php
+										if((strtolower($row_invoice_chemist)==strtolower($row_chemist_id)) && $row_invoice_chemist!="N/a"){
+											echo $duble_tick;
+										}
+										?>
 
 										<?php if($row_invoice_chemist=="N/a" &&$row_invoice_remanded) { 
 											echo " || <b>Remanded : $row_invoice_remanded </b>";
