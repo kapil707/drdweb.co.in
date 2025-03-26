@@ -220,8 +220,8 @@ class BankProcessingModel extends CI_Model
 					/******************************* */
 					$where = array('id'=>$id);
 					$dt = array(
-						'recommended'=>$recommended,
 						'process_status'=>0,
+						'recommended'=>$recommended,
 						'whatsapp_id'=>0,
 						'whatsapp_chemist'=>'',
 						'whatsapp_recommended'=>'',
@@ -242,14 +242,23 @@ class BankProcessingModel extends CI_Model
 							$find_chemist = $recommended;
 						}
 					}
-					echo $from_text_find_chemist."--".$recommended."--".$find_chemist;
-					echo "<br>";
-					/*$where = array('id'=>$id);
-					$dt = array(
-						'recommended'=>$recommended,
-						'process_status'=>0,
-					);
-					$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);*/
+					
+					if(!empty($find_chemist)){
+
+						$where = array('id'=>$id);
+						$dt = array(
+							'process_status'=>0,
+							'recommended'=>$recommended,
+							'whatsapp_id'=>0,
+							'whatsapp_chemist'=>'',
+							'whatsapp_recommended'=>'',
+							'invoice_id'=>'',
+							'invoice_chemist'=>'',
+							'invoice_recommended'=>'',
+							'invoice_text'=>'',
+						);
+						$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
+					}
 				}
 			}
 		}
