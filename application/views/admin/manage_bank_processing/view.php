@@ -290,7 +290,7 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 								<div class="col-sm-2 text-right">
 									<?php
 									if(!empty($row_recommended)){
-									echo "<b>Recommended Set : ".$row_recommended."</b> || ";	
+									echo "<b>Recommended set by invoice or whatsapp : ".$row_recommended."</b> || ";	
 									} ?>
 									<i class="fa fa-refresh row_refresh_id_<?= ($row_id); ?>" aria-hidden="true" onclick="row_refresh('<?= ($row_id); ?>')"></i> Refresh
 								</div>
