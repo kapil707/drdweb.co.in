@@ -108,7 +108,7 @@ class BankInvoiceModel extends CI_Model
 		$result = $result->result();
 		foreach($result as $row) {
 			$amount = str_replace(".00", "", $row->amt);
-			$resultArray[] = [
+			$invoices[] = [
 				'id' => $row->id,
 				'chemist_id' => $row->chemist_id,
 				'gstvno' => $row->gstvno,
@@ -117,50 +117,37 @@ class BankInvoiceModel extends CI_Model
 		}
 
 		$targetValue = $amount;
-		$found = false;
-		$selectedValues = [];
-
+		$found = [];
+		
+		$invoice_count = count($invoices);		
 		// Check all combinations of 2 or 3 invoices
-		for ($i = 0; $i < count($resultArray); $i++) {
-			for ($j = $i + 1; $j < count($resultArray); $j++) {
+		for ($i = 0; $i < $invoice_count; $i++) {
+			for ($j = $i + 1; $j < $invoice_count; $j++) {
 				// Check sum of 2 invoices
-				if ($resultArray[$i]['amount'] + $resultArray[$j]['amount'] == $targetValue) {
-					$selectedValues[] = [$resultArray[$i]['id'], $resultArray[$j]['id']];
-					$found = true;
+				if ($invoices[$i]['amount'] + $invoices[$j]['amount'] == $targetValue) {
+					$found[] = [$invoices[$i]['id'], $invoices[$j]['id']];
 				}
-				if($found==false){
-					for ($k = $j + 1; $k < count($resultArray); $k++) {
-						// Check sum of 3 invoices
-						if ($resultArray[$i]['amount'] + $resultArray[$j]['amount'] + $resultArray[$k]['amount'] == $targetValue) {
-							$selectedValues[] = [$resultArray[$i]['id'], $resultArray[$j]['id'], $resultArray[$k]['id']];
-							$found = true;
-						}
+		
+				for ($k = $j + 1; $k < $invoice_count; $k++) {
+					// Check sum of 3 invoices
+					if ($invoices[$i]['amount'] + $invoices[$j]['amount'] + $invoices[$k]['amount'] == $targetValue) {
+						$found[] = [$invoices[$i]['id'], $invoices[$j]['id'], $invoices[$k]['id']];
 					}
 				}
 			}
 		}
 
-		print_r($selectedValues);
-		
-		/*for ($i = 0; $i < count($resultArray); $i++) {
-			for ($j = $i + 1; $j < count($resultArray); $j++) {
-				if ($resultArray[$i]['amount'] + $resultArray[$j]['amount'] == $targetValue) {
-					$selectedValues[] = [$resultArray[$i], $resultArray[$j]];
-					$found = true;
-					break 2; // Exit both loops
-				}
-			}
-		}*/
+		print_r($found);
 
 		$json_invoice_id = [];
 		$json_invoice_text = [];
-		if ($found) {
+		/*if ($found) {
 			for ($i = 0; $i < count($selectedValues[0]); $i++) {
 				$rt = $selectedValues[0][$i];
 				$json_invoice_id[] = $rt['id'];
 				$json_invoice_text[] = $rt['gstvno']." Amount.".$rt['amount'];
 			}
-		}
+		}*/
 
 		if(!empty($json_invoice_id)){
 
