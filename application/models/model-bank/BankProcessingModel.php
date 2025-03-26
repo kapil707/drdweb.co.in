@@ -220,11 +220,15 @@ class BankProcessingModel extends CI_Model
 					/******************************* */
 					$where = array('id'=>$id);
 					$dt = array(
+						'process_status'=>0,
 						'recommended'=>$chemist_id,
-						'from_text_find_chemist'=>$chemist_id,
-						'whatsapp_chemist'=>$chemist_id,
+						'whatsapp_id'=>0,
+						'whatsapp_chemist'=>'',
 						'whatsapp_recommended'=>'',
+						'invoice_id'=>'',
+						'invoice_chemist'=>'',
 						'invoice_recommended'=>'',
+						'invoice_text'=>'',
 					);
 					$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 
@@ -245,16 +249,12 @@ class BankProcessingModel extends CI_Model
 						echo "<br>";
 
 						$where = array('id'=>$id);
-						$dt = array(
-							'process_status'=>0,
+						$dt = array(							
 							'recommended'=>$chemist_id,
-							'whatsapp_id'=>0,
-							'whatsapp_chemist'=>'',
+							'from_text_find_chemist'=>$chemist_id,
+							'whatsapp_chemist'=>$chemist_id,
 							'whatsapp_recommended'=>'',
-							'invoice_id'=>'',
-							'invoice_chemist'=>'',
 							'invoice_recommended'=>'',
-							'invoice_text'=>'',
 						);
 						$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 					}
