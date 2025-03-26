@@ -118,7 +118,7 @@ class BankInvoiceModel extends CI_Model
 
 		$targetValue = $amount;
 		$found = [];
-		
+		print_r($invoices);
 		$invoice_count = count($invoices);		
 		// Check all combinations of 2 or 3 invoices
 		for ($i = 0; $i < $invoice_count; $i++) {
