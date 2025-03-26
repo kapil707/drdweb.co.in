@@ -116,6 +116,8 @@ class BankInvoiceModel extends CI_Model
 			];		
 		}
 
+		print_r($resultArray);
+
 		$targetValue = $amount;
 		$found = false;
 		$selectedValues = [];
