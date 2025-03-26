@@ -121,6 +121,7 @@ class BankInvoiceModel extends CI_Model
 		print_r($invoices);
 		echo "<br>";
 		
+		$invoice_count = count($invoices);
 		if(empty($found)){
 			// Check all combinations of 2 or 3 invoices
 			for ($i = 0; $i < $invoice_count; $i++) {
