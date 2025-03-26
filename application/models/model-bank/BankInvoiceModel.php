@@ -121,14 +121,17 @@ class BankInvoiceModel extends CI_Model
 		print_r($invoices);
 		echo "<br>";
 		
-		if ($invoices[0]['amount'] + $invoices[1]['amount'] == $targetValue) {
-			$found[] = [$invoices[0]['id'], $invoices[1]['id']];
-		}
-		
 		if(empty($found)){
-			$invoice_count = count($invoices);	
 			// Check all combinations of 2 or 3 invoices
 			for ($i = 0; $i < $invoice_count; $i++) {
+
+				for ($o = $i; $o < $invoice_count; $o++) {
+					// Check sum of 2 invoices
+					if ($invoices[$i]['amount'] + $invoices[$o]['amount'] == $targetValue) {
+						$found[] = [$invoices[$i]['id'], $invoices[$o]['id']];
+					}
+				}
+
 				for ($j = $i + 1; $j < $invoice_count; $j++) {
 					// Check sum of 2 invoices
 					if ($invoices[$i]['amount'] + $invoices[$j]['amount'] == $targetValue) {
