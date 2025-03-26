@@ -10,6 +10,9 @@ class BankInvoiceModel extends CI_Model
 
 	public function get_invoice_find_user(){
 
+		$this->invoice_find_in_total("0",'T102','2663');
+		die();
+
 		$start_date = date('Y-m-d', strtotime('-2 day'));
 		$end_date = date('Y-m-d');
 
@@ -63,7 +66,7 @@ class BankInvoiceModel extends CI_Model
 	public function invoice_find($id,$chemist_id,$amount){
 
 		$status = 0;
-		$start_date = date('Y-m-d', strtotime('-10 day'));
+		$start_date = date('Y-m-d', strtotime('-2 day'));
 		$end_date = date('Y-m-d');
 
 		$result = $this->BankModel->select_query("SELECT id,gstvno,amt FROM `tbl_invoice` WHERE `chemist_id` LIKE '$chemist_id' and REPLACE(TRIM(amt), '.00', '')='$amount' and date BETWEEN '$start_date' and '$end_date'");
@@ -97,7 +100,7 @@ class BankInvoiceModel extends CI_Model
 	public function invoice_find_in_total($id,$chemist_id,$amount){
 		
 		$status = 0;
-		$start_date = date('Y-m-d', strtotime('-10 day'));
+		$start_date = date('Y-m-d', strtotime('-2 day'));
 		$end_date = date('Y-m-d');
 
 		$resultArray = [];
