@@ -193,6 +193,7 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 					}
 					/********************************************** */
 					$row_chemist_id = $row_from_text_find_chemist;
+					$row_recommended = $entry->recommended;
 					/********************************************** */
 					$row_invoice_chemist = $entry->invoice_chemist;
 					$row_invoice_text = $entry->invoice_text;
@@ -229,12 +230,6 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 						$tr_style = "background-color: #1ab394;";
 						$textbox_final_chemist = $row_chemist_id;
 					}
-					
-					//new25
-					// jab processing ho jaya or chemist id na milay to
-					// if($entry->process_status==1 && empty($entry->find_chemist)){
-					// 	$tr_style = "background-color:rgb(255 130 130);";
-					// }
 
 					if(empty($row_from_text_find_chemist)){
 						$tr_style = "background-color: #ff9494;";
@@ -254,6 +249,11 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 					
 					if(!empty($row_from_text_find_chemist) && !empty($row_whatsapp_chemist) && !empty($row_invoice_chemist)){
 						$tr_style = "background-color: #4bff97;";
+					}
+
+					//jab recommended match say user set ho jaya to
+					if(!empty($row_recommended)){
+						$tr_style = "background-color: #80e3ff;";
 					}
 					
 					if(empty($row_chemist_id)){

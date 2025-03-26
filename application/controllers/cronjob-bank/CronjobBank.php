@@ -27,12 +27,7 @@ class CronjobBank extends CI_Controller
 		echo "whatsapp_update_reply_message";
 		$this->BankWhatsAppModel->whatsapp_update_reply_message();
 	}
-
-	public function get_invoice_find_user(){
-		echo "get_invoice_find_user";
-		$this->BankInvoiceModel->get_invoice_find_user();
-	}
-
+	
 	public function recommended_to_find(){
 		echo "recommended_to_find";
 		$this->BankProcessingModel->recommended_to_find();
