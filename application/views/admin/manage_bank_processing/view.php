@@ -275,7 +275,7 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 						</td>
 						<td>
 							<div class="row">
-								<div class="col-sm-10">
+								<div class="col-sm-9">
 									<?php if(!empty($entry->sms_text)) { ?>
 										<b>SMS :</b> <?= $entry->sms_text; ?> 
 									<?php } ?>
@@ -287,7 +287,7 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 									<?php } ?>
 								</div>
 
-								<div class="col-sm-2 text-right">
+								<div class="col-sm-3 text-right">
 									<?php
 									if(!empty($row_recommended)){
 									echo "<b>Recommended set by invoice or whatsapp : ".$row_recommended."</b> || ";	
