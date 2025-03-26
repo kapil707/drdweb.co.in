@@ -159,10 +159,10 @@ class BankInvoiceModel extends CI_Model
 		
 		$status = 0;
 
-		$start_date = date('Y-m-d', strtotime('-10 day'));
+		$start_date = date('Y-m-d', strtotime('-3 day'));
 		$end_date = date('Y-m-d');
 
-		$result = $this->BankModel->select_query("SELECT id FROM `tbl_invoice` WHERE `chemist_id` LIKE '$chemist_id' and REPLACE(TRIM(amt), '.00', '')='$amount' and date BETWEEN '$start_date' and '$end_date'");
+		$result = $this->BankModel->select_query("SELECT id,gstvno FROM `tbl_invoice` WHERE `chemist_id` LIKE '$chemist_id' and REPLACE(TRIM(amt), '.00', '')='$amount' and date BETWEEN '$start_date' and '$end_date'");
 		$result = $result->result();
 		foreach($result as $row) {
 			if($row->id){
@@ -170,6 +170,7 @@ class BankInvoiceModel extends CI_Model
 
 				$invoice_id = $row->id;
 				$invoice_recommended = $chemist_id;
+				$invoice_text = $row->gstvno." Amount.".$amount;
 
 				$where = array(
 					'id' => $id,
@@ -177,6 +178,7 @@ class BankInvoiceModel extends CI_Model
 				$dt = array(
 					'process_status'=>3,
 					'invoice_id'=>$invoice_id,
+					'invoice_text'=>$invoice_text,
 					'invoice_recommended'=>$invoice_recommended,
 				);
 				print_r($dt);
