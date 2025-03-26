@@ -221,7 +221,7 @@ class BankProcessingModel extends CI_Model
 					$where = array('id'=>$id);
 					$dt = array(
 						'process_status'=>0,
-						'recommended'=>$recommended,
+						'recommended'=>$chemist_id,
 						'whatsapp_id'=>0,
 						'whatsapp_chemist'=>'',
 						'whatsapp_recommended'=>'',
@@ -242,13 +242,16 @@ class BankProcessingModel extends CI_Model
 							$find_chemist = $recommended;
 						}
 					}
-					
+
 					if(!empty($find_chemist)){
+					
+						echo $chemist_id = $find_chemist;
+						echo "<br>";
 
 						$where = array('id'=>$id);
 						$dt = array(
 							'process_status'=>0,
-							'recommended'=>$recommended,
+							'recommended'=>$chemist_id,
 							'whatsapp_id'=>0,
 							'whatsapp_chemist'=>'',
 							'whatsapp_recommended'=>'',
