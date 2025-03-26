@@ -35,6 +35,7 @@ update tbl_statment set status=0 where date='2025-03-25';
 delete from tbl_bank_processing where date='2025-03-25';
 UPDATE tbl_whatsapp_message set status=0 where date='2025-03-25';
 UPDATE tbl_whatsapp_message set set_chemist='',upi_no='',amount='0.0' where date='2025-03-25';
+delete from tbl_bank_chemist where recommended='1';
 
 add color a9c5f9
 
