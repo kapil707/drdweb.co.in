@@ -222,6 +222,7 @@ class BankProcessingModel extends CI_Model
 					$dt = array(
 						'process_status'=>0,
 						'recommended'=>$chemist_id,
+						'recommended_status'=>'1',
 						'whatsapp_id'=>0,
 						'whatsapp_chemist'=>'',
 						'invoice_id'=>'',
@@ -238,7 +239,13 @@ class BankProcessingModel extends CI_Model
 						if(strtolower($myid)==strtolower($recommended))
 						{
 							$chemist_id = $recommended;
+							$recommended_status = 2; //jab 2 user me say kisi ek ko select karta ha to 
 						}
+					}
+
+					if(empty($chemist_id)){
+						$chemist_id = $recommended;
+						$recommended_status = 3; //jab user galt aa raha ho to 
 					}
 
 					if(!empty($chemist_id)){
@@ -247,8 +254,9 @@ class BankProcessingModel extends CI_Model
 						echo "<br>";
 
 						$where = array('id'=>$id);
-						$dt = array(							
+						$dt = array(					
 							'recommended'=>$chemist_id,
+							'recommended_status'=>$recommended_status,
 							'from_text_find_chemist'=>$chemist_id,
 							'whatsapp_chemist'=>$chemist_id,
 							'invoice_chemist'=>$chemist_id,
