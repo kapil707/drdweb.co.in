@@ -33,6 +33,11 @@ class CronjobBank extends CI_Controller
 		$this->BankInvoiceModel->get_invoice_find_user();
 	}
 
+	public function recommended_to_find(){
+		echo "recommended_to_find";
+		$this->BankInvoiceModel->recommended_to_find();
+	}
+
 	public function testing(){
 		
 		$row_from_text = "9911644379@PTYES";
