@@ -87,6 +87,15 @@
     fill: #9f0032;
     margin-bottom: -6px;
 }
+.blink_me {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
 </style>
 <?php 
 $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="duble_tick"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M342.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 178.7l-57.4-57.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l80 80c12.5 12.5 32.8 12.5 45.3 0l160-160zm96 128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L160 402.7 54.6 297.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l256-256z"/></svg>';
@@ -277,7 +286,7 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 							<div class="row">
 								<?php
 								if(!empty($row_recommended)){
-								echo "<div class='col-sm-12'><b class='text_find_match'>Recommended set by invoice or whatsapp : ".$row_recommended."</b></div>";	
+								echo "<div class='col-sm-12'><b class='blink_me'>Recommended set by invoice or whatsapp : ".$row_recommended."</b></div>";	
 								} ?>
 								<div class="col-sm-10">
 									<?php if(!empty($entry->sms_text)) { ?>
