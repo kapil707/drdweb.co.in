@@ -251,6 +251,7 @@ class BankProcessingModel extends CI_Model
 							'recommended'=>$chemist_id,
 							'from_text_find_chemist'=>$chemist_id,
 							'whatsapp_chemist'=>$chemist_id,
+							'invoice_chemist'=>$chemist_id,
 						);
 						$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 					}
