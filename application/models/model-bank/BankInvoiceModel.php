@@ -119,32 +119,27 @@ class BankInvoiceModel extends CI_Model
 		$targetValue = $amount;
 		$found = [];
 		print_r($invoices);
-
 		echo "<br>";
-
-		$invoices = [
-			["id" => 2896, "chemist_id" => "T102", "gstvno" => "SB-24-749781", "amount" => 2122],
-			["id" => 2897, "chemist_id" => "T102", "gstvno" => "SB-24-749782", "amount" => 541],
-			["id" => 2898, "chemist_id" => "T102", "gstvno" => "SB-24-749783", "amount" => 500], // Extra invoice (for testing)
-		];
-
-		print_r($invoices);
-
-		echo "<br>";
-
-		$invoice_count = count($invoices);		
-		// Check all combinations of 2 or 3 invoices
-		for ($i = 0; $i < $invoice_count; $i++) {
-			for ($j = $i + 1; $j < $invoice_count; $j++) {
-				// Check sum of 2 invoices
-				if ($invoices[$i]['amount'] + $invoices[$j]['amount'] == $targetValue) {
-					$found[] = [$invoices[$i]['id'], $invoices[$j]['id']];
-				}
 		
-				for ($k = $j + 1; $k < $invoice_count; $k++) {
-					// Check sum of 3 invoices
-					if ($invoices[$i]['amount'] + $invoices[$j]['amount'] + $invoices[$k]['amount'] == $targetValue) {
-						$found[] = [$invoices[$i]['id'], $invoices[$j]['id'], $invoices[$k]['id']];
+		if ($invoices[0]['amount'] + $invoices[1]['amount'] == $targetValue) {
+			$found[] = [$invoices[0]['id'], $invoices[1]['id']];
+		}
+		
+		if(emtpy($found)){
+			$invoice_count = count($invoices);	
+			// Check all combinations of 2 or 3 invoices
+			for ($i = 0; $i < $invoice_count; $i++) {
+				for ($j = $i + 1; $j < $invoice_count; $j++) {
+					// Check sum of 2 invoices
+					if ($invoices[$i]['amount'] + $invoices[$j]['amount'] == $targetValue) {
+						$found[] = [$invoices[$i]['id'], $invoices[$j]['id']];
+					}
+			
+					for ($k = $j + 1; $k < $invoice_count; $k++) {
+						// Check sum of 3 invoices
+						if ($invoices[$i]['amount'] + $invoices[$j]['amount'] + $invoices[$k]['amount'] == $targetValue) {
+							$found[] = [$invoices[$i]['id'], $invoices[$j]['id'], $invoices[$k]['id']];
+						}
 					}
 				}
 			}
