@@ -108,7 +108,7 @@ class BankInvoiceModel extends CI_Model
 		$result = $result->result();
 		foreach($result as $row) {
 			$amount = str_replace(".00", "", $row->amt);
-			$invoices[] = [
+			$invoices = [
 				'id' => $row->id,
 				'chemist_id' => $row->chemist_id,
 				'gstvno' => $row->gstvno,
