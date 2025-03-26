@@ -169,7 +169,7 @@ class BankInvoiceModel extends CI_Model
 				$status = 1;
 
 				$invoice_id = $row->id;
-				$invoice_remanded = $chemist_id;
+				$invoice_recommended = $chemist_id;
 
 				$where = array(
 					'id' => $id,
@@ -177,7 +177,7 @@ class BankInvoiceModel extends CI_Model
 				$dt = array(
 					'process_status'=>3,
 					'invoice_id'=>$invoice_id,
-					'invoice_remanded'=>$invoice_remanded,
+					'invoice_recommended'=>$invoice_recommended,
 				);
 				print_r($dt);
 				$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);

@@ -309,7 +309,7 @@ class Manage_bank_processing extends CI_Controller {
 				'whatsapp_remanded'=>'',
 				'invoice_id'=>'',
 				'invoice_chemist'=>'',
-				'invoice_remanded'=>'',
+				'invoice_recommended'=>'',
 				'invoice_text'=>'',
 			);
 			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
@@ -340,7 +340,7 @@ class Manage_bank_processing extends CI_Controller {
 					'whatsapp_remanded'=>'',
 					'invoice_id'=>'',
 					'invoice_chemist'=>'',
-					'invoice_remanded'=>'',
+					'invoice_recommended'=>'',
 					'invoice_text'=>'',
 				);
 				$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);

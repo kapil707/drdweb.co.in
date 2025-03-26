@@ -196,7 +196,7 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 					/********************************************** */
 					$row_invoice_chemist = $entry->invoice_chemist;
 					$row_invoice_text = $entry->invoice_text;
-					$row_invoice_remanded = $entry->invoice_remanded;
+					$row_invoice_recommended = $entry->invoice_recommended;
 					/********************************************** */
 					$row_whatsapp_id = $entry->whatsapp_id;
 					$row_whatsapp_chemist = $entry->whatsapp_chemist;
@@ -350,8 +350,8 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 										}
 										?>
 
-										<?php if($row_invoice_chemist=="N/a" &&$row_invoice_remanded) { 
-											echo " || <b>Remanded : $row_invoice_remanded </b>";
+										<?php if($row_invoice_chemist=="N/a" &&$row_invoice_recommended) { 
+											echo " || <b>Remanded : $row_invoice_recommended </b>";
 										} ?>
 									</div>
 									<div class="td_div">
