@@ -137,7 +137,7 @@ class BankInvoiceModel extends CI_Model
 			}
 		}
 
-		print_r($resultArray);
+		//print_r($resultArray);
 		
 		/*for ($i = 0; $i < count($resultArray); $i++) {
 			for ($j = $i + 1; $j < count($resultArray); $j++) {
