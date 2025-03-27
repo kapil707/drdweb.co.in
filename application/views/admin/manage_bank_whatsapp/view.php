@@ -203,7 +203,7 @@
 									<?php } ?>
 									<br>
 									<?php if(!empty($message->upi_no)){ ?>
-									<b>UPI No </b>: <?php echo $message->upi_no; ?>
+										<b>UPI No </b>: <?php echo $message->upi_no; ?>
 									<?php } ?>
 								</td>
 								<td width="160">
