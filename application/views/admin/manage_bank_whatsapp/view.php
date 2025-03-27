@@ -114,11 +114,9 @@
 						</th>
 						<th>
 							Date / Time
-                        </th>
-						<th>
+							<br>
 							Number
-						</th>
-						<th>
+							<br>
 							Body
 						</th>
 						<th>
@@ -190,11 +188,9 @@
 								</td>
 								<td>
 									<?php echo date('d-M-y \a\t H:i:s', $timestamp); ?>
-								</td>
-								<td>
+									<br>
 									<?php echo $from_number; ?>
-								</td>
-								<td>
+									<br>
 									<?php echo $body; ?><br>
 									<b><?php echo $reply_body ;?></b>
 								</td>
