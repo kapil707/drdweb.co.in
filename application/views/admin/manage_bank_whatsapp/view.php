@@ -301,7 +301,7 @@ function add_chemist(id){
 
 	var chemist = $(".text_chemist_"+id).val();
 	if(chemist.trim()==""){
-		alert(chemist)
+		alert("Enter Chemist")
 	}else{
 		$.ajax({
 			type : "POST",
