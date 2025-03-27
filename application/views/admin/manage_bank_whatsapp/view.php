@@ -237,9 +237,10 @@
 										<span class="text_find_match_edit edit_chemist_<?= ($row_id); ?>" onclick="edit_chemist('<?= ($row_id); ?>')" style="margin-left:5px;">
 											Edit <i class="fa fa-pencil" aria-hidden="true"></i>
 										</span>
-										
-										<input type="text" value="<?php echo $chemist_id; ?>" class="text_chemist_<?= ($row_id); ?> pg_text_box" style="float: left !important;display:none;" placeholder="Set Chemist Id">
 									<?php } ?>
+									
+									<input type="text" value="<?php echo $chemist_id; ?>" class="text_chemist_<?= ($row_id); ?> pg_text_box" style="float: left !important;display:none;" placeholder="Set Chemist Id">
+
 									<br><br>
 									
 									<span class="text_find_match add_chemist_<?= ($row_id); ?>" onclick="add_chemist('<?= ($row_id); ?>')" style="display:none;margin-left:5px;"> 
