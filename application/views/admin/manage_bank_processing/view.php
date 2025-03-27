@@ -458,9 +458,9 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 </div>
 <script>
 function add_final_chemist(id){
-	var from_text = $(".text_from_text_"+id).val();
+
 	var chemist_id = $(".text_final_chemist_id_"+id).val();
-	alert(chemist_id)
+	
 	if(chemist_id.trim()==""){
 		alert("Etner any chemist id")
 	}else{
@@ -471,7 +471,7 @@ function add_final_chemist(id){
 		$(".edit_final_chemist_"+id).show();
 		$.ajax({
 			type : "POST",
-			data : {id:id,chemist_id:chemist_id,from_text:from_text},
+			data : {id:id,chemist_id:chemist_id},
 			url  : "<?= base_url()?>admin/<?= $Page_name?>/add_final_chemist",
 			cache: true,
 			error: function(){
@@ -493,7 +493,7 @@ function edit_final_chemist(id){
 function add_from_text_chemist_id(id){
 	var from_text = $(".text_from_text_"+id).val();
 	var chemist_id = $(".text_from_text_chemist_id_"+id).val();
-	
+
 	if(chemist_id.trim()==""){
 		alert("Etner any chemist id")
 	}else{

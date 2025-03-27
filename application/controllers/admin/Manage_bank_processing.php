@@ -216,9 +216,8 @@ class Manage_bank_processing extends CI_Controller {
 	public function add_final_chemist()
 	{
 		$id 			= $_POST["id"];
-		$from_text 		= $_POST["from_text"];
 		$final_chemist	= $_POST["chemist_id"];
-		if(!empty($id) && !empty($from_text) && !empty($final_chemist)){
+		if(!empty($id) && !empty($final_chemist)){
 
 			$query = $this->BankModel->select_query("SELECT * FROM `tbl_bank_processing` where id='$id'");
 			$row = $query->row();
