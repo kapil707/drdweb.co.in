@@ -192,6 +192,8 @@
 										<input type="text" value="<?php echo $chemist_final; ?>" class="text_chemist_<?= ($row_id); ?> pg_text_box" style="float: left !important;display:none;" placeholder="chemist">
 									
 										<i class="fa fa-check add_chemist_<?= ($row_id); ?>" aria-hidden="true" onclick="add_chemist('<?= ($row_id); ?>')" style="float: left;font-size: 18px;display:none;"></i>
+
+										<i class="fa fa-times add_chemist_cancel_<?= ($row_id); ?>" aria-hidden="true" onclick="add_chemist_cancel('<?= ($row_id); ?>')" style="float: left;font-size: 18px;display:none;"></i>
 										<?php
 									}
 								?>
@@ -224,11 +226,22 @@ function edit_chemist(id){
 	
 	$(".text_chemist_"+id).show();
 	$(".add_chemist_"+id).show();
+	$(".add_chemist_cancel_"+id).show();
 
 	var chemist = $(".text_chemist_"+id).val();
 	if(chemist=="N/a"){
 		$(".text_chemist_"+id).val('');
 	}
+}
+
+function add_chemist_cancel(id){
+	$(".text_chemist_"+id).hide();
+
+	$(".add_chemist_"+id).hide();
+	$(".add_chemist_cancel_"+id).hide();
+
+	$(".span_chemist_"+id).show();
+	$(".edit_chemist_"+id).show();
 }
 
 function add_chemist(id){
