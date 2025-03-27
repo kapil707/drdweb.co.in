@@ -217,6 +217,8 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 					$row_whatsapp_chemist = $entry->whatsapp_chemist;
 					$row_whatsapp_text = $entry->whatsapp_text;
 					$row_whatsapp_recommended = $entry->whatsapp_recommended;
+					$row_whatsapp_number = $entry->whatsapp_number;
+					$row_whatsapp_timestamp = $entry->whatsapp_timestamp;
 					/********************************************** */
 					$textbox_final_chemist = "";
 					$row_find_by = "";
@@ -409,7 +411,8 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 								<div class="col-sm-12">
 									<b onclick="get_whats_message('<?= ($row_id); ?>','<?= ($row_whatsapp_id); ?>','<?= $row_upi_no; ?>')" data-toggle="modal" data-target="#myModal">
 									<span class='<?php if((strtolower($row_whatsapp_chemist)==strtolower($row_chemist_id)) && $row_whatsapp_chemist!="N/a"){ echo "text_find_match"; } if(strtolower($row_whatsapp_chemist)!=strtolower($row_chemist_id)) { echo "text_find_match_not blink_me_white"; }?>'>WhatsApp-Text :</span></b>
-									<?= ($row_whatsapp_text); ?>
+									Number : <?= ($row_whatsapp_number); ?>,
+									Date / Time : <?= ($row_whatsapp_timestamp); ?>,Message : <?= ($row_whatsapp_text); ?>
 								</div>
 								<?php } ?>
 								
