@@ -1,4 +1,9 @@
 <style>
+@media (min-width: 992px) {
+    .modal-lg {
+        width: 900px;
+    }
+}
 .pg_text_box{
     width: 100px !important;
 	border-radius: 10px !important;
