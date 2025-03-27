@@ -146,8 +146,7 @@
 							$timestamp = $message->timestamp ? $message->timestamp : "timestamp not found";
 							
 							//$chemist_final = $message->chemist_final ? $message->chemist_final : "N/a";
-							$chemist_final = $message->chemist_final ? $message->chemist_final : $message->set_chemist;
-							$chemist_final = $chemist_final ? $chemist_final : "N/a";
+							$chemist_final = $message->chemist_final ? $message->chemist_final : $message->process_chemist;
 
 							$extracted_text = str_replace("\n", "<br>", $extracted_text);
 							$vision_text = str_replace("\n", "<br>", $vision_text);
