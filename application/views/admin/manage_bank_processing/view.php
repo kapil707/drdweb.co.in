@@ -493,7 +493,7 @@ function edit_final_chemist(id){
 function add_from_text_chemist_id(id){
 	var from_text = $(".text_from_text_"+id).val();
 	var chemist_id = $(".text_from_text_chemist_id_"+id).val();
-	alert(chemist_id)
+	
 	if(chemist_id.trim()==""){
 		alert("Etner any chemist id")
 	}else{
