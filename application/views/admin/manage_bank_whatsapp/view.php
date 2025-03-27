@@ -228,7 +228,7 @@
 									</span>
 									
 									<?php if(empty($message->final_chemist)){ ?>
-										<span class="text_find_match_edit edit_chemist_<?= ($row_id); ?>" onclick="edit_chemist('<?= ($row_id); ?>')" style="margin-left:5px;">
+										<span class="text_find_match_edit edit_chemist_<?= ($row_id); ?>" onclick="edit_chemist('<?= ($row_id); ?>')" style="float: left;margin-left:5px;">
 											Edit <i class="fa fa-pencil" aria-hidden="true"></i>
 										</span>
 										
