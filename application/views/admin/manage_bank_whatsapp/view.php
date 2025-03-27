@@ -188,18 +188,13 @@
 								</td>
 								<td width="160">
 									<?php if(!empty($message->find_chemist)){ ?>
-									<span style="float: left;">Find Chemist : </span>
+										<span style="float: left;">Find Chemist : <?php echo $message->find_chemist; ?></span>
 									<?php } ?>
-									<span style="float: left;">
-										<?php echo $message->find_chemist; ?>
-									</span>
 
 									<?php if(!empty($message->final_chemist)){ ?>
-									<span style="float: left;">Final Chemist : </span>
+									<span style="float: left;">Final Chemist : <?php echo $message->final_chemist; ?></span>
 									<?php } ?>
-									<span style="float: left;">
-										<?php echo $message->final_chemist; ?>
-									</span>
+									
 									<?php
 									if(empty($message->final_chemist)){
 										?>
@@ -210,10 +205,12 @@
 
 										<i class="fa fa-pencil edit_chemist_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_chemist('<?= ($row_id); ?>')" style="float: left;font-size: 13px;margin-left:10px;"></i>
 										
-										<input type="text" value="<?php echo $chemist_id; ?>" class="text_chemist_<?= ($row_id); ?> pg_text_box" style="float: left !important;display:none;" placeholder="chemist">
+										<input type="text" value="<?php echo $chemist_id; ?>" class="text_chemist_<?= ($row_id); ?> pg_text_box" style="float: left !important;display:none;" placeholder="Set Chemist Id">
 									
-										<i class="fa fa-check add_chemist_<?= ($row_id); ?>" aria-hidden="true" onclick="add_chemist('<?= ($row_id); ?>')" style="float: left;font-size: 18px;display:none;"></i>
-
+										<span class="add_chemist_<?= ($row_id); ?>" onclick="add_chemist('<?= ($row_id); ?>')" style="float: left;display:none;"> Set
+											<i class="fa fa-check" aria-hidden="true"></i>
+										</span>
+										
 										<i class="fa fa-times add_chemist_cancel_<?= ($row_id); ?>" aria-hidden="true" onclick="add_chemist_cancel('<?= ($row_id); ?>')" style="float: left;font-size: 18px;display:none;"></i>
 										<?php
 									}
