@@ -437,10 +437,10 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 												Edit <i class="fa fa-pencil" aria-hidden="true"></i>
 											</span>
 
-											<span class="text_find_match_not cancel_final_chemist_<?= ($row_id); ?>" onclick="cancel_final_chemist('<?= ($row_id); ?>')" style="display:none">
+											<span class="text_find_match_not cancel_final_chemist_<?= ($row_id); ?>" onclick="cancel_final_chemist('<?= ($row_id); ?>')">
 												Cancel <i class="fa fa-times" aria-hidden="true"></i>
 											</span>
-											
+
 										<?php } ?>
 									</div>
 								</div>
