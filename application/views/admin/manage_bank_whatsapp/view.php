@@ -203,14 +203,16 @@
 											<?php echo $message->set_chemist; ?>
 										</span> 
 
-										<i class="fa fa-pencil edit_chemist_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_chemist('<?= ($row_id); ?>')" style="float: left;font-size: 13px;margin-left:10px;"></i>
+										<span class="edit_chemist_<?= ($row_id); ?>" onclick="edit_chemist('<?= ($row_id); ?>')" style="float: left;margin-left:10px;">
+											Edit <i class="fa fa-pencil" aria-hidden="true"></i>
+										</span>
 										
 										<input type="text" value="<?php echo $chemist_id; ?>" class="text_chemist_<?= ($row_id); ?> pg_text_box" style="float: left !important;display:none;" placeholder="Set Chemist Id">
 									
 										<span class="add_chemist_<?= ($row_id); ?>" onclick="add_chemist('<?= ($row_id); ?>')" style="float: left;display:none;"> Set
 											<i class="fa fa-check" aria-hidden="true"></i>
 										</span>
-										
+
 										<i class="fa fa-times add_chemist_cancel_<?= ($row_id); ?>" aria-hidden="true" onclick="add_chemist_cancel('<?= ($row_id); ?>')" style="float: left;font-size: 18px;display:none;"></i>
 										<?php
 									}
