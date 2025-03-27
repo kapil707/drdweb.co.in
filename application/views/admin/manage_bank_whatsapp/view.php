@@ -238,7 +238,7 @@
 											Edit <i class="fa fa-pencil" aria-hidden="true"></i>
 										</span>
 									<?php } ?>
-									
+
 									<input type="text" value="<?php echo $chemist_id; ?>" class="text_chemist_<?= ($row_id); ?> pg_text_box" style="float: left !important;display:none;" placeholder="Set Chemist Id">
 
 									<br><br>
@@ -339,7 +339,7 @@ function edit_amount(id){
 	
 	$(".text_amount_"+id).show();
 	$(".add_amount_"+id).show();
-	$(".add_amount_cancel_"+id).show();
+	$(".cancel_amount_"+id).show();
 
 	var amount = $(".text_amount_"+id).val();
 	if(amount=="N/a" || amount=="0.0"){
@@ -347,22 +347,18 @@ function edit_amount(id){
 	}
 }
 
-function add_amount_cancel(id){
+function cancel_amount(id){
 	$(".text_amount_"+id).hide();
 
 	$(".add_amount_"+id).hide();
-	$(".add_amount_cancel_"+id).hide();
+	$(".cancel_amount_"+id).hide();
 
 	$(".span_amount_"+id).show();
 	$(".edit_amount_"+id).show();
 }
 
 function add_amount(id){
-	$(".span_amount_"+id).show();
-	$(".edit_amount_"+id).show();
-	
-	$(".text_amount_"+id).hide();
-	$(".add_amount_"+id).hide();
+	cancel_amount(id);
 	
 	var amount = $(".text_amount_"+id).val();
 	if(amount.trim()==""){
