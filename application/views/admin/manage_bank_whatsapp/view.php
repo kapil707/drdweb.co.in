@@ -235,11 +235,13 @@
 										<input type="text" value="<?php echo $chemist_id; ?>" class="text_chemist_<?= ($row_id); ?> pg_text_box" style="float: left !important;display:none;" placeholder="Set Chemist Id">
 									<?php } ?>
 
-									<span class="add_chemist_<?= ($row_id); ?>" onclick="add_chemist('<?= ($row_id); ?>')" style="float: left;display:none;"> Set
-										<i class="fa fa-check" aria-hidden="true"></i>
+									<span class="text_find_match add_chemist_<?= ($row_id); ?>" onclick="add_chemist('<?= ($row_id); ?>')" style="float: left;display:none;"> 
+										Set <i class="fa fa-check" aria-hidden="true"></i>
 									</span>
 
-									<i class="fa fa-times add_chemist_cancel_<?= ($row_id); ?>" aria-hidden="true" onclick="add_chemist_cancel('<?= ($row_id); ?>')" style="float: left;font-size: 18px;display:none;"></i>
+									<span class="text_find_match_not cancel_chemist_<?= ($row_id); ?>" onclick="cancel_chemist('<?= ($row_id); ?>')" style="float: left;display:none;"> 
+										Cancel <i class="fa fa-times" aria-hidden="true"></i>
+									</span>
 										
 								</td>
 								<td width="150px">
@@ -270,7 +272,7 @@ function edit_chemist(id){
 	
 	$(".text_chemist_"+id).show();
 	$(".add_chemist_"+id).show();
-	$(".add_chemist_cancel_"+id).show();
+	$(".cancel_chemist_"+id).show();
 
 	var chemist = $(".text_chemist_"+id).val();
 	if(chemist=="N/a"){
@@ -278,23 +280,20 @@ function edit_chemist(id){
 	}
 }
 
-function add_chemist_cancel(id){
+function cancel_chemist(id){
 	$(".text_chemist_"+id).hide();
 
 	$(".add_chemist_"+id).hide();
-	$(".add_chemist_cancel_"+id).hide();
+	$(".cancel_chemist_"+id).hide();
 
 	$(".span_chemist_"+id).show();
 	$(".edit_chemist_"+id).show();
 }
 
 function add_chemist(id){
-	$(".span_chemist_"+id).show();
-	$(".edit_chemist_"+id).show();
 	
-	$(".text_chemist_"+id).hide();
-	$(".add_chemist_"+id).hide();
-	
+	cancel_chemist(id);
+
 	var chemist = $(".text_chemist_"+id).val();
 	if(chemist.trim()==""){
 		alert(chemist)
