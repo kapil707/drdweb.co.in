@@ -224,11 +224,13 @@
 									</span>
 									<br>
 									<span style="">Set Chemist :
-									<?php if(!empty($message->set_chemist)){ 
-										echo $message->set_chemist; 
-									} else {
-										echo "N/a";	
-									}?>
+										<span class="span_chemist_<?= ($row_id); ?>">
+											<?php if(!empty($message->set_chemist)){ 
+												echo $message->set_chemist; 
+											} else {
+												echo "N/a";	
+											}?>
+										</span>
 									</span>
 									<br>
 									<?php if(empty($message->final_chemist)){ ?>
