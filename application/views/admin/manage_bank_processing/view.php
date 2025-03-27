@@ -478,6 +478,7 @@ function add_final_chemist(id){
 	if(chemist_id.trim()==""){
 		alert("Etner any chemist id")
 	}else{
+		$(".cancel_final_chemist_"+id).hide();
 		$(".text_final_chemist_id_"+id).hide();
 		$(".add_final_chemist_"+id).hide();
 		$(".span_final_chemist_"+id).html(chemist_id);
@@ -502,8 +503,17 @@ function edit_final_chemist(id){
 	$(".text_final_chemist_id_"+id).show();
 	$(".cancel_final_chemist_"+id).show();
 	$(".add_final_chemist_"+id).show();
+
 	$(".span_final_chemist_"+id).hide();
 	$(".edit_final_chemist_"+id).hide();
+}
+function cancel_final_chemist(id){
+	$(".text_final_chemist_id_"+id).hide();
+	$(".cancel_final_chemist_"+id).hide();
+	$(".add_final_chemist_"+id).hide();
+
+	$(".span_final_chemist_"+id).show();
+	$(".edit_final_chemist_"+id).show();
 }
 function add_from_text_chemist_id(id){
 	var from_text = $(".text_from_text_"+id).val();
