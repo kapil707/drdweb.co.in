@@ -145,16 +145,15 @@
 
 							$timestamp = $message->timestamp ? $message->timestamp : "timestamp not found";
 							
-							//$chemist_final = $message->chemist_final ? $message->chemist_final : "N/a";
 							$chemist_id = "";
 							if(!empty($message->find_chemist))
 							{
 								$chemist_id = $message->find_chemist;
 							}
 
-							if(!empty($message->chemist_final))
+							if(!empty($message->final_chemist))
 							{
-								$chemist_id = $message->chemist_final;
+								$chemist_id = $message->final_chemist;
 							}
 
 							$extracted_text = str_replace("\n", "<br>", $extracted_text);
@@ -186,14 +185,14 @@
 								<?php if(!empty($message->find_chemist)){ ?>
 								<span style="float: left;">Find Chemist : </span>
 								<?php } ?>
-								<?php if(!empty($message->chemist_final)){ ?>
+								<?php if(!empty($message->final_chemist)){ ?>
 								<span style="float: left;">Final Chemist : </span>
 								<?php } ?>
 								<span class="span_chemist_<?= ($row_id); ?>" style="float: left;">
 									<?php echo $chemist_id; ?>
 								</span>
 								<?php
-									if(empty($message->chemist_final)){
+									if(empty($message->final_chemist)){
 										?>
 										<i class="fa fa-pencil edit_chemist_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_chemist('<?= ($row_id); ?>')" style="float: left;font-size: 13px;margin-left:10px;"></i>
 										

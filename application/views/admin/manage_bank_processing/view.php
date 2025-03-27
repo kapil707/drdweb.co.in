@@ -198,7 +198,7 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 					$row_from_text_find 		= $entry->from_text_find;
 					$row_from_text_find_match 	= $entry->from_text_find_match;
 					$row_from_text_find_chemist = $entry->from_text_find_chemist;
-					$row_chemist_final 			= $entry->chemist_final;
+					$row_final_chemist 	= $entry->final_chemist;
 					/********************************************** */
 					$row_from_text_find_match = preg_quote($row_from_text_find_match, '/');
 					$row_from_text_find_match = preg_replace('/(' . $row_from_text_find_match . ')/i', '<span class="text_find_match">$1</span>', $row_from_text_find);
@@ -393,9 +393,11 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 										}?>
 
 										<input type="text" value="<?php echo $textbox_final_chemist ?>" class="form-control text_final_chemist_id_<?= ($row_id); ?> pg_text_box" style="<?php if(!empty($entry->final_chemist)) { ?>display:none;<?php } ?>float: left !important;" placeholder="Chemist Id">
+										
 										<i class="fa fa-check add_final_chemist_<?= ($row_id); ?>" aria-hidden="true" onclick="add_final_chemist('<?= ($row_id); ?>')" style="<?php if(!empty($entry->final_chemist)) { ?>display:none;<?php } ?> float: left;font-size: 20px;"></i>
 
 										<span class="span_final_chemist_<?= ($row_id); ?>" <?php if(empty($entry->final_chemist)) { ?>style="display:none" <?php } ?>><?php echo $row_chemist_final ?></span>
+										
 										<i class="fa fa-pencil edit_final_chemist_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_final_chemist('<?= ($row_id); ?>')" <?php if(empty($entry->final_chemist)) { ?>style="display:none" <?php } ?>></i>
 									</div>
 								</div>

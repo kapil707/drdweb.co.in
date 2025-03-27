@@ -336,7 +336,7 @@ class Manage_bank_processing extends CI_Controller {
 					'from_text_find'=>'',
 					'from_text_find_match'=>'',
 					'from_text_find_chemist'=>'',
-					'chemist_final'=>'',
+					'final_chemist'=>'',
 					'whatsapp_id'=>0,
 					'whatsapp_chemist'=>'',
 					'whatsapp_recommended'=>'',

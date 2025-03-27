@@ -95,8 +95,6 @@ from_value_find = from_text_find_match
 
 find_chemist = from_text_find_chemist
 
-final_chemist = chemist_final
-
 //508220328233
 //508221777865
 
