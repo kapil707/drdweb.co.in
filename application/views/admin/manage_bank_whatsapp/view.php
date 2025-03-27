@@ -203,7 +203,7 @@
 											<?php echo $message->set_chemist; ?>
 										</span> 
 
-										<span class="edit_chemist_<?= ($row_id); ?>" onclick="edit_chemist('<?= ($row_id); ?>')" style="float: left;margin-left:10px;">
+										<span class="edit_chemist_<?= ($row_id); ?>" onclick="edit_chemist('<?= ($row_id); ?>')" style="margin-left:10px;">
 											Edit <i class="fa fa-pencil" aria-hidden="true"></i>
 										</span>
 										
