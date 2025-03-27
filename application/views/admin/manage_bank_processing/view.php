@@ -396,7 +396,7 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 										
 										<i class="fa fa-check add_final_chemist_<?= ($row_id); ?>" aria-hidden="true" onclick="add_final_chemist('<?= ($row_id); ?>')" style="<?php if(!empty($entry->final_chemist)) { ?>display:none;<?php } ?> float: left;font-size: 20px;"></i>
 
-										<span class="span_final_chemist_<?= ($row_id); ?>" <?php if(empty($entry->final_chemist)) { ?>style="display:none" <?php } ?>><?php echo $row_chemist_final ?></span>
+										<span class="span_final_chemist_<?= ($row_id); ?>" <?php if(empty($entry->final_chemist)) { ?>style="display:none" <?php } ?>><?php echo $row_final_chemist ?></span>
 										
 										<i class="fa fa-pencil edit_final_chemist_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_final_chemist('<?= ($row_id); ?>')" <?php if(empty($entry->final_chemist)) { ?>style="display:none" <?php } ?>></i>
 									</div>
