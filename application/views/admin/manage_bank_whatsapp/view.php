@@ -255,7 +255,9 @@
 									<span style="float: left;">Amount : </span>
 									<span class="span_amount_<?= ($row_id); ?>" style="float: left;"><?php echo $message->amount; ?></span>
 
-									<i class="fa fa-pencil edit_amount_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_amount('<?= ($row_id); ?>')" style="float: left;font-size: 13px;margin-left:10px;"></i>
+									<span class="text_find_match_edit edit_amount_<?= ($row_id); ?>" onclick="edit_amount('<?= ($row_id); ?>')" style="margin-left:5px;">
+										Edit <i class="fa fa-pencil" aria-hidden="true"></i>
+									</span>
 									
 									<input type="text" value="<?php echo $message->amount; ?>" class="text_amount_<?= ($row_id); ?> pg_text_box" style="float: left !important;display:none;" placeholder="Amount">
 									
