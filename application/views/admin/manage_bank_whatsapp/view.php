@@ -156,6 +156,11 @@
 								$chemist_id = $message->final_chemist;
 							}
 
+							if(!empty($message->set_chemist))
+							{
+								$chemist_id = $message->set_chemist;
+							}
+
 							$extracted_text = str_replace("\n", "<br>", $extracted_text);
 							$vision_text = str_replace("\n", "<br>", $vision_text);
 							?>
@@ -205,7 +210,7 @@
 
 										<i class="fa fa-pencil edit_chemist_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_chemist('<?= ($row_id); ?>')" style="float: left;font-size: 13px;margin-left:10px;"></i>
 										
-										<input type="text" value="<?php echo $message->set_chemist; ?>" class="text_chemist_<?= ($row_id); ?> pg_text_box" style="float: left !important;display:none;" placeholder="chemist">
+										<input type="text" value="<?php echo $chemist_id; ?>" class="text_chemist_<?= ($row_id); ?> pg_text_box" style="float: left !important;display:none;" placeholder="chemist">
 									
 										<i class="fa fa-check add_chemist_<?= ($row_id); ?>" aria-hidden="true" onclick="add_chemist('<?= ($row_id); ?>')" style="float: left;font-size: 18px;display:none;"></i>
 
