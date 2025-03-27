@@ -182,16 +182,20 @@
 									<?php } ?>
 								</td>
 								<td width="160">
-								<?php if(!empty($message->find_chemist)){ ?>
-								<span style="float: left;">Find Chemist : </span>
-								<?php } ?>
-								<?php if(!empty($message->final_chemist)){ ?>
-								<span style="float: left;">Final Chemist : </span>
-								<?php } ?>
-								<span class="span_chemist_<?= ($row_id); ?>" style="float: left;">
-									<?php echo $chemist_id; ?>
-								</span>
-								<?php
+									<?php if(!empty($message->find_chemist)){ ?>
+									<span style="float: left;">Find Chemist : </span>
+									<?php } ?>
+									<span class="span_chemist_<?= ($row_id); ?>" style="float: left;">
+										<?php echo $chemist_id; ?>
+									</span>
+
+									<?php if(!empty($message->final_chemist)){ ?>
+									<span style="float: left;">Final Chemist : </span>
+									<?php } ?>
+									<span class="span_chemist_<?= ($row_id); ?>" style="float: left;">
+										<?php echo $chemist_id; ?>
+									</span>
+									<?php
 									if(empty($message->final_chemist)){
 										?>
 										<i class="fa fa-pencil edit_chemist_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_chemist('<?= ($row_id); ?>')" style="float: left;font-size: 13px;margin-left:10px;"></i>
