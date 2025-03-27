@@ -500,7 +500,7 @@ class BankWhatsAppModel extends CI_Model
 			print_r($dt);
 			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 
-			/********************************************************** */
+			/*******************************************************
 			$where = array(
 				'id' => $whatsapp_id,
 			);
@@ -509,6 +509,7 @@ class BankWhatsAppModel extends CI_Model
 			);
 			print_r($dt);
 			$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
+			/*******************************************************/
 		}
 		die();
 		/*if($working==0){
