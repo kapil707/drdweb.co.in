@@ -203,20 +203,29 @@
 									<?php } ?>
 								</td>
 								<td width="160">
-									<?php if(!empty($message->find_chemist)){ ?>
-										<span style="float: left;">Find Chemist : <?php echo $message->find_chemist; ?></span>
-									<?php } ?>
+									<span style="float: left;">Find Chemist :
+									<?php if(!empty($message->find_chemist)){ 
+										echo $message->find_chemist; 
+									} else {
+										echo "N/a";	
+									}?>
+									</span>
 
-									<?php if(!empty($message->final_chemist)){ ?>
-									<span style="float: left;">Final Chemist : <?php echo $message->final_chemist; ?></span>
-									<?php } ?>
+									<span style="float: left;">Final Chemist :
+									<?php if(!empty($message->final_chemist)){ 
+										echo $message->final_chemist; 
+									} else {
+										echo "N/a";	
+									}?>
+									</span>
 
-									<?php
-									if(!empty($message->set_chemist)){
-										?>
-										<span style="float: left;">Set Chemist : </span>
-										<?php echo $message->set_chemist; ?>
-									<?php } ?>
+									<span style="float: left;">Set Chemist :
+									<?php if(!empty($message->set_chemist)){ 
+										echo $message->set_chemist; 
+									} else {
+										echo "N/a";	
+									}?>
+									</span>
 									
 									<?php if(empty($message->final_chemist)){ ?>
 										<span class="text_find_match_edit edit_chemist_<?= ($row_id); ?>" onclick="edit_chemist('<?= ($row_id); ?>')" style="margin-left:5px;">
