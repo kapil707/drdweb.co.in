@@ -412,7 +412,7 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 									<b onclick="get_whats_message('<?= ($row_id); ?>','<?= ($row_whatsapp_id); ?>','<?= $row_upi_no; ?>')" data-toggle="modal" data-target="#myModal">
 									<span class='<?php if((strtolower($row_whatsapp_chemist)==strtolower($row_chemist_id)) && $row_whatsapp_chemist!="N/a"){ echo "text_find_match"; } if(strtolower($row_whatsapp_chemist)!=strtolower($row_chemist_id)) { echo "text_find_match_not blink_me_white"; }?>'>WhatsApp-Text :</span></b>
 									Number : <?= ($row_whatsapp_number); ?>,
-									Date / Time : <?= ($row_whatsapp_timestamp); ?><br><b>Message :</b> <?= ($row_whatsapp_text); ?>
+									Date / Time : <?= date('d-M-y \a\t H:i:s',$row_whatsapp_timestamp) ?><br><b>Message :</b> <?= ($row_whatsapp_text); ?>
 								</div>
 								<?php } ?>
 								
