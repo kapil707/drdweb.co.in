@@ -86,7 +86,7 @@
 .text_find_match_edit {
 	padding: 2px;
 	color: white;
-	background-color: #c9b51c;
+	background-color: #c96912;
 	border-radius: 5px;
 }
 .duble_tick_not{
@@ -431,11 +431,16 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 												<i class="fa fa-check" aria-hidden="true"></i>
 											</span>
 											
-											<span class="span_final_chemist_<?= ($row_id); ?>" <?php if(empty($entry->final_chemist)) { ?>style="display:none" <?php } ?>><?php echo $row_final_chemist ?></span>
+											<span class="span_final_chemist_<?= ($row_id); ?>" <?php if(empty($entry->final_chemist)) { ?>style="display:none" <?php } ?>><?php echo $entry->final_chemist ?></span>
 											
 											<span class="text_find_match_edit edit_final_chemist_<?= ($row_id); ?>" onclick="edit_final_chemist('<?= ($row_id); ?>')" <?php if(empty($entry->final_chemist)) { ?>style="display:none" <?php } ?>>
 												Edit <i class="fa fa-pencil" aria-hidden="true"></i>
 											</span>
+
+											<span class="text_find_match_not cancel_final_chemist_<?= ($row_id); ?>" onclick="cancel_final_chemist('<?= ($row_id); ?>')" style="display:none">
+												Cancel <i class="fa fa-times" aria-hidden="true"></i>
+											</span>
+											
 										<?php } ?>
 									</div>
 								</div>
