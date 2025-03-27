@@ -223,20 +223,6 @@ class Manage_bank_processing extends CI_Controller {
 			$query = $this->BankModel->select_query("SELECT * FROM `tbl_bank_processing` where id='$id'");
 			$row = $query->row();
 			$upi_no = $row->upi_no;
-			$from_text = $row->from_text;
-			$chemist_id = $row->from_text_find_chemist;
-			if(empty($chemist_id)){
-				
-				$dt = array(
-					'chemist_id' => $chemist_id,
-					'string_value' => $from_text,
-					'date'=>date('Y-m-d'),
-					'time'=>date('H:i'),
-					'timestamp'=>time(),
-					'user_id'=>$this->session->userdata("user_id")
-				);
-				$this->BankModel->insert_fun("tbl_bank_chemist", $dt);
-			}
 			
 			/********************************************* */			
 			if(!empty($upi_no)){
@@ -262,8 +248,8 @@ class Manage_bank_processing extends CI_Controller {
 			$row = $query->row();
 			if(empty($row)){
 				$dt = array(
-					'chemist_id' => $chemist_id,
-					'string_value' => $from_text,
+					'chemist_id' =>$chemist_id,
+					'string_value' =>$from_text,
 					'date'=>date('Y-m-d'),
 					'time'=>date('H:i'),
 					'timestamp'=>time(),
@@ -278,7 +264,7 @@ class Manage_bank_processing extends CI_Controller {
 				'from_text'=>$from_text,
 			);
 			$dt = array(
-				'process_status' => '0',
+				'process_status'=>'0',
 				'whatsapp_id'=>0,
 				'whatsapp_chemist'=>'',
 				'whatsapp_recommended'=>'',
