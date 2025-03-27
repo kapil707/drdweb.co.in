@@ -336,7 +336,7 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 										<?= ($row_from_text); ?>
 
 										<?php if(empty($textbox_final_chemist) && $row_chemist_id == "N/a"){ ?>
-											Set Chemist 
+											<b class="text_find_match blink_me_white">Set Chemist</b> 
 											<i class="fa fa-pencil edit_from_text_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_from_text_chemist_id('<?= ($row_id); ?>')"></i>
 										<?php } ?>
 
