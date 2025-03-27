@@ -263,6 +263,8 @@
 									<br>
 									<input type="text" value="<?php echo $message->amount; ?>" class="text_amount_<?= ($row_id); ?> pg_text_box" style="float: left !important;display:none;" placeholder="Amount">
 
+									<br>
+
 									<span class="text_find_match add_amount_<?= ($row_id); ?>" onclick="add_amount('<?= ($row_id); ?>')" style="display:none;margin-left:5px;"> 
 										Set <i class="fa fa-check" aria-hidden="true"></i>
 									</span>
