@@ -186,14 +186,14 @@
 									<span style="float: left;">Find Chemist : </span>
 									<?php } ?>
 									<span class="span_chemist_<?= ($row_id); ?>" style="float: left;">
-										<?php echo $chemist_id; ?>
+										<?php echo $message->find_chemist; ?>
 									</span>
 
 									<?php if(!empty($message->final_chemist)){ ?>
 									<span style="float: left;">Final Chemist : </span>
 									<?php } ?>
 									<span class="span_chemist_<?= ($row_id); ?>" style="float: left;">
-										<?php echo $chemist_id; ?>
+										<?php echo $message->final_chemist; ?>
 									</span>
 									<?php
 									if(empty($message->final_chemist)){
