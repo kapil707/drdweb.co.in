@@ -18,7 +18,7 @@
 	border-radius: 10px;
 }
 .myborder{
-	width: 31%;
+	width: 33%;
 	margin: 0px !important;
     padding: 0px !important;
     margin-left: 15px !important;
@@ -26,7 +26,7 @@
     border: 1px solid #676a6c !important;
 }
 .myborder1{
-	width: 31%;
+	width: 33%;
 	margin: 0px !important;
     padding: 0px !important;
 	margin-left: 15px !important;
@@ -34,7 +34,7 @@
     border: 1px solid #676a6c !important;
 }
 .myborder2{
-	width: 31%;
+	width: 33%;
 	margin: 0px !important;
     padding: 0px !important;
 	margin-left: 15px !important;
