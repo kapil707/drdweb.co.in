@@ -223,60 +223,19 @@ class Manage_bank_processing extends CI_Controller {
 			$query = $this->BankModel->select_query("SELECT * FROM `tbl_bank_processing` where id='$id'");
 			$row = $query->row();
 			$upi_no = $row->upi_no;
-			$invoice = $row->invoice;
 			
 			/********************************************* */			
 			if(!empty($upi_no)){
-				/********************************************* */
-				$final_invoice = $this->get_done_invoice($invoice,$final_chemist);
-				/********************************************* */
-				$final_find_by = "Chemist";
-				if(!empty($final_invoice)){
-					$final_find_by.= ",invoice";
-					$final_invoice_chemist = $final_chemist;
-				}
 				$where = array(
 					'upi_no' => $upi_no,
 				);
 				$dt = array(
 					'final_chemist'=>$final_chemist,
-					'final_invoice'=>$final_invoice,
-					'final_invoice_chemist'=>$final_invoice_chemist,
-					'final_find_by'=>$final_find_by,
 					'status' => '4',
 				);
 				$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 			}
 		}
-	}
-
-	private function get_done_invoice($invoices,$search_invoice){
-		//$invoices = "R353:-SB-24-345106 Amt-x.3590||R353:-SB-24-345115 Amt.608";
-		$invoice_lines = explode("||", $invoices);
-		//$search_invoice = 'R353';
-
-		// इनवॉइस को खोजें
-		$selected_invoices = []; // Array to store matching invoices
-		foreach ($invoice_lines as $line) {
-			if (strpos($line, $search_invoice) !== false) {
-				$selected_invoices[] = $line;
-			}
-		}
-
-		$done_invoices = []; // Array to store extracted invoice numbers
-		foreach ($selected_invoices as $selected_invoice) {
-			$selected_invoice1  = explode(":-", $selected_invoice);
-			$selected_invoice   = explode("Amt", $selected_invoice1[1]);
-			$amount = str_replace("Amt.","",$selected_invoice[1]);
-			$amount = str_replace("Amt-x.","",$amount);
-			$amount = str_replace("-x.","",$amount);
-			$done_invoice = $selected_invoice[0]."Amt.".$amount;
-			
-			$done_invoices[] = trim($done_invoice);
-		}
-
-		// Output all the extracted invoice numbers
-		return implode(',', $done_invoices);
 	}
 
 	public function add_from_text_chemist_id()
