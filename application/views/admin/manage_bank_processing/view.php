@@ -425,12 +425,6 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 											<span class="text_find_match_edit edit_final_chemist_<?= ($row_id); ?>" onclick="edit_final_chemist('<?= ($row_id); ?>')" <?php if(empty($entry->final_chemist)) { ?>style="display:none" <?php } ?>>
 												Edit <i class="fa fa-pencil" aria-hidden="true"></i>
 											</span>
-											
-											&nbsp;
-
-											<span class="text_find_match_not cancel_final_chemist_<?= ($row_id); ?>" onclick="cancel_final_chemist('<?= ($row_id); ?>')" style="display:none">
-												Cancel <i class="fa fa-times" aria-hidden="true"></i>
-											</span>
 
 											<?php if(empty($textbox_final_chemist) && $row_chemist_id != "N/a"){
 												$textbox_final_chemist = $row_chemist_id;
@@ -441,6 +435,10 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 											<span class="text_find_match add_final_chemist_<?= ($row_id); ?>" onclick="add_final_chemist('<?= ($row_id); ?>')" style="<?php if(!empty($entry->final_chemist)) { ?>display:none;<?php } ?>float: left;">
 												Set
 												<i class="fa fa-check" aria-hidden="true"></i>
+											</span>
+
+											<span class="text_find_match_not cancel_final_chemist_<?= ($row_id); ?>" onclick="cancel_final_chemist('<?= ($row_id); ?>')" style="display:none">
+												Cancel <i class="fa fa-times" aria-hidden="true"></i>
 											</span>
 
 										<?php } ?>
