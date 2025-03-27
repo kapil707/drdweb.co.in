@@ -82,6 +82,13 @@
 	background-color: #9f0032;
 	border-radius: 5px;
 }
+
+.text_find_match_edit {
+	padding: 2px;
+	color: white;
+	background-color: #c9b51c;
+	border-radius: 5px;
+}
 .duble_tick_not{
 	width: 16px;
     fill: #9f0032;
@@ -426,7 +433,9 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 											
 											<span class="span_final_chemist_<?= ($row_id); ?>" <?php if(empty($entry->final_chemist)) { ?>style="display:none" <?php } ?>><?php echo $row_final_chemist ?></span>
 											
-											<i class="fa fa-pencil edit_final_chemist_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_final_chemist('<?= ($row_id); ?>')" <?php if(empty($entry->final_chemist)) { ?>style="display:none" <?php } ?>></i>
+											<span class="text_find_match_edit edit_final_chemist_<?= ($row_id); ?>" onclick="edit_final_chemist('<?= ($row_id); ?>')" <?php if(empty($entry->final_chemist)) { ?>style="display:none" <?php } ?>>
+												Edit <i class="fa fa-pencil" aria-hidden="true"></i>
+											</span>
 										<?php } ?>
 									</div>
 								</div>
