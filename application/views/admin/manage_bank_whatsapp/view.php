@@ -263,6 +263,11 @@ function edit_amount(id){
 	
 	$(".text_amount_"+id).show();
 	$(".add_amount_"+id).show();
+
+	var amount = $(".text_amount_"+id).val();
+	if(amount=="N/a"){
+		$(".text_amount_"+id).val('');
+	}
 }
 
 function add_amount(id){
