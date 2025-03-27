@@ -206,8 +206,8 @@
 										<b>UPI No </b>: <?php echo $message->upi_no; ?>
 									<?php } ?>
 								</td>
-								<td width="160">
-									<span style="float: left;">Find Chemist :
+								<td width="250">
+									<span style="">Find Chemist :
 									<?php if(!empty($message->find_chemist)){ 
 										echo $message->find_chemist; 
 									} else {
@@ -215,7 +215,7 @@
 									}?>
 									</span>
 
-									<span style="float: left;">Final Chemist :
+									<span style="">Final Chemist :
 									<?php if(!empty($message->final_chemist)){ 
 										echo $message->final_chemist; 
 									} else {
@@ -223,7 +223,7 @@
 									}?>
 									</span>
 
-									<span style="float: left;">Set Chemist :
+									<span style="">Set Chemist :
 									<?php if(!empty($message->set_chemist)){ 
 										echo $message->set_chemist; 
 									} else {
@@ -232,13 +232,14 @@
 									</span>
 									
 									<?php if(empty($message->final_chemist)){ ?>
-										<span class="text_find_match_edit edit_chemist_<?= ($row_id); ?>" onclick="edit_chemist('<?= ($row_id); ?>')" style="float: left;margin-left:5px;">
+										<span class="text_find_match_edit edit_chemist_<?= ($row_id); ?>" onclick="edit_chemist('<?= ($row_id); ?>')" style="margin-left:5px;">
 											Edit <i class="fa fa-pencil" aria-hidden="true"></i>
 										</span>
 										
 										<input type="text" value="<?php echo $chemist_id; ?>" class="text_chemist_<?= ($row_id); ?> pg_text_box" style="float: left !important;display:none;" placeholder="Set Chemist Id">
 									<?php } ?>
-									<br>
+									
+									
 									<span class="text_find_match add_chemist_<?= ($row_id); ?>" onclick="add_chemist('<?= ($row_id); ?>')" style="display:none;"> 
 										Set <i class="fa fa-check" aria-hidden="true"></i>
 									</span>
