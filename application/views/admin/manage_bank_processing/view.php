@@ -398,7 +398,8 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 										} ?>
 									</div>
 									<div class="td_div1">
-										<b style="float: left; margin-right:5px;">Final Chemist : </b>
+										<b style="float: left; margin-right:5px;">Final Chemist : </b>1.<?php echo $textbox_final_chemist ?> 2.<?php echo $row_chemist_id ?>
+
 										<?php if(empty($textbox_final_chemist) && $row_chemist_id != "N/a"){
 											$textbox_final_chemist = $row_chemist_id;
 										}?>
