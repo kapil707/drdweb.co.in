@@ -398,19 +398,25 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 										} ?>
 									</div>
 									<div class="td_div1">
-										<b style="float: left; margin-right:5px;">Final Chemist : </b>1.<?php echo $textbox_final_chemist ?> 2.<?php echo $row_chemist_id ?>
+										<?php if(empty($textbox_final_chemist) && empty($row_chemist_id)){
+											?>
+											<b style="float: left; margin-right:5px;">Please Set form chemist : </b>
+											<?php
+										} else { ?>
+											<b style="float: left; margin-right:5px;">Final Chemist : </b>
 
-										<?php if(empty($textbox_final_chemist) && $row_chemist_id != "N/a"){
-											$textbox_final_chemist = $row_chemist_id;
-										}?>
+											<?php if(empty($textbox_final_chemist) && $row_chemist_id != "N/a"){
+												$textbox_final_chemist = $row_chemist_id;
+											}?>
 
-										<input type="text" value="<?php echo $textbox_final_chemist ?>" class="form-control text_final_chemist_id_<?= ($row_id); ?> pg_text_box" style="<?php if(!empty($entry->final_chemist)) { ?>display:none;<?php } ?>float: left !important;" placeholder="Chemist Id">
-										
-										<i class="fa fa-check add_final_chemist_<?= ($row_id); ?>" aria-hidden="true" onclick="add_final_chemist('<?= ($row_id); ?>')" style="<?php if(!empty($entry->final_chemist)) { ?>display:none;<?php } ?> float: left;font-size: 20px;"></i>
+											<input type="text" value="<?php echo $textbox_final_chemist ?>" class="form-control text_final_chemist_id_<?= ($row_id); ?> pg_text_box" style="<?php if(!empty($entry->final_chemist)) { ?>display:none;<?php } ?>float: left !important;" placeholder="Chemist Id">
+											
+											<i class="fa fa-check add_final_chemist_<?= ($row_id); ?>" aria-hidden="true" onclick="add_final_chemist('<?= ($row_id); ?>')" style="<?php if(!empty($entry->final_chemist)) { ?>display:none;<?php } ?> float: left;font-size: 20px;"></i>
 
-										<span class="span_final_chemist_<?= ($row_id); ?>" <?php if(empty($entry->final_chemist)) { ?>style="display:none" <?php } ?>><?php echo $row_final_chemist ?></span>
-										
-										<i class="fa fa-pencil edit_final_chemist_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_final_chemist('<?= ($row_id); ?>')" <?php if(empty($entry->final_chemist)) { ?>style="display:none" <?php } ?>></i>
+											<span class="span_final_chemist_<?= ($row_id); ?>" <?php if(empty($entry->final_chemist)) { ?>style="display:none" <?php } ?>><?php echo $row_final_chemist ?></span>
+											
+											<i class="fa fa-pencil edit_final_chemist_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_final_chemist('<?= ($row_id); ?>')" <?php if(empty($entry->final_chemist)) { ?>style="display:none" <?php } ?>></i>
+										<?php } ?>
 									</div>
 								</div>
 								
