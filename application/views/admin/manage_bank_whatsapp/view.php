@@ -202,7 +202,7 @@
 									</b>
 									<?php } ?>
 									<br>
-									<?php echo $message->upi_no; ?>
+									<b>UPI No </b>: <?php echo $message->upi_no; ?>
 								</td>
 								<td width="160">
 									<span style="float: left;">Find Chemist :
