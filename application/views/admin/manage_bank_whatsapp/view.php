@@ -114,9 +114,11 @@
 						</th>
 						<th>
 							Date / Time
-							<br>
+						</th>
+						<th>
 							Number
-							<br>
+						</th>
+						<th>
 							Body
 						</th>
 						<th>
@@ -128,7 +130,7 @@
 						<th>
 							Image
                         </th>
-						<th width="200px">
+						<th>
 							Chemist
                         </th>
 						<th>
@@ -188,9 +190,11 @@
 								</td>
 								<td>
 									<?php echo date('d-M-y \a\t H:i:s', $timestamp); ?>
-									<br>
+								</td>
+								<td>
 									<?php echo $from_number; ?>
-									<br>
+								</td>
+								<td>
 									<?php echo $body; ?><br>
 									<b><?php echo $reply_body ;?></b>
 								</td>
