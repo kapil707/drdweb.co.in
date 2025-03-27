@@ -265,7 +265,7 @@ function edit_amount(id){
 	$(".add_amount_"+id).show();
 
 	var amount = $(".text_amount_"+id).val();
-	if(amount=="N/a"){
+	if(amount=="N/a" || amount=="0.0"){
 		$(".text_amount_"+id).val('');
 	}
 }
