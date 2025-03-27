@@ -398,7 +398,7 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 										} ?>
 									</div>
 									<div class="td_div1">
-										<?php if(empty($textbox_final_chemist) && empty($row_chemist_id)){
+										<?php if(empty($textbox_final_chemist) && $row_chemist_id == "N/a"){
 											?>
 											<b style="float: left; margin-right:5px;">Please Set form chemist : </b>
 											<?php
