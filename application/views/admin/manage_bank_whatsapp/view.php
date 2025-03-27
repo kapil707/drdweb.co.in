@@ -185,19 +185,24 @@
 									<?php if(!empty($message->find_chemist)){ ?>
 									<span style="float: left;">Find Chemist : </span>
 									<?php } ?>
-									<span class="span_chemist_<?= ($row_id); ?>" style="float: left;">
+									<span style="float: left;">
 										<?php echo $message->find_chemist; ?>
 									</span>
 
 									<?php if(!empty($message->final_chemist)){ ?>
 									<span style="float: left;">Final Chemist : </span>
 									<?php } ?>
-									<span class="span_chemist_<?= ($row_id); ?>" style="float: left;">
+									<span style="float: left;">
 										<?php echo $message->final_chemist; ?>
 									</span>
 									<?php
 									if(empty($message->final_chemist)){
 										?>
+										<span style="float: left;">Set Chemist : </span>
+										<span class="span_chemist_<?= ($row_id); ?>" style="float: left;">
+											<?php echo $message->final_chemist; ?>
+										</span> 
+
 										<i class="fa fa-pencil edit_chemist_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_chemist('<?= ($row_id); ?>')" style="float: left;font-size: 13px;margin-left:10px;"></i>
 										
 										<input type="text" value="<?php echo $chemist_id; ?>" class="text_chemist_<?= ($row_id); ?> pg_text_box" style="float: left !important;display:none;" placeholder="chemist">
