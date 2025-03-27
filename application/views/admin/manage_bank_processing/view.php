@@ -31,6 +31,13 @@
 	margin-right: -15px !important;
     border: 1px solid #676a6c !important;
 }
+.myborder2{
+	margin: 0px !important;
+    padding: 0px !important;
+	margin-left: 15px !important;
+	margin-right: -15px !important;
+    border: 1px solid #676a6c !important;
+}
 .dataTables-example21 td{
 	padding: 3px !important;
 	border: none !important;
@@ -382,7 +389,7 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 									</div>
 								</div>
 
-								<div class="col-sm-4 myborder1">
+								<div class="col-sm-4 myborder2">
 									<div class="td_div">
 										<b>Find Chemist : </b>
 										<?= $row_chemist_id;?>
