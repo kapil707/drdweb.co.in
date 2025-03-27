@@ -128,7 +128,7 @@
 						<th>
 							Image
                         </th>
-						<th>
+						<th width="200px">
 							Chemist
                         </th>
 						<th>
@@ -291,7 +291,7 @@ function cancel_chemist(id){
 }
 
 function add_chemist(id){
-	
+
 	cancel_chemist(id);
 
 	var chemist = $(".text_chemist_"+id).val();
