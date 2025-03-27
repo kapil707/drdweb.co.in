@@ -262,10 +262,14 @@
 									
 									<br>
 									<input type="text" value="<?php echo $message->amount; ?>" class="text_amount_<?= ($row_id); ?> pg_text_box" style="float: left !important;display:none;" placeholder="Amount">
-									
-									<i class="fa fa-check add_amount_<?= ($row_id); ?>" aria-hidden="true" onclick="add_amount('<?= ($row_id); ?>')" style="float: left;font-size: 18px;display:none;"></i>
 
-									<i class="fa fa-times add_amount_cancel_<?= ($row_id); ?>" aria-hidden="true" onclick="add_amount_cancel('<?= ($row_id); ?>')" style="float: left;font-size: 18px;display:none;"></i>
+									<span class="text_find_match add_amount_<?= ($row_id); ?>" onclick="add_amount('<?= ($row_id); ?>')" style="display:none;margin-left:5px;"> 
+										Set <i class="fa fa-check" aria-hidden="true"></i>
+									</span>
+
+									<span class="text_find_match_not add_amount_cancel_<?= ($row_id); ?>" onclick="add_amount_cancel('<?= ($row_id); ?>')" style="display:none;margin-left:5px;"> 
+										Cancel <i class="fa fa-times" aria-hidden="true"></i>
+									</span>
 								</td>
 							</tr>
 						<?php
