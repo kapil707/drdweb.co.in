@@ -21,21 +21,21 @@
 	margin: 0px !important;
     padding: 0px !important;
     margin-left: 15px !important;
-	margin-right: -15px !important;
+	margin-right: 15px !important;
     border: 1px solid #676a6c !important;
 }
 .myborder1{
 	margin: 0px !important;
     padding: 0px !important;
 	margin-left: 15px !important;
-	margin-right: -15px !important;
+	margin-right: 15px !important;
     border: 1px solid #676a6c !important;
 }
 .myborder2{
 	margin: 0px !important;
     padding: 0px !important;
 	margin-left: 15px !important;
-	margin-right: -15px !important;
+	margin-right: 15px !important;
     border: 1px solid #676a6c !important;
 }
 .dataTables-example21 td{
