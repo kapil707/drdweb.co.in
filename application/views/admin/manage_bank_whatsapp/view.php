@@ -205,6 +205,8 @@
 									<input type="text" value="<?php echo $message->amount; ?>" class="text_amount_<?= ($row_id); ?> pg_text_box" style="float: left !important;display:none;" placeholder="Amount">
 									
 									<i class="fa fa-check add_amount_<?= ($row_id); ?>" aria-hidden="true" onclick="add_amount('<?= ($row_id); ?>')" style="float: left;font-size: 18px;display:none;"></i>
+
+									<i class="fa fa-times add_amount_cancel_<?= ($row_id); ?>" aria-hidden="true" onclick="add_amount_cancel('<?= ($row_id); ?>')" style="float: left;font-size: 18px;display:none;"></i>
 								</td>
 							</tr>
 						<?php
@@ -263,6 +265,7 @@ function edit_amount(id){
 	
 	$(".text_amount_"+id).show();
 	$(".add_amount_"+id).show();
+	$(".add_amount_cancel_"+id).show();
 
 	var amount = $(".text_amount_"+id).val();
 	if(amount=="N/a" || amount=="0.0"){
