@@ -357,11 +357,11 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 
 								<div class="col-sm-4 myborder1">
 									<div class="td_div">
-										<b>Chemist : </b>
+										<b>Find Chemist : </b>
 										<?= $row_chemist_id;?>
 									</div>
 									<div class="td_div">
-										<b>Invoice : </b>
+										<b>Find Invoice : </b>
 										<?= $row_invoice_chemist ?>
 
 										<?php
@@ -375,7 +375,7 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 										} ?>
 									</div>
 									<div class="td_div">
-										<b onclick="get_whats_message('<?= ($row_id); ?>','<?= ($row_whatsapp_id); ?>','<?= $row_upi_no; ?>')" data-toggle="modal" data-target="#myModal">WhatsApp : </b>
+										<b onclick="get_whats_message('<?= ($row_id); ?>','<?= ($row_whatsapp_id); ?>','<?= $row_upi_no; ?>')" data-toggle="modal" data-target="#myModal">Find WhatsApp : </b>
 										<?= $row_whatsapp_chemist; ?>
 										<?php
 										if((strtolower($row_whatsapp_chemist)==strtolower($row_chemist_id)) && $row_whatsapp_chemist!="N/a"){
