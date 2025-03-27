@@ -460,6 +460,7 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 function add_final_chemist(id){
 	var from_text = $(".text_from_text_"+id).val();
 	var chemist_id = $(".text_final_chemist_id_"+id).val();
+	alert(chemist_id)
 	if(chemist_id.trim()==""){
 		alert("Etner any chemist id")
 	}else{
