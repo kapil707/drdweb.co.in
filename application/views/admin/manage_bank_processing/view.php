@@ -336,20 +336,21 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 										<?= ($row_from_text); ?>
 
 										<?php if(empty($textbox_final_chemist) && $row_chemist_id == "N/a"){ ?>
+											<br>
 											<b class="text_find_match blink_me_white edit_from_text_chemist_id_<?= ($row_id); ?>" onclick="edit_from_text_chemist_id('<?= ($row_id); ?>')">Set Chemist <i class="fa fa-pencil" aria-hidden="true"></i></b>
+
+											<input type="hidden" value="<?php echo $row_from_text ?>" class="text_from_text_<?= ($row_id); ?>">
+
+											<input type="text" value="<?php echo $row_from_text_find_chemist; ?>" class="form-control myinput1 text_from_text_chemist_id_<?= ($row_id); ?> pg_text_box" style="display:none;">
+
+											<b class="text_find_match add_from_text_chemist_id_<?= ($row_id); ?>" onclick="add_from_text_chemist_id('<?= ($row_id); ?>')" style="display:none">
+												Set <i class="fa fa-check" aria-hidden="true"></i>
+											</b>
+											&nbsp;
+											<b class="text_find_match_not cancel_from_text_chemist_id_<?= ($row_id); ?>" onclick="cancel_from_text_chemist_id('<?= ($row_id); ?>')" style="display:none">
+												Cancel <i class="fa fa-times" aria-hidden="true"></i>
+											</b>
 										<?php } ?>
-
-										<input type="hidden" value="<?php echo $row_from_text ?>" class="text_from_text_<?= ($row_id); ?>">
-
-										<input type="text" value="<?php echo $row_from_text_find_chemist; ?>" class="form-control myinput1 text_from_text_chemist_id_<?= ($row_id); ?> pg_text_box" style="display:none;">
-
-										<b class="text_find_match add_from_text_chemist_id_<?= ($row_id); ?>" onclick="add_from_text_chemist_id('<?= ($row_id); ?>')" style="display:none">
-											Set <i class="fa fa-check" aria-hidden="true"></i>
-										</b>
-
-										<b class="text_find_match_not cancel_from_text_chemist_id_<?= ($row_id); ?>" onclick="cancel_from_text_chemist_id('<?= ($row_id); ?>')" style="display:none">
-											Cancel <i class="fa fa-times" aria-hidden="true"></i>
-										</b>
 									</div>
 									<div class="td_div">
 										<b>Find  : </b> <?= ($row_from_text_find_match); ?>
