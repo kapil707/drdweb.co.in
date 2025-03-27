@@ -332,17 +332,21 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 
 								<div class="col-sm-4 myborder1">
 									<div class="td_div">
-										<b>From :</b> <?= ($row_from_text); ?>
+										<b>From :</b>
+										<?= ($row_from_text); ?>
+
+										<?php if(empty($textbox_final_chemist) && $row_chemist_id == "N/a"){ ?>
+											<i class="fa fa-pencil edit_from_text_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_from_text_chemist_id('<?= ($row_id); ?>')"></i>
+										<?php } ?>
 
 										<input type="hidden" value="<?php echo $row_from_text ?>" class="text_from_text_<?= ($row_id); ?>">
-										
+
 										<input type="text" value="<?php echo $row_from_text_find_chemist; ?>" class="form-control myinput1 text_from_text_chemist_id_<?= ($row_id); ?> pg_text_box" style="display:none;">
 
 										<i class="fa fa-check add_from_text_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="add_from_text_chemist_id('<?= ($row_id); ?>')" style="display:none"></i>
 										
 										<i class="fa fa-times cancel_from_text_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="cancel_from_text_chemist_id('<?= ($row_id); ?>')" style="display:none"></i>
-										
-										<i class="fa fa-pencil edit_from_text_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_from_text_chemist_id('<?= ($row_id); ?>')"></i>
+
 									</div>
 									<div class="td_div">
 										<b>Find  : </b> <?= ($row_from_text_find_match); ?>
@@ -400,7 +404,7 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 									<div class="td_div1">
 										<?php if(empty($textbox_final_chemist) && $row_chemist_id == "N/a"){
 											?>
-											<b style="float: left; margin-right:5px;" class="text_find_match_not blink_me_white">Please Set form chemist </b>
+											<b style="float: left; margin-right:5px;" class="text_find_match_not blink_me_white">Please Set form Chemist </b>
 											<?php
 										} else { ?>
 											<b style="float: left; margin-right:5px;">Final Chemist : </b>
