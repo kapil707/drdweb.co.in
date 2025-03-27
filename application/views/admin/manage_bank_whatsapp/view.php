@@ -240,11 +240,11 @@
 									<?php } ?>
 									<br>
 									
-									<span class="text_find_match add_chemist_<?= ($row_id); ?>" onclick="add_chemist('<?= ($row_id); ?>')" style="display:none;"> 
+									<span class="text_find_match add_chemist_<?= ($row_id); ?>" onclick="add_chemist('<?= ($row_id); ?>')" style="display:none;margin-left:5px;"> 
 										Set <i class="fa fa-check" aria-hidden="true"></i>
 									</span>
 
-									<span class="text_find_match_not cancel_chemist_<?= ($row_id); ?>" onclick="cancel_chemist('<?= ($row_id); ?>')" style="display:none;"> 
+									<span class="text_find_match_not cancel_chemist_<?= ($row_id); ?>" onclick="cancel_chemist('<?= ($row_id); ?>')" style="display:none;margin-left:5px;"> 
 										Cancel <i class="fa fa-times" aria-hidden="true"></i>
 									</span>
 										
