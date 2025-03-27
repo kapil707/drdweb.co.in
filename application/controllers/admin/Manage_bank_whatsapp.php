@@ -82,7 +82,7 @@ class Manage_bank_whatsapp extends CI_Controller {
 		if(!empty($id) && !empty(chemist)){
 			
 			$where = array('id' => $id,);
-			$dt = array('set_chemist'=>$chemist);
+			$dt = array('set_chemist'=>$chemist,'status'=>0);
 			$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
 		}
 	}
