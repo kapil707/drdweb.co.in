@@ -273,6 +273,16 @@ function edit_amount(id){
 	}
 }
 
+function add_amount_cancel(id){
+	$(".text_amount_"+id).hide();
+
+	$(".add_amount_"+id).hide();
+	$(".add_amount_cancel_"+id).hide();
+
+	$(".span_amount_"+id).show();
+	$(".edit_amount_"+id).show();
+}
+
 function add_amount(id){
 	$(".span_amount_"+id).show();
 	$(".edit_amount_"+id).show();
