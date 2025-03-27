@@ -597,26 +597,6 @@ function get_whats_message(row_id1,row_whatsapp_id,row_upi_no){
 		timeout: 60000
 	});
 }
-function add_whatsapp_chemist_id(){
-	var whatsapp_chemist = $(".text_whatsapp_chemist_id").val();
-	if(whatsapp_chemist.trim()==""){
-		alert("Etner any chemist id")
-	}else{
-		$.ajax({
-			type : "POST",
-			data : {row_id:row_id,whatsapp_chemist:whatsapp_chemist,},
-			url  : "<?= base_url()?>admin/<?= $Page_name?>/add_whatsapp_chemist_id",
-			cache: true,
-			error: function(){
-				toastr.error('Error');
-			},
-			success: function(data){
-				toastr.info('Chemist set successfully');
-				$(".text_whatsapp_chemist_id").val('');
-			}
-		});
-	}
-}
 </script>
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
@@ -637,9 +617,6 @@ function add_whatsapp_chemist_id(){
 				<td>Image</td>
 			</tr>
 		</table>
-		<b style="float: left;">Add WhatsApp Chemist : </b>
-		<input type="text" value="<?php echo $textbox_final_chemist ?>" class="form-control text_whatsapp_chemist_id" style="float: left; width: 100px; border-radius: 10px;" placeholder="Chemist Id">
-		<i class="fa fa-check add_whatsapp_chemist_id" aria-hidden="true" onclick="add_whatsapp_chemist_id()" style="float: left;font-size: 20px;"></i>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
