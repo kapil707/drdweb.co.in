@@ -18,7 +18,7 @@ class BankInvoiceModel extends CI_Model
 
 		$working = 0;
 		if($working == 0){
-			$result = $this->BankModel->select_query("select id,from_text_find_chemist,amount from tbl_bank_processing where invoice_id='' and from_text_find_chemist!='' and date BETWEEN '$start_date' and '$end_date' ");
+			$result = $this->BankModel->select_query("select id,from_text_find_chemist,amount from tbl_bank_processing where invoice_id='' and from_text_find_chemist!='' and date BETWEEN '$start_date' and '$end_date' ORDER BY RAND() limit 500");
 			$result = $result->result();
 			foreach($result as $row){
 				$id 		= $row->id;
