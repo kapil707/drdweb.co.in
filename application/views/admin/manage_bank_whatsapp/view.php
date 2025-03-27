@@ -174,6 +174,9 @@
 									<?php } ?>
 								</td>
 								<td width="160">
+								<?php if(!empty($message->find_chemist)){ ?>
+								<span style="float: left;">Find Chemist : </span>
+								<?php } ?>
 								<?php if(!empty($message->chemist_final)){ ?>
 								<span style="float: left;">Final Chemist : </span>
 								<?php } ?>
