@@ -339,7 +339,9 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 										<input type="text" value="<?php echo $row_from_text_find_chemist; ?>" class="form-control myinput1 text_from_text_chemist_id_<?= ($row_id); ?> pg_text_box" style="display:none;">
 
 										<i class="fa fa-check add_from_text_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="add_from_text_chemist_id('<?= ($row_id); ?>')" style="display:none"></i>
+										
 										<i class="fa fa-times cancel_from_text_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="cancel_from_text_chemist_id('<?= ($row_id); ?>')" style="display:none"></i>
+										
 										<i class="fa fa-pencil edit_from_text_chemist_id_<?= ($row_id); ?>" aria-hidden="true" onclick="edit_from_text_chemist_id('<?= ($row_id); ?>')"></i>
 									</div>
 									<div class="td_div">
@@ -472,6 +474,7 @@ function edit_final_chemist(id){
 function add_from_text_chemist_id(id){
 	var from_text = $(".text_from_text_"+id).val();
 	var chemist_id = $(".text_from_text_chemist_id_"+id).val();
+	alert(chemist_id)
 	if(chemist_id.trim()==""){
 		alert("Etner any chemist id")
 	}else{
