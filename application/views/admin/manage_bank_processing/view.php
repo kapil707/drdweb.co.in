@@ -71,11 +71,7 @@
 	background-color: #0c9f00;
 	border-radius: 5px;
 }
-.duble_tick{
-	width: 16px;
-    fill: #0c9f00;
-    margin-bottom: -6px;
-}
+
 .text_find_match_not {
 	padding: 2px;
 	color: white;
@@ -88,6 +84,11 @@
 	color: white;
 	background-color: #c96912;
 	border-radius: 5px;
+}
+.duble_tick{
+	width: 16px;
+    fill: #0c9f00;
+    margin-bottom: -6px;
 }
 .duble_tick_not{
 	width: 16px;

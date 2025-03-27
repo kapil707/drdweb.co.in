@@ -9,6 +9,26 @@
     border: none !important;
     border-bottom: solid !important;
 }
+.text_find_match {
+	padding: 2px;
+	color: white;
+	background-color: #0c9f00;
+	border-radius: 5px;
+}
+
+.text_find_match_not {
+	padding: 2px;
+	color: white;
+	background-color: #9f0032;
+	border-radius: 5px;
+}
+
+.text_find_match_edit {
+	padding: 2px;
+	color: white;
+	background-color: #c96912;
+	border-radius: 5px;
+}
 </style>
 <div class="row">
     <div class="col-xs-12" style="margin-bottom:5px;">
@@ -195,6 +215,12 @@
 									<span style="float: left;">Final Chemist : <?php echo $message->final_chemist; ?></span>
 									<?php } ?>
 									
+									<span class="text_find_match_edit edit_chemist_<?= ($row_id); ?>" onclick="edit_chemist('<?= ($row_id); ?>')" style="margin-left:10px;">
+										Edit <i class="fa fa-pencil" aria-hidden="true"></i>
+									</span>
+									
+									<input type="text" value="<?php echo $chemist_id; ?>" class="text_chemist_<?= ($row_id); ?> pg_text_box" style="float: left !important;display:none;" placeholder="Set Chemist Id">
+
 									<?php
 									if(empty($message->final_chemist)){
 										?>
@@ -202,12 +228,6 @@
 										<span class="span_chemist_<?= ($row_id); ?>" style="float: left;">
 											<?php echo $message->set_chemist; ?>
 										</span> 
-
-										<span class="edit_chemist_<?= ($row_id); ?>" onclick="edit_chemist('<?= ($row_id); ?>')" style="margin-left:10px;">
-											Edit <i class="fa fa-pencil" aria-hidden="true"></i>
-										</span>
-										
-										<input type="text" value="<?php echo $chemist_id; ?>" class="text_chemist_<?= ($row_id); ?> pg_text_box" style="float: left !important;display:none;" placeholder="Set Chemist Id">
 									
 										<span class="add_chemist_<?= ($row_id); ?>" onclick="add_chemist('<?= ($row_id); ?>')" style="float: left;display:none;"> Set
 											<i class="fa fa-check" aria-hidden="true"></i>
