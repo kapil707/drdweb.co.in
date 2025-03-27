@@ -240,7 +240,7 @@
 										
 										<input type="text" value="<?php echo $chemist_id; ?>" class="text_chemist_<?= ($row_id); ?> pg_text_box" style="float: left !important;display:none;" placeholder="Set Chemist Id">
 									<?php } ?>
-									<br>
+									<br><br>
 									
 									<span class="text_find_match add_chemist_<?= ($row_id); ?>" onclick="add_chemist('<?= ($row_id); ?>')" style="display:none;margin-left:5px;"> 
 										Set <i class="fa fa-check" aria-hidden="true"></i>
@@ -263,7 +263,7 @@
 									<br>
 									<input type="text" value="<?php echo $message->amount; ?>" class="text_amount_<?= ($row_id); ?> pg_text_box" style="float: left !important;display:none;" placeholder="Amount">
 
-									<br>
+									<br><br>
 
 									<span class="text_find_match add_amount_<?= ($row_id); ?>" onclick="add_amount('<?= ($row_id); ?>')" style="display:none;margin-left:5px;"> 
 										Set <i class="fa fa-check" aria-hidden="true"></i>
