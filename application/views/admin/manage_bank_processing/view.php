@@ -370,6 +370,10 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 										}
 										?>
 
+										<?php if(!empty($entry->whatsapp_set_chemist)) { 
+											echo " || <b>Set : $entry->whatsapp_set_chemist </b>";
+										} ?>
+										
 										<?php if($row_invoice_chemist=="N/a" &&$row_invoice_recommended) { 
 											echo " || <b>Recommended : $row_invoice_recommended </b>";
 										} ?>
