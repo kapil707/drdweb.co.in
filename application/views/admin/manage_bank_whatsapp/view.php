@@ -222,6 +222,11 @@ function edit_chemist(id){
 	
 	$(".text_chemist_"+id).show();
 	$(".add_chemist_"+id).show();
+
+	var chemist = $(".text_chemist_"+id).val();
+	if(chemist=="N/a"){
+		$(".text_chemist_"+id).val('');
+	}
 }
 
 function add_chemist(id){
