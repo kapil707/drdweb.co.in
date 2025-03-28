@@ -79,6 +79,7 @@ class BankStatmentModel extends CI_Model
 			$text = preg_replace('/INDBN.*?REF NO/', ' REF NO', $text);
 			$text = preg_replace('/INDBH.*?REF NO/', ' REF NO', $text);
 			$text = preg_replace('/IDFBH.*?REF NO/', ' REF NO', $text); 
+			$text = preg_replace('/ID FBH.*?REF NO/', ' REF NO', $text); 
 			$text = preg_replace('/ICIN.*?REF NO/', ' REF NO', $text);
 			$text = preg_replace('/YES.*?REF NO/', ' REF NO', $text);
 			$text = preg_replace('/POD.*?REF NO/', ' REF NO', $text);
