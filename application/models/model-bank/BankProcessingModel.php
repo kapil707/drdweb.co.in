@@ -192,6 +192,25 @@ class BankProcessingModel extends CI_Model
 	}
 
 	public function recommended_to_find(){
+
+		// jab invoice or whatsapp mil jaya but find chemist ek say jada hoya to yha automatick user ko add karta ha
+		$result = $this->BankModel->select_query("SELECT id,invoice_chemist FROM `tbl_bank_processing` WHERE `invoice_chemist`=`whatsapp_chemist` and invoice_chemist!='' and whatsapp_chemist!='' and invoice_chemist!=from_text_find_chemist");
+		$result = $result->result();
+		foreach($result as $row){
+			if(!empty($row->id)){
+				
+				$id = $row->id;
+				$chemist_id = $row->invoice_chemist;
+				$where = array('id'=>$id);
+				$dt = array(				
+					'recommended_status'=>'100',	
+					'recommended'=>$chemist_id,
+					'from_text_find_chemist'=>$chemist_id,
+				);
+				$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
+			}
+		}
+
 		$result = $this->BankModel->select_query("SELECT id,from_text,from_text_find_chemist,invoice_recommended FROM `tbl_bank_processing` WHERE `invoice_recommended`=`whatsapp_recommended` and invoice_recommended!='' and whatsapp_recommended!='' and recommended=''");
 		$result = $result->result();
 		foreach($result as $row){
