@@ -168,6 +168,14 @@ class BankWhatsAppModel extends CI_Model
 				}
 			}
 
+			if($amount == "0.0"){
+				preg_match('/Rs ([\d,]+\.?\d{0,2})/', $text, $matches);
+				// Check if match is found
+				if (!empty($matches[1])) {
+					$amount = $matches[1];
+				}
+			}
+
 			$type = 0;
 			/************************************************** */
 			// Regular Expression to extract UTR No.
