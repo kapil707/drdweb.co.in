@@ -185,6 +185,14 @@ class BankWhatsAppModel extends CI_Model
 			}
 
 			if($amount == "0.0"){
+				preg_match('/\bRs\.\s?(\d{1,3}(?:,\d{3})*\.\d{2})\b/', $text, $matches);
+				// Check if match is found
+				if (!empty($matches[1])) {
+					$amount = $matches[1];
+				}
+			}
+
+			if($amount == "0.0"){
 				preg_match('/\b(\d{1,3}(?:,\d{3})*\.\d{2})\b/', $text, $matches);
 				// Check if match is found
 				if (!empty($matches[1])) {
