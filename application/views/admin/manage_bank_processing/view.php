@@ -221,16 +221,16 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 					$row_from_text_find 		= $entry->from_text_find;
 					$row_from_text_find_match 	= $entry->from_text_find_match;
 					$row_from_text_find_chemist = $entry->from_text_find_chemist;
+					
+					$row_final_chemist = $entry->final_chemist;
+					$row_find_chemist_id = $entry->from_text_find_match;
+					$row_recommended = $entry->recommended;
 					/********************************************** */
 					$row_from_text_find_match = preg_quote($row_from_text_find_match, '/');
 					$row_from_text_find_match = preg_replace('/(' . $row_from_text_find_match . ')/i', '<span class="text_find_match">$1</span>', $row_from_text_find);
 					if(empty($row_from_text)){
 						$row_from_text_find_match = "N/a";
 					}
-					/********************************************** */
-					$row_final_chemist = $entry->final_chemist;
-					$row_find_chemist_id = $entry->from_text_find_match;
-					$row_recommended = $entry->recommended;
 					/********************************************** */
 					$row_invoice_chemist = $entry->invoice_chemist;
 					$row_invoice_text = $entry->invoice_text;
