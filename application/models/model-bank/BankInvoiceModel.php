@@ -72,7 +72,7 @@ class BankInvoiceModel extends CI_Model
 		$parts = explode(" || ", $chemist_id);
 		foreach($parts as $chemist_id_new) {
 
-			$result = $this->BankModel->select_query("SELECT id,gstvno,amt FROM `tbl_invoice` WHERE `chemist_id`='$chemist_id_new' and REPLACE(TRIM(amt), '.00', '')='$amount' and date BETWEEN '$start_date' and '$end_date'");
+			$result = $this->BankModel->select_query("SELECT id,gstvno,amt,chemist_id FROM `tbl_invoice` WHERE `chemist_id`='$chemist_id_new' and REPLACE(TRIM(amt), '.00', '')='$amount' and date BETWEEN '$start_date' and '$end_date'");
 			$result = $result->result();
 			foreach($result as $row) {
 				if($row->id){
@@ -80,7 +80,7 @@ class BankInvoiceModel extends CI_Model
 					$amount = str_replace(".00", "", $row->amt);
 
 					$invoice_id = $row->id;
-					$invoice_chemist = $chemist_id;
+					$invoice_chemist = $row->chemist_id;
 					$invoice_text = "GstvNo:".$row->gstvno." Amount:".$amount."/-";
 
 					$where = array(
@@ -116,10 +116,11 @@ class BankInvoiceModel extends CI_Model
 		$parts = explode(" || ", $chemist_id);
 		foreach($parts as $chemist_id_new) {
 
-			$result = $this->BankModel->select_query("SELECT GROUP_CONCAT(id) AS invoice_id, SUM(amt) AS total_invoice_amount FROM tbl_invoice WHERE chemist_id = '$chemist_id_new' and date BETWEEN '$start_date' and '$end_date' HAVING total_invoice_amount = '$amount'");
+			$result = $this->BankModel->select_query("SELECT GROUP_CONCAT(id) AS invoice_id, SUM(amt) AS total_invoice_amount,chemist_id FROM tbl_invoice WHERE chemist_id = '$chemist_id_new' and date BETWEEN '$start_date' and '$end_date' HAVING total_invoice_amount = '$amount'");
 			$myrow = $result->row();
 			if(!empty($romyroww)){
 				
+				$mychemist  = $myrow->chemist_id;
 				$invoice_id = $myrow->invoice_id;
 				$result = $this->BankModel->select_query("SELECT id,gstvno,amt FROM `tbl_invoice` WHERE id in($invoice_id)");
 				$result = $result->result();
@@ -158,6 +159,7 @@ class BankInvoiceModel extends CI_Model
 						$rt = $selectedValues[0][$i];
 						$json_invoice_id[] = $rt['id'];
 						$json_invoice_text[] = "GstvNo:".$rt['gstvno']." Amount:".$rt['amount']."/-";
+						$mychemist  = $rt['chemist_id'];
 					}
 				}
 			}
@@ -167,7 +169,7 @@ class BankInvoiceModel extends CI_Model
 				$status = 1;
 				$invoice_id = implode(',', $json_invoice_id);
 				$invoice_text = implode('||', $json_invoice_text);
-				$invoice_chemist = $chemist_id;
+				$invoice_chemist = $mychemist;
 
 				$where = array(
 					'id' => $id,
@@ -195,14 +197,14 @@ class BankInvoiceModel extends CI_Model
 		$parts = explode(" || ", $chemist_id);
 		foreach($parts as $chemist_id_new) {
 
-			$result = $this->BankModel->select_query("SELECT id,gstvno FROM `tbl_invoice` WHERE `chemist_id`='$chemist_id_new' and REPLACE(TRIM(amt), '.00', '')='$amount' and date BETWEEN '$start_date' and '$end_date'");
+			$result = $this->BankModel->select_query("SELECT id,gstvno,chemist_id FROM `tbl_invoice` WHERE `chemist_id`='$chemist_id_new' and REPLACE(TRIM(amt), '.00', '')='$amount' and date BETWEEN '$start_date' and '$end_date'");
 			$result = $result->result();
 			foreach($result as $row) {
 				if($row->id){
 					$status = 1;
 
 					$invoice_id = $row->id;
-					$invoice_recommended = $chemist_id;
+					$invoice_recommended = $row->chemist_id;
 					$invoice_text = $row->gstvno." Amount.".$amount;
 
 					$where = array(
