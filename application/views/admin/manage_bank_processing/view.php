@@ -442,8 +442,13 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 												Edit <i class="fa fa-pencil" aria-hidden="true"></i>
 											</span>
 
-											<?php if(empty($textbox_final_chemist) && $row_chemist_id != "N/a"){
-												$textbox_final_chemist = $row_chemist_id;
+											<?php 
+											$parts = explode(" || ", $row_chemist_id);
+											foreach($parts as $chemist_id_new) {
+
+												if(empty($textbox_final_chemist) && $chemist_id_new != "N/a"){
+													$textbox_final_chemist = $chemist_id_new;
+												}
 											}?>
 
 											<input type="text" value="<?php echo $textbox_final_chemist ?>" class="form-control text_final_chemist_id_<?= ($row_id); ?> pg_text_box" style="<?php if(!empty($entry->final_chemist)) { ?>display:none;<?php } ?>float: left !important;" placeholder="Chemist Id">
