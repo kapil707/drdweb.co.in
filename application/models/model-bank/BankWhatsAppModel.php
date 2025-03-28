@@ -424,8 +424,8 @@ class BankWhatsAppModel extends CI_Model
 			$from_text_find_chemist = $row->from_text_find_chemist;
 			$timestamp = date('Y-m-d H:i:s', $row->timestamp);
 
-			$from_text_find_chemist = str_replace("/", "||",$from_text_find_chemist);
-			$parts = explode("||", $from_text_find_chemist);
+			$from_text_find_chemist = str_replace("/", " || ",$from_text_find_chemist);
+			$parts = explode(" || ", $from_text_find_chemist);
 			foreach($parts as $from_text_find_chemist_new) {
 				if(!empty($whatsapp_chemist)  && !empty($from_text_find_chemist_new)){
 					//agar body m chemist id nahi aa rahi ha to next say find karta ha yha
