@@ -69,31 +69,34 @@ class BankInvoiceModel extends CI_Model
 		$start_date = date('Y-m-d', strtotime('-10 day'));
 		$end_date = date('Y-m-d');
 
-		$result = $this->BankModel->select_query("SELECT id,gstvno,amt FROM `tbl_invoice` WHERE `chemist_id` LIKE '$chemist_id' and REPLACE(TRIM(amt), '.00', '')='$amount' and date BETWEEN '$start_date' and '$end_date'");
-		$result = $result->result();
-		foreach($result as $row) {
-			if($row->id){
-				$status = 1;
-				$amount = str_replace(".00", "", $row->amt);
+		$parts = explode(" || ", $chemist_id);
+		foreach($parts as $chemist_id_new) {
 
-				$invoice_id = $row->id;
-				$invoice_chemist = $chemist_id;
-				$invoice_text = "GstvNo:".$row->gstvno." Amount:".$amount."/-";
+			$result = $this->BankModel->select_query("SELECT id,gstvno,amt FROM `tbl_invoice` WHERE `chemist_id`='$chemist_id_new' and REPLACE(TRIM(amt), '.00', '')='$amount' and date BETWEEN '$start_date' and '$end_date'");
+			$result = $result->result();
+			foreach($result as $row) {
+				if($row->id){
+					$status = 1;
+					$amount = str_replace(".00", "", $row->amt);
 
-				$where = array(
-					'id' => $id,
-				);
-				$dt = array(
-					'process_status'=>3,
-					'invoice_id'=>$invoice_id,
-					'invoice_chemist'=>$invoice_chemist,
-					'invoice_text'=>$invoice_text,
-				);
-				print_r($dt);
-				$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
+					$invoice_id = $row->id;
+					$invoice_chemist = $chemist_id;
+					$invoice_text = "GstvNo:".$row->gstvno." Amount:".$amount."/-";
+
+					$where = array(
+						'id' => $id,
+					);
+					$dt = array(
+						'process_status'=>3,
+						'invoice_id'=>$invoice_id,
+						'invoice_chemist'=>$invoice_chemist,
+						'invoice_text'=>$invoice_text,
+					);
+					print_r($dt);
+					$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
+				}
 			}
 		}
-
 		return $status;
 	}
 
@@ -110,72 +113,75 @@ class BankInvoiceModel extends CI_Model
 		$found = false;
 		$selectedValues = [];
 
-		$result = $this->BankModel->select_query("SELECT GROUP_CONCAT(id) AS invoice_id, SUM(amt) AS total_invoice_amount FROM tbl_invoice WHERE chemist_id = '$chemist_id' and date BETWEEN '$start_date' and '$end_date' HAVING total_invoice_amount = '$amount'");
-		$myrow = $result->row();
-		if(!empty($romyroww)){
-			
-			$invoice_id = $myrow->invoice_id;
-			$result = $this->BankModel->select_query("SELECT id,gstvno,amt FROM `tbl_invoice` WHERE id in($invoice_id)");
-			$result = $result->result();
-			foreach($result as $row) {
-				$amount = str_replace(".00", "", $row->amt);
-				$json_invoice_id[]   = $row->id;
-				$json_invoice_text[] = "GstvNo:".$row->gstvno." Amount:".$amount."/-";
-			}
+		$parts = explode(" || ", $chemist_id);
+		foreach($parts as $chemist_id_new) {
 
-		} else {
-			$resultArray = [];
-			$result = $this->BankModel->select_query("SELECT * FROM `tbl_invoice` WHERE `chemist_id`='$chemist_id' and date BETWEEN '$start_date' and '$end_date'");
-			$result = $result->result();
-			foreach($result as $row) {
-				$amount = str_replace(".00", "", $row->amt);
-				$resultArray[] = [
-					'id' => $row->id,
-					'chemist_id' => $row->chemist_id,
-					'gstvno' => $row->gstvno,
-					'amount' => $amount
-				];		
-			}
+			$result = $this->BankModel->select_query("SELECT GROUP_CONCAT(id) AS invoice_id, SUM(amt) AS total_invoice_amount FROM tbl_invoice WHERE chemist_id = '$chemist_id_new' and date BETWEEN '$start_date' and '$end_date' HAVING total_invoice_amount = '$amount'");
+			$myrow = $result->row();
+			if(!empty($romyroww)){
+				
+				$invoice_id = $myrow->invoice_id;
+				$result = $this->BankModel->select_query("SELECT id,gstvno,amt FROM `tbl_invoice` WHERE id in($invoice_id)");
+				$result = $result->result();
+				foreach($result as $row) {
+					$amount = str_replace(".00", "", $row->amt);
+					$json_invoice_id[]   = $row->id;
+					$json_invoice_text[] = "GstvNo:".$row->gstvno." Amount:".$amount."/-";
+				}
 
-			for ($i = 0; $i < count($resultArray); $i++) {
-				for ($j = $i + 1; $j < count($resultArray); $j++) {
-					if ($resultArray[$i]['amount'] + $resultArray[$j]['amount'] == $targetValue) {
-						$selectedValues[] = [$resultArray[$i], $resultArray[$j]];
-						$found = true;
-						break 2; // Exit both loops
+			} else {
+				$resultArray = [];
+				$result = $this->BankModel->select_query("SELECT * FROM `tbl_invoice` WHERE `chemist_id`='$chemist_id_new' and date BETWEEN '$start_date' and '$end_date'");
+				$result = $result->result();
+				foreach($result as $row) {
+					$amount = str_replace(".00", "", $row->amt);
+					$resultArray[] = [
+						'id' => $row->id,
+						'chemist_id' => $row->chemist_id,
+						'gstvno' => $row->gstvno,
+						'amount' => $amount
+					];		
+				}
+
+				for ($i = 0; $i < count($resultArray); $i++) {
+					for ($j = $i + 1; $j < count($resultArray); $j++) {
+						if ($resultArray[$i]['amount'] + $resultArray[$j]['amount'] == $targetValue) {
+							$selectedValues[] = [$resultArray[$i], $resultArray[$j]];
+							$found = true;
+							break 2; // Exit both loops
+						}
+					}
+				}
+
+				if ($found) {
+					for ($i = 0; $i < count($selectedValues[0]); $i++) {
+						$rt = $selectedValues[0][$i];
+						$json_invoice_id[] = $rt['id'];
+						$json_invoice_text[] = "GstvNo:".$rt['gstvno']." Amount:".$rt['amount']."/-";
 					}
 				}
 			}
 
-			if ($found) {
-				for ($i = 0; $i < count($selectedValues[0]); $i++) {
-					$rt = $selectedValues[0][$i];
-					$json_invoice_id[] = $rt['id'];
-					$json_invoice_text[] = "GstvNo:".$rt['gstvno']." Amount:".$rt['amount']."/-";
-				}
+			if(!empty($json_invoice_id)){
+
+				$status = 1;
+				$invoice_id = implode(',', $json_invoice_id);
+				$invoice_text = implode('||', $json_invoice_text);
+				$invoice_chemist = $chemist_id;
+
+				$where = array(
+					'id' => $id,
+				);
+				$dt = array(
+					'process_status'=>3,
+					'invoice_id'=>$invoice_id,
+					'invoice_chemist'=>$invoice_chemist,
+					'invoice_text'=>$invoice_text,
+				);
+				print_r($dt);
+				$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 			}
 		}
-
-		if(!empty($json_invoice_id)){
-
-			$status = 1;
-			$invoice_id = implode(',', $json_invoice_id);
-			$invoice_text = implode('||', $json_invoice_text);
-			$invoice_chemist = $chemist_id;
-
-			$where = array(
-				'id' => $id,
-			);
-			$dt = array(
-				'process_status'=>3,
-				'invoice_id'=>$invoice_id,
-				'invoice_chemist'=>$invoice_chemist,
-				'invoice_text'=>$invoice_text,
-			);
-			print_r($dt);
-			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
-		}
-
 		return $status;
 	}
 
@@ -186,27 +192,31 @@ class BankInvoiceModel extends CI_Model
 		$start_date = date('Y-m-d', strtotime('-10 day'));
 		$end_date = date('Y-m-d');
 
-		$result = $this->BankModel->select_query("SELECT id,gstvno FROM `tbl_invoice` WHERE `chemist_id` LIKE '$chemist_id' and REPLACE(TRIM(amt), '.00', '')='$amount' and date BETWEEN '$start_date' and '$end_date'");
-		$result = $result->result();
-		foreach($result as $row) {
-			if($row->id){
-				$status = 1;
+		$parts = explode(" || ", $chemist_id);
+		foreach($parts as $chemist_id_new) {
 
-				$invoice_id = $row->id;
-				$invoice_recommended = $chemist_id;
-				$invoice_text = $row->gstvno." Amount.".$amount;
+			$result = $this->BankModel->select_query("SELECT id,gstvno FROM `tbl_invoice` WHERE `chemist_id`='$chemist_id_new' and REPLACE(TRIM(amt), '.00', '')='$amount' and date BETWEEN '$start_date' and '$end_date'");
+			$result = $result->result();
+			foreach($result as $row) {
+				if($row->id){
+					$status = 1;
 
-				$where = array(
-					'id' => $id,
-				);
-				$dt = array(
-					'process_status'=>3,
-					'invoice_id'=>$invoice_id,
-					'invoice_text'=>$invoice_text,
-					'invoice_recommended'=>$invoice_recommended,
-				);
-				print_r($dt);
-				$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
+					$invoice_id = $row->id;
+					$invoice_recommended = $chemist_id;
+					$invoice_text = $row->gstvno." Amount.".$amount;
+
+					$where = array(
+						'id' => $id,
+					);
+					$dt = array(
+						'process_status'=>3,
+						'invoice_id'=>$invoice_id,
+						'invoice_text'=>$invoice_text,
+						'invoice_recommended'=>$invoice_recommended,
+					);
+					print_r($dt);
+					$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
+				}
 			}
 		}
 		return $status;
