@@ -221,16 +221,17 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 					$row_from_text_find 		= $entry->from_text_find;
 					$row_from_text_find_match 	= $entry->from_text_find_match;
 					$row_from_text_find_chemist = $entry->from_text_find_chemist;
-					
-					$row_final_chemist = $entry->final_chemist;
-					$row_find_chemist_id = $entry->from_text_find_match;
-					$row_recommended = $entry->recommended;
+					$row_final_chemist 	= $entry->final_chemist;
 					/********************************************** */
 					$row_from_text_find_match = preg_quote($row_from_text_find_match, '/');
 					$row_from_text_find_match = preg_replace('/(' . $row_from_text_find_match . ')/i', '<span class="text_find_match">$1</span>', $row_from_text_find);
 					if(empty($row_from_text)){
 						$row_from_text_find_match = "N/a";
 					}
+					/********************************************** */
+					$row_chemist_id = $row_from_text_find_chemist;
+					$row_find_chemist_id = $entry->from_text_find_match;
+					$row_recommended = $entry->recommended;
 					/********************************************** */
 					$row_invoice_chemist = $entry->invoice_chemist;
 					$row_invoice_text = $entry->invoice_text;
@@ -441,6 +442,11 @@ $duble_tick = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" cla
 											<span class="text_find_match_edit edit_final_chemist_<?= ($row_id); ?>" onclick="edit_final_chemist('<?= ($row_id); ?>')" <?php if(empty($row_final_chemist)) { ?>style="display:none" <?php } ?>>
 												Edit <i class="fa fa-pencil" aria-hidden="true"></i>
 											</span>
+
+											<?php 
+											if(empty($textbox_final_chemist) && $row_chemist_id != "N/a"){
+												$textbox_final_chemist = $row_chemist_id;
+											}?>
 
 											<input type="text" value="<?php echo $row_final_chemist ?>" class="form-control text_final_chemist_id_<?= ($row_id); ?> pg_text_box" style="<?php if(!empty($row_final_chemist)) { ?>display:none;<?php } ?>float: left !important;" placeholder="Chemist Id">
 											
