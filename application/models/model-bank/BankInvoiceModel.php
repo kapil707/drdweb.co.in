@@ -81,7 +81,7 @@ class BankInvoiceModel extends CI_Model
 
 					$invoice_id = $row->id;
 					$invoice_chemist = $row->chemist_id;
-					$invoice_text = "GstvNo:".$row->gstvno." Amount:".$amount."/-xx";
+					$invoice_text = "GstvNo:".$row->gstvno." Amount:".$amount."/-";
 
 					$where = array(
 						'id' => $id,
