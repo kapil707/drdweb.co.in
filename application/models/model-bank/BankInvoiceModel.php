@@ -18,46 +18,50 @@ class BankInvoiceModel extends CI_Model
 
 		$working = 0;
 		if($working == 0){
-			$result = $this->BankModel->select_query("select id,from_text_find_chemist,amount from tbl_bank_processing where invoice_id='' and from_text_find_chemist!='' and date BETWEEN '$start_date' and '$end_date' ORDER BY RAND() limit 100");
+			$result = $this->BankModel->select_query("select id,from_text_find_chemist,amount from tbl_bank_processing where invoice_id='' and from_text_find_chemist!='' and date BETWEEN '$start_date' and '$end_date' and invoice_check=0 ORDER BY RAND() limit 100");
 			$result = $result->result();
 			foreach($result as $row){
 				$id 		= $row->id;
 				$chemist_id = $row->from_text_find_chemist;
 				$amount 	= $row->amount;
+				$this->invoice_check_done($id);
 				$working = $this->invoice_find($id,$chemist_id,$amount);
 			}
 		}
 
 		if($working == 0){
-			$result = $this->BankModel->select_query("select id,from_text_find_chemist,amount from tbl_bank_processing where invoice_id='' and from_text_find_chemist!='' and date BETWEEN '$start_date' and '$end_date' ORDER BY RAND() limit 100");
+			$result = $this->BankModel->select_query("select id,from_text_find_chemist,amount from tbl_bank_processing where invoice_id='' and from_text_find_chemist!='' and date BETWEEN '$start_date' and '$end_date' and invoice_check=0 ORDER BY RAND() limit 100");
 			$result = $result->result();
 			foreach($result as $row){
 				$id 		= $row->id;
 				$chemist_id = $row->from_text_find_chemist;
 				$amount 	= $row->amount;
+				$this->invoice_check_done($id);
 				$working = $this->invoice_find_in_total($id,$chemist_id,$amount);
 			}
 		}
 
 		//find from recommended
 		if($working == 0){
-			$result = $this->BankModel->select_query("select id,whatsapp_recommended,amount from tbl_bank_processing where invoice_id='' and from_text_find_chemist!='' and whatsapp_recommended!='' and date BETWEEN '$start_date' and '$end_date' ORDER BY RAND() limit 100");
+			$result = $this->BankModel->select_query("select id,whatsapp_recommended,amount from tbl_bank_processing where invoice_id='' and from_text_find_chemist!='' and whatsapp_recommended!='' and date BETWEEN '$start_date' and '$end_date' and invoice_check=0 ORDER BY RAND() limit 100");
 			$result = $result->result();
 			foreach($result as $row){
 				$id 		= $row->id;
 				$chemist_id = $row->whatsapp_recommended;
 				$amount 	= $row->amount;
+				$this->invoice_check_done($id);
 				$working 	= $this->recommended_invoice_find($id,$chemist_id,$amount);
 			}
 		}
 
 		if($working == 0){
-			$result = $this->BankModel->select_query("select id,whatsapp_recommended,amount from tbl_bank_processing where invoice_id='' and whatsapp_recommended!='' and date BETWEEN '$start_date' and '$end_date' ORDER BY RAND() limit 100");
+			$result = $this->BankModel->select_query("select id,whatsapp_recommended,amount from tbl_bank_processing where invoice_id='' and whatsapp_recommended!='' and date BETWEEN '$start_date' and '$end_date' and invoice_check=0 ORDER BY RAND() limit 100");
 			$result = $result->result();
 			foreach($result as $row){
 				$id 		= $row->id;
 				$chemist_id = $row->whatsapp_recommended;
 				$amount 	= $row->amount;
+				$this->invoice_check_done($id);
 				$working 	= $this->recommended_invoice_find($id,$chemist_id,$amount);
 			}
 		}
@@ -222,5 +226,16 @@ class BankInvoiceModel extends CI_Model
 			}
 		}
 		return $status;
+	}
+
+	public function invoice_check_done($id){
+		$where = array(
+			'id' => $id,
+		);
+		$dt = array(
+			'invoice_check'=>1,
+		);
+		print_r($dt);
+		$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
 	}
 }	
