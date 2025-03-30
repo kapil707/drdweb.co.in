@@ -91,7 +91,10 @@ class CronjobBank extends CI_Controller
 						if (!empty($check_whatsapp_status2)) {
 							$this->BankWhatsAppModel->whatsapp_insert_in_processing();
 						}else{
-							$this->BankInvoiceModel->get_invoice_find_user();
+							$invoice_check = $this->BankModel->select_row("tbl_bank_processing", array('invoice_check'=>0));
+							if (!empty($invoice_check)) {
+								$this->BankInvoiceModel->get_invoice_find_user();
+							}
 						}
 					}
 				}
