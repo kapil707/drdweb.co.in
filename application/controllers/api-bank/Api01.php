@@ -166,6 +166,7 @@ class Api01 extends CI_Controller {
 			$email = $row->email;
 			$gstno = $row->gstno;
 			$statecode = $row->statecode;
+			$status = $row->status;
 			$invexport = $row->invexport;
 			$slcd = $row->slcd;
 			$narcolicence = $row->narcolicence;
