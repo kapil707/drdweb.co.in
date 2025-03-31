@@ -11,7 +11,7 @@ class Api01 extends CI_Controller {
 		$this->load->model("model-bank/BankWhatsAppModel");
 	}
 
-	public function get_Whatsapp_api(){
+	public function get_whatsapp_api(){
 		//echo "get_Whatsapp_api";
 		$this->BankWhatsAppModel->get_Whatsapp_api();
 	}
