@@ -767,6 +767,7 @@ class BankWhatsAppModel extends CI_Model
 			$sender_name_place = $row->sender_name_place;
 			$timestamp = $row->timestamp;
 			$vision_text = $row->vision_text;
+			$quoted_text = $row->quoted_text;
 
 			$dt = array(
 				'message_id' => $message_id,
@@ -779,6 +780,7 @@ class BankWhatsAppModel extends CI_Model
 				'sender_name_place'=>$sender_name_place,
 				'timestamp'=>$timestamp,
 				'vision_text'=>$vision_text,
+				'quoted_text'=>$quoted_text,
 			);
 			$jsonArray[] = $dt;
 
