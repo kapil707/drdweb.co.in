@@ -405,49 +405,11 @@ class BankWhatsAppModel extends CI_Model
 	}
 
 	public function whatsapp_insert_in_processing(){
-		
-		/* $result = $this->BankModel->select_query("SELECT p.id, wm.id as whatsapp_id,wm.body as body, wm.vision_text,wm.timestamp,wm.from_number,p.from_text_find_chemist FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.upi_no=wm.upi_no and wm.body=p.from_text_find_chemist where p.whatsapp_id='' ORDER BY RAND() limit 25");
-		$result = $result->result();
-		foreach($result as $row) {
 
-			echo $id = $row->id;
-			$whatsapp_id = trim($row->whatsapp_id);
-			$whatsapp_body = ($row->body);
-			$whatsapp_chemist = trim($whatsapp_body);
-			$from_number = $row->from_number;
-			$from_text_find_chemist = $row->from_text_find_chemist;
-			if(empty($whatsapp_body)){
-				$row1 = $this->BankModel->select_query("SELECT body FROM `tbl_whatsapp_message` WHERE from_number='$from_number' and body='$from_text_find_chemist' LIMIT 0, 25");
-				$row1 = $row1->row();
-				if(!empty($row1)){
-					$whatsapp_chemist = trim($row1->body);
-				}
-			}
-			if(empty($whatsapp_body)){
-				$timestamp = date('Y-m-d H:i:s', $row->timestamp);
-
-				$row1 = $this->BankModel->select_query("SELECT body FROM `tbl_whatsapp_message` WHERE from_number='$from_number' AND FROM_UNIXTIME(timestamp) BETWEEN DATE_SUB('$timestamp', INTERVAL 7 MINUTE) AND DATE_ADD('$timestamp', INTERVAL 7 MINUTE) and body!='' LIMIT 0, 25");
-				$row1 = $row1->row();
-				$whatsapp_chemist = trim($row1->body);
-			}
-
-			$where = array(
-				'id' => $id,
-			);
-			$dt = array(
-				'process_status'=>2,
-				'whatsapp_id'=>$whatsapp_id,
-				'whatsapp_chemist'=>$whatsapp_chemist,
-			);
-			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
-		}  */
-
-		$working = 0;
 		$result = $this->BankModel->select_query("SELECT p.id, wm.id AS whatsapp_id, wm.body AS body, wm.vision_text, wm.timestamp, wm.from_number, p.from_text_find_chemist FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.upi_no = wm.upi_no AND wm.date BETWEEN DATE_SUB(p.date, INTERVAL 1 DAY) AND DATE_ADD(p.date, INTERVAL 1 DAY) WHERE p.whatsapp_id = '' ORDER BY RAND() LIMIT 25");
 		$result = $result->result();
 		foreach($result as $row) {
 
-			$working = 1;
 			$id = $row->id;
 			$whatsapp_id = trim($row->whatsapp_id);
 			$whatsapp_body = trim($row->body);
@@ -531,88 +493,7 @@ class BankWhatsAppModel extends CI_Model
 			echo "my01";
 			print_r($dt);
 			$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
-
-			/*******************************************************
-			$where = array(
-				'id' => $whatsapp_id,
-			);
-			$dt = array(
-				'set_chemist'=>$whatsapp_chemist,
-			);
-			print_r($dt);
-			$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
-			/*******************************************************/
 		}
-		die();
-		/*if($working==0){
-			//jab chmist id or amout say user ko match karya jata ha tab
-			$result = $this->BankModel->select_query("SELECT p.upi_no,p.from_text_find_chemist,wm.id as whatsapp_id,wm.timestamp,wm.from_number FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount AND wm.date BETWEEN DATE_SUB(p.date, INTERVAL 1 DAY) AND DATE_ADD(p.date, INTERVAL 1 DAY) WHERE p.whatsapp_id = '' and p.whatsapp_recommended = '' AND p.from_text_find_chemist != '' ORDER BY wm.date DESC");
-			$result = $result->result();
-			foreach($result as $row) {
-
-				$whatsapp_chemist = "";
-				$upi_no = trim($row->upi_no);
-				$from_text_find_chemist = trim($row->from_text_find_chemist);
-				$whatsapp_id = trim($row->whatsapp_id);
-				$from_number = $row->from_number;
-
-				$timestamp = date('Y-m-d H:i:s', $row->timestamp);
-
-				$from_text_find_chemist = str_replace("/", "||",$from_text_find_chemist);
-				$parts = explode("||", $from_text_find_chemist);
-				foreach($parts as $from_text_find_chemist_new) {
-				
-					$whatsapp_id_next = $whatsapp_id + 1;
-					$row1 = $this->BankModel->select_query("SELECT body,id as whatsapp_id FROM `tbl_whatsapp_message` WHERE id='$whatsapp_id_next'");
-					$row1 = $row1->row();
-					if(!empty($row1->body))
-					{
-						$body = trim($row1->body);
-						if($from_text_find_chemist_new==$body){
-							$whatsapp_chemist = $body;
-							$whatsapp_id = trim($row->whatsapp_id);
-						}
-					}
-
-					if(empty($whatsapp_chemist)){
-						$row1 = $this->BankModel->select_query("SELECT body,id as whatsapp_id FROM `tbl_whatsapp_message` WHERE from_number='$from_number' AND FROM_UNIXTIME(timestamp) BETWEEN DATE_SUB('$timestamp', INTERVAL 7 MINUTE) AND DATE_ADD('$timestamp', INTERVAL 7 MINUTE) and body='$from_text_find_chemist_new' LIMIT 0, 25");
-						$row1 = $row1->row();
-						if(!empty($row1->body))
-						{
-							$body = trim($row1->body);
-							if($from_text_find_chemist_new==$body){
-								$whatsapp_chemist = $body;
-								$whatsapp_id = trim($row->whatsapp_id);
-							}
-						}
-					}
-				}
-
-				if(!empty($whatsapp_chemist)){
-					$where = array(
-						'upi_no' => $upi_no,
-					);
-					$dt = array(
-						'process_status'=>2,
-						'whatsapp_id'=>$whatsapp_id,
-						'whatsapp_chemist'=>$whatsapp_chemist,
-					);
-					echo "my02";
-					print_r($dt);
-					$this->BankModel->edit_fun("tbl_bank_processing", $dt,$where);
-
-					/********************************************************** *
-					$where = array(
-						'id' => $whatsapp_id,
-					);
-					$dt = array(
-						'set_chemist'=>$whatsapp_chemist,
-					);
-					print_r($dt);
-					$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
-				}
-			}
-		}*/
 	}
 
 	public function whatsapp_update_upi(){
@@ -842,65 +723,6 @@ class BankWhatsAppModel extends CI_Model
 				$this->whatsapp_insert_in_processing();
 			}
 		}
-		
-
-		/*if($working==0){
-			//amount or vision text me say upi no find karna
-			$result = $this->BankModel->select_query("SELECT p.upi_no,wm.id as whatsapp_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount and wm.date BETWEEN DATE_SUB(p.date, INTERVAL 1 DAY) AND DATE_ADD(p.date, INTERVAL 1 DAY) and (REPLACE(TRIM(wm.vision_text), ' ', '') LIKE CONCAT('%', TRIM(p.upi_no), '%') or REPLACE(TRIM(wm.vision_text), ' ', '') LIKE CONCAT('%', TRIM(p.orderid), '%')) where p.whatsapp_id='' and wm.upi_no=''");
-			$result = $result->result();
-			foreach($result as $row) {
-				$working = 1;
-
-				$upi_no = trim($row->upi_no);
-				$whatsapp_id = trim($row->whatsapp_id);
-
-				$where = array(
-					'id' => $whatsapp_id,
-				);
-				$dt = array(
-					'upi_no'=>$upi_no,
-				);
-				print_r($dt);
-				$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
-			}
-		}
-		die();*/
-
-		/*// jab amount or body me chmeist name match karay to
-		$result = $this->BankModel->select_query("SELECT p.upi_no,wm.amount, wm.id as whatsapp_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount and wm.date BETWEEN DATE_SUB(p.date, INTERVAL 1 DAY) AND DATE_ADD(p.date, INTERVAL 1 DAY) and REPLACE(TRIM(wm.body), ' ', '')=REPLACE(TRIM(p.from_text_find_chemist), ' ', '') and p.whatsapp_id=''");
-		$result = $result->result();
-		foreach($result as $row) {
-
-			$upi_no = trim($row->upi_no);
-			$whatsapp_id = trim($row->whatsapp_id);
-			
-			$where = array(
-				'id' => $whatsapp_id,
-			);
-			$dt = array(
-				'upi_no'=>$upi_no,
-			);
-			$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
-		}
-		die();
-
-		// jab amount or body me chmeist name like match karay to
-		$result = $this->BankModel->select_query("SELECT p.upi_no,wm.amount, wm.id as whatsapp_id, wm.vision_text FROM tbl_bank_processing AS p JOIN tbl_whatsapp_message wm ON p.amount = wm.amount and wm.date BETWEEN DATE_SUB(p.date, INTERVAL 1 DAY) AND DATE_ADD(p.date, INTERVAL 1 DAY) and REPLACE(TRIM(wm.body), ' ', '') LIKE CONCAT('%', TRIM(p.from_text_find_chemist), '%') and p.whatsapp_id='' and p.from_text_find_chemist!=''");
-		$result = $result->result();
-		foreach($result as $row) {
-			$upi_no = trim($row->upi_no);
-			$whatsapp_id = trim($row->whatsapp_id);
-			
-			$where = array(
-				'id' => $whatsapp_id,
-			);
-			$dt = array(
-				'upi_no'=>$upi_no,
-			);
-			$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
-		}
-
-		die();*/
 	}
 
 	public function whatsapp_update_reply_message(){
