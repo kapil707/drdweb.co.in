@@ -8,7 +8,7 @@ class BankWhatsAppModel extends CI_Model
 		$this->load->model("model-bank/BankModel");
 	}
 
-	public function get_whatsapp_or_insert(){
+	public function get_whatsapp_or_insert_rishav(){
 
 		$start_date = date('d-m-Y', strtotime('-1 day'));
 		$end_date = date('d-m-Y');
@@ -751,12 +751,12 @@ class BankWhatsAppModel extends CI_Model
 
 		$jsonArray = array();
 		$items = "";
-		$i = 1;
 
-		$result = $this->BankModel->select_query("select * from tbl_whatsapp_message limit 10");
+		$result = $this->BankModel->select_query("select * from tbl_whatsapp_message where upload_status=0");
 		$result = $result->result();
 		foreach($result as $row) {
 			
+			$id = $row->id;
 			$message_id = $row->message_id;
 			$body 		= $row->body;
 			$date 		= $row->date;
@@ -781,6 +781,12 @@ class BankWhatsAppModel extends CI_Model
 				'vision_text'=>$vision_text,
 			);
 			$jsonArray[] = $dt;
+
+			$where = array('id'=>$id);
+			$dt = array(				
+				'upload_status'=>'1',
+			);
+			$this->BankModel->edit_fun("tbl_whatsapp_message", $dt,$where);
 		}
 		if(!empty($jsonArray)){
 			$items = $jsonArray;
