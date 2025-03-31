@@ -10,7 +10,7 @@ class BankWhatsAppModel extends CI_Model
 
 	public function get_whatsapp_or_insert_rishav(){
 
-		$start_date = date('d-m-Y', strtotime('-1 day'));
+		$start_date = date('d-m-Y', strtotime('-3 day'));
 		$end_date = date('d-m-Y');
 
 		$start_date = DateTime::createFromFormat('d-m-Y', $start_date);
