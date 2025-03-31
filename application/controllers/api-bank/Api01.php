@@ -14,7 +14,7 @@ class Api01 extends CI_Controller {
 		$jsonArray = array();
 		$items = "";
 
-		$result = $this->BankModel->select_query("select * from tbl_invoice where upload_status=0 limit 250");
+		$result = $this->BankModel->select_query("select * from tbl_invoice where upload_status=0 limit 1000");
 		$result = $result->result();
 		foreach($result as $row) {
 			
@@ -84,7 +84,7 @@ class Api01 extends CI_Controller {
 		$jsonArray = array();
 		$items = "";
 
-		$result = $this->BankModel->select_query("select * from tbl_whatsapp_message where upload_status=0 limit 250");
+		$result = $this->BankModel->select_query("select * from tbl_whatsapp_message where upload_status=0 limit 1000");
 		$result = $result->result();
 		foreach($result as $row) {
 			
