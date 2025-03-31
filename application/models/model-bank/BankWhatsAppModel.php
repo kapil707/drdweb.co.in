@@ -752,7 +752,7 @@ class BankWhatsAppModel extends CI_Model
 		$jsonArray = array();
 		$items = "";
 
-		$result = $this->BankModel->select_query("select * from tbl_whatsapp_message where upload_status=0");
+		$result = $this->BankModel->select_query("select * from tbl_whatsapp_message where upload_status=0 limit 250");
 		$result = $result->result();
 		foreach($result as $row) {
 			
