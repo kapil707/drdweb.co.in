@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class CronjobBank extends CI_Controller 
+class Cronjob_bank_whatsapp extends CI_Controller 
 {
 	public function __construct(){
 
