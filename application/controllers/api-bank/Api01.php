@@ -32,7 +32,7 @@ class Api01 extends CI_Controller {
 		$jsonArray = array();
 		$items = "";
 
-		$result = $this->query("select * from tbl_invoice where upload_status=0 limit 1000");
+		$result = $this->db->query("select * from tbl_invoice where upload_status=0 limit 1000");
 		$result = $result->result();
 		foreach($result as $row) {
 			
