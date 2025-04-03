@@ -145,7 +145,7 @@ class BankWhatsAppModel extends CI_Model
 					'upi_no' => '',
 					'set_chemist' => '',
 					'amount' => '',
-					'amount' => 0,
+					'status' => 0,
 				);
 
 				if (!empty($message_id)) {
