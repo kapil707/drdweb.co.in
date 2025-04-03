@@ -5,8 +5,14 @@ header("Access-Control-Allow-Origin: *");
 class Api01 extends CI_Controller {	
 
 	public function __construct(){
-		
+
 		parent::__construct();
+	}
+
+	function select_query($query)
+	{
+		$db_bank = $this->load->database('bank_db', TRUE);
+		return $db_bank->query($query);	
 	}
 
 	function edit_fun($tbl,$dt,$where)
@@ -26,7 +32,7 @@ class Api01 extends CI_Controller {
 		$jsonArray = array();
 		$items = "";
 
-		$result = $this->db->select("select * from tbl_invoice where upload_status=0 limit 1000");
+		$result = $this->select_query("select * from tbl_invoice where upload_status=0 limit 1000");
 		$result = $result->result();
 		foreach($result as $row) {
 			
