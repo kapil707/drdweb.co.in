@@ -5,7 +5,6 @@ class ExeChemist extends CI_Controller
 	public function __construct(){
 
 		parent::__construct();
-		$this->load->model("model-bank/BankModel");
 	}
 	public function upload()
 	{
