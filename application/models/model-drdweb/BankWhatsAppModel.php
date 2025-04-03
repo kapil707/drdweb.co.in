@@ -61,7 +61,7 @@ class BankWhatsAppModel extends CI_Model
 
 	public function get_bank_whatsapp_or_insert(){
 
-		$start_date = date('d-m-Y', strtotime('-3 day'));
+		$start_date = date('d-m-Y', strtotime('-1 day'));
 		$end_date = date('d-m-Y');
 
 		$start_date = DateTime::createFromFormat('d-m-Y', $start_date);
