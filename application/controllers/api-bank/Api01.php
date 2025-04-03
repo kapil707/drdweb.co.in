@@ -5,9 +5,20 @@ header("Access-Control-Allow-Origin: *");
 class Api01 extends CI_Controller {	
 
 	public function __construct(){
-
 		parent::__construct();
-		$this->load->model("model-bank/BankModel");
+	}
+
+	function edit_fun($tbl,$dt,$where)
+	{
+		$db_bank = $this->load->database('default', TRUE);
+		if($db_bank->update($tbl,$dt,$where))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	public function get_invoice_api() {
@@ -120,7 +131,7 @@ class Api01 extends CI_Controller {
 			$dt = array(				
 				'upload_status'=>'1',
 			);
-			$this->Scheme_Model->edit_fun("tbl_whatsapp_message", $dt,$where);
+			$this->edit_fun("tbl_bank_whatsapp_message", $dt,$where);
 		}
 		if(!empty($jsonArray)){
 			$items = $jsonArray;
