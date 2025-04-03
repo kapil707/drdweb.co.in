@@ -4,7 +4,6 @@ class ExeInvoice extends CI_Controller
 {
 	public function __construct(){
 		parent::__construct();
-		$this->load->model("model-bank/BankModel");
 	}
 
 	public function not_found_invoice(){
@@ -81,6 +80,7 @@ class ExeInvoice extends CI_Controller
 					'chemist_id' => $chemist_id,
 					'status' => 0,
 					'insert_time' => $insert_time,
+					'upload_status' => 0,
 				);
 				
 				if (!empty($gstvno)) {
@@ -90,7 +90,6 @@ class ExeInvoice extends CI_Controller
 						// Agar record exist karta hai to update karo
 						$where = array('gstvno' => $gstvno);
 						$this->Scheme_Model->edit_fun("tbl_invoice", $dt, $where);
-						$this->BankModel->edit_fun("tbl_invoice", $dt, $where);
 
 						// yha delete karta ha taki jo medicines delete hui ha wo sahi rahy 
 						/************************************************* */
@@ -99,7 +98,6 @@ class ExeInvoice extends CI_Controller
 					} else {
 						// Agar record exist nahi karta hai to insert karo
 						$this->Scheme_Model->insert_fun("tbl_invoice", $dt);
-						$this->BankModel->insert_fun("tbl_invoice", $dt);
 					}
 				}
 			}
