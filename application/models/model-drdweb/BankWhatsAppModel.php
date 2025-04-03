@@ -133,6 +133,7 @@ class BankWhatsAppModel extends CI_Model
 				$dt = array(
 					'message_id' => $message_id,
 					'upi_no' => '',
+					'set_chemist' => '',
 					'body' => $body,
 					'date' => $date,
 					'extracted_text' => $extracted_text,
