@@ -95,7 +95,7 @@ class Api01 extends CI_Controller {
 		$jsonArray = array();
 		$items = "";
 
-		$result = $this->db->query("select * from tbl_bank_whatsapp_message where upload_status=0 limit 1000");
+		$result = $this->db->query("select * from tbl_whatsapp_message where upload_status=0 limit 1000");
 		$result = $result->result();
 		foreach($result as $row) {
 			
@@ -131,7 +131,7 @@ class Api01 extends CI_Controller {
 			$dt = array(				
 				'upload_status'=>'1',
 			);
-			$this->edit_fun("tbl_bank_whatsapp_message", $dt,$where);
+			$this->edit_fun("tbl_whatsapp_message", $dt,$where);
 		}
 		if(!empty($jsonArray)){
 			$items = $jsonArray;
