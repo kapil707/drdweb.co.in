@@ -8,8 +8,8 @@ class Cronjob_bank_whatsapp extends CI_Controller
 		$this->load->model("model-drdweb/BankWhatsAppModel");		
 	}
 
-	public function get_whatsapp_or_insert(){
-		echo "get_whatsapp_or_insert";
-		$this->BankWhatsAppModel->get_whatsapp_or_insert();
+	public function get_bank_whatsapp_or_insert(){
+		echo "get_bank_whatsapp_or_insert";
+		$this->BankWhatsAppModel->get_bank_whatsapp_or_insert();
 	}
 }
