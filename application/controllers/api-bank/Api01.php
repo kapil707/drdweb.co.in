@@ -55,7 +55,6 @@ class Api01 extends CI_Controller {
 
 			$dt = array(
 				'mtime' => $mtime,
-				'mtime' => $mtime,
 				'dispatchtime' => $dispatchtime,
 				'date' => $date,
 				'vno'=>$vno,
