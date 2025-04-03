@@ -132,9 +132,6 @@ class BankWhatsAppModel extends CI_Model
 
 				$dt = array(
 					'message_id' => $message_id,
-					'upi_no' => '',
-					'set_chemist' => '',
-					'amount' => '',
 					'body' => $body,
 					'date' => $date,
 					'extracted_text' => $extracted_text,
@@ -145,6 +142,10 @@ class BankWhatsAppModel extends CI_Model
 					'timestamp' => $timestamp,
 					'vision_text' => $vision_text,
 					'reply_id'=>$reply_id,
+					'upi_no' => '',
+					'set_chemist' => '',
+					'amount' => '',
+					'amount' => 0,
 				);
 
 				if (!empty($message_id)) {
