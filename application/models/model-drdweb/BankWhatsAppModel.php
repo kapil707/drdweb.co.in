@@ -8,13 +8,13 @@ class BankWhatsAppModel extends CI_Model
 
 	function select_query($query)
 	{
-		$db_bank = $this->load->database('default', TRUE);
+		$db_bank = $this->load->database('bank_db', TRUE);
 		return $db_bank->query($query);	
 	}
 
 	function select_row($tbl,$where)
 	{
-		$db_bank = $this->load->database('default', TRUE);
+		$db_bank = $this->load->database('bank_db', TRUE);
 		if($where!="")
 		{
 			$db_bank->where($where);
@@ -24,7 +24,7 @@ class BankWhatsAppModel extends CI_Model
 	
 	function insert_fun($tbl,$dt)
 	{
-		$db_bank = $this->load->database('default', TRUE);
+		$db_bank = $this->load->database('bank_db', TRUE);
 		if($db_bank->insert($tbl,$dt))
 		{
 			return $db_bank->insert_id();
@@ -48,7 +48,7 @@ class BankWhatsAppModel extends CI_Model
 	}
 	function delete_fun($tbl,$where)
 	{
-		$db_bank = $this->load->database('default', TRUE);
+		$db_bank = $this->load->database('bank_db', TRUE);
 		if($db_bank->delete($tbl,$where))
 		{
 			return true;
