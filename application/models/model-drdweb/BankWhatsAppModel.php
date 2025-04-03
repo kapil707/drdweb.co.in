@@ -147,6 +147,7 @@ class BankWhatsAppModel extends CI_Model
 					'amount' => '',
 					'reply_body' => '',
 					'status' => 0,
+					'upload_status' => 0,
 				);
 
 				if (!empty($message_id)) {
