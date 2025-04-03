@@ -71,6 +71,7 @@ class ExeChemist extends CI_Controller
 					'slcd' => $slcd,
 					'narcolicence' => $narcolicence,
 					'insert_time' => $insert_time,
+					'upload_status' => 0,
 				);
 
 				/*********************************************  */
