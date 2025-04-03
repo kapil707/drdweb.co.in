@@ -134,6 +134,7 @@ class BankWhatsAppModel extends CI_Model
 					'message_id' => $message_id,
 					'upi_no' => '',
 					'set_chemist' => '',
+					'amount' => '',
 					'body' => $body,
 					'date' => $date,
 					'extracted_text' => $extracted_text,
