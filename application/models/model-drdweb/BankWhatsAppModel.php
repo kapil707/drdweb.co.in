@@ -36,7 +36,7 @@ class BankWhatsAppModel extends CI_Model
 	}
 	function edit_fun($tbl,$dt,$where)
 	{
-		$db_bank = $this->load->database('default', TRUE);
+		$db_bank = $this->load->database('bank_db', TRUE);
 		if($db_bank->update($tbl,$dt,$where))
 		{
 			return true;
