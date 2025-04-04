@@ -142,11 +142,6 @@ class BankWhatsAppModel extends CI_Model
 					'timestamp' => $timestamp,
 					'vision_text' => $vision_text,
 					'reply_id'=>$reply_id,
-					'upi_no' => '',
-					'set_chemist' => '',
-					'amount' => '',
-					'reply_body' => '',
-					'status' => 0,
 					'upload_status' => 0,
 				);
 
