@@ -73,7 +73,7 @@ class BankWhatsAppModel extends CI_Model
 		$sender_name_place = "Online%20Details";
 
 		//Created a GET API
-		$url = "http://192.46.214.43:5000/get_messages_by_status?start_date=$start_date&end_date=$end_date&group=$sender_name_place&status=true";
+		$url = "http://192.46.214.43:5000/get_messages_by_status?start_date=$start_date&end_date=$end_date&group=$sender_name_place&status=false";
 
 		$parmiter = '';
 		$curl = curl_init();
@@ -152,15 +152,15 @@ class BankWhatsAppModel extends CI_Model
 
 				if (!empty($message_id)) {
 					// Check karo agar record already exist karta hai
-					$existing_record = $this->select_row("tbl_bank_whatsapp_message", array('message_id' => $message_id));
+					$existing_record = $this->select_row("tbl_whatsapp_message", array('message_id' => $message_id));
 			
 					if ($existing_record) {
 						// Agar record exist karta hai to update karo
 						$where = array('message_id' => $message_id);
-						$this->edit_fun("tbl_bank_whatsapp_message", $dt, $where);
+						$this->edit_fun("tbl_whatsapp_message", $dt, $where);
 					} else {
 						// Agar record exist nahi karta hai to insert karo
-						$this->insert_fun("tbl_bank_whatsapp_message", $dt);
+						$this->insert_fun("tbl_whatsapp_message", $dt);
 					}
 				}
 			}
