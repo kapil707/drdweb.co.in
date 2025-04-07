@@ -9,25 +9,6 @@ class Api01 extends CI_Controller {
 		parent::__construct();
 	}
 
-	function select_query($query)
-	{
-		$db_bank = $this->load->database('bank_db', TRUE);
-		return $db_bank->query($query);	
-	}
-
-	function edit_fun($tbl,$dt,$where)
-	{
-		$db_bank = $this->load->database('bank_db', TRUE);
-		if($db_bank->update($tbl,$dt,$where))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-
 	public function get_invoice_api() {
 		$jsonArray = array();
 		$items = "";
@@ -77,67 +58,6 @@ class Api01 extends CI_Controller {
 				'upload_status'=>'1',
 			);
 			$this->Scheme_Model->edit_fun("tbl_invoice", $dt,$where);
-		}
-		if(!empty($jsonArray)){
-			$items = $jsonArray;
-			$response = array(
-				'success' => "1",
-				'message' => 'Data load successfully',
-				'items' => $items,
-			);
-		}else{
-			$response = array(
-				'success' => "0",
-				'message' => '502 error',
-			);
-		}
-		
-        // Send JSON response
-        header('Content-Type: application/json');
-        echo json_encode($response);
-	}
-
-	public function get_bank_whatsapp_api() {
-		$jsonArray = array();
-		$items = "";
-
-		$result = $this->select_query("select * from tbl_whatsapp_message where upload_status=0 limit 1000");
-		$result = $result->result();
-		foreach($result as $row) {
-			
-			$id = $row->id;
-			$message_id = $row->message_id;
-			$body 		= $row->body;
-			$date 		= $row->date;
-			$extracted_text = $row->extracted_text;
-			$from_number = $row->from_number;
-			$ist_timestamp = $row->ist_timestamp;
-			$screenshot_image = $row->screenshot_image;
-			$sender_name_place = $row->sender_name_place;
-			$timestamp = $row->timestamp;
-			$vision_text = $row->vision_text;
-			$quoted_text = $row->reply_id;
-
-			$dt = array(
-				'message_id' => $message_id,
-				'body' => $body,
-				'date' => $date,
-				'extracted_text' => $extracted_text,
-				'from_number'=>$from_number,
-				'ist_timestamp'=>$ist_timestamp,
-				'screenshot_image'=>$screenshot_image,
-				'sender_name_place'=>$sender_name_place,
-				'timestamp'=>$timestamp,
-				'vision_text'=>$vision_text,
-				'quoted_text'=>$quoted_text,
-			);
-			$jsonArray[] = $dt;
-
-			$where = array('id'=>$id);
-			$dt = array(				
-				'upload_status'=>'1',
-			);
-			$this->edit_fun("tbl_whatsapp_message", $dt,$where);
 		}
 		if(!empty($jsonArray)){
 			$items = $jsonArray;
