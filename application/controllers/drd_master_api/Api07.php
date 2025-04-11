@@ -367,13 +367,14 @@ if ($items != '') {
 			foreach($result as $row)
 			{
 				$tagno 		= 	$row->tagno;
+				$vno 		= 	$row->vno;
 				$date		=	$row->date;
 				$time		=	$row->mtime;
 
 				$medicine_items = "";
 				
 				$i = 1;
-				$items_array = $this->db->query("select itemc from tbl_invoice_item where tagno='$tagno' and date='$date'")->result();
+				$items_array = $this->db->query("select itemc from tbl_invoice_item where vno='$vno' and date='$date'")->result();
 				foreach($items_array as $row1){
 					
 					$medicine_row = $this->get_medicine_details($row1->itemc);
