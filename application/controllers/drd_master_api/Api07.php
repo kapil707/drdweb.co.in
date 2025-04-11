@@ -322,7 +322,7 @@ if ($items != '') {
 			$status			= $_POST['status'];
 
 			$date = date("Y-m-d");
-			$result = $this->db->query("SELECT DISTINCT mm.`tagno`,mm.date FROM `tbl_invoice` as mm where mm.`deliverby` like '%$user_altercode%' and mm.status='$status' order by mm.tagno desc limit 10");
+			$result = $this->db->query("SELECT DISTINCT mm.`tagno`,mm.date FROM `tbl_invoice` as mm where mm.`deliverby` like '%$user_altercode%' and mm.status='$status' order by mm.tagno desc limit 10")->result();
 			foreach($result as $row)
 			{
 				$tagno 		= 	$row->tagno;
