@@ -11,9 +11,9 @@ class SliderModel extends CI_Model
 		}
 		if($function_type==2)
 		{
-			$company_code = $this->MedicineDivisionModel->get_medicine_company_name($company_code);
+			/*$company_code = $this->MedicineDivisionModel->get_medicine_company_name($company_code);
 			$company_code = str_replace(" ","-",$company_code);
-			$url = base_url()."c/".strtolower($company_code)."/".strtolower($company_division);
+			$url = base_url()."c/".strtolower($company_code)."/".strtolower($company_division);*/
 		}
 		return $url;
 	}
