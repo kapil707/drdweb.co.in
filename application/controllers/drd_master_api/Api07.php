@@ -101,6 +101,7 @@ if ($items != '') {
 
 	public function get_slider_api(){
 		$items = "";
+		echo "adfasf";
 		if(!empty($_POST)){
 			echo $api_key 		= $_POST["api_key"];
 			
