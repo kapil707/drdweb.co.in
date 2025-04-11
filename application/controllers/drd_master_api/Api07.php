@@ -322,7 +322,7 @@ if ($items != '') {
 			$delivery_status= $_POST['status'];
 
 			$date = date("Y-m-d");
-			$result = $this->db->query("SELECT DISTINCT mm.`tagno`,mm.date FROM `tbl_invoice` as mm where mm.`deliverby` like '%$user_altercode%' and mm.delivery_status='$delivery_status' order by mm.tagno desc limit 10")->result();
+			$result = $this->db->query("SELECT inv.tagno, inv.date, inv.mtime FROM ( SELECT tagno FROM tbl_invoice WHERE deliverby LIKE '%$user_altercode%' AND delivery_status = '$delivery_status' GROUP BY tagno ORDER BY tagno DESC LIMIT 10 ) AS latest JOIN tbl_invoice AS inv ON inv.tagno = latest.tagno order by inv.tagno desc limit 10")->result();
 			foreach($result as $row)
 			{
 				$tagno 		= 	$row->tagno;
