@@ -322,14 +322,14 @@ if ($items != '') {
 			$status			= $_POST['status'];
 
 			$date = date("Y-m-d");
-			$result = $this->db->query("SELECT DISTINCT mm.`tagno`,mm.vdt FROM `drd_master_tbl_delivery` as mm where mm.`user_altercode`='$user_altercode' and mm.status='$status' order by mm.tagno desc limit 10");
+			$result = $this->db->query("SELECT DISTINCT mm.`tagno`,mm.date FROM `tbl_invoice` as mm where mm.`deliverby` like '%$user_altercode%' and mm.status='$status' order by mm.tagno desc limit 10");
 			foreach($result as $row)
 			{
 				$tagno 		= 	$row->tagno;
 				$date		=	$row->vdt;
 				
 				$where = array('tagno'=>$tagno);
-				$row1 = $this->Drd_Master_Model->select_query_row("mtime","drd_master_tbl_delivery",$where);
+				$row1 = $this->Scheme_Model->select_row("mtime","tbl_invoice",$where);
 				
 				$time		=	$row1->mtime;
 
