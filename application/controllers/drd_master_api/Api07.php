@@ -367,7 +367,7 @@ if ($items != '') {
 			foreach($result as $row)
 			{
 				$tagno 		= 	$row->tagno;
-				$date		=	$row->vdt;
+				$date		=	$row->date;
 				$time		=	$row->mtime;
 
 				$items_s	=	$row->items;
