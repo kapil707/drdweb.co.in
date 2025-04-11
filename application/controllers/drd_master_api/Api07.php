@@ -102,7 +102,7 @@ if ($items != '') {
 	public function get_slider_api(){
 		$items = "";
 		if(!empty($_POST)){
-			$api_key 		= $_POST["api_key"];
+			echo $api_key 		= $_POST["api_key"];
 			
 			//$this->load->model("model-drdweb/slider_model/SliderModel");
 			$result = $this->SliderModel->slider("1");
