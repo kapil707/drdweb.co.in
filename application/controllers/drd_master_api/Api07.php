@@ -322,7 +322,7 @@ if ($items != '') {
 			$status			= $_POST['status'];
 
 			$date = date("Y-m-d");
-			$result = $this->Drd_Master_Model->full_query_result("SELECT DISTINCT mm.`tagno`,mm.vdt FROM `drd_master_tbl_delivery` as mm where mm.`user_altercode`='$user_altercode' and mm.status='$status' order by mm.tagno desc limit 10");
+			$result = $this->db->query("SELECT DISTINCT mm.`tagno`,mm.vdt FROM `drd_master_tbl_delivery` as mm where mm.`user_altercode`='$user_altercode' and mm.status='$status' order by mm.tagno desc limit 10");
 			foreach($result as $row)
 			{
 				$tagno 		= 	$row->tagno;
