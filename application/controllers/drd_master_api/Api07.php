@@ -360,14 +360,10 @@ if ($items != '') {
 			$user_code		= $_POST['user_code'];
 			$user_altercode	= $_POST['user_altercode'];
 			$tagno			= $_POST['tagno'];
-			$status			= $_POST['status'];
+			$delivery_status= $_POST['status'];
 
 			$date = date("Y-m-d");
-			$where = array(
-				'user_altercode'=>$user_altercode,
-				'tagno'=>$tagno,
-				'status'=>$status);
-			$result = $this->Drd_Master_Model->select_query("*","drd_master_tbl_delivery",$where);
+			$result = $this->db->query("select * from tbl_invoice where deliverby LIKE '%$user_altercode%' and tagno='$tagno' and delivery_status='$delivery_status'")->result();
 			foreach($result as $row)
 			{
 				$tagno 		= 	$row->tagno;
