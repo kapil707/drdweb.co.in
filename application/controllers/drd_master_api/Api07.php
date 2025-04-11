@@ -371,16 +371,15 @@ if ($items != '') {
 				$time		=	$row->mtime;
 
 				$medicine_items = "";
-				if($items_s){
-					$i = 1;
-					$items_array = $this->db->query("select itemc from tbl_invoice_item where tagno='$tagno' and date='$date'")->result();
-					foreach($items_array as $row1){
-						
-						$medicine_row = $this->get_medicine_details($row1->itemc);
+				
+				$i = 1;
+				$items_array = $this->db->query("select itemc from tbl_invoice_item where tagno='$tagno' and date='$date'")->result();
+				foreach($items_array as $row1){
+					
+					$medicine_row = $this->get_medicine_details($row1->itemc);
 
-						$medicine_items .= "<hr>".$i.".".$medicine_row->item_name." | Pack : ".$medicine_row->packing." | Mrp : ".$medicine_row->mrp."<br>";
-						$i++;
-					}				
+					$medicine_items .= "<hr>".$i.".".$medicine_row->item_name." | Pack : ".$medicine_row->packing." | Mrp : ".$medicine_row->mrp."<br>";
+					$i++;
 				}
 
 				$gstvno			= 	$row->gstvno;
