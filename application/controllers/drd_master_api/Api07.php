@@ -384,7 +384,7 @@ if ($items != '') {
 				}
 
 				$gstvno			= 	$row->gstvno;
-				$mydate			=	$row->vdt;
+				$mydate			=	$row->date;
 				$chemist_code	=	$row->chemist_code;
 				$chemist_name 	= 	$row->chemist_name;
 				$amount 		=   $row->amount; 
