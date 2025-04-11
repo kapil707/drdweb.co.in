@@ -62,7 +62,7 @@ if ($items != '') {
 			{
 				$user_password = md5($password);
 				$user_alert = "Enter true User name or Password";			
-				$query = $this->db->query("select tbl_master.id,tbl_master.code,tbl_master.altercode,tbl_master.name,tbl_master.mobile,tbl_master.email,tbl_master_other.image,tbl_master.status as status1,tbl_master_other.status,tbl_master_other.password as password,tbl_master_other.exp_date from tbl_master left join tbl_master_other on tbl_master.code = tbl_master_other.code where tbl_master.altercode='$user_name' and tbl_master.code=tbl_master_other.code and tbl_master.slcd='SM' limit 1")->row();
+				$query = $this->db->query("select tbl_rider.id,tbl_rider.code,tbl_rider.altercode,tbl_rider.name,tbl_rider.mobile,tbl_rider.email,tbl_master_other.image,tbl_rider.status as status1,tbl_master_other.status,tbl_master_other.password as password,tbl_master_other.exp_date from tbl_rider left join tbl_master_other on tbl_rider.code = tbl_master_other.code where tbl_rider.altercode='$user_name' and tbl_rider.code=tbl_master_other.code and tbl_rider.slcd='SM' limit 1")->row();
 				if (!empty($query))
 				{
 					if ($query->password == $user_password || $user_password==md5($defaultpassword))
