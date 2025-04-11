@@ -101,14 +101,9 @@ if ($items != '') {
 
 	public function get_slider_api(){
 		$items = "";
-		echo "adfasf";
-		if(!empty($_POST)){
-			echo $api_key 		= $_POST["api_key"];
-			
-			//$this->load->model("model-drdweb/slider_model/SliderModel");
-			$result = $this->SliderModel->slider("1");
-			$items = $result["items"];
-		}
+		$this->load->model("model-drdweb/slider_model/SliderModel");
+		$result = $this->SliderModel->slider("1");
+		$items = $result["items"];
 
 		$response = array(
 			'success' => "1",
