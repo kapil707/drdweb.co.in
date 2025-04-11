@@ -385,8 +385,8 @@ if ($items != '') {
 
 				$gstvno			= 	$row->gstvno;
 				$mydate			=	$row->date;
-				$chemist_code	=	$row->chemist_code;
-				$chemist_name 	= 	$row->chemist_name;
+				$chemist_code	=	$row->chemist_id;
+				$chemist_name 	= 	$row->chemist_id;
 				$amount 		=   $row->amount; 
 
 				$dt = array(
