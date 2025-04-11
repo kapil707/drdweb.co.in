@@ -326,7 +326,7 @@ if ($items != '') {
 			foreach($result as $row)
 			{
 				$tagno 		= 	$row->tagno;
-				$date		=	$row->vdt;
+				$date		=	$row->date;
 				
 				$where = array('tagno'=>$tagno);
 				$row1 = $this->Scheme_Model->select_row("mtime","tbl_invoice",$where);
