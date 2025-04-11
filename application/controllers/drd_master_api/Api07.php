@@ -105,7 +105,7 @@ if ($items != '') {
 			$api_key 		= $_POST["api_key"];
 			
 			$this->load->model("model-drdweb/slider_model/SliderModel");
-			$result = $this->SliderModel->slider(1);
+			$result = $this->SliderModel->slider("1");
 			$items = $result["items"];
 		}
 
