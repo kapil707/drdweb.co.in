@@ -49,25 +49,25 @@
                         </label>
                     </div>
                     <div class="col-sm-8">
-                        <select name="function_type" id="function_type" class="form-control" onchange="onchange_function_type()">
-							<option value="0" <?php if($row->function_type=="0"){ ?> selected <?php } ?>>
+                        <select name="funtype" id="funtype" class="form-control" onchange="onchange_funtype()">
+							<option value="0" <?php if($row->funtype=="0"){ ?> selected <?php } ?>>
 								Not Need
 							</option>
-							<option value="1" <?php if($row->function_type=="1"){ ?> selected <?php } ?>>
+							<option value="1" <?php if($row->funtype=="1"){ ?> selected <?php } ?>>
 								Select Medicine
 							</option>							
-							<option value="2" <?php if($row->function_type=="2"){ ?> selected <?php } ?>>
+							<option value="2" <?php if($row->funtype=="2"){ ?> selected <?php } ?>>
 								Select Company
 							</option>
 						</select>
                     </div>
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">
-                            <?= form_error('function_type'); ?>
+                            <?= form_error('funtype'); ?>
                         </span>
                     </div>
                 </div>
-				<div class="col-sm-6 div_medicine" <?php if($row->function_type!=1) { ?>style="display:none;" <?php } ?>>
+				<div class="col-sm-6 div_medicine" <?php if($row->funtype!=1) { ?>style="display:none;" <?php } ?>>
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
                             Select Medicine
@@ -96,7 +96,7 @@
                 </div>
 			</div>
 			
-			<div class="form-group div_company" <?php if($row->function_type!=2) { ?> style="display:none;" <?php } ?>>
+			<div class="form-group div_company" <?php if($row->funtype!=2) { ?> style="display:none;" <?php } ?>>
 				<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
@@ -225,7 +225,7 @@
     </div><!-- /.col -->
 </div><!-- /.row -->
 <script>
-function onchange_function_type()
+function onchange_funtype()
 {	
 	/*********************************************** */
 	$('#medicine_name').removeAttr('required');
@@ -241,7 +241,7 @@ function onchange_function_type()
 	$('#find_medicine_company_division').removeAttr('required');
 	/*********************************************** */
 	
-	let selectedValue = $("#function_type").val();
+	let selectedValue = $("#funtype").val();
 	if(selectedValue==1){
 		$(".div_medicine").show();
 		$('#medicine_name').attr('required', true);
