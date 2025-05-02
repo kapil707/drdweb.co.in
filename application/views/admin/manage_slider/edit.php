@@ -74,7 +74,7 @@
                         </label>
                     </div>
                     <div class="col-sm-8">
-						<input type="text" id="find_medicine_id" name="find_medicine_id" value="<?= $row->item_code?>" />
+						<input type="hidden" id="find_medicine_id" name="find_medicine_id" value="<?= $row->item_code?>" />
 
 						<?php 
 						$medicine_name = "";
@@ -104,7 +104,7 @@
                         </label>
                     </div>
                     <div class="col-sm-8">
-						<input type="text" id="find_medicine_company_id" name="find_medicine_company_id" value="<?= $row->comp_code ?>"/>
+						<input type="hidden" id="find_medicine_company_id" name="find_medicine_company_id" value="<?= $row->comp_code ?>"/>
 
 						<?php 
 						$medicine_company_name = "";
