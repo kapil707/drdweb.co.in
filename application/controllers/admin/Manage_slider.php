@@ -308,7 +308,7 @@ class Manage_slider extends CI_Controller {
 				'id' => $id,
 				'short_order' => $short_order,
 				'slider_type' => $slider_type,
-				'funtype' => $function_type,
+				'function_type' => $function_type,
 				'title' => $title,
 				'image' => $image,
 				'datetime'=>$datetime,
