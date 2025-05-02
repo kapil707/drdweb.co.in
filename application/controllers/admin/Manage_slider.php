@@ -70,7 +70,7 @@ class Manage_slider extends CI_Controller {
 			$dt = array(
 				'slider_type'=>$slider_type,
 				'short_order'=>$short_order,
-				'funtype'=>$funtype,
+				'function_type'=>$function_type,
 				'item_code'=>$item_code,
 				'comp_code'=>$comp_code,
 				'comp_division'=>$comp_division,
@@ -193,7 +193,7 @@ class Manage_slider extends CI_Controller {
 			$dt = array(
 				'slider_type'=>$slider_type,
 				'short_order'=>$short_order,
-				'funtype'=>$funtype,
+				'function_type'=>$function_type,
 				'item_code'=>$item_code,
 				'comp_code'=>$comp_code,
 				'comp_division'=>$comp_division,
