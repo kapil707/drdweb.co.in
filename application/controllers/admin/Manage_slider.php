@@ -193,7 +193,7 @@ class Manage_slider extends CI_Controller {
 			$dt = array(
 				'slider_type'=>$slider_type,
 				'short_order'=>$short_order,
-				'funtype'=>$funtype,
+				'function_type'=>$funtype,
 				'item_code'=>$item_code,
 				'company_code'=>$company_code,
 				'company_division'=>$company_division,
@@ -268,24 +268,24 @@ class Manage_slider extends CI_Controller {
 
 			$short_order = $row->short_order;
 			$slider_type = "Slider ($row->slider_type)";
-			if($row->funtype=="0"){
-				$funtype = "Not Need";
+			if($row->function_type=="0"){
+				$function_type = "Not Need";
 				$title = "N/a";
 			}
-			if($row->funtype=="1"){ 
-				$funtype = "Medicine ($row->item_code)";
+			if($row->function_type=="1"){ 
+				$function_type = "Medicine ($row->item_code)";
 				
 				$row1 =  $this->db->query("select item_name,i_code from tbl_medicine where i_code='$row->item_code'")->row();
 
 				$url = "https://www.drdistributor.com/md/$row->item_code";
 				$title = "<a href='".$url."' target='_blank'>$row1->item_name</a>";
 			}
-			if($row->funtype=="2"){ 
+			if($row->function_type=="2"){ 
 				$company_division = $row->company_division;
 				if(empty($company_division)){
 					$company_division = "N/a";
 				}
-				$funtype = "Company ($row->company_code) / Division ($company_division)"; 
+				$function_type = "Company ($row->company_code) / Division ($company_division)"; 
 
 				$row1 = $this->db->query("select company_full_name from tbl_medicine where compcode='$row->company_code'")->row();
 
@@ -308,7 +308,7 @@ class Manage_slider extends CI_Controller {
 				'id' => $id,
 				'short_order' => $short_order,
 				'slider_type' => $slider_type,
-				'funtype' => $funtype,
+				'funtype' => $function_type,
 				'title' => $title,
 				'image' => $image,
 				'datetime'=>$datetime,
