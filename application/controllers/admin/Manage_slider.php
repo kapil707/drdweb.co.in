@@ -48,8 +48,8 @@ class Manage_slider extends CI_Controller {
 		if(isset($Submit))
 		{
 			$item_code = $find_medicine_id;
-			$comp_code = $find_medicine_company_id;
-			$comp_division = $find_medicine_company_division;
+			$company_code = $find_medicine_company_id;
+			$company_division = $find_medicine_company_division;
 
 			if (!empty($_FILES["image"]["name"]))
 			{
@@ -72,8 +72,8 @@ class Manage_slider extends CI_Controller {
 				'short_order'=>$short_order,
 				'function_type'=>$funtype,
 				'item_code'=>$item_code,
-				'comp_code'=>$comp_code,
-				'comp_division'=>$comp_division,
+				'company_code'=>$company_code,
+				'company_division'=>$company_division,
 				'image'=>$image,
 				'status'=>$status,
 				'date' => date('Y-m-d'),
@@ -171,8 +171,8 @@ class Manage_slider extends CI_Controller {
 		if(isset($Submit))
 		{
 			$item_code = $find_medicine_id;
-			$comp_code = $find_medicine_company_id;
-			$comp_division = $find_medicine_company_division;
+			$company_code = $find_medicine_company_id;
+			$company_division = $find_medicine_company_division;
 	
 			if (!empty($_FILES["image"]["name"]))
 			{
@@ -195,8 +195,8 @@ class Manage_slider extends CI_Controller {
 				'short_order'=>$short_order,
 				'funtype'=>$funtype,
 				'item_code'=>$item_code,
-				'comp_code'=>$comp_code,
-				'comp_division'=>$comp_division,
+				'company_code'=>$company_code,
+				'company_division'=>$company_division,
 				'image'=>$image,
 				'status'=>$status,
 				'date' => date('Y-m-d'),
