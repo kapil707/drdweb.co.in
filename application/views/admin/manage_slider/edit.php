@@ -104,11 +104,11 @@
                         </label>
                     </div>
                     <div class="col-sm-8">
-						<input type="hidden" id="find_medicine_company_id" name="find_medicine_company_id" value="<?= $row->comp_code ?>"/>
+						<input type="hidden" id="find_medicine_company_id" name="find_medicine_company_id" value="<?= $row->company_code ?>"/>
 
 						<?php 
 						$medicine_company_name = "";
-						$row1 =  $this->db->query ("select company_full_name from tbl_medicine where compcode='$row->comp_code'")->row();
+						$row1 =  $this->db->query ("select company_full_name from tbl_medicine where compcode='$row->company_code'")->row();
 						if(!empty($row1)){
 							$medicine_company_name = $row1->company_full_name;
 						}
