@@ -50,13 +50,13 @@
                     </div>
                     <div class="col-sm-8">
                         <select name="funtype" id="funtype" class="form-control" onchange="onchange_funtype()">
-							<option value="0" <?php if($row->funtype=="0"){ ?> selected <?php } ?>>
+							<option value="0" <?php if($row->function_type=="0"){ ?> selected <?php } ?>>
 								Not Need
 							</option>
-							<option value="1" <?php if($row->funtype=="1"){ ?> selected <?php } ?>>
+							<option value="1" <?php if($row->function_type=="1"){ ?> selected <?php } ?>>
 								Select Medicine
 							</option>							
-							<option value="2" <?php if($row->funtype=="2"){ ?> selected <?php } ?>>
+							<option value="2" <?php if($row->function_type=="2"){ ?> selected <?php } ?>>
 								Select Company
 							</option>
 						</select>
