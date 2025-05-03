@@ -141,7 +141,7 @@
 							{
 								$division = $row1->comp_division;
 								?>
-								<option value="<?= $division ?>" <?php if($division==$row->division) { ?>selected <?php } ?>>
+								<option value="<?= $division ?>" <?php if($division==$row->company_division) { ?>selected <?php } ?>>
 									<?= $division ?>
 								</option>
 								<?php
