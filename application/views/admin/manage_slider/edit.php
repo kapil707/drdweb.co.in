@@ -136,10 +136,10 @@
 								Select Company Division
 							</option>
 							<?php
-							$result1 =  $this->db->query("select DISTINCT division from tbl_medicine where compcode='$row->comp_code' order by division asc")->result();
+							$result1 =  $this->db->query("select DISTINCT division from tbl_medicine where compcode='$row->company_code' order by division asc")->result();
 							foreach($result1 as $row1)
 							{
-								$division = $row1->comp_division;
+								$division = $row1->company_division;
 								?>
 								<option value="<?= $division ?>" <?php if($division==$row->division) { ?>selected <?php } ?>>
 									<?= $division ?>
