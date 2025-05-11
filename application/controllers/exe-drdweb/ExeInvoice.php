@@ -81,6 +81,7 @@ class ExeInvoice extends CI_Controller
 					'status' => 0,
 					'insert_time' => $insert_time,
 					'upload_status' => 0,
+					'delivery_status'=> 0,
 				);
 				
 				if (!empty($gstvno)) {
