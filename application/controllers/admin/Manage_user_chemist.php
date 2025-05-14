@@ -357,8 +357,8 @@ class Manage_user_chemist extends CI_Controller {
 				'address3' => $row->address3,
 				'website_limit' => $row->website_limit,
 				'android_limit' => $row->android_limit,
-				'status' => $status,
-				'image' => $image,
+				'status' => $row->status,
+				'image' => $row->image,
 			];
 		}
 
