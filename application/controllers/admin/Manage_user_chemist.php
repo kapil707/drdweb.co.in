@@ -275,6 +275,7 @@ class Manage_user_chemist extends CI_Controller {
 				'id' => $id,
 				'code' => $code,
 				'altercode' => $altercode,
+				'name' => $name,
 				'mobile' => $mobile,
 				'email' => $email,
 				'address' => $address,
