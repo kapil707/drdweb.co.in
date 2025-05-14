@@ -259,7 +259,7 @@ class Manage_user_chemist extends CI_Controller {
 			$address1 = $row->address1;
 			$address2 = $row->address2;
 			$address3 = $row->address3;
-			$website_limit = $row->website_limit;
+			$website_limit = $row->website_limit ? $row->website_limit : "0";
 			$android_limit = $row->android_limit;
 			$status = $row->status;
 			//$image = $url.$row->photo;
