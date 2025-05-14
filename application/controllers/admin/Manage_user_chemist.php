@@ -179,6 +179,79 @@ class Manage_user_chemist extends CI_Controller {
 		$this->load->view("admin/$Page_view/edit",$data);
 		$this->load->view("admin/header_footer/footer",$data);
 	}
+
+	public function order_limit()
+	{
+		//error_reporting(0);
+		/******************session***********************/
+		$user_id = $this->session->userdata("user_id");
+		$user_type = $this->session->userdata("user_type");
+		/******************session***********************/	
+		$Page_title = $this->Page_title;
+		$Page_name 	= $this->Page_name;
+		$Page_view 	= $this->Page_view;
+		$Page_menu 	= $this->Page_menu;
+		$Page_tbl 	= $this->Page_tbl;
+		$page_controllers 	= $this->page_controllers;	
+		$this->Admin_Model->permissions_check_or_set($Page_title,$Page_name,$user_type);	
+		$data['title1'] = $Page_title." || Order Limit";
+		$data['title2'] = "Order Limit";
+		$data['Page_name'] = $Page_name;
+		$data['Page_menu'] = $Page_menu;
+		$this->breadcrumbs->push("Order Limit","admin/");
+		$this->breadcrumbs->push("$Page_title","admin/$page_controllers/");
+		$this->breadcrumbs->push("Order Limit","admin/$page_controllers/order_limit");
+		$tbl = $Page_tbl;
+		
+		$system_ip = $this->input->ip_address();
+		$status = "";
+		extract($_POST);
+		if(isset($Submit))
+		{			
+			$result = $this->db->query("update tbl_chemist_other set website_limit='$website_order_limit',android_limit='$android_order_limit' where fix_limit='0'");
+			if($result)
+			{
+				$message_db = "Edit Successfully.";
+				$message = "Edit Successfully.";
+				$this->session->set_flashdata("message_type","success");
+			}
+			else
+			{
+				$message_db = "Not Add.";
+				$message = "Not Add.";
+				$this->session->set_flashdata("message_type","error");
+			}
+			if($message_db!="")
+			{
+				$message = $Page_title." - ".$message;
+				$message_db = $Page_title." - ".$message_db;
+				$this->session->set_flashdata("message_footer","yes");
+				$this->session->set_flashdata("full_message",$message);
+				$this->Admin_Model->Add_Activity_log($message_db);
+				if($result)
+				{
+					redirect(current_url());
+					//redirect(base_url()."admin/$page_controllers/view");
+				}
+			}
+		}	
+		$query = $this->db->query("select tbl_chemist.altercode,tbl_chemist.code,tbl_chemist.name,tbl_chemist_other.status,tbl_chemist_other.fix_limit,tbl_chemist_other.block,tbl_chemist_other.order_limit,tbl_chemist_other.website_limit,tbl_chemist_other.android_limit,tbl_chemist_other.image from tbl_chemist,tbl_chemist_other where tbl_chemist.code=tbl_chemist_other.code and tbl_chemist.id='$id' order by tbl_chemist.id desc");
+  		$data["result"] = $query->result();	
+		$x = $query->result();	
+		if(empty($x))
+		{
+			$query = $this->db->query("select * from tbl_chemist where id='$id'")->row();
+			$code = $query->code;
+			if($code!="")
+			{
+				$this->db->query("insert into tbl_chemist_other set code='$code'");
+				redirect(current_url());
+			}
+		}
+		$this->load->view("admin/header_footer/header",$data);
+		$this->load->view("admin/$Page_view/edit",$data);
+		$this->load->view("admin/header_footer/footer",$data);
+	}
 	
 	public function send_email_for_password_create($code,$password)
 	{
