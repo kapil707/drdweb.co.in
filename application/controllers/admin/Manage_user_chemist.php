@@ -162,7 +162,7 @@ class Manage_user_chemist extends CI_Controller {
 				}
 			}
 		}	
-		$query = $this->db->query("select tbl_chemist.altercode,tbl_chemist.code,tbl_chemist.name,tbl_chemist_other.status,tbl_chemist_other.block,tbl_chemist_other.order_limit,tbl_chemist_other.website_limit,tbl_chemist_other.android_limit,tbl_chemist_other.image from tbl_chemist,tbl_chemist_other where tbl_chemist.code=tbl_chemist_other.code and tbl_chemist.id='$id' order by tbl_chemist.id desc");
+		$query = $this->db->query("select tbl_chemist.altercode,tbl_chemist.code,tbl_chemist.name,tbl_chemist_other.status,tbl_chemist_other.fix_limit,tbl_chemist_other.block,tbl_chemist_other.order_limit,tbl_chemist_other.website_limit,tbl_chemist_other.android_limit,tbl_chemist_other.image from tbl_chemist,tbl_chemist_other where tbl_chemist.code=tbl_chemist_other.code and tbl_chemist.id='$id' order by tbl_chemist.id desc");
   		$data["result"] = $query->result();	
 		$x = $query->result();	
 		if(empty($x))
