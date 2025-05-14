@@ -354,6 +354,7 @@ class Manage_user_chemist extends CI_Controller {
 
 			$data[] = [
 				'sr_no' => $sr++,
+				'id' => $row->id,
 				'code' => $row->code,
 				'chemist_id' => $row->altercode,
 				'name' => $row->name,
