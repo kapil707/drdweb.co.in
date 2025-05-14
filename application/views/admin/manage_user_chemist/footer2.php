@@ -15,7 +15,18 @@ $(document).ready(function(){
 		order: [[0, 'asc']],
 		columns: [
 			{ data: 'sr_no', title: 'Id' },
-			{ data: 'title', title: 'Title' },
+			{ data: 'code', title: 'code' },
+			{ data: 'altercode', title: 'Title' },
+			{ data: 'name', title: 'Title' },
+			{ data: 'mobile', title: 'Title' },
+			{ data: 'email', title: 'Title' },
+			{ data: 'address', title: 'Title' },
+			{ data: 'address1', title: 'Title' },
+			{ data: 'address2', title: 'Title' },
+			{ data: 'address3', title: 'Title' },
+			{ data: 'website_limit', title: 'Title' },
+			{ data: 'android_limit', title: 'Title' },
+			{ data: 'status', title: 'Title' },
 			{
 				data: 'image',
 				title: 'Image',
@@ -27,7 +38,7 @@ $(document).ready(function(){
 					}
 				}
 			},
-			{ data: 'timestamp', title: 'DateTime' },
+			/*{ data: 'timestamp', title: 'DateTime' },
 			{
 				data: null,
 				title: 'Action',
@@ -41,8 +52,8 @@ $(document).ready(function(){
 					}else{
 						return '';
 					}*/
-				}
-			}
+				//}
+			//}
 		],
 		pageLength: 25,
 		responsive: true,
