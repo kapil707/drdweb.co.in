@@ -263,6 +263,12 @@ class Manage_user_chemist extends CI_Controller {
 			$android_limit = $row->android_limit ? $row->website_limit : "0";
 			$status = $row->status;
 			//$image = $url.$row->photo;
+
+			$image = base_url()."user_profile/".$row->image;
+			if($row->image=="")
+			{
+				$image = base_url()."img_v51/logo.png";
+			}
 			
 			/*$timestamp = $row->timestamp;
 			if(empty($timestamp)){
