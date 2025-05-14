@@ -265,7 +265,7 @@ class Manage_user_chemist extends CI_Controller {
 			//$image = $url.$row->photo;
 
 			$image = base_url()."user_profile/".$row->image;
-			if($row->image=="")
+			if(empty($row->image))
 			{
 				$image = base_url()."img_v51/logo.png";
 			}
@@ -291,6 +291,7 @@ class Manage_user_chemist extends CI_Controller {
 				'website_limit' => $website_limit,
 				'android_limit' => $android_limit,
 				'status' => $status,
+				'image' => $image,
 				//'timestamp' => $timestamp,
 			);
 			$jsonArray[] = $dt;

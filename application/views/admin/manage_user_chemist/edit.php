@@ -147,8 +147,8 @@
                     <div class="col-sm-8">
 						<input type="file" class="form-control"  value="" name="image">
                         <?php
-                        $user_image 	= 	base_url()."user_profile/".$row->image;
-						if($row->image=="")
+                        $user_image = base_url()."user_profile/".$row->image;
+						if(empty($row->image))
 						{
 							$user_image = base_url()."img_v".constant('site_v')."/logo.png";
 						} ?>
