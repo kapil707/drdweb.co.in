@@ -7,47 +7,19 @@
         </a>
     </div>
     <div class="col-xs-12">
-        <div class="table-responsive">
-            <table class="table table-striped table-bordered table-hover" id="example-table">
-                <thead>
-                    <tr>
-                        <th>
-                            Sno.
-                        </th>
-                        <th>
-                            Code
-                        </th>
-                        <th>
-                            Name
-                        </th>
-                        <th>
-                            Email
-                        </th>
-                        <th>
-                            Mobile
-                        </th>						
-                        <th>
-                            Address                       
-                        </th>						<th>							
-                            Website / Android Limit			
-                        </th>
-                        <th>
-                            Status
-                        </th>
-                        <th>
-                            Edit
-                        </th>
-                        <th>
-                            Logout
-                        </th>
-                    </tr>
-                </thead>
-                <tbody> 
-                    
-                </tbody>			
-            </table>		
-        </div>    
-    </div>
+		<div class="row">
+			<div class="col-sm-12  pt-1 pb-5">
+				<div class="table-responsive">
+					<table class="table table-striped table-bordered table-hover" id="example-table">
+						<thead>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 <script>
 function logout_fun(altercode){	

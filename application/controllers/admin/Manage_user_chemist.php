@@ -239,6 +239,81 @@ class Manage_user_chemist extends CI_Controller {
 		$this->load->view("admin/$Page_view/order_limit",$data);
 		$this->load->view("admin/header_footer/footer",$data);
 	}
+
+	public function view_api() {		
+
+		$jsonArray = array();
+		$items = "";
+		$i = 1;
+		$Page_tbl = $this->Page_tbl;
+		$page_controllers = $this->page_controllers;
+
+		$query  = $this->db->query("SELECT tbl_chemist.code,tbl_chemist.altercode,tbl_chemist.name,tbl_chemist.mobile,tbl_chemist.email,tbl_chemist.address,tbl_chemist.address1,tbl_chemist.address2,tbl_chemist.address3,tbl_chemist_other.website_limit,tbl_chemist_other.android_limit,tbl_chemist_other.status,tbl_chemist.id as id,tbl_chemist_other.id as id2 from tbl_chemist left join tbl_chemist_other on tbl_chemist.code = tbl_chemist_other.code where tbl_chemist.slcd='CL' order by tbl_chemist.id desc");
+  		$result = $query->result();
+		foreach($result as $row) {
+
+			$sr_no = $i++;
+			$id = $row->id;
+			
+			//$url = base_url()."uploads/$page_controllers/photo/main/";
+			
+			$code = $row->code;
+			$altercode = $row->altercode;
+			$name = $row->name;
+			$mobile = $row->mobile;
+			$email = $row->email;
+			$address = $row->address;
+			$address1 = $row->address1;
+			$address2 = $row->address2;
+			$address3 = $row->address3;
+			$address3 = $row->address3;
+			$website_limit = $row->website_limit;
+			$android_limit = $row->android_limit;
+			$status = $row->status;
+			//$image = $url.$row->photo;
+			
+			/*$timestamp = $row->timestamp;
+			if(empty($timestamp)){
+				$timestamp = time();
+			}
+			$timestamp = date("d-M-y @ H:i:s", $timestamp);*/
+
+			$dt = array(
+				'sr_no' => $sr_no,
+				'id' => $id,
+				'code' => $code,
+				'altercode' => $altercode,
+				'mobile' => $mobile,
+				'email' => $email,
+				'address' => $address,
+				'address1' => $address1,
+				'address2' => $address2,
+				'address3' => $address3,
+				'website_limit' => $website_limit,
+				'android_limit' => $android_limit,
+				'status' => $status,
+				//'timestamp' => $timestamp,
+			);
+			$jsonArray[] = $dt;
+		}
+		if(!empty($jsonArray)){
+			$items = $jsonArray;
+			$response = array(
+				'success' => "1",
+				'message' => 'Data load successfully',
+				'items' => $items,
+			);
+		}else{
+			$response = array(
+				'success' => "0",
+				'message' => '502 error',
+			);
+		}
+		
+        // Send JSON response
+        header('Content-Type: application/json');
+        echo json_encode($response);
+	}
 	
 	public function send_email_for_password_create($code,$password)
 	{
