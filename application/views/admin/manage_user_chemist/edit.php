@@ -50,6 +50,32 @@
                     </div>
 				</div>				
           	</div>
+
+            <div class="form-group">
+				<div class="col-sm-6">
+                    <div class="col-sm-4 text-right">
+                        <label class="control-label" for="form-field-1">
+                            Fix Limit
+                        </label>
+                    </div>
+                    <div class="col-sm-8">
+                        <select name="fix_limit" id="fix_limit" data-placeholder="Select Fix Limit" class="chosen-select" >
+							<option value="1" <?php if($row->fix_limit==1) { ?> selected <?php } ?>>
+								Yes
+							</option>
+							<option value="0" <?php if($row->fix_limit==0) { ?> selected <?php } ?>>
+								No
+							</option>
+						</select>
+                    </div>
+                    <div class="help-inline col-sm-12 has-error">
+                        <span class="help-block reset middle">  
+                            <?= form_error('fix_limit'); ?>
+                        </span>
+                    </div>
+                </div>
+			</div>
+
 			<div class="form-group" id="data_5">
 				<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
@@ -105,7 +131,6 @@
                     </div>
 				</div>
 			</div>
-
             <div class="space-4"></div>
             <br /><br />
             <div class="clearfix form-actions">
