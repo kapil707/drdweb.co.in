@@ -32,8 +32,16 @@ $(document).ready(function(){
 					return fullAddress.replace(/,\s*$/, ''); // remove trailing comma
 				}
 			},
-			{ data: 'website_limit', title: 'Website Limit' },
-			{ data: 'android_limit', title: 'Android Limit' },
+			{
+				data: null,
+				title: 'Website / Android Limit',
+				render: function (data, type, row) {
+					let fulltext = '';
+					fulltext += row.website_limit ? row.website_limit + ', ' : '';
+					fulltext += row.android_limit ? row.android_limit + ', ' : '';
+					return fulltext.replace(/,\s*$/, ''); // remove trailing comma
+				}
+			},
 			/*{
 				data: 'image',
 				title: 'Image',
