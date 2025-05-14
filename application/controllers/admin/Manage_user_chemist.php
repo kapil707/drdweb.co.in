@@ -251,7 +251,7 @@ class Manage_user_chemist extends CI_Controller {
 			//$url = base_url()."uploads/$page_controllers/photo/main/";
 			
 			$code = $row->code;
-			$altercode = $row->altercode;
+			$chemist_id = $row->altercode;
 			$name = $row->name ? $row->name : "";
 			$mobile = $row->mobile ? $row->mobile : "";
 			$email = $row->email ? $row->email : "";
@@ -280,7 +280,7 @@ class Manage_user_chemist extends CI_Controller {
 				'sr_no' => $sr_no,
 				'id' => $id,
 				'code' => $code,
-				'altercode' => $altercode,
+				'chemist_id' => $chemist_id,
 				'name' => $name,
 				'mobile' => $mobile,
 				'email' => $email,
@@ -372,33 +372,49 @@ class Manage_user_chemist extends CI_Controller {
 		}
 		return implode($pass); //turn the array into a string
 	}
+
 	public function user_logout_new($altercode)
 	{
 		$this->db->query("update tbl_android_device_id set logout='1' where chemist_id='$altercode'");
 		//$this->db->query("delete from drd_login_time where user_altercode='$altercode'");
 	}
-	public function user_logout()
+
+	public function chemist_logout()
 	{
 		//error_reporting(0);
 		header('Content-Type: application/json');
-		$altercode = $_POST["altercode"];
+		$chemist_id = $_POST["chemist_id"];
+
+		$jsonArray = array();
 		$items = "";
-		$response = "";
-		if($altercode!="")
+		if(!empty($chemist_id))
 		{
-			$this->db->query("update tbl_android_device_id set logout='1' where chemist_id='$altercode'");
+			$this->db->query("update tbl_android_device_id set logout='1' where chemist_id='$chemist_id'");
 			//$this->db->query("delete from drd_login_time where user_altercode='$altercode'");
-			$response = 1;
+
+			$dt = array(
+				'response' => 1,
+			);
+			$jsonArray[] = $dt;
 		}
-$items.= <<<EOD
-{"response":"{$response}"},
-EOD;
-if ($items != '') {
-$items = substr($items, 0, -1);
-}
-?>
-{"items":[<?= $items;?>]}
-<?php
+
+		if(!empty($jsonArray)){
+			$items = $jsonArray;
+			$response = array(
+				'success' => "1",
+				'message' => 'Data load successfully',
+				'items' => $items,
+			);
+		}else{
+			$response = array(
+				'success' => "0",
+				'message' => '502 error',
+			);
+		}
+		
+        // Send JSON response
+        header('Content-Type: application/json');
+        echo json_encode($response);
 	}
 
 	public function find_chemist()

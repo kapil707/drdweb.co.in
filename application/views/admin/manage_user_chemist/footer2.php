@@ -16,7 +16,7 @@ $(document).ready(function(){
 		columns: [
 			{ data: 'sr_no', title: 'Id' },
 			{ data: 'code', title: 'Chemist Code' },
-			{ data: 'altercode', title: 'Chemist Id' },
+			{ data: 'chemist_id', title: 'Chemist Id' },
 			{ data: 'name', title: 'Name' },
 			{ data: 'mobile', title: 'Mobile' },
 			{ data: 'email', title: 'Email' },
@@ -59,14 +59,17 @@ $(document).ready(function(){
 				title: 'Action',
 				orderable: false,
 				render: function (data, type, row) {
-						return `
-							<a href="<?php echo base_url(); ?>admin/<?php echo $Page_name ?>/edit/${row.id}" class="btn-white btn btn-xs">Edit</a>`;
-					
-					/*if(row.id!=1){
-						
-					}else{
-						return '';
-					}*/
+					return `
+						<a href="<?php echo base_url(); ?>admin/<?php echo $Page_name ?>/edit/${row.id}" class="btn-white btn btn-xs">Edit</a>`;
+				}
+			},
+			{
+				data: null,
+				title: 'Logout',
+				orderable: false,
+				render: function (data, type, row) {
+					return `
+						<a href="javascript:logout_function('${row.chemist_id}');" class="btn-white btn btn-xs">Logout</a>`;
 				}
 			}
 		],

@@ -22,11 +22,11 @@
 	</div>
 </div>
 <script>
-function logout_fun(altercode){	
+function logout_function(chemist_id){	
     $.ajax({		
         type       : "POST",		
-        data       :  {altercode:altercode},		
-        url        : "<?php echo base_url(); ?>admin/<?= $Page_name ?>/user_logout",		
+        data       :  {chemist_id:chemist_id},		
+        url        : "<?php echo base_url(); ?>admin/<?= $Page_name ?>/chemist_logout",		
         cache	   : false,		
         success    : function(data){			
             if(data!="")			
@@ -35,7 +35,7 @@ function logout_fun(altercode){
             }
             $.each(data.items, function(i,item){				
                 if (item){					
-                swal("Logout Successfully");				
+                    swal("Logout Successfully");				
                 }			
             });			
         }	
