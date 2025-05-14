@@ -241,7 +241,7 @@ class Manage_user_chemist extends CI_Controller {
 		$Page_tbl = $this->Page_tbl;
 		$page_controllers = $this->page_controllers;
 
-		$query  = $this->db->query("SELECT tbl_chemist.code,tbl_chemist.altercode,tbl_chemist.name,tbl_chemist.mobile,tbl_chemist.email,tbl_chemist.address,tbl_chemist.address1,tbl_chemist.address2,tbl_chemist.address3,tbl_chemist_other.website_limit,tbl_chemist_other.android_limit,tbl_chemist_other.status,tbl_chemist.id as id,tbl_chemist_other.id as id2 from tbl_chemist left join tbl_chemist_other on tbl_chemist.code = tbl_chemist_other.code where tbl_chemist.slcd='CL' order by tbl_chemist.id desc");
+		$query  = $this->db->query("SELECT tbl_chemist.code,tbl_chemist.altercode,tbl_chemist.name,tbl_chemist.mobile,tbl_chemist.email,tbl_chemist.address,tbl_chemist.address1,tbl_chemist.address2,tbl_chemist.address3,tbl_chemist_other.image,tbl_chemist_other.website_limit,tbl_chemist_other.android_limit,tbl_chemist_other.status,tbl_chemist.id as id,tbl_chemist_other.id as id2 from tbl_chemist left join tbl_chemist_other on tbl_chemist.code = tbl_chemist_other.code where tbl_chemist.slcd='CL' order by tbl_chemist.id desc");
   		$result = $query->result();
 		foreach($result as $row) {
 
