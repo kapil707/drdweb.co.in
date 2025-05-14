@@ -12,7 +12,7 @@ $(document).ready(function(){
 		ajax: {
 		url: '<?php echo base_url(); ?>admin/<?php echo $Page_name ?>/view_api_server',
 			type: 'POST',
-			dataSrc: 'items'
+			//dataSrc: 'items'
 		},
 		order: [[0, 'asc']],
 		columns: [
