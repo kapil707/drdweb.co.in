@@ -331,6 +331,7 @@ class Manage_user_chemist extends CI_Controller {
 		if (!empty($search)) {
 			$this->db->group_start()
 				->like('c.name', $search)
+				->or_like('c.altercode', $search)
 				->or_like('c.mobile', $search)
 				->or_like('c.email', $search)
 				->group_end();
