@@ -345,6 +345,13 @@ class Manage_user_chemist extends CI_Controller {
 		$data = [];
 		$sr = $start + 1;
 		foreach ($query->result() as $row) {
+
+			$image = base_url()."user_profile/".$row->image;
+			if(empty($row->image))
+			{
+				$image = "https://www.drdistributor.com/img_v51/logo.png";
+			}
+
 			$data[] = [
 				'sr_no' => $sr++,
 				'code' => $row->code,
@@ -359,7 +366,7 @@ class Manage_user_chemist extends CI_Controller {
 				'website_limit' => $row->website_limit,
 				'android_limit' => $row->android_limit,
 				'status' => $row->status,
-				'image' => $row->image,
+				'image' => $image,
 			];
 		}
 
