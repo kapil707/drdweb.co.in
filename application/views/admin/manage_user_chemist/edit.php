@@ -11,8 +11,34 @@
         foreach ($result as $row)
         { ?>
 			<input type="hidden" value="<?= $row->image ?>" name="old_image">
-        	<br><h4>Chemist Name : <?= $row->name ?>
-			<br>Chemist Code : <?= $row->altercode ?></h4>
+            <div class="form-group" id="data_5">
+				<div class="col-sm-6">
+                    <div class="col-sm-4 text-right">
+                        <label class="control-label" for="form-field-1">
+        	                Chemist Name 
+                        </label>
+                    </div>
+                    <div class="col-sm-8">
+                        <label class="control-label" for="form-field-1">
+                            <?= $row->name ?>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="col-sm-4 text-right">
+                        <label class="control-label" for="form-field-1">
+        	                Chemist Code 
+                        </label>
+                    </div>
+                    <div class="col-sm-8">
+                        <label class="control-label" for="form-field-1">
+                            <?= $row->altercode ?>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
             <div class="form-group" id="data_5">
 				<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
