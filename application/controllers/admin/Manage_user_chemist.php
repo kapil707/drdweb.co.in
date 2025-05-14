@@ -314,6 +314,61 @@ class Manage_user_chemist extends CI_Controller {
         header('Content-Type: application/json');
         echo json_encode($response);
 	}
+
+	public function view_api_server()
+	{
+		$request = $_POST;
+		$columns = ['id', 'code', 'altercode', 'name', 'mobile', 'email'];
+
+		$start = $request['start'];
+		$length = $request['length'];
+		$search = $request['search']['value'];
+
+		$this->db->from('tbl_chemist c');
+		$this->db->join('tbl_chemist_other o', 'c.code = o.code', 'left');
+		$this->db->where('c.slcd', 'CL');
+
+		if (!empty($search)) {
+			$this->db->group_start()
+				->like('c.name', $search)
+				->or_like('c.mobile', $search)
+				->or_like('c.email', $search)
+				->group_end();
+		}
+
+		$totalFiltered = $this->db->count_all_results('', false);
+
+		$this->db->limit($length, $start);
+		$query = $this->db->get();
+
+		$data = [];
+		$sr = $start + 1;
+		foreach ($query->result() as $row) {
+			$data[] = [
+				'sr_no' => $sr++,
+				'code' => $row->code,
+				'altercode' => $row->altercode,
+				'name' => $row->name,
+				'mobile' => $row->mobile,
+				'email' => $row->email,
+				'address' => $row->address,
+				'address1' => $row->address1,
+				'address2' => $row->address2,
+				'address3' => $row->address3,
+				'website_limit' => $row->website_limit,
+				'android_limit' => $row->android_limit
+			];
+		}
+
+		$output = [
+			'draw' => intval($request['draw']),
+			'recordsTotal' => $totalFiltered,
+			'recordsFiltered' => $totalFiltered,
+			'data' => $data
+		];
+
+		echo json_encode($output);
+	}
 	
 	public function send_email_for_password_create($code,$password)
 	{
