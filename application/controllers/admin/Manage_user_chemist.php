@@ -267,7 +267,7 @@ class Manage_user_chemist extends CI_Controller {
 			$image = base_url()."user_profile/".$row->image;
 			if(empty($row->image))
 			{
-				$image = base_url()."img_v51/logo.png";
+				$image = "https://www.drdistributor.com/img_v51/logo.png";
 			}
 			
 			/*$timestamp = $row->timestamp;

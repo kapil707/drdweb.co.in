@@ -150,7 +150,7 @@
                         $user_image = base_url()."user_profile/".$row->image;
 						if(empty($row->image))
 						{
-							$user_image = base_url()."img_v".constant('site_v')."/logo.png";
+							$user_image = "https://www.drdistributor.com/img_v51/logo.png";
 						} ?>
                         <br>
                         <img src="<?= $user_image ?>" width="70%" alt>
