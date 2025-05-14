@@ -235,57 +235,76 @@ class Manage_user_chemist extends CI_Controller {
 
 	public function view_api() {		
 
-		$request = $_POST;
-		$columns = ['id', 'code', 'altercode', 'name', 'mobile', 'email'];
+		$jsonArray = array();
+		$items = "";
+		$i = 1;
+		$Page_tbl = $this->Page_tbl;
+		$page_controllers = $this->page_controllers;
 
-		$start = $request['start'];
-		$length = $request['length'];
-		$search = $request['search']['value'];
+		$query  = $this->db->query("SELECT tbl_chemist.code,tbl_chemist.altercode,tbl_chemist.name,tbl_chemist.mobile,tbl_chemist.email,tbl_chemist.address,tbl_chemist.address1,tbl_chemist.address2,tbl_chemist.address3,tbl_chemist_other.website_limit,tbl_chemist_other.android_limit,tbl_chemist_other.status,tbl_chemist.id as id,tbl_chemist_other.id as id2 from tbl_chemist left join tbl_chemist_other on tbl_chemist.code = tbl_chemist_other.code where tbl_chemist.slcd='CL' order by tbl_chemist.id desc");
+  		$result = $query->result();
+		foreach($result as $row) {
 
-		$this->db->from('tbl_chemist c');
-		$this->db->join('tbl_chemist_other o', 'c.code = o.code', 'left');
-		$this->db->where('c.slcd', 'CL');
+			$sr_no = $i++;
+			$id = $row->id;
+			
+			//$url = base_url()."uploads/$page_controllers/photo/main/";
+			
+			$code = $row->code;
+			$altercode = $row->altercode;
+			$name = $row->name;
+			$mobile = $row->mobile;
+			$email = $row->email;
+			$address = $row->address;
+			$address1 = $row->address1;
+			$address2 = $row->address2;
+			$address3 = $row->address3;
+			$website_limit = $row->website_limit;
+			$android_limit = $row->android_limit;
+			$status = $row->status;
+			//$image = $url.$row->photo;
+			
+			/*$timestamp = $row->timestamp;
+			if(empty($timestamp)){
+				$timestamp = time();
+			}
+			$timestamp = date("d-M-y @ H:i:s", $timestamp);*/
 
-		if (!empty($search)) {
-			$this->db->group_start()
-				->like('c.name', $search)
-				->or_like('c.mobile', $search)
-				->or_like('c.email', $search)
-				->group_end();
+			$dt = array(
+				'sr_no' => $sr_no,
+				'id' => $id,
+				'code' => $code,
+				'altercode' => $altercode,
+				'mobile' => $mobile,
+				'email' => $email,
+				'address' => $address,
+				'address1' => $address1,
+				'address2' => $address2,
+				'address3' => $address3,
+				'website_limit' => $website_limit,
+				'android_limit' => $android_limit,
+				'status' => $status,
+				//'timestamp' => $timestamp,
+			);
+			$jsonArray[] = $dt;
 		}
-
-		$totalFiltered = $this->db->count_all_results('', false);
-
-		$this->db->limit($length, $start);
-		$query = $this->db->get();
-
-		$data = [];
-		$sr = $start + 1;
-		foreach ($query->result() as $row) {
-			$data[] = [
-				'sr_no' => $sr++,
-				'code' => $row->code,
-				'altercode' => $row->altercode,
-				'name' => $row->name,
-				'mobile' => $row->mobile,
-				'email' => $row->email,
-				'address' => $row->address,
-				'address1' => $row->address1,
-				'address2' => $row->address2,
-				'address3' => $row->address3,
-				'website_limit' => $row->website_limit,
-				'android_limit' => $row->android_limit
-			];
+		if(!empty($jsonArray)){
+			$items = $jsonArray;
+			$response = array(
+				'success' => "1",
+				'message' => 'Data load successfully',
+				'items' => $items,
+			);
+		}else{
+			$response = array(
+				'success' => "0",
+				'message' => '502 error',
+			);
 		}
-
-		$output = [
-			'draw' => intval($request['draw']),
-			'recordsTotal' => $totalFiltered,
-			'recordsFiltered' => $totalFiltered,
-			'data' => $data
-		];
-
-		echo json_encode($output);
+		
+        // Send JSON response
+        header('Content-Type: application/json');
+        echo json_encode($response);
 	}
 	
 	public function send_email_for_password_create($code,$password)

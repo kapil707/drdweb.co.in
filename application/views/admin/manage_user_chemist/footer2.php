@@ -7,11 +7,10 @@
 var table;
 $(document).ready(function(){
 	table = $('#example-table').DataTable({
-		processing: true,
-  		serverSide: true,
 		ajax: {
 		url: '<?php echo base_url(); ?>admin/<?php echo $Page_name ?>/view_api',
 			type: 'POST',
+			dataSrc: 'items'
 		},
 		order: [[0, 'asc']],
 		columns: [
