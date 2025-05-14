@@ -390,6 +390,7 @@ class Manage_user_chemist extends CI_Controller {
 		if(!empty($chemist_id))
 		{
 			$this->db->query("update tbl_android_device_id set logout='1' where chemist_id='$chemist_id'");
+			$this->db->query("update tbl_user_device set logout='1' where chemist_id='$chemist_id'");
 			//$this->db->query("delete from drd_login_time where user_altercode='$altercode'");
 
 			$dt = array(
