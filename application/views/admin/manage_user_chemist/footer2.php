@@ -21,6 +21,17 @@ $(document).ready(function(){
 			{ data: 'mobile', title: 'Mobile' },
 			{ data: 'email', title: 'Email' },
 			{
+				data: 'image',
+				title: 'Image',
+				render: function (data, type, row) {
+					if (data) {
+						return `<img src="${data}" alt="Image" style="width: 100px; ">`;
+					} else {
+						return 'No Image';
+					}
+				}
+			},
+			{
 				data: null,
 				title: 'Address',
 				render: function (data, type, row) {
@@ -42,18 +53,7 @@ $(document).ready(function(){
 					return fulltext.replace(/,\s*$/, ''); // remove trailing comma
 				}
 			},
-			/*{
-				data: 'image',
-				title: 'Image',
-				render: function (data, type, row) {
-					if (data) {
-						return `<img src="${data}" alt="Image" style="width: 100px; ">`;
-					} else {
-						return 'No Image';
-					}
-				}
-			},
-			{ data: 'timestamp', title: 'DateTime' },*/
+			/*{ data: 'timestamp', title: 'DateTime' },*/
 			{
 				data: null,
 				title: 'Action',
