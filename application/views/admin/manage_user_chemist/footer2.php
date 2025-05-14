@@ -37,8 +37,8 @@ $(document).ready(function(){
 				title: 'Website / Android Limit',
 				render: function (data, type, row) {
 					let fulltext = '';
-					fulltext += row.website_limit ? row.website_limit + ', ' : '';
-					fulltext += row.android_limit ? row.android_limit + ', ' : '';
+					fulltext += row.website_limit ? row.website_limit + ' / ' : '';
+					fulltext += row.android_limit ? row.android_limit + '' : '';
 					return fulltext.replace(/,\s*$/, ''); // remove trailing comma
 				}
 			},
