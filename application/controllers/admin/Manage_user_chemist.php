@@ -252,15 +252,15 @@ class Manage_user_chemist extends CI_Controller {
 			
 			$code = $row->code;
 			$altercode = $row->altercode;
-			$name = $row->name;
-			$mobile = $row->mobile;
-			$email = $row->email;
-			$address = $row->address;
-			$address1 = $row->address1;
-			$address2 = $row->address2;
-			$address3 = $row->address3;
+			$name = $row->name ? $row->name : "";
+			$mobile = $row->mobile ? $row->mobile : "";
+			$email = $row->email ? $row->email : "";
+			$address = $row->address ? $row->address : "";
+			$address1 = $row->address1 ? $row->address1 : "";
+			$address2 = $row->address2 ? $row->address2 : "";
+			$address3 = $row->address3 ? $row->address3 : "";
 			$website_limit = $row->website_limit ? $row->website_limit : "0";
-			$android_limit = $row->android_limit;
+			$android_limit = $row->android_limit ? $row->website_limit : "0";
 			$status = $row->status;
 			//$image = $url.$row->photo;
 			
