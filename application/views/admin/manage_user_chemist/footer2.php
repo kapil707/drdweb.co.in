@@ -53,22 +53,22 @@ $(document).ready(function(){
 					}
 				}
 			},
-			/*{ data: 'timestamp', title: 'DateTime' },
+			{ data: 'timestamp', title: 'DateTime' },*/
 			{
 				data: null,
 				title: 'Action',
 				orderable: false,
 				render: function (data, type, row) {
 						return `
-							<a href="<?php echo base_url(); ?>admin/<?php echo $Page_name ?>/edit/${row.id}" class="btn-white btn btn-xs">Edit</a><a href="javascript:void(0)" onclick="delete_rec('${row.id}')" class="btn-white btn btn-xs">Delete</a>`;
+							<a href="<?php echo base_url(); ?>admin/<?php echo $Page_name ?>/edit/${row.id}" class="btn-white btn btn-xs">Edit</a>`;
 					
 					/*if(row.id!=1){
 						
 					}else{
 						return '';
 					}*/
-				//}
-			//}
+				}
+			}
 		],
 		pageLength: 25,
 		responsive: true,
