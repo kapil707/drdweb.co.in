@@ -324,6 +324,7 @@ class Manage_user_chemist extends CI_Controller {
 		$length = $request['length'];
 		$search = $request['search']['value'];
 
+		$this->db->select('c.code,c.altercode,c.name,c.mobile,c.email,c.address,c.address1,c.address2,c.address3,o.image,o.website_limit,o.android_limit,o.status,c.id');
 		$this->db->from('tbl_chemist c');
 		$this->db->join('tbl_chemist_other o', 'c.code = o.code', 'left');
 		$this->db->where('c.slcd', 'CL');
