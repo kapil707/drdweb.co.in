@@ -20,10 +20,18 @@ $(document).ready(function(){
 			{ data: 'name', title: 'Name' },
 			{ data: 'mobile', title: 'Mobile' },
 			{ data: 'email', title: 'Email' },
-			{ data: 'address', title: 'address' },
-			{ data: 'address1', title: 'address1' },
-			{ data: 'address2', title: 'address2' },
-			{ data: 'address3', title: 'address3' },
+			{
+				data: null,
+				title: 'Address',
+				render: function (data, type, row) {
+					let fullAddress = '';
+					fullAddress += row.address ? row.address + ', ' : '';
+					fullAddress += row.address1 ? row.address1 + ', ' : '';
+					fullAddress += row.address2 ? row.address2 + ', ' : '';
+					fullAddress += row.address3 ? row.address3 : '';
+					return fullAddress.replace(/,\s*$/, ''); // remove trailing comma
+				}
+			},
 			{ data: 'website_limit', title: 'Website Limit' },
 			{ data: 'android_limit', title: 'Android Limit' },
 			/*{
