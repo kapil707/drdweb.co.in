@@ -4,9 +4,9 @@ class InvoiceModel extends CI_Model
 {	
 	public function __construct() {
         parent::__construct();
-		
-		$this->load->model("model-drdweb/WhatsAppModel");
 		$this->load->model("model-drdweb/EmailModel");
+        $this->load->model("model-drdweb/WhatsAppModel");
+        $this->load->model("model-drdweb/NotificationModel");
     }
 	/********************************************************/
 	public function invoice_send_email_whatsapp(){
