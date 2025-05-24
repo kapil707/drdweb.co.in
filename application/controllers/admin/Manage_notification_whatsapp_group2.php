@@ -77,7 +77,7 @@ class Manage_notification_whatsapp_group2 extends CI_Controller {
 			$items = "";
 			if(!empty($from_date) && !empty($to_date)){
 
-				$mobile = "919899333989-1567708298@g.us";
+				$mobile = $this->Scheme_Model->get_website_data("whatsapp_group2");
 				$result = $this->db->query("SELECT * FROM $Page_tbl WHERE mobile = '$mobile' and `date` BETWEEN '$from_date' and '$to_date' order by id desc");
 				$result = $result->result();
 
