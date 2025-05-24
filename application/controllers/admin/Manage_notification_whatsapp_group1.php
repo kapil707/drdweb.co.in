@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Manage_notification_whatsapp_group extends CI_Controller {
-	var $Page_title = "Manage Notification Whatsapp Group";	
-	var $Page_name  = "manage_notification_whatsapp_group";
-	var $Page_view  = "manage_notification_whatsapp_group";
-	var $Page_menu  = "manage_notification_whatsapp_group";
-	var $page_controllers = "manage_notification_whatsapp_group";
+class Manage_notification_whatsapp_group1 extends CI_Controller {
+	var $Page_title = "Manage Notification Whatsapp Group1";	
+	var $Page_name  = "manage_notification_whatsapp_group1";
+	var $Page_view  = "manage_notification_whatsapp_group1";
+	var $Page_menu  = "manage_notification_whatsapp_group1";
+	var $page_controllers = "manage_notification_whatsapp_group1";
 	var $Page_tbl   = "tbl_whatsapp_group_message";
 	public function index()
 	{
@@ -77,7 +77,8 @@ class Manage_notification_whatsapp_group extends CI_Controller {
 			$items = "";
 			if(!empty($from_date) && !empty($to_date)){
 
-				$result = $this->db->query("SELECT * FROM $Page_tbl WHERE `date` BETWEEN '$from_date' and '$to_date' order by id desc");
+				$mobile = "919899333989-1628519476@g.us";
+				$result = $this->db->query("SELECT * FROM $Page_tbl WHERE mobile = '$mobile' and `date` BETWEEN '$from_date' and '$to_date' order by id desc");
 				$result = $result->result();
 
 				foreach($result as $row){
