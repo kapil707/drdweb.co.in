@@ -91,13 +91,13 @@ class OrderModel extends CI_Model
 
             $notification_whatsapp_message  = str_replace("Hello","",$notification_whatsapp_message);
 
-            /******************only for group1******************************
+            /******************only for group1******************************/
             $group1_message 	= "New Order Recieved from ".$notification_whatsapp_message."Please check in Easy Sol";
             $whatsapp_group1 = $this->Scheme_Model->get_website_data("whatsapp_group1");
             $this->WhatsAppModel->insert_whatsapp_group($whatsapp_group1,$group1_message);
             /**********************************************************/
 
-            /***************only for group2 message***********************/
+            /***************only for group2 message***********************
             $group2_message 	= "New order recieved from ".$notification_whatsapp_message;
             $whatsapp_group2 = $this->Scheme_Model->get_website_data("whatsapp_group2");
             $this->WhatsAppModel->insert_whatsapp_group($whatsapp_group2,$group2_message);
