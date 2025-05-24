@@ -103,13 +103,13 @@ class WhatsAppModel extends CI_Model
 		}
 	}
 	
-	public function insert_whatsapp_group($mobile,$message,$media='') {
+	public function insert_whatsapp_group($mobile,$message,$media='',$status='1') {
 
 		$dt = array(
 			'mobile'=>$mobile,
 			'message'=>$message,
 			'media'=>$media,
-			'status'=>0,
+			'status'=>$status,
 			'respose'=>'',
 			'date' => date('Y-m-d'),
             'time' => date('H:i:s'),
