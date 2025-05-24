@@ -94,7 +94,8 @@ class ExeDownloadOrder extends CI_Controller
 			$total = $row->items_total;
 
 			$this->db->query("update tbl_cart_order set gstvno='$gstvno',download_status=1,download_line='$insert_total_line' where id='$order_id'");
-			/***************only for group message***********************/
+
+			/***************only for group message***********************
 			$group2_message = "Order No. $order_id download Line Items (Total:$total/Download:$download_total_line/Insert:$insert_total_line) - Easysol No. $gstvno inserted at : ".date("d-M-y H:i");
 			$whatsapp_group2 = $this->Scheme_Model->get_website_data("whatsapp_group2");
 			$this->WhatsAppModel->insert_whatsapp_group($whatsapp_group2,$group2_message);
@@ -118,7 +119,7 @@ class ExeDownloadOrder extends CI_Controller
 
 			$group1_message = $group2_message = "Problem Order No. $order_id (Total:$total/Download:$download_total_line/Insert:$insert_total_line) - at : ".date("d-M-y H:i");
 
-			/*****************************************************
+			/*****************************************************/
 			$whatsapp_group1 = $this->Scheme_Model->get_website_data("whatsapp_group1");
 			$this->WhatsAppModel->insert_whatsapp_group($whatsapp_group1,$group1_message);
 			
