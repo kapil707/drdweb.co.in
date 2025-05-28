@@ -288,7 +288,7 @@ class Manage_company_division extends CI_Controller {
 				$company_division = "N/a";
 			}
 
-			$type = "Company ($company_code) / Division ($company_division)"; 
+			$funcation_type = "Company ($company_code) / Division ($company_division)"; 
 
 			$new_title = str_replace(" ","-",strtolower($company_name));
 			$url = "https://www.drdistributor.com/c/$new_title";
@@ -309,7 +309,7 @@ class Manage_company_division extends CI_Controller {
 			$dt = array(
 				'sr_no' => $sr_no,
 				'id' => $id,
-				'type'=>$type,
+				'funcation_type'=>$funcation_type,
 				'title' => $title,
 				'image'=>$image,
 				'datetime'=>$datetime,

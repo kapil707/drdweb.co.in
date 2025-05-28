@@ -15,7 +15,7 @@ $(document).ready(function(){
 		order: [[0, 'asc']],
 		columns: [
 			{ data: 'sr_no', title: 'Id' },
-			{ data: 'type', title: 'Type' },
+			{ data: 'funcation_type', title: 'Funcation Type' },
 			{ data: 'title', title: 'Title' },
 			{
 				data: 'image',
