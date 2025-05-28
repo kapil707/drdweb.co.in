@@ -59,6 +59,9 @@
 							<option value="2" <?php if($row->function_type=="2"){ ?> selected <?php } ?>>
 								Select Company
 							</option>
+							<option value="3" <?php if(set_value('funtype')=="3"){ ?> selected <?php } ?>>
+								Select Medicine Category
+							</option>
 						</select>
                     </div>
                     <div class="help-inline col-sm-12 has-error">
@@ -240,16 +243,27 @@ function onchange_function_type()
 
 	$('#find_medicine_company_division').removeAttr('required');
 	/*********************************************** */
+
+	/*********************************************** */
+	$('#medicine_category_name').removeAttr('required');
+	$(".div_medicine_category").hide();
+	/*********************************************** */
 	
 	let selectedValue = $("#function_type").val();
 	if(selectedValue==1){
 		$(".div_medicine").show();
 		$('#medicine_name').attr('required', true);
 	}
+
 	if(selectedValue==2){
 		$(".div_company").show();
 		$('#medicine_company_name').attr('required', true);
 		$('#find_medicine_company_division').attr('required', true);
+	}
+
+	if(selectedValue==3){
+		$(".div_medicine_category").show();
+		$('#medicine_category_name').attr('required', true);
 	}
 }
 </script>

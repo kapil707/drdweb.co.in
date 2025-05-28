@@ -45,7 +45,7 @@
                         </label>
                     </div>
                     <div class="col-sm-8">
-                        <select name="funtype" id="funtype" class="form-control" onchange="onchange_funtype()">
+                        <select name="function_type" id="function_type" class="form-control" onchange="onchange_function_type()">
 							<option value="0" <?php if(set_value('funtype')=="0"){ ?> selected <?php } ?>>
 								Not Need
 							</option>
@@ -53,7 +53,10 @@
 								Select Medicine
 							</option>							
 							<option value="2" <?php if(set_value('funtype')=="2"){ ?> selected <?php } ?>>
-								Select Company
+								Select Medicine Category
+							</option>
+                            <option value="3" <?php if(set_value('funtype')=="3"){ ?> selected <?php } ?>>
+								Select Medicine Category
 							</option>
 						</select>
                     </div>
@@ -190,7 +193,7 @@
     </div><!-- /.col -->
 </div><!-- /.row -->
 <script>
-function onchange_funtype()
+function onchange_function_type()
 {	
 	/*********************************************** */
 	$('#medicine_name').removeAttr('required');
@@ -205,16 +208,27 @@ function onchange_funtype()
 
 	$('#find_medicine_company_division').removeAttr('required');
 	/*********************************************** */
+
+    /*********************************************** */
+	$('#medicine_category_name').removeAttr('required');
+	$(".div_medicine_category").hide();
+	/*********************************************** */
 	
-	let selectedValue = $("#funtype").val();
+	let selectedValue = $("#function_type").val();
 	if(selectedValue==1){
 		$(".div_medicine").show();
 		$('#medicine_name').attr('required', true);
 	}
+
 	if(selectedValue==2){
 		$(".div_company").show();
 		$('#medicine_company_name').attr('required', true);
 		$('#find_medicine_company_division').attr('required', true);
+	}
+
+    if(selectedValue==3){
+		$(".div_medicine_category").show();
+		$('#medicine_category_name').attr('required', true);
 	}
 }
 </script>
