@@ -290,6 +290,7 @@ class Manage_slider extends CI_Controller {
 				$url = "https://www.drdistributor.com/md/$row->item_code";
 				$title = "<a href='".$url."' target='_blank'>$row1->item_name</a>";
 			}
+
 			if($row->function_type=="2"){ 
 				$company_division = $row->company_division;
 				if(empty($company_division)){
@@ -307,9 +308,21 @@ class Manage_slider extends CI_Controller {
 					$new_title.= "/".$new_company_division;
 				}
 
-				$url = "https://www.drdistributor.com/cc/$new_title";
+				$url = "https://www.drdistributor.com/compney/$new_title";
 				$title = "<a href='".$url."' target='_blank'>$row1->company_full_name</a>";
 			}
+
+			if($row->function_type=="3"){ 
+				
+				$function_type = "Category ($row->company_code) "; 
+
+				$row1 = $this->db->query("select category from tbl_medicine where itemcat='$row->company_code'")->row();
+
+				$url = "https://www.drdistributor.com/category/$row->company_code";
+				
+				$title = "<a href='".$url."' target='_blank'>$row1->category</a>";
+			}
+
 			$image = $row->image;
 			if(!empty($image)) {
 				$image = base_url()."uploads/$this->page_controllers/photo/resize/".$image;
