@@ -180,7 +180,7 @@ class Manage_medicine extends CI_Controller {
 	{	
 		$i  = 0;
 		$jsonArray = array();
-		if(!empty($_REQUEST)){
+		/*if(!empty($_REQUEST)){*/
 
 			$result =  $this->db->query ("SELECT DISTINCT `category`,`itemcat` FROM `tbl_medicine`")->result();
 			foreach($result as $row){
@@ -203,12 +203,12 @@ class Manage_medicine extends CI_Controller {
 				'message' => 'Data load successfully',
 				'items' => $items,
 			);
-		}else{
+		/*}else{
 			$response = array(
 				'success' => "0",
 				'message' => '502 error',
 			);
-		}
+		}*/
 
 		// Send JSON response
         header('Content-Type: application/json');
