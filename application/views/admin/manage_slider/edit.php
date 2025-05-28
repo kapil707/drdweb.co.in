@@ -281,7 +281,7 @@ function onchange_function_type()
 	/*********************************************** */
 
 	/*********************************************** */
-	$('#medicine_category_name').removeAttr('required');
+	$('#find_medicine_company_id').removeAttr('required');
 	$(".div_medicine_category").hide();
 	/*********************************************** */
 	
@@ -298,8 +298,9 @@ function onchange_function_type()
 	}
 
 	if(selectedValue==3){
+		find_medicine_category();
 		$(".div_medicine_category").show();
-		$('#medicine_category_name').attr('required', true);
+		$('#find_medicine_company_id').attr('required', true);
 	}
 }
 </script>
