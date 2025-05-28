@@ -183,6 +183,14 @@ class Manage_slider extends CI_Controller {
 			$item_code = $find_medicine_id;
 			$company_code = $find_medicine_company_id;
 			$company_division = $find_medicine_company_division;
+
+			if($function_type==3){
+				$company_code = $find_medicine_category;
+			}
+
+			if(empty($short_order)){
+				$short_order = 0;
+			}
 	
 			if (!empty($_FILES["image"]["name"]))
 			{
@@ -236,6 +244,7 @@ class Manage_slider extends CI_Controller {
 		$this->load->view("admin/header_footer/footer",$data);
 		$this->load->view("admin/manage_medicine/find_medicine",$data);
 		$this->load->view("admin/manage_medicine/find_medicine_company",$data);
+		$this->load->view("admin/manage_medicine/find_medicine_category",$data);
 	}
 
 	public function delete_rec()
@@ -319,7 +328,7 @@ class Manage_slider extends CI_Controller {
 				$row1 = $this->db->query("select category from tbl_medicine where itemcat='$row->company_code'")->row();
 
 				$url = "https://www.drdistributor.com/category/$row->company_code";
-				
+
 				$title = "<a href='".$url."' target='_blank'>$row1->category</a>";
 			}
 
