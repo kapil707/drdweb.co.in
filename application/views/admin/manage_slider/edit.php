@@ -59,7 +59,7 @@
 							<option value="2" <?php if($row->function_type=="2"){ ?> selected <?php } ?>>
 								Select Company
 							</option>
-							<option value="3" <?php if(set_value('funtype')=="3"){ ?> selected <?php } ?>>
+							<option value="3" <?php if($row->function_type=="3"){ ?> selected <?php } ?>>
 								Select Medicine Category
 							</option>
 						</select>
@@ -157,6 +157,39 @@
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">
                             <?= form_error('division'); ?>
+                        </span>
+                    </div>
+                </div>
+			</div>
+
+			<div class="form-group div_medicine_category" <?php if($row->function_type!=3) { ?> style="display:none;" <?php } ?>>
+				<div class="col-sm-6">
+                    <div class="col-sm-4 text-right">
+                        <label class="control-label" for="form-field-1">
+                            Select Medicine Category
+                        </label>
+                    </div>
+                    <div class="col-sm-8">                        
+						<select name="find_medicine_category" id="find_medicine_category" class="form-control">
+							<option value="">
+								Select Medicine Category
+							</option>
+							<?php
+							$result1 =  $this->db->query("SELECT DISTINCT `category`,`itemcat` FROM `tbl_medicine`")->result();
+							foreach($result1 as $row1)
+							{
+								$medicine_category = $row1->company_code;
+								?>
+								<option value="<?= $medicine_category ?>" <?php if($row1->itemcat==$row->company_code) { ?>selected <?php } ?>>
+									<?= $medicine_category ?>
+								</option>
+								<?php
+							}?>							
+						</select>
+                    </div>
+                    <div class="help-inline col-sm-12 has-error">
+                        <span class="help-block reset middle">
+                            <?= form_error('find_medicine_category'); ?>
                         </span>
                     </div>
                 </div>
