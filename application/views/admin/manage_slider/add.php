@@ -130,6 +130,28 @@
                     </div>
                 </div>
 			</div>
+
+            <div class="form-group div_medicine_category" <?php if(set_value('function_type')!=1) { ?> style="display:none;" <?php } ?>>
+				<div class="col-sm-6">
+                    <div class="col-sm-4 text-right">
+                        <label class="control-label" for="form-field-1">
+                            Select Medicine Category
+                        </label>
+                    </div>
+                    <div class="col-sm-8">
+						<input type="hidden" id="find_medicine_category_id" name="find_medicine_category_id" value="" />
+
+						<input type="text" class="form-control" id="medicine_category_name" name="medicine_category_name" tabindex="1" placeholder="Enter Medicine Category" autocomplete="off" value="" />
+
+						<div class="find_medicine_category_result"></div>
+                    </div>
+                    <div class="help-inline col-sm-12 has-error">
+                        <span class="help-block reset middle">
+                            <?= form_error('find_medicine_category_id'); ?>
+                        </span>
+                    </div>
+                </div>
+			</div>
            
             <div class="form-group">
 				<div class="col-sm-6">
