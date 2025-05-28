@@ -340,6 +340,8 @@ class Manage_user_chemist extends CI_Controller {
 
 		$totalFiltered = $this->db->count_all_results('', false);
 
+		$this->db->order_by('c.code', 'DESC');
+
 		$this->db->limit($length, $start);
 		$query = $this->db->get();
 
