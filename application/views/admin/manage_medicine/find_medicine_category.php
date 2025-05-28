@@ -70,7 +70,7 @@ function find_medicine_category(){
     let medicine_category_name = $("#medicine_category_name").val();
     $(".find_medicine_category_result").html("Loading....");
 
-    if (medicine_category_name.length < 2) {
+    if (medicine_category_name.length < 1) {
         $(".find_medicine_category_result").html(""); // Clear results if input is too short
         return; // Exit if fewer than 2 characters
     }
