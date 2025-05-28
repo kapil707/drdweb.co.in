@@ -252,6 +252,7 @@ function onchange_function_type()
 	}
 
     if(selectedValue==3){
+        find_medicine_category();
 		$(".div_medicine_category").show();
 		$('#medicine_category_name').attr('required', true);
 	}
