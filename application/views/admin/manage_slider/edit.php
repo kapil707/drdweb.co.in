@@ -178,9 +178,9 @@
 							$result1 =  $this->db->query("SELECT DISTINCT `category`,`itemcat` FROM `tbl_medicine`")->result();
 							foreach($result1 as $row1)
 							{
-								$medicine_category = $row1->company_code;
+								$medicine_category = $row1->category;
 								?>
-								<option value="<?= $medicine_category ?>" <?php if($row1->itemcat==$row->company_code) { ?>selected <?php } ?>>
+								<option value="<?= $row1->itemcat ?>" <?php if($row1->itemcat==$row->company_code) { ?>selected <?php } ?>>
 									<?= $medicine_category ?>
 								</option>
 								<?php
