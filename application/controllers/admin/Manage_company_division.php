@@ -283,13 +283,18 @@ class Manage_company_division extends CI_Controller {
 			$company_code = $row->company_code;
 			$company_division = $row->company_division;
 
+			$company_division = $row->company_division;
+			if(empty($company_division)){
+				$company_division = "N/a";
+			}
+
 			$type = "Company ($company_code) / Division ($company_division)"; 
 
 			$new_title = str_replace(" ","-",strtolower($company_name));
 			$url = "https://www.drdistributor.com/c/$new_title";
 			if(!empty($company_division)){
 
-				$new_company_division = str_replace(" ","-",strtolower($company_division));
+				$new_company_division = str_replace(" ","-",strtolower($row->company_division));
 
 				$url.= "/".$new_company_division;
 			}
