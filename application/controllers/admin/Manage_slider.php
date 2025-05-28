@@ -51,6 +51,10 @@ class Manage_slider extends CI_Controller {
 			$company_code = $find_medicine_company_id;
 			$company_division = $find_medicine_company_division;
 
+			if($function_type==3){
+				$company_code = $medicine_category_name;
+			}
+
 			if (!empty($_FILES["image"]["name"]))
 			{
 				$this->Image_Model->uploadTo = $upload_path;
