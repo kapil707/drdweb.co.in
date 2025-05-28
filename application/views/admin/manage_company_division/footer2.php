@@ -15,9 +15,8 @@ $(document).ready(function(){
 		order: [[0, 'asc']],
 		columns: [
 			{ data: 'sr_no', title: 'Id' },
-			{ data: 'company_name', title: 'Company Name' },
-			{ data: 'company_code', title: 'Company Code' },
-			{ data: 'company_division', title: 'Company division' },
+			{ data: 'type', title: 'Type' },
+			{ data: 'title', title: 'Title' },
 			{
 				data: 'image',
 				title: 'Image',

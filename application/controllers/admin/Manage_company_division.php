@@ -283,10 +283,15 @@ class Manage_company_division extends CI_Controller {
 			$company_code = $row->company_code;
 			$company_division = $row->company_division;
 
+			$type = "Company ($company_code) / Division ($company_division)"; 
+
 			$new_title = str_replace(" ","-",strtolower($company_name));
 			$url = "https://www.drdistributor.com/c/$new_title";
 			if(!empty($company_division)){
-				$url.= "/".strtolower($company_division);
+
+				$new_company_division = str_replace(" ","-",strtolower($company_division));
+
+				$url.= "/".$new_company_division;
 			}
 			$company_name = "<a href='".$url."' target='_blank'>$company_name</a>";
 
@@ -299,9 +304,8 @@ class Manage_company_division extends CI_Controller {
 			$dt = array(
 				'sr_no' => $sr_no,
 				'id' => $id,
-				'company_name' => $company_name,
-				'company_code'=>$company_code,
-				'company_division'=>$company_division,
+				'type'=>$type,
+				'title' => $title,
 				'image'=>$image,
 				'datetime'=>$datetime,
 			);
