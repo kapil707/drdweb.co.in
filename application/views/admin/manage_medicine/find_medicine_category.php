@@ -18,7 +18,7 @@ function find_medicine_category()
                 // Items loop kar ke options add karen
                 response.items.forEach(function(item) {
                     $('#find_medicine_category').append(
-                        `<option value="${item.item_code}">${item.item_name}</option>`
+                        `<option value="${item.item_code}">${item.item_name} (${item.item_code})</option>`
                     );
                 });
             } else {
