@@ -289,7 +289,8 @@ class Manage_slider extends CI_Controller {
 
 				$row1 = $this->db->query("select company_full_name from tbl_medicine where compcode='$row->company_code'")->row();
 
-				$new_title = str_replace(" ","-",strtolower($row1->company_full_name));
+				//$new_title = str_replace(" ","-",strtolower($row1->company_full_name));
+				$new_title = $row->company_code;
 				if(!empty($row->company_division)){
 					$new_company_division = str_replace(" ","-",strtolower($row->company_division));
 

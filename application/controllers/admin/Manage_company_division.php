@@ -291,7 +291,8 @@ class Manage_company_division extends CI_Controller {
 
 			$funcation_type = "Company ($company_code) / Division ($company_division)"; 
 
-			$new_title = str_replace(" ","-",strtolower($company_name));
+			//$new_title = str_replace(" ","-",strtolower($company_name));
+			$new_title = $company_code;
 			$url = "https://www.drdistributor.com/c/$new_title";
 			if(!empty($company_division)){
 
