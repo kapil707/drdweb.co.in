@@ -44,7 +44,7 @@ class WhatsAppModel extends CI_Model
 			'chemist_id'=>$chemist_id,
 			'media'=>$media,
 			'insert_type'=>$insert_type,
-			'status'=>1,
+			'status'=>0,
 			'respose'=>'',
 			'date' => date('Y-m-d'),
             'time' => date('H:i:s'),
