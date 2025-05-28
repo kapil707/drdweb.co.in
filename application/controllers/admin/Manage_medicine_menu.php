@@ -288,12 +288,23 @@ class Manage_medicine_menu extends CI_Controller {
 			$company_code = $row->company_code;
 			$company_division = $row->company_division;
 
-			$new_title = str_replace(" ","-",strtolower($company_name));
-			$url = "https://www.drdistributor.com/c/$new_title";
-			if(!empty($company_division)){
-				$url.= "/".strtolower($company_division);
+			$company_division = $row->company_division;
+			if(empty($company_division)){
+				$company_division = "N/a";
 			}
-			$company_name = "<a href='".$url."' target='_blank'>$company_name</a>";
+
+			$funcation_type = "Company ($company_code) / Division ($company_division)"; 
+
+			//$new_title = str_replace(" ","-",strtolower($company_name));
+			$new_title = $company_code;
+			$url = "https://www.drdistributor.com/cc/$new_title";
+			if(!empty($company_division)){
+
+				$new_company_division = str_replace(" ","-",strtolower($row->company_division));
+
+				$url.= "/".$new_company_division;
+			}
+			$title = "<a href='".$url."' target='_blank'>$company_name</a>";
 
 			$image = $row->image;
 			$datetime = date("d-M-y @ H:i:s", $row->timestamp);
@@ -304,9 +315,8 @@ class Manage_medicine_menu extends CI_Controller {
 			$dt = array(
 				'sr_no' => $sr_no,
 				'id' => $id,
-				'company_name' => $company_name,
-				'company_code'=>$company_code,
-				'company_division'=>$company_division,
+				'funcation_type'=>$funcation_type,
+				'title' => $title,
 				'image'=>$image,
 				'datetime'=>$datetime,
 			);
