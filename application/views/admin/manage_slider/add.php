@@ -53,7 +53,7 @@
 								Select Medicine
 							</option>							
 							<option value="2" <?php if(set_value('funtype')=="2"){ ?> selected <?php } ?>>
-								Select Medicine Category
+								Select Company
 							</option>
                             <option value="3" <?php if(set_value('funtype')=="3"){ ?> selected <?php } ?>>
 								Select Medicine Category
