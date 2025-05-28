@@ -44,6 +44,7 @@ class Manage_slider extends CI_Controller {
 		$upload_resize 		= "./uploads/$page_controllers/photo/resize/";	
 
 		$find_medicine_id = $find_medicine_company_id = $find_medicine_company_division = "";
+		$short_order = 0;
 		extract($_POST);
 		if(isset($Submit))
 		{
