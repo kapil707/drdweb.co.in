@@ -53,7 +53,7 @@ class Manage_slider extends CI_Controller {
 			$company_division = $find_medicine_company_division;
 
 			if($function_type==3){
-				$company_code = $find_medicine_company_id;
+				$company_code = $find_medicine_category;
 			}
 
 			if(empty($short_order)){
