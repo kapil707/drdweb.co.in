@@ -52,7 +52,7 @@ class Manage_slider extends CI_Controller {
 			$company_division = $find_medicine_company_division;
 
 			if($function_type==3){
-				$company_code = $medicine_category_name;
+				$company_code = $find_medicine_company_id;
 			}
 
 			if (!empty($_FILES["image"]["name"]))
