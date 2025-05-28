@@ -181,7 +181,7 @@
 								$medicine_category = $row1->category;
 								?>
 								<option value="<?= $row1->itemcat ?>" <?php if($row1->itemcat==$row->company_code) { ?>selected <?php } ?>>
-									<?= $medicine_category ?>
+									<?= $medicine_category ?> (<?= $row1->itemcat ?>)
 								</option>
 								<?php
 							}?>							
