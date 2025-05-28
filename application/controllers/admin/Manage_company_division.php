@@ -293,7 +293,7 @@ class Manage_company_division extends CI_Controller {
 
 				$url.= "/".$new_company_division;
 			}
-			$company_name = "<a href='".$url."' target='_blank'>$company_name</a>";
+			$title = "<a href='".$url."' target='_blank'>$company_name</a>";
 
 			$image = $row->image;
 			$datetime = date("d-M-y @ H:i:s", $row->timestamp);
