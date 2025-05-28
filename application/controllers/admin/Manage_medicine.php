@@ -175,4 +175,45 @@ class Manage_medicine extends CI_Controller {
         header('Content-Type: application/json');
         echo json_encode($response);
 	}
+
+	public function find_medicine_category()
+	{	
+		$i  = 0;
+		$jsonArray = array();
+		if(!empty($_REQUEST)){
+			
+			$medicine_category_name = $this->input->post('medicine_category_name');
+
+			$result =  $this->db->query ("SELECT DISTINCT `category`,`itemcat` FROM `tbl_medicine` WHERE category Like '$medicine_name%' or category Like '%$medicine_name' or category='$medicine_name' limit 50")->result();
+			foreach($result as $row){
+
+				$sr_no = $i++;
+				$item_code = $row->itemcat;
+				$item_name = $row->category;	
+
+				$dt = array(
+					'sr_no' => $sr_no,
+					'item_code' => $item_code,
+					'item_name'=>$item_name,
+				);
+				$jsonArray[] = $dt;
+			}
+			
+			$items = $jsonArray;
+			$response = array(
+				'success' => "1",
+				'message' => 'Data load successfully',
+				'items' => $items,
+			);
+		}else{
+			$response = array(
+				'success' => "0",
+				'message' => '502 error',
+			);
+		}
+
+		// Send JSON response
+        header('Content-Type: application/json');
+        echo json_encode($response);
+	}
 }

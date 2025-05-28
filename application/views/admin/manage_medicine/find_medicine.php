@@ -91,7 +91,7 @@ function find_medicine(){
                 $('.find_medicine_result').html(htmlContent);
                 currentFocusMedicine = -1; // Reset focus
             } else {
-                $('.find_chemist_find_medicine_resultresult').text("Failed to load data.");
+                $('.find_medicine_result').text("Failed to load data.");
             }
         },
         error: function(xhr, status, error) {
