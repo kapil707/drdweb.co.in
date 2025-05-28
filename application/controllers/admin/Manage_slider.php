@@ -297,7 +297,7 @@ class Manage_slider extends CI_Controller {
 					$new_title.= "/".$new_company_division;
 				}
 
-				$url = "https://www.drdistributor.com/c/$new_title";
+				$url = "https://www.drdistributor.com/cc/$new_title";
 				$title = "<a href='".$url."' target='_blank'>$row1->company_full_name</a>";
 			}
 			$image = $row->image;
