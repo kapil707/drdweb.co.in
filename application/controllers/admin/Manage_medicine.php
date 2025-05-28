@@ -181,10 +181,8 @@ class Manage_medicine extends CI_Controller {
 		$i  = 0;
 		$jsonArray = array();
 		if(!empty($_REQUEST)){
-			
-			$medicine_category_name = $this->input->post('medicine_category_name');
 
-			$result =  $this->db->query ("SELECT DISTINCT `category`,`itemcat` FROM `tbl_medicine` WHERE category Like '$medicine_name%' or category Like '%$medicine_name' or category='$medicine_name' limit 50")->result();
+			$result =  $this->db->query ("SELECT DISTINCT `category`,`itemcat` FROM `tbl_medicine`")->result();
 			foreach($result as $row){
 
 				$sr_no = $i++;

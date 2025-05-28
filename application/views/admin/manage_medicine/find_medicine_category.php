@@ -1,11 +1,9 @@
 <script>
 function find_medicine_category()
 {	
-	find_medicine_category_id = $("#find_medicine_category_id").val();
-    medicine_category_name = $("#medicine_category_name").val();
 	$.ajax({
         type: "POST",
-        data: { find_medicine_category_id: find_medicine_category_id },
+        data: { id: '1' },
         url: "<?= base_url()?>admin/manage_medicine/find_medicine_category",
         cache: false,
         dataType: 'json',
