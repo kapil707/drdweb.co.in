@@ -70,7 +70,10 @@
                         </span>
                     </div>
                 </div>
-				<div class="col-sm-6 div_medicine" <?php if($row->function_type!=1) { ?>style="display:none;" <?php } ?>>
+			</div>
+
+			<div class="form-group div_medicine" <?php if($row->function_type!=1) { ?> style="display:none;" <?php } ?>>
+				<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
                             Select Medicine

@@ -49,13 +49,13 @@
 							<option value="0" <?php if(set_value('funtype')=="0"){ ?> selected <?php } ?>>
 								Not Need
 							</option>
-							<option value="1" <?php if(set_value('funtype')=="1"){ ?> selected <?php } ?>>
+							<option value="1" <?php if(set_value('function_type')=="1"){ ?> selected <?php } ?>>
 								Select Medicine
 							</option>							
-							<option value="2" <?php if(set_value('funtype')=="2"){ ?> selected <?php } ?>>
+							<option value="2" <?php if(set_value('function_type')=="2"){ ?> selected <?php } ?>>
 								Select Company
 							</option>
-                            <option value="3" <?php if(set_value('funtype')=="3"){ ?> selected <?php } ?>>
+                            <option value="3" <?php if(set_value('function_type')=="3"){ ?> selected <?php } ?>>
 								Select Medicine Category
 							</option>
 						</select>
@@ -66,7 +66,10 @@
                         </span>
                     </div>
                 </div>
-				<div class="col-sm-6 div_medicine" <?php if(set_value('funtype')!=1) { ?>style="display:none;" <?php } ?>>
+            </div>
+
+            <div class="form-group div_medicine" <?php if(set_value('function_type')!=1) { ?> style="display:none;" <?php } ?>>
+				<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
                             Select Medicine
@@ -87,7 +90,7 @@
                 </div>
 			</div>
 			
-			<div class="form-group div_company" <?php if(set_value('funtype')!=2) { ?> style="display:none;" <?php } ?>>
+			<div class="form-group div_company" <?php if(set_value('function_type')!=2) { ?> style="display:none;" <?php } ?>>
 				<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
