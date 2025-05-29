@@ -301,10 +301,14 @@ class Manage_slider extends CI_Controller {
 				$function_type = "Medicine";
 				$selected_type = "Medicine ($row->item_code)";
 				
-				$row1 =  $this->db->query("select item_name,i_code from tbl_medicine where i_code='$row->item_code'")->row();
+				$title = $row->title;
+				if(empty($row->title)){
+					$row1 =  $this->db->query("select item_name,i_code from tbl_medicine where i_code='$row->item_code'")->row();
+					$title = $row1->item_name;
+				}
 
 				$url = "https://www.drdistributor.com/md/$row->item_code";
-				$title = "<a href='".$url."' target='_blank'>$row->title</a>";
+				$title = "<a href='".$url."' target='_blank'>$title</a>";
 			}
 
 			if($row->function_type=="2"){ 
@@ -315,20 +319,23 @@ class Manage_slider extends CI_Controller {
 				if(empty($company_division)){
 					$company_division = "N/a";
 				}
-				$selected_type = "Company ($row->company_code) / Division ($company_division)"; 
+				$selected_type = "Company ($row->company_code) / Division ($company_division)";
 
-				$row1 = $this->db->query("select company_full_name from tbl_medicine where compcode='$row->company_code'")->row();
+				$title = $row->title;
+				if(empty($row->title)){
+					$row1 =  $this->db->query("select company_full_name from tbl_medicine where compcode='$row->company_code'")->row();
+					$title = $row1->company_full_name;
+				}
 
-				//$new_title = str_replace(" ","-",strtolower($row1->company_full_name));
-				$new_title = $row->company_code;
+				$url = $row->company_code;
 				if(!empty($row->company_division)){
 					$new_company_division = str_replace(" ","-",strtolower($row->company_division));
 
-					$new_title.= "/".$new_company_division;
+					$url.= "/".$new_company_division;
 				}
 
-				$url = "https://www.drdistributor.com/compney/$new_title";
-				$title = "<a href='".$url."' target='_blank'>$row->title</a>";
+				$url = "https://www.drdistributor.com/compney/$url";
+				$title = "<a href='".$url."' target='_blank'>$title</a>";
 			}
 
 			if($row->function_type=="3"){ 
@@ -336,11 +343,14 @@ class Manage_slider extends CI_Controller {
 				$function_type = "Category";
 				$selected_type = "Category ($row->company_code) "; 
 
-				//$row1 = $this->db->query("select category from tbl_medicine where itemcat='$row->company_code'")->row();
+				$title = $row->title;
+				if(empty($row->title)){
+					$row1 =  $this->db->query("select category from tbl_medicine where itemcat='$row->company_code'")->row();
+					$title = $row1->category;
+				}
 
 				$url = "https://www.drdistributor.com/category/$row->company_code";
-
-				$title = "<a href='".$url."' target='_blank'>$row->title</a>";
+				$title = "<a href='".$url."' target='_blank'>$title</a>";
 			}
 
 			$image = $row->image;
