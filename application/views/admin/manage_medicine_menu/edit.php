@@ -32,27 +32,21 @@
                 <div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
-                            Image
+							Short Order
                         </label>
                     </div>
-                    <div class="col-sm-6">
-                        <input type="file" class="form-control" id="form-field-1" placeholder="image" name="image" />
-                    </div>
-                    <div class="col-sm-2 img_id_image">
-                    	<img src="<?= $url_path ?><?= $row->image; ?>" class="img-responsive" />
-                    	<?php if($row->image!="default.jpg") { ?>
-                    	<Br /><a href="javascript:void(0)" onclick="delete_photo('<?= $row->image; ?>','image')" class="btn-white btn btn-xs">Delete</i></a>
-                        <?php } ?>
+                    <div class="col-sm-8">
+						<input type="number" class="form-control" id="short_order" name="short_order" placeholder="Short Order" value="<?= $row->short_order; ?>" />
                     </div>
                     <div class="help-inline col-sm-12 has-error">
-                        <span class="help-block reset middle">  
-                            <?= form_error('image'); ?>
+                        <span class="help-block reset middle">
+                            <?= form_error('short_order'); ?>
                         </span>
                     </div>
-              	</div>
+                </div>
 			</div>
 
-            			<div class="form-group">	
+            <div class="form-group">	
 				<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
@@ -210,18 +204,25 @@
 				<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
-							Short Order
+                            Image
                         </label>
                     </div>
-                    <div class="col-sm-8">
-						<input type="number" class="form-control" id="short_order" name="short_order" placeholder="Short Order" value="<?= $row->short_order; ?>" />
+                    <div class="col-sm-6">
+                        <input type="file" class="form-control" id="form-field-1" placeholder="image" name="image" />
+                    </div>
+                    <div class="col-sm-2 img_id_image">
+                    	<img src="<?= $url_path ?><?= $row->image; ?>" class="img-responsive" />
+                    	<?php if($row->image!="default.jpg") { ?>
+                    	<Br /><a href="javascript:void(0)" onclick="delete_photo('<?= $row->image; ?>','image')" class="btn-white btn btn-xs">Delete</i></a>
+                        <?php } ?>
                     </div>
                     <div class="help-inline col-sm-12 has-error">
-                        <span class="help-block reset middle">
-                            <?= form_error('short_order'); ?>
+                        <span class="help-block reset middle">  
+                            <?= form_error('image'); ?>
                         </span>
                     </div>
-                </div>	
+              	</div>
+                
 				<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">

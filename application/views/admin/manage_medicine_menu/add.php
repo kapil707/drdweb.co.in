@@ -21,21 +21,23 @@
                         </span>
                     </div>
                 </div>	
+                
+                
                 <div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
-                            Image
+							Sort Order
                         </label>
                     </div>
-                    <div class="col-sm-6">
-                        <input type="file" class="form-control" id="form-field-1" placeholder="Image" name="image" />
+                    <div class="col-sm-8">
+						<input type="number" class="form-control" id="short_order" name="short_order" placeholder="Sort Order" value='0' />
                     </div>
                     <div class="help-inline col-sm-12 has-error">
-                        <span class="help-block reset middle">  
-                           
+                        <span class="help-block reset middle">
+                            
                         </span>
                     </div>
-              	</div>
+                </div>
 			</div>
 
             <div class="form-group">	
@@ -158,19 +160,18 @@
                 <div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
-							Sort Order
+                            Image
                         </label>
                     </div>
-                    <div class="col-sm-8">
-						<input type="number" class="form-control" id="short_order" name="short_order" placeholder="Sort Order" value='0' />
+                    <div class="col-sm-6">
+                        <input type="file" class="form-control" id="form-field-1" placeholder="Image" name="image" />
                     </div>
                     <div class="help-inline col-sm-12 has-error">
-                        <span class="help-block reset middle">
-                            
+                        <span class="help-block reset middle">  
+                           
                         </span>
                     </div>
-                </div>
-
+              	</div>
 				<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
