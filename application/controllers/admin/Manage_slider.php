@@ -334,7 +334,8 @@ class Manage_slider extends CI_Controller {
 					$url.= "/".$new_company_division;
 				}
 
-				$url = "https://www.drdistributor.com/compney/$url";
+				//$url = "https://www.drdistributor.com/compney/$url";
+				$url = "https://www.drdistributor.com/cc/$row->id";
 				$title = "<a href='".$url."' target='_blank'>$title</a>";
 			}
 
@@ -349,7 +350,8 @@ class Manage_slider extends CI_Controller {
 					$title = $row1->category;
 				}
 
-				$url = "https://www.drdistributor.com/category/$row->company_code";
+				//$url = "https://www.drdistributor.com/category/$row->company_code";
+				$url = "https://www.drdistributor.com/cc/$row->id";
 				$title = "<a href='".$url."' target='_blank'>$title</a>";
 			}
 
