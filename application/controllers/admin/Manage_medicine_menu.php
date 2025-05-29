@@ -311,7 +311,7 @@ class Manage_medicine_menu extends CI_Controller {
 		$i = 1;
 		$Page_tbl = $this->Page_tbl;
 
-		$result = $this->db->query("SELECT * FROM $Page_tbl where company_type='menu' order by id desc");
+		$result = $this->db->query("SELECT * FROM $Page_tbl where main_type='menu' order by id desc");
 		$result = $result->result();
 		foreach($result as $row) {
 
