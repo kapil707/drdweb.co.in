@@ -48,9 +48,9 @@ class Manage_slider extends CI_Controller {
 		extract($_POST);
 		if(isset($Submit))
 		{
-			$item_code = $find_medicine_id;
-			$company_code = $find_medicine_company_id;
-			$company_division = $find_medicine_company_division;
+			$item_code 			= $find_medicine_id;
+			$company_code 		= $find_medicine_company_id;
+			$company_division 	= $find_medicine_company_division;
 
 			if($function_type==3){
 				$company_code = $find_medicine_category;
@@ -77,7 +77,8 @@ class Manage_slider extends CI_Controller {
 			}
 
 			$dt = array(
-				'slider_type'=>$slider_type,
+				'main_type'=>'slider',
+				'main_type_id'=>$main_type_id,
 				'short_order'=>$short_order,
 				'title'=>$title,
 				'function_type'=>$function_type,
@@ -210,7 +211,8 @@ class Manage_slider extends CI_Controller {
 			}			
 			
 			$dt = array(
-				'slider_type'=>$slider_type,
+				'main_type'=>'slider',
+				'main_type_id'=>$main_type_id,
 				'short_order'=>$short_order,
 				'title'=>$title,
 				'function_type'=>$function_type,

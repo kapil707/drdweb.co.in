@@ -10,9 +10,9 @@
 					<div class="col-sm-4 text-right">
 						<label class="control-label" for="form-field-1">Slider Type</label></div>
 						<div class="col-sm-8">
-							<select name="slider_type" id="slider_type" class="form-control">
-								<option value="1" <?php if(set_value('slider_type')==1) { ?> selected <?php } ?>>Slider 1</option>
-								<option value="2" <?php if(set_value('slider_type')==2) { ?> selected <?php } ?>>Slider 2</option>
+							<select name="main_type_id" id="main_type_id" class="form-control">
+								<option value="1" <?php if(set_value('main_type_id')==1) { ?> selected <?php } ?>>Slider 1</option>
+								<option value="2" <?php if(set_value('main_type_id')==2) { ?> selected <?php } ?>>Slider 2</option>
 						</select>
 					</div>
 					<div class="help-inline col-sm-12 has-error">
