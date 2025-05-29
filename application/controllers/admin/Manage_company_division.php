@@ -309,7 +309,7 @@ class Manage_company_division extends CI_Controller {
 		$Page_tbl = $this->Page_tbl;
 
 		//$result = $this->db->query("SELECT tbl_company_division_category.title as category_type,tbl_company_division.* FROM tbl_company_division left join tbl_company_division_category on tbl_company_division.category_id=tbl_company_division_category.id where company_type='company_division' order by id desc");
-		$result = $this->db->query("SELECT * FROM $Page_tbl where main_type='menu' order by id desc");
+		$result = $this->db->query("SELECT * FROM $Page_tbl where main_type='company_division' order by id desc");
 		$result = $result->result();
 		foreach($result as $row) {
 
@@ -317,7 +317,7 @@ class Manage_company_division extends CI_Controller {
 			$id = $row->id;
 
 			$short_order = $row->short_order;
-			$type = "Menu ($row->main_type_id)";
+			$type = "Company Division ($row->main_type_id)";
 			
 			if($row->function_type=="0"){
 				$function_type = "Not Need";
@@ -376,7 +376,7 @@ class Manage_company_division extends CI_Controller {
 			if(!empty($image)) {
 				$image = base_url()."uploads/$this->page_controllers/photo/resize/".$image;
 			}
-			
+
 			$dt = array(
 				'sr_no' => $sr_no,
 				'id' => $id,

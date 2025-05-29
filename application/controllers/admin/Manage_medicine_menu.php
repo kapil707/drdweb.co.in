@@ -311,7 +311,7 @@ class Manage_medicine_menu extends CI_Controller {
 		$i = 1;
 		$Page_tbl = $this->Page_tbl;
 
-		$result = $this->db->query("SELECT * FROM $Page_tbl where main_type='company_division' order by id desc");
+		$result = $this->db->query("SELECT * FROM $Page_tbl where main_type='menu' order by id desc");
 		$result = $result->result();
 		foreach($result as $row) {
 
@@ -319,7 +319,7 @@ class Manage_medicine_menu extends CI_Controller {
 			$id = $row->id;
 
 			$short_order = $row->short_order;
-			$type = "Company Division ($row->main_type_id)";
+			$type = "Menu ($row->main_type_id)";
 			
 			if($row->function_type=="0"){
 				$function_type = "Not Need";
@@ -378,7 +378,7 @@ class Manage_medicine_menu extends CI_Controller {
 			if(!empty($image)) {
 				$image = base_url()."uploads/manage_company_division/photo/resize/".$image;
 			}
-
+			
 			$dt = array(
 				'sr_no' => $sr_no,
 				'id' => $id,
