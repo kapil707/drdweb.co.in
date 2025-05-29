@@ -15,8 +15,10 @@ $(document).ready(function(){
 		order: [[0, 'asc']],
 		columns: [
 			{ data: 'sr_no', title: 'Id' },
-			{ data: 'category_type', title: 'Category Type' },
-			{ data: 'funcation_type', title: 'Funcation Type' },
+			{ data: 'short_order', title: 'Short Order' },
+			{ data: 'type', title: 'Type' },
+			{ data: 'function_type', title: 'Function Type' },
+			{ data: 'selected_type', title: 'Selected Type' },
 			{ data: 'title', title: 'Title' },
 			{
 				data: 'image',
