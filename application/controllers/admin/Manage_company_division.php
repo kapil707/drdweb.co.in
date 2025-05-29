@@ -8,7 +8,7 @@ class Manage_company_division extends CI_Controller {
 	var $Page_view  = "manage_company_division";
 	var $Page_menu  = "manage_company_division";
 	var $page_controllers = "manage_company_division";
-	var $Page_tbl   = "tbl_company_division";
+	var $Page_tbl   = "tbl_company_division_test";
 	public function index()
 	{
 		$page_controllers = $this->page_controllers;
@@ -44,9 +44,23 @@ class Manage_company_division extends CI_Controller {
 		$upload_path 		= "./uploads/$page_controllers/photo/main/";
 		$upload_resize 		= "./uploads/$page_controllers/photo/resize/";
 		
+		$find_medicine_id = $find_medicine_company_id = $find_medicine_company_division = "";
+		$short_order = 0;
 		extract($_POST);
 		if(isset($Submit))
-		{			
+		{	
+			$item_code 			= $find_medicine_id;
+			$company_code 		= $find_medicine_company_id;
+			$company_division 	= $find_medicine_company_division;
+
+			if($function_type==3){
+				$company_code = $find_medicine_category;
+			}
+
+			if(empty($short_order)){
+				$short_order = 0;
+			}
+
 			if (!empty($_FILES["image"]["name"]))
 			{
 				$this->Image_Model->uploadTo = $upload_path;
@@ -64,12 +78,15 @@ class Manage_company_division extends CI_Controller {
 			}
 			$result = "";
 			$dt = array(
-				'company_type'=>'company_division',
-				'company_name'=>$company_name,
-				'company_code'=>$find_medicine_company_id,
-				'company_division'=>$find_medicine_company_division,
-				'image'=>$image,
+				'main_type'=>'company_division',
+				'main_type_id'=>$main_type_id,
 				'short_order'=>$short_order,
+				'title'=>$title,
+				'function_type'=>$function_type,
+				'item_code'=>$item_code,
+				'company_code'=>$company_code,
+				'company_division'=>$company_division,
+				'image'=>$image,
 				'status'=>$status,
 				'date' => date('Y-m-d'),
 				'time' => date('H:i:s'),
@@ -92,7 +109,9 @@ class Manage_company_division extends CI_Controller {
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/add",$data);
 		$this->load->view("admin/header_footer/footer",$data);
+		$this->load->view("admin/manage_medicine/find_medicine",$data);
 		$this->load->view("admin/manage_medicine/find_medicine_company",$data);
+		$this->load->view("admin/manage_medicine/find_medicine_category",$data);
 	}
 	
 	public function view()
@@ -159,7 +178,19 @@ class Manage_company_division extends CI_Controller {
 		
 		extract($_POST);
 		if(isset($Submit))
-		{			
+		{	
+			$item_code = $find_medicine_id;
+			$company_code = $find_medicine_company_id;
+			$company_division = $find_medicine_company_division;
+
+			if($function_type==3){
+				$company_code = $find_medicine_category;
+			}
+
+			if(empty($short_order)){
+				$short_order = 0;
+			}
+
 			if (!empty($_FILES["image"]["name"]))
 			{
 				$this->Image_Model->uploadTo = $upload_path;
@@ -178,12 +209,15 @@ class Manage_company_division extends CI_Controller {
 			
 			$result = "";
 			$dt = array(
-				'company_type'=>'company_division',
-				'company_name'=>$company_name,
-				'company_code'=>$find_medicine_company_id,
-				'company_division'=>$find_medicine_company_division,
-				'image'=>$image,
+				'main_type'=>'company_division',
+				'main_type_id'=>$main_type_id,
 				'short_order'=>$short_order,
+				'title'=>$title,
+				'function_type'=>$function_type,
+				'item_code'=>$item_code,
+				'company_code'=>$company_code,
+				'company_division'=>$company_division,
+				'image'=>$image,
 				'status'=>$status,
 				'date' => date('Y-m-d'),
 				'time' => date('H:i:s'),
@@ -211,7 +245,9 @@ class Manage_company_division extends CI_Controller {
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/edit",$data);
 		$this->load->view("admin/header_footer/footer",$data);
+		$this->load->view("admin/manage_medicine/find_medicine",$data);
 		$this->load->view("admin/manage_medicine/find_medicine_company",$data);
+		$this->load->view("admin/manage_medicine/find_medicine_category",$data);
 	}
 	
 	public function delete_rec()
@@ -272,35 +308,67 @@ class Manage_company_division extends CI_Controller {
 		$i = 1;
 		$Page_tbl = $this->Page_tbl;
 
-		$result = $this->db->query("SELECT tbl_company_division_category.title as category_type,tbl_company_division.* FROM tbl_company_division left join tbl_company_division_category on tbl_company_division.category_id=tbl_company_division_category.id where company_type='company_division' order by id desc");
+		//$result = $this->db->query("SELECT tbl_company_division_category.title as category_type,tbl_company_division.* FROM tbl_company_division left join tbl_company_division_category on tbl_company_division.category_id=tbl_company_division_category.id where company_type='company_division' order by id desc");
+		$result = $this->db->query("SELECT * FROM $Page_tbl where main_type='menu' order by id desc");
 		$result = $result->result();
 		foreach($result as $row) {
 
 			$sr_no = $i++;
 			$id = $row->id;
 
-			$company_name = $row->company_name;
-			$company_code = $row->company_code;
-			$company_division = $row->company_division;
-			$category_type = $row->category_type;
+			$short_order = $row->short_order;
+			$type = "Menu ($row->main_type_id)";
+			
+			if($row->function_type=="0"){
+				$function_type = "Not Need";
+				$title = "N/a";
+			}
+			if($row->function_type=="1"){ 
 
-			$company_division = $row->company_division;
-			if(empty($company_division)){
-				$company_division = "N/a";
+				$function_type = "Medicine";
+				$selected_type = "Medicine ($row->item_code)";
+				
+				$row1 =  $this->db->query("select item_name,i_code from tbl_medicine where i_code='$row->item_code'")->row();
+
+				$url = "https://www.drdistributor.com/md/$row->item_code";
+				$title = "<a href='".$url."' target='_blank'>$row->title</a>";
 			}
 
-			$funcation_type = "Company ($company_code) / Division ($company_division)"; 
+			if($row->function_type=="2"){ 
 
-			//$new_title = str_replace(" ","-",strtolower($company_name));
-			$new_title = $company_code;
-			$url = "https://www.drdistributor.com/cc/$new_title";
-			if(!empty($company_division)){
+				$function_type = "Company/Division";
 
-				$new_company_division = str_replace(" ","-",strtolower($row->company_division));
+				$company_division = $row->company_division;
+				if(empty($company_division)){
+					$company_division = "N/a";
+				}
+				$selected_type = "Company ($row->company_code) / Division ($company_division)"; 
 
-				$url.= "/".$new_company_division;
+				$row1 = $this->db->query("select company_full_name from tbl_medicine where compcode='$row->company_code'")->row();
+
+				//$new_title = str_replace(" ","-",strtolower($row1->company_full_name));
+				$new_title = $row->company_code;
+				if(!empty($row->company_division)){
+					$new_company_division = str_replace(" ","-",strtolower($row->company_division));
+
+					$new_title.= "/".$new_company_division;
+				}
+
+				$url = "https://www.drdistributor.com/compney/$new_title";
+				$title = "<a href='".$url."' target='_blank'>$row->title</a>";
 			}
-			$title = "<a href='".$url."' target='_blank'>$company_name</a>";
+
+			if($row->function_type=="3"){ 
+				
+				$function_type = "Category";
+				$selected_type = "Category ($row->company_code) "; 
+
+				//$row1 = $this->db->query("select category from tbl_medicine where itemcat='$row->company_code'")->row();
+
+				$url = "https://www.drdistributor.com/category/$row->company_code";
+
+				$title = "<a href='".$url."' target='_blank'>$row->title</a>";
+			}
 
 			$image = $row->image;
 			$datetime = date("d-M-y @ H:i:s", $row->timestamp);
@@ -308,13 +376,16 @@ class Manage_company_division extends CI_Controller {
 			if(!empty($image)) {
 				$image = base_url()."uploads/$this->page_controllers/photo/resize/".$image;
 			}
+			
 			$dt = array(
 				'sr_no' => $sr_no,
 				'id' => $id,
-				'category_type' => $category_type,
-				'funcation_type'=>$funcation_type,
+				'short_order' => $short_order,
+				'type' => $type,
+				'function_type' => $function_type,
+				'selected_type' => $selected_type,
 				'title' => $title,
-				'image'=>$image,
+				'image' => $image,
 				'datetime'=>$datetime,
 			);
 			$jsonArray[] = $dt;
