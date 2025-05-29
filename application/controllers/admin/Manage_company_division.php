@@ -308,7 +308,7 @@ class Manage_company_division extends CI_Controller {
 		$i = 1;
 		$Page_tbl = $this->Page_tbl;
 
-		$result = $this->db->query("SELECT tbl_company_division_category.title as category_type,$Page_tbl.* FROM $Page_tbl left join tbl_company_division_category on $Page_tbl.category_id=tbl_company_division_category.id where main_type='company_division' order by id desc");
+		$result = $this->db->query("SELECT tbl_company_division_category.title as category_type,$Page_tbl.* FROM $Page_tbl left join tbl_company_division_category on $Page_tbl.category_id=tbl_company_division_category.id where $Page_tbl.main_type='company_division' order by id desc");
 		//$result = $this->db->query("SELECT * FROM $Page_tbl where main_type='company_division' order by id desc");
 		$result = $result->result();
 		foreach($result as $row) {
