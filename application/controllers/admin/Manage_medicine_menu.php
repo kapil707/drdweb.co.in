@@ -44,9 +44,23 @@ class Manage_medicine_menu extends CI_Controller {
 		$upload_path 		= "./uploads/manage_company_division/photo/main/";
 		$upload_resize 		= "./uploads/manage_company_division/photo/resize/";
 		
+		$find_medicine_id = $find_medicine_company_id = $find_medicine_company_division = "";
+		$short_order = 0;
 		extract($_POST);
 		if(isset($Submit))
-		{			
+		{	
+			$item_code = $find_medicine_id;
+			$company_code = $find_medicine_company_id;
+			$company_division = $find_medicine_company_division;
+
+			if($function_type==3){
+				$company_code = $find_medicine_category;
+			}
+
+			if(empty($short_order)){
+				$short_order = 0;
+			}	
+
 			if (!empty($_FILES["image"]["name"]))
 			{
 				$this->Image_Model->uploadTo = $upload_path;
@@ -67,8 +81,10 @@ class Manage_medicine_menu extends CI_Controller {
 			$dt = array(
 				'company_type'=>'menu',
 				'company_name'=>$company_name,
-				'company_code'=>$find_medicine_company_id,
-				'company_division'=>$find_medicine_company_division,
+				'function_type'=>$function_type,
+				'item_code'=>$item_code,
+				'company_code'=>$company_code,
+				'company_division'=>$company_division,
 				'image'=>$image,
 				'short_order'=>$short_order,
 				'status'=>$status,

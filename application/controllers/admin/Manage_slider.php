@@ -292,7 +292,9 @@ class Manage_slider extends CI_Controller {
 				$title = "N/a";
 			}
 			if($row->function_type=="1"){ 
-				$function_type = "Medicine ($row->item_code)";
+
+				$function_type = "Medicine";
+				$selected_type = "Medicine ($row->item_code)";
 				
 				$row1 =  $this->db->query("select item_name,i_code from tbl_medicine where i_code='$row->item_code'")->row();
 
@@ -301,7 +303,9 @@ class Manage_slider extends CI_Controller {
 			}
 
 			if($row->function_type=="2"){ 
-				$company_division = $row->company_division;
+
+				$function_type = "Company/Division";
+				$selected_type = $row->company_division;
 				if(empty($company_division)){
 					$company_division = "N/a";
 				}
@@ -323,7 +327,8 @@ class Manage_slider extends CI_Controller {
 
 			if($row->function_type=="3"){ 
 				
-				$function_type = "Category ($row->company_code) "; 
+				$function_type = "Category";
+				$selected_type = "Category ($row->company_code) "; 
 
 				$row1 = $this->db->query("select category from tbl_medicine where itemcat='$row->company_code'")->row();
 
@@ -344,6 +349,7 @@ class Manage_slider extends CI_Controller {
 				'short_order' => $short_order,
 				'slider_type' => $slider_type,
 				'function_type' => $function_type,
+				'selected_type' => $selected_type,
 				'title' => $title,
 				'image' => $image,
 				'datetime'=>$datetime,
