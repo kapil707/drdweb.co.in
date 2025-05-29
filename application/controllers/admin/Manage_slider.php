@@ -6,7 +6,7 @@ class Manage_slider extends CI_Controller {
 	var $Page_view  = "manage_slider";
 	var $Page_menu  = "manage_slider";
 	var $page_controllers = "manage_slider";
-	var $Page_tbl   = "tbl_company_division";
+	var $Page_tbl   = "tbl_company_division_test";
 	public function index()
 	{
 		$page_controllers = $this->page_controllers;
