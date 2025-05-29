@@ -17,7 +17,7 @@
 					</div>
 					<div class="help-inline col-sm-12 has-error">
 						<span class="help-block reset middle"> 
-							<?= form_error('slider_type'); ?>
+							<?= form_error('main_type_id'); ?>
 						</span>
 					</div>
 				</div>

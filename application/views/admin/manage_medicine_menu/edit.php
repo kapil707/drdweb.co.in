@@ -1,8 +1,6 @@
 <div class="row">
 	<div class="col-xs-12">
-        <a href="<?php echo base_url(); ?>admin/<?= $Page_name ?>/view">
-		    <button type="button" class="btn btn-w-m btn-info"><< Back</button>
-		</a>
+		<button type="button" class="btn btn-w-m btn-info" onclick="goBack();"><< Back</button>
 	</div>
     <div class="col-xs-12">
         <!-- PAGE CONTENT BEGINS -->
@@ -11,16 +9,32 @@
         foreach ($result as $row)
         { ?>
             <input type="hidden" name="old_image" value="<?= $row->image; ?>" />
-			
 			<div class="form-group">
-                <div class="col-sm-6">
+				<div class="col-sm-6">
+					<div class="col-sm-4 text-right">
+						<label class="control-label" for="form-field-1">Menu Type</label></div>
+						<div class="col-sm-8">
+							<select name="main_type_id" id="main_type_id" class="form-control">
+								<option value="1" <?php if($row->main_type_id==1) { ?> selected <?php } ?>>Menu 1</option>
+						</select>
+					</div>
+					<div class="help-inline col-sm-12 has-error">
+						<span class="help-block reset middle"> 
+						<?= form_error('main_type_id'); ?>
+						</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
                             Title
                         </label>
                     </div>
                     <div class="col-sm-8">
-						<input type="text" class="form-control" id="company_name" name="company_name" tabindex="1" placeholder="Title" required value="<?= $row->company_name; ?>" />
+						<input type="text" class="form-control" id="title" name="title" tabindex="1" placeholder="Title" required value="<?= $row->title;?>"/>
                     </div>
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">
@@ -28,25 +42,24 @@
                         </span>
                     </div>
                 </div>
-
-                <div class="col-sm-6">
-                    <div class="col-sm-4 text-right">
-                        <label class="control-label" for="form-field-1">
+				<div class="col-sm-6">
+					<div class="col-sm-4 text-right">
+						<label class="control-label" for="form-field-1">
 							Short Order
-                        </label>
-                    </div>
-                    <div class="col-sm-8">
-						<input type="number" class="form-control" id="short_order" name="short_order" placeholder="Short Order" value="<?= $row->short_order; ?>" />
-                    </div>
-                    <div class="help-inline col-sm-12 has-error">
-                        <span class="help-block reset middle">
-                            <?= form_error('short_order'); ?>
-                        </span>
-                    </div>
-                </div>
+						</label>
+					</div>
+					<div class="col-sm-8">
+						<input type="number" class="form-control" id="short_order" name="short_order" placeholder="Short Order" value="<?= $row->short_order;?>" />
+					</div>
+					<div class="help-inline col-sm-12 has-error">
+						<span class="help-block reset middle">
+							<?= form_error('short_order'); ?>
+						</span>
+					</div>
+				</div>
 			</div>
-
-            <div class="form-group">	
+			
+			<div class="form-group">	
 				<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
@@ -199,8 +212,8 @@
                     </div>
                 </div>
 			</div>
-			
-			<div class="form-group">
+           
+            <div class="form-group">
 				<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
@@ -208,21 +221,20 @@
                         </label>
                     </div>
                     <div class="col-sm-6">
-                        <input type="file" class="form-control" id="form-field-1" placeholder="image" name="image" />
+                        <input type="file" class="form-control" id="form-field-1" placeholder="Image" name="image" />
                     </div>
-                    <div class="col-sm-2 img_id_image">
+                    <div class="col-sm-2" id="imgchange">
                     	<img src="<?= $url_path ?><?= $row->image; ?>" class="img-responsive" />
                     	<?php if($row->image!="default.jpg") { ?>
-                    	<Br /><a href="javascript:void(0)" onclick="delete_photo('<?= $row->image; ?>','image')" class="btn-white btn btn-xs">Delete</i></a>
+                    	<Br /><a href="javascript:void(0)" onclick="delete_photo('<?= $row->id; ?>')"><i class="fa fa-remove"></i>Delete</a>
                         <?php } ?>
                     </div>
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">  
-                            <?= form_error('image'); ?>
+                            <?= form_error('Image'); ?>
                         </span>
                     </div>
-              	</div>
-
+                </div>
 				<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
@@ -245,6 +257,7 @@
                         </span>
                     </div>
                 </div>
+				
 			</div>
             
             <div class="space-4"></div>

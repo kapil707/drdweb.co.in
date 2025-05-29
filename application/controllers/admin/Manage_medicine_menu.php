@@ -8,7 +8,7 @@ class Manage_medicine_menu extends CI_Controller {
 	var $Page_view  = "manage_medicine_menu";
 	var $Page_menu  = "manage_medicine_menu";
 	var $page_controllers = "manage_medicine_menu";
-	var $Page_tbl   = "tbl_company_division";
+	var $Page_tbl   = "tbl_company_division_test";
 	public function index()
 	{
 		$page_controllers = $this->page_controllers;
@@ -49,9 +49,9 @@ class Manage_medicine_menu extends CI_Controller {
 		extract($_POST);
 		if(isset($Submit))
 		{	
-			$item_code = $find_medicine_id;
-			$company_code = $find_medicine_company_id;
-			$company_division = $find_medicine_company_division;
+			$item_code 			= $find_medicine_id;
+			$company_code 		= $find_medicine_company_id;
+			$company_division 	= $find_medicine_company_division;
 
 			if($function_type==3){
 				$company_code = $find_medicine_category;
@@ -79,14 +79,15 @@ class Manage_medicine_menu extends CI_Controller {
 			
 			$result = "";
 			$dt = array(
-				'company_type'=>'menu',
-				'company_name'=>$company_name,
+				'main_type'=>'menu',
+				'main_type_id'=>$main_type_id,
+				'short_order'=>$short_order,
+				'title'=>$title,
 				'function_type'=>$function_type,
 				'item_code'=>$item_code,
 				'company_code'=>$company_code,
 				'company_division'=>$company_division,
 				'image'=>$image,
-				'short_order'=>$short_order,
 				'status'=>$status,
 				'date' => date('Y-m-d'),
 				'time' => date('H:i:s'),
@@ -182,7 +183,19 @@ class Manage_medicine_menu extends CI_Controller {
 		
 		extract($_POST);
 		if(isset($Submit))
-		{			
+		{	
+			$item_code = $find_medicine_id;
+			$company_code = $find_medicine_company_id;
+			$company_division = $find_medicine_company_division;
+
+			if($function_type==3){
+				$company_code = $find_medicine_category;
+			}
+
+			if(empty($short_order)){
+				$short_order = 0;
+			}	
+
 			if (!empty($_FILES["image"]["name"]))
 			{
 				$this->Image_Model->uploadTo = $upload_path;
@@ -201,12 +214,15 @@ class Manage_medicine_menu extends CI_Controller {
 			
 			$result = "";
 			$dt = array(
-				'company_type'=>'menu',
-				'company_name'=>$company_name,
-				'company_code'=>$find_medicine_company_id,
-				'company_division'=>$find_medicine_company_division,
-				'image'=>$image,
+				'main_type'=>'menu',
+				'main_type_id'=>$main_type_id,
 				'short_order'=>$short_order,
+				'title'=>$title,
+				'function_type'=>$function_type,
+				'item_code'=>$item_code,
+				'company_code'=>$company_code,
+				'company_division'=>$company_division,
+				'image'=>$image,
 				'status'=>$status,
 				'date' => date('Y-m-d'),
 				'time' => date('H:i:s'),

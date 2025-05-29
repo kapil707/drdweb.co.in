@@ -4,33 +4,33 @@
 	</div>
     <div class="col-xs-12">
         <!-- PAGE CONTENT BEGINS -->
-        <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
-			<div class="form-group">	
+        <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">			
+			<div class="form-group">
 				<div class="col-sm-6">
+					<div class="col-sm-4 text-right">
+						<label class="control-label" for="form-field-1">Menu Type</label></div>
+						<div class="col-sm-8">
+							<select name="main_type_id" id="main_type_id" class="form-control">
+								<option value="1" <?php if(set_value('main_type_id')==1) { ?> selected <?php } ?>>Menu 1</option>
+						</select>
+					</div>
+					<div class="help-inline col-sm-12 has-error">
+						<span class="help-block reset middle"> 
+							<?= form_error('main_type_id'); ?>
+						</span>
+					</div>
+				</div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
                             Title
                         </label>
                     </div>
                     <div class="col-sm-8">
-						<input type="text" class="form-control" id="company_name" name="company_name" tabindex="1" placeholder="Title" required />
-                    </div>
-                    <div class="help-inline col-sm-12 has-error">
-                        <span class="help-block reset middle">
-                            
-                        </span>
-                    </div>
-                </div>	
-                
-                
-                <div class="col-sm-6">
-                    <div class="col-sm-4 text-right">
-                        <label class="control-label" for="form-field-1">
-							Sort Order
-                        </label>
-                    </div>
-                    <div class="col-sm-8">
-						<input type="number" class="form-control" id="short_order" name="short_order" placeholder="Sort Order" value='0' />
+						<input type="text" class="form-control" id="title" name="title" tabindex="1" placeholder="Title" required value="<?= set_value('title');?>"/>
                     </div>
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">
@@ -38,9 +38,23 @@
                         </span>
                     </div>
                 </div>
+				<div class="col-sm-6">
+					<div class="col-sm-4 text-right">
+						<label class="control-label" for="form-field-1">
+							Short Order
+						</label>
+					</div>
+					<div class="col-sm-8">
+						<input type="number" class="form-control" id="short_order" name="short_order" placeholder="Short Order" value="<?= set_value('short_order');?>" />
+					</div>
+					<div class="help-inline col-sm-12 has-error">
+						<span class="help-block reset middle">
+							<?= form_error('short_order'); ?>
+						</span>
+					</div>
+				</div>
 			</div>
-
-            <div class="form-group">	
+			<div class="form-group">	
 				<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
@@ -155,9 +169,9 @@
                     </div>
                 </div>
 			</div>
-			
-			<div class="form-group">
-                <div class="col-sm-6">
+           
+            <div class="form-group">
+				<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
                             Image
@@ -166,12 +180,15 @@
                     <div class="col-sm-6">
                         <input type="file" class="form-control" id="form-field-1" placeholder="Image" name="image" />
                     </div>
+                    <div class="col-sm-2" id="imgchange">
+                    	
+                    </div>
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">  
-                           
+                            <?= form_error('Image'); ?>
                         </span>
                     </div>
-              	</div>
+                </div>
 				<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
@@ -190,18 +207,18 @@
                     </div>
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">  
-                            
+                            <?= form_error('status'); ?>
                         </span>
                     </div>
                 </div>
 				
 			</div>
-             
+            
             <div class="space-4"></div>
             <br /><br />
             <div class="clearfix form-actions">
                 <div class="col-md-offset-3 col-md-9">
-                    <button type="submit" class="btn btn-info submit_button" name="Submit">
+                    <button type="submit" class="btn btn-info" name="Submit">
                         <i class="ace-icon fa fa-check bigger-110"></i>
                         Submit
                     </button>
