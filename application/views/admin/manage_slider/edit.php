@@ -26,7 +26,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="form-group">
 				<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
@@ -35,7 +35,7 @@
                         </label>
                     </div>
                     <div class="col-sm-8">
-						<input type="text" class="form-control" id="title" name="title" tabindex="1" placeholder="Title" required value="<?= set_value('title');?>"/>
+						<input type="text" class="form-control" id="title" name="title" tabindex="1" placeholder="Title" required value="<?= $row->title;?>"/>
                     </div>
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">
