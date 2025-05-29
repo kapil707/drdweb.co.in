@@ -11,66 +11,6 @@
         foreach ($result as $row)
         { ?>
             <input type="hidden" name="old_image" value="<?= $row->image; ?>" />
-			<div class="form-group">
-				<div class="col-sm-6">
-					<div class="col-sm-4 text-right">
-                        <label class="control-label" for="form-field-1">
-                            Select Medicine Category
-                        </label>
-                    </div>
-                    <div class="col-sm-8">
-                        <input type="hidden" id="find_medicine_company_id" name="find_medicine_company_id" value="<?= $row->company_code ?>"/>
-
-                        <?php 
-                        $medicine_company_name = "";
-                        $row1 =  $this->db->query ("select company_full_name from tbl_medicine where compcode='$row->company_code'")->row();
-                        if(!empty($row1)){
-                            $medicine_company_name = $row1->company_full_name;
-                        }
-                        ?>
-
-                        <input type="text" class="form-control" id="medicine_company_name" name="medicine_company_name" tabindex="1" placeholder="Enter Company" autocomplete="off" value="<?= $medicine_company_name?>" />
-
-                        <div class="find_medicine_company_result"></div>
-                    </div>
-                    <div class="help-inline col-sm-12 has-error">
-                        <span class="help-block reset middle">
-                            
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-sm-6">
-                    <div class="col-sm-4 text-right">
-                        <label class="control-label" for="form-field-1">
-                            Select Company Division
-                        </label>
-                    </div>
-                    <div class="col-sm-8">                        
-						<select name="find_medicine_company_division" id="find_medicine_company_division" class="form-control">
-							<option value="">
-								Select Company Division
-							</option>
-							<?php
-							$result1 =  $this->db->query("select DISTINCT division from tbl_medicine where compcode='$row->comp_code' order by division asc")->result();
-							foreach($result1 as $row1)
-							{
-								$division = $row1->comp_division;
-								?>
-								<option value="<?= $division ?>" <?php if($division==$row->division) { ?>selected <?php } ?>>
-									<?= $division ?>
-								</option>
-								<?php
-							}?>
-						</select>
-                    </div>
-                    <div class="help-inline col-sm-12 has-error">
-                        <span class="help-block reset middle">
-                            <?= form_error('division'); ?>
-                        </span>
-                    </div>
-                </div>
-			</div>
 			
 			<div class="form-group">
                 <div class="col-sm-6">
@@ -110,6 +50,160 @@
                         </span>
                     </div>
               	</div>
+			</div>
+
+            			<div class="form-group">	
+				<div class="col-sm-6">
+                    <div class="col-sm-4 text-right">
+                        <label class="control-label" for="form-field-1">
+                            Function Type
+                        </label>
+                    </div>
+                    <div class="col-sm-8">
+                        <select name="function_type" id="function_type" class="form-control" onchange="onchange_function_type()">
+							<option value="0" <?php if($row->function_type=="0"){ ?> selected <?php } ?>>
+								Not Need
+							</option>
+							<option value="1" <?php if($row->function_type=="1"){ ?> selected <?php } ?>>
+								Select Medicine
+							</option>							
+							<option value="2" <?php if($row->function_type=="2"){ ?> selected <?php } ?>>
+								Select Company
+							</option>
+							<option value="3" <?php if($row->function_type=="3"){ ?> selected <?php } ?>>
+								Select Medicine Category
+							</option>
+						</select>
+                    </div>
+                    <div class="help-inline col-sm-12 has-error">
+                        <span class="help-block reset middle">
+                            <?= form_error('function_type'); ?>
+                        </span>
+                    </div>
+                </div>
+			</div>
+
+			<div class="form-group div_medicine" <?php if($row->function_type!=1) { ?> style="display:none;" <?php } ?>>
+				<div class="col-sm-6">
+                    <div class="col-sm-4 text-right">
+                        <label class="control-label" for="form-field-1">
+                            Select Medicine
+                        </label>
+                    </div>
+                    <div class="col-sm-8">
+						<input type="hidden" id="find_medicine_id" name="find_medicine_id" value="<?= $row->item_code?>" />
+
+						<?php 
+						$medicine_name = "";
+						$row1 = $this->db->query ("select item_name,i_code from tbl_medicine where i_code='$row->item_code'")->row();
+						if(!empty($row1)){
+							$medicine_name = $row1->item_name."($row1->i_code)";
+						}
+						?>
+
+						<input type="text" class="form-control" id="medicine_name" name="medicine_name" tabindex="1" placeholder="Enter Medicine" autocomplete="off" value="<?= $medicine_name?>" />
+
+						<div class="find_medicine_result"></div>
+                    </div>
+                    <div class="help-inline col-sm-12 has-error">
+                        <span class="help-block reset middle">
+                            <?= form_error('find_medicine_id'); ?>
+                        </span>
+                    </div>
+                </div>
+			</div>
+			
+			<div class="form-group div_company" <?php if($row->function_type!=2) { ?> style="display:none;" <?php } ?>>
+				<div class="col-sm-6">
+                    <div class="col-sm-4 text-right">
+                        <label class="control-label" for="form-field-1">
+                            Select Company
+                        </label>
+                    </div>
+                    <div class="col-sm-8">
+						<input type="hidden" id="find_medicine_company_id" name="find_medicine_company_id" value="<?= $row->company_code ?>"/>
+
+						<?php 
+						$medicine_company_name = "";
+						$row1 =  $this->db->query ("select company_full_name from tbl_medicine where compcode='$row->company_code'")->row();
+						if(!empty($row1)){
+							$medicine_company_name = $row1->company_full_name;
+						}
+						?>
+
+						<input type="text" class="form-control" id="medicine_company_name" name="medicine_company_name" tabindex="1" placeholder="Enter Company" autocomplete="off" value="<?= $medicine_company_name?>" />
+
+						<div class="find_medicine_company_result"></div>
+                    </div>
+                    <div class="help-inline col-sm-12 has-error">
+                        <span class="help-block reset middle">
+                            <?= form_error('find_medicine_company_id'); ?>
+                        </span>
+                    </div>
+                </div>
+				<div class="col-sm-6">
+                    <div class="col-sm-4 text-right">
+                        <label class="control-label" for="form-field-1">
+                            Select Company Division
+                        </label>
+                    </div>
+                    <div class="col-sm-8">                        
+						<select name="find_medicine_company_division" id="find_medicine_company_division" class="form-control">
+							<option value="">
+								Select Company Division
+							</option>
+							<?php
+							$result1 =  $this->db->query("select DISTINCT division from tbl_medicine where compcode='$row->company_code' order by division asc")->result();
+							foreach($result1 as $row1)
+							{
+								$division = $row1->division;
+								?>
+								<option value="<?= $division ?>" <?php if($division==$row->company_division) { ?>selected <?php } ?>>
+									<?= $division ?>
+								</option>
+								<?php
+							}?>
+						</select>
+                    </div>
+                    <div class="help-inline col-sm-12 has-error">
+                        <span class="help-block reset middle">
+                            <?= form_error('division'); ?>
+                        </span>
+                    </div>
+                </div>
+			</div>
+
+			<div class="form-group div_medicine_category" <?php if($row->function_type!=3) { ?> style="display:none;" <?php } ?>>
+				<div class="col-sm-6">
+                    <div class="col-sm-4 text-right">
+                        <label class="control-label" for="form-field-1">
+                            Select Medicine Category
+                        </label>
+                    </div>
+                    <div class="col-sm-8">                        
+						<select name="find_medicine_category" id="find_medicine_category" class="form-control">
+							<option value="">
+								Select Medicine Category
+							</option>
+							<?php
+							$result1 =  $this->db->query("SELECT DISTINCT `category`,`itemcat` FROM `tbl_medicine`")->result();
+							foreach($result1 as $row1)
+							{
+								$medicine_category = $row1->category;
+								?>
+								<option value="<?= $row1->itemcat ?>" <?php if($row1->itemcat==$row->company_code) { ?>selected <?php } ?>>
+									<?= $medicine_category ?> (<?= $row1->itemcat ?>)
+								</option>
+								<?php
+							}?>							
+						</select>
+                    </div>
+                    <div class="help-inline col-sm-12 has-error">
+                        <span class="help-block reset middle">
+                            <?= form_error('find_medicine_category'); ?>
+                        </span>
+                    </div>
+                </div>
 			</div>
 			
 			<div class="form-group">
@@ -173,3 +267,44 @@
         <!-- PAGE CONTENT ENDS -->
     </div><!-- /.col -->
 </div><!-- /.row -->
+<script>
+function onchange_function_type()
+{	
+	/*********************************************** */
+	$('#medicine_name').removeAttr('required');
+	$("#find_medicine_id").val('');	
+	$(".div_medicine").hide();
+	/*********************************************** */
+
+	/*********************************************** */
+	$('#medicine_company_name').removeAttr('required');
+	$("#find_medicine_company_id").val('');
+	$(".div_company").hide();
+
+	$('#find_medicine_company_division').removeAttr('required');
+	/*********************************************** */
+
+	/*********************************************** */
+	$('#find_medicine_category').removeAttr('required');
+	$(".div_medicine_category").hide();
+	/*********************************************** */
+	
+	let selectedValue = $("#function_type").val();
+	if(selectedValue==1){
+		$(".div_medicine").show();
+		$('#medicine_name').attr('required', true);
+	}
+
+	if(selectedValue==2){
+		$(".div_company").show();
+		$('#medicine_company_name').attr('required', true);
+		$('#find_medicine_company_division').attr('required', true);
+	}
+
+	if(selectedValue==3){
+		find_medicine_category();
+		$(".div_medicine_category").show();
+		$('#find_medicine_category').attr('required', true);
+	}
+}
+</script>
