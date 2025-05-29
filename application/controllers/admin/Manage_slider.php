@@ -305,11 +305,12 @@ class Manage_slider extends CI_Controller {
 			if($row->function_type=="2"){ 
 
 				$function_type = "Company/Division";
-				$selected_type = $row->company_division;
+
+				$company_division = $row->company_division;
 				if(empty($company_division)){
 					$company_division = "N/a";
 				}
-				$function_type = "Company ($row->company_code) / Division ($company_division)"; 
+				$selected_type = "Company ($row->company_code) / Division ($company_division)"; 
 
 				$row1 = $this->db->query("select company_full_name from tbl_medicine where compcode='$row->company_code'")->row();
 
