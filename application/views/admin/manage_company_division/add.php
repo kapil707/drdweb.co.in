@@ -8,10 +8,15 @@
 			<div class="form-group">
 				<div class="col-sm-6">
 					<div class="col-sm-4 text-right">
-						<label class="control-label" for="form-field-1">Menu Type</label></div>
+						<label class="control-label" for="form-field-1">Type</label></div>
 						<div class="col-sm-8">
 							<select name="main_type_id" id="main_type_id" class="form-control">
-								<option value="1" <?php if(set_value('main_type_id')==1) { ?> selected <?php } ?>>Menu 1</option>
+                                <?php
+                                $result1 = $this->db->query("SELECT * FROM `tbl_company_division_category` order by id desc");
+		                        $result1 = $result1->result();
+                                foreach($result1 as $row1){ ?>
+								<option value="<?php echo $row1->id; ?>" <?php if(set_value('main_type_id')==$row1->id) { ?> selected <?php } ?>><?php echo $row1->title ?></option>
+                                <?php } ?>
 						</select>
 					</div>
 					<div class="help-inline col-sm-12 has-error">
