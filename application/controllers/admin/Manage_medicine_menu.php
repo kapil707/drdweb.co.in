@@ -93,7 +93,9 @@ class Manage_medicine_menu extends CI_Controller {
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/add",$data);
 		$this->load->view("admin/header_footer/footer",$data);
+		$this->load->view("admin/manage_medicine/find_medicine",$data);
 		$this->load->view("admin/manage_medicine/find_medicine_company",$data);
+		$this->load->view("admin/manage_medicine/find_medicine_category",$data);
 	}
 
 	public function view()

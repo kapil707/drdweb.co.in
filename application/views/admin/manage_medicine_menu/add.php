@@ -5,48 +5,6 @@
     <div class="col-xs-12">
         <!-- PAGE CONTENT BEGINS -->
         <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
-			<div class="form-group">				
-				<div class="col-sm-6">
-                    <div class="col-sm-4 text-right">
-                        <label class="control-label" for="form-field-1">
-                            Select Medicine Category
-                        </label>
-                    </div>
-                    <div class="col-sm-8">
-                        <input type="hidden" id="find_medicine_company_id" name="find_medicine_company_id" value="" />
-
-                        <input type="text" class="form-control" id="medicine_company_name" name="medicine_company_name" tabindex="1" placeholder="Enter Company" autocomplete="off" value="" required />
-
-                        <div class="find_medicine_company_result"></div>
-                    </div>
-                    <div class="help-inline col-sm-12 has-error">
-                        <span class="help-block reset middle">
-                            
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-sm-6">
-                    <div class="col-sm-4 text-right">
-                        <label class="control-label" for="form-field-1">
-                            Select Company Division
-                        </label>
-                    </div>
-                    <div class="col-sm-8">                        
-						<select name="find_medicine_company_division" id="find_medicine_company_division" class="form-control">
-							<option value="">
-								Select Company Division
-							</option>							
-						</select>
-                    </div>
-                    <div class="help-inline col-sm-12 has-error">
-                        <span class="help-block reset middle">
-                            
-                        </span>
-                    </div>
-                </div>
-			</div>
-
 			<div class="form-group">	
 				<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
@@ -78,6 +36,122 @@
                         </span>
                     </div>
               	</div>
+			</div>
+
+            <div class="form-group">	
+				<div class="col-sm-6">
+                    <div class="col-sm-4 text-right">
+                        <label class="control-label" for="form-field-1">
+                            Function Type
+                        </label>
+                    </div>
+                    <div class="col-sm-8">
+                        <select name="function_type" id="function_type" class="form-control" onchange="onchange_function_type()">
+							<option value="0" <?php if(set_value('funtype')=="0"){ ?> selected <?php } ?>>
+								Not Need
+							</option>
+							<option value="1" <?php if(set_value('function_type')=="1"){ ?> selected <?php } ?>>
+								Select Medicine
+							</option>							
+							<option value="2" <?php if(set_value('function_type')=="2"){ ?> selected <?php } ?>>
+								Select Company
+							</option>
+                            <option value="3" <?php if(set_value('function_type')=="3"){ ?> selected <?php } ?>>
+								Select Medicine Category
+							</option>
+						</select>
+                    </div>
+                    <div class="help-inline col-sm-12 has-error">
+                        <span class="help-block reset middle">
+                            <?= form_error('funtype'); ?>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group div_medicine" <?php if(set_value('function_type')!=1) { ?> style="display:none;" <?php } ?>>
+				<div class="col-sm-6">
+                    <div class="col-sm-4 text-right">
+                        <label class="control-label" for="form-field-1">
+                            Select Medicine
+                        </label>
+                    </div>
+                    <div class="col-sm-8">
+						<input type="hidden" id="find_medicine_id" name="find_medicine_id" value="" />
+
+						<input type="text" class="form-control" id="medicine_name" name="medicine_name" tabindex="1" placeholder="Enter Medicine" autocomplete="off" value="" />
+
+						<div class="find_medicine_result"></div>
+                    </div>
+                    <div class="help-inline col-sm-12 has-error">
+                        <span class="help-block reset middle">
+                            <?= form_error('find_medicine_id'); ?>
+                        </span>
+                    </div>
+                </div>
+			</div>
+			
+			<div class="form-group div_company" <?php if(set_value('function_type')!=2) { ?> style="display:none;" <?php } ?>>
+				<div class="col-sm-6">
+                    <div class="col-sm-4 text-right">
+                        <label class="control-label" for="form-field-1">
+                            Select Company
+                        </label>
+                    </div>
+                    <div class="col-sm-8">
+						<input type="hidden" id="find_medicine_company_id" name="find_medicine_company_id" value=""/>
+
+						<input type="text" class="form-control" id="medicine_company_name" name="medicine_company_name" tabindex="1" placeholder="Enter Company" autocomplete="off" value="" />
+
+						<div class="find_medicine_company_result"></div>
+                    </div>
+                    <div class="help-inline col-sm-12 has-error">
+                        <span class="help-block reset middle">
+                            <?= form_error('find_medicine_company_id'); ?>
+                        </span>
+                    </div>
+                </div>
+				<div class="col-sm-6">
+                    <div class="col-sm-4 text-right">
+                        <label class="control-label" for="form-field-1">
+                            Select Company Division
+                        </label>
+                    </div>
+                    <div class="col-sm-8">                        
+						<select name="find_medicine_company_division" id="find_medicine_company_division" class="form-control">
+							<option value="">
+								Select Company Division
+							</option>							
+						</select>
+                    </div>
+                    <div class="help-inline col-sm-12 has-error">
+                        <span class="help-block reset middle">
+                            <?= form_error('division'); ?>
+                        </span>
+                    </div>
+                </div>
+			</div>
+
+            <div class="form-group div_medicine_category" <?php if(set_value('function_type')!=3) { ?> style="display:none;" <?php } ?>>
+				<div class="col-sm-6">
+                    <div class="col-sm-4 text-right">
+                        <label class="control-label" for="form-field-1">
+                            Select Medicine Category
+                        </label>
+                    </div>
+                    <div class="col-sm-8">                        
+						<select name="find_medicine_category" id="find_medicine_category" class="form-control">
+							<option value="">
+								Select Medicine Category
+							</option>							
+						</select>
+                    </div>
+                    <div class="help-inline col-sm-12 has-error">
+                        <span class="help-block reset middle">
+                            <?= form_error('find_medicine_category'); ?>
+                        </span>
+                    </div>
+                </div>
 			</div>
 			
 			<div class="form-group">
@@ -142,3 +216,44 @@
         <!-- PAGE CONTENT ENDS -->
     </div><!-- /.col -->
 </div><!-- /.row -->
+<script>
+function onchange_function_type()
+{	
+	/*********************************************** */
+	$('#medicine_name').removeAttr('required');
+	$("#find_medicine_id").val('');	
+	$(".div_medicine").hide();
+	/*********************************************** */
+
+	/*********************************************** */
+	$('#medicine_company_name').removeAttr('required');
+	$("#find_medicine_company_id").val('');
+	$(".div_company").hide();
+
+	$('#find_medicine_company_division').removeAttr('required');
+	/*********************************************** */
+
+    /*********************************************** */
+	$('#find_medicine_category').removeAttr('required');
+	$(".div_medicine_category").hide();
+	/*********************************************** */
+	
+	let selectedValue = $("#function_type").val();
+	if(selectedValue==1){
+		$(".div_medicine").show();
+		$('#medicine_name').attr('required', true);
+	}
+
+	if(selectedValue==2){
+		$(".div_company").show();
+		$('#medicine_company_name').attr('required', true);
+		$('#find_medicine_company_division').attr('required', true);
+	}
+
+    if(selectedValue==3){
+        find_medicine_category();
+		$(".div_medicine_category").show();
+		$('#find_medicine_category').attr('required', true);
+	}
+}
+</script>
