@@ -1,6 +1,8 @@
 <div class="row">
 	<div class="col-xs-12">
-		<button type="button" class="btn btn-w-m btn-info" onclick="goBack();"><< Back</button>
+        <a href="<?php echo base_url(); ?>admin/<?= $Page_name ?>/view">
+		    <button type="button" class="btn btn-w-m btn-info"><< Back</button>
+		</a>
 	</div>
     <div class="col-xs-12">
         <!-- PAGE CONTENT BEGINS -->
