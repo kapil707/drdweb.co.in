@@ -302,8 +302,9 @@ class Manage_medicine_menu extends CI_Controller {
 			$sr_no = $i++;
 			$id = $row->id;
 
-			$company_name = $row->company_name;
-			$company_code = $row->company_code;
+			$short_order 	= $row->short_order;
+			$company_name 	= $row->company_name;
+			$company_code 	= $row->company_code;
 			$company_division = $row->company_division;
 
 			if($row->function_type=="0"){
