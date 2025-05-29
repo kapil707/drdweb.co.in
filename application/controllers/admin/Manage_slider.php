@@ -287,6 +287,7 @@ class Manage_slider extends CI_Controller {
 
 			$short_order = $row->short_order;
 			$slider_type = "Slider ($row->slider_type)";
+			
 			if($row->function_type=="0"){
 				$function_type = "Not Need";
 				$title = "N/a";

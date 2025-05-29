@@ -306,23 +306,56 @@ class Manage_medicine_menu extends CI_Controller {
 			$company_code = $row->company_code;
 			$company_division = $row->company_division;
 
-			$company_division = $row->company_division;
-			if(empty($company_division)){
-				$company_division = "N/a";
+			if($row->function_type=="0"){
+				$function_type = "Not Need";
+				$title = "N/a";
+			}
+			if($row->function_type=="1"){ 
+
+				$function_type = "Medicine";
+				$selected_type = "Medicine ($row->item_code)";
+				
+				$row1 =  $this->db->query("select item_name,i_code from tbl_medicine where i_code='$row->item_code'")->row();
+
+				$url = "https://www.drdistributor.com/md/$row->item_code";
+				$title = "<a href='".$url."' target='_blank'>$row1->item_name</a>";
 			}
 
-			$funcation_type = "Company ($company_code) / Division ($company_division)"; 
+			if($row->function_type=="2"){ 
 
-			//$new_title = str_replace(" ","-",strtolower($company_name));
-			$new_title = $company_code;
-			$url = "https://www.drdistributor.com/cc/$new_title";
-			if(!empty($company_division)){
+				$function_type = "Company/Division";
 
-				$new_company_division = str_replace(" ","-",strtolower($row->company_division));
+				$company_division = $row->company_division;
+				if(empty($company_division)){
+					$company_division = "N/a";
+				}
+				$selected_type = "Company ($row->company_code) / Division ($company_division)"; 
 
-				$url.= "/".$new_company_division;
+				$row1 = $this->db->query("select company_full_name from tbl_medicine where compcode='$row->company_code'")->row();
+
+				//$new_title = str_replace(" ","-",strtolower($row1->company_full_name));
+				$new_title = $row->company_code;
+				if(!empty($row->company_division)){
+					$new_company_division = str_replace(" ","-",strtolower($row->company_division));
+
+					$new_title.= "/".$new_company_division;
+				}
+
+				$url = "https://www.drdistributor.com/compney/$new_title";
+				$title = "<a href='".$url."' target='_blank'>$row1->company_full_name</a>";
 			}
-			$title = "<a href='".$url."' target='_blank'>$company_name</a>";
+
+			if($row->function_type=="3"){ 
+				
+				$function_type = "Category";
+				$selected_type = "Category ($row->company_code) "; 
+
+				$row1 = $this->db->query("select category from tbl_medicine where itemcat='$row->company_code'")->row();
+
+				$url = "https://www.drdistributor.com/category/$row->company_code";
+
+				$title = "<a href='".$url."' target='_blank'>$row1->category</a>";
+			}
 
 			$image = $row->image;
 			$datetime = date("d-M-y @ H:i:s", $row->timestamp);
@@ -333,7 +366,9 @@ class Manage_medicine_menu extends CI_Controller {
 			$dt = array(
 				'sr_no' => $sr_no,
 				'id' => $id,
-				'funcation_type'=>$funcation_type,
+				'short_order' => $short_order,
+				'function_type' => $function_type,
+				'selected_type' => $selected_type,
 				'title' => $title,
 				'image'=>$image,
 				'datetime'=>$datetime,
