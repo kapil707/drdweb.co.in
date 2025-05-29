@@ -6,7 +6,7 @@ class Manage_slider extends CI_Controller {
 	var $Page_view  = "manage_slider";
 	var $Page_menu  = "manage_slider";
 	var $page_controllers = "manage_slider";
-	var $Page_tbl   = "tbl_slider";
+	var $Page_tbl   = "tbl_company_division";
 	public function index()
 	{
 		$page_controllers = $this->page_controllers;
@@ -280,7 +280,7 @@ class Manage_slider extends CI_Controller {
 		$i = 1;
 		$Page_tbl = $this->Page_tbl;
 
-		$result = $this->db->query("SELECT * FROM $Page_tbl order by id desc");
+		$result = $this->db->query("SELECT * FROM $Page_tbl where main_type='slider' order by id desc");
 		$result = $result->result();
 		foreach($result as $row) {
 
@@ -288,7 +288,7 @@ class Manage_slider extends CI_Controller {
 			$id = $row->id;
 
 			$short_order = $row->short_order;
-			$slider_type = "Slider ($row->slider_type)";
+			$slider_type = "Slider ($row->main_type_id)";
 			
 			if($row->function_type=="0"){
 				$function_type = "Not Need";
