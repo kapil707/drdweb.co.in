@@ -16,7 +16,7 @@ $(document).ready(function(){
 		columns: [
 			{ data: 'sr_no', title: 'Id' },
 			{ data: 'short_order', title: 'Short Order' },
-			{ data: 'slider_type', title: 'Slider Type' },
+			{ data: 'type', title: 'Type' },
 			{ data: 'function_type', title: 'Function Type' },
 			{ data: 'selected_type', title: 'Selected Type' },
 			{ data: 'title', title: 'Title' },

@@ -290,7 +290,7 @@ class Manage_slider extends CI_Controller {
 			$id = $row->id;
 
 			$short_order = $row->short_order;
-			$slider_type = "Slider ($row->main_type_id)";
+			$type = "Slider ($row->main_type_id)";
 			
 			if($row->function_type=="0"){
 				$function_type = "Not Need";
@@ -344,16 +344,17 @@ class Manage_slider extends CI_Controller {
 			}
 
 			$image = $row->image;
+			$datetime = date("d-M-y @ H:i:s", $row->timestamp);
+
 			if(!empty($image)) {
 				$image = base_url()."uploads/$this->page_controllers/photo/resize/".$image;
 			}
-			$datetime = date("d-M-y @ H:i:s", $row->timestamp);
 
 			$dt = array(
 				'sr_no' => $sr_no,
 				'id' => $id,
 				'short_order' => $short_order,
-				'slider_type' => $slider_type,
+				'type' => $type,
 				'function_type' => $function_type,
 				'selected_type' => $selected_type,
 				'title' => $title,

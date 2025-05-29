@@ -318,11 +318,9 @@ class Manage_medicine_menu extends CI_Controller {
 			$sr_no = $i++;
 			$id = $row->id;
 
-			$short_order 	= $row->short_order;
-			$company_name 	= $row->company_name;
-			$company_code 	= $row->company_code;
-			$company_division = $row->company_division;
-
+			$short_order = $row->short_order;
+			$type = "Menu ($row->main_type_id)";
+			
 			if($row->function_type=="0"){
 				$function_type = "Not Need";
 				$title = "N/a";
@@ -335,7 +333,7 @@ class Manage_medicine_menu extends CI_Controller {
 				$row1 =  $this->db->query("select item_name,i_code from tbl_medicine where i_code='$row->item_code'")->row();
 
 				$url = "https://www.drdistributor.com/md/$row->item_code";
-				$title = "<a href='".$url."' target='_blank'>$row1->item_name</a>";
+				$title = "<a href='".$url."' target='_blank'>$row->title</a>";
 			}
 
 			if($row->function_type=="2"){ 
@@ -359,7 +357,7 @@ class Manage_medicine_menu extends CI_Controller {
 				}
 
 				$url = "https://www.drdistributor.com/compney/$new_title";
-				$title = "<a href='".$url."' target='_blank'>$row1->company_full_name</a>";
+				$title = "<a href='".$url."' target='_blank'>$row->title</a>";
 			}
 
 			if($row->function_type=="3"){ 
@@ -367,11 +365,11 @@ class Manage_medicine_menu extends CI_Controller {
 				$function_type = "Category";
 				$selected_type = "Category ($row->company_code) "; 
 
-				$row1 = $this->db->query("select category from tbl_medicine where itemcat='$row->company_code'")->row();
+				//$row1 = $this->db->query("select category from tbl_medicine where itemcat='$row->company_code'")->row();
 
 				$url = "https://www.drdistributor.com/category/$row->company_code";
 
-				$title = "<a href='".$url."' target='_blank'>$row1->category</a>";
+				$title = "<a href='".$url."' target='_blank'>$row->title</a>";
 			}
 
 			$image = $row->image;
@@ -384,10 +382,11 @@ class Manage_medicine_menu extends CI_Controller {
 				'sr_no' => $sr_no,
 				'id' => $id,
 				'short_order' => $short_order,
+				'type' => $type,
 				'function_type' => $function_type,
 				'selected_type' => $selected_type,
 				'title' => $title,
-				'image'=>$image,
+				'image' => $image,
 				'datetime'=>$datetime,
 			);
 			$jsonArray[] = $dt;
