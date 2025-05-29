@@ -308,8 +308,8 @@ class Manage_company_division extends CI_Controller {
 		$i = 1;
 		$Page_tbl = $this->Page_tbl;
 
-		//$result = $this->db->query("SELECT tbl_company_division_category.title as category_type,tbl_company_division.* FROM tbl_company_division left join tbl_company_division_category on tbl_company_division.category_id=tbl_company_division_category.id where company_type='company_division' order by id desc");
-		$result = $this->db->query("SELECT * FROM $Page_tbl where main_type='company_division' order by id desc");
+		$result = $this->db->query("SELECT tbl_company_division_category.title as category_type,$Page_tbl.* FROM $Page_tbl left join tbl_company_division_category on $Page_tbl.category_id=tbl_company_division_category.id where main_type='company_division' order by id desc");
+		//$result = $this->db->query("SELECT * FROM $Page_tbl where main_type='company_division' order by id desc");
 		$result = $result->result();
 		foreach($result as $row) {
 
@@ -317,7 +317,7 @@ class Manage_company_division extends CI_Controller {
 			$id = $row->id;
 
 			$short_order = $row->short_order;
-			$type = "Company Division ($row->main_type_id)";
+			$type = "Company Division ($row->category_type)";
 			
 			if($row->function_type=="0"){
 				$function_type = "Not Need";
