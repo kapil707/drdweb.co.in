@@ -16,11 +16,11 @@
                 <div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
-                            Company Name
+                            Title
                         </label>
                     </div>
                     <div class="col-sm-8">
-						<input type="text" class="form-control" id="company_name" name="company_name" tabindex="1" placeholder="Company Name" required value="<?= $row->company_name; ?>" />
+						<input type="text" class="form-control" id="company_name" name="company_name" tabindex="1" placeholder="Title" required value="<?= $row->company_name; ?>" />
                     </div>
                     <div class="help-inline col-sm-12 has-error">
                         <span class="help-block reset middle">
@@ -222,7 +222,7 @@
                         </span>
                     </div>
               	</div>
-                
+
 				<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
