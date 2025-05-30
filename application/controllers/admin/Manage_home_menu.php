@@ -1,14 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Manage_company_division extends CI_Controller {
+class Manage_home_menu extends CI_Controller {
 
-	var $Page_title = "Manage Company Division";
-	var $Page_name  = "manage_company_division";
-	var $Page_view  = "manage_company_division";
-	var $Page_menu  = "manage_company_division";
-	var $page_controllers = "manage_company_division";
-	var $Page_tbl   = "tbl_company_division_test";
+	var $Page_title = "Manage Home Menu";
+	var $Page_name  = "manage_home_menu";
+	var $Page_view  = "manage_home_menu";
+	var $Page_menu  = "manage_home_menu";
+	var $page_controllers = "manage_home_menu";
+	var $Page_tbl   = "tbl_main_category";
 	public function index()
 	{
 		$page_controllers = $this->page_controllers;
@@ -40,9 +40,9 @@ class Manage_company_division extends CI_Controller {
 		
 		$tbl = $Page_tbl;
 		
-		$data['url_path'] 	= base_url()."uploads/$page_controllers/photo/resize/";
-		$upload_path 		= "./uploads/$page_controllers/photo/main/";
-		$upload_resize 		= "./uploads/$page_controllers/photo/resize/";
+		$data['url_path'] 	= base_url()."uploads/manage_company_division/photo/resize/";
+		$upload_path 		= "./uploads/manage_company_division/photo/main/";
+		$upload_resize 		= "./uploads/manage_company_division/photo/resize/";
 		
 		$find_medicine_id = $find_medicine_company_id = $find_medicine_company_division = "";
 		$short_order = 0;
@@ -59,7 +59,7 @@ class Manage_company_division extends CI_Controller {
 
 			if(empty($short_order)){
 				$short_order = 0;
-			}
+			}	
 
 			if (!empty($_FILES["image"]["name"]))
 			{
@@ -76,12 +76,14 @@ class Manage_company_division extends CI_Controller {
 			{
 				$image = "";
 			}
+			
 			$result = "";
 			$dt = array(
-				'main_type'=>'company_division',
+				'main_type'=>'menu',
 				'main_type_id'=>$main_type_id,
 				'short_order'=>$short_order,
 				'title'=>$title,
+				'url'=>$url,
 				'function_type'=>$function_type,
 				'item_code'=>$item_code,
 				'company_code'=>$company_code,
@@ -113,7 +115,7 @@ class Manage_company_division extends CI_Controller {
 		$this->load->view("admin/manage_medicine/find_medicine_company",$data);
 		$this->load->view("admin/manage_medicine/find_medicine_category",$data);
 	}
-	
+
 	public function view()
 	{
 		/******************session***********************/
@@ -140,6 +142,10 @@ class Manage_company_division extends CI_Controller {
 		
 		$tbl = $Page_tbl;
 		
+		$data['url_path'] 	= base_url()."uploads/$page_controllers/photo/resize/";
+		$upload_path 		= "./uploads/$page_controllers/photo/main/";
+		$upload_resize 		= "./uploads/$page_controllers/photo/resize/";
+				
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/view",$data);
 		$this->load->view("admin/header_footer/footer",$data);
@@ -172,9 +178,9 @@ class Manage_company_division extends CI_Controller {
 		
 		$tbl = $Page_tbl;
 		
-		$data['url_path'] 	= base_url()."uploads/$page_controllers/photo/resize/";
-		$upload_path 		= "./uploads/$page_controllers/photo/main/";
-		$upload_resize 		= "./uploads/$page_controllers/photo/resize/";
+		$data['url_path'] 	= base_url()."uploads/manage_company_division/photo/resize/";
+		$upload_path 		= "./uploads/manage_company_division/photo/main/";
+		$upload_resize 		= "./uploads/manage_company_division/photo/resize/";
 		
 		extract($_POST);
 		if(isset($Submit))
@@ -189,7 +195,7 @@ class Manage_company_division extends CI_Controller {
 
 			if(empty($short_order)){
 				$short_order = 0;
-			}
+			}	
 
 			if (!empty($_FILES["image"]["name"]))
 			{
@@ -209,10 +215,11 @@ class Manage_company_division extends CI_Controller {
 			
 			$result = "";
 			$dt = array(
-				'main_type'=>'company_division',
+				'main_type'=>'menu',
 				'main_type_id'=>$main_type_id,
 				'short_order'=>$short_order,
 				'title'=>$title,
+				'url'=>$url,
 				'function_type'=>$function_type,
 				'item_code'=>$item_code,
 				'company_code'=>$company_code,
@@ -245,9 +252,7 @@ class Manage_company_division extends CI_Controller {
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/edit",$data);
 		$this->load->view("admin/header_footer/footer",$data);
-		$this->load->view("admin/manage_medicine/find_medicine",$data);
 		$this->load->view("admin/manage_medicine/find_medicine_company",$data);
-		$this->load->view("admin/manage_medicine/find_medicine_category",$data);
 	}
 	
 	public function delete_rec()
@@ -268,7 +273,7 @@ class Manage_company_division extends CI_Controller {
 		//$this->Admin_Model->Add_Activity_log($message);
 		echo "ok";
 	}
-	
+
 	public function delete_photo()
 	{
 		$path = $_POST["path"];
@@ -308,8 +313,7 @@ class Manage_company_division extends CI_Controller {
 		$i = 1;
 		$Page_tbl = $this->Page_tbl;
 
-		$result = $this->db->query("SELECT tbl_company_division_category.title as category_type,$Page_tbl.* FROM $Page_tbl left join tbl_company_division_category on $Page_tbl.main_type_id=tbl_company_division_category.id where $Page_tbl.main_type='company_division' order by id desc");
-		//$result = $this->db->query("SELECT * FROM $Page_tbl where main_type='company_division' order by id desc");
+		$result = $this->db->query("SELECT * FROM $Page_tbl where main_type='menu' order by id desc");
 		$result = $result->result();
 		foreach($result as $row) {
 
@@ -317,12 +321,14 @@ class Manage_company_division extends CI_Controller {
 			$id = $row->id;
 
 			$short_order = $row->short_order;
-			$type = "Company Division ($row->category_type)";
+			$type = "Menu ($row->main_type_id)";
 			
 			if($row->function_type=="0"){
 				$function_type = "Not Need";
 				$title = "N/a";
 			}
+
+			$title = $row->title;
 			if($row->function_type=="1"){ 
 
 				$function_type = "Medicine";
@@ -342,20 +348,11 @@ class Manage_company_division extends CI_Controller {
 				if(empty($company_division)){
 					$company_division = "N/a";
 				}
-				$selected_type = "Company ($row->company_code) / Division ($company_division)"; 
+				$selected_type = "Company ($row->company_code) / Division ($company_division)";
 
-				$row1 = $this->db->query("select company_full_name from tbl_medicine where compcode='$row->company_code'")->row();
-
-				//$new_title = str_replace(" ","-",strtolower($row1->company_full_name));
-				$new_title = $row->company_code;
-				if(!empty($row->company_division)){
-					$new_company_division = str_replace(" ","-",strtolower($row->company_division));
-
-					$new_title.= "/".$new_company_division;
-				}
-
-				$url = "https://www.drdistributor.com/compney/$new_title";
-				$title = "<a href='".$url."' target='_blank'>$row->title</a>";
+				//$url = "https://www.drdistributor.com/compney/$url";
+				$url = "https://www.drdistributor.com/cc/$row->url";
+				$title = "<a href='".$url."' target='_blank'>$title</a>";
 			}
 
 			if($row->function_type=="3"){ 
@@ -363,20 +360,17 @@ class Manage_company_division extends CI_Controller {
 				$function_type = "Category";
 				$selected_type = "Category ($row->company_code) "; 
 
-				//$row1 = $this->db->query("select category from tbl_medicine where itemcat='$row->company_code'")->row();
-
-				$url = "https://www.drdistributor.com/category/$row->company_code";
-
-				$title = "<a href='".$url."' target='_blank'>$row->title</a>";
+				$url = "https://www.drdistributor.com/cc/$row->url";
+				$title = "<a href='".$url."' target='_blank'>$title</a>";
 			}
 
 			$image = $row->image;
 			$datetime = date("d-M-y @ H:i:s", $row->timestamp);
 
 			if(!empty($image)) {
-				$image = base_url()."uploads/$this->page_controllers/photo/resize/".$image;
+				$image = base_url()."uploads/manage_company_division/photo/resize/".$image;
 			}
-
+			
 			$dt = array(
 				'sr_no' => $sr_no,
 				'id' => $id,

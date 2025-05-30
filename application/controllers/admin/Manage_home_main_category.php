@@ -1,13 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Manage_medicine_menu extends CI_Controller {
+class Manage_home_main_category extends CI_Controller {
 
-	var $Page_title = "Manage Medicine Menu";
-	var $Page_name  = "manage_medicine_menu";
-	var $Page_view  = "manage_medicine_menu";
-	var $Page_menu  = "manage_medicine_menu";
-	var $page_controllers = "manage_medicine_menu";
+	var $Page_title = "Manage Company Division";
+	var $Page_name  = "manage_home_main_category";
+	var $Page_view  = "manage_home_main_category";
+	var $Page_menu  = "manage_home_main_category";
+	var $page_controllers = "manage_home_main_category";
 	var $Page_tbl   = "tbl_main_category";
 	public function index()
 	{
@@ -40,9 +40,9 @@ class Manage_medicine_menu extends CI_Controller {
 		
 		$tbl = $Page_tbl;
 		
-		$data['url_path'] 	= base_url()."uploads/manage_company_division/photo/resize/";
-		$upload_path 		= "./uploads/manage_company_division/photo/main/";
-		$upload_resize 		= "./uploads/manage_company_division/photo/resize/";
+		$data['url_path'] 	= base_url()."uploads/$page_controllers/photo/resize/";
+		$upload_path 		= "./uploads/$page_controllers/photo/main/";
+		$upload_resize 		= "./uploads/$page_controllers/photo/resize/";
 		
 		$find_medicine_id = $find_medicine_company_id = $find_medicine_company_division = "";
 		$short_order = 0;
@@ -59,7 +59,7 @@ class Manage_medicine_menu extends CI_Controller {
 
 			if(empty($short_order)){
 				$short_order = 0;
-			}	
+			}
 
 			if (!empty($_FILES["image"]["name"]))
 			{
@@ -76,10 +76,9 @@ class Manage_medicine_menu extends CI_Controller {
 			{
 				$image = "";
 			}
-			
 			$result = "";
 			$dt = array(
-				'main_type'=>'menu',
+				'main_type'=>'company_division',
 				'main_type_id'=>$main_type_id,
 				'short_order'=>$short_order,
 				'title'=>$title,
@@ -115,7 +114,7 @@ class Manage_medicine_menu extends CI_Controller {
 		$this->load->view("admin/manage_medicine/find_medicine_company",$data);
 		$this->load->view("admin/manage_medicine/find_medicine_category",$data);
 	}
-
+	
 	public function view()
 	{
 		/******************session***********************/
@@ -142,10 +141,6 @@ class Manage_medicine_menu extends CI_Controller {
 		
 		$tbl = $Page_tbl;
 		
-		$data['url_path'] 	= base_url()."uploads/$page_controllers/photo/resize/";
-		$upload_path 		= "./uploads/$page_controllers/photo/main/";
-		$upload_resize 		= "./uploads/$page_controllers/photo/resize/";
-				
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/view",$data);
 		$this->load->view("admin/header_footer/footer",$data);
@@ -178,9 +173,9 @@ class Manage_medicine_menu extends CI_Controller {
 		
 		$tbl = $Page_tbl;
 		
-		$data['url_path'] 	= base_url()."uploads/manage_company_division/photo/resize/";
-		$upload_path 		= "./uploads/manage_company_division/photo/main/";
-		$upload_resize 		= "./uploads/manage_company_division/photo/resize/";
+		$data['url_path'] 	= base_url()."uploads/$page_controllers/photo/resize/";
+		$upload_path 		= "./uploads/$page_controllers/photo/main/";
+		$upload_resize 		= "./uploads/$page_controllers/photo/resize/";
 		
 		extract($_POST);
 		if(isset($Submit))
@@ -195,7 +190,7 @@ class Manage_medicine_menu extends CI_Controller {
 
 			if(empty($short_order)){
 				$short_order = 0;
-			}	
+			}
 
 			if (!empty($_FILES["image"]["name"]))
 			{
@@ -215,7 +210,7 @@ class Manage_medicine_menu extends CI_Controller {
 			
 			$result = "";
 			$dt = array(
-				'main_type'=>'menu',
+				'main_type'=>'company_division',
 				'main_type_id'=>$main_type_id,
 				'short_order'=>$short_order,
 				'title'=>$title,
@@ -252,7 +247,9 @@ class Manage_medicine_menu extends CI_Controller {
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/edit",$data);
 		$this->load->view("admin/header_footer/footer",$data);
+		$this->load->view("admin/manage_medicine/find_medicine",$data);
 		$this->load->view("admin/manage_medicine/find_medicine_company",$data);
+		$this->load->view("admin/manage_medicine/find_medicine_category",$data);
 	}
 	
 	public function delete_rec()
@@ -273,7 +270,7 @@ class Manage_medicine_menu extends CI_Controller {
 		//$this->Admin_Model->Add_Activity_log($message);
 		echo "ok";
 	}
-
+	
 	public function delete_photo()
 	{
 		$path = $_POST["path"];
@@ -313,7 +310,8 @@ class Manage_medicine_menu extends CI_Controller {
 		$i = 1;
 		$Page_tbl = $this->Page_tbl;
 
-		$result = $this->db->query("SELECT * FROM $Page_tbl where main_type='menu' order by id desc");
+		$result = $this->db->query("SELECT tbl_company_division_category.title as category_type,$Page_tbl.* FROM $Page_tbl left join tbl_company_division_category on $Page_tbl.main_type_id=tbl_company_division_category.id where $Page_tbl.main_type='company_division' order by id desc");
+		//$result = $this->db->query("SELECT * FROM $Page_tbl where main_type='company_division' order by id desc");
 		$result = $result->result();
 		foreach($result as $row) {
 
@@ -321,13 +319,12 @@ class Manage_medicine_menu extends CI_Controller {
 			$id = $row->id;
 
 			$short_order = $row->short_order;
-			$type = "Menu ($row->main_type_id)";
+			$type = "Company Division ($row->category_type)";
 			
 			if($row->function_type=="0"){
 				$function_type = "Not Need";
 				$title = "N/a";
 			}
-
 			$title = $row->title;
 			if($row->function_type=="1"){ 
 
@@ -368,9 +365,9 @@ class Manage_medicine_menu extends CI_Controller {
 			$datetime = date("d-M-y @ H:i:s", $row->timestamp);
 
 			if(!empty($image)) {
-				$image = base_url()."uploads/manage_company_division/photo/resize/".$image;
+				$image = base_url()."uploads/$this->page_controllers/photo/resize/".$image;
 			}
-			
+
 			$dt = array(
 				'sr_no' => $sr_no,
 				'id' => $id,
