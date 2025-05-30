@@ -8,7 +8,7 @@ class Manage_medicine_menu extends CI_Controller {
 	var $Page_view  = "manage_medicine_menu";
 	var $Page_menu  = "manage_medicine_menu";
 	var $page_controllers = "manage_medicine_menu";
-	var $Page_tbl   = "tbl_company_division_test";
+	var $Page_tbl   = "tbl_main_category";
 	public function index()
 	{
 		$page_controllers = $this->page_controllers;
