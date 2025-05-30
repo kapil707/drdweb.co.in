@@ -247,9 +247,9 @@
 				</ul>
 			</li>
 			<?php }
-			$menu = $this->db->query("select DISTINCT tbl_permission_settings.page_type,sorting_order from tbl_permission_settings,tbl_permission_page where tbl_permission_settings.page_type=tbl_permission_page.page_type and user_type='$user_type' and (tbl_permission_settings.page_type='manage_home' or tbl_permission_settings.page_type='manage_home_category' or  tbl_permission_settings.page_type='manage_medicine_menu' or tbl_permission_settings.page_type='manage_slider' or tbl_permission_settings.page_type='manage_item' or tbl_permission_settings.page_type='manage_company_division') GROUP BY tbl_permission_settings.page_type,sorting_order order by sorting_order asc")->result();
+			$menu = $this->db->query("select DISTINCT tbl_permission_settings.page_type,sorting_order from tbl_permission_settings,tbl_permission_page where tbl_permission_settings.page_type=tbl_permission_page.page_type and user_type='$user_type' and (tbl_permission_settings.page_type='manage_home' or tbl_permission_settings.page_type='manage_home_category' or  tbl_permission_settings.page_type='manage_home_menu' or tbl_permission_settings.page_type='manage_slider' or tbl_permission_settings.page_type='manage_item' or tbl_permission_settings.page_type='manage_home_main_category') GROUP BY tbl_permission_settings.page_type,sorting_order order by sorting_order asc")->result();
 			if(!empty($menu)){?>
-				<li <?php if($Page_menu=="manage_home" ||$Page_menu=="manage_home_category" || $Page_menu=="manage_medicine_menu" || $Page_menu=="manage_slider" || $Page_menu=="manage_item" ||  $Page_menu=="manage_company_division") { ?> class="active" <?php } ?>>
+				<li <?php if($Page_menu=="manage_home" ||$Page_menu=="manage_home_category" || $Page_menu=="manage_home_menu" || $Page_menu=="manage_slider" || $Page_menu=="manage_item" ||  $Page_menu=="manage_home_main_category") { ?> class="active" <?php } ?>>
 				<a href="#">
 					<span class="nav-label">
 						<i class="fa fa-th-large"></i>
