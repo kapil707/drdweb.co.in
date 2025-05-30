@@ -15,6 +15,7 @@ $(document).ready(function(){
 		order: [[0, 'asc']],
 		columns: [
 			{ data: 'sr_no', title: 'Id' },
+			{ data: 'type', title: 'Type' },
 			{ data: 'title', title: 'Title' },
 			{ data: 'datetime', title: 'DateTime' },
 			{
