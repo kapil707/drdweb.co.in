@@ -83,6 +83,7 @@ class Manage_medicine_menu extends CI_Controller {
 				'main_type_id'=>$main_type_id,
 				'short_order'=>$short_order,
 				'title'=>$title,
+				'url'=>$url,
 				'function_type'=>$function_type,
 				'item_code'=>$item_code,
 				'company_code'=>$company_code,
@@ -218,6 +219,7 @@ class Manage_medicine_menu extends CI_Controller {
 				'main_type_id'=>$main_type_id,
 				'short_order'=>$short_order,
 				'title'=>$title,
+				'url'=>$url,
 				'function_type'=>$function_type,
 				'item_code'=>$item_code,
 				'company_code'=>$company_code,
@@ -325,6 +327,8 @@ class Manage_medicine_menu extends CI_Controller {
 				$function_type = "Not Need";
 				$title = "N/a";
 			}
+
+			$title = $row->title;
 			if($row->function_type=="1"){ 
 
 				$function_type = "Medicine";
@@ -344,20 +348,11 @@ class Manage_medicine_menu extends CI_Controller {
 				if(empty($company_division)){
 					$company_division = "N/a";
 				}
-				$selected_type = "Company ($row->company_code) / Division ($company_division)"; 
+				$selected_type = "Company ($row->company_code) / Division ($company_division)";
 
-				$row1 = $this->db->query("select company_full_name from tbl_medicine where compcode='$row->company_code'")->row();
-
-				//$new_title = str_replace(" ","-",strtolower($row1->company_full_name));
-				$new_title = $row->company_code;
-				if(!empty($row->company_division)){
-					$new_company_division = str_replace(" ","-",strtolower($row->company_division));
-
-					$new_title.= "/".$new_company_division;
-				}
-
-				$url = "https://www.drdistributor.com/compney/$new_title";
-				$title = "<a href='".$url."' target='_blank'>$row->title</a>";
+				//$url = "https://www.drdistributor.com/compney/$url";
+				$url = "https://www.drdistributor.com/cc/$row->url";
+				$title = "<a href='".$url."' target='_blank'>$title</a>";
 			}
 
 			if($row->function_type=="3"){ 
@@ -365,11 +360,8 @@ class Manage_medicine_menu extends CI_Controller {
 				$function_type = "Category";
 				$selected_type = "Category ($row->company_code) "; 
 
-				//$row1 = $this->db->query("select category from tbl_medicine where itemcat='$row->company_code'")->row();
-
-				$url = "https://www.drdistributor.com/category/$row->company_code";
-
-				$title = "<a href='".$url."' target='_blank'>$row->title</a>";
+				$url = "https://www.drdistributor.com/cc/$row->url";
+				$title = "<a href='".$url."' target='_blank'>$title</a>";
 			}
 
 			$image = $row->image;
