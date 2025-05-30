@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Manage_home_main_category extends CI_Controller {
 
-	var $Page_title = "Manage Company Division";
+	var $Page_title = "Manage Home Main Division";
 	var $Page_name  = "manage_home_main_category";
 	var $Page_view  = "manage_home_main_category";
 	var $Page_menu  = "manage_home_main_category";
