@@ -40,20 +40,20 @@
                     </div>
                 </div>
 				<div class="col-sm-6">
-					<div class="col-sm-4 text-right">
-						<label class="control-label" for="form-field-1">
-							Short Order
-						</label>
-					</div>
-					<div class="col-sm-8">
-						<input type="number" class="form-control" id="short_order" name="short_order" placeholder="Short Order" value="<?= set_value('short_order');?>" />
-					</div>
-					<div class="help-inline col-sm-12 has-error">
-						<span class="help-block reset middle">
-							<?= form_error('short_order'); ?>
-						</span>
-					</div>
-				</div>
+                    <div class="col-sm-4 text-right">
+                        <label class="control-label" for="form-field-1">
+                            Url
+                        </label>
+                    </div>
+                    <div class="col-sm-8">
+						<input type="text" class="form-control" id="url" name="url" tabindex="1" placeholder="Url" required value="<?= set_value('url');?>"/>
+                    </div>
+                    <div class="help-inline col-sm-12 has-error">
+                        <span class="help-block reset middle">
+                            
+                        </span>
+                    </div>
+                </div>
 			</div>
 			<div class="form-group">	
 				<div class="col-sm-6">
@@ -84,6 +84,21 @@
                         </span>
                     </div>
                 </div>
+                <div class="col-sm-6">
+					<div class="col-sm-4 text-right">
+						<label class="control-label" for="form-field-1">
+							Short Order
+						</label>
+					</div>
+					<div class="col-sm-8">
+						<input type="number" class="form-control" id="short_order" name="short_order" placeholder="Short Order" value="<?= set_value('short_order');?>" />
+					</div>
+					<div class="help-inline col-sm-12 has-error">
+						<span class="help-block reset middle">
+							<?= form_error('short_order'); ?>
+						</span>
+					</div>
+				</div>
             </div>
 
             <div class="form-group div_medicine" <?php if(set_value('function_type')!=1) { ?> style="display:none;" <?php } ?>>
