@@ -190,7 +190,7 @@ class Manage_item extends CI_Controller {
 		$i = 1;
 		$Page_tbl = $this->Page_tbl;
 
-		$result = $this->db->query("SELECT tbl_item.id,tbl_item.timestamp,tbl_item_category.title as category,tbl_medicine.i_code,tbl_medicine.item_name,tbl_medicine.image1 FROM `tbl_item` left join tbl_item_category on tbl_item.category_id=tbl_item_category.id left join tbl_medicine on tbl_item.item_code=tbl_medicine.i_code order by tbl_item.id desc");
+		$result = $this->db->query("SELECT tbl_item.id,tbl_item.timestamp,tbl_home_category.title as category,tbl_home_category.url as url,tbl_medicine.i_code,tbl_medicine.item_name,tbl_medicine.image1 FROM `tbl_item` left join tbl_home_category on tbl_item.category_id=tbl_home_category.id left join tbl_medicine on tbl_item.item_code=tbl_medicine.i_code order by tbl_item.id desc");
 		$result = $result->result();
 		foreach($result as $row) {
 
@@ -204,8 +204,8 @@ class Manage_item extends CI_Controller {
 			$image = base_url().$row->image1;
 			$item_category = $row->category;
 
-			$new_title = str_replace(" ","-",strtolower($item_category));
-			$url = "https://www.drdistributor.com/c/$new_title";
+			//$new_title = str_replace(" ","-",strtolower($item_category));
+			$url = "https://www.drdistributor.com/hc/$row->url";
 			$item_category = "<a href='".$url."' target='_blank'>$item_category</a>";
 			
 			$datetime = date("d-M-y @ H:i:s", $row->timestamp);
