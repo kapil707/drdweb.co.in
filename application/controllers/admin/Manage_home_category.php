@@ -197,8 +197,8 @@ class Manage_home_category extends CI_Controller {
 			$id = $row->id;
 			$type = $row->type;
 
-			$new_title = str_replace(" ","-",strtolower($row->title));
-			$url = "https://www.drdistributor.com/c/$new_title";
+			//$new_title = str_replace(" ","-",strtolower($row->title));
+			$url = "https://www.drdistributor.com/hc/$row->url";
 			$title = "<a href='".$url."' target='_blank'>$row->title</a>";
 			$isdefault = $row->isdefault;
 			$datetime = date("d-M-y @ H:i:s", $row->timestamp);
