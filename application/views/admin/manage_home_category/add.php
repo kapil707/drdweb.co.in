@@ -5,7 +5,25 @@
     <div class="col-xs-12">
         <!-- PAGE CONTENT BEGINS -->
         <form class="form-horizontal" role="form" method="post" enctype="multipart/form-data">
-			<div class="form-group">	
+            <div class="form-group">
+				<div class="col-sm-6">
+					<div class="col-sm-4 text-right">
+						<label class="control-label" for="form-field-1">Type</label></div>
+						<div class="col-sm-8">
+							<select name="type" id="type" class="form-control">
+								<option value="category" <?php if(set_value('type')=="category") { ?> selected <?php } ?>>Category</option>
+								<option value="item" <?php if(set_value('type')=="item") { ?> selected <?php } ?>>Item</option>
+						</select>
+					</div>
+					<div class="help-inline col-sm-12 has-error">
+						<span class="help-block reset middle"> 
+							<?= form_error('type'); ?>
+						</span>
+					</div>
+				</div>
+            </div>
+
+			<div class="form-group">
 				<div class="col-sm-6">
                     <div class="col-sm-4 text-right">
                         <label class="control-label" for="form-field-1">
