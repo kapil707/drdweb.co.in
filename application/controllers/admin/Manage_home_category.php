@@ -1,14 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Manage_company_division_category extends CI_Controller {
+class Manage_home_category extends CI_Controller {
 
-	var $Page_title = "Manage Company Division Category";
-	var $Page_name  = "manage_company_division_category";
-	var $Page_view  = "manage_company_division_category";
-	var $Page_menu  = "manage_company_division_category";
-	var $page_controllers = "manage_company_division_category";
-	var $Page_tbl   = "tbl_company_division_category";
+	var $Page_title = "Manage Home Category";
+	var $Page_name  = "manage_home_category";
+	var $Page_view  = "manage_home_category";
+	var $Page_menu  = "manage_home_category";
+	var $page_controllers = "manage_home_category";
+	var $Page_tbl   = "tbl_home_category";
 	public function index()
 	{
 		$page_controllers = $this->page_controllers;
@@ -44,6 +44,7 @@ class Manage_company_division_category extends CI_Controller {
 		if(isset($Submit))
 		{
 			$dt = array(
+				'type'=>$type,
 				'title'=>$title,
 				'status'=>$status,
 				'date' => date('Y-m-d'),
@@ -93,7 +94,7 @@ class Manage_company_division_category extends CI_Controller {
 		$this->breadcrumbs->push("$Page_title","admin/$page_controllers/");
 		$this->breadcrumbs->push("View","admin/$page_controllers/view");
 		
-		$tbl = $Page_tbl;		
+		$tbl = $Page_tbl;
 
 		$this->load->view("admin/header_footer/header",$data);
 		$this->load->view("admin/$Page_view/view",$data);
@@ -131,6 +132,7 @@ class Manage_company_division_category extends CI_Controller {
 		if(isset($Submit))
 		{
 			$dt = array(
+				'type'=>'item',
 				'title'=>$title,
 				'status'=>$status,
 				'date' => date('Y-m-d'),
@@ -193,14 +195,20 @@ class Manage_company_division_category extends CI_Controller {
 
 			$sr_no = $i++;
 			$id = $row->id;
+			$type = $row->type;
 
-			$title = $row->title;
+			$new_title = str_replace(" ","-",strtolower($row->title));
+			$url = "https://www.drdistributor.com/c/$new_title";
+			$title = "<a href='".$url."' target='_blank'>$row->title</a>";
+			$isdefault = $row->isdefault;
 			$datetime = date("d-M-y @ H:i:s", $row->timestamp);
 
 			$dt = array(
 				'sr_no' => $sr_no,
 				'id' => $id,
+				'type' => $type,
 				'title' => $title,
+				'isdefault' => $isdefault,
 				'datetime'=>$datetime,
 			);
 			$jsonArray[] = $dt;
