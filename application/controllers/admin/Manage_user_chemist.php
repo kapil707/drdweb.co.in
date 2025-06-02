@@ -72,6 +72,10 @@ class Manage_user_chemist extends CI_Controller {
 		extract($_POST);
 		if(isset($Submit))
 		{
+			if(empty($fix_limit)){
+				$fix_limit = 0;
+			}
+
 			$message_db = "";
 			$time = time();
 			$date = date("Y-m-d",$time);				
